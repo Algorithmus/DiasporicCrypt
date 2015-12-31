@@ -38,22 +38,13 @@ func isSlope(name):
 	return name.match("slope*-*")
 
 func getSlopes(space_state):
-	var relevantSlopeTileA = space_state.intersect_ray(Vector2(get_global_pos().x, get_global_pos().y+sprite_offset.y), Vector2(get_global_pos().x, get_global_pos().y+sprite_offset.y+8), [self], 2147483647, 16)
-	#var relevantSlopeTileB = space_state.intersect_ray(Vector2(get_global_pos().x+sprite_offset.x, get_global_pos().y+sprite_offset.y), Vector2(get_global_pos().x+sprite_offset.x, get_global_pos().y+sprite_offset.y+8), [self], 2147483647, 16)
+	var relevantSlopeTile = space_state.intersect_ray(Vector2(get_global_pos().x, get_global_pos().y+sprite_offset.y), Vector2(get_global_pos().x, get_global_pos().y+sprite_offset.y+8), [self], 2147483647, 16)
 	
-	var relevantSlopeTiles = []
-	
-	if (relevantSlopeTileA.has("collider")):
-		var colliderA = relevantSlopeTileA["collider"]
-		if (isSlope(colliderA.get_name())):
-			relevantSlopeTiles.append(colliderA)
-	"""
-	if (relevantSlopeTileB.has("collider")):
-		var colliderB = relevantSlopeTileB["collider"]
-		if (isSlope(colliderB.get_name())):
-			relevantSlopeTiles.append(colliderB)	
-	"""
-	return relevantSlopeTiles
+	if (relevantSlopeTile.has("collider")):
+		var collider = relevantSlopeTile["collider"]
+		if (isSlope(collider.get_name())):
+			return collider
+	return null
 
 func parseSlopeType(name):
 	var values = name.split("slope")
@@ -97,30 +88,26 @@ func _fixed_process(delta):
 	position.x = 0
 	
 	# check slope tiles
-	var relevantSlopeTiles = getSlopes(space_state)
+	var relevantSlopeTile = getSlopes(space_state)
 	
 	var onZeroSlope = false
 	var onSlope = false
 	var currentSlopeTile = null
 	var b = null
 	var forwardY = get_pos().y + sprite_offset.y
-	if (relevantSlopeTiles.size() > 0):
-		for i in relevantSlopeTiles:
-			b = parseSlopeType(i.get_name())
-			if (b != null && (get_global_pos().x >= i.get_global_pos().x - TILE_SIZE/2 && get_global_pos().x < i.get_global_pos().x + TILE_SIZE/2)):
-				currentSlopeTile = i
-		
-		if (currentSlopeTile != null):
+	if (relevantSlopeTile != null):
+		b = parseSlopeType(relevantSlopeTile.get_name())
+		if (b != null):
 			onSlope = true
-			b = parseSlopeType(currentSlopeTile.get_name())
+			b = parseSlopeType(relevantSlopeTile.get_name())
 			# ignore bottom slopes if we're not close enough to them
-			if ((b[0] == TILE_SIZE - 1 || b[1] == TILE_SIZE - 1) && (get_global_pos().x < currentSlopeTile.get_global_pos().x - TILE_SIZE / 2 || get_global_pos().x > currentSlopeTile.get_global_pos().x + TILE_SIZE / 2)):
+			if ((b[0] == TILE_SIZE - 1 || b[1] == TILE_SIZE - 1) && (get_global_pos().x < relevantSlopeTile.get_global_pos().x - TILE_SIZE / 2 || get_global_pos().x > relevantSlopeTile.get_global_pos().x + TILE_SIZE / 2)):
 				pass
 			else:
-				var t = (get_global_pos().x - currentSlopeTile.get_global_pos().x + TILE_SIZE / 2)/TILE_SIZE
+				var t = (get_global_pos().x - relevantSlopeTile.get_global_pos().x + TILE_SIZE / 2)/TILE_SIZE
 				var slopeY = (1 - t) * b[0] + t * b[1]
 				
-				var slopeAdjustedTileY = currentSlopeTile.get_global_pos().y - TILE_SIZE / 2 + int(slopeY)
+				var slopeAdjustedTileY = relevantSlopeTile.get_global_pos().y - TILE_SIZE / 2 + int(slopeY)
 				
 				# clamp to slope only if not jumping
 				# unfortunately, the extra height from the default jump speed isn't enough to clear 
@@ -159,7 +146,7 @@ func _fixed_process(delta):
 	# bottom right ray check
 	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY), Vector2(rightX, forwardY+16), [self])
 
-	relevantSlopeTiles = getSlopes(space_state)
+	relevantSlopeTile = getSlopes(space_state)
 	
 	var closestTileY = desiredY
 
@@ -193,69 +180,50 @@ func _fixed_process(delta):
 	forwardY = get_pos().y + sprite_offset.y
 	
 	# check slope tiles
-	if (relevantSlopeTiles.size() > 0):
-		var distance = []
+	if (relevantSlopeTile != null):
 		var closestSlopeTile = null
 		var t
 		var b
 		var slopeY = 0
 		var closest_level = null
 		# find relevant distances to slope tiles
-		for i in relevantSlopeTiles:
-			b = parseSlopeType(i.get_name())
-			if (b != null):
-				t = (get_global_pos().x - i.get_global_pos().x + TILE_SIZE/2) / TILE_SIZE
+		b = parseSlopeType(relevantSlopeTile.get_name())
+		if (b != null):
+			t = (get_global_pos().x - relevantSlopeTile.get_global_pos().x + TILE_SIZE/2) / TILE_SIZE
+			slopeY = (1 - t) * b[0] + t * b[1]
+			if (forwardY <= relevantSlopeTile.get_global_pos().y - TILE_SIZE/2 + int(slopeY)):
+				closest_level = relevantSlopeTile.get_global_pos().y - TILE_SIZE/2 - forwardY
+				b = parseSlopeType(relevantSlopeTile.get_name())
+				t = (get_global_pos().x - relevantSlopeTile.get_global_pos().x + TILE_SIZE/2)/TILE_SIZE
 				slopeY = (1 - t) * b[0] + t * b[1]
-				if (forwardY <= i.get_global_pos().y - TILE_SIZE/2 + int(slopeY)):
-					var d = i.get_global_pos().y - TILE_SIZE/2 - forwardY
-					distance.append(d)
-			else:
-				abSlope = i
+				
+				# check that we are really standing on a slope tile
+				if (relevantSlopeTile.get_global_pos().y - TILE_SIZE/2 + slopeY - forwardY < JUMP_SPEED - 1):
+					onSlope = true
+					falling = false
+				
+				# don't need to check slope on ceilings
+				if (forwardY >= relevantSlopeTile.get_global_pos().y + TILE_SIZE/2):
+					closestTileY = forwardY - relevantSlopeTile.get_global_pos().y - TILE_SIZE/2 - TILE_SIZE
+				elif (forwardY <= relevantSlopeTile.get_global_pos().y - TILE_SIZE/2 + slopeY):
+					closestTileY = relevantSlopeTile.get_global_pos().y - TILE_SIZE/2 + slopeY - forwardY
+					if (jumpPressed):
+						closestTileY = desiredY
 
-		closest_level = min_array(distance)
-
-		# find relevant slope tile
-		# ignore all other blocks next to it
-		if (closest_level != null):
-			for j in relevantSlopeTiles:
-				b = parseSlopeType(j.get_name())
-				if (b != null):
-					if (j.get_global_pos().y - TILE_SIZE/2 - forwardY <= closest_level && get_global_pos().x >= j.get_global_pos().x - TILE_SIZE/2 && get_global_pos().x <= j.get_global_pos().x + TILE_SIZE/2):
-						closestSlopeTile = j
-
-		# not standing on a slope. This is just a block whose collision
-		# is ignorable when standing on a slope tile next to it.
-		if (abSlope != null && closestSlopeTile == null):
+				closestTileY = int(closestTileY)
+		else:
+			# not standing on a slope. This is just a block whose collision
+			# is ignorable when standing on a slope tile next to it.
+			abSlope = relevantSlopeTile
 			if (abSlope.get_global_pos().y - TILE_SIZE/2 <= forwardY):
 				move(Vector2(0, abSlope.get_global_pos().y - TILE_SIZE/2 - forwardY - 1))
 				forwardY = get_pos().y + sprite_offset.y
 			closestTileY = min(abSlope.get_global_pos().y - TILE_SIZE/2 - forwardY - 1, desiredY)
 			closestTileY = int(closestTileY)
 			falling = false
-
-		# standing on a valid slope tile
-		if (closestSlopeTile != null):
-			b = parseSlopeType(closestSlopeTile.get_name())
-			t = (get_global_pos().x - closestSlopeTile.get_global_pos().x + TILE_SIZE/2)/TILE_SIZE
-			slopeY = (1 - t) * b[0] + t * b[1]
-
-			# check that we are really standing on a slope tile
-			if (closestSlopeTile.get_global_pos().y - TILE_SIZE/2 + slopeY - forwardY < JUMP_SPEED - 1):
-				onSlope = true
-				falling = false
-			
-			# don't need to check slope on ceilings
-			if (forwardY >= closestSlopeTile.get_global_pos().y + TILE_SIZE/2):
-				closestTileY = forwardY - closestSlopeTile.get_global_pos().y - TILE_SIZE/2 - TILE_SIZE
-			elif (forwardY <= closestSlopeTile.get_global_pos().y - TILE_SIZE/2 + slopeY):
-				closestTileY = closestSlopeTile.get_global_pos().y - TILE_SIZE/2 + slopeY - forwardY
-				if (jumpPressed):
-					closestTileY = desiredY
-
-			closestTileY = int(closestTileY)
 			
 	# final falling status check for all kinds of collisions
-	if (!normalTileCheck && ((relevantSlopeTiles.size() == 0 || !onSlope) && abSlope == null)):
+	if (!normalTileCheck && ((relevantSlopeTile == null || !onSlope) && abSlope == null)):
 		falling = true
 	
 	accel = min(min(abs(desiredY), abs(closestTileY)), SPEED_LIMIT) * s
