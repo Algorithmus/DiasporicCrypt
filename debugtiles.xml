@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="TileSet" subresource_count="9" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
-	<ext_resource path="res://yellow0-15.png" type="Texture" index="3"></ext_resource>
-	<ext_resource path="res://yellow16-23.png" type="Texture" index="1"></ext_resource>
-	<ext_resource path="res://yellow8-15.png" type="Texture" index="0"></ext_resource>
-	<ext_resource path="res://yellow16-31.png" type="Texture" index="4"></ext_resource>
-	<ext_resource path="res://yellow24-31.png" type="Texture" index="2"></ext_resource>
-	<ext_resource path="res://yellow0-7.png" type="Texture" index="5"></ext_resource>
+<resource_file type="TileSet" subresource_count="6" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
+	<ext_resource path="res://yellow.png" type="Texture" index="0"></ext_resource>
 	<resource type="RectangleShape2D" path="local://2">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2 name="extents"> 16, 16 </vector2>
@@ -19,6 +14,16 @@
 		<real name="lossy_quality"> 1 </real>
 
 	</resource>
+	<resource type="RectangleShape2D" path="local://5">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2 name="extents"> 16, 16 </vector2>
+
+	</resource>
+	<resource type="RectangleShape2D" path="local://4">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2 name="extents"> 16, 32 </vector2>
+
+	</resource>
 	<main_resource>
 		<string name="0/name"> "TestBlock" </string>
 		<resource name="0/texture" resource_type="Texture" path="local://1">  </resource>
@@ -30,59 +35,25 @@
 		<array name="0/shapes" len="1" shared="false">
 			<resource  resource_type="Shape2D" path="local://2">  </resource>
 		</array>
-		<string name="1/name"> "TestSlope8-15" </string>
+		<string name="1/name"> "TestLadderBlockL" </string>
 		<resource name="1/texture" external="0">  </resource>
 		<vector2 name="1/tex_offset"> 0, 0 </vector2>
 		<resource name="1/material"></resource>		<rect2 name="1/region"> 0, 0, 0, 0 </rect2>
 		<vector2 name="1/occluder_offset"> 16, 16 </vector2>
 		<resource name="1/occluder"></resource>		<vector2 name="1/navigation_offset"> 16, 16 </vector2>
-		<resource name="1/navigation"></resource>		<vector2 name="1/shape_offset"> 0, 0 </vector2>
-		<array name="1/shapes" len="0" shared="false">
+		<resource name="1/navigation"></resource>		<vector2 name="1/shape_offset"> 16, 16 </vector2>
+		<array name="1/shapes" len="1" shared="false">
+			<resource  resource_type="Shape2D" path="local://5">  </resource>
 		</array>
-		<string name="2/name"> "TestSlope16-23" </string>
-		<resource name="2/texture" external="1">  </resource>
+		<string name="2/name"> "TestLadderBlockR" </string>
+		<resource name="2/texture" external="0">  </resource>
 		<vector2 name="2/tex_offset"> 0, 0 </vector2>
 		<resource name="2/material"></resource>		<rect2 name="2/region"> 0, 0, 0, 0 </rect2>
 		<vector2 name="2/occluder_offset"> 16, 16 </vector2>
 		<resource name="2/occluder"></resource>		<vector2 name="2/navigation_offset"> 16, 16 </vector2>
-		<resource name="2/navigation"></resource>		<vector2 name="2/shape_offset"> 0, 0 </vector2>
-		<array name="2/shapes" len="0" shared="false">
-		</array>
-		<string name="3/name"> "TestSlope24-31" </string>
-		<resource name="3/texture" external="2">  </resource>
-		<vector2 name="3/tex_offset"> 0, 0 </vector2>
-		<resource name="3/material"></resource>		<rect2 name="3/region"> 0, 0, 0, 0 </rect2>
-		<vector2 name="3/occluder_offset"> 16, 16 </vector2>
-		<resource name="3/occluder"></resource>		<vector2 name="3/navigation_offset"> 16, 16 </vector2>
-		<resource name="3/navigation"></resource>		<vector2 name="3/shape_offset"> 0, 0 </vector2>
-		<array name="3/shapes" len="0" shared="false">
-		</array>
-		<string name="4/name"> "TestSlope0-15" </string>
-		<resource name="4/texture" external="3">  </resource>
-		<vector2 name="4/tex_offset"> 0, 0 </vector2>
-		<resource name="4/material"></resource>		<rect2 name="4/region"> 0, 0, 0, 0 </rect2>
-		<vector2 name="4/occluder_offset"> 16, 16 </vector2>
-		<resource name="4/occluder"></resource>		<vector2 name="4/navigation_offset"> 16, 16 </vector2>
-		<resource name="4/navigation"></resource>		<vector2 name="4/shape_offset"> 0, 0 </vector2>
-		<array name="4/shapes" len="0" shared="false">
-		</array>
-		<string name="5/name"> "TestSlope16-31" </string>
-		<resource name="5/texture" external="4">  </resource>
-		<vector2 name="5/tex_offset"> 0, 0 </vector2>
-		<resource name="5/material"></resource>		<rect2 name="5/region"> 0, 0, 0, 0 </rect2>
-		<vector2 name="5/occluder_offset"> 16, 16 </vector2>
-		<resource name="5/occluder"></resource>		<vector2 name="5/navigation_offset"> 16, 16 </vector2>
-		<resource name="5/navigation"></resource>		<vector2 name="5/shape_offset"> 0, 0 </vector2>
-		<array name="5/shapes" len="0" shared="false">
-		</array>
-		<string name="6/name"> "TestSlope0-7" </string>
-		<resource name="6/texture" external="5">  </resource>
-		<vector2 name="6/tex_offset"> 0, 0 </vector2>
-		<resource name="6/material"></resource>		<rect2 name="6/region"> 0, 0, 0, 0 </rect2>
-		<vector2 name="6/occluder_offset"> 16, 16 </vector2>
-		<resource name="6/occluder"></resource>		<vector2 name="6/navigation_offset"> 16, 16 </vector2>
-		<resource name="6/navigation"></resource>		<vector2 name="6/shape_offset"> 0, 0 </vector2>
-		<array name="6/shapes" len="0" shared="false">
+		<resource name="2/navigation"></resource>		<vector2 name="2/shape_offset"> 16, 16 </vector2>
+		<array name="2/shapes" len="1" shared="false">
+			<resource  resource_type="Shape2D" path="local://4">  </resource>
 		</array>
 
 	</main_resource>
