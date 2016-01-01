@@ -123,6 +123,7 @@ func _fixed_process(delta):
 	position.y = 0
 	var new_animation = current_animation
 	var horizontal_motion = false
+	# position at character's feet
 	var forwardY = get_pos().y + sprite_offset.y
 	var relevantSlopeTile = null
 	var onSlope = false
@@ -147,11 +148,12 @@ func _fixed_process(delta):
 					hanging = false
 					move(Vector2(0, climb_platform.get_global_pos().y + TILE_SIZE/2 - get_pos().y + sprite_offset.y))
 					climb_platform = null
-		
+
 		move(position)
 
 		position.x = 0
 		
+		# check ladder after horizontal movement
 		var ladderTile = getLadderTile(space_state)
 		
 		if (ladderTile != null && ladderTile.get_name() == "ladder_top"):
@@ -195,12 +197,14 @@ func _fixed_process(delta):
 							
 	var climb_vertically = false
 	
+	# check platform climbing after horizontal movement requested
 	if (!on_ladder):
 		var platform_check = null
 		
 		if (!climbing_platform):
 			platform_check = getClimbPlatform(space_state, direction == -1)
 		
+		# clamp to platform if should be hanging
 		if (platform_check != null && !climbing_platform && climb_platform == null):
 			hanging = true
 			var d =  platform_check.get_global_pos().x - direction * TILE_SIZE/2 - get_global_pos().x - direction * sprite_offset.x
@@ -210,6 +214,13 @@ func _fixed_process(delta):
 		if (platform_check == null && climb_platform != null && !climbing_platform):
 			climb_platform = null
 		
+		# animate climbing platform
+		# move a specific distance in an L shape to climb the platform every fixed function call
+		# move up 4 tiles (the height of the character) and then left or right one tile
+		# depending on how you choose to animate climbing, this may or may not
+		# look very nice. If you have too few frames or don't adjust the vertical position, the
+		# character can sometimes look like they're oscillating up and down on the platform
+		# vertical motion is delayed until vertical motion checking
 		if (climbing_platform):
 			if (get_pos().y + sprite_offset.y <= climb_platform.get_global_pos().y - TILE_SIZE/2):
 				move(Vector2(climbspeed * direction, 0))
@@ -239,6 +250,7 @@ func _fixed_process(delta):
 	if (Input.is_action_pressed("ui_up")):
 		var ladderTile = getLadderTile(space_state)
 		if (ladderTile != null):
+			# only allow entering ladder from bottom
 			if (!on_ladder && ladderTile.get_name() != "ladder_top"):
 				on_ladder = true
 				snapToLadder(ladderTile)
@@ -261,7 +273,6 @@ func _fixed_process(delta):
 				accel = -JUMP_SPEED
 				falling = true
 				jumpPressed = true
-				print("jump")
 				if (ladder_top != null):
 					print(ladderY)
 			if (hanging):
@@ -271,6 +282,7 @@ func _fixed_process(delta):
 	if (Input.is_action_pressed("ui_down")):
 		var ladderTile = getLadderTile(space_state)
 		if (ladderTile != null):
+			# only allow entering ladder if not at the bottom
 			if (!on_ladder && (!normalTileCheck || ladder_top != null || ladderTile.get_name() == "ladder_top")):
 				on_ladder = true
 				snapToLadder(ladderTile)
@@ -290,11 +302,15 @@ func _fixed_process(delta):
 					ladderY = LADDER_SPEED
 					animation_speed = -1
 		else:
+			falling = true
 			on_ladder = false
+			# make sure we are really falling
+			accel = max(1, accel)
 				
 		if (hanging && !on_ladder):
 			hanging = false
 
+	# don't bother checking regular tiles below character if on ladder
 	if (!on_ladder):
 		var desiredY = accel
 		
@@ -376,8 +392,13 @@ func _fixed_process(delta):
 				closestTileY = int(closestTileY)
 				falling = false
 		
+		# handle standing on a ladder_top tile
 		if (ladder_top != null && !normalTileCheck):
 			if (ladder_top.get_global_pos().y + TILE_SIZE/2 <= int(forwardY)):
+				# in theory, we'd like this to work as is, but without the extra - 2,
+				# we run into collisions with neighboring ladder blocks
+				# same reason we can't pass between static body tileset tiles with gaps
+				# one tile wide
 				move(Vector2(0, int(ladder_top.get_global_pos().y + TILE_SIZE/2 - get_pos().y - sprite_offset.y - 2)))
 				forwardY = get_pos().y + sprite_offset.y
 				falling = false
@@ -389,10 +410,13 @@ func _fixed_process(delta):
 			falling = true
 		
 		accel = min(min(abs(desiredY), abs(closestTileY)), SPEED_LIMIT) * s
-			
+		
+		# clamp to platform vertically to prevent falling while hanging with no input
 		if (hanging && climb_platform != null):
 			accel = climb_platform.get_global_pos().y - TILE_SIZE/2 - get_pos().y + sprite_offset.y
 	
+		# move character up from climbing ledge
+		# see notes in horizontal motion about animation
 		if (climb_vertically && climbing_platform):
 			#var d = climb_platform.get_global_pos().y - TILE_SIZE/2 - get_pos().y + sprite_offset.y
 			accel = -climbspeed
@@ -400,6 +424,7 @@ func _fixed_process(delta):
 	
 		position.y = accel
 		
+		# check animations
 		if (falling):
 			if (accel < 0):
 				new_animation = "jump"
