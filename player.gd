@@ -10,7 +10,7 @@ const JUMP_SPEED = 20
 const TILE_SIZE = 32
 const LADDER_SPEED = 5
 # restrict vertical speed to prevent skipping and other weirdness
-const SPEED_LIMIT = 50
+const SPEED_LIMIT = 30
 
 var position = Vector2()
 var current_animation = "idle"
@@ -28,6 +28,8 @@ var climb_platform = null
 var climbspeed = 6
 var on_ladder = false
 var ladder_top = null
+var is_crouching = false
+var crouch_requested = false
 
 func min_array(array):
 	if (array.size() == 1):
@@ -89,6 +91,14 @@ func snapToLadder(ladder):
 	var ladderX = ladder.get_global_pos().x - get_global_pos().x
 	move(Vector2(ladderX, 0))
 
+func getOneWayTile(space_state, desiredY):
+	var leftX = get_global_pos().x - sprite_offset.x
+	var oneWayTile = space_state.intersect_ray(Vector2(leftX, get_global_pos().y + sprite_offset.y), Vector2(leftX, get_global_pos().y + sprite_offset.y + desiredY), [self], 2147483647, 16)
+	if (oneWayTile.has("collider")):
+		if (oneWayTile["collider"].get_name() == "oneway"):
+			return oneWayTile["collider"]
+	return null
+
 func parseSlopeType(name):
 	var values = name.split("slope")
 	# slope#-#
@@ -127,7 +137,7 @@ func _fixed_process(delta):
 	var forwardY = get_pos().y + sprite_offset.y
 	var relevantSlopeTile = null
 	var onSlope = false
-	if (!climbing_platform):
+	if (!climbing_platform && !is_crouching):
 		if (Input.is_action_pressed("ui_left")):
 			position.x = -min(RUN_SPEED, closestXTile(true, RUN_SPEED))
 			new_animation = "run"
@@ -247,12 +257,22 @@ func _fixed_process(delta):
 	# check regular blocks
 	var normalTileCheck = !relevantTileA.empty() || !relevantTileB.empty()
 	
+	crouch_requested = false
+	
+	# check one way platform tiles
+	var oneWayTile = getOneWayTile(space_state, max(accel, TILE_SIZE))
+	var onOneWayTile = false
+	if (oneWayTile != null):
+		onOneWayTile = oneWayTile.get_global_pos().y - TILE_SIZE/2 >= get_pos().y + sprite_offset.y
+	
 	if (Input.is_action_pressed("ui_up")):
 		var ladderTile = getLadderTile(space_state)
 		if (ladderTile != null):
 			# only allow entering ladder from bottom
 			if (!on_ladder && ladderTile.get_name() != "ladder_top"):
 				on_ladder = true
+				climbing_platform = false
+				is_crouching = false
 				snapToLadder(ladderTile)
 			elif (on_ladder):
 				if (ladderTile.get_name() == "ladder_top"):
@@ -280,11 +300,14 @@ func _fixed_process(delta):
 				climbing_platform = true
 
 	if (Input.is_action_pressed("ui_down")):
+		crouch_requested = true
 		var ladderTile = getLadderTile(space_state)
 		if (ladderTile != null):
 			# only allow entering ladder if not at the bottom
-			if (!on_ladder && (!normalTileCheck || ladder_top != null || ladderTile.get_name() == "ladder_top")):
+			if (!on_ladder && ((!normalTileCheck && !onOneWayTile) || ladder_top != null || ladderTile.get_name() == "ladder_top")):
 				on_ladder = true
+				climbing_platform = false
+				is_crouching = false
 				snapToLadder(ladderTile)
 			elif (on_ladder):
 				if (normalTileCheck):
@@ -330,6 +353,7 @@ func _fixed_process(delta):
 	
 		var abSlope = null
 	
+		# check regular static blocks
 		if (normalTileCheck):
 			closestTileY = closestYTile(relevantTileA, relevantTileB)
 	
@@ -392,6 +416,15 @@ func _fixed_process(delta):
 				closestTileY = int(closestTileY)
 				falling = false
 		
+		# handle one way tiles
+		if (onOneWayTile):
+			if (oneWayTile.get_global_pos().y - TILE_SIZE/2 <= int(forwardY) + 1):
+				move(Vector2(0, int(oneWayTile.get_global_pos().y - TILE_SIZE/2 - int(forwardY) - 1)))
+				forwardY = get_pos().y + sprite_offset.y
+				falling = false
+			closestTileY = min(oneWayTile.get_global_pos().y - TILE_SIZE/2 - int(forwardY) - 1, desiredY)
+			closestTileY = int(closestTileY)
+		
 		# handle standing on a ladder_top tile
 		if (ladder_top != null && !normalTileCheck):
 			if (ladder_top.get_global_pos().y + TILE_SIZE/2 <= int(forwardY)):
@@ -399,17 +432,23 @@ func _fixed_process(delta):
 				# we run into collisions with neighboring ladder blocks
 				# same reason we can't pass between static body tileset tiles with gaps
 				# one tile wide
-				move(Vector2(0, int(ladder_top.get_global_pos().y + TILE_SIZE/2 - get_pos().y - sprite_offset.y - 2)))
+				move(Vector2(0, int(ladder_top.get_global_pos().y + TILE_SIZE/2 - forwardY - 2)))
 				forwardY = get_pos().y + sprite_offset.y
 				falling = false
-			closestTileY = min(ladder_top.get_global_pos().y + TILE_SIZE/2 - get_pos().y - sprite_offset.y, desiredY)
+			closestTileY = min(ladder_top.get_global_pos().y + TILE_SIZE/2 - forwardY, desiredY)
 			closestTileY = int(closestTileY)
 		
 		# final falling status check for all kinds of collisions
-		if (!normalTileCheck && ((relevantSlopeTile == null || !onSlope) && abSlope == null) && ladder_top == null):
+		if (!normalTileCheck && ((relevantSlopeTile == null || !onSlope) && abSlope == null) && ladder_top == null && oneWayTile == null):
 			falling = true
 		
 		accel = min(min(abs(desiredY), abs(closestTileY)), SPEED_LIMIT) * s
+
+		# handle crouching now that we know if we are standing on ground blocks
+		if (crouch_requested && !falling && (normalTileCheck || onSlope || abSlope != null || onOneWayTile)):
+			is_crouching = true
+		elif (!crouch_requested):
+			is_crouching = false
 		
 		# clamp to platform vertically to prevent falling while hanging with no input
 		if (hanging && climb_platform != null):
@@ -434,6 +473,9 @@ func _fixed_process(delta):
 		if (!horizontal_motion):
 			if (!falling && ((animation_player.get_current_animation() == "land" && animation_player.is_playing()) || current_animation == "fall")):
 				new_animation = "land"
+		
+		if (is_crouching):
+			new_animation = "crouch"
 		
 		if (climbing_platform || hanging):
 			new_animation = "climb"
