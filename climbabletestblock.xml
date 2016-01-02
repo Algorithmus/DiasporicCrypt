@@ -44,16 +44,15 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="51"> 				-1, -1, 12, 0, -1, 11, 1, 0, 2, 1, 3, 2, 4, 0, 5, 3, 6, 3, 7, 4, 8, 5, 9, 6, 10, 5, 11, 7, 0, 0, 0, 13, 13, -1, 1, 14, 8, 0, 0, 0, 19, 15, -1, 3, 16, 1, 17, 0, 18, 9, 0 </int_array>
+			<int_array  len="51"> 				-1, -1, 12, 0, -1, 11, 1, 0, 2, 1, 3, 2, 4, 0, 5, 3, 6, 3, 7, 4, 8, 5, 9, 5, 10, 5, 11, 6, 0, 0, 0, 13, 13, -1, 1, 14, 7, 0, 0, 0, 19, 15, -1, 3, 16, 1, 17, 0, 18, 8, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="10" shared="false">
+			<array  len="9" shared="false">
 				<bool> False </bool>
 				<resource  resource_type="Shape2D" path="local://1">  </resource>
 				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
 				<int> 1 </int>
 				<vector2> 0, 0 </vector2>
 				<real> 0 </real>
-				<real> 1 </real>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
 					<string> "2D" </string>
