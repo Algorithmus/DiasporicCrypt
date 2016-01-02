@@ -1,7 +1,7 @@
 
 extends KinematicBody2D
 # the great majority of player behavior and interaction implementation is modelled after this article: http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/comment-page-1/#comments
-# please note that this blog link no longer exists, but you might still be able to see it through archive.org
+# please note that this blog link sometimes doesn't work, but you might still be able to see it through archive.org
 
 const DEFAULT_GRAVITY = 1
 # in order not to jump off 0-31 slopes, keep run speed below 10
@@ -30,6 +30,8 @@ var on_ladder = false
 var ladder_top = null
 var is_crouching = false
 var crouch_requested = false
+var movingPlatform = null
+var movingPlatformPos = null
 
 func min_array(array):
 	if (array.size() == 1):
@@ -108,6 +110,10 @@ func parseSlopeType(name):
 		return null
 	return values[1].split_floats("-")
 
+func clearMovingPlatform():
+	movingPlatform = null
+	movingPlatformPos = null
+
 func closestXTile(direction, desiredX):
 	# true = check left side
 	# false = check right side
@@ -128,13 +134,71 @@ func _fixed_process(delta):
 	var space = get_world_2d().get_space()
 	var space_state = Physics2DServer.space_get_direct_state(space)
 	var animation_speed = 1
+
+	# position at character's feet
+	var forwardY = get_global_pos().y + sprite_offset.y
+	var leftX = get_global_pos().x - sprite_offset.x
+	var rightX = get_global_pos().x + sprite_offset.x
+	
+	# bottom left ray check
+	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+16), [self])
+	# bottom right ray check
+	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+16), [self])
+
+	# check regular blocks
+	var normalTileCheck = !relevantTileA.empty() || !relevantTileB.empty()
+	
+	var movingDeltaY = 0
+	
+	movingPlatform = null
+	
+	# check moving platforms before everything else
+	if (normalTileCheck):
+		var movingPlatform_check = null
+		if (relevantTileA.has("collider")):
+			movingPlatform_check = relevantTileA["collider"]
+		else:
+			movingPlatform_check = relevantTileB["collider"]
+		if(movingPlatform_check.get_name() == "blockR" || movingPlatform_check.get_name() == "blockL"):
+			if (movingPlatform_check.get_global_pos().y - TILE_SIZE/2 >= int(forwardY)):
+				movingPlatform = movingPlatform_check
+			else:
+				clearMovingPlatform()
+		else:
+			clearMovingPlatform()
+
+	# clear moving platforms if landing on one way platform tiles
+	var oneWayTile = getOneWayTile(space_state, max(accel, TILE_SIZE))
+	var onOneWayTile = false
+	if (oneWayTile != null):
+		onOneWayTile = oneWayTile.get_global_pos().y - TILE_SIZE/2 >= get_pos().y + sprite_offset.y
+		clearMovingPlatform()
+
+	if (climb_platform != null):
+		if (climb_platform.get_name() == "blockR" || climb_platform.get_name() == "blockL"):
+			movingPlatform = climb_platform
+		else:
+			clearMovingPlatform()
+
+	if (movingPlatform != null):
+		var newPos = Vector2(movingPlatform.get_global_pos().x, movingPlatform.get_global_pos().y)
+		if (movingPlatformPos == null):
+			movingPlatformPos = movingPlatform.get_parent()["previousPos_" + movingPlatform.get_name()]
+		var movingDeltaX = newPos.x - movingPlatformPos.x
+		# only move with the platform if landed on it
+		# merely detecting it is there doesn't count
+		if (int(forwardY) >= newPos.y - TILE_SIZE/2 - 2 && !climbing_platform && !hanging):
+			var platformDeltaX = 0
+			if (get_global_pos().x + movingDeltaX > newPos.x + TILE_SIZE/2 || get_global_pos().x + movingDeltaX < newPos.x - TILE_SIZE/2):
+				movingDeltaX = 0
+		move(Vector2(movingDeltaX, newPos.y - movingPlatformPos.y))
+		movingPlatformPos = newPos
 	
 	# step horizontal motion first
 	position.y = 0
 	var new_animation = current_animation
 	var horizontal_motion = false
-	# position at character's feet
-	var forwardY = get_pos().y + sprite_offset.y
+	forwardY = get_pos().y + sprite_offset.y
 	var relevantSlopeTile = null
 	var onSlope = false
 	if (!climbing_platform && !is_crouching):
@@ -153,14 +217,14 @@ func _fixed_process(delta):
 			new_animation = "idle"
 		
 		# disengage hanging on ledge if opposite button is pressed
-		if (hanging):
+		if (hanging && climb_platform != null):
 				if ((direction < 0 && climb_platform.get_global_pos().x > get_global_pos().x) || (direction > 0 && climb_platform.get_global_pos().x < get_global_pos().x)):
 					hanging = false
 					move(Vector2(0, climb_platform.get_global_pos().y + TILE_SIZE/2 - get_pos().y + sprite_offset.y))
 					climb_platform = null
 
 		move(position)
-
+		
 		position.x = 0
 		
 		# check ladder after horizontal movement
@@ -211,18 +275,25 @@ func _fixed_process(delta):
 	if (!on_ladder):
 		var platform_check = null
 		
-		if (!climbing_platform):
-			platform_check = getClimbPlatform(space_state, direction == -1)
+		#if (!climbing_platform):
+		platform_check = getClimbPlatform(space_state, direction == -1)
 		
 		# clamp to platform if should be hanging
 		if (platform_check != null && !climbing_platform && climb_platform == null):
 			hanging = true
-			var d =  platform_check.get_global_pos().x - direction * TILE_SIZE/2 - get_global_pos().x - direction * sprite_offset.x
+			var d = platform_check.get_global_pos().x - direction * TILE_SIZE/2 - get_global_pos().x - direction * sprite_offset.x
 			climb_platform = platform_check
+			move(Vector2(d, 0))
+		
+		# stick with moving platform
+		# more noticeable on faster horizontal platforms
+		if (movingPlatform == climb_platform && climb_platform != null && hanging):
+			var d = climb_platform.get_global_pos().x - direction * TILE_SIZE/2 - get_global_pos().x - direction * sprite_offset.x
 			move(Vector2(d, 0))
 		
 		if (platform_check == null && climb_platform != null && !climbing_platform):
 			climb_platform = null
+			hanging = false
 		
 		# animate climbing platform
 		# move a specific distance in an L shape to climb the platform every fixed function call
@@ -231,7 +302,7 @@ func _fixed_process(delta):
 		# look very nice. If you have too few frames or don't adjust the vertical position, the
 		# character can sometimes look like they're oscillating up and down on the platform
 		# vertical motion is delayed until vertical motion checking
-		if (climbing_platform):
+		if (climbing_platform && climb_platform != null):
 			if (get_pos().y + sprite_offset.y <= climb_platform.get_global_pos().y - TILE_SIZE/2):
 				move(Vector2(climbspeed * direction, 0))
 				if ((direction == 1 && get_global_pos().x >= climb_platform.get_global_pos().x) || (direction == -1 && get_global_pos().x <= climb_platform.get_global_pos().x)):
@@ -239,6 +310,8 @@ func _fixed_process(delta):
 					climbing_platform = false
 			else:
 				climb_vertically = true
+		else: 
+			climbing_platform = false
 	
 	# check vertical motion
 	jumpPressed = false
@@ -246,24 +319,8 @@ func _fixed_process(delta):
 	var ladderY = 0
 	
 	forwardY = get_global_pos().y + sprite_offset.y
-	var leftX = get_global_pos().x - sprite_offset.x
-	var rightX = get_global_pos().x + sprite_offset.x
-	
-	# bottom left ray check
-	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY), Vector2(leftX, forwardY+16), [self])
-	# bottom right ray check
-	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY), Vector2(rightX, forwardY+16), [self])
-
-	# check regular blocks
-	var normalTileCheck = !relevantTileA.empty() || !relevantTileB.empty()
 	
 	crouch_requested = false
-	
-	# check one way platform tiles
-	var oneWayTile = getOneWayTile(space_state, max(accel, TILE_SIZE))
-	var onOneWayTile = false
-	if (oneWayTile != null):
-		onOneWayTile = oneWayTile.get_global_pos().y - TILE_SIZE/2 >= get_pos().y + sprite_offset.y
 	
 	if (Input.is_action_pressed("ui_up")):
 		var ladderTile = getLadderTile(space_state)
@@ -293,8 +350,6 @@ func _fixed_process(delta):
 				accel = -JUMP_SPEED
 				falling = true
 				jumpPressed = true
-				if (ladder_top != null):
-					print(ladderY)
 			if (hanging):
 				hanging = false
 				climbing_platform = true
@@ -419,7 +474,7 @@ func _fixed_process(delta):
 		# handle one way tiles
 		if (onOneWayTile):
 			if (oneWayTile.get_global_pos().y - TILE_SIZE/2 <= int(forwardY) + 1):
-				move(Vector2(0, int(oneWayTile.get_global_pos().y - TILE_SIZE/2 - int(forwardY) - 1)))
+				move(Vector2(0, oneWayTile.get_global_pos().y - TILE_SIZE/2 - int(forwardY) - 1))
 				forwardY = get_pos().y + sprite_offset.y
 				falling = false
 			closestTileY = min(oneWayTile.get_global_pos().y - TILE_SIZE/2 - int(forwardY) - 1, desiredY)
@@ -460,7 +515,11 @@ func _fixed_process(delta):
 			#var d = climb_platform.get_global_pos().y - TILE_SIZE/2 - get_pos().y + sprite_offset.y
 			accel = -climbspeed
 			falling = false
-	
+
+		# don't fall while standing on moving platforms moving up
+		if (desiredY > - JUMP_SPEED + 1 && movingPlatform != null && !hanging && !climbing_platform && movingPlatform.get_global_pos().y - TILE_SIZE/2 >= get_pos().y + sprite_offset.y):
+			falling = false
+
 		position.y = accel
 		
 		# check animations
