@@ -115,6 +115,8 @@ func getOneWayTile(space_state, desiredY):
 			return oneWayTile["collider"]
 	return null
 
+# we reused the damage rect to also check AB slopes from the side since they're not
+# normal collisions and can be ignored.
 func checkABSlope():
 	var collisionTiles = damage_rect.get_overlapping_areas()
 	for i in collisionTiles:
@@ -216,39 +218,42 @@ func _fixed_process(delta):
 		movingPlatformPos = newPos
 	
 	# check taking damage
-	if (!invulnerable):
-		var is_hurt_check = false
+	var is_hurt_check = false
 	
-		var dx = 0
-		var dy = 0
-		var damageTiles = damage_rect.get_overlapping_areas()
+	var dx = 0
+	var dy = 0
+	var damageTiles = damage_rect.get_overlapping_areas()
+
+	if (!invulnerable):
 		for i in damageTiles:
 			if (i.get_name() == "damagable"):
 				is_hurt_check = true
 				dx += get_global_pos().x - i.get_global_pos().x
 				dy += get_global_pos().y - i.get_global_pos().y
 		
+		# calculate throwback based on sum total positions of damagables
 		if (dx != 0):
 			dx = dx/abs(dx) * DAMAGE_THROWBACK
 			damageDelta.x = int(dx)
 		if (dy != 0):
 			dy = dy/abs(dy) * VERTICAL_DAMAGE_THROWBACK
 			damageDelta.y = int(dy)
-		
-		if (is_hurt_check):
-			is_hurt = true
-			climbing_platform = false
-		else:
-			if (is_hurt && damageDelta.x == 0 && damageDelta.y == 0):
-				invulnerable = true
-				is_hurt = false
-			elif (!is_hurt):
-				damageDelta = Vector2(0, 0)
-				is_hurt = false
-			if (damageDelta.x != 0):
-				damageDelta.x = (abs(damageDelta.x) - 1) * damageDelta.x/abs(damageDelta.x)
-			if (damageDelta.y != 0):
-				damageDelta.y = (abs(damageDelta.y) - 1) * damageDelta.y/abs(damageDelta.y)
+
+	# check if there are still damagable tiles
+	if (is_hurt_check):
+		is_hurt = true
+		invulnerable = true
+		climbing_platform = false
+	# proceed with hurt cycle
+	else:
+		if (is_hurt && damageDelta.x == 0 && damageDelta.y == 0):
+			is_hurt = false
+		elif (!is_hurt):
+		# proceed with throwback
+		if (damageDelta.x != 0):
+			damageDelta.x = (abs(damageDelta.x) - 1) * damageDelta.x/abs(damageDelta.x)
+		if (damageDelta.y != 0):
+			damageDelta.y = (abs(damageDelta.y) - 1) * damageDelta.y/abs(damageDelta.y)
 	
 	# step horizontal motion first
 	position.y = 0
@@ -607,10 +612,12 @@ func _fixed_process(delta):
 		if (desiredY > - JUMP_SPEED + 1 && movingPlatform != null && !hanging && !climbing_platform && movingPlatform.get_global_pos().y - TILE_SIZE/2 >= get_pos().y + sprite_offset.y):
 			falling = false
 
+		# only allow attacks to hit objects once during a hit
 		if (weapon_collided):
 			remove_child(weapon_collider)
 			weapon_collided = false
 
+		# handle attacking
 		if (!animation_player.is_playing() && is_attacking):
 			is_attacking = false
 			remove_child(weapon_collider)
@@ -693,24 +700,15 @@ func _ready():
 	
 	set_fixed_process(true)
 
+# notify when weapon collides with stuff
 func _on_weapon_collision(area):
 	var collisions = area.get_overlapping_areas()
 	for i in collisions:
 		if (i.get_name() != "damage" && i != weapon_collider):
-			print(i.get_name())
 			weapon_collided = true
 
 func load_tilemap(var tilemap_node):
 	tilemap = tilemap_node.get_node("tilemap")
-
-func on_ground():
-	print("is colliding?")
-	#print(ray_ground.is_colliding())
-	#print(get_collision_normal())
-	#print(get_pos().y + sprite_offset.y)
-	print(get_pos().y + sprite_offset.y)
-	#return ray_ground.is_colliding() && get_pos().y + sprite_offset.y >= ray_ground.get_collision_point().y - 16
-	pass
 
 func play_animation(animation, speed):
 	animation_player.set_speed(speed)
