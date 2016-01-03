@@ -9,6 +9,9 @@ const RUN_SPEED = 7
 const JUMP_SPEED = 20
 const TILE_SIZE = 32
 const LADDER_SPEED = 5
+const DAMAGE_THROWBACK = 10
+const VERTICAL_DAMAGE_THROWBACK = 6
+const HURT_GRACE_PERIOD = 60
 # restrict vertical speed to prevent skipping and other weirdness
 const SPEED_LIMIT = 30
 
@@ -32,6 +35,17 @@ var is_crouching = false
 var crouch_requested = false
 var movingPlatform = null
 var movingPlatformPos = null
+var is_attacking = false
+var attack_requested = false
+var weapon = preload("res://sword.xml")
+var weapon_collider
+var weapon_offset = Vector2()
+var weapon_collided = false
+var damage_rect
+var damageDelta = Vector2()
+var is_hurt = false
+var invulnerable = false
+var hurt_grace_cycle = 0
 
 func min_array(array):
 	if (array.size() == 1):
@@ -50,7 +64,7 @@ func isSlope(name):
 	return name.match("slope*-*")
 
 func getSlopes(space_state):
-	var relevantSlopeTile = space_state.intersect_ray(Vector2(get_global_pos().x, get_global_pos().y+sprite_offset.y), Vector2(get_global_pos().x, get_global_pos().y+sprite_offset.y+8), [self], 2147483647, 16)
+	var relevantSlopeTile = space_state.intersect_ray(Vector2(get_global_pos().x, get_global_pos().y+sprite_offset.y), Vector2(get_global_pos().x, get_global_pos().y+sprite_offset.y+8), [self, damage_rect], 2147483647, 16)
 	
 	if (relevantSlopeTile.has("collider")):
 		var collider = relevantSlopeTile["collider"]
@@ -75,14 +89,14 @@ func getClimbPlatform(space_state, direction):
 
 func getLadderTile(space_state):
 	var leftX = get_global_pos().x - sprite_offset.x
-	var ladderTile = space_state.intersect_ray(Vector2(leftX, get_global_pos().y - sprite_offset.y), Vector2(leftX, get_global_pos().y + sprite_offset.y), [self], 2147483647, 16)
+	var ladderTile = space_state.intersect_ray(Vector2(leftX, get_global_pos().y - sprite_offset.y), Vector2(leftX, get_global_pos().y + sprite_offset.y), [self, damage_rect], 2147483647, 16)
 	if (ladderTile.has("collider")):
 		var tileName = ladderTile["collider"].get_name()
 		if (tileName == "ladder" || tileName == "ladder_top"):
 			return ladderTile["collider"]
 
 	var rightX = get_global_pos().x + sprite_offset.x
-	ladderTile = space_state.intersect_ray(Vector2(rightX, get_global_pos().y - sprite_offset.y), Vector2(rightX, get_global_pos().y + sprite_offset.y), [self], 2147483647, 16)
+	ladderTile = space_state.intersect_ray(Vector2(rightX, get_global_pos().y - sprite_offset.y), Vector2(rightX, get_global_pos().y + sprite_offset.y), [self, damage_rect], 2147483647, 16)
 	if (ladderTile.has("collider")):
 		var tileName = ladderTile["collider"].get_name()
 		if (tileName == "ladder" || tileName == "ladder_top"):
@@ -95,11 +109,18 @@ func snapToLadder(ladder):
 
 func getOneWayTile(space_state, desiredY):
 	var leftX = get_global_pos().x - sprite_offset.x
-	var oneWayTile = space_state.intersect_ray(Vector2(leftX, get_global_pos().y + sprite_offset.y), Vector2(leftX, get_global_pos().y + sprite_offset.y + desiredY), [self], 2147483647, 16)
+	var oneWayTile = space_state.intersect_ray(Vector2(leftX, get_global_pos().y + sprite_offset.y), Vector2(leftX, get_global_pos().y + sprite_offset.y + desiredY), [self, damage_rect], 2147483647, 16)
 	if (oneWayTile.has("collider")):
 		if (oneWayTile["collider"].get_name() == "oneway"):
 			return oneWayTile["collider"]
 	return null
+
+func checkABSlope():
+	var collisionTiles = damage_rect.get_overlapping_areas()
+	for i in collisionTiles:
+		if (i.get_name() == "slopea-b" && i.get_global_pos().y + TILE_SIZE/2 > int(get_pos().y - sprite_offset.y) && i.get_global_pos().y - TILE_SIZE/2 < int(get_pos().y + sprite_offset.y)):
+			return true
+	return false
 
 func parseSlopeType(name):
 	var values = name.split("slope")
@@ -194,6 +215,41 @@ func _fixed_process(delta):
 		move(Vector2(movingDeltaX, newPos.y - movingPlatformPos.y))
 		movingPlatformPos = newPos
 	
+	# check taking damage
+	if (!invulnerable):
+		var is_hurt_check = false
+	
+		var dx = 0
+		var dy = 0
+		var damageTiles = damage_rect.get_overlapping_areas()
+		for i in damageTiles:
+			if (i.get_name() == "damagable"):
+				is_hurt_check = true
+				dx += get_global_pos().x - i.get_global_pos().x
+				dy += get_global_pos().y - i.get_global_pos().y
+		
+		if (dx != 0):
+			dx = dx/abs(dx) * DAMAGE_THROWBACK
+			damageDelta.x = int(dx)
+		if (dy != 0):
+			dy = dy/abs(dy) * VERTICAL_DAMAGE_THROWBACK
+			damageDelta.y = int(dy)
+		
+		if (is_hurt_check):
+			is_hurt = true
+			climbing_platform = false
+		else:
+			if (is_hurt && damageDelta.x == 0 && damageDelta.y == 0):
+				invulnerable = true
+				is_hurt = false
+			elif (!is_hurt):
+				damageDelta = Vector2(0, 0)
+				is_hurt = false
+			if (damageDelta.x != 0):
+				damageDelta.x = (abs(damageDelta.x) - 1) * damageDelta.x/abs(damageDelta.x)
+			if (damageDelta.y != 0):
+				damageDelta.y = (abs(damageDelta.y) - 1) * damageDelta.y/abs(damageDelta.y)
+	
 	# step horizontal motion first
 	position.y = 0
 	var new_animation = current_animation
@@ -201,14 +257,24 @@ func _fixed_process(delta):
 	forwardY = get_pos().y + sprite_offset.y
 	var relevantSlopeTile = null
 	var onSlope = false
-	if (!climbing_platform && !is_crouching):
+	var slopeX = 0
+	if (!climbing_platform && !is_crouching && !is_attacking && !is_hurt):
 		if (Input.is_action_pressed("ui_left")):
 			position.x = -min(RUN_SPEED, closestXTile(true, RUN_SPEED))
+			# can't tell right now if we are on a slope tile and can ignore
+			# the a-b slope tile
+			# so delay horizontal motion until slope check
+			if (checkABSlope()):
+				slopeX = position.x
+				position.x = 0
 			new_animation = "run"
 			direction = -1
 			horizontal_motion = true
 		elif (Input.is_action_pressed("ui_right")):
 			position.x = min(RUN_SPEED, closestXTile(false, RUN_SPEED))
+			if (checkABSlope()):
+				slopeX = position.x
+				position.x = 0
 			new_animation = "run"
 			direction = 1
 			horizontal_motion = true
@@ -251,6 +317,8 @@ func _fixed_process(delta):
 			if (relevantSlopeTile != null):
 				b = parseSlopeType(relevantSlopeTile.get_name())
 				if (b != null):
+					if (b[0] == 0 || b[1] == 0):
+						move(Vector2(slopeX, 0))
 					onSlope = true
 					b = parseSlopeType(relevantSlopeTile.get_name())
 					# ignore bottom slopes if we're not close enough to them
@@ -271,8 +339,14 @@ func _fixed_process(delta):
 							
 	var climb_vertically = false
 	
+	# disengage hanging if hurt
+	if (hanging && climb_platform != null && is_hurt):
+		hanging = false
+		move(Vector2(0, climb_platform.get_global_pos().y + TILE_SIZE/2 - get_pos().y + sprite_offset.y))
+		climb_platform = null
+	
 	# check platform climbing after horizontal movement requested
-	if (!on_ladder):
+	if (!on_ladder && !is_hurt):
 		var platform_check = null
 		
 		#if (!climbing_platform):
@@ -313,6 +387,9 @@ func _fixed_process(delta):
 		else: 
 			climbing_platform = false
 	
+	if (is_hurt):
+		move(Vector2(damageDelta.x, 0))
+	
 	# check vertical motion
 	jumpPressed = false
 	
@@ -322,72 +399,76 @@ func _fixed_process(delta):
 	
 	crouch_requested = false
 	
-	if (Input.is_action_pressed("ui_up")):
-		var ladderTile = getLadderTile(space_state)
-		if (ladderTile != null):
-			# only allow entering ladder from bottom
-			if (!on_ladder && ladderTile.get_name() != "ladder_top"):
-				on_ladder = true
-				climbing_platform = false
-				is_crouching = false
-				snapToLadder(ladderTile)
-			elif (on_ladder):
-				if (ladderTile.get_name() == "ladder_top"):
-					ladder_top = ladderTile
-				if (ladder_top != null):
-					if (ladder_top.get_global_pos().y + TILE_SIZE/2 >= get_pos().y + sprite_offset.y):
-						on_ladder = false
-					else:
-						var d = get_pos().y + sprite_offset.y - ladder_top.get_global_pos().y - TILE_SIZE/2
-						ladderY = -min(LADDER_SPEED, d)
-						snapToLadder(ladder_top)
-				else:
-					ladderY = -LADDER_SPEED
+	if (!is_hurt):
+		if (Input.is_action_pressed("ui_up")):
+			var ladderTile = getLadderTile(space_state)
+			if (ladderTile != null):
+				# only allow entering ladder from bottom
+				if (!on_ladder && ladderTile.get_name() != "ladder_top"):
+					on_ladder = true
+					climbing_platform = false
+					is_crouching = false
 					snapToLadder(ladderTile)
-		
-		if (!on_ladder):
-			if (!falling && !climbing_platform):
-				accel = -JUMP_SPEED
-				falling = true
-				jumpPressed = true
-			if (hanging):
-				hanging = false
-				climbing_platform = true
-
-	if (Input.is_action_pressed("ui_down")):
-		crouch_requested = true
-		var ladderTile = getLadderTile(space_state)
-		if (ladderTile != null):
-			# only allow entering ladder if not at the bottom
-			if (!on_ladder && ((!normalTileCheck && !onOneWayTile) || ladder_top != null || ladderTile.get_name() == "ladder_top")):
-				on_ladder = true
-				climbing_platform = false
-				is_crouching = false
-				snapToLadder(ladderTile)
-			elif (on_ladder):
-				if (normalTileCheck):
-					var closestNormalTileY = closestYTile(relevantTileA, relevantTileB)
-					var deltaY = closestNormalTileY - get_pos().y - sprite_offset.y
-					if (int(deltaY) > 0):
+				elif (on_ladder):
+					if (ladderTile.get_name() == "ladder_top"):
+						ladder_top = ladderTile
+					if (ladder_top != null):
+						if (ladder_top.get_global_pos().y + TILE_SIZE/2 >= get_pos().y + sprite_offset.y):
+							on_ladder = false
+						else:
+							var d = get_pos().y + sprite_offset.y - ladder_top.get_global_pos().y - TILE_SIZE/2
+							ladderY = -min(LADDER_SPEED, d)
+							snapToLadder(ladder_top)
+					else:
+						ladderY = -LADDER_SPEED
 						snapToLadder(ladderTile)
-						ladderY = min(int(deltaY), LADDER_SPEED)
-						animation_speed = -1
-					else:
-						accel = 0
-						on_ladder = false
-				else:
+			
+			if (!on_ladder):
+				if (!falling && !climbing_platform):
+					accel = -JUMP_SPEED
+					falling = true
+					jumpPressed = true
+				if (hanging):
+					hanging = false
+					climbing_platform = true
+	
+		if (Input.is_action_pressed("ui_down")):
+			crouch_requested = true
+			var ladderTile = getLadderTile(space_state)
+			if (ladderTile != null):
+				# only allow entering ladder if not at the bottom
+				if (!on_ladder && ((!normalTileCheck && !onOneWayTile) || ladder_top != null || ladderTile.get_name() == "ladder_top")):
+					on_ladder = true
+					climbing_platform = false
+					is_crouching = false
 					snapToLadder(ladderTile)
-					ladderY = LADDER_SPEED
-					animation_speed = -1
-		else:
-			falling = true
-			on_ladder = false
-			# make sure we are really falling
-			accel = max(1, accel)
-				
-		if (hanging && !on_ladder):
-			hanging = false
-
+				elif (on_ladder):
+					if (normalTileCheck):
+						var closestNormalTileY = closestYTile(relevantTileA, relevantTileB)
+						var deltaY = closestNormalTileY - get_pos().y - sprite_offset.y
+						if (int(deltaY) > 0):
+							snapToLadder(ladderTile)
+							ladderY = min(int(deltaY), LADDER_SPEED)
+							animation_speed = -1
+						else:
+							accel = 0
+							on_ladder = false
+					else:
+						snapToLadder(ladderTile)
+						ladderY = LADDER_SPEED
+						animation_speed = -1
+			else:
+				falling = true
+				on_ladder = false
+				# make sure we are really falling
+				accel = max(1, accel)
+					
+			if (hanging && !on_ladder):
+				hanging = false
+	
+	if (is_hurt):
+		accel += damageDelta.y
+	
 	# don't bother checking regular tiles below character if on ladder
 	if (!on_ladder):
 		var desiredY = accel
@@ -427,6 +508,12 @@ func _fixed_process(delta):
 			if (abs(desiredY) < abs(closestTileY)):
 				falling = true
 		forwardY = get_pos().y + sprite_offset.y
+		
+		# check slopea-b tiles from above
+		var collisionTiles = damage_rect.get_overlapping_areas()
+		for i in collisionTiles:
+			if (i.get_name() == "slopea-b" && i.get_global_pos().y + TILE_SIZE/2 >= int(get_pos().y - sprite_offset.y)):
+				closestTileY = max(get_pos().y - sprite_offset.y - i.get_global_pos().y - TILE_SIZE/2, desiredY)
 		
 		# check slope tiles
 		if (relevantSlopeTile != null):
@@ -520,6 +607,24 @@ func _fixed_process(delta):
 		if (desiredY > - JUMP_SPEED + 1 && movingPlatform != null && !hanging && !climbing_platform && movingPlatform.get_global_pos().y - TILE_SIZE/2 >= get_pos().y + sprite_offset.y):
 			falling = false
 
+		if (weapon_collided):
+			remove_child(weapon_collider)
+			weapon_collided = false
+
+		if (!animation_player.is_playing() && is_attacking):
+			is_attacking = false
+			remove_child(weapon_collider)
+		else:
+			if (Input.is_action_pressed("ui_attack") && !is_attacking && !attack_requested && !is_hurt):
+				if (!hanging && !climbing_platform && !is_crouching):
+					attack_requested = true
+					is_attacking = true
+					weapon_collider.set_pos(Vector2(weapon_offset.x * direction, weapon_collider.get_pos().y))
+					add_child(weapon_collider)
+					weapon_collided = false
+			elif (!Input.is_action_pressed("ui_attack")):
+				attack_requested = false
+	
 		position.y = accel
 		
 		# check animations
@@ -536,10 +641,28 @@ func _fixed_process(delta):
 		if (is_crouching):
 			new_animation = "crouch"
 		
+		if (is_attacking):
+			new_animation = "attack"
+			get_node("NormalSpriteGroup/sword").set_scale(Vector2(direction, 1))
+		
 		if (climbing_platform || hanging):
 			new_animation = "climb"
 			if (hanging):
 				animation_speed = 0
+		
+		if (is_hurt):
+			new_animation = "hurt"
+			if (damageDelta.x != 0):
+				direction = -damageDelta.x/abs(damageDelta.x)
+		
+		if (invulnerable):
+			hurt_grace_cycle += 1
+			var alpha = 0.5 + fmod(hurt_grace_cycle, 4)*0.1
+			get_node("NormalSpriteGroup").set_opacity(alpha)
+			if (hurt_grace_cycle > HURT_GRACE_PERIOD):
+				hurt_grace_cycle = 0
+				invulnerable = false
+				get_node("NormalSpriteGroup").set_opacity(1)
 		
 	var motion = position
 		
@@ -549,7 +672,7 @@ func _fixed_process(delta):
 		new_animation = "ladder"
 		if (ladderY == 0):
 			animation_speed = 0
-	
+
 	get_node("NormalSpriteGroup/"+new_animation).set_scale(Vector2(direction, 1))
 	
 	move(motion)
@@ -560,8 +683,22 @@ func _ready():
 	sprite_offset = collision.get_shape().get_extents()
 	animation_player = get_node("AnimationPlayer")
 	climbspeed = animation_player.get_animation("climb").get_length() * 6
+	damage_rect = get_node("damage")
+	
+	weapon_collider = weapon.instance()
+	weapon_offset = weapon_collider.get_node("weapon").get_shape().get_extents()
+	weapon_collider.set_pos(Vector2(0, -sprite_offset.y + weapon_offset.y))
+	
+	weapon_collider.connect("area_enter", self, "_on_weapon_collision")
 	
 	set_fixed_process(true)
+
+func _on_weapon_collision(area):
+	var collisions = area.get_overlapping_areas()
+	for i in collisions:
+		if (i.get_name() != "damage" && i != weapon_collider):
+			print(i.get_name())
+			weapon_collided = true
 
 func load_tilemap(var tilemap_node):
 	tilemap = tilemap_node.get_node("tilemap")
@@ -579,13 +716,7 @@ func play_animation(animation, speed):
 	animation_player.set_speed(speed)
 	if (current_animation != animation):
 		animation_player.play(animation)
-		#if (animation == "climb" && hanging):
-		#	animation_player.set_speed(0)
 		current_animation = animation
-	#if (animation == "climb" && climbing_platform):
-	#	animation_player.set_speed(1)
-	#	if (!animation_player.is_playing()):
-	#		animation_player.play()
 
 func loop_jump_animation():
 	animation_player.seek(0.1, true)
