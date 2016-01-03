@@ -18,7 +18,7 @@ func _fixed_process(delta):
 
 	var damageTiles = collision_rect.get_overlapping_areas()
 	for i in damageTiles:
-		if (i.get_node("weapon") != null):
+		if (i.has_node("weapon")):
 			queue_free()
 
 	var frontX = get_global_pos().x + direction * sprite_offset.x

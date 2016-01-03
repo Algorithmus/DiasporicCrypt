@@ -8,7 +8,7 @@ extends Node2D
 func _fixed_process(delta):
 	var tiles = get_node("KinematicBody2D/breakable").get_overlapping_areas()
 	for i in tiles:
-		if (i.get_node("weapon") != null):
+		if (i.has_node("weapon")):
 			queue_free()
 
 func _ready():

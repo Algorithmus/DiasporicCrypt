@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="2" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
+<resource_file type="PackedScene" subresource_count="3" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
+	<ext_resource path="res://water.png" type="Texture" index="0"></ext_resource>
 	<resource type="RectangleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
-		<vector2 name="extents"> 48, 32 </vector2>
+		<vector2 name="extents"> 16, 16 </vector2>
 
 	</resource>
 	<main_resource>
@@ -15,8 +16,14 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="16">
-				<string> "Sword" </string>
+			<string_array  len="20">
+				<string> "TestWaterSurface" </string>
+				<string> "__meta__" </string>
+				<string> "Node2D" </string>
+				<string> "Sprite" </string>
+				<string> "z/z" </string>
+				<string> "texture" </string>
+				<string> "water" </string>
 				<string> "input/pickable" </string>
 				<string> "shapes/0/shape" </string>
 				<string> "shapes/0/transform" </string>
@@ -25,31 +32,21 @@
 				<string> "gravity" </string>
 				<string> "linear_damp" </string>
 				<string> "angular_damp" </string>
-				<string> "__meta__" </string>
 				<string> "Area2D" </string>
-				<string> "weapon" </string>
+				<string> "CollisionShape2D" </string>
 				<string> "shape" </string>
 				<string> "trigger" </string>
 				<string> "_update_shape_index" </string>
-				<string> "CollisionShape2D" </string>
 			</string_array>
 			<string> "node_count" </string>
-			<int> 2 </int>
+			<int> 4 </int>
 			<string> "node_paths" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="38"> 				-1, -1, 10, 0, -1, 9, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 6, 5, 7, 6, 8, 7, 9, 8, 0, 0, 0, 15, 11, -1, 3, 12, 1, 13, 3, 14, 9, 0 </int_array>
+			<int_array  len="56"> 				-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 3, 3, -1, 2, 4, 1, 5, 2, 0, 0, 0, 15, 6, -1, 8, 7, 3, 8, 4, 9, 5, 10, 6, 11, 7, 12, 8, 13, 9, 14, 10, 0, 2, 0, 16, 16, -1, 3, 17, 4, 18, 6, 19, 11, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="10" shared="false">
-				<bool> True </bool>
-				<resource  resource_type="Shape2D" path="local://1">  </resource>
-				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
-				<bool> False </bool>
-				<vector2> 0, 1 </vector2>
-				<real> 98 </real>
-				<real> 0.1 </real>
-				<real> 1 </real>
+			<array  len="12" shared="false">
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
 					<string> "2D" </string>
@@ -58,7 +55,7 @@
 						<string> "2D" </string>
 						<dictionary  shared="false">
 							<string> "ofs" </string>
-							<vector2> -148.281, -81.3749 </vector2>
+							<vector2> -157.429, -115.274 </vector2>
 							<string> "snap_grid" </string>
 							<bool> True </bool>
 							<string> "snap_offset" </string>
@@ -74,7 +71,7 @@
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
 							<string> "snap_show_grid" </string>
-							<bool> True </bool>
+							<bool> False </bool>
 							<string> "snap_step" </string>
 							<vector2> 16, 16 </vector2>
 							<string> "zoom" </string>
@@ -186,6 +183,16 @@
 						<int> 0 </int>
 					</dictionary>
 				</dictionary>
+				<int> 2 </int>
+				<resource  external="0">  </resource>
+				<bool> True </bool>
+				<resource  resource_type="Shape2D" path="local://1">  </resource>
+				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
+				<bool> False </bool>
+				<vector2> 0, 1 </vector2>
+				<real> 98 </real>
+				<real> 0.1 </real>
+				<real> 1 </real>
 				<int> 0 </int>
 			</array>
 			<string> "version" </string>

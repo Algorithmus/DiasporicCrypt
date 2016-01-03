@@ -10,6 +10,7 @@ const JUMP_SPEED = 20
 const TILE_SIZE = 32
 const LADDER_SPEED = 5
 const DAMAGE_THROWBACK = 10
+const WATER = 0.5
 const VERTICAL_DAMAGE_THROWBACK = 6
 const HURT_GRACE_PERIOD = 60
 # restrict vertical speed to prevent skipping and other weirdness
@@ -46,6 +47,9 @@ var damageDelta = Vector2()
 var is_hurt = false
 var invulnerable = false
 var hurt_grace_cycle = 0
+var is_suspended = false
+var current_gravity = DEFAULT_GRAVITY
+var underwater = false
 
 func min_array(array):
 	if (array.size() == 1):
@@ -64,7 +68,7 @@ func isSlope(name):
 	return name.match("slope*-*")
 
 func getSlopes(space_state):
-	var relevantSlopeTile = space_state.intersect_ray(Vector2(get_global_pos().x, get_global_pos().y+sprite_offset.y), Vector2(get_global_pos().x, get_global_pos().y+sprite_offset.y+8), [self, damage_rect], 2147483647, 16)
+	var relevantSlopeTile = space_state.intersect_ray(Vector2(get_global_pos().x, get_global_pos().y+sprite_offset.y), Vector2(get_global_pos().x, get_global_pos().y+sprite_offset.y+8), [self, damage_rect, weapon_collider], 2147483647, 16)
 	
 	if (relevantSlopeTile.has("collider")):
 		var collider = relevantSlopeTile["collider"]
@@ -83,20 +87,20 @@ func getClimbPlatform(space_state, direction):
 		relevantTile = space_state.intersect_ray(Vector2(get_global_pos().x + sprite_offset.x, platformY), Vector2(get_global_pos().x + sprite_offset.x + 16, platformY), [self])
 
 	if (relevantTile.has("collider")):
-		if(relevantTile["collider"].get_node("climbable") != null):
+		if(relevantTile["collider"].has_node("climbable")):
 			return relevantTile["collider"]
 	return null
 
 func getLadderTile(space_state):
 	var leftX = get_global_pos().x - sprite_offset.x
-	var ladderTile = space_state.intersect_ray(Vector2(leftX, get_global_pos().y - sprite_offset.y), Vector2(leftX, get_global_pos().y + sprite_offset.y), [self, damage_rect], 2147483647, 16)
+	var ladderTile = space_state.intersect_ray(Vector2(leftX, get_global_pos().y - sprite_offset.y), Vector2(leftX, get_global_pos().y + sprite_offset.y), [self, damage_rect, weapon_collider], 2147483647, 16)
 	if (ladderTile.has("collider")):
 		var tileName = ladderTile["collider"].get_name()
 		if (tileName == "ladder" || tileName == "ladder_top"):
 			return ladderTile["collider"]
 
 	var rightX = get_global_pos().x + sprite_offset.x
-	ladderTile = space_state.intersect_ray(Vector2(rightX, get_global_pos().y - sprite_offset.y), Vector2(rightX, get_global_pos().y + sprite_offset.y), [self, damage_rect], 2147483647, 16)
+	ladderTile = space_state.intersect_ray(Vector2(rightX, get_global_pos().y - sprite_offset.y), Vector2(rightX, get_global_pos().y + sprite_offset.y), [self, damage_rect, weapon_collider], 2147483647, 16)
 	if (ladderTile.has("collider")):
 		var tileName = ladderTile["collider"].get_name()
 		if (tileName == "ladder" || tileName == "ladder_top"):
@@ -109,7 +113,7 @@ func snapToLadder(ladder):
 
 func getOneWayTile(space_state, desiredY):
 	var leftX = get_global_pos().x - sprite_offset.x
-	var oneWayTile = space_state.intersect_ray(Vector2(leftX, get_global_pos().y + sprite_offset.y), Vector2(leftX, get_global_pos().y + sprite_offset.y + desiredY), [self, damage_rect], 2147483647, 16)
+	var oneWayTile = space_state.intersect_ray(Vector2(leftX, get_global_pos().y + sprite_offset.y), Vector2(leftX, get_global_pos().y + sprite_offset.y + desiredY), [self, damage_rect, weapon_collider], 2147483647, 16)
 	if (oneWayTile.has("collider")):
 		if (oneWayTile["collider"].get_name() == "oneway"):
 			return oneWayTile["collider"]
@@ -230,6 +234,13 @@ func _fixed_process(delta):
 				is_hurt_check = true
 				dx += get_global_pos().x - i.get_global_pos().x
 				dy += get_global_pos().y - i.get_global_pos().y
+			if (i.get_name() == "water"):
+				if (i.get_global_pos().y - TILE_SIZE/2 <= get_pos().y - sprite_offset.y):
+					underwater = true
+					current_gravity = WATER
+				elif (i.get_global_pos().y + TILE_SIZE/2 >= get_pos().y + sprite_offset.y):
+					underwater = false
+					current_gravity = DEFAULT_GRAVITY
 		
 		# calculate throwback based on sum total positions of damagables
 		if (dx != 0):
@@ -294,6 +305,8 @@ func _fixed_process(delta):
 					move(Vector2(0, climb_platform.get_global_pos().y + TILE_SIZE/2 - get_pos().y + sprite_offset.y))
 					climb_platform = null
 
+		position.x = position.x * current_gravity
+
 		move(position)
 		
 		position.x = 0
@@ -338,7 +351,7 @@ func _fixed_process(delta):
 						# clamp to slope only if not jumping
 						# unfortunately, the extra height from the default jump speed isn't enough to clear 
 						# neighboring slopes. Playing with the values yields 5 as sufficient to do so
-						if ((forwardY > slopeAdjustedTileY - JUMP_SPEED + 5) || !jumpPressed):
+						if ((forwardY > slopeAdjustedTileY - (JUMP_SPEED - 5)*current_gravity) || !jumpPressed):
 							position.y = slopeAdjustedTileY - forwardY
 							move(position)
 							
@@ -429,8 +442,8 @@ func _fixed_process(delta):
 						snapToLadder(ladderTile)
 			
 			if (!on_ladder):
-				if (!falling && !climbing_platform):
-					accel = -JUMP_SPEED
+				if ((!falling || underwater) && !climbing_platform):
+					accel = -JUMP_SPEED * current_gravity
 					falling = true
 					jumpPressed = true
 				if (hanging):
@@ -479,7 +492,7 @@ func _fixed_process(delta):
 		var desiredY = accel
 		
 		if (falling):
-			desiredY += 1
+			desiredY += 1 * current_gravity * current_gravity
 		else:
 			desiredY = 1
 		
@@ -589,7 +602,7 @@ func _fixed_process(delta):
 		if (!normalTileCheck && ((relevantSlopeTile == null || !onSlope) && abSlope == null) && ladder_top == null && oneWayTile == null):
 			falling = true
 		
-		accel = min(min(abs(desiredY), abs(closestTileY)), SPEED_LIMIT) * s
+		accel = min(min(abs(desiredY), abs(closestTileY)), SPEED_LIMIT * current_gravity) * s
 
 		# handle crouching now that we know if we are standing on ground blocks
 		if (crouch_requested && !falling && (normalTileCheck || onSlope || abSlope != null || onOneWayTile)):
@@ -614,19 +627,24 @@ func _fixed_process(delta):
 
 		# only allow attacks to hit objects once during a hit
 		if (weapon_collided):
-			remove_child(weapon_collider)
+			if (has_node(weapon_collider.get_name())):
+				remove_child(weapon_collider)
 			weapon_collided = false
 
 		# handle attacking
-		if (!animation_player.is_playing() && is_attacking):
+		if ((!animation_player.is_playing() && is_attacking) || climbing_platform || hanging):
 			is_attacking = false
-			remove_child(weapon_collider)
+			if (has_node(weapon_collider.get_name())):
+				remove_child(weapon_collider)
 		else:
 			if (Input.is_action_pressed("ui_attack") && !is_attacking && !attack_requested && !is_hurt):
-				if (!hanging && !climbing_platform && !is_crouching):
+				if (!hanging && !climbing_platform):
 					attack_requested = true
 					is_attacking = true
-					weapon_collider.set_pos(Vector2(weapon_offset.x * direction, weapon_collider.get_pos().y))
+					var weapon_height = 0
+					if (is_crouching):
+						weapon_height = sprite_offset.y
+					weapon_collider.set_pos(Vector2(weapon_offset.x * direction, -sprite_offset.y + weapon_offset.y + weapon_height))
 					add_child(weapon_collider)
 					weapon_collided = false
 			elif (!Input.is_action_pressed("ui_attack")):
@@ -649,8 +667,12 @@ func _fixed_process(delta):
 			new_animation = "crouch"
 		
 		if (is_attacking):
-			new_animation = "attack"
-			get_node("NormalSpriteGroup/sword").set_scale(Vector2(direction, 1))
+			var modifier = ""
+			if (is_crouching):
+				modifier = "d"
+			if (falling):
+				modifier = "a"
+			new_animation = modifier + "attack"
 		
 		if (climbing_platform || hanging):
 			new_animation = "climb"
@@ -694,7 +716,6 @@ func _ready():
 	
 	weapon_collider = weapon.instance()
 	weapon_offset = weapon_collider.get_node("weapon").get_shape().get_extents()
-	weapon_collider.set_pos(Vector2(0, -sprite_offset.y + weapon_offset.y))
 	
 	weapon_collider.connect("area_enter", self, "_on_weapon_collision")
 	
@@ -704,7 +725,7 @@ func _ready():
 func _on_weapon_collision(area):
 	var collisions = area.get_overlapping_areas()
 	for i in collisions:
-		if (i.get_name() != "damage" && i != weapon_collider):
+		if (i.get_name() != "damage" && i != weapon_collider && i.get_name() != "oneway" && !i.get_name().match("slope*") && i.get_name() != "ladder"):
 			weapon_collided = true
 
 func load_tilemap(var tilemap_node):
@@ -714,6 +735,8 @@ func play_animation(animation, speed):
 	animation_player.set_speed(speed)
 	if (current_animation != animation):
 		animation_player.play(animation)
+		if (animation == "crouch" && current_animation == "dattack"):
+			animation_player.seek(animation_player.get_current_animation_length())
 		current_animation = animation
 
 func loop_jump_animation():
