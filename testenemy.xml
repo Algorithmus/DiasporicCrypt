@@ -1,10 +1,154 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="4" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
-	<ext_resource path="res://yellow.png" type="Texture" index="1"></ext_resource>
+<resource_file type="PackedScene" subresource_count="9" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
 	<ext_resource path="res://testenemy.gd" type="Script" index="0"></ext_resource>
+	<ext_resource path="res://s_walk.png" type="Texture" index="1"></ext_resource>
+	<ext_resource path="res://s_die.png" type="Texture" index="2"></ext_resource>
+	<ext_resource path="res://s_die.wav" type="Sample" index="3"></ext_resource>
+	<resource type="Animation" path="local://2">
+		<string name="resource/name"> "die" </string>
+		<real name="length"> 0.6 </real>
+		<bool name="loop"> False </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> "walk:visibility/visible" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/1/type"> "value" </string>
+		<node_path name="tracks/1/path"> "die:visibility/visible" </node_path>
+		<int name="tracks/1/interp"> 1 </int>
+		<dictionary name="tracks/1/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> True </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/2/type"> "value" </string>
+		<node_path name="tracks/2/path"> "die:frame" </node_path>
+		<int name="tracks/2/interp"> 1 </int>
+		<dictionary name="tracks/2/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="6"> 				0, 0.1, 0.2, 0.3, 0.4, 0.5 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="6"> 				1, 1, 1, 1, 1, 1 </real_array>
+			<string> "values" </string>
+			<array  len="6" shared="false">
+				<int> 0 </int>
+				<int> 1 </int>
+				<int> 2 </int>
+				<int> 3 </int>
+				<int> 4 </int>
+				<int> 5 </int>
+			</array>
+		</dictionary>
+		<string name="tracks/3/type"> "value" </string>
+		<node_path name="tracks/3/path"> "SamplePlayer:play/play" </node_path>
+		<int name="tracks/3/interp"> 1 </int>
+		<dictionary name="tracks/3/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<string> "s_die" </string>
+			</array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://3">
+		<string name="resource/name"> "walk" </string>
+		<real name="length"> 0.8 </real>
+		<bool name="loop"> True </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> "die:visibility/visible" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/1/type"> "value" </string>
+		<node_path name="tracks/1/path"> "walk:visibility/visible" </node_path>
+		<int name="tracks/1/interp"> 1 </int>
+		<dictionary name="tracks/1/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> True </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/2/type"> "value" </string>
+		<node_path name="tracks/2/path"> "walk:frame" </node_path>
+		<int name="tracks/2/interp"> 1 </int>
+		<dictionary name="tracks/2/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="8"> 				0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="8"> 				1, 1, 1, 1, 1, 1, 1, 1 </real_array>
+			<string> "values" </string>
+			<array  len="8" shared="false">
+				<int> 0 </int>
+				<int> 1 </int>
+				<int> 2 </int>
+				<int> 3 </int>
+				<int> 4 </int>
+				<int> 5 </int>
+				<int> 6 </int>
+				<int> 7 </int>
+			</array>
+		</dictionary>
+
+	</resource>
 	<resource type="RectangleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2 name="extents"> 16, 48 </vector2>
+
+	</resource>
+	<resource type="SampleLibrary" path="local://4">
+		<dictionary name="samples/s_die" shared="false">
+			<string> "db" </string>
+			<real> 0 </real>
+			<string> "pitch" </string>
+			<real> 1 </real>
+			<string> "sample" </string>
+			<resource  external="3">  </resource>
+		</dictionary>
 
 	</resource>
 	<main_resource>
@@ -17,7 +161,7 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="28">
+			<string_array  len="54">
 				<string> "TestEnemy" </string>
 				<string> "input/pickable" </string>
 				<string> "collision/layers" </string>
@@ -26,13 +170,24 @@
 				<string> "script/script" </string>
 				<string> "__meta__" </string>
 				<string> "KinematicBody2D" </string>
-				<string> "Sprite" </string>
+				<string> "walk" </string>
+				<string> "visibility/visible" </string>
 				<string> "texture" </string>
-				<string> "modulate" </string>
-				<string> "Sprite1" </string>
+				<string> "hframes" </string>
+				<string> "frame" </string>
+				<string> "Sprite" </string>
+				<string> "die" </string>
 				<string> "offset" </string>
-				<string> "Sprite2" </string>
-				<string> "transform/pos" </string>
+				<string> "AnimationPlayer" </string>
+				<string> "playback/process_mode" </string>
+				<string> "playback/default_blend_time" </string>
+				<string> "root/root" </string>
+				<string> "anims/die" </string>
+				<string> "anims/walk" </string>
+				<string> "playback/active" </string>
+				<string> "playback/speed" </string>
+				<string> "blend_times" </string>
+				<string> "autoplay" </string>
 				<string> "damagable" </string>
 				<string> "shapes/0/shape" </string>
 				<string> "shapes/0/transform" </string>
@@ -46,29 +201,44 @@
 				<string> "shape" </string>
 				<string> "trigger" </string>
 				<string> "_update_shape_index" </string>
+				<string> "SamplePlayer" </string>
+				<string> "config/polyphony" </string>
+				<string> "config/samples" </string>
+				<string> "default/volume_db" </string>
+				<string> "default/pitch_scale" </string>
+				<string> "default/pan" </string>
+				<string> "default/depth" </string>
+				<string> "default/height" </string>
+				<string> "default/filter/type" </string>
+				<string> "default/filter/cutoff" </string>
+				<string> "default/filter/resonance" </string>
+				<string> "default/filter/gain" </string>
+				<string> "default/reverb_room" </string>
+				<string> "default/reverb_send" </string>
+				<string> "default/chorus_send" </string>
 			</string_array>
 			<string> "node_count" </string>
-			<int> 6 </int>
+			<int> 7 </int>
 			<string> "node_paths" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="94"> 				-1, -1, 7, 0, -1, 6, 1, 0, 2, 1, 3, 1, 4, 2, 5, 3, 6, 4, 0, 0, 0, 8, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 8, 11, -1, 3, 9, 5, 12, 7, 10, 6, 0, 0, 0, 8, 13, -1, 4, 14, 8, 9, 5, 12, 7, 10, 6, 0, 0, 0, 23, 15, -1, 8, 1, 9, 16, 10, 17, 11, 18, 0, 19, 12, 20, 13, 21, 14, 22, 15, 0, 4, 0, 24, 24, -1, 3, 25, 10, 26, 0, 27, 16, 0 </int_array>
+			<int_array  len="147"> 				-1, -1, 7, 0, -1, 6, 1, 0, 2, 1, 3, 1, 4, 2, 5, 3, 6, 4, 0, 0, 0, 13, 8, -1, 4, 9, 0, 10, 5, 11, 6, 12, 7, 0, 0, 0, 13, 14, -1, 4, 10, 8, 15, 9, 11, 10, 12, 11, 0, 0, 0, 16, 16, -1, 9, 17, 1, 18, 12, 19, 13, 20, 14, 21, 15, 22, 16, 23, 17, 24, 18, 25, 19, 0, 0, 0, 34, 26, -1, 8, 1, 16, 27, 20, 28, 21, 29, 0, 30, 22, 31, 23, 32, 24, 33, 17, 0, 4, 0, 35, 35, -1, 4, 9, 0, 36, 20, 37, 0, 38, 25, 0, 0, 0, 39, 39, -1, 14, 40, 1, 41, 26, 42, 12, 43, 17, 44, 12, 45, 12, 46, 12, 47, 25, 48, 27, 49, 17, 50, 17, 51, 28, 52, 12, 53, 12, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="17" shared="false">
+			<array  len="29" shared="false">
 				<bool> False </bool>
 				<int> 1 </int>
 				<real> 0.08 </real>
 				<resource  external="0">  </resource>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "Script" </string>
+					<string> "2D" </string>
 					<string> "__editor_plugin_states__" </string>
 					<dictionary  shared="false">
 						<string> "2D" </string>
 						<dictionary  shared="false">
 							<string> "ofs" </string>
-							<vector2> -96.6307, -62.9448 </vector2>
+							<vector2> -319.59, -156.077 </vector2>
 							<string> "snap_grid" </string>
 							<bool> True </bool>
 							<string> "snap_offset" </string>
@@ -88,7 +258,7 @@
 							<string> "snap_step" </string>
 							<vector2> 16, 16 </vector2>
 							<string> "zoom" </string>
-							<real> 3.424786 </real>
+							<real> 1 </real>
 						</dictionary>
 						<string> "3D" </string>
 						<dictionary  shared="false">
@@ -184,8 +354,14 @@
 						</dictionary>
 						<string> "Anim" </string>
 						<dictionary  shared="false">
+							<string> "animation" </string>
+							<string> "die" </string>
+							<string> "editing" </string>
+							<bool> True </bool>
+							<string> "player" </string>
+							<node_path> "AnimationPlayer" </node_path>
 							<string> "visible" </string>
-							<bool> False </bool>
+							<bool> True </bool>
 						</dictionary>
 					</dictionary>
 					<string> "__editor_run_settings__" </string>
@@ -197,17 +373,30 @@
 					</dictionary>
 				</dictionary>
 				<resource  external="1">  </resource>
-				<color> 0, 1, 1, 1 </color>
-				<vector2> 0, -32 </vector2>
-				<vector2> 0, 64 </vector2>
+				<int> 8 </int>
+				<int> 4 </int>
+				<resource  external="2">  </resource>
+				<vector2> -15, 0 </vector2>
+				<int> 6 </int>
+				<int> 5 </int>
+				<real> 0 </real>
+				<node_path> ".." </node_path>
+				<resource  resource_type="Animation" path="local://2">  </resource>
+				<resource  resource_type="Animation" path="local://3">  </resource>
 				<bool> True </bool>
+				<real> 1 </real>
+				<array  len="0" shared="false">
+				</array>
+				<string> "walk" </string>
 				<resource  resource_type="Shape2D" path="local://1">  </resource>
 				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
 				<vector2> 0, 1 </vector2>
 				<real> 98 </real>
 				<real> 0.1 </real>
-				<real> 1 </real>
 				<int> 0 </int>
+				<resource  resource_type="SampleLibrary" path="local://4">  </resource>
+				<real> 5000 </real>
+				<int> 2 </int>
 			</array>
 			<string> "version" </string>
 			<int> 2 </int>

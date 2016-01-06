@@ -7,6 +7,6 @@ extends Node2D
 
 func _ready():
 	# Initialization here
-	get_node("tilemap/player").load_tilemap(get_node("."))
-
+	#get_node("tilemap/player").load_tilemap(get_node("."))
+	pass
 
