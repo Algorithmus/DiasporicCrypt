@@ -270,8 +270,6 @@ func _fixed_process(delta):
 	else:
 		if (is_hurt && damageDelta.x == 0 && damageDelta.y == 0):
 			is_hurt = false
-		elif (!is_hurt):
-		# proceed with throwback
 		if (damageDelta.x != 0):
 			damageDelta.x = (abs(damageDelta.x) - 1) * damageDelta.x/abs(damageDelta.x)
 		if (damageDelta.y != 0):
