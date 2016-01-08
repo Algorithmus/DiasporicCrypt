@@ -460,7 +460,7 @@ func _fixed_process(delta):
 						snapToLadder(ladderTile)
 			
 			if (!on_ladder):
-				if ((!falling || underwater) && !climbing_platform):
+				if ((!falling || underwater) && !climbing_platform && !is_attacking):
 					accel = -JUMP_SPEED * current_gravity
 					falling = true
 					jumpPressed = true
@@ -627,7 +627,7 @@ func _fixed_process(delta):
 		accel = min(min(abs(desiredY), abs(closestTileY)), SPEED_LIMIT * current_gravity) * s
 
 		# handle crouching now that we know if we are standing on ground blocks
-		if (crouch_requested && !falling && (normalTileCheck || onSlope || abSlope != null || onOneWayTile)):
+		if (crouch_requested && !is_attacking && !falling && (normalTileCheck || onSlope || abSlope != null || onOneWayTile)):
 			is_crouching = true
 		elif (!crouch_requested):
 			is_crouching = false
