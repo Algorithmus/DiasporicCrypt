@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="7" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
 	<ext_resource path="res://gui/fonts/XL-72.fnt" type="Font" index="3"></ext_resource>
-	<ext_resource path="res://scenes/main.gd" type="Script" index="0"></ext_resource>
 	<ext_resource path="res://levels/common/BGM1.ogg" type="AudioStream" index="4"></ext_resource>
-	<ext_resource path="res://levels/sandbox/sandbox.scn" type="PackedScene" index="1"></ext_resource>
+	<ext_resource path="res://scenes/main.gd" type="Script" index="0"></ext_resource>
 	<ext_resource path="res://players/player.xml" type="PackedScene" index="2"></ext_resource>
+	<ext_resource path="res://levels/sandbox/sandbox.scn" type="PackedScene" index="1"></ext_resource>
 	<resource type="ImageTexture" path="local://1">
 		<int name="flags"> 2 </int>
 		<image name="image"></image>		<vector2 name="size"> 800, 592 </vector2>

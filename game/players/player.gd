@@ -39,10 +39,11 @@ var movingPlatform = null
 var movingPlatformPos = null
 var is_attacking = false
 var attack_requested = false
-var weapon = preload("res://scenes/weapons/sword.xml")
+var weapon
 var weapon_collider
 var weapon_offset = Vector2()
 var weapon_collided = false
+var attack_frame = 0
 var damage_rect
 var damageDelta = Vector2()
 var is_hurt = false
@@ -162,29 +163,9 @@ func remove_weapon_collider():
 	if (has_node(weapon_collider.get_name())):
 		remove_child(weapon_collider)
 
-func _fixed_process(delta):
-	var space = get_world_2d().get_space()
-	var space_state = Physics2DServer.space_get_direct_state(space)
-	var animation_speed = 1
-
-	# position at character's feet
-	var forwardY = get_global_pos().y + sprite_offset.y
-	var leftX = get_global_pos().x - sprite_offset.x
-	var rightX = get_global_pos().x + sprite_offset.x
-	
-	# bottom left ray check
-	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+16), [self])
-	# bottom right ray check
-	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+16), [self])
-
-	# check regular blocks
-	var normalTileCheck = !relevantTileA.empty() || !relevantTileB.empty()
-	
-	var movingDeltaY = 0
-	
+func check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space_state, oneWayTile):
 	movingPlatform = null
 	
-	# check moving platforms before everything else
 	if (normalTileCheck):
 		var movingPlatform_check = null
 		if (relevantTileA.has("collider")):
@@ -192,7 +173,7 @@ func _fixed_process(delta):
 		else:
 			movingPlatform_check = relevantTileB["collider"]
 		if(movingPlatform_check.get_name() == "blockR" || movingPlatform_check.get_name() == "blockL"):
-			if (movingPlatform_check.get_global_pos().y - TILE_SIZE/2 >= int(forwardY)):
+			if (movingPlatform_check.get_global_pos().y - TILE_SIZE/2 >= int(get_pos().y + sprite_offset.y)):
 				movingPlatform = movingPlatform_check
 			else:
 				clearMovingPlatform()
@@ -200,7 +181,6 @@ func _fixed_process(delta):
 			clearMovingPlatform()
 
 	# clear moving platforms if landing on one way platform tiles
-	var oneWayTile = getOneWayTile(space_state, max(accel, TILE_SIZE))
 	var onOneWayTile = false
 	if (oneWayTile != null):
 		onOneWayTile = oneWayTile.get_global_pos().y - TILE_SIZE/2 >= get_pos().y + sprite_offset.y
@@ -219,21 +199,16 @@ func _fixed_process(delta):
 		var movingDeltaX = newPos.x - movingPlatformPos.x
 		# only move with the platform if landed on it
 		# merely detecting it is there doesn't count
-		if (int(forwardY) >= newPos.y - TILE_SIZE/2 - 2 && !climbing_platform && !hanging):
+		if (int(get_pos().y + sprite_offset.y) >= newPos.y - TILE_SIZE/2 - 2 && !climbing_platform && !hanging):
 			var platformDeltaX = 0
 			if (get_global_pos().x + movingDeltaX > newPos.x + TILE_SIZE/2 || get_global_pos().x + movingDeltaX < newPos.x - TILE_SIZE/2):
 				movingDeltaX = 0
 		move(Vector2(movingDeltaX, newPos.y - movingPlatformPos.y))
 		movingPlatformPos = newPos
-	
-	# check taking damage
-	var is_hurt_check = false
-	
-	var dx = 0
-	var dy = 0
-	var damageTiles = damage_rect.get_overlapping_areas()
+	return onOneWayTile
 
-	for i in damageTiles:
+func check_underwater(areaTiles):
+	for i in areaTiles:
 		if (i.get_name() == "water"):
 			if (i.get_global_pos().y - TILE_SIZE/2 <= get_pos().y - sprite_offset.y):
 				if (!underwater):
@@ -245,6 +220,12 @@ func _fixed_process(delta):
 					get_node("sound").set_volume_db(get_node("sound").play("splash_up"), 0)
 				underwater = false
 				current_gravity = DEFAULT_GRAVITY
+
+func check_damage(damageTiles):
+	var is_hurt_check = false
+	
+	var dx = 0
+	var dy = 0
 
 	if (!invulnerable):
 		for i in damageTiles:
@@ -274,15 +255,28 @@ func _fixed_process(delta):
 			damageDelta.x = (abs(damageDelta.x) - 1) * damageDelta.x/abs(damageDelta.x)
 		if (damageDelta.y != 0):
 			damageDelta.y = (abs(damageDelta.y) - 1) * damageDelta.y/abs(damageDelta.y)
+
+func check_ladder_horizontal(space_state):
+	var ladderTile = getLadderTile(space_state)
+		
+	if (ladderTile != null && ladderTile.get_name() == "ladder_top"):
+		ladder_top = ladderTile
+	else:
+		ladder_top = null
 	
-	# step horizontal motion first
+	if (on_ladder):
+		ladderTile = getLadderTile(space_state)
+		if (ladderTile == null):
+			on_ladder = false
+
+func step_horizontal(space_state):
 	position.y = 0
 	var new_animation = current_animation
 	var horizontal_motion = false
-	forwardY = get_pos().y + sprite_offset.y
-	var relevantSlopeTile = null
+	var forwardY = get_pos().y + sprite_offset.y
 	var onSlope = false
 	var slopeX = 0
+	var relevantSlopeTile = null
 	if (!climbing_platform && !is_crouching && !is_attacking && !is_hurt):
 		if (Input.is_action_pressed("ui_left")):
 			position.x = -min(RUN_SPEED, closestXTile(true, RUN_SPEED))
@@ -321,17 +315,7 @@ func _fixed_process(delta):
 		position.x = 0
 		
 		# check ladder after horizontal movement
-		var ladderTile = getLadderTile(space_state)
-		
-		if (ladderTile != null && ladderTile.get_name() == "ladder_top"):
-			ladder_top = ladderTile
-		else:
-			ladder_top = null
-		
-		if (on_ladder):
-			ladderTile = getLadderTile(space_state)
-			if (ladderTile == null):
-				on_ladder = false
+		check_ladder_horizontal(space_state)
 		
 	if (!on_ladder):
 		# check slope tiles
@@ -363,16 +347,16 @@ func _fixed_process(delta):
 					if ((forwardY > slopeAdjustedTileY - (JUMP_SPEED - 5)*current_gravity) || !jumpPressed):
 						position.y = slopeAdjustedTileY - forwardY
 						move(position)
-							
-	var climb_vertically = false
-	
-	# disengage hanging if hurt
+	return {"animation": new_animation, "slope": onSlope, "slopeTile": relevantSlopeTile, "slopeX": slopeX, "motion": horizontal_motion}
+
+func check_hanging_damage():
 	if (hanging && climb_platform != null && is_hurt):
 		hanging = false
 		move(Vector2(0, climb_platform.get_global_pos().y + TILE_SIZE/2 - get_pos().y + sprite_offset.y))
 		climb_platform = null
-	
-	# check platform climbing after horizontal movement requested
+
+func check_climb_platform_horizontal(space_state):
+	var climb_vertically = false
 	if (!on_ladder && !is_hurt):
 		var platform_check = null
 		
@@ -420,44 +404,98 @@ func _fixed_process(delta):
 				climbing_platform = false
 		else: 
 			climbing_platform = false
-	
+	return climb_vertically
+
+func step_horizontal_damage_throwback():
 	if (is_hurt):
 		move(Vector2(damageDelta.x, 0))
-	
-	# check vertical motion
+
+func check_ladder_up(space_state):
+	var ladderTile = getLadderTile(space_state)
+	var ladderY = 0
+	if (ladderTile != null):
+		# only allow entering ladder from bottom
+		if (!on_ladder && ladderTile.get_name() != "ladder_top"):
+			on_ladder = true
+			climbing_platform = false
+			is_crouching = false
+			snapToLadder(ladderTile)
+			is_attacking = false
+			remove_weapon_collider()
+		elif (on_ladder):
+			if (ladderTile.get_name() == "ladder_top"):
+				ladder_top = ladderTile
+			if (ladder_top != null):
+				if (ladder_top.get_global_pos().y + TILE_SIZE/2 >= get_pos().y + sprite_offset.y):
+					on_ladder = false
+				else:
+					var d = get_pos().y + sprite_offset.y - ladder_top.get_global_pos().y - TILE_SIZE/2
+					ladderY = -min(LADDER_SPEED, d)
+					snapToLadder(ladder_top)
+			else:
+				ladderY = -LADDER_SPEED
+				snapToLadder(ladderTile)
+	return ladderY
+
+func check_ladder_down(space_state, normalTileCheck, onOneWayTile, relevantTileA, relevantTileB, animation_speed):
+	var ladderTile = getLadderTile(space_state)
+	var ladderY = 0
+	if (ladderTile != null):
+		# only allow entering ladder if not at the bottom
+		if (!on_ladder && ((!normalTileCheck && !onOneWayTile) || ladder_top != null || ladderTile.get_name() == "ladder_top")):
+			on_ladder = true
+			climbing_platform = false
+			is_crouching = false
+			snapToLadder(ladderTile)
+			is_attacking = false
+			remove_weapon_collider()
+		elif (on_ladder):
+			if (normalTileCheck):
+				var closestNormalTileY = closestYTile(relevantTileA, relevantTileB)
+				var deltaY = closestNormalTileY - get_pos().y - sprite_offset.y
+				if (int(deltaY) > 0):
+					snapToLadder(ladderTile)
+					ladderY = min(int(deltaY), LADDER_SPEED)
+					animation_speed = -1
+				else:
+					accel = 0
+					on_ladder = false
+			else:
+				snapToLadder(ladderTile)
+				ladderY = LADDER_SPEED
+				animation_speed = -1
+	else:
+		falling = true
+		on_ladder = false
+		# make sure we are really falling
+		accel = max(1, accel)
+	return {"ladderY": ladderY, "animationSpeed": animation_speed}
+
+func check_ladder_top(normalTileCheck, closestTileY, desiredY):
+	if (ladder_top != null && !normalTileCheck):
+		var forwardY = get_pos().y + sprite_offset.y
+		if (ladder_top.get_global_pos().y + TILE_SIZE/2 <= int(forwardY)):
+			# in theory, we'd like this to work as is, but without the extra - 2,
+			# we run into collisions with neighboring ladder blocks
+			# same reason we can't pass between static body tileset tiles with gaps
+			# one tile wide
+			move(Vector2(0, int(ladder_top.get_global_pos().y + TILE_SIZE/2 - forwardY - 2)))
+			forwardY = get_pos().y + sprite_offset.y
+			falling = false
+		closestTileY = min(ladder_top.get_global_pos().y + TILE_SIZE/2 - forwardY, desiredY)
+		closestTileY = int(closestTileY)
+
+func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, onSlope, oneWayTile, relevantSlopeTile):
 	jumpPressed = false
 	
 	var ladderY = 0
 	
-	forwardY = get_global_pos().y + sprite_offset.y
-	
+	var forwardY = get_global_pos().y + sprite_offset.y
 	crouch_requested = false
 	
 	if (!is_hurt):
 		if (Input.is_action_pressed("ui_up")):
-			var ladderTile = getLadderTile(space_state)
-			if (ladderTile != null):
-				# only allow entering ladder from bottom
-				if (!on_ladder && ladderTile.get_name() != "ladder_top"):
-					on_ladder = true
-					climbing_platform = false
-					is_crouching = false
-					snapToLadder(ladderTile)
-					is_attacking = false
-					remove_weapon_collider()
-				elif (on_ladder):
-					if (ladderTile.get_name() == "ladder_top"):
-						ladder_top = ladderTile
-					if (ladder_top != null):
-						if (ladder_top.get_global_pos().y + TILE_SIZE/2 >= get_pos().y + sprite_offset.y):
-							on_ladder = false
-						else:
-							var d = get_pos().y + sprite_offset.y - ladder_top.get_global_pos().y - TILE_SIZE/2
-							ladderY = -min(LADDER_SPEED, d)
-							snapToLadder(ladder_top)
-					else:
-						ladderY = -LADDER_SPEED
-						snapToLadder(ladderTile)
+			ladderY = check_ladder_up(space_state)
 			
 			if (!on_ladder):
 				if ((!falling || underwater) && !climbing_platform && !is_attacking):
@@ -470,46 +508,22 @@ func _fixed_process(delta):
 	
 		if (Input.is_action_pressed("ui_down")):
 			crouch_requested = true
-			var ladderTile = getLadderTile(space_state)
-			if (ladderTile != null):
-				# only allow entering ladder if not at the bottom
-				if (!on_ladder && ((!normalTileCheck && !onOneWayTile) || ladder_top != null || ladderTile.get_name() == "ladder_top")):
-					on_ladder = true
-					climbing_platform = false
-					is_crouching = false
-					snapToLadder(ladderTile)
-					is_attacking = false
-					remove_weapon_collider()
-				elif (on_ladder):
-					if (normalTileCheck):
-						var closestNormalTileY = closestYTile(relevantTileA, relevantTileB)
-						var deltaY = closestNormalTileY - get_pos().y - sprite_offset.y
-						if (int(deltaY) > 0):
-							snapToLadder(ladderTile)
-							ladderY = min(int(deltaY), LADDER_SPEED)
-							animation_speed = -1
-						else:
-							accel = 0
-							on_ladder = false
-					else:
-						snapToLadder(ladderTile)
-						ladderY = LADDER_SPEED
-						animation_speed = -1
-			else:
-				falling = true
-				on_ladder = false
-				# make sure we are really falling
-				accel = max(1, accel)
-					
+			var ladderCheck = check_ladder_down(space_state, normalTileCheck, onOneWayTile, relevantTileA, relevantTileB, animation_speed)
+			ladderY = ladderCheck["ladderY"]
+			animation_speed = ladderCheck["animationSpeed"]
+
 			if (hanging && !on_ladder):
 				hanging = false
 	
 	if (is_hurt):
 		accel += damageDelta.y
 	
+	var desiredY = 0
+	
+	var abSlope = null
 	# don't bother checking regular tiles below character if on ladder
 	if (!on_ladder):
-		var desiredY = accel
+		desiredY = accel
 		
 		if (falling):
 			desiredY += 1 * current_gravity * current_gravity
@@ -524,9 +538,7 @@ func _fixed_process(delta):
 		relevantSlopeTile = getSlopes(space_state)
 		
 		var closestTileY = desiredY
-	
-		var abSlope = null
-	
+
 		# check regular static blocks
 		if (normalTileCheck):
 			closestTileY = closestYTile(relevantTileA, relevantTileB)
@@ -551,7 +563,6 @@ func _fixed_process(delta):
 		var collisionTiles = damage_rect.get_overlapping_areas()
 		for i in collisionTiles:
 			if (i.get_name() == "slopea-b" && i.get_global_pos().y + TILE_SIZE/2 >= int(get_pos().y - sprite_offset.y) && i.get_global_pos().y - TILE_SIZE/2 < int(get_pos().y - sprite_offset.y)):
-				print(str(i.get_global_pos().y + TILE_SIZE/2 - get_pos().y + sprite_offset.y) + ", " + str(desiredY))
 				#closestTileY = max(i.get_global_pos().y + TILE_SIZE/2 - get_pos().y + sprite_offset.y, desiredY)
 				move(Vector2(0, i.get_global_pos().y + TILE_SIZE/2 - get_pos().y + sprite_offset.y))
 
@@ -608,69 +619,61 @@ func _fixed_process(delta):
 			closestTileY = int(closestTileY)
 		
 		# handle standing on a ladder_top tile
-		if (ladder_top != null && !normalTileCheck):
-			if (ladder_top.get_global_pos().y + TILE_SIZE/2 <= int(forwardY)):
-				# in theory, we'd like this to work as is, but without the extra - 2,
-				# we run into collisions with neighboring ladder blocks
-				# same reason we can't pass between static body tileset tiles with gaps
-				# one tile wide
-				move(Vector2(0, int(ladder_top.get_global_pos().y + TILE_SIZE/2 - forwardY - 2)))
-				forwardY = get_pos().y + sprite_offset.y
-				falling = false
-			closestTileY = min(ladder_top.get_global_pos().y + TILE_SIZE/2 - forwardY, desiredY)
-			closestTileY = int(closestTileY)
-		
-		# final falling status check for all kinds of collisions
-		if (!normalTileCheck && ((relevantSlopeTile == null || !onSlope) && abSlope == null) && ladder_top == null && oneWayTile == null):
-			falling = true
+		check_ladder_top(normalTileCheck, closestTileY, desiredY)
 		
 		accel = min(min(abs(desiredY), abs(closestTileY)), SPEED_LIMIT * current_gravity) * s
+	return {"desiredY": desiredY, "slope": onSlope, "slopeTile": relevantSlopeTile, "abSlope": abSlope, "animationSpeed": animation_speed, "ladderY": ladderY}
 
-		# handle crouching now that we know if we are standing on ground blocks
-		if (crouch_requested && !is_attacking && !falling && (normalTileCheck || onSlope || abSlope != null || onOneWayTile)):
-			is_crouching = true
-		elif (!crouch_requested):
-			is_crouching = false
-		
-		# clamp to platform vertically to prevent falling while hanging with no input
-		if (hanging && climb_platform != null):
-			accel = climb_platform.get_global_pos().y - TILE_SIZE/2 - get_pos().y + sprite_offset.y
-	
-		# move character up from climbing ledge
-		# see notes in horizontal motion about animation
-		if (climb_vertically && climbing_platform):
-			#var d = climb_platform.get_global_pos().y - TILE_SIZE/2 - get_pos().y + sprite_offset.y
-			accel = -climbspeed
-			falling = false
+func check_falling(normalTileCheck, relevantSlopeTile, onSlope, abSlope, ladder_top, oneWayTile):
+	if (!normalTileCheck && ((relevantSlopeTile == null || !onSlope) && abSlope == null) && ladder_top == null && oneWayTile == null):
+			falling = true
 
-		# don't fall while standing on moving platforms moving up
-		if (desiredY > - JUMP_SPEED + 1 && movingPlatform != null && !hanging && !climbing_platform && movingPlatform.get_global_pos().y - TILE_SIZE/2 >= get_pos().y + sprite_offset.y):
-			falling = false
+func check_crouch(normalTileCheck, abSlope, onSlope, onOneWayTile):
+	if (crouch_requested && !is_attacking && !falling && (normalTileCheck || onSlope || abSlope != null || onOneWayTile)):
+		is_crouching = true
+	elif (!crouch_requested && !is_attacking):
+		is_crouching = false
 
-		# only allow attacks to hit objects once during a hit
-		if (weapon_collided):
-			remove_weapon_collider()
+func check_climb_platform_vertical(climb_vertically):
+	# clamp to platform vertically to prevent falling while hanging with no input
+	if (hanging && climb_platform != null):
+		accel = climb_platform.get_global_pos().y - TILE_SIZE/2 - get_pos().y + sprite_offset.y
+
+	# move character up from climbing ledge
+	# see notes in horizontal motion about animation
+	if (climb_vertically && climbing_platform):
+		#var d = climb_platform.get_global_pos().y - TILE_SIZE/2 - get_pos().y + sprite_offset.y
+		accel = -climbspeed
+		falling = false
+
+func check_on_moving_platform(desiredY):
+	if (desiredY > - JUMP_SPEED + 1 && movingPlatform != null && !hanging && !climbing_platform && movingPlatform.get_global_pos().y - TILE_SIZE/2 >= get_pos().y + sprite_offset.y):
+		falling = false
+
+func check_attacking():
+	# only allow attacks to hit objects once during a hit
+	if (weapon_collided):
+		remove_weapon_collider()
+		weapon_collided = false
+
+	# handle attacking
+	if ((animation_player.get_current_animation().match("*attack") && animation_player.get_current_animation_length() == animation_player.get_current_animation_pos()) || climbing_platform || hanging || on_ladder):
+		is_attacking = false
+		remove_weapon_collider()
+	elif (!is_attacking && attack_requested && !is_hurt):
+		attack_requested = false
+		if (!hanging && !climbing_platform):
+			is_attacking = true
+			var weapon_height = 0
+			if (is_crouching):
+				weapon_height = sprite_offset.y
+			get_node("sound").set_volume_db(get_node("sound").play("attack"), -10)
+			weapon_collider.set_pos(Vector2((weapon_offset.x + sprite_offset.x + 4) * direction, -sprite_offset.y + weapon_offset.y + weapon_height))
+			add_child(weapon_collider)
 			weapon_collided = false
 
-		# handle attacking
-		if ((animation_player.get_current_animation().match("*attack") && animation_player.get_current_animation_length() == animation_player.get_current_animation_pos()) || climbing_platform || hanging || on_ladder):
-			is_attacking = false
-			remove_weapon_collider()
-		elif (!is_attacking && attack_requested && !is_hurt):
-			attack_requested = false
-			if (!hanging && !climbing_platform):
-				is_attacking = true
-				var weapon_height = 0
-				if (is_crouching):
-					weapon_height = sprite_offset.y
-				get_node("sound").set_volume_db(get_node("sound").play("attack"), -10)
-				weapon_collider.set_pos(Vector2((weapon_offset.x + sprite_offset.x + 1) * direction, -sprite_offset.y + weapon_offset.y + weapon_height))
-				add_child(weapon_collider)
-				weapon_collided = false
-	
-		position.y = accel
-		
-		# check animations
+func check_animations(new_animation, animation_speed, horizontal_motion, ladderY):
+	if (!on_ladder):
 		if (falling):
 			if (accel < 0):
 				new_animation = "jump"
@@ -682,6 +685,9 @@ func _fixed_process(delta):
 				new_animation = "land"
 			if (current_animation != "land"):
 				get_node("sound").set_volume_db(get_node("sound").play("land"), (fall_height/DEFAULT_FALL_HEIGHT*current_gravity - 1)*10)
+		
+		if (!falling && animation_player.get_current_animation() == "aattack"):
+			attack_frame = animation_player.get_current_animation_pos()
 		
 		if (is_crouching):
 			new_animation = "crouch"
@@ -712,24 +718,107 @@ func _fixed_process(delta):
 				hurt_grace_cycle = 0
 				invulnerable = false
 				get_node("NormalSpriteGroup").set_opacity(1)
-		
-	var motion = position
-		
+
 	if (on_ladder):
 		direction = 1
-		motion.y = ladderY
+		position.y = ladderY
 		new_animation = "ladder"
 		if (ladderY == 0):
 			animation_speed = 0
 
+	get_node("NormalSpriteGroup/"+new_animation).set_scale(Vector2(direction, 1))
+	return {"animationSpeed": animation_speed, "animation": new_animation}
+
+func calculate_fall_height():
 	if (falling):
 		fall_height += max(0, position.y)
 	else:
 		fall_height = 0
 
-	get_node("NormalSpriteGroup/"+new_animation).set_scale(Vector2(direction, 1))
+func _fixed_process(delta):
+	step_player()
+
+func step_player():
+	var space = get_world_2d().get_space()
+	var space_state = Physics2DServer.space_get_direct_state(space)
+	var animation_speed = 1
+
+	# position at character's feet
+	var forwardY = get_global_pos().y + sprite_offset.y
+	var leftX = get_global_pos().x - sprite_offset.x
+	var rightX = get_global_pos().x + sprite_offset.x
 	
-	move(motion)
+	# bottom left ray check
+	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+16), [self])
+	# bottom right ray check
+	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+16), [self])
+
+	# check regular blocks
+	var normalTileCheck = !relevantTileA.empty() || !relevantTileB.empty()
+	
+	# check moving platforms before everything else
+	var oneWayTile = getOneWayTile(space_state, max(accel, TILE_SIZE))
+	var onOneWayTile = check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space_state, oneWayTile)
+	
+	var areaTiles = damage_rect.get_overlapping_areas()
+
+	# check underwater
+	check_underwater(areaTiles)
+
+	# check taking damage
+	check_damage(areaTiles)
+	
+	# step horizontal motion first
+	var horizontal = step_horizontal(space_state)
+	var new_animation = horizontal["animation"]
+	var horizontal_motion = horizontal["motion"]
+	var onSlope = horizontal["slope"]
+	var slopeX = horizontal["slopeX"]
+	var relevantSlopeTile = horizontal["slopeTile"]
+	forwardY = get_global_pos().y + sprite_offset.y
+	
+	# disengage hanging if hurt
+	check_hanging_damage()
+	
+	# check platform climbing after horizontal movement requested
+	var climb_vertically = check_climb_platform_horizontal(space_state)
+
+	step_horizontal_damage_throwback()
+	
+	# check vertical motion
+	var vertical = step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, onSlope, oneWayTile, relevantSlopeTile)
+
+	relevantSlopeTile = vertical["slopeTile"]
+	var onSlope = vertical["slope"]
+	var abSlope = vertical["abSlope"]
+	var desiredY = vertical["desiredY"]
+	animation_speed = vertical["animationSpeed"]
+	var ladderY = vertical["ladderY"]
+	
+	if (!on_ladder):
+		# final falling status check for all kinds of collisions
+		check_falling(normalTileCheck, relevantSlopeTile, onSlope, abSlope, ladder_top, oneWayTile)
+
+		# handle crouching now that we know if we are standing on ground blocks
+		check_crouch(normalTileCheck, abSlope, onSlope, onOneWayTile)
+		
+		check_climb_platform_vertical(climb_vertically)
+
+		# don't fall while standing on moving platforms moving up
+		check_on_moving_platform(desiredY)
+
+		check_attacking()
+	
+		position.y = accel
+		
+	# check animations
+	var animations = check_animations(new_animation, animation_speed, horizontal_motion, ladderY)
+	animation_speed = animations["animationSpeed"]
+	new_animation = animations["animation"]
+
+	calculate_fall_height()
+	
+	move(position)
 	play_animation(new_animation, animation_speed)
 
 func _input(event):
@@ -745,7 +834,7 @@ func _ready():
 	
 	weapon_collider = weapon.instance()
 	weapon_offset = weapon_collider.get_node("weapon").get_shape().get_extents()
-	
+
 	weapon_collider.connect("area_enter", self, "_on_weapon_collision")
 	
 	get_node("sound").set_polyphony(10)
@@ -755,10 +844,12 @@ func _ready():
 
 # notify when weapon collides with stuff
 func _on_weapon_collision(area):
-	var collisions = area.get_overlapping_areas()
+	var collisions = weapon_collider.get_overlapping_areas()
 	for i in collisions:
 		if (i.get_name() != "damage" && i != weapon_collider && i.get_name() != "oneway" && !i.get_name().match("slope*") && i.get_name() != "ladder"):
 			weapon_collided = true
+	if(area.get_name() != "damage" && area != weapon_collider && area.get_name() != "oneway" && !area.get_name().match("slope*") && area.get_name() != "ladder"):
+		weapon_collided = true
 
 func load_tilemap(var tilemap_node):
 	tilemap = tilemap_node.get_node("tilemap")
@@ -769,6 +860,9 @@ func play_animation(animation, speed):
 		animation_player.play(animation)
 		if (animation == "crouch" && current_animation == "dattack"):
 			animation_player.seek(animation_player.get_current_animation_length())
+		if (animation == "attack" && attack_frame > 0):
+			animation_player.advance(attack_frame)
+			attack_frame = 0
 		current_animation = animation
 
 func loop_jump_animation():
