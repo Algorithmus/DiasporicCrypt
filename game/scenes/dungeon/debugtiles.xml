@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="TileSet" subresource_count="48" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
+<resource_file type="TileSet" subresource_count="49" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
+	<ext_resource path="res://scenes/dungeon/BGs/bgtiledark.png" type="Texture" index="16"></ext_resource>
+	<ext_resource path="res://scenes/dungeon/solids/tile2.png" type="Texture" index="20"></ext_resource>
+	<ext_resource path="res://scenes/dungeon/BGs/bgtile3.png" type="Texture" index="14"></ext_resource>
+	<ext_resource path="res://scenes/dungeon/BGs/pillar/pillarcap4.png" type="Texture" index="36"></ext_resource>
+	<ext_resource path="res://scenes/dungeon/BGs/bgtile2.png" type="Texture" index="13"></ext_resource>
+	<ext_resource path="res://scenes/dungeon/platforms/floorblock4.png" type="Texture" index="26"></ext_resource>
+	<ext_resource path="res://scenes/dungeon/BGs/pillar/pillarcap2.png" type="Texture" index="34"></ext_resource>
+	<ext_resource path="res://scenes/dungeon/platforms/crackedflooredge.png" type="Texture" index="37"></ext_resource>
+	<ext_resource path="res://scenes/dungeon/BGs/bgtile.png" type="Texture" index="12"></ext_resource>
+	<ext_resource path="res://scenes/dungeon/platforms/floor.png" type="Texture" index="39"></ext_resource>
+	<ext_resource path="res://scenes/dungeon/BGs/bgtiledark3.png" type="Texture" index="18"></ext_resource>
+	<ext_resource path="res://scenes/dungeon/slopes/slopetile0-7.png" type="Texture" index="19"></ext_resource>
+	<ext_resource path="res://scenes/dungeon/platforms/floorblock3.png" type="Texture" index="25"></ext_resource>
+	<ext_resource path="res://scenes/dungeon/BGs/pillar/pillarcap3.png" type="Texture" index="35"></ext_resource>
+	<ext_resource path="res://scenes/dungeon/BGs/pillar/pillarcap.png" type="Texture" index="33"></ext_resource>
+	<ext_resource path="res://scenes/dungeon/BGs/bgtiledark2.png" type="Texture" index="17"></ext_resource>
+	<ext_resource path="res://scenes/dungeon/solids/tile.png" type="Texture" index="0"></ext_resource>
+	<ext_resource path="res://scenes/dungeon/solids/tile3.png" type="Texture" index="21"></ext_resource>
 	<ext_resource path="res://scenes/dungeon/platforms/midfloorblock.png" type="Texture" index="29"></ext_resource>
 	<ext_resource path="res://scenes/dungeon/BGs/banner.png" type="Texture" index="30"></ext_resource>
 	<ext_resource path="res://scenes/dungeon/platforms/floorblock5.png" type="Texture" index="27"></ext_resource>
@@ -15,31 +33,14 @@
 	<ext_resource path="res://scenes/dungeon/BGs/pillar/pillar.png" type="Texture" index="32"></ext_resource>
 	<ext_resource path="res://scenes/dungeon/platforms/floorblock2.png" type="Texture" index="23"></ext_resource>
 	<ext_resource path="res://scenes/dungeon/BGs/bgtilegradient2.png" type="Texture" index="10"></ext_resource>
-	<ext_resource path="res://scenes/dungeon/platforms/floorblock3.png" type="Texture" index="25"></ext_resource>
-	<ext_resource path="res://scenes/dungeon/BGs/pillar/pillarcap3.png" type="Texture" index="35"></ext_resource>
 	<ext_resource path="res://scenes/dungeon/BGs/torch.png" type="Texture" index="31"></ext_resource>
-	<ext_resource path="res://scenes/dungeon/BGs/pillar/pillarcap.png" type="Texture" index="33"></ext_resource>
-	<ext_resource path="res://scenes/dungeon/BGs/bgtiledark2.png" type="Texture" index="17"></ext_resource>
-	<ext_resource path="res://scenes/dungeon/BGs/bgtiledark3.png" type="Texture" index="18"></ext_resource>
-	<ext_resource path="res://scenes/dungeon/slopes/slopetile0-7.png" type="Texture" index="19"></ext_resource>
-	<ext_resource path="res://scenes/dungeon/solids/tile.png" type="Texture" index="0"></ext_resource>
-	<ext_resource path="res://scenes/dungeon/solids/tile3.png" type="Texture" index="21"></ext_resource>
-	<ext_resource path="res://scenes/dungeon/BGs/bgtiledark.png" type="Texture" index="16"></ext_resource>
-	<ext_resource path="res://scenes/dungeon/BGs/bgtile3.png" type="Texture" index="14"></ext_resource>
-	<ext_resource path="res://scenes/dungeon/solids/tile2.png" type="Texture" index="20"></ext_resource>
-	<ext_resource path="res://scenes/dungeon/BGs/pillar/pillarcap4.png" type="Texture" index="36"></ext_resource>
-	<ext_resource path="res://scenes/dungeon/BGs/bgtile2.png" type="Texture" index="13"></ext_resource>
-	<ext_resource path="res://scenes/dungeon/platforms/floorblock4.png" type="Texture" index="26"></ext_resource>
-	<ext_resource path="res://scenes/dungeon/BGs/pillar/pillarcap2.png" type="Texture" index="34"></ext_resource>
-	<ext_resource path="res://scenes/dungeon/platforms/crackedflooredge.png" type="Texture" index="37"></ext_resource>
-	<ext_resource path="res://scenes/dungeon/BGs/bgtile.png" type="Texture" index="12"></ext_resource>
-	<ext_resource path="res://scenes/dungeon/platforms/floor.png" type="Texture" index="38"></ext_resource>
 	<ext_resource path="res://scenes/dungeon/platforms/floor4.png" type="Texture" index="2"></ext_resource>
-	<ext_resource path="res://scenes/dungeon/platforms/floor2.png" type="Texture" index="39"></ext_resource>
+	<ext_resource path="res://scenes/dungeon/platforms/floor2.png" type="Texture" index="40"></ext_resource>
 	<ext_resource path="res://scenes/dungeon/platforms/floor5.png" type="Texture" index="3"></ext_resource>
 	<ext_resource path="res://scenes/dungeon/BGs/bgtilegradient.png" type="Texture" index="24"></ext_resource>
 	<ext_resource path="res://scenes/dungeon/platforms/floor3.png" type="Texture" index="1"></ext_resource>
 	<ext_resource path="res://scenes/dungeon/solids/wall.png" type="Texture" index="5"></ext_resource>
+	<ext_resource path="res://scenes/dungeon/BGs/bgswingtile.png" type="Texture" index="38"></ext_resource>
 	<resource type="RectangleShape2D" path="local://2">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2 name="extents"> 16, 16 </vector2>
@@ -155,7 +156,7 @@
 		<array name="7/shapes" len="0" shared="false">
 		</array>
 		<string name="8/name"> "Floor" </string>
-		<resource name="8/texture" external="38">  </resource>
+		<resource name="8/texture" external="39">  </resource>
 		<vector2 name="8/tex_offset"> 0, 0 </vector2>
 		<resource name="8/material"></resource>		<rect2 name="8/region"> 0, 0, 0, 0 </rect2>
 		<vector2 name="8/occluder_offset"> 16, 16 </vector2>
@@ -165,7 +166,7 @@
 			<resource  resource_type="Shape2D" path="local://6">  </resource>
 		</array>
 		<string name="9/name"> "Floor2" </string>
-		<resource name="9/texture" external="39">  </resource>
+		<resource name="9/texture" external="40">  </resource>
 		<vector2 name="9/tex_offset"> 0, 0 </vector2>
 		<resource name="9/material"></resource>		<rect2 name="9/region"> 0, 0, 0, 0 </rect2>
 		<vector2 name="9/occluder_offset"> 16, 16 </vector2>
@@ -614,6 +615,15 @@
 		<resource name="56/navigation"></resource>		<vector2 name="56/shape_offset"> 16, 16 </vector2>
 		<array name="56/shapes" len="1" shared="false">
 			<resource  resource_type="Shape2D" path="local://6">  </resource>
+		</array>
+		<string name="57/name"> "BGSwingTile" </string>
+		<resource name="57/texture" external="38">  </resource>
+		<vector2 name="57/tex_offset"> 0, 0 </vector2>
+		<resource name="57/material"></resource>		<rect2 name="57/region"> 0, 0, 0, 0 </rect2>
+		<vector2 name="57/occluder_offset"> 16, 16 </vector2>
+		<resource name="57/occluder"></resource>		<vector2 name="57/navigation_offset"> 16, 16 </vector2>
+		<resource name="57/navigation"></resource>		<vector2 name="57/shape_offset"> 0, 0 </vector2>
+		<array name="57/shapes" len="0" shared="false">
 		</array>
 
 	</main_resource>
