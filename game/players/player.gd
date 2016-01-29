@@ -56,6 +56,8 @@ var fall_height = 0
 var runspeed = RUN_SPEED
 var jumpspeed = JUMP_SPEED
 var defaultfallheight = DEFAULT_FALL_HEIGHT
+var consumable
+var blood_requested = false
 
 func min_array(array):
 	if (array.size() == 1):
@@ -501,6 +503,19 @@ func check_jump():
 			falling = true
 			jumpPressed = true
 
+#check conditions for absorbing blood
+func check_blood(areaTiles):
+	
+	consumable = null
+
+	for i in areaTiles:
+		if (i.get_name() == "consumable"):
+			consumable = i.get_parent()
+	
+	if (consumable != null && blood_requested && consumable.get("current_consume_value") > 0):
+		blood_requested = false
+		consumable.bleed()
+
 func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, onSlope, oneWayTile, relevantSlopeTile):
 	jumpPressed = false
 	
@@ -529,7 +544,8 @@ func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, o
 			if (hanging && !on_ladder):
 				hanging = false
 	
-	if (is_hurt):
+	# don't register throwback if jumping
+	if (is_hurt && !(falling && accel < 0)):
 		accel += damageDelta.y
 	
 	var desiredY = 0
@@ -832,6 +848,8 @@ func step_player():
 	
 		position.y = accel
 		
+		check_blood(areaTiles)
+		
 	# check animations
 	var animations = check_animations(new_animation, animation_speed, horizontal_motion, ladderY)
 	animation_speed = animations["animationSpeed"]
@@ -845,6 +863,8 @@ func step_player():
 func _input(event):
 	if (event.is_action_pressed("ui_attack") && event.is_pressed() && !event.is_echo()):
 		attack_requested = true
+	if (event.is_action_pressed("ui_blood") && event.is_pressed() && !event.is_echo()):
+		blood_requested = true
 
 func _ready():
 	collision = get_node("CollisionShape2D")

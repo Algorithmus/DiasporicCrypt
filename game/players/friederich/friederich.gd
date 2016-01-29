@@ -86,8 +86,10 @@ func step_player():
 		check_on_moving_platform(desiredY)
 
 		check_attacking()
-	
+
 		position.y = accel
+		
+		check_blood(areaTiles)
 		
 	# check animations
 	var animations = check_animations(new_animation, animation_speed, horizontal_motion, ladderY)

@@ -1,34 +1,114 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="7" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
-	<ext_resource path="res://gui/fonts/XL-72.fnt" type="Font" index="3">
-	</ext_resource>
-	<ext_resource path="res://levels/common/BGM1.ogg" type="AudioStream" index="4">
-	</ext_resource>
-	<ext_resource path="res://scenes/main.gd" type="Script" index="0">
-	</ext_resource>
-	<ext_resource path="res://players/adela/adela.xml" type="PackedScene" index="2">
-	</ext_resource>
-	<ext_resource path="res://levels/sandbox/sandbox.scn" type="PackedScene" index="1">
-	</ext_resource>
+<resource_file type="PackedScene" subresource_count="22" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
+	<ext_resource path="res://scenes/main.gd" type="Script" index="0"></ext_resource>
+	<ext_resource path="res://gui/select/adela.png" type="Texture" index="5"></ext_resource>
+	<ext_resource path="res://players/friederich/friederich.xml" type="PackedScene" index="8"></ext_resource>
+	<ext_resource path="res://gui/fonts/L-24.fnt" type="Font" index="7"></ext_resource>
+	<ext_resource path="res://gui/select/adela-select.png" type="Texture" index="6"></ext_resource>
+	<ext_resource path="res://levels/common/BGM1.ogg" type="AudioStream" index="12"></ext_resource>
+	<ext_resource path="res://players/adela/adela.xml" type="PackedScene" index="9"></ext_resource>
+	<ext_resource path="res://gui/select/friederich-select.png" type="Texture" index="4"></ext_resource>
+	<ext_resource path="res://gui/confirm.wav" type="Sample" index="10"></ext_resource>
+	<ext_resource path="res://gui/cursor.wav" type="Sample" index="11"></ext_resource>
+	<ext_resource path="res://gui/select/friederich.png" type="Texture" index="3"></ext_resource>
+	<ext_resource path="res://gui/fonts/XL-72.fnt" type="Font" index="2"></ext_resource>
+	<ext_resource path="res://levels/sandbox/sandbox.scn" type="PackedScene" index="1"></ext_resource>
 	<resource type="ImageTexture" path="local://1">
-
 		<int name="flags"> 2 </int>
 		<image name="image"></image>		<vector2 name="size"> 800, 592 </vector2>
 		<int name="storage"> 0 </int>
 		<real name="lossy_quality"> 0.7 </real>
 
 	</resource>
+	<resource type="CanvasItemShader" path="local://5">
+		<dictionary name="_code" shared="false">
+			<string> "fragment" </string>
+			<string> "uniform color start=color(0.2,0.4,1.0,0.8);&#000a;uniform color stop=color(0.2,0.4,1.0,0);&#000a;COLOR = mix(start, stop, UV.y);&#000a;&#000a;COLOR.a = tex(TEXTURE,UV).a*COLOR.a;" </string>
+			<string> "fragment_ofs" </string>
+			<int> 0 </int>
+			<string> "light" </string>
+			<string> "" </string>
+			<string> "light_ofs" </string>
+			<int> 0 </int>
+			<string> "vertex" </string>
+			<string> "" </string>
+			<string> "vertex_ofs" </string>
+			<int> 0 </int>
+		</dictionary>
+
+	</resource>
+	<resource type="CanvasItemMaterial" path="local://6">
+		<resource name="shader/shader" resource_type="Shader" path="local://5">  </resource>
+		<int name="shader/shading_mode"> 0 </int>
+		<color name="shader_param/start"> 0.0506629, 0.0610795, 0.0899857, 1 </color>
+		<color name="shader_param/stop"> 0.181345, 0.191761, 0.214338, 1 </color>
+
+	</resource>
+	<resource type="ImageTexture" path="local://3">
+		<int name="flags"> 6 </int>
+		<image name="image"></image>		<vector2 name="size"> 1, 1 </vector2>
+		<int name="storage"> 0 </int>
+		<real name="lossy_quality"> 1 </real>
+
+	</resource>
+	<resource type="CanvasItemMaterial" path="local://2">
+		<resource name="shader/shader"></resource>		<int name="shader/shading_mode"> 0 </int>
+
+	</resource>
+	<resource type="CanvasItemShader" path="local://7">
+		<dictionary name="_code" shared="false">
+			<string> "fragment" </string>
+			<string> "uniform color start=color(0.2,0.4,1.0,0.8);&#000a;uniform color stop=color(0.2,0.4,1.0,0);&#000a;COLOR = mix(start, stop, UV.y*3);&#000a;&#000a;COLOR.a = tex(TEXTURE,UV).a*COLOR.a;" </string>
+			<string> "fragment_ofs" </string>
+			<int> 0 </int>
+			<string> "light" </string>
+			<string> "" </string>
+			<string> "light_ofs" </string>
+			<int> 0 </int>
+			<string> "vertex" </string>
+			<string> "" </string>
+			<string> "vertex_ofs" </string>
+			<int> 0 </int>
+		</dictionary>
+
+	</resource>
+	<resource type="CanvasItemMaterial" path="local://8">
+		<resource name="shader/shader" resource_type="Shader" path="local://7">  </resource>
+		<int name="shader/shading_mode"> 0 </int>
+		<color name="shader_param/start"> 0.180392, 0.188235, 0.211765, 0 </color>
+		<color name="shader_param/stop"> 0.180392, 0.188235, 0.211765, 0.483709 </color>
+
+	</resource>
+	<resource type="SampleLibrary" path="local://4">
+		<dictionary name="samples/cursor" shared="false">
+			<string> "db" </string>
+			<real> 0 </real>
+			<string> "pitch" </string>
+			<real> 1 </real>
+			<string> "sample" </string>
+			<resource  external="11">  </resource>
+		</dictionary>
+		<dictionary name="samples/confirm" shared="false">
+			<string> "db" </string>
+			<real> 0 </real>
+			<string> "pitch" </string>
+			<real> 1 </real>
+			<string> "sample" </string>
+			<resource  external="10">  </resource>
+		</dictionary>
+
+	</resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "conn_count" </string>
-			<int> 0 </int>
+			<int> 6 </int>
 			<string> "conns" </string>
-			<int_array  len="0"> 				 </int_array>
+			<int_array  len="36"> 				11, 0, 94, 93, 2, 0, 11, 0, 96, 95, 2, 0, 11, 0, 98, 97, 2, 0, 12, 0, 94, 99, 2, 0, 12, 0, 96, 100, 2, 0, 12, 0, 98, 101, 2, 0 </int_array>
 			<string> "editable_instances" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="55">
+			<string_array  len="102">
 				<string> "world" </string>
 				<string> "process/pause_mode" </string>
 				<string> "script/script" </string>
@@ -36,9 +116,7 @@
 				<string> "Node2D" </string>
 				<string> "level" </string>
 				<string> "sandbox" </string>
-				<string> "player" </string>
-				<string> "transform/pos" </string>
-				<string> "collision/margin" </string>
+				<string> "playercontainer" </string>
 				<string> "gui" </string>
 				<string> "z/z" </string>
 				<string> "CanvasLayer" </string>
@@ -47,6 +125,7 @@
 				<string> "rotation" </string>
 				<string> "scale" </string>
 				<string> "pause" </string>
+				<string> "visibility/visible" </string>
 				<string> "anchor/right" </string>
 				<string> "anchor/bottom" </string>
 				<string> "margin/right" </string>
@@ -74,6 +153,45 @@
 				<string> "percent_visible" </string>
 				<string> "lines_skipped" </string>
 				<string> "max_lines_visible" </string>
+				<string> "select" </string>
+				<string> "BG" </string>
+				<string> "material/material" </string>
+				<string> "expand" </string>
+				<string> "TextureFrame" </string>
+				<string> "friederich" </string>
+				<string> "focus_neighbour/right" </string>
+				<string> "toggle_mode" </string>
+				<string> "textures/normal" </string>
+				<string> "textures/pressed" </string>
+				<string> "textures/hover" </string>
+				<string> "textures/focused" </string>
+				<string> "params/scale" </string>
+				<string> "TextureButton" </string>
+				<string> "adela" </string>
+				<string> "focus_neighbour/left" </string>
+				<string> "mask" </string>
+				<string> "friederich_title" </string>
+				<string> "adela_title" </string>
+				<string> "friederich_sprite" </string>
+				<string> "transform/pos" </string>
+				<string> "collision/margin" </string>
+				<string> "adela_sprite" </string>
+				<string> "sound" </string>
+				<string> "config/polyphony" </string>
+				<string> "config/samples" </string>
+				<string> "default/volume_db" </string>
+				<string> "default/pitch_scale" </string>
+				<string> "default/pan" </string>
+				<string> "default/depth" </string>
+				<string> "default/height" </string>
+				<string> "default/filter/type" </string>
+				<string> "default/filter/cutoff" </string>
+				<string> "default/filter/resonance" </string>
+				<string> "default/filter/gain" </string>
+				<string> "default/reverb_room" </string>
+				<string> "default/reverb_send" </string>
+				<string> "default/chorus_send" </string>
+				<string> "SamplePlayer" </string>
 				<string> "music" </string>
 				<string> "stream/stream" </string>
 				<string> "stream/play" </string>
@@ -84,16 +202,25 @@
 				<string> "stream/loop_restart_time" </string>
 				<string> "stream/buffering_ms" </string>
 				<string> "StreamPlayer" </string>
+				<string> "_select_friederich" </string>
+				<string> "pressed" </string>
+				<string> "_friederich_hover" </string>
+				<string> "mouse_enter" </string>
+				<string> "_friederich_exit" </string>
+				<string> "mouse_exit" </string>
+				<string> "_select_adela" </string>
+				<string> "_adela_hover" </string>
+				<string> "_adela_exit" </string>
 			</string_array>
 			<string> "node_count" </string>
-			<int> 10 </int>
+			<int> 21 </int>
 			<string> "node_paths" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="176"> 				-1, -1, 4, 0, -1, 3, 1, 0, 2, 1, 3, 2, 0, 0, 0, 4, 5, -1, 2, 1, 3, 3, 4, 0, 1, 0, 2147483647, 6, 5, 0, 0, 0, 0, 2147483647, 7, 6, 3, 1, 3, 8, 7, 9, 8, 0, 0, 0, 4, 10, -1, 3, 1, 0, 11, 9, 3, 10, 0, 4, 0, 12, 12, -1, 4, 13, 3, 14, 11, 15, 12, 16, 13, 0, 5, 0, 26, 17, -1, 8, 18, 3, 19, 3, 20, 14, 21, 14, 22, 15, 23, 16, 24, 0, 25, 0, 0, 6, 0, 31, 27, -1, 3, 28, 17, 29, 15, 30, 18, 0, 6, 0, 32, 32, -1, 19, 33, 19, 34, 19, 18, 19, 19, 19, 35, 20, 36, 21, 20, 22, 21, 23, 22, 16, 23, 16, 24, 0, 37, 24, 38, 25, 39, 3, 40, 3, 41, 16, 42, 26, 43, 27, 44, 28, 0, 0, 0, 54, 45, -1, 8, 46, 29, 47, 15, 48, 16, 49, 12, 50, 16, 51, 15, 52, 12, 53, 30, 0 </int_array>
+			<int_array  len="501"> 				-1, -1, 4, 0, -1, 3, 1, 0, 2, 1, 3, 2, 0, 0, 0, 4, 5, -1, 2, 1, 3, 3, 4, 0, 1, 0, 2147483647, 6, 5, 0, 0, 0, 0, 4, 7, -1, 2, 1, 3, 3, 6, 0, 0, 0, 4, 8, -1, 2, 1, 0, 9, 7, 0, 4, 0, 10, 10, -1, 4, 11, 3, 12, 8, 13, 9, 14, 10, 0, 5, 0, 25, 15, -1, 10, 16, 11, 17, 3, 18, 3, 19, 12, 20, 12, 21, 11, 22, 13, 23, 0, 24, 0, 3, 14, 0, 6, 0, 30, 26, -1, 3, 27, 15, 28, 11, 29, 16, 0, 6, 0, 31, 31, -1, 19, 32, 17, 33, 17, 17, 17, 18, 17, 34, 18, 35, 19, 19, 20, 20, 21, 21, 13, 22, 13, 23, 0, 36, 22, 37, 23, 38, 3, 39, 3, 40, 13, 41, 24, 42, 25, 43, 26, 0, 5, 0, 25, 44, -1, 6, 17, 3, 18, 3, 21, 11, 22, 13, 23, 0, 24, 0, 0, 9, 0, 48, 45, -1, 9, 46, 27, 17, 3, 18, 3, 21, 11, 22, 13, 23, 0, 24, 0, 27, 28, 47, 13, 0, 9, 0, 57, 49, -1, 18, 46, 29, 32, 0, 18, 0, 34, 30, 35, 31, 19, 32, 20, 33, 50, 34, 21, 11, 22, 13, 23, 0, 24, 0, 51, 11, 52, 35, 53, 36, 54, 36, 55, 36, 56, 37, 0, 9, 0, 57, 58, -1, 16, 17, 0, 18, 0, 34, 38, 19, 39, 20, 40, 59, 41, 21, 11, 22, 13, 23, 0, 24, 0, 51, 11, 52, 42, 53, 43, 54, 43, 55, 43, 56, 44, 0, 9, 0, 31, 31, -1, 15, 32, 17, 17, 17, 34, 18, 19, 20, 20, 45, 21, 13, 22, 13, 23, 0, 36, 46, 37, 47, 38, 3, 40, 13, 41, 24, 42, 25, 43, 26, 0, 9, 0, 48, 60, -1, 11, 46, 48, 33, 3, 17, 3, 18, 3, 35, 49, 21, 13, 22, 11, 23, 0, 24, 0, 27, 28, 47, 13, 0, 9, 0, 31, 61, -1, 14, 32, 0, 17, 17, 18, 3, 19, 50, 21, 13, 22, 13, 23, 0, 36, 46, 37, 51, 38, 3, 39, 0, 41, 24, 42, 25, 43, 26, 0, 9, 0, 31, 62, -1, 15, 32, 17, 17, 0, 18, 3, 34, 24, 19, 24, 21, 13, 22, 13, 23, 0, 36, 46, 37, 52, 38, 3, 39, 0, 41, 24, 42, 25, 43, 26, 0, 9, 0, 2147483647, 63, 53, 3, 64, 54, 65, 55, 2, 56, 0, 9, 0, 2147483647, 66, 57, 3, 64, 58, 65, 55, 2, 56, 0, 4, 0, 82, 67, -1, 14, 68, 3, 69, 59, 70, 9, 71, 24, 72, 9, 73, 9, 74, 9, 75, 25, 76, 60, 77, 24, 78, 24, 79, 0, 80, 9, 81, 9, 0, 0, 0, 92, 83, -1, 8, 84, 61, 85, 11, 86, 13, 87, 9, 88, 13, 89, 11, 90, 9, 91, 62, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="31" shared="false">
+			<array  len="63" shared="false">
 				<int> 2 </int>
 				<resource  external="0">  </resource>
 				<dictionary  shared="false">
@@ -104,7 +231,7 @@
 						<string> "2D" </string>
 						<dictionary  shared="false">
 							<string> "ofs" </string>
-							<vector2> -245.745, -524.518 </vector2>
+							<vector2> -85.7415, 186.404 </vector2>
 							<string> "snap_grid" </string>
 							<bool> True </bool>
 							<string> "snap_offset" </string>
@@ -124,7 +251,7 @@
 							<string> "snap_step" </string>
 							<vector2> 16, 16 </vector2>
 							<string> "zoom" </string>
-							<real> 1 </real>
+							<real> 0.814506 </real>
 						</dictionary>
 						<string> "3D" </string>
 						<dictionary  shared="false">
@@ -234,26 +361,27 @@
 				</dictionary>
 				<int> 1 </int>
 				<dictionary  shared="false">
-					<string> "_editor_collapsed" </string>
-					<bool> True </bool>
-				</dictionary>
-				<resource  external="1">  </resource>
-				<resource  external="2">  </resource>
-				<vector2> -80, -416 </vector2>
-				<real> 0.08 </real>
-				<int> 5 </int>
-				<dictionary  shared="false">
 					<string> "_edit_lock_" </string>
 					<bool> True </bool>
 					<string> "_editor_collapsed" </string>
 					<bool> True </bool>
 				</dictionary>
+				<resource  external="1">  </resource>
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
+				<int> 5 </int>
 				<vector2> 0, 0 </vector2>
 				<real> 0 </real>
 				<vector2> 1, 1 </vector2>
-				<real> 24 </real>
 				<bool> False </bool>
+				<real> 24 </real>
 				<bool> True </bool>
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
 				<resource  resource_type="Texture" path="local://1">  </resource>
 				<color> 1, 1, 1, 0.590791 </color>
 				<int> 3 </int>
@@ -261,12 +389,45 @@
 				<real> 45 </real>
 				<real> -180 </real>
 				<real> -45 </real>
-				<resource  external="3">  </resource>
+				<resource  external="2">  </resource>
 				<string> "-pause-" </string>
 				<real> 1 </real>
 				<int> 0 </int>
 				<int> -1 </int>
+				<resource  resource_type="CanvasItemMaterial" path="local://6">  </resource>
+				<resource  resource_type="Texture" path="local://3">  </resource>
+				<resource  resource_type="CanvasItemMaterial" path="local://2">  </resource>
+				<real> -0.045 </real>
+				<real> -18 </real>
+				<real> 455 </real>
+				<real> 1.206081 </real>
+				<node_path> "../adela" </node_path>
+				<resource  external="3">  </resource>
 				<resource  external="4">  </resource>
+				<vector2> 0.43, 0.43 </vector2>
+				<real> 380 </real>
+				<real> 1.07 </real>
+				<real> 1.047297 </real>
+				<node_path> "../friederich" </node_path>
+				<resource  external="5">  </resource>
+				<resource  external="6">  </resource>
+				<vector2> 0.5, 0.5 </vector2>
+				<real> 31 </real>
+				<resource  external="7">  </resource>
+				<string> "KEY_CHARSELECT" </string>
+				<resource  resource_type="CanvasItemMaterial" path="local://8">  </resource>
+				<real> 296 </real>
+				<real> -64 </real>
+				<string> "Friederich" </string>
+				<string> "Adela" </string>
+				<resource  external="8">  </resource>
+				<vector2> 200, 480 </vector2>
+				<real> 0.08 </real>
+				<resource name=""></resource>				<resource  external="9">  </resource>
+				<vector2> 600, 480 </vector2>
+				<resource  resource_type="SampleLibrary" path="local://4">  </resource>
+				<real> 5000 </real>
+				<resource  external="12">  </resource>
 				<int> 500 </int>
 			</array>
 			<string> "version" </string>

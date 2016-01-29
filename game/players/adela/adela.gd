@@ -35,6 +35,8 @@ func check_animations(new_animation, animation_speed, horizontal_motion, ladderY
 func do_attack():
 	weapon_collider.set_rot(0)
 	.do_attack()
+	if (!is_crouching):
+		weapon_collider.set_pos(Vector2(weapon_collider.get_pos().x, weapon_collider.get_pos().y + TILE_SIZE))
 	attack_modifier = ""
 	if (Input.is_action_pressed("ui_up") && !is_crouching):
 		if (Input.is_action_pressed("ui_left") || Input.is_action_pressed("ui_right")):
@@ -48,7 +50,7 @@ func do_attack():
 	if (Input.is_action_pressed("ui_down") && falling):
 		if (Input.is_action_pressed("ui_left") || Input.is_action_pressed("ui_right")):
 			weapon_collider.set_rot(-direction*PI/4)
-			weapon_collider.set_pos(Vector2(direction*(weapon_offset.x/2 + TILE_SIZE), sprite_offset.y + sqrt(pow(weapon_offset.x, 2)/2) + 2))
+			weapon_collider.set_pos(Vector2(direction*(weapon_offset.x/2 + TILE_SIZE), sprite_offset.y + sqrt(pow(weapon_offset.x, 2)/2) + 2 - TILE_SIZE))
 			attack_modifier = "ddg"
 		else:
 			weapon_collider.set_rot(PI/2)
@@ -136,6 +138,8 @@ func step_player():
 			check_attacking()
 		
 			position.y = accel
+			
+			check_blood(areaTiles)
 	elif (is_swinging):
 		# disable attacking from fixed process rather than when exactly collision is detected
 		if (weapon_collided):
@@ -298,7 +302,6 @@ func play_animation(animation, speed):
 	if (whip_hanging && animation == "swing"):
 		animation_player.seek(0.2, true)
 	if (is_swinging && animation == "swing"):
-		print(fmod(fposmod(direction*(floor(swing_angle*4/(PI - MIN_SWING_RANGE * 2))-(direction - 1)/2), 5), 5))
 		animation_player.seek(fmod(fposmod(direction*(floor(swing_angle*4/(PI - MIN_SWING_RANGE * 2))-(direction - 1)/2), 5), 5)*0.1, true)
 
 func _on_weapon_collision(area):

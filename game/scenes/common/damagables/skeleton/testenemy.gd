@@ -14,20 +14,19 @@ var falling = false
 var is_dying = false
 var animation_player
 var current_animation = "walk"
+var player
 
-func _fixed_process(delta):
-	var space = get_world_2d().get_space()
-	var space_state = Physics2DServer.space_get_direct_state(space)
+func check_dying():
+	is_dying = true
+	if (has_node("damagable")):
+		remove_child(get_node("damagable"))
 
-	var frontX = get_global_pos().x + direction * sprite_offset.x
-
+func check_motion(frontX, space_state):
 	if (!is_dying):
 		var damageTiles = collision_rect.get_overlapping_areas()
 		for i in damageTiles:
 			if (i.has_node("weapon")):
-				is_dying = true
-				if (has_node("damagable")):
-					remove_child(get_node("damagable"))
+				check_dying()
 	
 		var frontTile = space_state.intersect_ray(Vector2(frontX, get_global_pos().y - sprite_offset.y), Vector2(frontX, get_global_pos().y + sprite_offset.y - 1))
 	
@@ -44,9 +43,10 @@ func _fixed_process(delta):
 		
 		move(Vector2(MOVESPEED * direction, 0))
 
+func step_vertical(frontX, space_state):
 	var desiredY = accel
-
-	var floorTile = space_state.intersect_ray(Vector2(frontX, get_global_pos().y + sprite_offset.y), Vector2(frontX, get_global_pos().y + sprite_offset.y + desiredY))
+	
+	var floorTile = space_state.intersect_ray(Vector2(frontX, get_global_pos().y + sprite_offset.y), Vector2(frontX, get_global_pos().y + sprite_offset.y + desiredY), [player.get_node("player")])
 	
 	falling = true
 	
@@ -60,11 +60,28 @@ func _fixed_process(delta):
 		accel += 1
 	
 	move(Vector2(0, desiredY))
+
+func check_animation(new_animation):
+	if (is_dying):
+		new_animation = "die"
+	return new_animation
+
+func die():
+	queue_free()
+
+func _fixed_process(delta):
+	var space = get_world_2d().get_space()
+	var space_state = Physics2DServer.space_get_direct_state(space)
+
+	var frontX = get_global_pos().x + direction * sprite_offset.x
+
+	check_motion(frontX, space_state)
+	
+	step_vertical(frontX, space_state)
 	
 	var new_animation = "walk"
 	
-	if (is_dying):
-		new_animation = "die"
+	new_animation = check_animation(new_animation)
 	
 	get_node(new_animation).set_scale(Vector2(direction, 1))
 	
@@ -73,13 +90,11 @@ func _fixed_process(delta):
 		current_animation = new_animation
 		
 	if (is_dying && !animation_player.is_playing()):
-		queue_free()
+		die()
 
 func _ready():
 	collision_rect = get_node("damagable")
 	sprite_offset = get_node("damagable/CollisionShape2D").get_shape().get_extents()
 	animation_player = get_node("AnimationPlayer")
-
+	player = get_tree().get_root().get_node("world/playercontainer")
 	set_fixed_process(true)
-
-
