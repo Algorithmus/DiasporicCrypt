@@ -12,6 +12,7 @@ var sprite_offset
 var direction = 1
 var falling = false
 var is_dying = false
+var is_hurt = false
 var animation_player
 var current_animation = "walk"
 var player
@@ -20,42 +21,49 @@ var hud
 var hp = 1
 var hurt_delay = 10
 var current_delay = 0
+var walk_delay = 60
+var current_walk_delay = 0
 
 func check_dying():
 	if (hp >= 0):
 		is_dying = true
+		is_hurt = false
 		if (has_node("damagable")):
 			remove_child(get_node("damagable"))
 
 func check_motion(frontX, space_state):
-	if (!is_dying && current_delay == 0):
-		var damageTiles = collision_rect.get_overlapping_areas()
-		for i in damageTiles:
-			if (i.has_node("weapon")):
-				var hp_obj = hpclass.instance()
-				hud.add_child(hp_obj)
-				var hitpos = hp_obj.calculate_hitpos(i.get_global_pos(), i.get_node("weapon").get_shape().get_extents(), get_pos(), sprite_offset)
-				hp -= 1
-				check_dying()
-				# TODO - calculate damage helper method
-				hp_obj.display_damage(hitpos, 1)
-				player.get_node("player").set("hit_enemy", true)
-				current_delay += 1
+	if (!is_dying):
+		if(current_delay == 0):
+			var damageTiles = collision_rect.get_overlapping_areas()
+			for i in damageTiles:
+				if (i.has_node("weapon")):
+					var hp_obj = hpclass.instance()
+					hud.add_child(hp_obj)
+					var hitpos = hp_obj.calculate_hitpos(i.get_global_pos(), i.get_node("weapon").get_shape().get_extents(), get_pos(), sprite_offset)
+					hp -= 1
+					is_hurt = true
+					check_dying()
+					# TODO - calculate damage helper method
+					hp_obj.display_damage(hitpos, 1)
+					player.get_node("player").set("hit_enemy", true)
+					current_delay += 1
+					current_walk_delay += 1
 	
-		var frontTile = space_state.intersect_ray(Vector2(frontX, get_global_pos().y - sprite_offset.y), Vector2(frontX, get_global_pos().y + sprite_offset.y - 1))
-	
-		if (frontTile != null && frontTile.has("position")):
-			direction = direction * -1
+		if (!is_hurt):
+			var frontTile = space_state.intersect_ray(Vector2(frontX, get_global_pos().y - sprite_offset.y), Vector2(frontX, get_global_pos().y + sprite_offset.y - 1))
 		
-		frontTile = space_state.intersect_ray(Vector2(frontX + direction*MOVESPEED, get_global_pos().y + sprite_offset.y), Vector2(frontX + direction*MOVESPEED, get_global_pos().y + sprite_offset.y + TILESIZE))
-		if (frontTile == null || !frontTile.has("position")):
-			direction = direction * -1
-		if (frontTile != null && frontTile.has("collider")):
-			var collider = frontTile["collider"]
-			if (collider.get_name() == "player" && collider.get_global_pos().y - collider["sprite_offset"].y > get_global_pos().y + sprite_offset.y):
+			if (frontTile != null && frontTile.has("position")):
 				direction = direction * -1
-		
-		move(Vector2(MOVESPEED * direction, 0))
+			
+			frontTile = space_state.intersect_ray(Vector2(frontX + direction*MOVESPEED, get_global_pos().y + sprite_offset.y), Vector2(frontX + direction*MOVESPEED, get_global_pos().y + sprite_offset.y + TILESIZE))
+			if (frontTile == null || !frontTile.has("position")):
+				direction = direction * -1
+			if (frontTile != null && frontTile.has("collider")):
+				var collider = frontTile["collider"]
+				if (collider.get_name() == "player" && collider.get_global_pos().y - collider["sprite_offset"].y > get_global_pos().y + sprite_offset.y):
+					direction = direction * -1
+			
+			move(Vector2(MOVESPEED * direction, 0))
 
 func step_vertical(frontX, space_state):
 	var desiredY = accel
@@ -78,6 +86,8 @@ func step_vertical(frontX, space_state):
 func check_animation(new_animation):
 	if (is_dying):
 		new_animation = "die"
+	if (is_hurt):
+		new_animation = "hurt"
 	return new_animation
 
 func die():
@@ -107,7 +117,10 @@ func _fixed_process(delta):
 	if (new_animation != current_animation):
 		animation_player.play(new_animation)
 		current_animation = new_animation
-		
+	
+	if (is_hurt && !animation_player.is_playing()):
+		is_hurt = false
+	
 	if (is_dying && !animation_player.is_playing()):
 		die()
 

@@ -100,6 +100,8 @@ func step_player():
 	var horizontal_motion = false
 	var ladderY = 0
 	
+	# chain specials are "choreographed". So ignore all other 
+	# collision detections while it is in progress.
 	if (!is_chain_special):
 		# step horizontal motion first
 		var horizontal = step_horizontal(space_state)
@@ -142,10 +144,25 @@ func step_player():
 	
 			check_attacking()
 			
+			# chaining system
+			# Chain attacks are a series of consecutive attacks. They are
+			# only triggered while attacking enemies or certain other objects.
+			# There are two types of basic chain attack animations.
+			# All valid chain attacks and directional inputs (well, just three of them anyways)
+			# are stored in the attack buffer.
+			# When a special attack combo is recognized, remove all the inputs required to
+			# create it and merge it into a single input. Special attacks work slightly
+			# differently from regular attacks and are handled differently.
+			# chain attacking is cancelled when the player is hurt, there is no attack input
+			# after a certain amount of time or the maximum number of chain attacks are reached. 
+			# when cancelling the chain, clear the attack buffer.
+			
+			# add direction buttons to chain specials if applicable
 			if (direction_requested != ""):
 				attack_buffer.append(direction_requested)
 				direction_requested = ""
 			
+			# check attack buffer for chain special combos
 			if (attack_buffer.size() > 1):
 				var combos = str(attack_buffer)
 				for combo in chain_specials:
@@ -162,11 +179,11 @@ func step_player():
 						chain_counter += 1
 						chaingui.get_node("chaintext/counterGroup/counter").set_text(str(chain_counter))
 						chaingui.get_node("AnimationPlayer").play("counter")
-						print("found combo at " + str(combopos))
-						print(combos)
+						# merge combo in attack buffer
 						var parta = combos.substr(0, combopos)
 						var partb = combos.substr(combopos+combo["combo"].length(), combos.length())
 						attack_buffer = convert(str(parta + combo["replace"] + partb).split(", "), TYPE_ARRAY)
+						# setup special attack
 						is_chain_special = true
 						current_chain_special = combo
 						current_chain_delay = 0
@@ -177,8 +194,8 @@ func step_player():
 						get_node("sound").set_volume_db(get_node("sound").play(current_chain_special["id"]), current_chain_special["db"])
 						new_animation = current_chain_special["id"]
 						special_collider.connect("area_enter", self, "_on_special_collision")
-						print(attack_buffer)
 			
+			# if attack connects with an enemy, count it as an attack in the attack buffer
 			if (hit_enemy):
 				hit_enemy = false
 				attack_reset_interrupt = true
@@ -186,6 +203,7 @@ func step_player():
 				attack_buffer.append("a")
 				chain_counter += 1
 				chaingui.get_node("chaintext/counterGroup/counter").set_text(str(chain_counter))
+				# secondary chain attack
 				if (chain_next && !is_crouching):
 					chain_animation = "chain"
 					chain_collider.set_pos(Vector2((weapon_offset.x + sprite_offset.x + 4) * -direction, -sprite_offset.y + weapon_offset.y))
@@ -195,15 +213,12 @@ func step_player():
 					get_node("sound").set_volume_db(get_node("sound").play("chain"), 3)
 				else:
 					chain_animation = ""
-				# reset this if a special attack is triggered
 				chain_next = !chain_next
 				if (chain_counter > 1 && !chaingui.is_visible()):
 					chaingui.show()
 					chaingui.get_node("AnimationPlayer").play("appear")
 				else:
 					chaingui.get_node("AnimationPlayer").play("counter")
-				print("attack_buffer")
-				print(str(attack_buffer))
 			else:
 				current_chain_delay += 1
 	
@@ -211,10 +226,12 @@ func step_player():
 			
 			check_blood(areaTiles)
 	else:
+		# check special attack
 		new_animation = current_chain_special["id"]
 		horizontal_motion = false
 		ladderY = 0
-		if (target_enemy != null):
+		# make sure the target is still in the world before matching up coordinates
+		if (target_enemy != null && target_enemy.get_parent() != null):
 			position.y = target_enemy.get_global_pos().y - get_global_pos().y + target_enemy_offset.y
 		if (animation_player.get_current_animation_length() == animation_player.get_current_animation_pos()):
 			is_chain_special = false
@@ -267,7 +284,6 @@ func do_attack():
 	attack_reset_interrupt = false
 
 func _on_chain_collision(area):
-	
 	var collisions = chain_collider.get_overlapping_areas()
 	for i in collisions:
 		if (i.get_name() != "damage" && i != chain_collider && i.get_name() != "oneway" && !i.get_name().match("slope*") && i.get_name() != "ladder"):
