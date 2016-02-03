@@ -58,6 +58,8 @@ var jumpspeed = JUMP_SPEED
 var defaultfallheight = DEFAULT_FALL_HEIGHT
 var consumable
 var blood_requested = false
+var hit_enemy = false
+var area2d_blacklist = []
 
 func min_array(array):
 	if (array.size() == 1):
@@ -76,7 +78,7 @@ func isSlope(name):
 	return name.match("slope*-*")
 
 func getSlopes(space_state):
-	var relevantSlopeTile = space_state.intersect_ray(Vector2(get_global_pos().x, get_global_pos().y+sprite_offset.y), Vector2(get_global_pos().x, get_global_pos().y+sprite_offset.y+8), [self, damage_rect, weapon_collider], 2147483647, 16)
+	var relevantSlopeTile = space_state.intersect_ray(Vector2(get_global_pos().x, get_global_pos().y+sprite_offset.y), Vector2(get_global_pos().x, get_global_pos().y+sprite_offset.y+8), area2d_blacklist, 2147483647, 16)
 	if (relevantSlopeTile.has("collider")):
 		var collider = relevantSlopeTile["collider"]
 		if (isSlope(collider.get_name())):
@@ -100,14 +102,14 @@ func getClimbPlatform(space_state, direction):
 
 func getLadderTile(space_state):
 	var leftX = get_global_pos().x - sprite_offset.x
-	var ladderTile = space_state.intersect_ray(Vector2(leftX, get_global_pos().y - sprite_offset.y), Vector2(leftX, get_global_pos().y + sprite_offset.y), [self, damage_rect, weapon_collider], 2147483647, 16)
+	var ladderTile = space_state.intersect_ray(Vector2(leftX, get_global_pos().y - sprite_offset.y), Vector2(leftX, get_global_pos().y + sprite_offset.y), area2d_blacklist, 2147483647, 16)
 	if (ladderTile.has("collider")):
 		var tileName = ladderTile["collider"].get_name()
 		if (tileName == "ladder" || tileName == "ladder_top"):
 			return ladderTile["collider"]
 
 	var rightX = get_global_pos().x + sprite_offset.x
-	ladderTile = space_state.intersect_ray(Vector2(rightX, get_global_pos().y - sprite_offset.y), Vector2(rightX, get_global_pos().y + sprite_offset.y), [self, damage_rect, weapon_collider], 2147483647, 16)
+	ladderTile = space_state.intersect_ray(Vector2(rightX, get_global_pos().y - sprite_offset.y), Vector2(rightX, get_global_pos().y + sprite_offset.y), area2d_blacklist, 2147483647, 16)
 	if (ladderTile.has("collider")):
 		var tileName = ladderTile["collider"].get_name()
 		if (tileName == "ladder" || tileName == "ladder_top"):
@@ -120,7 +122,7 @@ func snapToLadder(ladder):
 
 func getOneWayTile(space_state, desiredY):
 	var leftX = get_global_pos().x - sprite_offset.x
-	var oneWayTile = space_state.intersect_ray(Vector2(leftX, get_global_pos().y + sprite_offset.y), Vector2(leftX, get_global_pos().y + sprite_offset.y + desiredY), [self, damage_rect, weapon_collider], 2147483647, 16)
+	var oneWayTile = space_state.intersect_ray(Vector2(leftX, get_global_pos().y + sprite_offset.y), Vector2(leftX, get_global_pos().y + sprite_offset.y + desiredY), area2d_blacklist, 2147483647, 16)
 	if (oneWayTile.has("collider")):
 		if (oneWayTile["collider"].get_name() == "oneway"):
 			return oneWayTile["collider"]
@@ -877,6 +879,8 @@ func _ready():
 	weapon_offset = weapon_collider.get_node("weapon").get_shape().get_extents()
 
 	weapon_collider.connect("area_enter", self, "_on_weapon_collision")
+	
+	area2d_blacklist = [self, damage_rect, weapon_collider]
 	
 	get_node("sound").set_polyphony(10)
 	

@@ -15,18 +15,32 @@ var is_dying = false
 var animation_player
 var current_animation = "walk"
 var player
+var hpclass = preload("res://gui/hud/hp.scn")
+var hud
+var hp = 1
+var hurt_delay = 10
+var current_delay = 0
 
 func check_dying():
-	is_dying = true
-	if (has_node("damagable")):
-		remove_child(get_node("damagable"))
+	if (hp >= 0):
+		is_dying = true
+		if (has_node("damagable")):
+			remove_child(get_node("damagable"))
 
 func check_motion(frontX, space_state):
-	if (!is_dying):
+	if (!is_dying && current_delay == 0):
 		var damageTiles = collision_rect.get_overlapping_areas()
 		for i in damageTiles:
 			if (i.has_node("weapon")):
+				var hp_obj = hpclass.instance()
+				hud.add_child(hp_obj)
+				var hitpos = hp_obj.calculate_hitpos(i.get_global_pos(), i.get_node("weapon").get_shape().get_extents(), get_pos(), sprite_offset)
+				hp -= 1
 				check_dying()
+				# TODO - calculate damage helper method
+				hp_obj.display_damage(hitpos, 1)
+				player.get_node("player").set("hit_enemy", true)
+				current_delay += 1
 	
 		var frontTile = space_state.intersect_ray(Vector2(frontX, get_global_pos().y - sprite_offset.y), Vector2(frontX, get_global_pos().y + sprite_offset.y - 1))
 	
@@ -85,6 +99,11 @@ func _fixed_process(delta):
 	
 	get_node(new_animation).set_scale(Vector2(direction, 1))
 	
+	if (current_delay > 0):
+		current_delay += 1
+		if (current_delay >= hurt_delay):
+			current_delay = 0
+	
 	if (new_animation != current_animation):
 		animation_player.play(new_animation)
 		current_animation = new_animation
@@ -97,4 +116,5 @@ func _ready():
 	sprite_offset = get_node("damagable/CollisionShape2D").get_shape().get_extents()
 	animation_player = get_node("AnimationPlayer")
 	player = get_tree().get_root().get_node("world/playercontainer")
+	hud = get_tree().get_root().get_node("world/gui/hpcontainer")
 	set_fixed_process(true)

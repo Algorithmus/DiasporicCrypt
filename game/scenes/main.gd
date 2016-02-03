@@ -32,6 +32,7 @@ func _ready():
 	pause = get_node("gui/CanvasLayer/pause")
 	music = get_node("music")
 	pause.hide()
+	get_node("gui/CanvasLayer/chain").hide()
 	select = get_node("gui/CanvasLayer/select")
 	var selectf = select.get_node("friederich")
 	var selecta = select.get_node("adela")
@@ -45,8 +46,6 @@ func _ready():
 	select.get_node("adela_sprite/AnimationPlayer").play("idle")
 	fspriteOffset = Vector2(select.get_node("friederich_sprite").get_pos().x, original_size.y - select.get_node("friederich_sprite").get_pos().y)
 	aspriteOffset = Vector2(original_size.x - select.get_node("adela_sprite").get_pos().x, original_size.y - select.get_node("adela_sprite").get_pos().y)
-	print(fspriteOffset)
-	print(aspriteOffset)
 	select.show()
 	is_paused = true
 	get_tree().set_pause(is_paused)

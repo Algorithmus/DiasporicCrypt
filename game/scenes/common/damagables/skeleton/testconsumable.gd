@@ -3,7 +3,6 @@ extends "res://scenes/common/damagables/skeleton/testenemy.gd"
 
 var consumable = false
 var base_consume_value = 10
-var hp = 3
 var blood = preload("res://scenes/common/blood.xml")
 var blood_particles = []
 var current_consume_value
@@ -16,6 +15,7 @@ func check_motion(frontX, space_state):
 		.check_motion(frontX, space_state)
 
 func _ready():
+	hp = 5
 	current_consume_value = base_consume_value * (randf() * 0.5 - 0.25) + base_consume_value
 	var color = get_node("die").get_modulate()
 	color_increments = Color((1 - color.r)/current_consume_value, -color.g/current_consume_value, -color.b/current_consume_value)
@@ -64,7 +64,6 @@ func die():
 	add_child(consumable_obj)
 
 func check_dying():
-	hp -= 1
 	bleed()
 	if (hp <= 0):
 		is_dying = true
