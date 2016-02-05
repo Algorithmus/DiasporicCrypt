@@ -775,9 +775,9 @@ func calculate_fall_height():
 		fall_height = 0
 
 func _fixed_process(delta):
-	step_player()
+	step_player(delta)
 
-func step_player():
+func step_player(delta):
 	var space = get_world_2d().get_space()
 	var space_state = Physics2DServer.space_get_direct_state(space)
 	var animation_speed = 1

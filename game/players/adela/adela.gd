@@ -57,7 +57,7 @@ func do_attack():
 			weapon_collider.set_pos(Vector2(0, sprite_offset.y + weapon_offset.x + 2))
 			attack_modifier = "d"
 
-func step_player():
+func step_player(delta):
 	var space = get_world_2d().get_space()
 	var space_state = Physics2DServer.space_get_direct_state(space)
 	var animation_speed = 1

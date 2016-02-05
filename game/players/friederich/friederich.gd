@@ -12,12 +12,19 @@ var chain_collider
 var chain_collided = false
 var attack_reset_interrupt = false
 var direction_requested = ""
-var chain_specials = [{"combo":"a, a, d", "id":"chop", "replace":"aad", "collider":preload("res://scenes/weapons/chop.scn"), "collider_offset":Vector2(0, 0), "db":10}]
+var chain_specials = [
+	{"combo":"a, a, d", "id":"chop", "replace":"aad", "collider":preload("res://scenes/weapons/chop.scn"), "collider_offset":Vector2(0, 0), "db":10},
+	{"combo":"a, a, a", "id":"thrust", "replace":"aaa", "collider":preload("res://scenes/weapons/thrust.scn"), "collider_offset":Vector2(0, -32), "db":10},
+	{"combo":"aaa, a", "id":"swift", "replace":"aaaa", "collider":preload("res://scenes/weapons/swift.scn"), "collider_offset":Vector2(0, 0), "db":10}
+	]
 var target_enemy
 var is_chain_special = false
 var current_chain_special
 var special_collider
 var target_enemy_offset
+#delay after special attack finishes so that attacks afterwards hit enemies
+#seamlessly
+var special_delay = 10
 
 const MAX_CHAIN = 100
 
@@ -66,7 +73,7 @@ func check_attacking():
 	if ((animation_player.get_current_animation().match("*chainattack") && animation_player.get_current_animation_length() == animation_player.get_current_animation_pos()) || climbing_platform || hanging || on_ladder):
 		remove_chain_collider()
 
-func step_player():
+func step_player(delta):
 	var space = get_world_2d().get_space()
 	var space_state = Physics2DServer.space_get_direct_state(space)
 	var animation_speed = 1
@@ -158,7 +165,7 @@ func step_player():
 			# when cancelling the chain, clear the attack buffer.
 			
 			# add direction buttons to chain specials if applicable
-			if (direction_requested != ""):
+			if (direction_requested != "" && chain_counter > 1):
 				attack_buffer.append(direction_requested)
 				direction_requested = ""
 			
@@ -167,7 +174,7 @@ func step_player():
 				var combos = str(attack_buffer)
 				for combo in chain_specials:
 					var combopos = combos.rfind(combo["combo"])
-					if(combopos >= 0):
+					if(combopos == 0 || (combopos > 0 && combos[combopos-1] == " ")):
 						hit_enemy = false
 						remove_weapon_collider()
 						remove_chain_collider()
@@ -187,6 +194,7 @@ func step_player():
 						is_chain_special = true
 						current_chain_special = combo
 						current_chain_delay = 0
+						remove_special_collider()
 						special_collider = current_chain_special["collider"].instance()
 						var special_offset = special_collider.get_node("weapon").get_shape().get_extents()
 						special_collider.set_pos(Vector2(((special_offset.x + sprite_offset.x + 4) + current_chain_special["collider_offset"].x) * direction, current_chain_special["collider_offset"].y))
@@ -230,16 +238,33 @@ func step_player():
 		new_animation = current_chain_special["id"]
 		horizontal_motion = false
 		ladderY = 0
+		var target_exists = false
 		# make sure the target is still in the world before matching up coordinates
 		if (target_enemy != null && target_enemy.get_parent() != null):
+			target_exists = true
 			position.y = target_enemy.get_global_pos().y - get_global_pos().y + target_enemy_offset.y
-		if (animation_player.get_current_animation_length() == animation_player.get_current_animation_pos()):
-			is_chain_special = false
-			remove_special_collider()
-			if (target_enemy == null):
-				reset_chain()
-			target_enemy = null
+		# do special attack specific actions
+		if (current_chain_special["id"] == "thrust"):
+			if (target_exists && hit_enemy && target_enemy.get_name() == "damagable"):
+				target_enemy.get_parent().set_global_pos(Vector2(target_enemy.get_global_pos().x + direction * 5, target_enemy.get_global_pos().y))
+		if (hit_enemy):
 			hit_enemy = false
+		# remove collider by [hurt delay] before end of the special animation
+		# this prevents stray attacks from not being counted for special attacks
+		# since they only count if they hit enemies, and enemies have hurt delays
+		var animation_pos = animation_player.get_current_animation_pos()
+		var animation_length = animation_player.get_current_animation_length()
+		if (animation_length - special_delay * delta <= animation_pos):
+			if (animation_player.get_current_animation_length() == animation_player.get_current_animation_pos()):
+				is_chain_special = false
+				remove_special_collider()
+				if (target_enemy == null):
+					reset_chain()
+				target_enemy = null
+				hit_enemy = false
+				attack_requested = false
+			else:
+				remove_special_collider()
 		
 	# check animations
 	var animations = check_animations(new_animation, animation_speed, horizontal_motion, ladderY)
@@ -268,20 +293,15 @@ func reset_chain():
 	chain_animation = ""
 	remove_chain_collider()
 	chain_collided = false
+	remove_special_collider()
 
 func remove_chain_collider():
 	if (has_node(chain_collider.get_name())):
 		remove_child(chain_collider)
 
 func remove_special_collider():
-	if (has_node(special_collider.get_name())):
+	if (special_collider != null && has_node(special_collider.get_name())):
 		remove_child(special_collider)
-
-func do_attack():
-	.do_attack()
-	if (!attack_reset_interrupt):
-		reset_chain()
-	attack_reset_interrupt = false
 
 func _on_chain_collision(area):
 	var collisions = chain_collider.get_overlapping_areas()
