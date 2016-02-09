@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="24" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
-	<ext_resource path="res://players/adela/adela.xml" type="PackedScene" index="9"></ext_resource>
+<resource_file type="PackedScene" subresource_count="25" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
 	<ext_resource path="res://scenes/main.gd" type="Script" index="0"></ext_resource>
+	<ext_resource path="res://players/adela/adela.xml" type="PackedScene" index="9"></ext_resource>
 	<ext_resource path="res://gui/select/friederich.png" type="Texture" index="4"></ext_resource>
-	<ext_resource path="res://players/friederich/friederich.xml" type="PackedScene" index="8"></ext_resource>
-	<ext_resource path="res://gui/select/adela.png" type="Texture" index="6"></ext_resource>
+	<ext_resource path="res://gui/fonts/XL-72.fnt" type="Font" index="3"></ext_resource>
+	<ext_resource path="res://levels/sandbox/sandbox.scn" type="PackedScene" index="1"></ext_resource>
+	<ext_resource path="res://levels/common/BGM1.ogg" type="AudioStream" index="12"></ext_resource>
+	<ext_resource path="res://gui/confirm.wav" type="Sample" index="10"></ext_resource>
 	<ext_resource path="res://gui/fonts/L-24.fnt" type="Font" index="2"></ext_resource>
 	<ext_resource path="res://gui/select/friederich-select.png" type="Texture" index="5"></ext_resource>
-	<ext_resource path="res://gui/fonts/XL-72.fnt" type="Font" index="3"></ext_resource>
-	<ext_resource path="res://gui/cursor.wav" type="Sample" index="11"></ext_resource>
+	<ext_resource path="res://players/friederich/friederich.xml" type="PackedScene" index="8"></ext_resource>
 	<ext_resource path="res://gui/select/adela-select.png" type="Texture" index="7"></ext_resource>
-	<ext_resource path="res://gui/confirm.wav" type="Sample" index="10"></ext_resource>
-	<ext_resource path="res://levels/common/BGM1.ogg" type="AudioStream" index="12"></ext_resource>
-	<ext_resource path="res://levels/sandbox/sandbox.scn" type="PackedScene" index="1"></ext_resource>
+	<ext_resource path="res://gui/cursor.wav" type="Sample" index="11"></ext_resource>
+	<ext_resource path="res://gui/select/adela.png" type="Texture" index="6"></ext_resource>
 	<resource type="Animation" path="local://10">
 		<string name="resource/name"> "counter" </string>
 		<real name="length"> 0.2 </real>
@@ -32,6 +32,30 @@
 			<array  len="3" shared="false">
 				<vector2> 1, 1 </vector2>
 				<vector2> 1.5, 1.5 </vector2>
+				<vector2> 1, 1 </vector2>
+			</array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://11">
+		<string name="resource/name"> "newattack" </string>
+		<real name="length"> 0.2 </real>
+		<bool name="loop"> False </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> "newattack:transform/scale" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "cont" </string>
+			<bool> True </bool>
+			<string> "times" </string>
+			<real_array  len="3"> 				0, 0.1, 0.2 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="3"> 				0.25, 0.25, 1 </real_array>
+			<string> "values" </string>
+			<array  len="3" shared="false">
+				<vector2> 1, 1 </vector2>
+				<vector2> 1.34375, 1.34375 </vector2>
 				<vector2> 1, 1 </vector2>
 			</array>
 		</dictionary>
@@ -151,12 +175,12 @@
 			<string> "conn_count" </string>
 			<int> 6 </int>
 			<string> "conns" </string>
-			<int_array  len="36"> 				18, 0, 108, 107, 2, 0, 18, 0, 110, 109, 2, 0, 18, 0, 112, 111, 2, 0, 19, 0, 108, 113, 2, 0, 19, 0, 110, 114, 2, 0, 19, 0, 112, 115, 2, 0 </int_array>
+			<int_array  len="36"> 				20, 0, 112, 111, 2, 0, 20, 0, 114, 113, 2, 0, 20, 0, 116, 115, 2, 0, 21, 0, 112, 117, 2, 0, 21, 0, 114, 118, 2, 0, 21, 0, 116, 119, 2, 0 </int_array>
 			<string> "editable_instances" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="116">
+			<string_array  len="120">
 				<string> "world" </string>
 				<string> "process/pause_mode" </string>
 				<string> "script/script" </string>
@@ -194,17 +218,22 @@
 				<string> "counter" </string>
 				<string> "anchor/top" </string>
 				<string> "anchor/bottom" </string>
+				<string> "newattack" </string>
+				<string> "newattack_text" </string>
+				<string> "uppercase" </string>
 				<string> "AnimationPlayer" </string>
 				<string> "playback/process_mode" </string>
 				<string> "playback/default_blend_time" </string>
 				<string> "root/root" </string>
 				<string> "anims/counter" </string>
+				<string> "anims/newattack" </string>
 				<string> "anims/appear" </string>
 				<string> "playback/active" </string>
 				<string> "playback/speed" </string>
 				<string> "blend_times" </string>
 				<string> "autoplay" </string>
 				<string> "pause" </string>
+				<string> "visibility/visible" </string>
 				<string> "anchor/right" </string>
 				<string> "shield" </string>
 				<string> "texture" </string>
@@ -215,7 +244,6 @@
 				<string> "margin/left" </string>
 				<string> "align" </string>
 				<string> "valign" </string>
-				<string> "uppercase" </string>
 				<string> "select" </string>
 				<string> "BG" </string>
 				<string> "material/material" </string>
@@ -275,19 +303,19 @@
 				<string> "_adela_exit" </string>
 			</string_array>
 			<string> "node_count" </string>
-			<int> 28 </int>
+			<int> 30 </int>
 			<string> "node_paths" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="634"> 				-1, -1, 4, 0, -1, 3, 1, 0, 2, 1, 3, 2, 0, 0, 0, 4, 5, -1, 2, 1, 3, 3, 4, 0, 1, 0, 2147483647, 6, 5, 0, 0, 0, 0, 4, 7, -1, 2, 1, 3, 3, 6, 0, 0, 0, 4, 8, -1, 2, 1, 0, 9, 7, 0, 4, 0, 4, 10, -1, 0, 0, 4, 0, 11, 11, -1, 4, 12, 3, 13, 8, 14, 9, 15, 10, 0, 6, 0, 23, 16, -1, 7, 17, 11, 18, 11, 19, 12, 20, 13, 21, 0, 22, 0, 3, 14, 0, 7, 0, 4, 24, -1, 1, 25, 15, 0, 8, 0, 32, 16, -1, 11, 26, 16, 17, 17, 18, 18, 19, 13, 20, 13, 21, 0, 27, 19, 28, 20, 29, 21, 30, 22, 31, 23, 0, 8, 0, 4, 33, -1, 1, 25, 24, 0, 10, 0, 32, 34, -1, 13, 35, 25, 36, 25, 26, 26, 17, 27, 18, 18, 19, 13, 20, 13, 21, 0, 27, 19, 28, 28, 29, 21, 30, 22, 31, 23, 0, 7, 0, 37, 37, -1, 9, 38, 3, 39, 9, 40, 29, 41, 30, 42, 31, 43, 13, 44, 21, 45, 32, 46, 33, 0, 6, 0, 23, 47, -1, 9, 48, 3, 36, 3, 17, 34, 18, 34, 19, 12, 20, 13, 21, 0, 22, 0, 3, 35, 0, 13, 0, 53, 49, -1, 3, 50, 36, 51, 12, 52, 37, 0, 13, 0, 32, 32, -1, 19, 54, 25, 35, 25, 48, 25, 36, 25, 55, 38, 26, 39, 17, 40, 18, 41, 19, 13, 20, 13, 21, 0, 27, 42, 28, 43, 56, 3, 57, 3, 58, 13, 29, 21, 30, 22, 31, 23, 0, 6, 0, 23, 59, -1, 7, 48, 3, 36, 3, 19, 12, 20, 13, 21, 0, 22, 0, 3, 44, 0, 16, 0, 63, 60, -1, 9, 61, 45, 48, 3, 36, 3, 19, 12, 20, 13, 21, 0, 22, 0, 50, 46, 62, 13, 0, 16, 0, 72, 64, -1, 18, 61, 47, 54, 0, 36, 0, 55, 48, 26, 49, 17, 50, 18, 51, 65, 52, 19, 12, 20, 13, 21, 0, 22, 0, 66, 12, 67, 53, 68, 54, 69, 54, 70, 54, 71, 55, 0, 16, 0, 72, 73, -1, 16, 48, 0, 36, 0, 55, 56, 17, 57, 18, 58, 74, 59, 19, 12, 20, 13, 21, 0, 22, 0, 66, 12, 67, 60, 68, 61, 69, 61, 70, 61, 71, 62, 0, 16, 0, 32, 32, -1, 15, 54, 25, 48, 25, 55, 38, 17, 40, 18, 63, 19, 13, 20, 13, 21, 0, 27, 19, 28, 64, 56, 3, 58, 13, 29, 21, 30, 22, 31, 23, 0, 16, 0, 63, 75, -1, 11, 61, 65, 35, 3, 48, 3, 36, 3, 26, 66, 19, 13, 20, 12, 21, 0, 22, 0, 50, 46, 62, 13, 0, 16, 0, 32, 76, -1, 14, 54, 0, 48, 25, 36, 3, 17, 67, 19, 13, 20, 13, 21, 0, 27, 19, 28, 68, 56, 3, 57, 0, 29, 21, 30, 22, 31, 23, 0, 16, 0, 32, 77, -1, 15, 54, 25, 48, 0, 36, 3, 55, 21, 17, 21, 19, 13, 20, 13, 21, 0, 27, 19, 28, 69, 56, 3, 57, 0, 29, 21, 30, 22, 31, 23, 0, 16, 0, 2147483647, 78, 70, 3, 25, 71, 79, 72, 2, 73, 0, 16, 0, 2147483647, 80, 74, 3, 25, 75, 79, 72, 2, 73, 0, 4, 0, 96, 81, -1, 14, 82, 3, 83, 76, 84, 9, 85, 21, 86, 9, 87, 9, 88, 9, 89, 22, 90, 77, 91, 21, 92, 21, 93, 0, 94, 9, 95, 9, 0, 0, 0, 106, 97, -1, 8, 98, 78, 99, 12, 100, 13, 101, 9, 102, 13, 103, 12, 104, 9, 105, 79, 0 </int_array>
+			<int_array  len="682"> 				-1, -1, 4, 0, -1, 3, 1, 0, 2, 1, 3, 2, 0, 0, 0, 4, 5, -1, 2, 1, 3, 3, 4, 0, 1, 0, 2147483647, 6, 5, 0, 0, 0, 0, 4, 7, -1, 2, 1, 3, 3, 6, 0, 0, 0, 4, 8, -1, 2, 1, 0, 9, 7, 0, 4, 0, 4, 10, -1, 0, 0, 4, 0, 11, 11, -1, 4, 12, 3, 13, 8, 14, 9, 15, 10, 0, 6, 0, 23, 16, -1, 6, 17, 11, 18, 11, 19, 12, 20, 13, 21, 0, 22, 0, 0, 7, 0, 4, 24, -1, 2, 25, 14, 3, 15, 0, 8, 0, 32, 16, -1, 11, 26, 16, 17, 17, 18, 18, 19, 13, 20, 13, 21, 0, 27, 19, 28, 20, 29, 21, 30, 22, 31, 23, 0, 8, 0, 4, 33, -1, 1, 25, 24, 0, 10, 0, 32, 34, -1, 13, 35, 25, 36, 25, 26, 26, 17, 27, 18, 18, 19, 13, 20, 13, 21, 0, 27, 19, 28, 28, 29, 21, 30, 22, 31, 23, 0, 7, 0, 4, 37, -1, 2, 25, 29, 3, 30, 0, 12, 0, 32, 38, -1, 12, 26, 16, 17, 31, 18, 18, 19, 13, 20, 13, 21, 0, 27, 19, 28, 32, 39, 13, 29, 21, 30, 22, 31, 23, 0, 7, 0, 40, 40, -1, 10, 41, 3, 42, 9, 43, 33, 44, 34, 45, 35, 46, 36, 47, 13, 48, 21, 49, 37, 50, 38, 0, 6, 0, 23, 51, -1, 10, 52, 12, 53, 3, 36, 3, 17, 39, 18, 39, 19, 12, 20, 13, 21, 0, 22, 0, 3, 40, 0, 15, 0, 58, 54, -1, 3, 55, 41, 56, 12, 57, 42, 0, 15, 0, 32, 32, -1, 19, 59, 25, 35, 25, 53, 25, 36, 25, 60, 43, 26, 44, 17, 45, 18, 46, 19, 13, 20, 13, 21, 0, 27, 47, 28, 48, 61, 3, 62, 3, 39, 13, 29, 21, 30, 22, 31, 23, 0, 6, 0, 23, 63, -1, 8, 52, 12, 53, 3, 36, 3, 19, 12, 20, 13, 21, 0, 22, 0, 3, 49, 0, 18, 0, 67, 64, -1, 9, 65, 50, 53, 3, 36, 3, 19, 12, 20, 13, 21, 0, 22, 0, 55, 51, 66, 13, 0, 18, 0, 76, 68, -1, 18, 65, 52, 59, 0, 36, 0, 60, 53, 26, 54, 17, 55, 18, 56, 69, 57, 19, 12, 20, 13, 21, 0, 22, 0, 70, 12, 71, 58, 72, 59, 73, 59, 74, 59, 75, 60, 0, 18, 0, 76, 77, -1, 16, 53, 0, 36, 0, 60, 61, 17, 62, 18, 63, 78, 64, 19, 12, 20, 13, 21, 0, 22, 0, 70, 12, 71, 65, 72, 66, 73, 66, 74, 66, 75, 67, 0, 18, 0, 32, 32, -1, 15, 59, 25, 53, 25, 60, 43, 17, 45, 18, 68, 19, 13, 20, 13, 21, 0, 27, 19, 28, 69, 61, 3, 39, 13, 29, 21, 30, 22, 31, 23, 0, 18, 0, 67, 79, -1, 11, 65, 70, 35, 3, 53, 3, 36, 3, 26, 71, 19, 13, 20, 12, 21, 0, 22, 0, 55, 51, 66, 13, 0, 18, 0, 32, 80, -1, 14, 59, 0, 53, 25, 36, 3, 17, 72, 19, 13, 20, 13, 21, 0, 27, 19, 28, 73, 61, 3, 62, 0, 29, 21, 30, 22, 31, 23, 0, 18, 0, 32, 81, -1, 15, 59, 25, 53, 0, 36, 3, 60, 21, 17, 21, 19, 13, 20, 13, 21, 0, 27, 19, 28, 74, 61, 3, 62, 0, 29, 21, 30, 22, 31, 23, 0, 18, 0, 2147483647, 82, 75, 3, 25, 76, 83, 77, 2, 78, 0, 18, 0, 2147483647, 84, 79, 3, 25, 80, 83, 77, 2, 78, 0, 4, 0, 100, 85, -1, 14, 86, 3, 87, 81, 88, 9, 89, 21, 90, 9, 91, 9, 92, 9, 93, 22, 94, 82, 95, 21, 96, 21, 97, 0, 98, 9, 99, 9, 0, 0, 0, 110, 101, -1, 8, 102, 83, 103, 12, 104, 13, 105, 9, 106, 13, 107, 12, 108, 9, 109, 84, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="80" shared="false">
+			<array  len="85" shared="false">
 				<int> 2 </int>
 				<resource  external="0">  </resource>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "2D" </string>
+					<string> "Script" </string>
 					<string> "__editor_plugin_states__" </string>
 					<dictionary  shared="false">
 						<string> "2D" </string>
@@ -410,7 +438,7 @@
 						<string> "Anim" </string>
 						<dictionary  shared="false">
 							<string> "animation" </string>
-							<string> "counter" </string>
+							<string> "newattack" </string>
 							<string> "editing" </string>
 							<bool> True </bool>
 							<string> "player" </string>
@@ -446,11 +474,11 @@
 				<real> 40 </real>
 				<bool> False </bool>
 				<bool> True </bool>
+				<vector2> 32, 211 </vector2>
 				<dictionary  shared="false">
 					<string> "_editor_collapsed" </string>
 					<bool> True </bool>
 				</dictionary>
-				<vector2> 32, 211 </vector2>
 				<real> -15 </real>
 				<real> 112 </real>
 				<real> 16 </real>
@@ -464,8 +492,16 @@
 				<real> 47 </real>
 				<real> 44 </real>
 				<string> "100" </string>
+				<vector2> 32, 186 </vector2>
+				<dictionary  shared="false">
+					<string> "_editor_collapsed" </string>
+					<bool> True </bool>
+				</dictionary>
+				<real> 240 </real>
+				<string> "KEY_NEWATTACK" </string>
 				<node_path> ".." </node_path>
 				<resource  resource_type="Animation" path="local://10">  </resource>
+				<resource  resource_type="Animation" path="local://11">  </resource>
 				<resource  resource_type="Animation" path="local://9">  </resource>
 				<array  len="0" shared="false">
 				</array>

@@ -15,7 +15,7 @@ func check_motion(frontX, space_state):
 		.check_motion(frontX, space_state)
 
 func _ready():
-	hp = 10
+	hp = 50
 	current_consume_value = base_consume_value * (randf() * 0.5 - 0.25) + base_consume_value
 	var color = get_node("die").get_modulate()
 	color_increments = Color((1 - color.r)/current_consume_value, -color.g/current_consume_value, -color.b/current_consume_value)

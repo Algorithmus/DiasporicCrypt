@@ -32,6 +32,8 @@ func _ready():
 	pause = get_node("gui/CanvasLayer/pause")
 	music = get_node("music")
 	pause.hide()
+	get_node("gui/CanvasLayer/chain/chaintext").hide()
+	get_node("gui/CanvasLayer/chain/newattack").hide()
 	get_node("gui/CanvasLayer/chain").hide()
 	select = get_node("gui/CanvasLayer/select")
 	var selectf = select.get_node("friederich")

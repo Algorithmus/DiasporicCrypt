@@ -23,6 +23,7 @@ var hurt_delay = 10
 var current_delay = 0
 var walk_delay = 60
 var current_walk_delay = 0
+var floortile_check_requested = false
 
 func check_dying():
 	if (hp >= 0):
@@ -68,6 +69,20 @@ func check_motion(frontX, space_state):
 func step_vertical(frontX, space_state):
 	var desiredY = accel
 	
+	desiredY = floortile_check(frontX, space_state, desiredY)
+	
+	if (falling):
+		accel += 1
+	
+	var damageTiles = collision_rect.get_overlapping_areas()
+	for i in damageTiles:
+		if (i.has_node("weapon") && !floortile_check_requested):
+			desiredY = 0
+			floortile_check_requested = false
+
+	move(Vector2(0, desiredY))
+
+func floortile_check(frontX, space_state, desiredY):
 	var floorTile = space_state.intersect_ray(Vector2(frontX, get_global_pos().y + sprite_offset.y), Vector2(frontX, get_global_pos().y + sprite_offset.y + desiredY), [player.get_node("player")])
 	
 	falling = true
@@ -77,11 +92,7 @@ func step_vertical(frontX, space_state):
 			desiredY = get_global_pos().y + sprite_offset.y - floorTile["position"].y - 1
 			falling = false
 			accel = 1
-	
-	if (falling):
-		accel += 1
-	
-	move(Vector2(0, desiredY))
+	return desiredY
 
 func check_animation(new_animation):
 	if (is_dying):
