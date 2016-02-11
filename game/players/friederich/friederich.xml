@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="84" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
+<resource_file type="PackedScene" subresource_count="92" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
 	<ext_resource path="res://players/friederich/fall.png" type="Texture" index="4"></ext_resource>
 	<ext_resource path="res://players/friederich/ladder.png" type="Texture" index="7"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/swift/sword.png" type="Texture" index="25"></ext_resource>
@@ -7,54 +7,60 @@
 	<ext_resource path="res://players/friederich/climb.png" type="Texture" index="6"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/sword.png" type="Texture" index="11"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/daura.png" type="Texture" index="15"></ext_resource>
-	<ext_resource path="res://players/land.wav" type="Sample" index="47"></ext_resource>
+	<ext_resource path="res://players/land.wav" type="Sample" index="51"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/slice/sword.png" type="Texture" index="28"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/slice/slice.wav" type="Sample" index="49"></ext_resource>
+	<ext_resource path="res://players/friederich/attacks/slice/slice.wav" type="Sample" index="54"></ext_resource>
 	<ext_resource path="res://players/friederich/run.png" type="Texture" index="2"></ext_resource>
 	<ext_resource path="res://players/friederich/chain.png" type="Texture" index="17"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/skewer/skewer.wav" type="Sample" index="48"></ext_resource>
+	<ext_resource path="res://players/friederich/attacks/skewer/skewer.wav" type="Sample" index="53"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/skewer/aura.png" type="Texture" index="31"></ext_resource>
 	<ext_resource path="res://players/friederich/aattack.png" type="Texture" index="16"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/thrust/aura.png" type="Texture" index="23"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/chop/sword.png" type="Texture" index="19"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/chain.wav" type="Sample" index="42"></ext_resource>
+	<ext_resource path="res://players/friederich/attacks/chain.wav" type="Sample" index="46"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/slice/attack.png" type="Texture" index="27"></ext_resource>
-	<ext_resource path="res://scenes/common/fluid/splash_down.wav" type="Sample" index="50"></ext_resource>
+	<ext_resource path="res://scenes/common/fluid/splash_down.wav" type="Sample" index="55"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/swift/aura.png" type="Texture" index="26"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/chop/attack.png" type="Texture" index="18"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/skewer/sword.png" type="Texture" index="32"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/stab/aura.png" type="Texture" index="34"></ext_resource>
 	<ext_resource path="res://players/friederich/friederich.gd" type="Script" index="0"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/dsword.png" type="Texture" index="14"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/thrust/thrust.wav" type="Sample" index="54"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/chop/chop.wav" type="Sample" index="43"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/attack.wav" type="Sample" index="41"></ext_resource>
+	<ext_resource path="res://players/friederich/attacks/thrust/thrust.wav" type="Sample" index="59"></ext_resource>
+	<ext_resource path="res://players/friederich/attacks/chop/chop.wav" type="Sample" index="47"></ext_resource>
+	<ext_resource path="res://players/friederich/attacks/attack.wav" type="Sample" index="45"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/swift/attack.png" type="Texture" index="24"></ext_resource>
-	<ext_resource path="res://players/jump2.wav" type="Sample" index="46"></ext_resource>
+	<ext_resource path="res://players/jump2.wav" type="Sample" index="50"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/thrust/attack.png" type="Texture" index="21"></ext_resource>
 	<ext_resource path="res://players/friederich/hurt.png" type="Texture" index="9"></ext_resource>
 	<ext_resource path="res://players/friederich/attack.png" type="Texture" index="10"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/skewer/attack.png" type="Texture" index="30"></ext_resource>
 	<ext_resource path="res://players/friederich/crouch.png" type="Texture" index="8"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/swift/swift.wav" type="Sample" index="53"></ext_resource>
-	<ext_resource path="res://players/friederich/hurt.wav" type="Sample" index="45"></ext_resource>
+	<ext_resource path="res://players/friederich/attacks/swift/swift.wav" type="Sample" index="58"></ext_resource>
+	<ext_resource path="res://players/friederich/hurt.wav" type="Sample" index="49"></ext_resource>
 	<ext_resource path="res://players/friederich/jump.png" type="Texture" index="3"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/aura.png" type="Texture" index="12"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/slice/aura.png" type="Texture" index="29"></ext_resource>
 	<ext_resource path="res://players/friederich/dattack.png" type="Texture" index="13"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/thrust/sword.png" type="Texture" index="22"></ext_resource>
-	<ext_resource path="res://scenes/common/fluid/splash_up.wav" type="Sample" index="51"></ext_resource>
+	<ext_resource path="res://scenes/common/fluid/splash_up.wav" type="Sample" index="56"></ext_resource>
 	<ext_resource path="res://players/friederich/land.png" type="Texture" index="5"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/chop/aura.png" type="Texture" index="20"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/dualspin/aura.png" type="Texture" index="40"></ext_resource>
 	<ext_resource path="res://players/friederich/idle.png" type="Texture" index="1"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/stab/attack.png" type="Texture" index="33"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/stab/stab.wav" type="Sample" index="52"></ext_resource>
+	<ext_resource path="res://players/friederich/attacks/stab/stab.wav" type="Sample" index="57"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/dualspin/attack.png" type="Texture" index="38"></ext_resource>
+	<ext_resource path="res://players/friederich/attacks/rush/rush.wav" type="Sample" index="52"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/dualspin/swordBG.png" type="Texture" index="36"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/dualspin/auraBG.png" type="Texture" index="37"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/dualspin/dualspin.wav" type="Sample" index="44"></ext_resource>
+	<ext_resource path="res://players/friederich/attacks/dualspin/dualspin.wav" type="Sample" index="48"></ext_resource>
 	<ext_resource path="res://players/friederich/attacks/dualspin/sword.png" type="Texture" index="39"></ext_resource>
+	<ext_resource path="res://players/friederich/attacks/rush/aura.png" type="Texture" index="43"></ext_resource>
+	<ext_resource path="res://players/friederich/attacks/rush/sword.png" type="Texture" index="42"></ext_resource>
+	<ext_resource path="res://players/friederich/attacks/rush/attack.png" type="Texture" index="41"></ext_resource>
+	<ext_resource path="res://players/friederich/charge.png" type="Texture" index="44"></ext_resource>
+	<ext_resource path="res://players/magic/void.wav" type="Sample" index="60"></ext_resource>
 	<resource type="RectangleShape2D" path="local://3">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2 name="extents"> 16, 64 </vector2>
@@ -464,6 +470,36 @@
 				<bool> False </bool>
 			</array>
 		</dictionary>
+		<string name="tracks/23/type"> "value" </string>
+		<node_path name="tracks/23/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/23/interp"> 1 </int>
+		<dictionary name="tracks/23/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/24/type"> "value" </string>
+		<node_path name="tracks/24/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/24/interp"> 1 </int>
+		<dictionary name="tracks/24/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
 
 	</resource>
 	<resource type="Animation" path="local://2">
@@ -814,6 +850,36 @@
 		<node_path name="tracks/22/path"> "NormalSpriteGroup/dualspin:visibility/visible" </node_path>
 		<int name="tracks/22/interp"> 1 </int>
 		<dictionary name="tracks/22/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/23/type"> "value" </string>
+		<node_path name="tracks/23/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/23/interp"> 1 </int>
+		<dictionary name="tracks/23/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/24/type"> "value" </string>
+		<node_path name="tracks/24/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/24/interp"> 1 </int>
+		<dictionary name="tracks/24/keys" shared="false">
 			<string> "cont" </string>
 			<bool> False </bool>
 			<string> "times" </string>
@@ -1188,6 +1254,36 @@
 		<node_path name="tracks/23/path"> "NormalSpriteGroup/dualspin:visibility/visible" </node_path>
 		<int name="tracks/23/interp"> 1 </int>
 		<dictionary name="tracks/23/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/24/type"> "value" </string>
+		<node_path name="tracks/24/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/24/interp"> 1 </int>
+		<dictionary name="tracks/24/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/25/type"> "value" </string>
+		<node_path name="tracks/25/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/25/interp"> 1 </int>
+		<dictionary name="tracks/25/keys" shared="false">
 			<string> "cont" </string>
 			<bool> False </bool>
 			<string> "times" </string>
@@ -1587,6 +1683,36 @@
 				<bool> False </bool>
 			</array>
 		</dictionary>
+		<string name="tracks/25/type"> "value" </string>
+		<node_path name="tracks/25/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/25/interp"> 1 </int>
+		<dictionary name="tracks/25/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/26/type"> "value" </string>
+		<node_path name="tracks/26/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/26/interp"> 1 </int>
+		<dictionary name="tracks/26/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
 
 	</resource>
 	<resource type="Animation" path="local://6">
@@ -1930,6 +2056,36 @@
 		<node_path name="tracks/22/path"> "NormalSpriteGroup/dualspin:visibility/visible" </node_path>
 		<int name="tracks/22/interp"> 1 </int>
 		<dictionary name="tracks/22/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/23/type"> "value" </string>
+		<node_path name="tracks/23/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/23/interp"> 1 </int>
+		<dictionary name="tracks/23/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/24/type"> "value" </string>
+		<node_path name="tracks/24/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/24/interp"> 1 </int>
+		<dictionary name="tracks/24/keys" shared="false">
 			<string> "cont" </string>
 			<bool> False </bool>
 			<string> "times" </string>
@@ -2294,6 +2450,36 @@
 				<bool> False </bool>
 			</array>
 		</dictionary>
+		<string name="tracks/23/type"> "value" </string>
+		<node_path name="tracks/23/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/23/interp"> 1 </int>
+		<dictionary name="tracks/23/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0.1 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/24/type"> "value" </string>
+		<node_path name="tracks/24/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/24/interp"> 1 </int>
+		<dictionary name="tracks/24/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
 
 	</resource>
 	<resource type="Animation" path="local://7">
@@ -2641,6 +2827,36 @@
 		<node_path name="tracks/22/path"> "NormalSpriteGroup/dualspin:visibility/visible" </node_path>
 		<int name="tracks/22/interp"> 1 </int>
 		<dictionary name="tracks/22/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/23/type"> "value" </string>
+		<node_path name="tracks/23/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/23/interp"> 1 </int>
+		<dictionary name="tracks/23/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/24/type"> "value" </string>
+		<node_path name="tracks/24/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/24/interp"> 1 </int>
+		<dictionary name="tracks/24/keys" shared="false">
 			<string> "cont" </string>
 			<bool> False </bool>
 			<string> "times" </string>
@@ -3034,6 +3250,36 @@
 		<node_path name="tracks/24/path"> "NormalSpriteGroup/dualspin:visibility/visible" </node_path>
 		<int name="tracks/24/interp"> 1 </int>
 		<dictionary name="tracks/24/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/25/type"> "value" </string>
+		<node_path name="tracks/25/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/25/interp"> 1 </int>
+		<dictionary name="tracks/25/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/26/type"> "value" </string>
+		<node_path name="tracks/26/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/26/interp"> 1 </int>
+		<dictionary name="tracks/26/keys" shared="false">
 			<string> "cont" </string>
 			<bool> False </bool>
 			<string> "times" </string>
@@ -3445,6 +3691,36 @@
 				<bool> False </bool>
 			</array>
 		</dictionary>
+		<string name="tracks/26/type"> "value" </string>
+		<node_path name="tracks/26/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/26/interp"> 1 </int>
+		<dictionary name="tracks/26/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/27/type"> "value" </string>
+		<node_path name="tracks/27/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/27/interp"> 1 </int>
+		<dictionary name="tracks/27/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
 
 	</resource>
 	<resource type="Animation" path="local://17">
@@ -3812,6 +4088,36 @@
 		<node_path name="tracks/23/path"> "NormalSpriteGroup/dualspin:visibility/visible" </node_path>
 		<int name="tracks/23/interp"> 1 </int>
 		<dictionary name="tracks/23/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/24/type"> "value" </string>
+		<node_path name="tracks/24/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/24/interp"> 1 </int>
+		<dictionary name="tracks/24/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/25/type"> "value" </string>
+		<node_path name="tracks/25/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/25/interp"> 1 </int>
+		<dictionary name="tracks/25/keys" shared="false">
 			<string> "cont" </string>
 			<bool> False </bool>
 			<string> "times" </string>
@@ -4219,6 +4525,36 @@
 				<bool> False </bool>
 			</array>
 		</dictionary>
+		<string name="tracks/25/type"> "value" </string>
+		<node_path name="tracks/25/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/25/interp"> 1 </int>
+		<dictionary name="tracks/25/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/26/type"> "value" </string>
+		<node_path name="tracks/26/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/26/interp"> 1 </int>
+		<dictionary name="tracks/26/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
 
 	</resource>
 	<resource type="Animation" path="local://18">
@@ -4586,6 +4922,36 @@
 		<node_path name="tracks/23/path"> "NormalSpriteGroup/dualspin:visibility/visible" </node_path>
 		<int name="tracks/23/interp"> 1 </int>
 		<dictionary name="tracks/23/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/24/type"> "value" </string>
+		<node_path name="tracks/24/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/24/interp"> 1 </int>
+		<dictionary name="tracks/24/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/25/type"> "value" </string>
+		<node_path name="tracks/25/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/25/interp"> 1 </int>
+		<dictionary name="tracks/25/keys" shared="false">
 			<string> "cont" </string>
 			<bool> False </bool>
 			<string> "times" </string>
@@ -4989,6 +5355,36 @@
 				<bool> False </bool>
 			</array>
 		</dictionary>
+		<string name="tracks/25/type"> "value" </string>
+		<node_path name="tracks/25/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/25/interp"> 1 </int>
+		<dictionary name="tracks/25/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/26/type"> "value" </string>
+		<node_path name="tracks/26/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/26/interp"> 1 </int>
+		<dictionary name="tracks/26/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
 
 	</resource>
 	<resource type="Animation" path="local://8">
@@ -5333,6 +5729,36 @@
 		<node_path name="tracks/22/path"> "NormalSpriteGroup/dualspin:visibility/visible" </node_path>
 		<int name="tracks/22/interp"> 1 </int>
 		<dictionary name="tracks/22/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/23/type"> "value" </string>
+		<node_path name="tracks/23/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/23/interp"> 1 </int>
+		<dictionary name="tracks/23/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/24/type"> "value" </string>
+		<node_path name="tracks/24/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/24/interp"> 1 </int>
+		<dictionary name="tracks/24/keys" shared="false">
 			<string> "cont" </string>
 			<bool> False </bool>
 			<string> "times" </string>
@@ -5747,6 +6173,36 @@
 				<bool> False </bool>
 			</array>
 		</dictionary>
+		<string name="tracks/25/type"> "value" </string>
+		<node_path name="tracks/25/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/25/interp"> 1 </int>
+		<dictionary name="tracks/25/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/26/type"> "value" </string>
+		<node_path name="tracks/26/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/26/interp"> 1 </int>
+		<dictionary name="tracks/26/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
 
 	</resource>
 	<resource type="Animation" path="local://25">
@@ -6127,6 +6583,36 @@
 		<node_path name="tracks/24/path"> "NormalSpriteGroup/dualspin:visibility/visible" </node_path>
 		<int name="tracks/24/interp"> 1 </int>
 		<dictionary name="tracks/24/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/25/type"> "value" </string>
+		<node_path name="tracks/25/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/25/interp"> 1 </int>
+		<dictionary name="tracks/25/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/26/type"> "value" </string>
+		<node_path name="tracks/26/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/26/interp"> 1 </int>
+		<dictionary name="tracks/26/keys" shared="false">
 			<string> "cont" </string>
 			<bool> False </bool>
 			<string> "times" </string>
@@ -6520,6 +7006,36 @@
 		<node_path name="tracks/24/path"> "NormalSpriteGroup/dualspin:visibility/visible" </node_path>
 		<int name="tracks/24/interp"> 1 </int>
 		<dictionary name="tracks/24/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/25/type"> "value" </string>
+		<node_path name="tracks/25/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/25/interp"> 1 </int>
+		<dictionary name="tracks/25/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/26/type"> "value" </string>
+		<node_path name="tracks/26/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/26/interp"> 1 </int>
+		<dictionary name="tracks/26/keys" shared="false">
 			<string> "cont" </string>
 			<bool> False </bool>
 			<string> "times" </string>
@@ -6931,6 +7447,36 @@
 				<bool> False </bool>
 			</array>
 		</dictionary>
+		<string name="tracks/25/type"> "value" </string>
+		<node_path name="tracks/25/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/25/interp"> 1 </int>
+		<dictionary name="tracks/25/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/26/type"> "value" </string>
+		<node_path name="tracks/26/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/26/interp"> 1 </int>
+		<dictionary name="tracks/26/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
 
 	</resource>
 	<resource type="Animation" path="local://23">
@@ -7311,6 +7857,36 @@
 		<node_path name="tracks/24/path"> "NormalSpriteGroup/dualspin:visibility/visible" </node_path>
 		<int name="tracks/24/interp"> 1 </int>
 		<dictionary name="tracks/24/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/25/type"> "value" </string>
+		<node_path name="tracks/25/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/25/interp"> 1 </int>
+		<dictionary name="tracks/25/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/26/type"> "value" </string>
+		<node_path name="tracks/26/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/26/interp"> 1 </int>
+		<dictionary name="tracks/26/keys" shared="false">
 			<string> "cont" </string>
 			<bool> False </bool>
 			<string> "times" </string>
@@ -7707,6 +8283,36 @@
 		<node_path name="tracks/24/path"> "NormalSpriteGroup/dualspin:visibility/visible" </node_path>
 		<int name="tracks/24/interp"> 1 </int>
 		<dictionary name="tracks/24/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/25/type"> "value" </string>
+		<node_path name="tracks/25/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/25/interp"> 1 </int>
+		<dictionary name="tracks/25/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/26/type"> "value" </string>
+		<node_path name="tracks/26/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/26/interp"> 1 </int>
+		<dictionary name="tracks/26/keys" shared="false">
 			<string> "cont" </string>
 			<bool> False </bool>
 			<string> "times" </string>
@@ -8178,6 +8784,860 @@
 				<int> 0 </int>
 			</array>
 		</dictionary>
+		<string name="tracks/27/type"> "value" </string>
+		<node_path name="tracks/27/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/27/interp"> 1 </int>
+		<dictionary name="tracks/27/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/28/type"> "value" </string>
+		<node_path name="tracks/28/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/28/interp"> 1 </int>
+		<dictionary name="tracks/28/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://30">
+		<string name="resource/name"> "void" </string>
+		<real name="length"> 0.9 </real>
+		<bool name="loop"> False </bool>
+		<real name="step"> 0.05 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> "NormalSpriteGroup/attack/attack:visibility/visible" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> True </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/1/type"> "value" </string>
+		<node_path name="tracks/1/path"> "NormalSpriteGroup/crouch:visibility/visible" </node_path>
+		<int name="tracks/1/interp"> 1 </int>
+		<dictionary name="tracks/1/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/2/type"> "value" </string>
+		<node_path name="tracks/2/path"> "NormalSpriteGroup/ladder:visibility/visible" </node_path>
+		<int name="tracks/2/interp"> 1 </int>
+		<dictionary name="tracks/2/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/3/type"> "value" </string>
+		<node_path name="tracks/3/path"> "NormalSpriteGroup/climb:visibility/visible" </node_path>
+		<int name="tracks/3/interp"> 1 </int>
+		<dictionary name="tracks/3/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/4/type"> "value" </string>
+		<node_path name="tracks/4/path"> "NormalSpriteGroup/land:visibility/visible" </node_path>
+		<int name="tracks/4/interp"> 1 </int>
+		<dictionary name="tracks/4/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/5/type"> "value" </string>
+		<node_path name="tracks/5/path"> "NormalSpriteGroup/fall:visibility/visible" </node_path>
+		<int name="tracks/5/interp"> 1 </int>
+		<dictionary name="tracks/5/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/6/type"> "value" </string>
+		<node_path name="tracks/6/path"> "NormalSpriteGroup/jump:visibility/visible" </node_path>
+		<int name="tracks/6/interp"> 1 </int>
+		<dictionary name="tracks/6/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/7/type"> "value" </string>
+		<node_path name="tracks/7/path"> "NormalSpriteGroup/run:visibility/visible" </node_path>
+		<int name="tracks/7/interp"> 1 </int>
+		<dictionary name="tracks/7/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/8/type"> "value" </string>
+		<node_path name="tracks/8/path"> "NormalSpriteGroup/idle:visibility/visible" </node_path>
+		<int name="tracks/8/interp"> 1 </int>
+		<dictionary name="tracks/8/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/9/type"> "value" </string>
+		<node_path name="tracks/9/path"> "NormalSpriteGroup/attack:visibility/visible" </node_path>
+		<int name="tracks/9/interp"> 1 </int>
+		<dictionary name="tracks/9/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/10/type"> "value" </string>
+		<node_path name="tracks/10/path"> "NormalSpriteGroup/hurt:visibility/visible" </node_path>
+		<int name="tracks/10/interp"> 1 </int>
+		<dictionary name="tracks/10/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/11/type"> "value" </string>
+		<node_path name="tracks/11/path"> "NormalSpriteGroup/dattack:visibility/visible" </node_path>
+		<int name="tracks/11/interp"> 1 </int>
+		<dictionary name="tracks/11/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/12/type"> "value" </string>
+		<node_path name="tracks/12/path"> "NormalSpriteGroup/aattack:visibility/visible" </node_path>
+		<int name="tracks/12/interp"> 1 </int>
+		<dictionary name="tracks/12/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/13/type"> "value" </string>
+		<node_path name="tracks/13/path"> "NormalSpriteGroup/chainattack:visibility/visible" </node_path>
+		<int name="tracks/13/interp"> 1 </int>
+		<dictionary name="tracks/13/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/14/type"> "value" </string>
+		<node_path name="tracks/14/path"> "NormalSpriteGroup/achainattack:visibility/visible" </node_path>
+		<int name="tracks/14/interp"> 1 </int>
+		<dictionary name="tracks/14/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/15/type"> "value" </string>
+		<node_path name="tracks/15/path"> "NormalSpriteGroup/chop:visibility/visible" </node_path>
+		<int name="tracks/15/interp"> 1 </int>
+		<dictionary name="tracks/15/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/16/type"> "value" </string>
+		<node_path name="tracks/16/path"> "NormalSpriteGroup/thrust:visibility/visible" </node_path>
+		<int name="tracks/16/interp"> 1 </int>
+		<dictionary name="tracks/16/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/17/type"> "value" </string>
+		<node_path name="tracks/17/path"> "NormalSpriteGroup/swift:visibility/visible" </node_path>
+		<int name="tracks/17/interp"> 1 </int>
+		<dictionary name="tracks/17/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/18/type"> "value" </string>
+		<node_path name="tracks/18/path"> "NormalSpriteGroup/slice:visibility/visible" </node_path>
+		<int name="tracks/18/interp"> 1 </int>
+		<dictionary name="tracks/18/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/19/type"> "value" </string>
+		<node_path name="tracks/19/path"> "NormalSpriteGroup/skewer:visibility/visible" </node_path>
+		<int name="tracks/19/interp"> 1 </int>
+		<dictionary name="tracks/19/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/20/type"> "value" </string>
+		<node_path name="tracks/20/path"> "NormalSpriteGroup/stab:visibility/visible" </node_path>
+		<int name="tracks/20/interp"> 1 </int>
+		<dictionary name="tracks/20/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/21/type"> "value" </string>
+		<node_path name="tracks/21/path"> "NormalSpriteGroup/dualspin:visibility/visible" </node_path>
+		<int name="tracks/21/interp"> 1 </int>
+		<dictionary name="tracks/21/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/22/type"> "value" </string>
+		<node_path name="tracks/22/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/22/interp"> 1 </int>
+		<dictionary name="tracks/22/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/23/type"> "value" </string>
+		<node_path name="tracks/23/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/23/interp"> 1 </int>
+		<dictionary name="tracks/23/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> True </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/24/type"> "value" </string>
+		<node_path name="tracks/24/path"> "NormalSpriteGroup/void/attack:frame" </node_path>
+		<int name="tracks/24/interp"> 1 </int>
+		<dictionary name="tracks/24/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="4"> 				0, 0.1, 0.2, 0.3 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="4"> 				1, 1, 1, 1 </real_array>
+			<string> "values" </string>
+			<array  len="4" shared="false">
+				<int> 0 </int>
+				<int> 1 </int>
+				<int> 2 </int>
+				<int> 3 </int>
+			</array>
+		</dictionary>
+		<string name="tracks/25/type"> "value" </string>
+		<node_path name="tracks/25/path"> "NormalSpriteGroup/void/attack:visibility/opacity" </node_path>
+		<int name="tracks/25/interp"> 1 </int>
+		<dictionary name="tracks/25/keys" shared="false">
+			<string> "cont" </string>
+			<bool> True </bool>
+			<string> "times" </string>
+			<real_array  len="3"> 				0, 0.1, 0.3 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="3"> 				1, 1, 1 </real_array>
+			<string> "values" </string>
+			<array  len="3" shared="false">
+				<real> 1 </real>
+				<real> 0.5 </real>
+				<real> 1 </real>
+			</array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://29">
+		<string name="resource/name"> "rush" </string>
+		<real name="length"> 0.3 </real>
+		<bool name="loop"> False </bool>
+		<real name="step"> 0.05 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> "NormalSpriteGroup/attack/attack:visibility/visible" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> True </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/1/type"> "value" </string>
+		<node_path name="tracks/1/path"> "NormalSpriteGroup/crouch:visibility/visible" </node_path>
+		<int name="tracks/1/interp"> 1 </int>
+		<dictionary name="tracks/1/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/2/type"> "value" </string>
+		<node_path name="tracks/2/path"> "NormalSpriteGroup/ladder:visibility/visible" </node_path>
+		<int name="tracks/2/interp"> 1 </int>
+		<dictionary name="tracks/2/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/3/type"> "value" </string>
+		<node_path name="tracks/3/path"> "NormalSpriteGroup/climb:visibility/visible" </node_path>
+		<int name="tracks/3/interp"> 1 </int>
+		<dictionary name="tracks/3/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/4/type"> "value" </string>
+		<node_path name="tracks/4/path"> "NormalSpriteGroup/land:visibility/visible" </node_path>
+		<int name="tracks/4/interp"> 1 </int>
+		<dictionary name="tracks/4/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/5/type"> "value" </string>
+		<node_path name="tracks/5/path"> "NormalSpriteGroup/fall:visibility/visible" </node_path>
+		<int name="tracks/5/interp"> 1 </int>
+		<dictionary name="tracks/5/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/6/type"> "value" </string>
+		<node_path name="tracks/6/path"> "NormalSpriteGroup/jump:visibility/visible" </node_path>
+		<int name="tracks/6/interp"> 1 </int>
+		<dictionary name="tracks/6/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/7/type"> "value" </string>
+		<node_path name="tracks/7/path"> "NormalSpriteGroup/run:visibility/visible" </node_path>
+		<int name="tracks/7/interp"> 1 </int>
+		<dictionary name="tracks/7/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/8/type"> "value" </string>
+		<node_path name="tracks/8/path"> "NormalSpriteGroup/idle:visibility/visible" </node_path>
+		<int name="tracks/8/interp"> 1 </int>
+		<dictionary name="tracks/8/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/9/type"> "value" </string>
+		<node_path name="tracks/9/path"> "NormalSpriteGroup/attack:visibility/visible" </node_path>
+		<int name="tracks/9/interp"> 1 </int>
+		<dictionary name="tracks/9/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/10/type"> "value" </string>
+		<node_path name="tracks/10/path"> "NormalSpriteGroup/hurt:visibility/visible" </node_path>
+		<int name="tracks/10/interp"> 1 </int>
+		<dictionary name="tracks/10/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/11/type"> "value" </string>
+		<node_path name="tracks/11/path"> "NormalSpriteGroup/dattack:visibility/visible" </node_path>
+		<int name="tracks/11/interp"> 1 </int>
+		<dictionary name="tracks/11/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/12/type"> "value" </string>
+		<node_path name="tracks/12/path"> "NormalSpriteGroup/aattack:visibility/visible" </node_path>
+		<int name="tracks/12/interp"> 1 </int>
+		<dictionary name="tracks/12/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/13/type"> "value" </string>
+		<node_path name="tracks/13/path"> "NormalSpriteGroup/chainattack:visibility/visible" </node_path>
+		<int name="tracks/13/interp"> 1 </int>
+		<dictionary name="tracks/13/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/14/type"> "value" </string>
+		<node_path name="tracks/14/path"> "NormalSpriteGroup/achainattack:visibility/visible" </node_path>
+		<int name="tracks/14/interp"> 1 </int>
+		<dictionary name="tracks/14/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/15/type"> "value" </string>
+		<node_path name="tracks/15/path"> "NormalSpriteGroup/chop:visibility/visible" </node_path>
+		<int name="tracks/15/interp"> 1 </int>
+		<dictionary name="tracks/15/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/16/type"> "value" </string>
+		<node_path name="tracks/16/path"> "NormalSpriteGroup/thrust:visibility/visible" </node_path>
+		<int name="tracks/16/interp"> 1 </int>
+		<dictionary name="tracks/16/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/17/type"> "value" </string>
+		<node_path name="tracks/17/path"> "NormalSpriteGroup/swift:visibility/visible" </node_path>
+		<int name="tracks/17/interp"> 1 </int>
+		<dictionary name="tracks/17/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/18/type"> "value" </string>
+		<node_path name="tracks/18/path"> "NormalSpriteGroup/slice:visibility/visible" </node_path>
+		<int name="tracks/18/interp"> 1 </int>
+		<dictionary name="tracks/18/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/19/type"> "value" </string>
+		<node_path name="tracks/19/path"> "NormalSpriteGroup/skewer:visibility/visible" </node_path>
+		<int name="tracks/19/interp"> 1 </int>
+		<dictionary name="tracks/19/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/20/type"> "value" </string>
+		<node_path name="tracks/20/path"> "NormalSpriteGroup/stab:visibility/visible" </node_path>
+		<int name="tracks/20/interp"> 1 </int>
+		<dictionary name="tracks/20/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/21/type"> "value" </string>
+		<node_path name="tracks/21/path"> "NormalSpriteGroup/dualspin:visibility/visible" </node_path>
+		<int name="tracks/21/interp"> 1 </int>
+		<dictionary name="tracks/21/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/22/type"> "value" </string>
+		<node_path name="tracks/22/path"> "NormalSpriteGroup/rush:visibility/visible" </node_path>
+		<int name="tracks/22/interp"> 1 </int>
+		<dictionary name="tracks/22/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> True </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/23/type"> "value" </string>
+		<node_path name="tracks/23/path"> "NormalSpriteGroup/rush/attack:frame" </node_path>
+		<int name="tracks/23/interp"> 1 </int>
+		<dictionary name="tracks/23/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="4"> 				0, 0.05, 0.1, 0.15 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="4"> 				1, 1, 1, 1 </real_array>
+			<string> "values" </string>
+			<array  len="4" shared="false">
+				<int> 0 </int>
+				<int> 1 </int>
+				<int> 2 </int>
+				<int> 3 </int>
+			</array>
+		</dictionary>
+		<string name="tracks/24/type"> "value" </string>
+		<node_path name="tracks/24/path"> "NormalSpriteGroup/rush/sword:frame" </node_path>
+		<int name="tracks/24/interp"> 1 </int>
+		<dictionary name="tracks/24/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="3"> 				0, 0.05, 0.1 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="3"> 				1, 1, 1 </real_array>
+			<string> "values" </string>
+			<array  len="3" shared="false">
+				<int> 0 </int>
+				<int> 1 </int>
+				<int> 2 </int>
+			</array>
+		</dictionary>
+		<string name="tracks/25/type"> "value" </string>
+		<node_path name="tracks/25/path"> "NormalSpriteGroup/rush/aura:frame" </node_path>
+		<int name="tracks/25/interp"> 1 </int>
+		<dictionary name="tracks/25/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="6"> 				0, 0.05, 0.1, 0.15, 0.2, 0.25 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="6"> 				1, 1, 1, 1, 1, 1 </real_array>
+			<string> "values" </string>
+			<array  len="6" shared="false">
+				<int> 0 </int>
+				<int> 1 </int>
+				<int> 2 </int>
+				<int> 3 </int>
+				<int> 4 </int>
+				<int> 5 </int>
+			</array>
+		</dictionary>
+		<string name="tracks/26/type"> "value" </string>
+		<node_path name="tracks/26/path"> "NormalSpriteGroup/void:visibility/visible" </node_path>
+		<int name="tracks/26/interp"> 1 </int>
+		<dictionary name="tracks/26/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
 
 	</resource>
 	<resource type="RectangleShape2D" path="local://13">
@@ -8192,7 +9652,7 @@
 			<string> "pitch" </string>
 			<real> 1 </real>
 			<string> "sample" </string>
-			<resource  external="47">  </resource>
+			<resource  external="51">  </resource>
 		</dictionary>
 		<dictionary name="samples/attack" shared="false">
 			<string> "db" </string>
@@ -8200,7 +9660,7 @@
 			<string> "pitch" </string>
 			<real> 1 </real>
 			<string> "sample" </string>
-			<resource  external="41">  </resource>
+			<resource  external="45">  </resource>
 		</dictionary>
 		<dictionary name="samples/hurt" shared="false">
 			<string> "db" </string>
@@ -8208,7 +9668,7 @@
 			<string> "pitch" </string>
 			<real> 1 </real>
 			<string> "sample" </string>
-			<resource  external="45">  </resource>
+			<resource  external="49">  </resource>
 		</dictionary>
 		<dictionary name="samples/swift" shared="false">
 			<string> "db" </string>
@@ -8216,7 +9676,7 @@
 			<string> "pitch" </string>
 			<real> 1 </real>
 			<string> "sample" </string>
-			<resource  external="53">  </resource>
+			<resource  external="58">  </resource>
 		</dictionary>
 		<dictionary name="samples/slice" shared="false">
 			<string> "db" </string>
@@ -8224,7 +9684,7 @@
 			<string> "pitch" </string>
 			<real> 1 </real>
 			<string> "sample" </string>
-			<resource  external="49">  </resource>
+			<resource  external="54">  </resource>
 		</dictionary>
 		<dictionary name="samples/skewer" shared="false">
 			<string> "db" </string>
@@ -8232,7 +9692,7 @@
 			<string> "pitch" </string>
 			<real> 1 </real>
 			<string> "sample" </string>
-			<resource  external="48">  </resource>
+			<resource  external="53">  </resource>
 		</dictionary>
 		<dictionary name="samples/stab" shared="false">
 			<string> "db" </string>
@@ -8240,7 +9700,7 @@
 			<string> "pitch" </string>
 			<real> 1 </real>
 			<string> "sample" </string>
-			<resource  external="52">  </resource>
+			<resource  external="57">  </resource>
 		</dictionary>
 		<dictionary name="samples/thrust" shared="false">
 			<string> "db" </string>
@@ -8248,7 +9708,7 @@
 			<string> "pitch" </string>
 			<real> 1 </real>
 			<string> "sample" </string>
-			<resource  external="54">  </resource>
+			<resource  external="59">  </resource>
 		</dictionary>
 		<dictionary name="samples/chop" shared="false">
 			<string> "db" </string>
@@ -8256,7 +9716,7 @@
 			<string> "pitch" </string>
 			<real> 1 </real>
 			<string> "sample" </string>
-			<resource  external="43">  </resource>
+			<resource  external="47">  </resource>
 		</dictionary>
 		<dictionary name="samples/chain" shared="false">
 			<string> "db" </string>
@@ -8264,7 +9724,7 @@
 			<string> "pitch" </string>
 			<real> 1 </real>
 			<string> "sample" </string>
-			<resource  external="42">  </resource>
+			<resource  external="46">  </resource>
 		</dictionary>
 		<dictionary name="samples/jump2" shared="false">
 			<string> "db" </string>
@@ -8272,7 +9732,7 @@
 			<string> "pitch" </string>
 			<real> 1 </real>
 			<string> "sample" </string>
-			<resource  external="46">  </resource>
+			<resource  external="50">  </resource>
 		</dictionary>
 		<dictionary name="samples/splash_down" shared="false">
 			<string> "db" </string>
@@ -8280,7 +9740,7 @@
 			<string> "pitch" </string>
 			<real> 1 </real>
 			<string> "sample" </string>
-			<resource  external="50">  </resource>
+			<resource  external="55">  </resource>
 		</dictionary>
 		<dictionary name="samples/splash_up" shared="false">
 			<string> "db" </string>
@@ -8288,7 +9748,7 @@
 			<string> "pitch" </string>
 			<real> 1 </real>
 			<string> "sample" </string>
-			<resource  external="51">  </resource>
+			<resource  external="56">  </resource>
 		</dictionary>
 		<dictionary name="samples/dualspin" shared="false">
 			<string> "db" </string>
@@ -8296,7 +9756,23 @@
 			<string> "pitch" </string>
 			<real> 1 </real>
 			<string> "sample" </string>
-			<resource  external="44">  </resource>
+			<resource  external="48">  </resource>
+		</dictionary>
+		<dictionary name="samples/void" shared="false">
+			<string> "db" </string>
+			<real> 0 </real>
+			<string> "pitch" </string>
+			<real> 1 </real>
+			<string> "sample" </string>
+			<resource  external="60">  </resource>
+		</dictionary>
+		<dictionary name="samples/rush" shared="false">
+			<string> "db" </string>
+			<real> 0 </real>
+			<string> "pitch" </string>
+			<real> 1 </real>
+			<string> "sample" </string>
+			<resource  external="52">  </resource>
 		</dictionary>
 
 	</resource>
@@ -8310,7 +9786,7 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="122">
+			<string_array  len="126">
 				<string> "player" </string>
 				<string> "input/pickable" </string>
 				<string> "shapes/0/shape" </string>
@@ -8362,6 +9838,8 @@
 				<string> "dualspin" </string>
 				<string> "swordBG" </string>
 				<string> "auraBG" </string>
+				<string> "rush" </string>
+				<string> "void" </string>
 				<string> "AnimationPlayer" </string>
 				<string> "playback/process_mode" </string>
 				<string> "playback/default_blend_time" </string>
@@ -8387,6 +9865,8 @@
 				<string> "anims/thrust" </string>
 				<string> "anims/chop" </string>
 				<string> "anims/dualspin" </string>
+				<string> "anims/void" </string>
+				<string> "anims/rush" </string>
 				<string> "playback/active" </string>
 				<string> "playback/speed" </string>
 				<string> "blend_times" </string>
@@ -8435,14 +9915,14 @@
 				<string> "SamplePlayer" </string>
 			</string_array>
 			<string> "node_count" </string>
-			<int> 67 </int>
+			<int> 73 </int>
 			<string> "node_paths" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="1129"> 				-1, -1, 10, 0, -1, 9, 1, 0, 2, 1, 3, 2, 4, 0, 5, 3, 6, 3, 7, 4, 8, 5, 9, 6, 0, 0, 0, 13, 11, -1, 1, 12, 3, 0, 1, 0, 18, 14, -1, 3, 15, 0, 16, 7, 17, 8, 0, 1, 0, 18, 19, -1, 4, 15, 0, 16, 9, 17, 10, 20, 3, 0, 1, 0, 18, 21, -1, 4, 15, 0, 16, 11, 17, 8, 20, 12, 0, 1, 0, 18, 22, -1, 5, 15, 0, 23, 13, 16, 14, 24, 15, 17, 16, 0, 1, 0, 18, 25, -1, 6, 15, 0, 23, 17, 16, 18, 24, 19, 17, 8, 20, 12, 0, 1, 0, 18, 26, -1, 4, 15, 0, 16, 20, 24, 21, 17, 10, 0, 1, 0, 18, 27, -1, 4, 15, 0, 16, 22, 24, 23, 17, 16, 0, 1, 0, 18, 28, -1, 5, 15, 0, 16, 24, 24, 25, 17, 12, 20, 3, 0, 1, 0, 18, 29, -1, 3, 15, 0, 16, 26, 17, 12, 0, 1, 0, 13, 30, -1, 2, 15, 0, 9, 27, 0, 11, 0, 18, 30, -1, 3, 16, 28, 17, 8, 20, 3, 0, 11, 0, 18, 31, -1, 7, 32, 16, 33, 29, 16, 30, 24, 31, 34, 12, 17, 32, 20, 12, 0, 11, 0, 18, 35, -1, 6, 16, 33, 24, 31, 34, 12, 17, 34, 20, 3, 36, 35, 0, 1, 0, 13, 37, -1, 2, 15, 0, 9, 36, 0, 15, 0, 18, 37, -1, 3, 16, 37, 24, 38, 17, 8, 0, 15, 0, 18, 38, -1, 5, 32, 16, 33, 39, 16, 40, 24, 41, 17, 32, 0, 15, 0, 18, 35, -1, 4, 16, 42, 24, 41, 17, 34, 36, 43, 0, 1, 0, 13, 39, -1, 2, 15, 0, 9, 44, 0, 19, 0, 18, 39, -1, 2, 16, 45, 17, 32, 0, 19, 0, 18, 31, -1, 6, 32, 16, 33, 29, 16, 30, 24, 46, 34, 12, 17, 32, 0, 19, 0, 18, 35, -1, 5, 16, 33, 24, 46, 34, 12, 17, 34, 36, 35, 0, 1, 0, 13, 40, -1, 2, 15, 0, 9, 47, 0, 23, 0, 18, 30, -1, 4, 16, 48, 24, 49, 17, 8, 20, 12, 0, 23, 0, 18, 31, -1, 7, 32, 16, 33, 29, 16, 30, 24, 50, 34, 12, 17, 32, 20, 51, 0, 23, 0, 18, 35, -1, 6, 16, 33, 24, 50, 34, 12, 17, 34, 20, 10, 36, 35, 0, 1, 0, 13, 41, -1, 2, 15, 0, 9, 52, 0, 27, 0, 18, 39, -1, 3, 16, 45, 17, 32, 20, 34, 0, 27, 0, 18, 31, -1, 7, 32, 16, 33, 29, 16, 30, 24, 46, 34, 12, 17, 32, 20, 51, 0, 27, 0, 18, 35, -1, 6, 16, 33, 24, 46, 34, 12, 17, 34, 20, 53, 36, 35, 0, 1, 0, 13, 42, -1, 2, 15, 0, 9, 54, 0, 31, 0, 18, 30, -1, 3, 16, 55, 24, 56, 17, 32, 0, 31, 0, 18, 31, -1, 6, 32, 16, 33, 29, 16, 57, 24, 58, 34, 12, 17, 8, 0, 31, 0, 18, 35, -1, 5, 16, 59, 24, 58, 34, 12, 17, 8, 36, 35, 0, 1, 0, 13, 43, -1, 2, 15, 0, 9, 60, 0, 35, 0, 18, 30, -1, 4, 16, 61, 24, 62, 17, 16, 20, 8, 0, 35, 0, 18, 31, -1, 6, 32, 16, 33, 29, 16, 63, 24, 64, 17, 16, 20, 8, 0, 35, 0, 18, 35, -1, 4, 16, 65, 24, 64, 17, 8, 36, 35, 0, 1, 0, 13, 44, -1, 2, 15, 0, 9, 66, 0, 39, 0, 18, 30, -1, 4, 16, 67, 24, 62, 17, 12, 20, 3, 0, 39, 0, 18, 31, -1, 6, 32, 16, 33, 29, 16, 68, 24, 64, 17, 12, 20, 3, 0, 39, 0, 18, 35, -1, 5, 16, 69, 24, 64, 17, 12, 20, 3, 36, 35, 0, 1, 0, 13, 45, -1, 2, 15, 0, 9, 70, 0, 43, 0, 18, 30, -1, 4, 16, 71, 24, 72, 17, 8, 20, 12, 0, 43, 0, 18, 31, -1, 6, 32, 16, 33, 29, 16, 73, 24, 74, 17, 16, 20, 8, 0, 43, 0, 18, 35, -1, 4, 16, 75, 24, 74, 17, 16, 36, 35, 0, 1, 0, 13, 46, -1, 2, 15, 0, 9, 76, 0, 47, 0, 18, 30, -1, 3, 16, 77, 24, 78, 17, 16, 0, 47, 0, 18, 35, -1, 5, 16, 79, 24, 80, 34, 12, 17, 8, 36, 35, 0, 47, 0, 18, 31, -1, 5, 32, 16, 33, 29, 16, 81, 24, 80, 17, 16, 0, 1, 0, 13, 47, -1, 2, 15, 0, 9, 82, 0, 51, 0, 18, 30, -1, 5, 16, 83, 24, 84, 34, 12, 17, 34, 20, 12, 0, 51, 0, 18, 35, -1, 6, 16, 85, 24, 86, 34, 12, 17, 8, 20, 12, 36, 35, 0, 51, 0, 18, 31, -1, 6, 32, 16, 33, 29, 16, 87, 24, 86, 17, 34, 20, 12, 0, 1, 0, 13, 48, -1, 1, 9, 88, 0, 55, 0, 18, 49, -1, 5, 32, 16, 33, 29, 16, 89, 24, 90, 17, 8, 0, 55, 0, 18, 50, -1, 4, 16, 91, 24, 90, 17, 8, 36, 35, 0, 55, 0, 18, 30, -1, 4, 16, 92, 24, 93, 34, 12, 17, 16, 0, 55, 0, 18, 31, -1, 6, 32, 16, 33, 29, 16, 94, 24, 90, 34, 12, 17, 8, 0, 55, 0, 18, 35, -1, 5, 16, 95, 24, 90, 34, 12, 17, 8, 36, 35, 0, 0, 0, 51, 51, -1, 28, 52, 3, 53, 96, 54, 97, 55, 98, 56, 99, 57, 100, 58, 101, 59, 102, 60, 103, 61, 104, 62, 105, 63, 106, 64, 107, 65, 108, 66, 109, 67, 110, 68, 111, 69, 112, 70, 113, 71, 114, 72, 115, 73, 116, 74, 117, 75, 118, 76, 119, 77, 120, 78, 121, 79, 122, 0, 0, 0, 80, 80, -1, 4, 12, 3, 81, 1, 82, 0, 83, 123, 0, 0, 0, 84, 84, -1, 16, 24, 124, 85, 123, 86, 0, 87, 119, 88, 96, 89, 125, 90, 126, 91, 126, 92, 127, 93, 127, 94, 119, 95, 119, 96, 128, 97, 128, 98, 128, 99, 128, 0, 0, 0, 105, 100, -1, 9, 1, 119, 2, 129, 3, 130, 4, 0, 101, 131, 102, 132, 103, 133, 104, 120, 9, 134, 0, 64, 0, 80, 80, -1, 3, 81, 129, 82, 0, 83, 123, 0, 0, 0, 121, 106, -1, 14, 107, 12, 108, 135, 109, 136, 110, 120, 111, 96, 112, 96, 113, 96, 114, 123, 115, 137, 116, 120, 117, 120, 118, 12, 119, 96, 120, 96, 0 </int_array>
+			<int_array  len="1221"> 				-1, -1, 10, 0, -1, 9, 1, 0, 2, 1, 3, 2, 4, 0, 5, 3, 6, 3, 7, 4, 8, 5, 9, 6, 0, 0, 0, 13, 11, -1, 1, 12, 3, 0, 1, 0, 18, 14, -1, 3, 15, 0, 16, 7, 17, 8, 0, 1, 0, 18, 19, -1, 4, 15, 0, 16, 9, 17, 10, 20, 3, 0, 1, 0, 18, 21, -1, 4, 15, 0, 16, 11, 17, 8, 20, 12, 0, 1, 0, 18, 22, -1, 5, 15, 0, 23, 13, 16, 14, 24, 15, 17, 16, 0, 1, 0, 18, 25, -1, 6, 15, 0, 23, 17, 16, 18, 24, 19, 17, 8, 20, 12, 0, 1, 0, 18, 26, -1, 4, 15, 0, 16, 20, 24, 21, 17, 10, 0, 1, 0, 18, 27, -1, 4, 15, 0, 16, 22, 24, 23, 17, 16, 0, 1, 0, 18, 28, -1, 5, 15, 0, 16, 24, 24, 25, 17, 12, 20, 3, 0, 1, 0, 18, 29, -1, 3, 15, 0, 16, 26, 17, 12, 0, 1, 0, 13, 30, -1, 1, 15, 0, 0, 11, 0, 18, 30, -1, 3, 16, 27, 17, 8, 20, 3, 0, 11, 0, 18, 31, -1, 7, 32, 16, 33, 28, 16, 29, 24, 30, 34, 12, 17, 31, 20, 12, 0, 11, 0, 18, 35, -1, 6, 16, 32, 24, 30, 34, 12, 17, 33, 20, 3, 36, 34, 0, 1, 0, 13, 37, -1, 2, 15, 0, 9, 35, 0, 15, 0, 18, 37, -1, 3, 16, 36, 24, 37, 17, 8, 0, 15, 0, 18, 38, -1, 5, 32, 16, 33, 38, 16, 39, 24, 40, 17, 31, 0, 15, 0, 18, 35, -1, 4, 16, 41, 24, 40, 17, 33, 36, 42, 0, 1, 0, 13, 39, -1, 2, 15, 0, 9, 43, 0, 19, 0, 18, 39, -1, 2, 16, 44, 17, 31, 0, 19, 0, 18, 31, -1, 6, 32, 16, 33, 28, 16, 29, 24, 45, 34, 12, 17, 31, 0, 19, 0, 18, 35, -1, 5, 16, 32, 24, 45, 34, 12, 17, 33, 36, 34, 0, 1, 0, 13, 40, -1, 2, 15, 0, 9, 46, 0, 23, 0, 18, 30, -1, 3, 16, 47, 24, 48, 17, 8, 0, 23, 0, 18, 31, -1, 7, 32, 16, 33, 28, 16, 29, 24, 49, 34, 12, 17, 31, 20, 31, 0, 23, 0, 18, 35, -1, 5, 16, 32, 24, 49, 34, 12, 17, 33, 36, 34, 0, 1, 0, 13, 41, -1, 2, 15, 0, 9, 50, 0, 27, 0, 18, 39, -1, 3, 16, 44, 17, 31, 20, 33, 0, 27, 0, 18, 31, -1, 7, 32, 16, 33, 28, 16, 29, 24, 45, 34, 12, 17, 31, 20, 51, 0, 27, 0, 18, 35, -1, 6, 16, 32, 24, 45, 34, 12, 17, 33, 20, 52, 36, 34, 0, 1, 0, 13, 42, -1, 1, 15, 0, 0, 31, 0, 18, 30, -1, 4, 16, 53, 24, 54, 17, 31, 20, 33, 0, 31, 0, 18, 31, -1, 7, 32, 16, 33, 28, 16, 55, 24, 56, 34, 12, 17, 8, 20, 33, 0, 31, 0, 18, 35, -1, 6, 16, 57, 24, 56, 34, 12, 17, 8, 20, 33, 36, 34, 0, 1, 0, 13, 43, -1, 2, 15, 0, 9, 58, 0, 35, 0, 18, 30, -1, 4, 16, 59, 24, 60, 17, 16, 20, 8, 0, 35, 0, 18, 31, -1, 6, 32, 16, 33, 28, 16, 61, 24, 62, 17, 16, 20, 8, 0, 35, 0, 18, 35, -1, 4, 16, 63, 24, 62, 17, 8, 36, 34, 0, 1, 0, 13, 44, -1, 2, 15, 0, 9, 64, 0, 39, 0, 18, 30, -1, 4, 16, 65, 24, 60, 17, 12, 20, 3, 0, 39, 0, 18, 31, -1, 6, 32, 16, 33, 28, 16, 66, 24, 62, 17, 12, 20, 3, 0, 39, 0, 18, 35, -1, 5, 16, 67, 24, 62, 17, 12, 20, 3, 36, 34, 0, 1, 0, 13, 45, -1, 2, 15, 0, 9, 68, 0, 43, 0, 18, 30, -1, 4, 16, 69, 24, 70, 17, 8, 20, 12, 0, 43, 0, 18, 31, -1, 6, 32, 16, 33, 28, 16, 71, 24, 72, 17, 16, 20, 8, 0, 43, 0, 18, 35, -1, 4, 16, 73, 24, 72, 17, 16, 36, 34, 0, 1, 0, 13, 46, -1, 2, 15, 0, 9, 74, 0, 47, 0, 18, 30, -1, 3, 16, 75, 24, 76, 17, 16, 0, 47, 0, 18, 35, -1, 5, 16, 77, 24, 78, 34, 12, 17, 8, 36, 34, 0, 47, 0, 18, 31, -1, 5, 32, 16, 33, 28, 16, 79, 24, 78, 17, 16, 0, 1, 0, 13, 47, -1, 2, 15, 0, 9, 80, 0, 51, 0, 18, 30, -1, 5, 16, 81, 24, 82, 34, 12, 17, 33, 20, 12, 0, 51, 0, 18, 35, -1, 6, 16, 83, 24, 84, 34, 12, 17, 8, 20, 12, 36, 34, 0, 51, 0, 18, 31, -1, 6, 32, 16, 33, 28, 16, 85, 24, 84, 17, 33, 20, 12, 0, 1, 0, 13, 48, -1, 2, 15, 0, 9, 86, 0, 55, 0, 18, 49, -1, 5, 32, 16, 33, 28, 16, 87, 24, 88, 17, 8, 0, 55, 0, 18, 50, -1, 4, 16, 89, 24, 88, 17, 8, 36, 34, 0, 55, 0, 18, 30, -1, 5, 16, 90, 24, 91, 34, 12, 17, 16, 20, 12, 0, 55, 0, 18, 31, -1, 7, 32, 16, 33, 28, 16, 92, 24, 88, 34, 12, 17, 8, 20, 12, 0, 55, 0, 18, 35, -1, 6, 16, 93, 24, 88, 34, 12, 17, 8, 20, 12, 36, 34, 0, 1, 0, 13, 51, -1, 1, 15, 0, 0, 61, 0, 18, 30, -1, 4, 16, 94, 24, 95, 17, 16, 20, 3, 0, 61, 0, 18, 31, -1, 6, 32, 16, 33, 28, 16, 96, 24, 97, 17, 8, 20, 3, 0, 61, 0, 18, 35, -1, 6, 16, 98, 24, 97, 34, 12, 17, 8, 20, 3, 36, 34, 0, 1, 0, 13, 52, -1, 0, 0, 65, 0, 18, 30, -1, 3, 16, 99, 17, 16, 20, 8, 0, 0, 0, 53, 53, -1, 30, 54, 3, 55, 100, 56, 101, 57, 102, 58, 103, 59, 104, 60, 105, 61, 106, 62, 107, 63, 108, 64, 109, 65, 110, 66, 111, 67, 112, 68, 113, 69, 114, 70, 115, 71, 116, 72, 117, 73, 118, 74, 119, 75, 120, 76, 121, 77, 122, 78, 123, 79, 124, 80, 125, 81, 126, 82, 127, 83, 128, 0, 0, 0, 84, 84, -1, 4, 12, 3, 85, 1, 86, 0, 87, 129, 0, 0, 0, 88, 88, -1, 16, 24, 130, 89, 129, 90, 0, 91, 125, 92, 100, 93, 131, 94, 132, 95, 132, 96, 133, 97, 133, 98, 125, 99, 125, 100, 134, 101, 134, 102, 134, 103, 134, 0, 0, 0, 109, 104, -1, 9, 1, 125, 2, 135, 3, 136, 4, 0, 105, 137, 106, 138, 107, 139, 108, 126, 9, 140, 0, 70, 0, 84, 84, -1, 3, 85, 135, 86, 0, 87, 129, 0, 0, 0, 125, 110, -1, 14, 111, 12, 112, 141, 113, 142, 114, 126, 115, 100, 116, 100, 117, 100, 118, 129, 119, 143, 120, 126, 121, 126, 122, 12, 123, 100, 124, 100, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="138" shared="false">
+			<array  len="144" shared="false">
 				<bool> False </bool>
 				<resource  resource_type="Shape2D" path="local://3">  </resource>
 				<matrix32> 1, -0, 0, 1, 0, 0 </matrix32>
@@ -8451,7 +9931,7 @@
 				<resource  external="0">  </resource>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "2D" </string>
+					<string> "Script" </string>
 					<string> "__editor_plugin_states__" </string>
 					<dictionary  shared="false">
 						<string> "2D" </string>
@@ -8574,7 +10054,7 @@
 						<string> "Anim" </string>
 						<dictionary  shared="false">
 							<string> "animation" </string>
-							<string> "dualspin" </string>
+							<string> "void" </string>
 							<string> "editing" </string>
 							<bool> True </bool>
 							<string> "player" </string>
@@ -8611,10 +10091,6 @@
 				<resource  external="8">  </resource>
 				<vector2> -4, 8 </vector2>
 				<resource  external="9">  </resource>
-				<dictionary  shared="false">
-					<string> "_editor_collapsed" </string>
-					<bool> True </bool>
-				</dictionary>
 				<resource  external="10">  </resource>
 				<resource  resource_type="CanvasItemMaterial" path="local://11">  </resource>
 				<resource  external="11">  </resource>
@@ -8647,16 +10123,12 @@
 				<resource  external="17">  </resource>
 				<vector2> -14, 0 </vector2>
 				<vector2> 0, -65 </vector2>
+				<dictionary  shared="false">
+					<string> "_editor_collapsed" </string>
+					<bool> True </bool>
+				</dictionary>
 				<int> 10 </int>
-				<dictionary  shared="false">
-					<string> "_editor_collapsed" </string>
-					<bool> True </bool>
-				</dictionary>
 				<int> 9 </int>
-				<dictionary  shared="false">
-					<string> "_editor_collapsed" </string>
-					<bool> True </bool>
-				</dictionary>
 				<resource  external="18">  </resource>
 				<vector2> -5, -24 </vector2>
 				<resource  external="19">  </resource>
@@ -8716,6 +10188,12 @@
 				<vector2> 36, -30 </vector2>
 				<resource  external="39">  </resource>
 				<resource  external="40">  </resource>
+				<resource  external="41">  </resource>
+				<vector2> -48, -34 </vector2>
+				<resource  external="42">  </resource>
+				<vector2> 32, -65 </vector2>
+				<resource  external="43">  </resource>
+				<resource  external="44">  </resource>
 				<real> 0 </real>
 				<node_path> ".." </node_path>
 				<resource  resource_type="Animation" path="local://1">  </resource>
@@ -8739,6 +10217,8 @@
 				<resource  resource_type="Animation" path="local://23">  </resource>
 				<resource  resource_type="Animation" path="local://22">  </resource>
 				<resource  resource_type="Animation" path="local://28">  </resource>
+				<resource  resource_type="Animation" path="local://30">  </resource>
+				<resource  resource_type="Animation" path="local://29">  </resource>
 				<bool> True </bool>
 				<real> 1 </real>
 				<array  len="0" shared="false">

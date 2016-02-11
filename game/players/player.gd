@@ -706,7 +706,7 @@ func do_attack():
 	weapon_collider.set_pos(Vector2((weapon_offset.x + sprite_offset.x + 4) * direction, -sprite_offset.y + weapon_offset.y + weapon_height))
 	add_child(weapon_collider)
 	weapon_collided = false
-
+	
 func check_attack_animation(new_animation):
 	if (is_attacking):
 		var modifier = ""

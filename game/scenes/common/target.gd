@@ -11,12 +11,15 @@ var current_delay = 0
 var blood = preload("res://scenes/common/blood.xml")
 var blood_particles = []
 var sprite_offset
+var current_animation = "idle"
+var animation_player
 
 func _ready():
 	set_fixed_process(true)
 	sprite_offset = get_node("collision/CollisionShape2D").get_shape().get_extents()
 	player = get_tree().get_root().get_node("world/playercontainer")
 	hud = get_tree().get_root().get_node("world/gui/hpcontainer")
+	animation_player = get_node("AnimationPlayer")
 
 func bleed():
 	var blood_obj = blood.instance()
@@ -29,6 +32,7 @@ func bleed():
 func _fixed_process(delta):
 	var collision_rect = get_node("collision")
 	var damageTiles = collision_rect.get_overlapping_areas()
+	var new_animation = current_animation
 	# modulate color on hit
 	"""
 	var color = Color(1, 1, 1, 1)
@@ -53,6 +57,8 @@ func _fixed_process(delta):
 				#get_node("Sprite").set_modulate(Color(1, 0, 0, 1))
 				#damage_flash = true
 				current_delay += 1
+				new_animation = "hurt"
+				
 	else:
 		current_delay += 1
 		if (current_delay >= hurt_delay):
@@ -64,3 +70,9 @@ func _fixed_process(delta):
 			if (has_node(i.get_name())):
 				remove_child(i)
 			blood_particles.erase(i)
+	if (current_animation == "hurt" && animation_player.get_current_animation_pos() == animation_player.get_current_animation_length()):
+		new_animation = "idle"
+
+	if (current_animation != new_animation):
+		current_animation = new_animation
+		animation_player.play(current_animation)

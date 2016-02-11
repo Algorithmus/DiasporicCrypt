@@ -13,13 +13,15 @@ var chain_collided = false
 var attack_reset_interrupt = false
 var direction_requested = ""
 var chain_specials = [
-	{"combo":"a, a, d", "id":"chop", "replace":"aad", "collider":preload("res://scenes/weapons/chop.scn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":10},
-	{"combo":"aad, u", "id":"slice", "replace":"aadu", "collider":preload("res://scenes/weapons/slice.scn"), "collider_offset":Vector2(0, -96), "db":10, "hurt_delay":8},
-	{"combo":"a, a, u", "id":"skewer", "replace":"aau", "collider":preload("res://scenes/weapons/skewer.scn"), "collider_offset":Vector2(0, -32), "db":10, "hurt_delay":8},
-	{"combo":"aau, d", "id":"stab", "replace":"aaud", "collider":preload("res://scenes/weapons/stab.scn"), "collider_offset":Vector2(0, 80), "db":10, "hurt_delay":7},
-	{"combo":"a, a, a", "id":"thrust", "replace":"aaa", "collider":preload("res://scenes/weapons/thrust.scn"), "collider_offset":Vector2(0, -32), "db":10, "hurt_delay":10},
-	{"combo":"aaa, a", "id":"swift", "replace":"aaaa", "collider":preload("res://scenes/weapons/swift.scn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":6},
-	{"combo":"a, a, f", "id":"dualspin", "replace":"aaf", "collider":preload("res://scenes/weapons/dualspin.scn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":8}
+	{"combo":"a, a, d", "id":"chop", "replace":"aad", "collider":preload("res://scenes/weapons/chop.scn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":10, "used": false},
+	{"combo":"aad, u", "id":"slice", "replace":"aadu", "collider":preload("res://scenes/weapons/slice.scn"), "collider_offset":Vector2(0, -96), "db":10, "hurt_delay":8, "used": false},
+	{"combo":"a, a, u", "id":"skewer", "replace":"aau", "collider":preload("res://scenes/weapons/skewer.scn"), "collider_offset":Vector2(0, -32), "db":10, "hurt_delay":8, "used": false},
+	{"combo":"aau, d", "id":"stab", "replace":"aaud", "collider":preload("res://scenes/weapons/stab.scn"), "collider_offset":Vector2(0, 80), "db":10, "hurt_delay":7, "used": false},
+	{"combo":"a, a, a", "id":"thrust", "replace":"aaa", "collider":preload("res://scenes/weapons/thrust.scn"), "collider_offset":Vector2(0, -32), "db":10, "hurt_delay":10, "used": false},
+	{"combo":"aaa, a", "id":"swift", "replace":"aaaa", "collider":preload("res://scenes/weapons/swift.scn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":6, "used": false},
+	{"combo":"a, a, f", "id":"dualspin", "replace":"aaf", "collider":preload("res://scenes/weapons/dualspin.scn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":8, "used": false},
+	{"combo":"aaf, d", "id":"void", "replace":"aafd", "collider":preload("res://scenes/weapons/void.scn"), "collider_offset":Vector2(32, 0), "db":10, "hurt_delay":4, "used": false},
+	{"combo":"aaa, f", "id":"rush", "replace":"aaaf", "collider":preload("res://scenes/weapons/rush.scn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":2, "used": false}
 	]
 var target_enemy
 var is_chain_special = false
@@ -188,7 +190,9 @@ func step_player(delta):
 						is_attacking = false
 						attack_requested = false
 						chain_next = false
-						chain_counter += 1
+						# already counted the chain since attack button is required to trigger it
+						if (combo["id"] != "swift" && combo["id"] != "thrust"):
+							chain_counter += 1
 						chaingui.get_node("chaintext/counterGroup/counter").set_text(str(chain_counter))
 						chaingui.get_node("AnimationPlayer").play("counter")
 						# merge combo in attack buffer
@@ -199,19 +203,33 @@ func step_player(delta):
 						is_chain_special = true
 						current_chain_special = combo
 						current_chain_delay = 0
+						if (!current_chain_special["used"]):
+							current_chain_special["used"] = true
+							chaingui.get_node("newattack").show()
+							chaingui.get_node("AnimationPlayer").play("newattack")
 						remove_special_collider()
 						special_collider = current_chain_special["collider"].instance()
-						if (current_chain_special["id"] != "dualspin"):
-							var special_offset = special_collider.get_node("weapon").get_shape().get_extents()
+						var special_offset = 0
+						if (current_chain_special["id"] == "void"):
+							special_offset = special_collider.get_node("weapon").get_shape().get_extents()
 							special_collider.set_pos(Vector2(((special_offset.x + sprite_offset.x + 4) + current_chain_special["collider_offset"].x) * direction, current_chain_special["collider_offset"].y))
+							if (target_enemy != null):
+								special_collider.set_pos(Vector2(target_enemy.get_global_pos().x - get_global_pos().x + (target_enemy.get_node("CollisionShape2D").get_shape().get_extents().x + special_offset.x) * direction))
+							special_collider.get_node("attack").set_scale(Vector2(direction*-1, 1))
+							special_collider.get_node("AnimationPlayer").play("attack")
 							special_collider.connect("area_enter", self, "_on_special_collision")
 						else:
-							special_collider.set_pos(Vector2(0, -16))
-							special_collider.get_node("Dualspin Part").connect("area_enter", self, "_on_special_collision")
-							special_collider.get_node("Dualspin Part 2").connect("area_enter", self, "_on_special_collision")
-						add_child(special_collider)
-						get_node("sound").set_volume_db(get_node("sound").play(current_chain_special["id"]), current_chain_special["db"])
+							if (current_chain_special["id"] != "dualspin"):
+								special_offset = special_collider.get_node("weapon").get_shape().get_extents()
+								special_collider.set_pos(Vector2(((special_offset.x + sprite_offset.x + 4) + current_chain_special["collider_offset"].x) * direction, current_chain_special["collider_offset"].y))
+								special_collider.connect("area_enter", self, "_on_special_collision")
+							else:
+								special_collider.set_pos(Vector2(0, -16))
+								special_collider.get_node("Dualspin Part").connect("area_enter", self, "_on_special_collision")
+								special_collider.get_node("Dualspin Part 2").connect("area_enter", self, "_on_special_collision")
+							add_child(special_collider)
 						new_animation = current_chain_special["id"]
+						get_node("sound").set_volume_db(get_node("sound").play(current_chain_special["id"]), current_chain_special["db"])
 						if (current_chain_special["id"] == "slice"):
 							accel = -10
 						if (current_chain_special["id"] == "skewer"):
@@ -221,8 +239,6 @@ func step_player(delta):
 			
 			# if attack connects with an enemy, count it as an attack in the attack buffer
 			if (hit_enemy):
-				print("hit enemy")
-				print(chain_collider.get_parent())
 				hit_enemy = false
 				attack_reset_interrupt = true
 				current_chain_delay = 0
@@ -250,7 +266,6 @@ func step_player(delta):
 				current_chain_delay += 1
 	
 			position.y = accel
-			
 			check_blood(areaTiles)
 	else:
 		# check special attack
@@ -261,12 +276,11 @@ func step_player(delta):
 		var newpos = position.y
 		var animation_pos = animation_player.get_current_animation_pos()
 		var animation_length = animation_player.get_current_animation_length()
+		var animation_end = animation_length - special_delay * delta
 		# make sure the target is still in the world before matching up coordinates
 		if (target_enemy != null && target_enemy.get_parent() != null):
 			target_exists = true
 			newpos = target_enemy.get_global_pos().y - get_global_pos().y + target_enemy_offset.y
-			print("move target")
-			print(target_enemy.get_parent().has_method("floortile_check"))
 		# do special attack specific actions
 		if (current_chain_special["id"] == "thrust"):
 			if (target_exists && hit_enemy && target_enemy.get_name() == "damagable"):
@@ -293,13 +307,18 @@ func step_player(delta):
 		elif (current_chain_special["id"] == "swift"):
 			if (target_exists && hit_enemy && target_enemy.get_name() == "damagable"):
 				target_enemy.get_parent().set("floortile_check_requested", true)
+		elif (current_chain_special["id"] == "rush"):
+			move(Vector2(direction*15, 0))
+		elif (current_chain_special["id"] == "void"):
+			if (animation_pos >= 0.3 && animation_end > animation_pos && !has_node(special_collider.get_name())):
+				add_child(special_collider)
 		position.y = newpos
 		if (hit_enemy):
 			hit_enemy = false
 		# remove collider by [hurt delay] before end of the special animation
 		# this prevents stray attacks from not being counted for special attacks
 		# since they only count if they hit enemies, and enemies have hurt delays
-		if (animation_length - special_delay * delta <= animation_pos):
+		if (animation_end <= animation_pos):
 			if (animation_player.get_current_animation_length() == animation_player.get_current_animation_pos()):
 				is_chain_special = false
 				remove_special_collider()
@@ -330,6 +349,10 @@ func step_player(delta):
 	while (attack_buffer.size() >= 10):
 		attack_buffer.remove(0)
 
+func check_damage(damageTiles):
+	if (current_chain_special != null && current_chain_special["id"] != "rush" && current_chain_special["id"] != "void"):
+		.check_damage(damageTiles)
+
 func reset_target_delay():
 	if (target_enemy != null && target_enemy.get_parent() != null):
 		target_enemy.get_parent().set("hurt_delay", 10)
@@ -338,6 +361,7 @@ func reset_chain():
 	attack_buffer.clear()
 	chain_counter = 0
 	chaingui.get_node("chaintext").hide()
+	chaingui.get_node("newattack").hide()
 	chaingui.hide()
 	current_chain_delay = 0
 	chain_next = false
@@ -370,11 +394,8 @@ func _on_special_collision(area):
 	else:
 		collisions = special_collider.get_overlapping_areas()
 	for i in collisions:
-		print("special collision")
-		print(i.get_name())
 		if (i.get_name() != "damage" && i != special_collider && i.get_name() != "oneway" && !i.get_name().match("slope*") && i.get_name() != "ladder"):
 			target_enemy = i
-	print(area.get_name())
 	if(area.get_name() != "damage" && area != special_collider && area.get_name() != "oneway" && !area.get_name().match("slope*") && area.get_name() != "ladder"):
 		target_enemy = area
 	if (target_enemy != null):
