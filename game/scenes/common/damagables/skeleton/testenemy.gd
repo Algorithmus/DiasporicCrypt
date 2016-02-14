@@ -24,6 +24,11 @@ var current_delay = 0
 var walk_delay = 60
 var current_walk_delay = 0
 var floortile_check_requested = false
+var frozen = false
+const FREEZE_DELAY = 300
+var freeze_counter = 0
+var freezeblock = preload("res://scenes/common/iceblock.scn")
+var freezeblock_obj
 
 func check_dying():
 	if (hp >= 0):
@@ -33,20 +38,36 @@ func check_dying():
 			remove_child(get_node("damagable"))
 
 func check_motion(frontX, space_state):
-	if (!is_dying):
+	if (!is_dying && !frozen):
 		if(current_delay == 0):
 			var damageTiles = collision_rect.get_overlapping_areas()
 			for i in damageTiles:
+				var collider
 				if (i.has_node("weapon")):
+					collider = i.get_node("weapon")
+					player.get_node("player").set("hit_enemy", true)
+				if (i.has_node("magic")):
+					# freeze in collision block if hit with an ice attack
+					if (i.get_parent() != null && i.get_parent().get_name() == "Ice"):
+						frozen = true
+						freezeblock_obj = freezeblock.instance()
+						freezeblock_obj.set_scale(Vector2(sprite_offset.x * 2 / TILESIZE, sprite_offset.y * 2 / TILESIZE))
+						add_child(freezeblock_obj)
+						if (has_node(collision_rect.get_name())):
+							remove_child(collision_rect)
+					collider = i.get_node("magic")
+					var hp = i.get_parent().get("hp")
+					if (hp != null):
+						i.get_parent().set("hp", hp - 1)
+				if (collider != null):
 					var hp_obj = hpclass.instance()
 					hud.add_child(hp_obj)
-					var hitpos = hp_obj.calculate_hitpos(i.get_global_pos(), i.get_node("weapon").get_shape().get_extents(), get_pos(), sprite_offset)
+					var hitpos = hp_obj.calculate_hitpos(i.get_global_pos(), collider.get_shape().get_extents(), get_pos(), sprite_offset)
 					hp -= 1
 					is_hurt = true
 					check_dying()
 					# TODO - calculate damage helper method
 					hp_obj.display_damage(hitpos, 1)
-					player.get_node("player").set("hit_enemy", true)
 					current_delay += 1
 					current_walk_delay += 1
 	
@@ -65,25 +86,44 @@ func check_motion(frontX, space_state):
 					direction = direction * -1
 			
 			move(Vector2(MOVESPEED * direction, 0))
+	elif (frozen):
+		freeze_counter += 1
+		# flash to warn player that frozen state is almost over
+		if (fmod(freeze_counter, 4) == 0 && float(freeze_counter)/FREEZE_DELAY > 0.75):
+			freezeblock_obj.set_opacity(0)
+		else:
+			freezeblock_obj.set_opacity(1)
+		if (freeze_counter >= FREEZE_DELAY):
+			frozen = false
+			freeze_counter = 0
+			if (has_node(freezeblock_obj.get_name())):
+				remove_child(freezeblock_obj)
+			freezeblock_obj = null
+			add_child(collision_rect)
+			animation_player.play(current_animation)
 
 func step_vertical(frontX, space_state):
-	var desiredY = accel
+	if (!frozen):
+		var desiredY = accel
+		
+		desiredY = floortile_check(frontX, space_state, desiredY)
+		
+		if (falling):
+			accel += 1
+		
+		var damageTiles = collision_rect.get_overlapping_areas()
+		for i in damageTiles:
+			if (i.has_node("weapon") && !floortile_check_requested):
+				desiredY = 0
+				floortile_check_requested = false
 	
-	desiredY = floortile_check(frontX, space_state, desiredY)
-	
-	if (falling):
-		accel += 1
-	
-	var damageTiles = collision_rect.get_overlapping_areas()
-	for i in damageTiles:
-		if (i.has_node("weapon") && !floortile_check_requested):
-			desiredY = 0
-			floortile_check_requested = false
-
-	move(Vector2(0, desiredY))
+		move(Vector2(0, desiredY))
 
 func floortile_check(frontX, space_state, desiredY):
-	var floorTile = space_state.intersect_ray(Vector2(frontX, get_global_pos().y + sprite_offset.y), Vector2(frontX, get_global_pos().y + sprite_offset.y + desiredY), [player.get_node("player")])
+	var blacklist = [player.get_node("player")]
+	if (freezeblock_obj != null):
+		blacklist.append(freezeblock_obj)
+	var floorTile = space_state.intersect_ray(Vector2(frontX, get_global_pos().y + sprite_offset.y), Vector2(frontX, get_global_pos().y + sprite_offset.y + desiredY), blacklist)
 	
 	falling = true
 	
@@ -128,6 +168,9 @@ func _fixed_process(delta):
 	if (new_animation != current_animation):
 		animation_player.play(new_animation)
 		current_animation = new_animation
+		
+	if (frozen):
+		animation_player.stop()
 	
 	if (is_hurt && !animation_player.is_playing()):
 		is_hurt = false

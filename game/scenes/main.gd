@@ -35,6 +35,9 @@ func _ready():
 	get_node("gui/CanvasLayer/chain/chaintext").hide()
 	get_node("gui/CanvasLayer/chain/newattack").hide()
 	get_node("gui/CanvasLayer/chain").hide()
+	
+	for spell in get_node("gui/CanvasLayer/hud/SpellIcons").get_children():
+		spell.hide()
 	select = get_node("gui/CanvasLayer/select")
 	var selectf = select.get_node("friederich")
 	var selecta = select.get_node("adela")
@@ -92,6 +95,7 @@ func start(player):
 	get_node("gui/sound").play("confirm")
 	player.set_global_pos(Vector2(-80, -416))
 	get_node("playercontainer").add_child(player)
+	player.load_tilemap(get_node("level/sandbox"))
 	select.hide()
 	is_paused = false
 	get_tree().set_pause(is_paused)

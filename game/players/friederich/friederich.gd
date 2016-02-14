@@ -51,6 +51,12 @@ func _ready():
 	chain_collider = weapon.instance()
 
 	chain_collider.connect("area_enter", self, "_on_chain_collision")
+	
+	weapon_type = "sword"
+	magic_spells.append({"id":"fire", "auracolor":Color(1, 77/255.0, 0), "weaponcolor1":Color(1, 1, 0), "weaponcolor2":Color(1, 0, 0), "is_single": false, "attack": preload("res://players/magic/fire/fire.scn"), "delay": false})
+	selected_spell = magic_spells.size()-1
+	spell_icons.get_node(magic_spells[selected_spell]["id"]).show()
+	update_fusion()
 
 func check_animations(new_animation, animation_speed, horizontal_motion, ladderY):
 	if (!is_chain_special):
@@ -218,6 +224,14 @@ func step_player(delta):
 							special_collider.get_node("attack").set_scale(Vector2(direction*-1, 1))
 							special_collider.get_node("AnimationPlayer").play("attack")
 							special_collider.connect("area_enter", self, "_on_special_collision")
+							
+							var spell = magic_spells[selected_spell]
+							var auracolor = spell["auracolor"]
+							var weaponcolor1 = spell["weaponcolor1"]
+							var weaponcolor2 = spell["weaponcolor2"]
+							special_collider.get_node("attack/aura").set_modulate(auracolor)
+							special_collider.get_node("attack/sword").get_material().set_shader_param("modulate", weaponcolor1)
+							special_collider.get_node("attack/sword").get_material().set_shader_param("aura_color", weaponcolor2)
 						else:
 							if (current_chain_special["id"] != "dualspin"):
 								special_offset = special_collider.get_node("weapon").get_shape().get_extents()
@@ -267,7 +281,10 @@ func step_player(delta):
 	
 			position.y = accel
 			check_blood(areaTiles)
+			
+			check_magic()
 	else:
+		request_spell_change = 0
 		# check special attack
 		new_animation = current_chain_special["id"]
 		horizontal_motion = false
@@ -401,6 +418,24 @@ func _on_special_collision(area):
 	if (target_enemy != null):
 		target_enemy_offset = Vector2(get_global_pos().x - target_enemy.get_global_pos().x, get_global_pos().y - target_enemy.get_global_pos().y)
 		target_enemy.get_parent().set("hurt_delay", current_chain_special["hurt_delay"])
+
+func update_fusion():
+	.update_fusion()
+	var current_spell = magic_spells[selected_spell]
+	var auracolor = current_spell["auracolor"]
+	var weaponcolor1 = current_spell["weaponcolor1"]
+	var weaponcolor2 = current_spell["weaponcolor2"]
+	
+	update_attack_color("chainattack", auracolor, weaponcolor1, weaponcolor2)
+	update_attack_color("achainattack", auracolor, weaponcolor1, weaponcolor2)
+	update_attack_color("chop", auracolor, weaponcolor1, weaponcolor2)
+	update_attack_color("thrust", auracolor, weaponcolor1, weaponcolor2)
+	update_attack_color("swift", auracolor, weaponcolor1, weaponcolor2)
+	update_attack_color("slice", auracolor, weaponcolor1, weaponcolor2)
+	update_attack_color("skewer", auracolor, weaponcolor1, weaponcolor2)
+	update_attack_color("stab", auracolor, weaponcolor1, weaponcolor2)
+	update_attack_color("dualspin", auracolor, weaponcolor1, weaponcolor2)
+	update_attack_color("rush", auracolor, weaponcolor1, weaponcolor2)
 
 func _input(event):
 	if (chain_counter > 1):

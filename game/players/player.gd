@@ -1,6 +1,6 @@
 
 extends KinematicBody2D
-# the great majority of player behavior and interaction implementation is modelled after this article: http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/comment-page-1/#comments
+# the great majority of player behavior and interaction implementation is modelled after this article: http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/comment-page-1
 # please note that this blog link sometimes doesn't work, but you might still be able to see it through archive.org
 
 const DEFAULT_GRAVITY = 1
@@ -60,6 +60,30 @@ var consumable
 var blood_requested = false
 var hit_enemy = false
 var area2d_blacklist = []
+var weapon_type = ""
+# shared spells
+var magic_spells = [{"id": "thunder", "auracolor": Color(1, 1, 1), "weaponcolor1": Color(1, 247/255.0, 138/255.0), "weaponcolor2": Color(0, 116/255.0, 1), "is_single": false, "charge": preload("res://players/magic/thunder/charge.scn"), "attack": preload("res://players/magic/thunder/thunder.scn"), "delay": true}, 
+					{"id":"hex", "auracolor": Color(169/255.0, 0, 1), "weaponcolor1": Color(0, 0, 0), "weaponcolor2": Color(1, 0, 0), "is_single": false, "delay": true, "attack": preload("res://players/magic/hex/hex.scn")}, 
+					{"id":"shield", "auracolor": Color(0, 0, 1), "weaponcolor1": Color(0, 55/255.0, 1), "weaponcolor2": Color(0, 208/255.0, 1), "is_single": false, "delay": false, "attack": preload("res://players/magic/shield/shield.scn"), "charge": preload("res://players/magic/shield/charge.scn")}, 
+					{"id":"magicmine", "auracolor": Color(1, 129/255.0, 0), "weaponcolor1": Color(1, 1, 0), "weaponcolor2": Color(78/255.0, 0 , 1), "is_single": true, "delay": false, "attack": preload("res://players/magic/magicmine/mine.scn")}, 
+					{"id":"void", "auracolor": Color(110/255.0, 110/255.0, 122/255.0), "weaponcolor1": Color(0, 0, 0), "weaponcolor2": Color(1, 1, 1), "is_single": false, "delay": true, "attack": preload("res://players/magic/void/void.scn")}]
+var selected_spell
+var request_spell_change = 0
+var spell_icons
+var is_charging = false
+var is_magic = false
+var charge_counter = 0
+const MAX_CHARGE = 100
+var charge_obj
+var magic_delay = false #prevent spamming on some attacks
+var shield
+var shield_delay = 0
+var shield_current_delay = 0
+var shield_alpha = 0
+var request_single_spell = false
+var current_mines = []
+var max_mines = 3
+var void_direction = 1
 
 func min_array(array):
 	if (array.size() == 1):
@@ -71,6 +95,19 @@ func min_array(array):
 		return min_float
 	else:
 		return null
+
+# add and remove magic spell and other special effect collisions
+# to prevent interfering with regular collision detection
+func remove_from_blacklist(item):
+	var size = area2d_blacklist.size()
+	for i in range(size):
+		if (i < area2d_blacklist.size() && area2d_blacklist[i] == item):
+			area2d_blacklist.remove(i)
+			if (item.has_node("magic")):
+				magic_delay = false
+
+func add_to_blacklist(item):
+	area2d_blacklist.append(item)
 
 # slopes have the format slope#-#, where # denotes the 
 # position (from the top) of the corner of the slope from left to right
@@ -234,7 +271,7 @@ func check_damage(damageTiles):
 	var dx = 0
 	var dy = 0
 
-	if (!invulnerable):
+	if (!invulnerable && shield == null):
 		for i in damageTiles:
 			if (i.get_name() == "damagable"):
 				is_hurt_check = true
@@ -284,7 +321,7 @@ func step_horizontal(space_state):
 	var onSlope = false
 	var slopeX = 0
 	var relevantSlopeTile = null
-	if (!climbing_platform && !is_crouching && !is_attacking && !is_hurt):
+	if (!climbing_platform && !is_crouching && !is_attacking && !is_hurt && !is_charging && !is_magic):
 		if (Input.is_action_pressed("ui_left")):
 			position.x = -min(runspeed, closestXTile(true, runspeed))
 			# can't tell right now if we are on a slope tile and can ignore
@@ -371,7 +408,7 @@ func check_climb_platform_horizontal(space_state):
 		platform_check = getClimbPlatform(space_state, direction == -1)
 		
 		# clamp to platform if should be hanging
-		if (platform_check != null && !climbing_platform && climb_platform == null):
+		if (platform_check != null && !climbing_platform && climb_platform == null && !is_charging && !is_magic):
 			hanging = true
 			var d = platform_check.get_global_pos().x - direction * TILE_SIZE/2 - get_global_pos().x - direction * sprite_offset.x
 			climb_platform = platform_check
@@ -526,7 +563,7 @@ func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, o
 	var forwardY = get_global_pos().y + sprite_offset.y
 	crouch_requested = false
 	
-	if (!is_hurt):
+	if (!is_hurt && !is_charging && !is_magic):
 		if (Input.is_action_pressed("ui_up")):
 			ladderY = check_ladder_up(space_state)
 			
@@ -707,6 +744,21 @@ func do_attack():
 	add_child(weapon_collider)
 	weapon_collided = false
 	
+func update_fusion():
+	var current_spell = magic_spells[selected_spell]
+	var auracolor = current_spell["auracolor"]
+	var weaponcolor1 = current_spell["weaponcolor1"]
+	var weaponcolor2 = current_spell["weaponcolor2"]
+	
+	update_attack_color("attack", auracolor, weaponcolor1, weaponcolor2)
+	update_attack_color("aattack", auracolor, weaponcolor1, weaponcolor2)
+	update_attack_color("dattack", auracolor, weaponcolor1, weaponcolor2)
+	
+func update_attack_color(key, auracolor, weaponcolor1, weaponcolor2):
+	get_node("NormalSpriteGroup/"+key+"/aura").set_modulate(auracolor)
+	get_node("NormalSpriteGroup/"+key+"/"+weapon_type).get_material().set_shader_param("modulate", weaponcolor1)
+	get_node("NormalSpriteGroup/"+key+"/"+weapon_type).get_material().set_shader_param("aura_color", weaponcolor2)
+
 func check_attack_animation(new_animation):
 	if (is_attacking):
 		var modifier = ""
@@ -738,6 +790,19 @@ func check_animations(new_animation, animation_speed, horizontal_motion, ladderY
 			new_animation = "crouch"
 		
 		new_animation = check_attack_animation(new_animation)
+		
+		if (is_charging):
+			new_animation = "charge"
+
+		if (is_magic):
+			if(current_animation != "magic" || (current_animation == "magic" && animation_player.get_current_animation_pos() != animation_player.get_current_animation_length())):
+				new_animation = "magic"
+			else:
+				is_magic = false
+				if (magic_spells[selected_spell]["id"] == "void" && charge_obj != null):
+					charge_obj.queue_free()
+					charge_obj = null
+					magic_delay = false
 		
 		if (climbing_platform || hanging):
 			new_animation = "climb"
@@ -852,6 +917,8 @@ func step_player(delta):
 		
 		check_blood(areaTiles)
 		
+		check_magic()
+		
 	# check animations
 	var animations = check_animations(new_animation, animation_speed, horizontal_motion, ladderY)
 	animation_speed = animations["animationSpeed"]
@@ -862,11 +929,181 @@ func step_player(delta):
 	move(position)
 	play_animation(new_animation, animation_speed)
 
+func check_magic():
+	# switch magic
+	# only allow switching magic when they are not in "use"
+	# ie, attacking because its effects and color are based off 
+	# of currently selected magic
+	if (request_spell_change != 0):
+		if (is_attacking || is_charging || is_magic):
+			request_spell_change = 0
+		else:
+			var prev_spell = selected_spell
+			selected_spell += request_spell_change
+			if (selected_spell >= magic_spells.size()):
+				selected_spell = 0
+			if (selected_spell < 0):
+				selected_spell = magic_spells.size() - 1
+			request_spell_change = 0
+			spell_icons.get_node(magic_spells[prev_spell]["id"]).hide()
+			spell_icons.get_node(magic_spells[selected_spell]["id"]).show()
+			
+			update_fusion()
+	# detect magic requested
+	var magic_allowed = !is_hurt && !is_attacking && !is_crouching && !hanging && !is_charging && !is_magic && !magic_delay
+	if (magic_allowed && Input.is_action_pressed("ui_magic")):
+		if (!magic_spells[selected_spell]["is_single"]):
+			request_single_spell = false
+			is_charging = true
+			charge_counter += 1
+			if (magic_spells[selected_spell]["delay"]):
+				magic_delay = true
+			if (magic_spells[selected_spell]["id"] == "fire" || magic_spells[selected_spell]["id"] == "ice"):
+				charge_obj = magic_spells[selected_spell]["attack"].instance()
+				charge_obj.set_global_pos(get_global_pos())
+				tilemap.add_child(charge_obj)
+				charge_obj.change_direction(direction)
+				charge_obj.set("camera", get_node("Camera2D"))
+			if (magic_spells[selected_spell]["id"] == "thunder"):
+				charge_obj = magic_spells[selected_spell]["charge"].instance()
+				add_child(charge_obj)
+			if (magic_spells[selected_spell]["id"] == "hex"):
+				if (falling):
+					is_charging = false
+					charge_counter = 0
+					magic_delay = false
+				else:
+					charge_obj = magic_spells[selected_spell]["attack"].instance()
+					charge_obj.set_global_pos(Vector2(get_global_pos().x, get_global_pos().y + sprite_offset.y))
+					charge_obj.set("player", self)
+					tilemap.add_child(charge_obj)
+			if (magic_spells[selected_spell]["id"] == "shield"):
+				if (shield == null):
+					charge_obj = magic_spells[selected_spell]["charge"].instance()
+					charge_obj.set_pos(Vector2(0, sprite_offset.y))
+					add_child(charge_obj)
+				else:
+					is_charging = false
+					charge_counter = 0
+			if (magic_spells[selected_spell]["id"] == "void"):
+				charge_obj = magic_spells[selected_spell]["attack"].instance()
+				charge_obj.set_global_pos(Vector2(get_global_pos().x + direction * TILE_SIZE * 2, get_global_pos().y))
+				charge_obj.set_scale(Vector2(direction, 1))
+				tilemap.add_child(charge_obj)
+				void_direction = direction
+	# charge magic
+	elif (is_charging):
+		if (Input.is_action_pressed("ui_magic")):
+			charge_counter = min(charge_counter + 1, MAX_CHARGE)
+			if (magic_spells[selected_spell]["id"] == "fire" || magic_spells[selected_spell]["id"] == "ice"):
+				charge_obj.set_global_pos(get_global_pos())
+				var scale = (3 - 0.7)*charge_counter/MAX_CHARGE + 0.7
+				charge_obj.change_scale(scale)
+			if (magic_spells[selected_spell]["id"] == "thunder"):
+				var scale = (3 - 0.7)*charge_counter/MAX_CHARGE + 0.7
+				charge_obj.change_scale(scale)
+			if (magic_spells[selected_spell]["id"] == "hex"):
+				charge_obj.set_global_pos(Vector2(get_global_pos().x, get_global_pos().y + sprite_offset.y))
+				var scale = charge_counter/float(MAX_CHARGE) + 1
+				charge_obj.change_scale(scale)
+			if (magic_spells[selected_spell]["id"] == "shield"):
+				var scale = charge_counter/float(MAX_CHARGE) + 1
+				charge_obj.set_scale(Vector2(scale, scale))
+			if (magic_spells[selected_spell]["id"] == "void"):
+				# oscillate portal position
+				var offset = charge_obj.get_global_pos().x + void_direction * 5
+				var horizontal_bound = get_global_pos().x - direction * get_node("Camera2D").get_offset().x
+				if ((offset >= horizontal_bound && direction > 0) || (offset <= horizontal_bound && direction < 0) ||
+				(offset <= get_global_pos().x + direction * 2 * TILE_SIZE && direction > 0) || (offset >= get_global_pos().x + direction * 2 * TILE_SIZE && direction < 0)):
+					void_direction = void_direction * -1
+					offset = charge_obj.get_global_pos().x + void_direction * 10
+				charge_obj.set_global_pos(Vector2(offset, get_global_pos().y))
+		else:
+			var scale = (3 - 0.7)*charge_counter/MAX_CHARGE + 0.7
+			charge_counter = 0
+			is_charging = false
+			is_magic = true
+			if (magic_spells[selected_spell]["id"] == "fire" || magic_spells[selected_spell]["id"] == "ice"):
+				charge_obj.release()
+				charge_obj = null
+			if (magic_spells[selected_spell]["id"] == "thunder"):
+				charge_obj.queue_free()
+				charge_obj = null
+				var thunder = magic_spells[selected_spell]["attack"].instance()
+				thunder.set_width(scale)
+				thunder.set_global_pos(Vector2(get_global_pos().x, get_global_pos().y + get_node("Camera2D").get_offset().y))
+				thunder.set("player", self)
+				tilemap.add_child(thunder)
+				# don't check own magic collisions for special platforms
+				area2d_blacklist.append(thunder.get_node("collision/Area2D"))
+			if (magic_spells[selected_spell]["id"] == "hex"):
+				charge_obj.release()
+				area2d_blacklist.append(charge_obj.get_node("beam/collision"))
+				charge_obj = null
+			if (magic_spells[selected_spell]["id"] == "shield"):
+				if (has_node(charge_obj.get_name())):
+					remove_child(charge_obj)
+				charge_obj = null
+				shield = magic_spells[selected_spell]["attack"].instance()
+				shield_delay = 300 * ((scale - 0.7)/(3 - 0.7) + 1)
+				shield_current_delay = 0
+				var shieldbody = shield.get_node("shield")
+				var shieldcolor = shieldbody.get_modulate()
+				shield_alpha = 0.5 * (scale - 1)/2.0
+				shieldbody.set_modulate(Color(shieldcolor.r, shieldcolor.g, shieldcolor.b, shield_alpha))
+				add_child(shield)
+				shield.get_node("AnimationPlayer").play("rotate")
+			if (magic_spells[selected_spell]["id"] == "void"):
+				if (charge_obj.get("is_valid")):
+					set_global_pos(charge_obj.get_global_pos())
+					charge_obj.set("is_set", true)
+				else:
+					# cancel the spell if the portal is not over a
+					# valid position (ie, no collidable tiles, enemies, etc)
+					charge_obj.queue_free()
+					charge_obj = null
+					magic_delay = false
+	# step shield state if it is active
+	if (shield != null):
+		shield_current_delay += 1
+		var alpha = (1 - shield_current_delay/shield_delay) * shield_alpha
+		var shieldbody = shield.get_node("shield")
+		var shieldcolor = shieldbody.get_modulate()
+		shieldbody.set_modulate(Color(shieldcolor.r, shieldcolor.g, shieldcolor.b, alpha))
+		if (shield_current_delay >= shield_delay):
+			if (has_node(shield.get_name())):
+				remove_child(shield)
+			shield = null
+	# handle single shot spells
+	if (magic_allowed && request_single_spell && magic_spells[selected_spell]["is_single"]):
+		request_single_spell = false
+		if (magic_spells[selected_spell]["id"] == "magicmine"):
+			if (current_mines.size() < max_mines):
+				var mine = magic_spells[selected_spell]["attack"].instance()
+				current_mines.append(mine)
+				mine.set("player", self)
+				area2d_blacklist.append(mine.get_node("sensor"))
+				mine.set_global_pos(Vector2(get_global_pos().x + TILE_SIZE * 2 * direction, get_global_pos().y))
+				tilemap.add_child(mine)
+				is_magic = true
+
+func clear_mine(mine):
+	var size = current_mines.size()
+	for i in range(size):
+		if (i < current_mines.size() && current_mines[i] == mine):
+			current_mines.remove(i)
+
 func _input(event):
 	if (event.is_action_pressed("ui_attack") && event.is_pressed() && !event.is_echo()):
 		attack_requested = true
 	if (event.is_action_pressed("ui_blood") && event.is_pressed() && !event.is_echo()):
 		blood_requested = true
+	if (event.is_action_pressed("ui_spell_next") && event.is_pressed() && !event.is_echo() && !is_attacking):
+		request_spell_change = 1
+	if (event.is_action_pressed("ui_spell_prev") && event.is_pressed() && !event.is_echo() && !is_attacking):
+		request_spell_change = -1
+	if (event.is_action_pressed("ui_magic") && event.is_pressed() && !event.is_echo()):
+		request_single_spell = true
 
 func _ready():
 	collision = get_node("CollisionShape2D")
@@ -874,6 +1111,7 @@ func _ready():
 	animation_player = get_node("AnimationPlayer")
 	climbspeed = animation_player.get_animation("climb").get_length() * 6
 	damage_rect = get_node("damage")
+	spell_icons = get_tree().get_root().get_node("world/gui/CanvasLayer/hud/SpellIcons")
 	
 	weapon_collider = weapon.instance()
 	weapon_offset = weapon_collider.get_node("weapon").get_shape().get_extents()
@@ -915,3 +1153,6 @@ func loop_jump_animation():
 	
 func loop_fall_animation():
 	animation_player.seek(0.2, true)
+
+func loop_charge_animation():
+	animation_player.seek(0.1, true)

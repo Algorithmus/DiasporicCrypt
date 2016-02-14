@@ -140,7 +140,10 @@ func step_player(delta):
 			position.y = accel
 			
 			check_blood(areaTiles)
+			
+			check_magic()
 	elif (is_swinging):
+		request_spell_change = 0
 		# disable attacking from fixed process rather than when exactly collision is detected
 		if (weapon_collided):
 			remove_weapon_collider()
@@ -234,6 +237,7 @@ func step_player(delta):
 			whipswing_obj.get_node("sound").stop_all()
 			swing_speed_frame = 0
 	elif(whip_hanging):
+		request_spell_change = 0
 		if (weapon_collided):
 			weapon_collided = false
 			remove_weapon_collider()
@@ -281,6 +285,12 @@ func _ready():
 	whipswing_obj = whipswing.instance()
 	add_child(whipswing_obj)
 	whipswing_obj.hide()
+	
+	weapon_type = "whip"
+	magic_spells.append({"id":"ice", "auracolor": Color(0, 130/255.0, 207/255.0), "weaponcolor1": Color(0, 1, 1), "weaponcolor2": Color(0, 130/255.0, 207/255.0), "delay": false, "is_single": false, "attack": preload("res://players/magic/ice/ice.scn")})
+	selected_spell = magic_spells.size() - 1
+	spell_icons.get_node(magic_spells[selected_spell]["id"]).show()
+	update_fusion()
 
 func check_attack_animation(new_animation):
 	if (is_attacking):
@@ -303,6 +313,24 @@ func play_animation(animation, speed):
 		animation_player.seek(0.2, true)
 	if (is_swinging && animation == "swing"):
 		animation_player.seek(fmod(fposmod(direction*(floor(swing_angle*4/(PI - MIN_SWING_RANGE * 2))-(direction - 1)/2), 5), 5)*0.1, true)
+
+func update_fusion():
+	.update_fusion()
+	var current_spell = magic_spells[selected_spell]
+	var auracolor = current_spell["auracolor"]
+	var weaponcolor1 = current_spell["weaponcolor1"]
+	var weaponcolor2 = current_spell["weaponcolor2"]
+	
+	update_attack_color("uattack", auracolor, weaponcolor1, weaponcolor2)
+	update_attack_color("uaattack", auracolor, weaponcolor1, weaponcolor2)
+	update_attack_color("daattack", auracolor, weaponcolor1, weaponcolor2)
+	update_attack_color("dgattack", auracolor, weaponcolor1, weaponcolor2)
+	update_attack_color("dgaattack", auracolor, weaponcolor1, weaponcolor2)
+	update_attack_color("ddgaattack", auracolor, weaponcolor1, weaponcolor2)
+	whipswing_obj.get_node("whipring").get_material().set_shader_param("modulate", weaponcolor1)
+	whipswing_obj.get_node("whipring").get_material().set_shader_param("aura_color", weaponcolor2)
+	whipswing_obj.get_node("whip").get_material().set_shader_param("modulate", weaponcolor1)
+	whipswing_obj.get_node("whip").get_material().set_shader_param("aura_color", weaponcolor2)
 
 func _on_weapon_collision(area):
 	._on_weapon_collision(area)
