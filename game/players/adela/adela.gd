@@ -287,6 +287,7 @@ func _ready():
 	whipswing_obj.hide()
 	
 	weapon_type = "whip"
+	magic_spells.append({"id":"wind", "auracolor": Color(0, 1, 149/255.0), "weaponcolor1": Color(187/255.0, 1, 231/255.0), "weaponcolor2": Color(0, 191/255.0, 92/255.0), "delay": true, "is_single": false, "attack": preload("res://players/magic/ice/ice.scn")})
 	magic_spells.append({"id":"ice", "auracolor": Color(0, 130/255.0, 207/255.0), "weaponcolor1": Color(0, 1, 1), "weaponcolor2": Color(0, 130/255.0, 207/255.0), "delay": false, "is_single": false, "attack": preload("res://players/magic/ice/ice.scn")})
 	selected_spell = magic_spells.size() - 1
 	spell_icons.get_node(magic_spells[selected_spell]["id"]).show()

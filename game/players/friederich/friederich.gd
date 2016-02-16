@@ -53,6 +53,7 @@ func _ready():
 	chain_collider.connect("area_enter", self, "_on_chain_collision")
 	
 	weapon_type = "sword"
+	magic_spells.append({"id":"earth", "auracolor":Color(170/255.0, 1, 0), "weaponcolor1":Color(64/255.0, 58/255.0, 56/255.0), "weaponcolor2":Color(181/255.0, 188/255.0, 0), "is_single": false, "charge": preload("res://players/magic/earth/charge.scn"), "attack": preload("res://players/magic/earth/earth.scn"), "delay": true})
 	magic_spells.append({"id":"fire", "auracolor":Color(1, 77/255.0, 0), "weaponcolor1":Color(1, 1, 0), "weaponcolor2":Color(1, 0, 0), "is_single": false, "attack": preload("res://players/magic/fire/fire.scn"), "delay": false})
 	selected_spell = magic_spells.size()-1
 	spell_icons.get_node(magic_spells[selected_spell]["id"]).show()
@@ -109,7 +110,8 @@ func step_player(delta):
 	var onOneWayTile = check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space_state, oneWayTile)
 	
 	var areaTiles = damage_rect.get_overlapping_areas()
-
+	print("area tiles")
+	print(areaTiles)
 	# check underwater
 	check_underwater(areaTiles)
 
@@ -367,7 +369,7 @@ func step_player(delta):
 		attack_buffer.remove(0)
 
 func check_damage(damageTiles):
-	if (current_chain_special != null && current_chain_special["id"] != "rush" && current_chain_special["id"] != "void"):
+	if (current_chain_special == null || (current_chain_special != null && current_chain_special["id"] != "rush" && current_chain_special["id"] != "void")):
 		.check_damage(damageTiles)
 
 func reset_target_delay():

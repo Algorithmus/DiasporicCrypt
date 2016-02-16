@@ -84,6 +84,7 @@ var request_single_spell = false
 var current_mines = []
 var max_mines = 3
 var void_direction = 1
+var camera_offset
 
 func min_array(array):
 	if (array.size() == 1):
@@ -273,6 +274,7 @@ func check_damage(damageTiles):
 
 	if (!invulnerable && shield == null):
 		for i in damageTiles:
+			print(i.get_name())
 			if (i.get_name() == "damagable"):
 				is_hurt_check = true
 				dx += get_global_pos().x - i.get_global_pos().x
@@ -865,7 +867,8 @@ func step_player(delta):
 	var onOneWayTile = check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space_state, oneWayTile)
 	
 	var areaTiles = damage_rect.get_overlapping_areas()
-
+	print("area tiles")
+	print(areaTiles)
 	# check underwater
 	check_underwater(areaTiles)
 
@@ -991,6 +994,10 @@ func check_magic():
 				charge_obj.set_scale(Vector2(direction, 1))
 				tilemap.add_child(charge_obj)
 				void_direction = direction
+			if (magic_spells[selected_spell]["id"] == "earth"):
+				charge_obj = magic_spells[selected_spell]["charge"].instance()
+				charge_obj.set_pos(Vector2(0, sprite_offset.y))
+				add_child(charge_obj)
 	# charge magic
 	elif (is_charging):
 		if (Input.is_action_pressed("ui_magic")):
@@ -1018,8 +1025,14 @@ func check_magic():
 					void_direction = void_direction * -1
 					offset = charge_obj.get_global_pos().x + void_direction * 10
 				charge_obj.set_global_pos(Vector2(offset, get_global_pos().y))
+			if (magic_spells[selected_spell]["id"] == "earth"):
+				var velocity = 160.0 * charge_counter / MAX_CHARGE + 40
+				var size = float(charge_counter) / MAX_CHARGE + 1
+				charge_obj.get_node("rocks").set_param(Particles2D.PARAM_LINEAR_VELOCITY, velocity)
+				charge_obj.get_node("rocks").set_param(Particles2D.PARAM_FINAL_SIZE, size)
 		else:
 			var scale = (3 - 0.7)*charge_counter/MAX_CHARGE + 0.7
+			var charge_power = charge_counter
 			charge_counter = 0
 			is_charging = false
 			is_magic = true
@@ -1063,6 +1076,18 @@ func check_magic():
 					charge_obj.queue_free()
 					charge_obj = null
 					magic_delay = false
+			if (magic_spells[selected_spell]["id"] == "earth"):
+				if (has_node(charge_obj.get_name())):
+					remove_child(charge_obj)
+				var earthquake_obj = magic_spells[selected_spell]["attack"].instance()
+				earthquake_obj.set("player", self)
+				earthquake_obj.set("camera", get_node("Camera2D"))
+				earthquake_obj.set("tilemap", tilemap)
+				earthquake_obj.set("earthquake_power", charge_power)
+				earthquake_obj.set_global_pos(get_global_pos())
+				area2d_blacklist.append(earthquake_obj.get_node("screen"))
+				tilemap.add_child(earthquake_obj)
+				
 	# step shield state if it is active
 	if (shield != null):
 		shield_current_delay += 1
@@ -1124,6 +1149,7 @@ func _ready():
 	
 	set_process_input(true)
 	set_fixed_process(true)
+	camera_offset = get_node("Camera2D").get_offset()
 
 # notify when weapon collides with stuff
 func _on_weapon_collision(area):

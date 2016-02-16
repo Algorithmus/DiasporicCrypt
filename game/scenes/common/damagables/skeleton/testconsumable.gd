@@ -67,3 +67,6 @@ func check_dying():
 	bleed()
 	if (hp <= 0):
 		is_dying = true
+		if (stun_obj != null):
+			stun_obj.hide()
+			is_stunned = false
