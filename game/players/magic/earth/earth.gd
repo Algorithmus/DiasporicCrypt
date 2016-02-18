@@ -13,10 +13,12 @@ var earthquake_delay = 0
 var earthquake_duration = 100
 var earthquake_power = 0
 var rock = preload("res://players/magic/earth/rock.scn")
+var sampleplayer
 
 func _ready():
 	set_fixed_process(true)
 	screen = get_node("screen")
+	sampleplayer = get_node("SamplePlayer")
 
 func _fixed_process(delta):
 	# effects of scaling won't take place in this call, so we do the detection next time
@@ -24,6 +26,8 @@ func _fixed_process(delta):
 		camera_offset = camera.get_offset()
 		set_scale(Vector2(-camera_offset.x/16.0, -camera_offset.y/16.0))
 		physicsChanged = true
+		var soundid = sampleplayer.play("earth")
+		sampleplayer.set_volume_db(soundid, earthquake_power * 10)
 	# detect all enemies on screen (that are not in the air) and stun them
 	elif (screen != null && !physicsChanged):
 		var collisions = screen.get_overlapping_areas()

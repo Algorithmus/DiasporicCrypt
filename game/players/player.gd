@@ -77,6 +77,7 @@ const MAX_CHARGE = 100
 var charge_obj
 var magic_delay = false #prevent spamming on some attacks
 var shield
+var charge_volume = 0
 var shield_delay = 0
 var shield_current_delay = 0
 var shield_alpha = 0
@@ -982,6 +983,9 @@ func check_magic():
 					charge_obj = magic_spells[selected_spell]["charge"].instance()
 					charge_obj.set_pos(Vector2(0, sprite_offset.y))
 					add_child(charge_obj)
+					var sampleplayer = charge_obj.get_node("SamplePlayer")
+					charge_volume = sampleplayer.play("charge")
+					sampleplayer.set_volume_db(charge_volume, -5)
 				else:
 					is_charging = false
 					charge_counter = 0
@@ -995,10 +999,13 @@ func check_magic():
 				charge_obj = magic_spells[selected_spell]["charge"].instance()
 				charge_obj.set_pos(Vector2(0, sprite_offset.y))
 				add_child(charge_obj)
+				charge_volume = charge_obj.get_node("SamplePlayer").play("charge")
 			if (magic_spells[selected_spell]["id"] == "wind"):
 				charge_obj = magic_spells[selected_spell]["charge"].instance()
 				charge_obj.set_pos(Vector2(0, sprite_offset.y))
 				add_child(charge_obj)
+				charge_volume = charge_obj.get_node("SamplePlayer").play("charge")
+				charge_obj.get_node("SamplePlayer").set_volume_db(charge_volume, -5)
 	# charge magic
 	elif (is_charging):
 		if (Input.is_action_pressed("ui_magic")):
@@ -1017,6 +1024,10 @@ func check_magic():
 			if (magic_spells[selected_spell]["id"] == "shield"):
 				var scale = charge_counter/float(MAX_CHARGE) + 1
 				charge_obj.set_scale(Vector2(scale, scale))
+				var sampleplayer = charge_obj.get_node("SamplePlayer")
+				if (!sampleplayer.is_active()):
+					charge_volume = sampleplayer.play("charge")
+				sampleplayer.set_volume_db(charge_volume, (scale - 1) * 10 - 5)
 			if (magic_spells[selected_spell]["id"] == "void"):
 				# oscillate portal position
 				var offset = charge_obj.get_global_pos().x + void_direction * 5
@@ -1031,11 +1042,21 @@ func check_magic():
 				var size = float(charge_counter) / MAX_CHARGE + 1
 				charge_obj.get_node("rocks").set_param(Particles2D.PARAM_LINEAR_VELOCITY, velocity)
 				charge_obj.get_node("rocks").set_param(Particles2D.PARAM_FINAL_SIZE, size)
+				var sampleplayer = charge_obj.get_node("SamplePlayer")
+				if (!sampleplayer.is_active()):
+					charge_volume = sampleplayer.play("charge")
+				var volume = 10 * charge_counter / MAX_CHARGE
+				sampleplayer.set_volume_db(charge_volume, volume)
 			if (magic_spells[selected_spell]["id"] == "wind"):
 				var velocity = 40.0 * charge_counter / MAX_CHARGE
 				var size = 0.67 * charge_counter / MAX_CHARGE + 0.33
 				charge_obj.get_node("cloud").set_param(Particles2D.PARAM_LINEAR_VELOCITY, velocity)
 				charge_obj.get_node("cloud").set_param(Particles2D.PARAM_FINAL_SIZE, size)
+				var sampleplayer = charge_obj.get_node("SamplePlayer")
+				if (!sampleplayer.is_active()):
+					charge_volume = sampleplayer.play("charge")
+				var volume = 10 * charge_counter / MAX_CHARGE - 5
+				sampleplayer.set_volume_db(charge_volume, volume)
 		else:
 			var scale = charge_counter/MAX_CHARGE
 			var charge_power = charge_counter
@@ -1063,6 +1084,7 @@ func check_magic():
 			if (magic_spells[selected_spell]["id"] == "shield"):
 				if (has_node(charge_obj.get_name())):
 					remove_child(charge_obj)
+				charge_obj.get_node("SamplePlayer").stop_all()
 				charge_obj = null
 				shield = magic_spells[selected_spell]["attack"].instance()
 				shield_delay = 300 * (scale + 1)
@@ -1072,20 +1094,24 @@ func check_magic():
 				shield_alpha = 0.5 * ((3 - 0.7) * scale + 0.7 - 1)/2.0
 				shieldbody.set_modulate(Color(shieldcolor.r, shieldcolor.g, shieldcolor.b, shield_alpha))
 				add_child(shield)
+				shield.get_node("SamplePlayer").play("on")
 				shield.get_node("AnimationPlayer").play("rotate")
 			if (magic_spells[selected_spell]["id"] == "void"):
 				if (charge_obj.get("is_valid")):
 					set_global_pos(charge_obj.get_global_pos())
 					charge_obj.set("is_set", true)
+					charge_obj.get_node("SamplePlayer").play("void")
 				else:
+					charge_obj.set("fail", true)
 					# cancel the spell if the portal is not over a
 					# valid position (ie, no collidable tiles, enemies, etc)
-					charge_obj.queue_free()
 					charge_obj = null
 					magic_delay = false
 			if (magic_spells[selected_spell]["id"] == "earth"):
 				if (has_node(charge_obj.get_name())):
 					remove_child(charge_obj)
+				charge_obj.get_node("SamplePlayer").stop_all()
+				charge_obj = null
 				var earthquake_obj = magic_spells[selected_spell]["attack"].instance()
 				earthquake_obj.set("player", self)
 				earthquake_obj.set("camera", get_node("Camera2D"))
@@ -1097,6 +1123,8 @@ func check_magic():
 			if (magic_spells[selected_spell]["id"] == "wind"):
 				if (has_node(charge_obj.get_name())):
 					remove_child(charge_obj)
+				charge_obj.get_node("SamplePlayer").stop_all()
+				charge_obj = null
 				var wind_obj = magic_spells[selected_spell]["attack"].instance()
 				wind_obj.set("camera", get_node("Camera2D"))
 				wind_obj.set("player", self)
@@ -1113,6 +1141,8 @@ func check_magic():
 		var shieldbody = shield.get_node("shield")
 		var shieldcolor = shieldbody.get_modulate()
 		shieldbody.set_modulate(Color(shieldcolor.r, shieldcolor.g, shieldcolor.b, alpha))
+		if (shield_current_delay == shield_delay - 39):
+			shield.get_node("SamplePlayer").play("off")
 		if (shield_current_delay >= shield_delay):
 			if (has_node(shield.get_name())):
 				remove_child(shield)

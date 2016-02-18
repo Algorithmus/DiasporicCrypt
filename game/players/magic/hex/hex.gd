@@ -9,7 +9,9 @@ var player
 var beam
 var swirl
 var finish_counter = 0
-const finish_delay = 50
+const finish_delay = 60
+var sampleplayer
+var soundid
 
 # The pattern of this attack is to start at the player's current position
 # and move upwards until hitting a solid block (eg, regular collisions, one way
@@ -25,6 +27,8 @@ func _ready():
 	beam = get_node("light")
 	beam.hide()
 	swirl = get_node("swirl")
+	sampleplayer = get_node("SamplePlayer")
+	soundid = sampleplayer.play("charge")
 	
 func _fixed_process(delta):
 	if (is_release):
@@ -66,6 +70,8 @@ func _fixed_process(delta):
 			finish_counter += 1
 			if (finish_counter >= finish_delay):
 				remove_self()
+	elif (!sampleplayer.is_active()):
+		soundid = sampleplayer.play("charge")
 
 func remove_self():
 	#attack is finished and no longer needs to be blacklisted
@@ -82,8 +88,12 @@ func final_animation():
 func change_scale(scale):
 	set_scale(Vector2(scale, scale))
 	collision.set_scale(Vector2(1, 1/scale))
+	sampleplayer.set_volume_db(soundid, (scale - 1) * 10)
 
 func release():
 	is_release = true
 	beam.show()
 	add_child(collision)
+	var volume = sampleplayer.get_volume_db(soundid)
+	soundid = sampleplayer.play("hex")
+	sampleplayer.set_volume_db(soundid, volume)

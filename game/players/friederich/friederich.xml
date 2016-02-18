@@ -1,68 +1,131 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="95" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
-	<ext_resource path="res://players/friederich/attacks/dualspin/aura.png" type="Texture" index="42"></ext_resource>
-	<ext_resource path="res://scenes/common/fluid/splash_down.wav" type="Sample" index="56"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/thrust/sword.png" type="Texture" index="24"></ext_resource>
-	<ext_resource path="res://players/friederich/dattack.png" type="Texture" index="15"></ext_resource>
-	<ext_resource path="res://players/friederich/charge.png" type="Texture" index="10"></ext_resource>
-	<ext_resource path="res://players/friederich/friederich.gd" type="Script" index="0"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/dualspin/sword.png" type="Texture" index="41"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/stab/attack.png" type="Texture" index="35"></ext_resource>
-	<ext_resource path="res://players/friederich/chain.png" type="Texture" index="19"></ext_resource>
-	<ext_resource path="res://players/land.wav" type="Sample" index="52"></ext_resource>
-	<ext_resource path="res://players/friederich/hurt.wav" type="Sample" index="50"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/slice/attack.png" type="Texture" index="29"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/aura.png" type="Texture" index="13"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/rush/rush.wav" type="Sample" index="53"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/chop/chop.wav" type="Sample" index="48"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/chop/attack.png" type="Texture" index="20"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/dualspin/attack.png" type="Texture" index="40"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/daura.png" type="Texture" index="17"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/skewer/sword.png" type="Texture" index="34"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/slice/slice.wav" type="Sample" index="55"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/thrust/thrust.wav" type="Sample" index="60"></ext_resource>
-	<ext_resource path="res://players/friederich/magic.png" type="Texture" index="11"></ext_resource>
-	<ext_resource path="res://players/friederich/crouch.png" type="Texture" index="8"></ext_resource>
-	<ext_resource path="res://players/jump2.wav" type="Sample" index="51"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/attack.wav" type="Sample" index="46"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/dualspin/dualspin.wav" type="Sample" index="49"></ext_resource>
-	<ext_resource path="res://players/friederich/run.png" type="Texture" index="2"></ext_resource>
-	<ext_resource path="res://players/friederich/land.png" type="Texture" index="5"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/dsword.png" type="Texture" index="16"></ext_resource>
-	<ext_resource path="res://players/friederich/climb.png" type="Texture" index="6"></ext_resource>
-	<ext_resource path="res://scenes/common/fluid/splash_up.wav" type="Sample" index="57"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/stab/stab.wav" type="Sample" index="58"></ext_resource>
-	<ext_resource path="res://players/friederich/attack.png" type="Texture" index="12"></ext_resource>
-	<ext_resource path="res://players/friederich/fall.png" type="Texture" index="4"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/skewer/skewer.wav" type="Sample" index="54"></ext_resource>
-	<ext_resource path="res://players/friederich/jump.png" type="Texture" index="3"></ext_resource>
-	<ext_resource path="res://players/magic/void.wav" type="Sample" index="61"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/thrust/attack.png" type="Texture" index="23"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/stab/aura.png" type="Texture" index="36"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/chop/aura.png" type="Texture" index="22"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/skewer/aura.png" type="Texture" index="33"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/chain.wav" type="Sample" index="47"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/rush/sword.png" type="Texture" index="44"></ext_resource>
-	<ext_resource path="res://players/friederich/aattack.png" type="Texture" index="18"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/thrust/aura.png" type="Texture" index="25"></ext_resource>
-	<ext_resource path="res://players/friederich/ladder.png" type="Texture" index="7"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/swift/sword.png" type="Texture" index="27"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/sword.png" type="Texture" index="14"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/slice/sword.png" type="Texture" index="30"></ext_resource>
-	<ext_resource path="res://players/friederich/idle.png" type="Texture" index="1"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/rush/attack.png" type="Texture" index="43"></ext_resource>
-	<ext_resource path="res://players/friederich/hurt.png" type="Texture" index="9"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/swift/attack.png" type="Texture" index="26"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/swift/swift.wav" type="Sample" index="59"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/rush/aura.png" type="Texture" index="45"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/stab/sword.png" type="Texture" index="37"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/dualspin/swordBG.png" type="Texture" index="38"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/dualspin/auraBG.png" type="Texture" index="39"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/slice/aura.png" type="Texture" index="31"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/chop/sword.png" type="Texture" index="21"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/skewer/attack.png" type="Texture" index="32"></ext_resource>
-	<ext_resource path="res://players/friederich/attacks/swift/aura.png" type="Texture" index="28"></ext_resource>
+	<ext_resource path="res://players/friederich/attacks/dualspin/aura.png" type="Texture" index="42">
+	</ext_resource>
+	<ext_resource path="res://scenes/common/fluid/splash_down.wav" type="Sample" index="56">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/thrust/sword.png" type="Texture" index="24">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/dattack.png" type="Texture" index="15">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/charge.png" type="Texture" index="10">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/friederich.gd" type="Script" index="0">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/dualspin/sword.png" type="Texture" index="41">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/stab/attack.png" type="Texture" index="35">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/chain.png" type="Texture" index="19">
+	</ext_resource>
+	<ext_resource path="res://players/land.wav" type="Sample" index="52">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/hurt.wav" type="Sample" index="50">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/slice/attack.png" type="Texture" index="29">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/aura.png" type="Texture" index="13">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/rush/rush.wav" type="Sample" index="53">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/chop/chop.wav" type="Sample" index="48">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/chop/attack.png" type="Texture" index="20">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/dualspin/attack.png" type="Texture" index="40">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/daura.png" type="Texture" index="17">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/skewer/sword.png" type="Texture" index="34">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/slice/slice.wav" type="Sample" index="55">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/thrust/thrust.wav" type="Sample" index="60">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/magic.png" type="Texture" index="11">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/crouch.png" type="Texture" index="8">
+	</ext_resource>
+	<ext_resource path="res://players/jump2.wav" type="Sample" index="51">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/attack.wav" type="Sample" index="46">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/dualspin/dualspin.wav" type="Sample" index="49">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/run.png" type="Texture" index="2">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/land.png" type="Texture" index="5">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/dsword.png" type="Texture" index="16">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/climb.png" type="Texture" index="6">
+	</ext_resource>
+	<ext_resource path="res://scenes/common/fluid/splash_up.wav" type="Sample" index="57">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/stab/stab.wav" type="Sample" index="58">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attack.png" type="Texture" index="12">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/fall.png" type="Texture" index="4">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/skewer/skewer.wav" type="Sample" index="54">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/jump.png" type="Texture" index="3">
+	</ext_resource>
+	<ext_resource path="res://players/magic/void/void.wav" type="Sample" index="61">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/thrust/attack.png" type="Texture" index="23">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/stab/aura.png" type="Texture" index="36">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/chop/aura.png" type="Texture" index="22">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/skewer/aura.png" type="Texture" index="33">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/chain.wav" type="Sample" index="47">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/rush/sword.png" type="Texture" index="44">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/aattack.png" type="Texture" index="18">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/thrust/aura.png" type="Texture" index="25">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/ladder.png" type="Texture" index="7">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/swift/sword.png" type="Texture" index="27">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/sword.png" type="Texture" index="14">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/slice/sword.png" type="Texture" index="30">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/idle.png" type="Texture" index="1">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/rush/attack.png" type="Texture" index="43">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/hurt.png" type="Texture" index="9">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/swift/attack.png" type="Texture" index="26">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/swift/swift.wav" type="Sample" index="59">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/rush/aura.png" type="Texture" index="45">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/stab/sword.png" type="Texture" index="37">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/dualspin/swordBG.png" type="Texture" index="38">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/dualspin/auraBG.png" type="Texture" index="39">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/slice/aura.png" type="Texture" index="31">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/chop/sword.png" type="Texture" index="21">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/skewer/attack.png" type="Texture" index="32">
+	</ext_resource>
+	<ext_resource path="res://players/friederich/attacks/swift/aura.png" type="Texture" index="28">
+	</ext_resource>
 	<resource type="RectangleShape2D" path="local://3">
+
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2 name="extents"> 16, 64 </vector2>
 

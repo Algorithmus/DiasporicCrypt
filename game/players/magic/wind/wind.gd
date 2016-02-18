@@ -8,11 +8,13 @@ var gust_power
 var direction
 var gust_duration = 100
 var gust_current_duration = 0
+var sampleplayer
 
 func _ready():
 	set_fixed_process(true)
 	screen = get_node("screen")
 	set_opacity(0)
+	sampleplayer = get_node("SamplePlayer")
 
 func set_size(scale):
 	gust_power = scale
@@ -32,6 +34,8 @@ func update_size():
 		gust.set_param(Particles2D.PARAM_FINAL_SIZE, 0.8 * gust_power + 0.2)
 		if (gust_power > 0.5):
 			screen.get_node("collision").set_name("magic")
+		var soundid = sampleplayer.play("wind")
+		sampleplayer.set_volume_db(soundid, gust_power * 10)
 
 func _fixed_process(delta):
 	if (screen.get_scale() == Vector2(1, 1)):

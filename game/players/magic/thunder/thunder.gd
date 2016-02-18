@@ -8,6 +8,8 @@ var sprite
 var is_finish = false
 var animation_player
 var splash
+var sampleplayer
+var volume
 
 # The pattern of this attack is to start at the top of the screen
 # and move downwards until hitting a solid block (eg, regular collisions, one way
@@ -23,6 +25,9 @@ func _ready():
 	splash = get_node("splash")
 	splash.hide()
 	animation_player = get_node("AnimationPlayer")
+	sampleplayer = get_node("SamplePlayer")
+	var soundid = sampleplayer.play("thunder")
+	sampleplayer.set_volume_db(soundid, volume)
 
 func _fixed_process(delta):
 	if (!is_finish):
@@ -83,3 +88,4 @@ func remove_self():
 
 func set_width(scale):
 	set_scale(Vector2(scale, 1))
+	volume = (scale - 1) * 5

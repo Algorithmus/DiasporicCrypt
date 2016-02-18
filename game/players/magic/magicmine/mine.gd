@@ -8,6 +8,7 @@ var is_exploding = false
 var countdown = 100
 var explosion
 var sensor
+var sampleplayer
 
 # This object has two collision shapes: one for detecting enemies
 # and the other for damage collision. Damage collision (the explosion)
@@ -21,6 +22,8 @@ func _ready():
 	collision = get_node("collision")
 	sensor = get_node("sensor")
 	remove_child(collision)
+	sampleplayer = get_node("SamplePlayer")
+	sampleplayer.play("set")
 	
 func _fixed_process(delta):
 	if (!is_exploding):
@@ -52,3 +55,4 @@ func set_explosion():
 	explosion.set_emitting(true)
 	get_node("AnimationPlayer").stop()
 	get_node("mine").hide()
+	sampleplayer.play("mine")
