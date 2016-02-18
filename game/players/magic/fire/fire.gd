@@ -33,7 +33,6 @@ func change_direction(new_direction):
 	fireball.set_param(Particles2D.PARAM_INITIAL_ANGLE, angle)
 	
 func release():
-	fireball.set_use_local_space(false)
 	var scale = fireball.get_param(Particles2D.PARAM_INITIAL_SIZE)
 	#fireball.set_param(Particles2D.PARAM_LINEAR_VELOCITY, 2*scale/0.7)
 	is_released = true

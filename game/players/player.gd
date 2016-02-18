@@ -274,7 +274,6 @@ func check_damage(damageTiles):
 
 	if (!invulnerable && shield == null):
 		for i in damageTiles:
-			print(i.get_name())
 			if (i.get_name() == "damagable"):
 				is_hurt_check = true
 				dx += get_global_pos().x - i.get_global_pos().x
@@ -867,8 +866,6 @@ func step_player(delta):
 	var onOneWayTile = check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space_state, oneWayTile)
 	
 	var areaTiles = damage_rect.get_overlapping_areas()
-	print("area tiles")
-	print(areaTiles)
 	# check underwater
 	check_underwater(areaTiles)
 
@@ -998,6 +995,10 @@ func check_magic():
 				charge_obj = magic_spells[selected_spell]["charge"].instance()
 				charge_obj.set_pos(Vector2(0, sprite_offset.y))
 				add_child(charge_obj)
+			if (magic_spells[selected_spell]["id"] == "wind"):
+				charge_obj = magic_spells[selected_spell]["charge"].instance()
+				charge_obj.set_pos(Vector2(0, sprite_offset.y))
+				add_child(charge_obj)
 	# charge magic
 	elif (is_charging):
 		if (Input.is_action_pressed("ui_magic")):
@@ -1030,8 +1031,13 @@ func check_magic():
 				var size = float(charge_counter) / MAX_CHARGE + 1
 				charge_obj.get_node("rocks").set_param(Particles2D.PARAM_LINEAR_VELOCITY, velocity)
 				charge_obj.get_node("rocks").set_param(Particles2D.PARAM_FINAL_SIZE, size)
+			if (magic_spells[selected_spell]["id"] == "wind"):
+				var velocity = 40.0 * charge_counter / MAX_CHARGE
+				var size = 0.67 * charge_counter / MAX_CHARGE + 0.33
+				charge_obj.get_node("cloud").set_param(Particles2D.PARAM_LINEAR_VELOCITY, velocity)
+				charge_obj.get_node("cloud").set_param(Particles2D.PARAM_FINAL_SIZE, size)
 		else:
-			var scale = (3 - 0.7)*charge_counter/MAX_CHARGE + 0.7
+			var scale = charge_counter/MAX_CHARGE
 			var charge_power = charge_counter
 			charge_counter = 0
 			is_charging = false
@@ -1043,6 +1049,7 @@ func check_magic():
 				charge_obj.queue_free()
 				charge_obj = null
 				var thunder = magic_spells[selected_spell]["attack"].instance()
+				scale = (3 - 0.7)*scale + 0.7
 				thunder.set_width(scale)
 				thunder.set_global_pos(Vector2(get_global_pos().x, get_global_pos().y + get_node("Camera2D").get_offset().y))
 				thunder.set("player", self)
@@ -1058,11 +1065,11 @@ func check_magic():
 					remove_child(charge_obj)
 				charge_obj = null
 				shield = magic_spells[selected_spell]["attack"].instance()
-				shield_delay = 300 * ((scale - 0.7)/(3 - 0.7) + 1)
+				shield_delay = 300 * (scale + 1)
 				shield_current_delay = 0
 				var shieldbody = shield.get_node("shield")
 				var shieldcolor = shieldbody.get_modulate()
-				shield_alpha = 0.5 * (scale - 1)/2.0
+				shield_alpha = 0.5 * ((3 - 0.7) * scale + 0.7 - 1)/2.0
 				shieldbody.set_modulate(Color(shieldcolor.r, shieldcolor.g, shieldcolor.b, shield_alpha))
 				add_child(shield)
 				shield.get_node("AnimationPlayer").play("rotate")
@@ -1087,11 +1094,22 @@ func check_magic():
 				earthquake_obj.set_global_pos(get_global_pos())
 				area2d_blacklist.append(earthquake_obj.get_node("screen"))
 				tilemap.add_child(earthquake_obj)
+			if (magic_spells[selected_spell]["id"] == "wind"):
+				if (has_node(charge_obj.get_name())):
+					remove_child(charge_obj)
+				var wind_obj = magic_spells[selected_spell]["attack"].instance()
+				wind_obj.set("camera", get_node("Camera2D"))
+				wind_obj.set("player", self)
+				wind_obj.set_size(scale)
+				wind_obj.set("direction", direction)
+				wind_obj.set_global_pos(Vector2(get_global_pos().x + direction * camera_offset.x/2.0, get_global_pos().y))
+				area2d_blacklist.append(wind_obj.get_node("screen"))
+				tilemap.add_child(wind_obj)
 				
 	# step shield state if it is active
 	if (shield != null):
 		shield_current_delay += 1
-		var alpha = (1 - shield_current_delay/shield_delay) * shield_alpha
+		var alpha = (1 - float(shield_current_delay)/shield_delay) * shield_alpha
 		var shieldbody = shield.get_node("shield")
 		var shieldcolor = shieldbody.get_modulate()
 		shieldbody.set_modulate(Color(shieldcolor.r, shieldcolor.g, shieldcolor.b, alpha))

@@ -35,6 +35,7 @@ var stun_obj
 var stun_delay = 300
 var stun_current_delay = 0
 var is_stunned = false
+var gustx = 0
 
 func check_dying():
 	if (hp <= 0):
@@ -65,6 +66,8 @@ func check_motion(frontX, space_state):
 					# freeze in collision block if hit with an ice attack
 					if (i.get_parent() != null && i.get_parent().get_name() == "Ice"):
 						frozen = true
+						freezeblock_obj = freezeblock.instance()
+						freezeblock_obj.set_scale(Vector2(sprite_offset.x * 2 / TILESIZE, sprite_offset.y * 2 / TILESIZE))
 						add_child(freezeblock_obj)
 						if (has_node(collision_rect.get_name())):
 							remove_child(collision_rect)
@@ -99,6 +102,16 @@ func check_motion(frontX, space_state):
 					direction = direction * -1
 			
 			move(Vector2(MOVESPEED * direction, 0))
+		# check collision before moving from wind attack
+		if (gustx != 0):
+			var closestX = gustx
+			var s = gustx / abs(gustx)
+			var frontTile = space_state.intersect_ray(Vector2(get_global_pos().x + s * sprite_offset.x + gustx, get_global_pos().y - sprite_offset.y), Vector2(get_global_pos().x + s * sprite_offset.x + gustx, get_global_pos().y + sprite_offset.y - 1))
+			if (frontTile != null && frontTile.has("collider")):
+				closestX = 0
+			move(Vector2(closestX, 0))
+			gustx = 0
+		
 	elif (frozen):
 		freeze_counter += 1
 		# flash to warn player that frozen state is almost over
@@ -111,6 +124,8 @@ func check_motion(frontX, space_state):
 			freeze_counter = 0
 			if (has_node(freezeblock_obj.get_name())):
 				remove_child(freezeblock_obj)
+			freezeblock_obj.queue_free()
+			freezeblock_obj = null
 			add_child(collision_rect)
 			animation_player.play(current_animation)
 	if (is_stunned):
@@ -148,8 +163,8 @@ func step_vertical(frontX, space_state):
 
 func floortile_check(frontX, space_state, desiredY):
 	var blacklist = [player.get_node("player")]
-	if (freezeblock_obj != null):
-		blacklist.append(freezeblock_obj)
+	#if (freezeblock_obj != null):
+	#	blacklist.append(freezeblock_obj)
 	var floorTile = space_state.intersect_ray(Vector2(frontX, get_global_pos().y + sprite_offset.y), Vector2(frontX, get_global_pos().y + sprite_offset.y + desiredY), blacklist)
 
 	falling = true
@@ -196,6 +211,8 @@ func _fixed_process(delta):
 	
 	get_node(new_animation).set_scale(Vector2(direction, 1))
 	
+	gustx = 0
+	
 	if (current_delay > 0):
 		current_delay += 1
 		if (current_delay >= hurt_delay):
@@ -222,8 +239,6 @@ func _ready():
 	player = get_tree().get_root().get_node("world/playercontainer")
 	hud = get_tree().get_root().get_node("world/gui/hpcontainer")
 	set_fixed_process(true)
-	freezeblock_obj = freezeblock.instance()
-	freezeblock_obj.set_scale(Vector2(sprite_offset.x * 2 / TILESIZE, sprite_offset.y * 2 / TILESIZE))
 	stun_obj = get_node("Stun")
 	if (stun_obj != null):
 		stun_obj.hide()

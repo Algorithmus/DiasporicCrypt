@@ -2,6 +2,7 @@
 extends Node2D
 
 var iceball
+var dust
 var is_released = false
 var direction = 1
 var speed = 10
@@ -14,6 +15,7 @@ var camera
 func _ready():
 	set_fixed_process(true)
 	iceball = get_node("Iceball")
+	dust = get_node("dust")
 
 func _fixed_process(delta):
 	if (is_released):
@@ -34,9 +36,9 @@ func change_direction(new_direction):
 	var angle = fposmod(-direction*90, 360)
 	iceball.set_param(Particles2D.PARAM_GRAVITY_DIRECTION, angle)
 	iceball.set_param(Particles2D.PARAM_INITIAL_ANGLE, angle)
+	dust.set_emissor_offset(Vector2(direction*-16, 0))
 	
 func release():
-	iceball.set_use_local_space(false)
 	var scale = iceball.get_param(Particles2D.PARAM_INITIAL_SIZE)
 	is_released = true
 	hp = hp * ceil(scale)
