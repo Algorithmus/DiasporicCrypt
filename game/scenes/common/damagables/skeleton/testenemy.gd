@@ -233,7 +233,6 @@ func _fixed_process(delta):
 
 func _ready():
 	collision_rect = get_node("damagable")
-	solid_rect = get_node("CollisionShape2D")
 	sprite_offset = get_node("damagable/CollisionShape2D").get_shape().get_extents()
 	animation_player = get_node("AnimationPlayer")
 	player = get_tree().get_root().get_node("world/playercontainer")

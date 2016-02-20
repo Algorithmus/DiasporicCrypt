@@ -110,8 +110,6 @@ func step_player(delta):
 	var onOneWayTile = check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space_state, oneWayTile)
 	
 	var areaTiles = damage_rect.get_overlapping_areas()
-	print("area tiles")
-	print(areaTiles)
 	# check underwater
 	check_underwater(areaTiles)
 
