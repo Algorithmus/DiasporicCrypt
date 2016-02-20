@@ -29,8 +29,8 @@ func check_dying():
 			stun_obj.hide()
 		is_dying = true
 		is_hurt = false
-		if (has_node("damagable")):
-			remove_child(get_node("damagable"))
+		if (has_node(damage_rect.get_name())):
+			remove_child(damage_rect)
 
 func request_stun():
 	if (stun_obj != null):

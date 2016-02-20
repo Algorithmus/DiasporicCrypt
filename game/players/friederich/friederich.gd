@@ -415,7 +415,7 @@ func _on_special_collision(area):
 			target_enemy = i
 	if(area.get_name() != "damage" && area != special_collider && area.get_name() != "oneway" && !area.get_name().match("slope*") && area.get_name() != "ladder"):
 		target_enemy = area
-	if (target_enemy != null):
+	if (target_enemy != null && target_enemy.get_parent() != null):
 		target_enemy_offset = Vector2(get_global_pos().x - target_enemy.get_global_pos().x, get_global_pos().y - target_enemy.get_global_pos().y)
 		target_enemy.get_parent().set("hurt_delay", current_chain_special["hurt_delay"])
 
