@@ -1,10 +1,110 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="11" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
+<resource_file type="PackedScene" subresource_count="12" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
+	<ext_resource path="res://scenes/common/stun.scn" type="PackedScene" index="4"></ext_resource>
 	<ext_resource path="res://scenes/common/damagables/skeleton/die.wav" type="Sample" index="3"></ext_resource>
-	<ext_resource path="res://scenes/common/damagables/BaseEnemy.gd" type="Script" index="0"></ext_resource>
 	<ext_resource path="res://scenes/common/damagables/skeleton/die.png" type="Texture" index="2"></ext_resource>
 	<ext_resource path="res://scenes/common/damagables/skeleton/walk.png" type="Texture" index="1"></ext_resource>
-	<ext_resource path="res://scenes/common/stun.scn" type="PackedScene" index="4"></ext_resource>
+	<ext_resource path="res://scenes/common/damagables/skeleton/Static.gd" type="Script" index="0"></ext_resource>
+	<resource type="Animation" path="local://6">
+		<string name="resource/name"> "attack" </string>
+		<real name="length"> 0.1 </real>
+		<bool name="loop"> False </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> "die:visibility/visible" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/1/type"> "value" </string>
+		<node_path name="tracks/1/path"> "walk:visibility/visible" </node_path>
+		<int name="tracks/1/interp"> 1 </int>
+		<dictionary name="tracks/1/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/2/type"> "value" </string>
+		<node_path name="tracks/2/path"> "walk:frame" </node_path>
+		<int name="tracks/2/interp"> 1 </int>
+		<dictionary name="tracks/2/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="4"> 				0, 0.5, 0.6, 0.7 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="4"> 				1, 1, 1, 1 </real_array>
+			<string> "values" </string>
+			<array  len="4" shared="false">
+				<int> 1 </int>
+				<int> 5 </int>
+				<int> 6 </int>
+				<int> 7 </int>
+			</array>
+		</dictionary>
+		<string name="tracks/3/type"> "value" </string>
+		<node_path name="tracks/3/path"> "hurt:visibility/visible" </node_path>
+		<int name="tracks/3/interp"> 1 </int>
+		<dictionary name="tracks/3/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/4/type"> "value" </string>
+		<node_path name="tracks/4/path"> "attack:visibility/visible" </node_path>
+		<int name="tracks/4/interp"> 1 </int>
+		<dictionary name="tracks/4/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> True </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/5/type"> "value" </string>
+		<node_path name="tracks/5/path"> "attack:frame" </node_path>
+		<int name="tracks/5/interp"> 1 </int>
+		<dictionary name="tracks/5/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 0 </int>
+			</array>
+		</dictionary>
+
+	</resource>
 	<resource type="Animation" path="local://2">
 		<string name="resource/name"> "die" </string>
 		<real name="length"> 0.6 </real>
@@ -90,11 +190,26 @@
 				<bool> False </bool>
 			</array>
 		</dictionary>
+		<string name="tracks/5/type"> "value" </string>
+		<node_path name="tracks/5/path"> "attack:visibility/visible" </node_path>
+		<int name="tracks/5/interp"> 1 </int>
+		<dictionary name="tracks/5/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
 
 	</resource>
 	<resource type="Animation" path="local://3">
 		<string name="resource/name"> "walk" </string>
-		<real name="length"> 0.8 </real>
+		<real name="length"> 0.1 </real>
 		<bool name="loop"> True </bool>
 		<real name="step"> 0.1 </real>
 		<string name="tracks/0/type"> "value" </string>
@@ -134,16 +249,12 @@
 			<string> "cont" </string>
 			<bool> False </bool>
 			<string> "times" </string>
-			<real_array  len="8"> 				0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 </real_array>
+			<real_array  len="4"> 				0, 0.5, 0.6, 0.7 </real_array>
 			<string> "transitions" </string>
-			<real_array  len="8"> 				1, 1, 1, 1, 1, 1, 1, 1 </real_array>
+			<real_array  len="4"> 				1, 1, 1, 1 </real_array>
 			<string> "values" </string>
-			<array  len="8" shared="false">
-				<int> 0 </int>
+			<array  len="4" shared="false">
 				<int> 1 </int>
-				<int> 2 </int>
-				<int> 3 </int>
-				<int> 4 </int>
 				<int> 5 </int>
 				<int> 6 </int>
 				<int> 7 </int>
@@ -153,6 +264,21 @@
 		<node_path name="tracks/3/path"> "hurt:visibility/visible" </node_path>
 		<int name="tracks/3/interp"> 1 </int>
 		<dictionary name="tracks/3/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
+		<string name="tracks/4/type"> "value" </string>
+		<node_path name="tracks/4/path"> "attack:visibility/visible" </node_path>
+		<int name="tracks/4/interp"> 1 </int>
+		<dictionary name="tracks/4/keys" shared="false">
 			<string> "cont" </string>
 			<bool> False </bool>
 			<string> "times" </string>
@@ -249,6 +375,21 @@
 				<vector2> -15, 0 </vector2>
 			</array>
 		</dictionary>
+		<string name="tracks/5/type"> "value" </string>
+		<node_path name="tracks/5/path"> "attack:visibility/visible" </node_path>
+		<int name="tracks/5/interp"> 1 </int>
+		<dictionary name="tracks/5/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<bool> False </bool>
+			</array>
+		</dictionary>
 
 	</resource>
 	<resource type="RectangleShape2D" path="local://1">
@@ -277,8 +418,8 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="59">
-				<string> "Zombie" </string>
+			<string_array  len="62">
+				<string> "TestStatic" </string>
 				<string> "z/z" </string>
 				<string> "input/pickable" </string>
 				<string> "collision/layers" </string>
@@ -288,18 +429,21 @@
 				<string> "__meta__" </string>
 				<string> "KinematicBody2D" </string>
 				<string> "walk" </string>
+				<string> "visibility/visible" </string>
 				<string> "texture" </string>
 				<string> "hframes" </string>
 				<string> "frame" </string>
+				<string> "modulate" </string>
 				<string> "Sprite" </string>
 				<string> "die" </string>
-				<string> "visibility/visible" </string>
 				<string> "offset" </string>
 				<string> "hurt" </string>
+				<string> "attack" </string>
 				<string> "AnimationPlayer" </string>
 				<string> "playback/process_mode" </string>
 				<string> "playback/default_blend_time" </string>
 				<string> "root/root" </string>
+				<string> "anims/attack" </string>
 				<string> "anims/die" </string>
 				<string> "anims/walk" </string>
 				<string> "anims/hurt" </string>
@@ -339,14 +483,14 @@
 				<string> "transform/pos" </string>
 			</string_array>
 			<string> "node_count" </string>
-			<int> 9 </int>
+			<int> 10 </int>
 			<string> "node_paths" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="173"> 				-1, -1, 8, 0, -1, 7, 1, 0, 2, 1, 3, 0, 4, 0, 5, 2, 6, 3, 7, 4, 0, 0, 0, 13, 9, -1, 3, 10, 5, 11, 6, 12, 7, 0, 0, 0, 13, 14, -1, 4, 15, 1, 10, 8, 16, 9, 11, 7, 0, 0, 0, 13, 17, -1, 5, 15, 1, 10, 8, 16, 9, 11, 7, 12, 0, 0, 0, 0, 18, 18, -1, 10, 19, 0, 20, 10, 21, 11, 22, 12, 23, 13, 24, 14, 25, 15, 26, 16, 27, 17, 28, 18, 0, 0, 0, 37, 29, -1, 8, 2, 15, 30, 19, 31, 20, 32, 1, 33, 21, 34, 22, 35, 23, 36, 16, 0, 5, 0, 38, 38, -1, 3, 39, 19, 40, 1, 41, 24, 0, 0, 0, 42, 42, -1, 14, 43, 0, 44, 25, 45, 10, 46, 16, 47, 10, 48, 10, 49, 10, 50, 24, 51, 26, 52, 16, 53, 16, 54, 27, 55, 10, 56, 10, 0, 0, 0, 2147483647, 57, 28, 1, 58, 29, 0 </int_array>
+			<int_array  len="198"> 				-1, -1, 8, 0, -1, 7, 1, 0, 2, 1, 3, 0, 4, 0, 5, 2, 6, 3, 7, 4, 0, 0, 0, 15, 9, -1, 5, 10, 1, 11, 5, 12, 6, 13, 0, 14, 7, 0, 0, 0, 15, 16, -1, 5, 10, 1, 11, 8, 17, 9, 12, 10, 14, 11, 0, 0, 0, 15, 18, -1, 6, 10, 1, 11, 8, 17, 9, 12, 10, 13, 0, 14, 11, 0, 0, 0, 15, 19, -1, 4, 11, 5, 12, 6, 13, 0, 14, 11, 0, 0, 0, 20, 20, -1, 11, 21, 0, 22, 12, 23, 13, 24, 14, 25, 15, 26, 16, 27, 17, 28, 18, 29, 19, 30, 20, 31, 21, 0, 0, 0, 40, 32, -1, 8, 2, 18, 33, 22, 34, 23, 35, 1, 36, 24, 37, 25, 38, 26, 39, 19, 0, 6, 0, 41, 41, -1, 3, 42, 22, 43, 1, 44, 27, 0, 0, 0, 45, 45, -1, 14, 46, 0, 47, 28, 48, 12, 49, 19, 50, 12, 51, 12, 52, 12, 53, 27, 54, 29, 55, 19, 56, 19, 57, 30, 58, 12, 59, 12, 0, 0, 0, 2147483647, 60, 31, 1, 61, 32, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="30" shared="false">
+			<array  len="33" shared="false">
 				<int> 1 </int>
 				<bool> False </bool>
 				<real> 0.08 </real>
@@ -475,8 +619,14 @@
 						</dictionary>
 						<string> "Anim" </string>
 						<dictionary  shared="false">
-							<string> "visible" </string>
+							<string> "animation" </string>
+							<string> "walk" </string>
+							<string> "editing" </string>
 							<bool> False </bool>
+							<string> "player" </string>
+							<node_path> "AnimationPlayer" </node_path>
+							<string> "visible" </string>
+							<bool> True </bool>
 						</dictionary>
 					</dictionary>
 					<string> "__editor_run_settings__" </string>
@@ -489,11 +639,14 @@
 				</dictionary>
 				<resource  external="1">  </resource>
 				<int> 8 </int>
-				<int> 6 </int>
+				<color> 0.314394, 0.36411, 0.393724, 1 </color>
 				<resource  external="2">  </resource>
 				<vector2> -15, 0 </vector2>
+				<int> 6 </int>
+				<color> 0.313726, 0.360784, 0.392157, 1 </color>
 				<real> 0 </real>
 				<node_path> ".." </node_path>
+				<resource  resource_type="Animation" path="local://6">  </resource>
 				<resource  resource_type="Animation" path="local://2">  </resource>
 				<resource  resource_type="Animation" path="local://3">  </resource>
 				<resource  resource_type="Animation" path="local://5">  </resource>

@@ -7,6 +7,4 @@ extends "res://scenes/common/damagables/BaseEnemy.gd"
 
 func _ready():
 	hp = 50
-	is_consumable = true
-
-
+	magic_only = true

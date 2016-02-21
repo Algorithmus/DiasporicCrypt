@@ -61,7 +61,12 @@ func _fixed_process(delta):
 				if (i.get_parent() != null && i.get_parent().get_name() == "Ice"):
 					frozen = true
 					freezeblock_obj = freezeblock.instance()
-					freezeblock_obj.set_scale(Vector2(sprite_offset.x / 16, sprite_offset.y / 16))
+					var freezescale = sprite_offset.y / 16.0
+					print("freeze")
+					print(freezescale)
+					freezeblock_obj.get_node("block").set_scale(Vector2(sprite_offset.x / 16.0, freezescale))
+					freezeblock_obj.get_node("block").set_pos(Vector2(0, sprite_offset.y - 16))
+					freezeblock_obj.set_pos(Vector2(0, -sprite_offset.y + 16))
 					add_child(freezeblock_obj)
 					if (has_node(collision_rect.get_name())):
 						remove_child(collision_rect)

@@ -1,6 +1,6 @@
 
 extends KinematicBody2D
-# the great majority of player behavior and interaction implementation is modelled after this article: http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/comment-page-1
+# the great majority of character behavior and interaction implementation is modelled after this article: http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/comment-page-1
 # please note that this blog link sometimes doesn't work, but you might still be able to see it through archive.org
 
 const DEFAULT_GRAVITY = 1
@@ -102,7 +102,8 @@ func getSlopes(space_state):
 
 func getOneWayTile(space_state, desiredY):
 	var leftX = get_global_pos().x - sprite_offset.x
-	var oneWayTile = space_state.intersect_ray(Vector2(leftX, get_global_pos().y + sprite_offset.y), Vector2(leftX, get_global_pos().y + sprite_offset.y + desiredY), area2d_blacklist, 2147483647, 16)
+	var rightX = get_global_pos().x + sprite_offset.x
+	var oneWayTile = space_state.intersect_ray(Vector2(leftX, get_global_pos().y + sprite_offset.y + desiredY), Vector2(rightX, get_global_pos().y + sprite_offset.y + desiredY), area2d_blacklist, 2147483647, 16)
 	if (oneWayTile.has("collider")):
 		if (oneWayTile["collider"].get_name() == "oneway"):
 			return oneWayTile["collider"]
@@ -130,15 +131,15 @@ func clearMovingPlatform():
 	movingPlatform = null
 	movingPlatformPos = null
 
-func closestXTile(direction, desiredX, space_state):
-	# true = check left side
-	# false = check right side
+func closestXTile(desired_direction, desiredX, space_state):
+	# -1 = check left side
+	# 1 = check right side
 	if (has_kinematic_collision):
 		if (is_colliding()):
 			if (get_collision_pos().y > int(get_pos().y - sprite_offset.y) && get_collision_pos().y < int(get_pos().y + sprite_offset.y)):
 				return 0
 	else:
-		var frontTile = space_state.intersect_ray(Vector2(get_global_pos().x + desiredX, get_global_pos().y - sprite_offset.y), Vector2(get_global_pos().x + desiredX, get_global_pos().y + sprite_offset.y - 1))
+		var frontTile = space_state.intersect_ray(Vector2(get_global_pos().x + desired_direction * sprite_offset.x + desiredX, get_global_pos().y - sprite_offset.y), Vector2(get_global_pos().x + desired_direction * sprite_offset.x + desiredX, get_global_pos().y + sprite_offset.y - 1))
 		if (frontTile != null && frontTile.has("collider")):
 			return 0
 	return desiredX
@@ -222,7 +223,7 @@ func step_horizontal(space_state):
 	var relevantSlopeTile = null
 	if (horizontal_input_permitted()):
 		if (input_left()):
-			position.x = -min(runspeed, closestXTile(true, runspeed, space_state))
+			position.x = closestXTile(-1, -runspeed, space_state)
 			# can't tell right now if we are on a slope tile and can ignore
 			# the a-b slope tile
 			# so delay horizontal motion until slope check
@@ -233,7 +234,7 @@ func step_horizontal(space_state):
 			direction = -1
 			horizontal_motion = true
 		elif (input_right()):
-			position.x = min(runspeed, closestXTile(false, runspeed, space_state))
+			position.x = closestXTile(1, runspeed, space_state)
 			if (checkABSlope()):
 				slopeX = position.x
 				position.x = 0
@@ -365,6 +366,7 @@ func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, o
 
 		# check slope tiles
 		if (relevantSlopeTile != null):
+			print("on slope tile")
 			var closestSlopeTile = null
 			var t
 			var b
@@ -405,6 +407,9 @@ func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, o
 				closestTileY = min(abSlope.get_global_pos().y - TILE_SIZE/2 - forwardY - 1, desiredY)
 				closestTileY = int(closestTileY)
 				falling = false
+			if (onSlope):
+				print(closestTileY)
+				print(desiredY)
 
 		# handle one way tiles
 		if (onOneWayTile):

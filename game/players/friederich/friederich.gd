@@ -219,8 +219,8 @@ func step_player(delta):
 						if (current_chain_special["id"] == "void"):
 							special_offset = special_collider.get_node("weapon").get_shape().get_extents()
 							special_collider.set_pos(Vector2(((special_offset.x + sprite_offset.x + 4) + current_chain_special["collider_offset"].x) * direction, current_chain_special["collider_offset"].y))
-							if (target_enemy != null):
-								special_collider.set_pos(Vector2(target_enemy.get_global_pos().x - get_global_pos().x + (target_enemy.get_node("CollisionShape2D").get_shape().get_extents().x + special_offset.x) * direction))
+							if (target_enemy != null && target_enemy.get_ref()):
+								special_collider.set_pos(Vector2(target_enemy.get_ref().get_global_pos().x - get_global_pos().x + (target_enemy.get_ref().get_node("CollisionShape2D").get_shape().get_extents().x + special_offset.x) * direction))
 							special_collider.get_node("attack").set_scale(Vector2(direction*-1, 1))
 							special_collider.get_node("AnimationPlayer").play("attack")
 							special_collider.connect("area_enter", self, "_on_special_collision")
@@ -295,21 +295,23 @@ func step_player(delta):
 		var animation_length = animation_player.get_current_animation_length()
 		var animation_end = animation_length - special_delay * delta
 		# make sure the target is still in the world before matching up coordinates
-		if (target_enemy != null && target_enemy.get_parent() != null):
+		if (target_enemy != null && target_enemy.get_ref() && target_enemy.get_ref().get_parent() != null):
 			target_exists = true
-			newpos = target_enemy.get_global_pos().y - get_global_pos().y + target_enemy_offset.y
+			newpos = target_enemy.get_ref().get_global_pos().y - get_global_pos().y + target_enemy_offset.y
 		# do special attack specific actions
 		if (current_chain_special["id"] == "thrust"):
-			if (target_exists && hit_enemy && target_enemy.get_name() == "damagable"):
-				target_enemy.get_parent().set_global_pos(Vector2(target_enemy.get_global_pos().x + direction * 5, target_enemy.get_global_pos().y))
+			if (target_exists && hit_enemy && target_enemy.get_ref().get_name() == "damagable"):
+				target_enemy.get_ref().get_parent().set_global_pos(Vector2(target_enemy.get_ref().get_global_pos().x + direction * 5, target_enemy.get_ref().get_global_pos().y))
 		elif (current_chain_special["id"] == "slice"):
 			newpos = min(newpos + 1, 0)
-			if (target_exists && hit_enemy && target_enemy.get_name() == "damagable"):
-				target_enemy.get_parent().set_global_pos(Vector2(target_enemy.get_global_pos().x, target_enemy.get_global_pos().y + target_enemy_offset.y))
+			if (target_exists && hit_enemy && target_enemy.get_ref().get_name() == "damagable"):
+				target_enemy.get_ref().get_parent().set("floortile_check_requested", false)
+				target_enemy.get_ref().get_parent().set_global_pos(Vector2(target_enemy.get_ref().get_global_pos().x, target_enemy.get_ref().get_global_pos().y + target_enemy_offset.y))
 		elif (current_chain_special["id"] == "skewer"):
 			newpos = min(position.y + 1, 0)
-			if (target_exists && hit_enemy && target_enemy.get_name() == "damagable"):
-				target_enemy.get_parent().set_global_pos(Vector2(target_enemy.get_global_pos().x, get_global_pos().y + target_enemy_offset.y))
+			if (target_exists && hit_enemy && target_enemy.get_ref().get_name() == "damagable"):
+				target_enemy.get_ref().get_parent().set("floortile_check_requested", false)
+				target_enemy.get_ref().get_parent().set_global_pos(Vector2(target_enemy.get_ref().get_global_pos().x, get_global_pos().y - TILE_SIZE))
 		elif (current_chain_special["id"] == "stab"):
 			if (animation_pos <= 0.15):
 				newpos = min(position.y + 1, 0)
@@ -319,11 +321,11 @@ func step_player(delta):
 				#	target_enemy.get_parent().set_global_pos(Vector2(target_enemy.get_global_pos().x, get_global_pos().y + target_enemy_offset.y))
 		# prevent enemy dropping through the floor on certain attacks
 		elif (current_chain_special["id"] == "dualspin"):
-			if (target_exists && hit_enemy && target_enemy.get_name() == "damagable"):
-				target_enemy.get_parent().set("floortile_check_requested", true)
+			if (target_exists && hit_enemy && target_enemy.get_ref().get_name() == "damagable"):
+				target_enemy.get_ref().get_parent().set("floortile_check_requested", true)
 		elif (current_chain_special["id"] == "swift"):
-			if (target_exists && hit_enemy && target_enemy.get_name() == "damagable"):
-				target_enemy.get_parent().set("floortile_check_requested", true)
+			if (target_exists && hit_enemy && target_enemy.get_ref().get_name() == "damagable"):
+				target_enemy.get_ref().get_parent().set("floortile_check_requested", true)
 		elif (current_chain_special["id"] == "rush"):
 			move(Vector2(direction*15, 0))
 		elif (current_chain_special["id"] == "void"):
@@ -371,8 +373,8 @@ func check_damage(damageTiles):
 		.check_damage(damageTiles)
 
 func reset_target_delay():
-	if (target_enemy != null && target_enemy.get_parent() != null):
-		target_enemy.get_parent().set("hurt_delay", 10)
+	if (target_enemy != null && target_enemy.get_ref() && target_enemy.get_ref().get_parent() != null):
+		target_enemy.get_ref().get_parent().set("hurt_delay", 10)
 
 func reset_chain():
 	attack_buffer.clear()
@@ -412,12 +414,12 @@ func _on_special_collision(area):
 		collisions = special_collider.get_overlapping_areas()
 	for i in collisions:
 		if (i.get_name() != "damage" && i != special_collider && i.get_name() != "oneway" && !i.get_name().match("slope*") && i.get_name() != "ladder"):
-			target_enemy = i
+			target_enemy = weakref(i)
 	if(area.get_name() != "damage" && area != special_collider && area.get_name() != "oneway" && !area.get_name().match("slope*") && area.get_name() != "ladder"):
-		target_enemy = area
-	if (target_enemy != null && target_enemy.get_parent() != null):
-		target_enemy_offset = Vector2(get_global_pos().x - target_enemy.get_global_pos().x, get_global_pos().y - target_enemy.get_global_pos().y)
-		target_enemy.get_parent().set("hurt_delay", current_chain_special["hurt_delay"])
+		target_enemy = weakref(area)
+	if (target_enemy != null && target_enemy.get_ref() && target_enemy.get_ref().get_parent() != null):
+		target_enemy_offset = Vector2(get_global_pos().x - target_enemy.get_ref().get_global_pos().x, get_global_pos().y - target_enemy.get_ref().get_global_pos().y)
+		target_enemy.get_ref().get_parent().set("hurt_delay", current_chain_special["hurt_delay"])
 
 func update_fusion():
 	.update_fusion()

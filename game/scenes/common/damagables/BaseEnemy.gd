@@ -1,6 +1,11 @@
 
 extends "res://scenes/common/BaseCharacter.gd"
 
+# Base class for enemy interaction. Takes an ai class for input while
+# applying regular collisions.
+# Also contains basic enemy behaviors such as status changes and consumable
+# enemies.
+
 var is_dying = false
 var player
 var hpclass = preload("res://gui/hud/hp.scn")
@@ -19,9 +24,14 @@ var stun_obj
 var stun_delay = 300
 var stun_current_delay = 0
 var is_stunned = false
-var gustx = 0
-var ai_input = "right"
+var gustx = 0 # add extra velocity from gust attack
+var ai = preload("res://scenes/common/damagables/ai/patrol.gd")
+var ai_obj
+var magic_only = false # only hurt by magic attacks
+var ignore_collision = false # turn this on for flying enemies
+var floortile_check_requested = true
 
+# variables for consumable enemies
 var is_consumable = false
 var consumable = false
 var base_consume_value = 10
@@ -31,6 +41,14 @@ var current_consume_value
 var color_increments = Color()
 var consumable_instance = preload("res://scenes/common/damagables/consumable.xml")
 var consumable_offset
+
+var is_attacking = false
+var attack_delay = 100
+var current_attack_delay = 0
+var follow_player = false # sprite faces player regardless of what direction the enemy is moving in
+
+func can_attack():
+	return false
 
 func check_dying():
 	if (is_consumable):
@@ -51,20 +69,26 @@ func request_stun():
 		stun_obj.get_node("AnimationPlayer").play("rotate")
 
 func check_damage():
-	if (!is_dying && !frozen):
+	if (!is_dying && !frozen && !consumable):
 		if(current_delay == 0):
 			var damageTiles = damage_rect.get_overlapping_areas()
 			for i in damageTiles:
 				var collider
-				if (i.has_node("weapon")):
+				if (i.has_node("weapon") && !magic_only):
 					collider = i.get_node("weapon")
 					player.get_node("player").set("hit_enemy", true)
 				if (i.has_node("magic")):
 					# freeze in collision block if hit with an ice attack
+					# freeze blocks are essentially one way platforms
+					# it's to allow any overlapping enemies to walk past
+					# without messing up collision detection
 					if (i.get_parent() != null && i.get_parent().get_name() == "Ice"):
 						frozen = true
 						freezeblock_obj = freezeblock.instance()
-						freezeblock_obj.set_scale(Vector2(sprite_offset.x * 2 / TILE_SIZE, sprite_offset.y * 2 / TILE_SIZE))
+						var freezescale = sprite_offset.y * 2 / TILE_SIZE
+						freezeblock_obj.get_node("block").set_scale(Vector2(sprite_offset.x * 2.0 / TILE_SIZE, freezescale))
+						freezeblock_obj.get_node("block").set_pos(Vector2(0, sprite_offset.y - TILE_SIZE / 2))
+						freezeblock_obj.set_pos(Vector2(0, -sprite_offset.y + TILE_SIZE / 2))
 						add_child(freezeblock_obj)
 						if (has_node(damage_rect.get_name())):
 							remove_child(damage_rect)
@@ -85,20 +109,45 @@ func check_damage():
 					current_walk_delay += 1
 
 func horizontal_input_permitted():
-	return .horizontal_input_permitted() && !is_stunned && !is_dying && !consumable
+	return .horizontal_input_permitted() && !is_stunned && !is_dying && !consumable && !frozen
 
 func closestXTile(direction, desiredX, space_state):
-	var value = .closestXTile(direction, desiredX + gustx, space_state)
+	# add gust speed to horizontal motion
+	# unfortunately, that also can change the direction of the
+	# desired motion
+	var netX = desiredX + gustx
+	var value = .closestXTile(sign(netX), netX, space_state)
 	gustx = 0
 	return value
 
+# ignore gravity in certain special attacks
+func check_special_attack():
+	var damageTiles = damage_rect.get_overlapping_areas()
+	for i in damageTiles:
+		if (i.has_node("weapon") && !floortile_check_requested):
+			floortile_check_requested = true
+			return false
+	return true
+
 func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, onSlope, oneWayTile, relevantSlopeTile):
-	if (!frozen):
+	if (!frozen && check_special_attack()):
 		return .step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, onSlope, oneWayTile, relevantSlopeTile)
 	else:
+		accel = 0
 		return {"desiredY": 0, "slope": false, "slopeTile": null, "abSlope": null, "animationSpeed": animation_speed, "ladderY": 0}
 
 func check_animations(new_animation, animation_speed, horizontal_motion, ladderY):
+	new_animation = do_animation_check(new_animation, animation_speed, horizontal_motion, ladderY)
+	var sprite_direction = direction
+	if (follow_player):
+		sprite_direction = 1
+		if (player.get_node("player").get_global_pos().x < get_global_pos().x):
+			sprite_direction = -1
+	if (!frozen):
+		get_node(new_animation).set_scale(Vector2(sprite_direction, 1))
+	return {"animationSpeed": animation_speed, "animation": new_animation}
+
+func do_animation_check(new_animation, animation_speed, horizontal_motion, ladderY):
 	new_animation = "walk"
 	if (is_dying):
 		new_animation = "die"
@@ -106,8 +155,7 @@ func check_animations(new_animation, animation_speed, horizontal_motion, ladderY
 		new_animation = "hurt"
 	if (is_consumable && consumable):
 		new_animation = "die"
-	get_node(new_animation).set_scale(Vector2(direction, 1))
-	return {"animationSpeed": animation_speed, "animation": new_animation}
+	return new_animation
 
 func bleed():
 	var blood_obj = blood.instance()
@@ -131,57 +179,27 @@ func die():
 		is_dying = false
 		if (has_node(damage_rect.get_name())):
 			remove_child(damage_rect)
-		var consumable_obj = consumable_instance.instance()
-		consumable_offset = consumable_obj.get_node("CollisionShape2D").get_shape().get_extents()
-		consumable_obj.set_pos(Vector2(0, sprite_offset.y - consumable_offset.y))
-		add_child(consumable_obj)
+		damage_rect = consumable_instance.instance()
+		consumable_offset = damage_rect.get_node("CollisionShape2D").get_shape().get_extents()
+		damage_rect.set_pos(Vector2(0, sprite_offset.y - consumable_offset.y))
+		add_child(damage_rect)
 	else:
 		queue_free()
 
 func input_left():
-	return ai_input == "left"
+	return ai_obj.get("input") == "left"
 
 func input_right():
-	return ai_input == "right"
+	return ai_obj.get("input") == "right"
 
-func step_ai_input(space_state):
-	var change_direction = false
-	if (!is_hurt && !is_stunned):
-		var is_wall = false
-		var frontX = get_global_pos().x + direction * (sprite_offset.x + runspeed * current_gravity)
-		var frontTile = space_state.intersect_ray(Vector2(frontX, get_global_pos().y - sprite_offset.y), Vector2(frontX, get_global_pos().y + sprite_offset.y - 1), [self, player.get_node("player")])
-		if (frontTile != null && frontTile.has("position") && frontTile.has("collider")):
-			change_direction = true
-			is_wall = true
-				
-		frontTile = space_state.intersect_ray(Vector2(frontX + direction*runspeed, get_global_pos().y + sprite_offset.y), Vector2(frontX + direction*runspeed, get_global_pos().y + sprite_offset.y + TILE_SIZE), [self, player.get_node("player")])
+func input_up():
+	return ai_obj.get("vertical_input") == "up"
 
-		if (frontTile == null || !frontTile.has("position") && !falling):
-			change_direction = true
-		if (frontTile != null && frontTile.has("collider")):
-			var collider = frontTile["collider"]
-			if (collider.get_name() == "player" && collider.get_global_pos().y - collider["sprite_offset"].y > get_global_pos().y + sprite_offset.y):
-				change_direction = true
-		# slope tiles and one way tiles don't count
-		var areaTile = space_state.intersect_ray(Vector2(frontX + direction*runspeed, get_global_pos().y + sprite_offset.y - TILE_SIZE), Vector2(frontX + direction*runspeed, get_global_pos().y + sprite_offset.y + TILE_SIZE), area2d_blacklist, 2147483647, 16)
-		if (areaTile != null && areaTile.has("collider")):
-			if (isSlope(areaTile["collider"].get_name())):
-				change_direction = false
-			if (!is_wall && areaTile["collider"].get_name() == "oneway" && areaTile["collider"].get_global_pos().y - TILE_SIZE / 2 > get_global_pos().y + sprite_offset.y - 1):
-				change_direction = false
+func input_down():
+	return ai_obj.get("vertical_input") == "down"
 
-		if (change_direction):
-			if (direction > 0):
-				ai_input = "left"
-			else:
-				ai_input = "right"
-		else:
-			if (direction > 0):
-				ai_input = "right"
-			else:
-				ai_input = "left"
-	else:
-		ai_input = ""
+func input_jump():
+	return ai_obj.get("jump_input") == "jump"
 
 func update_status():
 	if (frozen || is_stunned):
@@ -227,9 +245,14 @@ func check_stunned():
 			animation_player.play(current_animation)
 
 func step_player(delta):
+	# ignore expensive calculations on flying enemies
+	if (ignore_collision):
+		on_ladder = true
 	var space = get_world_2d().get_space()
 	var space_state = Physics2DServer.space_get_direct_state(space)
 	var animation_speed = 1
+
+	ai_obj.step(space_state)
 
 	# position at character's feet
 	var forwardY = get_global_pos().y + sprite_offset.y
@@ -282,6 +305,7 @@ func step_player(delta):
 
 	position.y = accel
 
+	# check status
 	check_frozen()
 	
 	check_stunned()
@@ -302,8 +326,6 @@ func step_player(delta):
 	play_animation(new_animation, animation_speed)
 	
 	update_status()
-	
-	step_ai_input(space_state)
 	
 	cleanup_bloodparticles()
 
@@ -328,6 +350,8 @@ func _ready():
 	if (stun_obj != null):
 		stun_obj.hide()
 	area2d_blacklist = [self, damage_rect, player.get_node("player/damage")]
+	ai_obj = ai.new()
+	ai_obj.set("target", self)
 	
 	current_consume_value = base_consume_value * (randf() * 0.5 - 0.25) + base_consume_value
 	var color = get_node("die").get_modulate()

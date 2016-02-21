@@ -370,8 +370,16 @@ func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, o
 func check_crouch(normalTileCheck, abSlope, onSlope, onOneWayTile):
 	if (crouch_requested && !is_attacking && !falling && (normalTileCheck || onSlope || abSlope != null || onOneWayTile)):
 		is_crouching = true
+		get_node("CollisionShape2D").set_scale(Vector2(1, 0.5))
+		get_node("CollisionShape2D").set_pos(Vector2(0, sprite_offset.y/2.0))
+		damage_rect.set_scale(Vector2(1, 0.5))
+		damage_rect.set_pos(Vector2(0, sprite_offset.y/2.0))
 	elif (!crouch_requested && !is_attacking):
 		is_crouching = false
+		get_node("CollisionShape2D").set_scale(Vector2(1, 1))
+		get_node("CollisionShape2D").set_pos(Vector2(0, 0))
+		damage_rect.set_scale(Vector2(1, 1))
+		damage_rect.set_pos(Vector2(0, 0))
 
 func check_climb_platform_vertical(climb_vertically):
 	# clamp to platform vertically to prevent falling while hanging with no input
