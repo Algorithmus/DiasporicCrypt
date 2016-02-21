@@ -10,6 +10,9 @@ var originalX = 0
 
 # AI pattern for patrolling enemies. Walks from one end of the 
 # current platform to the other.
+# Flying enemies have their own specified patrol range since they
+# don't rely on regular collision detection to determine the end
+# of the patrol range.
 
 func _ready():
 	pass
@@ -19,6 +22,7 @@ func step(space_state):
 	# check potential collisions before patrolling
 	if (!target.get("is_hurt") && !target.get("is_stunned") && !target.get("frozen")):
 		var player = target.get("player").get_node("player")
+		# direction changes if gust value is high enough
 		var netX = target.get("direction") * target.get("runspeed") + target.get("gustx")
 		var net_direction = sign(netX)
 		if (target.get("ignore_collision")):
@@ -32,6 +36,7 @@ func step(space_state):
 			if (target.get_global_pos().x + netX <= originalX):
 				input = "right"
 		else:
+			# check normal horizontal collisions
 			var is_wall = false
 			var frontX = target.get_global_pos().x + net_direction * target.get("sprite_offset").x + netX
 			var frontTile = space_state.intersect_ray(Vector2(frontX, target.get_global_pos().y - target.get("sprite_offset").y), Vector2(frontX, target.get_global_pos().y + target.get("sprite_offset").y - 1), [target, player.get_node("player")])

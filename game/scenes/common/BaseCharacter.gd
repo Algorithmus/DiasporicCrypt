@@ -366,7 +366,6 @@ func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, o
 
 		# check slope tiles
 		if (relevantSlopeTile != null):
-			print("on slope tile")
 			var closestSlopeTile = null
 			var t
 			var b
@@ -407,9 +406,6 @@ func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, o
 				closestTileY = min(abSlope.get_global_pos().y - TILE_SIZE/2 - forwardY - 1, desiredY)
 				closestTileY = int(closestTileY)
 				falling = false
-			if (onSlope):
-				print(closestTileY)
-				print(desiredY)
 
 		# handle one way tiles
 		if (onOneWayTile):
