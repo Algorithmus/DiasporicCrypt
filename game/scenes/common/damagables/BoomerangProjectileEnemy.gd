@@ -20,7 +20,8 @@ func check_attack():
 			current_attack_delay = 0
 	if (can_attack() && ai_obj.get("input") == "attack"):
 		is_attacking = true
-		projectile_obj.queue_free()
+		if (projectile_obj != null):
+			projectile_obj.queue_free()
 		projectile_obj = projectile.instance()
 		projectile_obj.set("origin", weakref(self))
 		projectile_obj.set("direction", direction)

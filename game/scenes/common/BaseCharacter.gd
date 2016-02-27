@@ -139,9 +139,13 @@ func closestXTile(desired_direction, desiredX, space_state):
 			if (get_collision_pos().y > int(get_pos().y - sprite_offset.y) && get_collision_pos().y < int(get_pos().y + sprite_offset.y)):
 				return 0
 	else:
-		var frontTile = space_state.intersect_ray(Vector2(get_global_pos().x + desired_direction * sprite_offset.x + desiredX, get_global_pos().y - sprite_offset.y), Vector2(get_global_pos().x + desired_direction * sprite_offset.x + desiredX, get_global_pos().y + sprite_offset.y - 1))
-		if (frontTile != null && frontTile.has("collider")):
-			return 0
+		desiredX = closestXTile_area_check(desired_direction, desiredX, space_state)
+	return desiredX
+
+func closestXTile_area_check(desired_direction, desiredX, space_state):
+	var frontTile = space_state.intersect_ray(Vector2(get_global_pos().x + desired_direction * sprite_offset.x + desiredX, get_global_pos().y - sprite_offset.y), Vector2(get_global_pos().x + desired_direction * sprite_offset.x + desiredX, get_global_pos().y + sprite_offset.y - 1))
+	if (frontTile != null && frontTile.has("collider")):
+		return 0
 	return desiredX
 
 func closestYTile(tileA, tileB):

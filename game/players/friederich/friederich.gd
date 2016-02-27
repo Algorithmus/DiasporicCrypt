@@ -31,6 +31,7 @@ var target_enemy_offset
 #delay after special attack finishes so that attacks afterwards hit enemies
 #seamlessly
 var special_delay = 10
+var static_enemy = preload("res://scenes/common/damagables/Static.gd")
 
 const MAX_CHAIN = 100
 
@@ -415,8 +416,12 @@ func _on_special_collision(area):
 	for i in collisions:
 		if (i.get_name() != "damage" && i != special_collider && i.get_name() != "oneway" && !i.get_name().match("slope*") && i.get_name() != "ladder"):
 			target_enemy = weakref(i)
+			if (i.get_parent() != null && i.get_parent() extends static_enemy):
+				target_enemy = null
 	if(area.get_name() != "damage" && area != special_collider && area.get_name() != "oneway" && !area.get_name().match("slope*") && area.get_name() != "ladder"):
 		target_enemy = weakref(area)
+		if (area.get_parent() != null && area.get_parent() extends static_enemy):
+			target_enemy = null
 	if (target_enemy != null && target_enemy.get_ref() && target_enemy.get_ref().get_parent() != null):
 		target_enemy_offset = Vector2(get_global_pos().x - target_enemy.get_ref().get_global_pos().x, get_global_pos().y - target_enemy.get_ref().get_global_pos().y)
 		target_enemy.get_ref().get_parent().set("hurt_delay", current_chain_special["hurt_delay"])

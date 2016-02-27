@@ -1,13 +1,20 @@
 
 extends "res://scenes/common/damagables/BaseEnemy.gd"
 
-# Base class for patrol enemy that fires simple projectiles.
-
-var projectile = preload("res://scenes/common/damagables/attacks/fireball.scn")
-var projectile_offset = Vector2()
+# Base class for enemy that uses charging attacks.
+var default_runspeed
+var rush_duration = 50
+var rush_current_duration = 0
+var rush_direction = 1
 
 func _ready():
-	attack_delay = 100
+	attack_delay = 30
+	var follow_ai = preload("res://scenes/common/damagables/ai/follow.gd")
+	ai_obj = follow_ai.new()
+	ai_obj.set("target", self)
+	ai_obj.set("preferred_distance", 128)
+	default_runspeed = runspeed
+	is_rush = true
 
 func check_attack():
 	if (current_attack_delay > 0):
@@ -16,14 +23,15 @@ func check_attack():
 			current_attack_delay = 0
 	if (can_attack() && ai_obj.get("input") == "attack"):
 		is_attacking = true
-		var projectile_obj = projectile.instance()
-		projectile_obj.set("camera", player.get_node("player/Camera2D"))
-		projectile_obj.set("direction", direction)
-		projectile_obj.set_global_pos(Vector2(get_global_pos().x + projectile_offset.x + (sprite_offset.x + TILE_SIZE) * direction, get_global_pos().y + projectile_offset.y))
-		get_parent().add_child(projectile_obj)
-	if (is_attacking && animation_player.get_current_animation_length() == animation_player.get_current_animation_pos()):
-		is_attacking = false
-		current_attack_delay += 1
+		runspeed = 10
+		rush_direction = direction
+	if (is_attacking):
+		rush_current_duration += 1
+		if (rush_duration <= rush_current_duration):
+			rush_current_duration = 0
+			is_attacking = false
+			runspeed = default_runspeed
+			current_attack_delay += 1
 
 func do_animation_check(new_animation, animation_speed, horizontal_motion, ladderY):
 	var new_animation = .do_animation_check(new_animation, animation_speed, horizontal_motion, ladderY)

@@ -30,6 +30,8 @@ var ai_obj
 var magic_only = false # only hurt by magic attacks
 var ignore_collision = false # turn this on for flying enemies
 var floortile_check_requested = true
+var is_rush = false
+var player_loaded = false
 
 # variables for consumable enemies
 var is_consumable = false
@@ -120,6 +122,12 @@ func closestXTile(direction, desiredX, space_state):
 	gustx = 0
 	return value
 
+func closestXTile_area_check(desired_direction, desiredX, space_state):
+	var frontTile = space_state.intersect_ray(Vector2(get_global_pos().x + desired_direction * sprite_offset.x + desiredX, get_global_pos().y - sprite_offset.y), Vector2(get_global_pos().x + desired_direction * sprite_offset.x + desiredX, get_global_pos().y + sprite_offset.y - 1))
+	if (frontTile != null && frontTile.has("collider") && frontTile["collider"].get_name() != "player"):
+		return 0
+	return desiredX
+
 # ignore gravity in certain special attacks
 func check_special_attack():
 	var damageTiles = damage_rect.get_overlapping_areas()
@@ -138,6 +146,10 @@ func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, o
 
 func check_animations(new_animation, animation_speed, horizontal_motion, ladderY):
 	new_animation = do_animation_check(new_animation, animation_speed, horizontal_motion, ladderY)
+	set_animation_direction(new_animation)
+	return {"animationSpeed": animation_speed, "animation": new_animation}
+
+func set_animation_direction(new_animation):
 	var sprite_direction = direction
 	if (follow_player):
 		sprite_direction = 1
@@ -145,7 +157,6 @@ func check_animations(new_animation, animation_speed, horizontal_motion, ladderY
 			sprite_direction = -1
 	if (!frozen):
 		get_node(new_animation).set_scale(Vector2(sprite_direction, 1))
-	return {"animationSpeed": animation_speed, "animation": new_animation}
 
 func do_animation_check(new_animation, animation_speed, horizontal_motion, ladderY):
 	new_animation = "walk"
@@ -245,6 +256,10 @@ func check_stunned():
 			animation_player.play(current_animation)
 
 func step_player(delta):
+	if (!player_loaded):
+		if (player.has_node("player/damage")):
+			area2d_blacklist.append(player.get_node("player/damage"))
+			player_loaded = true
 	# ignore expensive calculations on flying enemies
 	if (ignore_collision):
 		on_ladder = true
@@ -349,9 +364,10 @@ func _ready():
 	stun_obj = get_node("Stun")
 	if (stun_obj != null):
 		stun_obj.hide()
-	area2d_blacklist = [self, damage_rect, player.get_node("player/damage")]
+	area2d_blacklist = [self, damage_rect]
 	ai_obj = ai.new()
 	ai_obj.set("target", self)
+	has_kinematic_collision = false
 	
 	current_consume_value = base_consume_value * (randf() * 0.5 - 0.25) + base_consume_value
 	var color = get_node("die").get_modulate()

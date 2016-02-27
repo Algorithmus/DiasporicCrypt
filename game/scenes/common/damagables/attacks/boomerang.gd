@@ -32,5 +32,4 @@ func _fixed_process(delta):
 			
 func remove():
 	if (get_parent() != null):
-		print("remove boomerang")
 		get_parent().remove_child(self)

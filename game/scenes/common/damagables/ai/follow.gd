@@ -22,6 +22,7 @@ func step(space_state):
 		var inrange = false
 		var vertical_inrange = true
 		var desired_direction = 0
+		var rush_attack = target.get("is_rush") && target.get("is_attacking")
 		if (target.get_global_pos().x >= camera.get_camera_screen_center().x + camera.get_offset().x && target.get_global_pos().x <= camera.get_camera_screen_center().x - camera.get_offset().x):
 			if (target.get_global_pos().y >= camera.get_camera_screen_center().y + camera.get_offset().y && target.get_global_pos().y <= camera.get_camera_screen_center().y - camera.get_offset().y):
 				# match vertical position on flying enemies
@@ -42,20 +43,23 @@ func step(space_state):
 							vertical_input = "up"
 					if (target.get_global_pos().y > player.get_global_pos().y - player.get("sprite_offset").y && target.get_global_pos().y < player.get_global_pos().y + player.get("sprite_offset").y):
 						vertical_inrange = true
-				var relative_direction = 1
-				if (player.get_global_pos().x > target.get_global_pos().x):
-					relative_direction = -1
-				var desired_pos = player.get_global_pos().x + preferred_distance * relative_direction
-				if (target.get_global_pos().x > desired_pos):
-					desired_direction = -1
-				elif (target.get_global_pos().x < desired_pos):
-					desired_direction = 1
-				# if we're close enough, don't bother closing the gap since the current runspeed will overstep
-				# the desired position anyways
-				if (abs(target.get_global_pos().x - desired_pos) < abs(target.get("direction") * target.get("runspeed") + target.get("gustx"))):
-					desired_direction = 0
-				if (vertical_inrange && (desired_direction == relative_direction || desired_direction == 0)):
-					inrange = true
+				if (rush_attack):
+					desired_direction = target.get("rush_direction")
+				else:
+					var relative_direction = 1
+					if (player.get_global_pos().x > target.get_global_pos().x):
+						relative_direction = -1
+					var desired_pos = player.get_global_pos().x + preferred_distance * relative_direction
+					if (target.get_global_pos().x > desired_pos):
+						desired_direction = -1
+					elif (target.get_global_pos().x < desired_pos):
+						desired_direction = 1
+					# if we're close enough, don't bother closing the gap since the current runspeed will overstep
+					# the desired position anyways
+					if (abs(target.get_global_pos().x - desired_pos) < abs(target.get("direction") * target.get("runspeed") + target.get("gustx"))):
+						desired_direction = 0
+					if (vertical_inrange && (desired_direction == relative_direction || desired_direction == 0)):
+						inrange = true
 			if (desired_direction != 0 && !target.get("ignore_collision")):
 				# do regular collision detection for horizontal motion
 				var is_wall = false
@@ -66,15 +70,16 @@ func step(space_state):
 				if (frontTile != null && frontTile.has("position") && frontTile.has("collider")):
 					desired_direction = 0
 					is_wall = true
-						
+
 				frontTile = space_state.intersect_ray(Vector2(frontX, target.get_global_pos().y + target.get("sprite_offset").y), Vector2(frontX, target.get_global_pos().y + target.get("sprite_offset").y + 32), [target, player.get_node("player")])
 		
-				if (frontTile == null || !frontTile.has("position") && !target.get("falling")):
+				if ((frontTile == null || !frontTile.has("position")) && !target.get("falling") && !rush_attack):
 					desired_direction = 0
-				if (frontTile != null && frontTile.has("collider")):
-					var collider = frontTile["collider"]
-					if (collider.get_name() == "player" && collider.get_global_pos().y - collider["sprite_offset"].y > target.get_global_pos().y + target.get("sprite_offset").y):
-						desired_direction = 0
+				#if (frontTile != null && frontTile.has("collider") && !rush_attack):
+				#	var collider = frontTile["collider"]
+				#	if (collider.get_name() == "player" && collider.get_global_pos().y - collider["sprite_offset"].y > target.get_global_pos().y + target.get("sprite_offset").y):
+				#		desired_direction = 0
+
 				# slope tiles and one way tiles don't count
 				var areaTile = space_state.intersect_ray(Vector2(frontX, target.get_global_pos().y + target.get("sprite_offset").y - 32), Vector2(frontX, target.get_global_pos().y + target.get("sprite_offset").y + 32), target.get("area2d_blacklist"), 2147483647, 16)
 				if (areaTile != null && areaTile.has("collider")):
@@ -82,7 +87,6 @@ func step(space_state):
 						desired_direction = cache_direction
 					if (!is_wall && areaTile["collider"].get_name() == "oneway" && areaTile["collider"].get_global_pos().y - 32 / 2 > target.get_global_pos().y + target.get("sprite_offset").y - 1):
 						desired_direction = cache_direction
-	
 			if (desired_direction != 0):
 				if (desired_direction > 0):
 					input = "right"
