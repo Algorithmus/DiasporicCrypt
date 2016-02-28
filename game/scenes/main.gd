@@ -7,6 +7,7 @@ extends Node2D
 var original_size
 var pause
 var select
+var sequences
 var root
 var is_paused = false
 var music
@@ -30,6 +31,9 @@ func _ready():
 	original_size = root.get_rect().size
 	root.connect("size_changed", self, "_on_resolution_changed")
 	pause = get_node("gui/CanvasLayer/pause")
+	sequences = get_node("gui/CanvasLayer/sequences")
+	sequences.get_node("demonic").hide()
+	sequences.hide()
 	music = get_node("music")
 	pause.hide()
 	get_node("gui/CanvasLayer/chain/chaintext").hide()
@@ -72,13 +76,14 @@ func _on_resolution_changed():
 	select.get_node("adela_sprite").set_pos(Vector2(new_size.x - aspriteOffset.x*scaleX, new_size.y - aspriteOffset.y))
 	
 func _input(event):
-	if (event.is_action("ui_pause") && event.is_pressed() && !event.is_echo()):
+	if (event.is_action("ui_pause") && event.is_pressed() && !event.is_echo() && get_node("playercontainer").has_node("player") && !get_node("playercontainer/player").get("is_transforming")):
 		if (is_paused):
 			pause.hide()
 			is_paused = false
 			music.set_volume_db(0)
 		else:
 			pause.show()
+			pause.get_node("Label").show()
 			is_paused = true
 			music.set_volume_db(-20)
 		get_tree().set_pause(is_paused)
@@ -99,6 +104,12 @@ func start(player):
 	select.hide()
 	is_paused = false
 	get_tree().set_pause(is_paused)
+
+func sequence_finished():
+	sequences.get_node("demonic").hide()
+	sequences.hide()
+	pause.hide()
+	get_tree().set_pause(false)
 
 func _select_hover():
 	get_node("gui/sound").play("cursor")

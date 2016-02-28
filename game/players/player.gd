@@ -54,20 +54,31 @@ var max_mines = 3
 var void_direction = 1
 var camera_offset
 
+var is_demonic = false
+var default_sprite
+var demonic_sprite
+var demonic_sprite_obj
+var current_blood = 0
+var max_blood = 1000
+var is_transforming = false
+var demonic_display
+
+var prevPos
+
 func input_left():
-	return Input.is_action_pressed("ui_left")
+	return Input.is_action_pressed("ui_left") && !is_transforming
 
 func input_right():
-	return Input.is_action_pressed("ui_right")
+	return Input.is_action_pressed("ui_right") && !is_transforming
 
 func input_up():
-	return Input.is_action_pressed("ui_up")
+	return Input.is_action_pressed("ui_up") && !is_transforming
 
 func input_down():
-	return Input.is_action_pressed("ui_down")
+	return Input.is_action_pressed("ui_down") && !is_transforming
 
 func input_jump():
-	return Input.is_action_pressed("ui_jump")
+	return Input.is_action_pressed("ui_jump") && !is_transforming
 
 # add and remove magic spell and other special effect collisions
 # to prevent interfering with regular collision detection
@@ -121,7 +132,7 @@ func check_damage(damageTiles):
 	var dx = 0
 	var dy = 0
 
-	if (!invulnerable && shield == null):
+	if (!invulnerable && !is_transforming && shield == null):
 		for i in damageTiles:
 			if (i.get_name() == "damagable"):
 				is_hurt_check = true
@@ -175,7 +186,7 @@ func check_hanging_disengage():
 			climb_platform = null
 
 func check_hanging_damage():
-	if (hanging && climb_platform != null && is_hurt):
+	if (hanging && climb_platform != null && (is_hurt || is_transforming)):
 		hanging = false
 		move(Vector2(0, climb_platform.get_global_pos().y + TILE_SIZE/2 - get_pos().y + sprite_offset.y))
 		climb_platform = null
@@ -313,15 +324,18 @@ func check_ladder_top(normalTileCheck, closestTileY, desiredY):
 		closestTileY = int(closestTileY)
 
 func check_jump():
-	if (Input.is_action_pressed("ui_jump")):
+	if (input_jump()):
 		if (on_ladder && ladder_top == null):
 			on_ladder = false
 			falling = true
 			jumpPressed = true
-		elif (!on_ladder && (!falling || underwater) && !climbing_platform && !is_attacking):
+		elif (jumping_allowed()):
 			accel = -jumpspeed * current_gravity
 			falling = true
 			jumpPressed = true
+
+func jumping_allowed():
+	return !on_ladder && (!falling || underwater) && !climbing_platform && !is_attacking
 
 #check conditions for absorbing blood
 func check_blood(areaTiles):
@@ -332,14 +346,48 @@ func check_blood(areaTiles):
 		if (i.get_name() == "consumable"):
 			consumable = i.get_parent()
 	
-	if (consumable != null && blood_requested && consumable.get("current_consume_value") > 0):
+	if (consumable != null && !is_transforming && blood_requested && consumable.get("current_consume_value") > 0):
 		blood_requested = false
 		consumable.bleed()
+		current_blood += consumable.get("consume_factor")
+		if (current_blood >= max_blood):
+			current_blood = max_blood
+			if (!is_demonic):
+				remove_child(default_sprite)
+				add_child(demonic_sprite_obj)
+				is_demonic = true
+				is_transforming = true
+				# unfortunately, the update to the sprites doesn't
+				# happen fast enough, so just show the known sprites
+				# first and hide everything else
+				get_node("NormalSpriteGroup/transform").show()
+				get_node("NormalSpriteGroup/transform").set_frame(0)
+				get_node("NormalSpriteGroup/idle").hide()
+				update_fusion()
+				display_demonic()
+
+func display_demonic():
+	demonic_display.show()
+	demonic_display.get_node("demonic").show()
+	demonic_display.get_node("AnimationPlayer").play("demonic")
+	get_tree().set_pause(true)
+
+func check_demonic():
+	if (is_demonic):
+		current_blood -= 1 #later multiply by rate
+		if (current_blood <= 0):
+			current_blood = 0
+			get_node("NormalSpriteGroup/"+current_animation).hide()
+			remove_child(demonic_sprite_obj)
+			add_child(default_sprite)
+			is_demonic = false
+			is_transforming = true
+			update_fusion()
 
 func check_vertical_input(space_state, normalTileCheck, onOneWayTile, relevantTileA, relevantTileB, animation_speed):
 	var ladderY = 0
 	if (!is_hurt && !is_charging && !is_magic):
-		if (Input.is_action_pressed("ui_up")):
+		if (input_up()):
 			ladderY = check_ladder_up(space_state)
 			
 			if (!on_ladder):
@@ -349,7 +397,7 @@ func check_vertical_input(space_state, normalTileCheck, onOneWayTile, relevantTi
 	
 		check_jump()
 	
-		if (Input.is_action_pressed("ui_down")):
+		if (input_down()):
 			crouch_requested = true
 			var ladderCheck = check_ladder_down(space_state, normalTileCheck, onOneWayTile, relevantTileA, relevantTileB, animation_speed)
 			ladderY = ladderCheck["ladderY"]
@@ -491,11 +539,11 @@ func check_animations(new_animation, animation_speed, horizontal_motion, ladderY
 		if (invulnerable):
 			hurt_grace_cycle += 1
 			var alpha = 0.5 + fmod(hurt_grace_cycle, 4)*0.1
-			get_node("NormalSpriteGroup").set_opacity(alpha)
+			set_sprite_opacity(alpha)
 			if (hurt_grace_cycle > HURT_GRACE_PERIOD):
 				hurt_grace_cycle = 0
 				invulnerable = false
-				get_node("NormalSpriteGroup").set_opacity(1)
+				set_sprite_opacity(1)
 
 	if (on_ladder):
 		direction = 1
@@ -504,8 +552,26 @@ func check_animations(new_animation, animation_speed, horizontal_motion, ladderY
 		if (ladderY == 0):
 			animation_speed = 0
 
+	if (is_transforming):
+		if (is_demonic):
+			new_animation = "transform"
+		else:
+			new_animation = "detransform"
+		if (current_animation.match("*transform") && !animation_player.is_playing()):
+			new_animation = "idle"
+			is_transforming = false
+			invulnerable = true
+	if (!invulnerable && is_demonic && get_node("NormalSpriteGroup/"+new_animation).get_material() != null):
+		get_node("NormalSpriteGroup/"+new_animation).get_material().set_shader_param("opacity", 1)
 	get_node("NormalSpriteGroup/"+new_animation).set_scale(Vector2(direction, 1))
 	return {"animationSpeed": animation_speed, "animation": new_animation}
+
+func set_sprite_opacity(value):
+	if (is_demonic && get_node("NormalSpriteGroup/"+current_animation).get_material() != null):
+		get_node("NormalSpriteGroup/"+current_animation).get_material().set_shader_param("opacity", value)
+		get_node("NormalSpriteGroup").set_opacity(1)
+	else:
+		get_node("NormalSpriteGroup").set_opacity(value)
 
 func calculate_fall_height():
 	if (falling):
@@ -589,6 +655,8 @@ func step_player(delta):
 		
 		check_magic()
 		
+	check_demonic()
+		
 	# check animations
 	var animations = check_animations(new_animation, animation_speed, horizontal_motion, ladderY)
 	animation_speed = animations["animationSpeed"]
@@ -620,7 +688,7 @@ func check_magic():
 			
 			update_fusion()
 	# detect magic requested
-	var magic_allowed = !is_hurt && !is_attacking && !is_crouching && !hanging && !is_charging && !is_magic && !magic_delay
+	var magic_allowed = !is_hurt && !is_attacking && !is_crouching && !hanging && !is_charging && !is_magic && !magic_delay && !is_transforming
 	if (magic_allowed && Input.is_action_pressed("ui_magic")):
 		if (!magic_spells[selected_spell]["is_single"]):
 			request_single_spell = false
@@ -677,7 +745,7 @@ func check_magic():
 				charge_obj.get_node("SamplePlayer").set_volume_db(charge_volume, -5)
 	# charge magic
 	elif (is_charging):
-		if (Input.is_action_pressed("ui_magic")):
+		if (Input.is_action_pressed("ui_magic") && !is_transforming):
 			charge_counter = min(charge_counter + 1, MAX_CHARGE)
 			if (magic_spells[selected_spell]["id"] == "fire" || magic_spells[selected_spell]["id"] == "ice"):
 				charge_obj.set_global_pos(get_global_pos())
@@ -836,16 +904,17 @@ func clear_mine(mine):
 			current_mines.remove(i)
 
 func _input(event):
-	if (event.is_action_pressed("ui_attack") && event.is_pressed() && !event.is_echo()):
-		attack_requested = true
-	if (event.is_action_pressed("ui_blood") && event.is_pressed() && !event.is_echo()):
-		blood_requested = true
-	if (event.is_action_pressed("ui_spell_next") && event.is_pressed() && !event.is_echo() && !is_attacking):
-		request_spell_change = 1
-	if (event.is_action_pressed("ui_spell_prev") && event.is_pressed() && !event.is_echo() && !is_attacking):
-		request_spell_change = -1
-	if (event.is_action_pressed("ui_magic") && event.is_pressed() && !event.is_echo()):
-		request_single_spell = true
+	if (!is_transforming):
+		if (event.is_action_pressed("ui_attack") && event.is_pressed() && !event.is_echo()):
+			attack_requested = true
+		if (event.is_action_pressed("ui_blood") && event.is_pressed() && !event.is_echo()):
+			blood_requested = true
+		if (event.is_action_pressed("ui_spell_next") && event.is_pressed() && !event.is_echo() && !is_attacking):
+			request_spell_change = 1
+		if (event.is_action_pressed("ui_spell_prev") && event.is_pressed() && !event.is_echo() && !is_attacking):
+			request_spell_change = -1
+		if (event.is_action_pressed("ui_magic") && event.is_pressed() && !event.is_echo()):
+			request_single_spell = true
 
 func _ready():
 	has_kinematic_collision = true
@@ -855,6 +924,8 @@ func _ready():
 	climbspeed = animation_player.get_animation("climb").get_length() * 6
 	damage_rect = get_node("damage")
 	spell_icons = get_tree().get_root().get_node("world/gui/CanvasLayer/hud/SpellIcons")
+	demonic_display = get_tree().get_root().get_node("world/gui/CanvasLayer/sequences")
+	default_sprite = get_node("NormalSpriteGroup")
 	
 	weapon_collider = weapon.instance()
 	weapon_offset = weapon_collider.get_node("weapon").get_shape().get_extents()
@@ -890,6 +961,19 @@ func play_animation(animation, speed):
 			animation_player.advance(attack_frame)
 			attack_frame = 0
 		current_animation = animation
+	if (is_demonic):
+		if (get_node("NormalSpriteGroup/" + current_animation).has_node("trail")):
+			if (prevPos != null):
+				var h = sqrt(pow(prevPos.x - get_global_pos().x, 2.0) + pow(prevPos.y - get_global_pos().y, 2.0))
+				var aura = get_node("NormalSpriteGroup/" + current_animation + "/trail")
+				aura.set_param(Particles2D.PARAM_LINEAR_VELOCITY, h * 4)
+				if (h != 0):
+					var angle = asin((prevPos.y - get_global_pos().y)/h)
+					if ((prevPos.x > get_global_pos().x && direction > 0) || (prevPos.x < get_global_pos().x && direction < 0)):
+						angle += PI
+					aura.set_param(Particles2D.PARAM_DIRECTION, rad2deg(angle) - 90)
+				
+	prevPos = get_global_pos()
 
 func loop_jump_animation():
 	animation_player.seek(0.1, true)

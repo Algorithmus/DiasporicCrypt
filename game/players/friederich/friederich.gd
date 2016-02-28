@@ -32,19 +32,26 @@ var target_enemy_offset
 #seamlessly
 var special_delay = 10
 var static_enemy = preload("res://scenes/common/damagables/Static.gd")
+var jump_requested = false
 
 const MAX_CHAIN = 100
 
-# use for demonic
+# disable ladder detection for demonic ability
+func check_ladder_up(a):
+	if (is_demonic):
+		return 0
+	else:
+		return .check_ladder_up(a)
 
-#func check_ladder_up(a):
-#	return 0
+func check_ladder_down(a, b, c, d, e, f):
+	if (is_demonic):
+		return {"ladderY": 0, "animationSpeed": 1}
+	else:
+		return .check_ladder_down(a, b, c, d, e, f)
 
-#func check_ladder_down(a, b, c, d, e, f):
-#	return {"ladderY": 0, "animationSpeed": 1}
-
-#func check_ladder_top(a, b, c):
-#	pass
+func check_ladder_top(a, b, c):
+	if (!is_demonic):
+		.check_ladder_top(a, b, c)
 
 func _ready():
 	chaingui = get_tree().get_root().get_node("world/gui/CanvasLayer/chain")
@@ -53,12 +60,43 @@ func _ready():
 
 	chain_collider.connect("area_enter", self, "_on_chain_collision")
 	
+	demonic_sprite = preload("res://players/friederich/demonic/demonic.scn")
+	demonic_sprite_obj = demonic_sprite.instance()
+	
+	default_sprite = get_node("NormalSpriteGroup")
+	
 	weapon_type = "sword"
 	magic_spells.append({"id":"earth", "auracolor":Color(170/255.0, 1, 0), "weaponcolor1":Color(64/255.0, 58/255.0, 56/255.0), "weaponcolor2":Color(181/255.0, 188/255.0, 0), "is_single": false, "charge": preload("res://players/magic/earth/charge.scn"), "attack": preload("res://players/magic/earth/earth.scn"), "delay": true})
 	magic_spells.append({"id":"fire", "auracolor":Color(1, 77/255.0, 0), "weaponcolor1":Color(1, 1, 0), "weaponcolor2":Color(1, 0, 0), "is_single": false, "attack": preload("res://players/magic/fire/fire.scn"), "delay": false})
 	selected_spell = magic_spells.size()-1
 	spell_icons.get_node(magic_spells[selected_spell]["id"]).show()
 	update_fusion()
+
+func jumping_allowed():
+	return .jumping_allowed() || (is_demonic && !is_attacking && jump_requested)
+
+func check_jump():
+	.check_jump()
+	if (jumpPressed):
+		jump_requested = false
+
+func falling_modifier(desiredY):
+	var modifier = .falling_modifier(desiredY)
+	if (is_demonic && desiredY > 0):
+		var modifier = modifier * 0.3
+		if (desiredY + modifier > 10 || is_attacking || is_charging || is_magic):
+			return 0
+		return modifier
+	else:
+		return modifier
+
+func check_climb_platform_horizontal(space_state):
+	var climb_vertically = .check_climb_platform_horizontal(space_state)
+	if (is_demonic):
+		hanging = false
+		climb_platform = null
+		climb_vertically = false
+	return climb_vertically
 
 func check_animations(new_animation, animation_speed, horizontal_motion, ladderY):
 	if (!is_chain_special):
@@ -284,6 +322,7 @@ func step_player(delta):
 			check_blood(areaTiles)
 			
 			check_magic()
+		check_demonic()
 	else:
 		request_spell_change = 0
 		# check special attack
@@ -445,13 +484,16 @@ func update_fusion():
 	update_attack_color("rush", auracolor, weaponcolor1, weaponcolor2)
 
 func _input(event):
-	if (chain_counter > 1):
-		if (event.is_action_pressed("ui_up") && event.is_pressed() && !event.is_echo()):
-			direction_requested = "u"
-		if (event.is_action_pressed("ui_down") && event.is_pressed() && !event.is_echo()):
-			direction_requested = "d"
-		if (((event.is_action_pressed("ui_right") && direction > 0) || (event.is_action_pressed("ui_left") && direction < 0)) && event.is_pressed() && !event.is_echo()):
-			direction_requested = "f"
+	if (!is_transforming):
+		if (chain_counter > 1):
+			if (event.is_action_pressed("ui_up") && event.is_pressed() && !event.is_echo()):
+				direction_requested = "u"
+			if (event.is_action_pressed("ui_down") && event.is_pressed() && !event.is_echo()):
+				direction_requested = "d"
+			if (((event.is_action_pressed("ui_right") && direction > 0) || (event.is_action_pressed("ui_left") && direction < 0)) && event.is_pressed() && !event.is_echo()):
+				direction_requested = "f"
+		if (event.is_action_pressed("ui_jump") && event.is_pressed() && !event.is_echo()):
+			jump_requested = true
 
 func _init():
 	weapon = preload("res://scenes/weapons/sword.xml")

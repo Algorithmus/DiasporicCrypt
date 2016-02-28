@@ -310,6 +310,9 @@ func check_throwback():
 func check_ladder_top(normalTileCheck, closestTileY, desiredY):
 	pass
 
+func falling_modifier(desiredY):
+	return 1 * current_gravity * current_gravity
+
 func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, onSlope, oneWayTile, relevantSlopeTile):
 	jumpPressed = false
 
@@ -328,7 +331,7 @@ func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, o
 		desiredY = accel
 
 		if (falling):
-			desiredY += 1 * current_gravity * current_gravity
+			desiredY += falling_modifier(desiredY)
 		else:
 			desiredY = 1
 

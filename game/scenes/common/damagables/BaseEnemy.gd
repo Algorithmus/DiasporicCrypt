@@ -43,6 +43,7 @@ var current_consume_value
 var color_increments = Color()
 var consumable_instance = preload("res://scenes/common/damagables/consumable.xml")
 var consumable_offset
+var consume_factor = 1 # scale amount of blood consumed
 
 var is_attacking = false
 var attack_delay = 100

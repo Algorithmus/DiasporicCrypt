@@ -66,12 +66,12 @@ func step(space_state):
 				var cache_direction = desired_direction
 				var netX = cache_direction * target.get("runspeed") + target.get("gustx")
 				var frontX = target.get_global_pos().x + sign(netX) * target.get("sprite_offset").x + netX
-				var frontTile = space_state.intersect_ray(Vector2(frontX, target.get_global_pos().y - target.get("sprite_offset").y), Vector2(frontX, target.get_global_pos().y + target.get("sprite_offset").y - 1), [target, player.get_node("player")])
+				var frontTile = space_state.intersect_ray(Vector2(frontX, target.get_global_pos().y - target.get("sprite_offset").y), Vector2(frontX, target.get_global_pos().y + target.get("sprite_offset").y - 1), [target, player])
 				if (frontTile != null && frontTile.has("position") && frontTile.has("collider")):
 					desired_direction = 0
 					is_wall = true
 
-				frontTile = space_state.intersect_ray(Vector2(frontX, target.get_global_pos().y + target.get("sprite_offset").y), Vector2(frontX, target.get_global_pos().y + target.get("sprite_offset").y + 32), [target, player.get_node("player")])
+				frontTile = space_state.intersect_ray(Vector2(frontX, target.get_global_pos().y + target.get("sprite_offset").y), Vector2(frontX, target.get_global_pos().y + target.get("sprite_offset").y + 32), [target, player])
 		
 				if ((frontTile == null || !frontTile.has("position")) && !target.get("falling") && !rush_attack):
 					desired_direction = 0
