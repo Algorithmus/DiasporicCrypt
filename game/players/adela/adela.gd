@@ -344,6 +344,8 @@ func _ready():
 	
 	default_sprite = get_node("NormalSpriteGroup")
 
+	demonic_display.get_node("demonic/sprite/adela").show()
+
 	whipswing_obj = whipswing.instance()
 	add_child(whipswing_obj)
 	whipswing_obj.hide()

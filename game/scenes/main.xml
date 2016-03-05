@@ -1,55 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="41" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
-	<ext_resource path="res://gui/cursor.wav" type="Sample" index="23"></ext_resource>
-	<ext_resource path="res://players/magic/void/icon.png" type="Texture" index="8"></ext_resource>
+<resource_file type="PackedScene" subresource_count="42" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
+	<ext_resource path="res://gui/fonts/XS-7.fnt" type="Font" index="11"></ext_resource>
+	<ext_resource path="res://players/magic/shield/icon.png" type="Texture" index="7"></ext_resource>
+	<ext_resource path="res://players/friederich/friederich.xml" type="PackedScene" index="18"></ext_resource>
+	<ext_resource path="res://players/magic/wind/action.png" type="Texture" index="20"></ext_resource>
+	<ext_resource path="res://scenes/main.gd" type="Script" index="0"></ext_resource>
+	<ext_resource path="res://players/adela/adela.xml" type="PackedScene" index="19"></ext_resource>
 	<ext_resource path="res://players/magic/thunder/icon.png" type="Texture" index="4"></ext_resource>
 	<ext_resource path="res://players/magic/earth/icon.png" type="Texture" index="9"></ext_resource>
 	<ext_resource path="res://players/magic/fire/icon.png" type="Texture" index="2"></ext_resource>
-	<ext_resource path="res://players/magic/shield/icon.png" type="Texture" index="7"></ext_resource>
-	<ext_resource path="res://gui/fonts/XS-7.fnt" type="Font" index="11"></ext_resource>
 	<ext_resource path="res://levels/sandbox/sandbox.scn" type="PackedScene" index="1"></ext_resource>
-	<ext_resource path="res://gui/fonts/L-24.fnt" type="Font" index="12"></ext_resource>
-	<ext_resource path="res://gui/select/adela-select.png" type="Texture" index="17"></ext_resource>
-	<ext_resource path="res://gui/select/adela.png" type="Texture" index="16"></ext_resource>
-	<ext_resource path="res://gui/sequences/demonic.wav" type="Sample" index="24"></ext_resource>
-	<ext_resource path="res://players/magic/wind/action.png" type="Texture" index="20"></ext_resource>
-	<ext_resource path="res://gui/fonts/XL-72.fnt" type="Font" index="13"></ext_resource>
-	<ext_resource path="res://players/friederich/friederich.xml" type="PackedScene" index="18"></ext_resource>
-	<ext_resource path="res://players/magic/wind/icon.png" type="Texture" index="10"></ext_resource>
-	<ext_resource path="res://gui/confirm.wav" type="Sample" index="22"></ext_resource>
-	<ext_resource path="res://gui/select/friederich-select.png" type="Texture" index="15"></ext_resource>
-	<ext_resource path="res://players/adela/adela.xml" type="PackedScene" index="19"></ext_resource>
-	<ext_resource path="res://levels/common/BGM1.ogg" type="AudioStream" index="25"></ext_resource>
-	<ext_resource path="res://gui/sequences/demonic.png" type="Texture" index="21"></ext_resource>
-	<ext_resource path="res://players/magic/magicmine/icon.png" type="Texture" index="6"></ext_resource>
 	<ext_resource path="res://players/magic/hex/icon.png" type="Texture" index="5"></ext_resource>
 	<ext_resource path="res://players/magic/ice/icon.png" type="Texture" index="3"></ext_resource>
+	<ext_resource path="res://levels/common/BGM1.ogg" type="AudioStream" index="26"></ext_resource>
+	<ext_resource path="res://gui/select/friederich-select.png" type="Texture" index="15"></ext_resource>
 	<ext_resource path="res://gui/select/friederich.png" type="Texture" index="14"></ext_resource>
-	<ext_resource path="res://scenes/main.gd" type="Script" index="0"></ext_resource>
-	<resource type="Animation" path="local://11">
-		<string name="resource/name"> "newattack" </string>
-		<real name="length"> 0.2 </real>
-		<bool name="loop"> False </bool>
-		<real name="step"> 0.1 </real>
-		<string name="tracks/0/type"> "value" </string>
-		<node_path name="tracks/0/path"> "newattack:transform/scale" </node_path>
-		<int name="tracks/0/interp"> 1 </int>
-		<dictionary name="tracks/0/keys" shared="false">
-			<string> "cont" </string>
-			<bool> True </bool>
-			<string> "times" </string>
-			<real_array  len="3"> 				0, 0.1, 0.2 </real_array>
-			<string> "transitions" </string>
-			<real_array  len="3"> 				0.25, 0.25, 1 </real_array>
-			<string> "values" </string>
-			<array  len="3" shared="false">
-				<vector2> 1, 1 </vector2>
-				<vector2> 1.34375, 1.34375 </vector2>
-				<vector2> 1, 1 </vector2>
-			</array>
-		</dictionary>
-
-	</resource>
+	<ext_resource path="res://players/magic/void/icon.png" type="Texture" index="8"></ext_resource>
+	<ext_resource path="res://gui/cursor.wav" type="Sample" index="24"></ext_resource>
+	<ext_resource path="res://gui/select/adela-select.png" type="Texture" index="17"></ext_resource>
+	<ext_resource path="res://gui/fonts/L-24.fnt" type="Font" index="12"></ext_resource>
+	<ext_resource path="res://gui/select/adela.png" type="Texture" index="16"></ext_resource>
+	<ext_resource path="res://gui/fonts/XL-72.fnt" type="Font" index="13"></ext_resource>
+	<ext_resource path="res://gui/sequences/demonic.wav" type="Sample" index="25"></ext_resource>
+	<ext_resource path="res://players/magic/wind/icon.png" type="Texture" index="10"></ext_resource>
+	<ext_resource path="res://gui/confirm.wav" type="Sample" index="23"></ext_resource>
+	<ext_resource path="res://players/magic/magicmine/icon.png" type="Texture" index="6"></ext_resource>
+	<ext_resource path="res://gui/sequences/demonic_f.png" type="Texture" index="21"></ext_resource>
+	<ext_resource path="res://gui/sequences/demonic_a.png" type="Texture" index="22"></ext_resource>
 	<resource type="Animation" path="local://9">
 		<string name="resource/name"> "appear" </string>
 		<real name="length"> 0.2 </real>
@@ -93,6 +70,30 @@
 			<array  len="3" shared="false">
 				<vector2> 1, 1 </vector2>
 				<vector2> 1.5, 1.5 </vector2>
+				<vector2> 1, 1 </vector2>
+			</array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://11">
+		<string name="resource/name"> "newattack" </string>
+		<real name="length"> 0.2 </real>
+		<bool name="loop"> False </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> "newattack:transform/scale" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "cont" </string>
+			<bool> True </bool>
+			<string> "times" </string>
+			<real_array  len="3"> 				0, 0.1, 0.2 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="3"> 				0.25, 0.25, 1 </real_array>
+			<string> "values" </string>
+			<array  len="3" shared="false">
+				<vector2> 1, 1 </vector2>
+				<vector2> 1.34375, 1.34375 </vector2>
 				<vector2> 1, 1 </vector2>
 			</array>
 		</dictionary>
@@ -184,8 +185,8 @@
 	<resource type="CanvasItemMaterial" path="local://14">
 		<resource name="shader/shader" resource_type="Shader" path="local://13">  </resource>
 		<int name="shader/shading_mode"> 0 </int>
-		<color name="shader_param/start"> 0.153883, 0, 0, 1 </color>
-		<color name="shader_param/stop"> 0.723485, 0, 0, 1 </color>
+		<color name="shader_param/start"> 0.0994318, 0.077178, 0.197857, 1 </color>
+		<color name="shader_param/stop"> 0.380682, 0, 0.366588, 1 </color>
 
 	</resource>
 	<resource type="Animation" path="local://12">
@@ -284,7 +285,7 @@
 			<string> "pitch" </string>
 			<real> 1 </real>
 			<string> "sample" </string>
-			<resource  external="23">  </resource>
+			<resource  external="24">  </resource>
 		</dictionary>
 		<dictionary name="samples/demonic" shared="false">
 			<string> "db" </string>
@@ -292,7 +293,7 @@
 			<string> "pitch" </string>
 			<real> 1 </real>
 			<string> "sample" </string>
-			<resource  external="24">  </resource>
+			<resource  external="25">  </resource>
 		</dictionary>
 		<dictionary name="samples/confirm" shared="false">
 			<string> "db" </string>
@@ -300,7 +301,7 @@
 			<string> "pitch" </string>
 			<real> 1 </real>
 			<string> "sample" </string>
-			<resource  external="22">  </resource>
+			<resource  external="23">  </resource>
 		</dictionary>
 
 	</resource>
@@ -309,12 +310,12 @@
 			<string> "conn_count" </string>
 			<int> 6 </int>
 			<string> "conns" </string>
-			<int_array  len="36"> 				32, 0, 150, 149, 2, 0, 32, 0, 152, 151, 2, 0, 32, 0, 154, 153, 2, 0, 33, 0, 150, 155, 2, 0, 33, 0, 152, 156, 2, 0, 33, 0, 154, 157, 2, 0 </int_array>
+			<int_array  len="36"> 				32, 0, 151, 150, 2, 0, 32, 0, 153, 152, 2, 0, 32, 0, 155, 154, 2, 0, 33, 0, 151, 156, 2, 0, 33, 0, 153, 157, 2, 0, 33, 0, 155, 158, 2, 0 </int_array>
 			<string> "editable_instances" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="158">
+			<string_array  len="159">
 				<string> "world" </string>
 				<string> "process/pause_mode" </string>
 				<string> "script/script" </string>
@@ -375,9 +376,9 @@
 				<string> "playback/process_mode" </string>
 				<string> "playback/default_blend_time" </string>
 				<string> "root/root" </string>
-				<string> "anims/newattack" </string>
 				<string> "anims/appear" </string>
 				<string> "anims/counter" </string>
+				<string> "anims/newattack" </string>
 				<string> "playback/active" </string>
 				<string> "playback/speed" </string>
 				<string> "blend_times" </string>
@@ -437,6 +438,7 @@
 				<string> "randomness/linear_velocity" </string>
 				<string> "randomness/initial_size" </string>
 				<string> "sprite" </string>
+				<string> "transform/scale" </string>
 				<string> "anims/demonic" </string>
 				<string> "sound" </string>
 				<string> "config/polyphony" </string>
@@ -475,25 +477,25 @@
 				<string> "_adela_exit" </string>
 			</string_array>
 			<string> "node_count" </string>
-			<int> 49 </int>
+			<int> 50 </int>
 			<string> "node_paths" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="1023"> 				-1, -1, 4, 0, -1, 3, 1, 0, 2, 1, 3, 2, 0, 0, 0, 4, 5, -1, 2, 1, 3, 3, 4, 0, 1, 0, 2147483647, 6, 5, 0, 0, 0, 0, 4, 7, -1, 2, 1, 3, 3, 6, 0, 0, 0, 4, 8, -1, 2, 1, 0, 9, 7, 0, 4, 0, 4, 10, -1, 0, 0, 4, 0, 11, 11, -1, 4, 12, 3, 13, 8, 14, 9, 15, 10, 0, 6, 0, 23, 16, -1, 7, 17, 11, 18, 11, 19, 12, 20, 13, 21, 0, 22, 0, 3, 14, 0, 7, 0, 4, 24, -1, 2, 25, 15, 3, 16, 0, 8, 0, 29, 26, -1, 2, 27, 12, 28, 17, 0, 8, 0, 29, 30, -1, 2, 27, 12, 28, 18, 0, 8, 0, 29, 31, -1, 2, 27, 12, 28, 19, 0, 8, 0, 29, 32, -1, 2, 27, 12, 28, 20, 0, 8, 0, 29, 33, -1, 2, 27, 12, 28, 21, 0, 8, 0, 29, 34, -1, 2, 27, 12, 28, 22, 0, 8, 0, 29, 35, -1, 2, 27, 12, 28, 23, 0, 8, 0, 29, 36, -1, 2, 27, 12, 28, 24, 0, 8, 0, 29, 37, -1, 2, 27, 12, 28, 25, 0, 7, 0, 38, 38, -1, 13, 39, 26, 40, 27, 17, 28, 18, 29, 19, 13, 20, 13, 21, 0, 41, 30, 42, 31, 43, 3, 44, 32, 45, 33, 46, 34, 0, 6, 0, 23, 47, -1, 6, 17, 11, 18, 11, 19, 12, 20, 13, 21, 0, 22, 0, 0, 19, 0, 4, 48, -1, 2, 25, 35, 3, 36, 0, 20, 0, 38, 47, -1, 11, 40, 37, 17, 38, 18, 39, 19, 13, 20, 13, 21, 0, 41, 40, 42, 41, 44, 32, 45, 33, 46, 34, 0, 20, 0, 4, 49, -1, 1, 25, 42, 0, 22, 0, 38, 50, -1, 13, 51, 43, 52, 43, 40, 44, 17, 45, 18, 39, 19, 13, 20, 13, 21, 0, 41, 40, 42, 46, 44, 32, 45, 33, 46, 34, 0, 19, 0, 4, 53, -1, 2, 25, 47, 3, 48, 0, 24, 0, 38, 54, -1, 12, 40, 37, 17, 49, 18, 39, 19, 13, 20, 13, 21, 0, 41, 40, 42, 50, 55, 13, 44, 32, 45, 33, 46, 34, 0, 19, 0, 56, 56, -1, 10, 57, 3, 58, 9, 59, 51, 60, 52, 61, 53, 62, 54, 63, 13, 64, 32, 65, 55, 66, 56, 0, 6, 0, 23, 67, -1, 9, 68, 3, 52, 3, 17, 57, 18, 57, 19, 12, 20, 13, 21, 0, 22, 0, 3, 58, 0, 27, 0, 29, 34, -1, 3, 28, 59, 69, 12, 70, 60, 0, 27, 0, 38, 38, -1, 20, 27, 12, 71, 43, 51, 43, 68, 43, 52, 43, 39, 61, 40, 62, 17, 63, 18, 64, 19, 13, 20, 13, 21, 0, 41, 65, 42, 66, 43, 3, 72, 3, 55, 13, 44, 32, 45, 33, 46, 34, 0, 6, 0, 23, 73, -1, 8, 27, 12, 68, 3, 52, 3, 19, 12, 20, 13, 21, 0, 22, 0, 3, 67, 0, 30, 0, 77, 74, -1, 9, 75, 68, 68, 3, 52, 3, 19, 12, 20, 13, 21, 0, 22, 0, 28, 69, 76, 13, 0, 30, 0, 86, 78, -1, 18, 75, 70, 71, 0, 52, 0, 39, 71, 40, 72, 17, 73, 18, 74, 79, 75, 19, 12, 20, 13, 21, 0, 22, 0, 80, 12, 81, 76, 82, 77, 83, 77, 84, 77, 85, 78, 0, 30, 0, 86, 87, -1, 16, 68, 0, 52, 0, 39, 79, 17, 80, 18, 81, 88, 82, 19, 12, 20, 13, 21, 0, 22, 0, 80, 12, 81, 83, 82, 84, 83, 84, 84, 84, 85, 85, 0, 30, 0, 38, 38, -1, 15, 71, 43, 68, 43, 39, 61, 17, 63, 18, 86, 19, 13, 20, 13, 21, 0, 41, 40, 42, 87, 43, 3, 55, 13, 44, 32, 45, 33, 46, 34, 0, 30, 0, 77, 89, -1, 11, 75, 88, 51, 3, 68, 3, 52, 3, 40, 89, 19, 13, 20, 12, 21, 0, 22, 0, 28, 69, 76, 13, 0, 30, 0, 38, 90, -1, 14, 71, 0, 68, 43, 52, 3, 17, 90, 19, 13, 20, 13, 21, 0, 41, 40, 42, 91, 43, 3, 72, 0, 44, 32, 45, 33, 46, 34, 0, 30, 0, 38, 91, -1, 15, 71, 43, 68, 0, 52, 3, 39, 32, 17, 32, 19, 13, 20, 13, 21, 0, 41, 40, 42, 92, 43, 3, 72, 0, 44, 32, 45, 33, 46, 34, 0, 30, 0, 2147483647, 92, 93, 3, 25, 94, 93, 95, 2, 96, 0, 30, 0, 2147483647, 94, 97, 3, 25, 98, 93, 95, 2, 96, 0, 6, 0, 23, 95, -1, 6, 17, 11, 18, 11, 19, 12, 20, 13, 21, 0, 22, 0, 0, 40, 0, 4, 96, -1, 1, 3, 99, 0, 41, 0, 77, 74, -1, 12, 75, 100, 68, 3, 52, 3, 40, 101, 17, 102, 18, 103, 19, 12, 20, 13, 21, 0, 22, 0, 28, 69, 76, 13, 0, 41, 0, 97, 97, -1, 24, 25, 104, 98, 105, 99, 106, 100, 107, 101, 108, 102, 109, 103, 110, 104, 111, 105, 112, 106, 9, 107, 9, 108, 9, 109, 9, 110, 9, 111, 9, 112, 9, 113, 9, 114, 32, 115, 32, 116, 9, 117, 32, 118, 9, 119, 32, 120, 32, 0, 41, 0, 4, 121, -1, 1, 25, 113, 0, 44, 0, 77, 78, -1, 12, 71, 43, 51, 3, 68, 43, 39, 107, 40, 114, 17, 115, 18, 116, 19, 13, 20, 13, 21, 0, 22, 0, 28, 117, 0, 40, 0, 56, 56, -1, 8, 57, 3, 58, 9, 59, 51, 122, 118, 63, 13, 64, 32, 65, 55, 66, 56, 0, 4, 0, 138, 123, -1, 14, 124, 3, 125, 119, 126, 9, 127, 32, 128, 9, 129, 9, 130, 9, 131, 33, 132, 120, 133, 32, 134, 32, 135, 0, 136, 9, 137, 9, 0, 0, 0, 148, 139, -1, 8, 140, 121, 141, 12, 142, 13, 143, 9, 144, 13, 145, 12, 146, 9, 147, 122, 0 </int_array>
+			<int_array  len="1020"> 				-1, -1, 4, 0, -1, 3, 1, 0, 2, 1, 3, 2, 0, 0, 0, 4, 5, -1, 2, 1, 3, 3, 4, 0, 1, 0, 2147483647, 6, 5, 0, 0, 0, 0, 4, 7, -1, 2, 1, 3, 3, 6, 0, 0, 0, 4, 8, -1, 2, 1, 0, 9, 7, 0, 4, 0, 4, 10, -1, 0, 0, 4, 0, 11, 11, -1, 4, 12, 3, 13, 8, 14, 9, 15, 10, 0, 6, 0, 23, 16, -1, 7, 17, 11, 18, 11, 19, 12, 20, 13, 21, 0, 22, 0, 3, 14, 0, 7, 0, 4, 24, -1, 2, 25, 15, 3, 16, 0, 8, 0, 29, 26, -1, 2, 27, 12, 28, 17, 0, 8, 0, 29, 30, -1, 2, 27, 12, 28, 18, 0, 8, 0, 29, 31, -1, 2, 27, 12, 28, 19, 0, 8, 0, 29, 32, -1, 2, 27, 12, 28, 20, 0, 8, 0, 29, 33, -1, 2, 27, 12, 28, 21, 0, 8, 0, 29, 34, -1, 2, 27, 12, 28, 22, 0, 8, 0, 29, 35, -1, 2, 27, 12, 28, 23, 0, 8, 0, 29, 36, -1, 2, 27, 12, 28, 24, 0, 8, 0, 29, 37, -1, 2, 27, 12, 28, 25, 0, 7, 0, 38, 38, -1, 13, 39, 26, 40, 27, 17, 28, 18, 29, 19, 13, 20, 13, 21, 0, 41, 30, 42, 31, 43, 3, 44, 32, 45, 33, 46, 34, 0, 6, 0, 23, 47, -1, 6, 17, 11, 18, 11, 19, 12, 20, 13, 21, 0, 22, 0, 0, 19, 0, 4, 48, -1, 2, 25, 35, 3, 36, 0, 20, 0, 38, 47, -1, 11, 40, 37, 17, 38, 18, 39, 19, 13, 20, 13, 21, 0, 41, 40, 42, 41, 44, 32, 45, 33, 46, 34, 0, 20, 0, 4, 49, -1, 1, 25, 42, 0, 22, 0, 38, 50, -1, 13, 51, 43, 52, 43, 40, 44, 17, 45, 18, 39, 19, 13, 20, 13, 21, 0, 41, 40, 42, 46, 44, 32, 45, 33, 46, 34, 0, 19, 0, 4, 53, -1, 2, 25, 47, 3, 48, 0, 24, 0, 38, 54, -1, 12, 40, 37, 17, 49, 18, 39, 19, 13, 20, 13, 21, 0, 41, 40, 42, 50, 55, 13, 44, 32, 45, 33, 46, 34, 0, 19, 0, 56, 56, -1, 10, 57, 3, 58, 9, 59, 51, 60, 52, 61, 53, 62, 54, 63, 13, 64, 32, 65, 55, 66, 56, 0, 6, 0, 23, 67, -1, 9, 68, 3, 52, 3, 17, 57, 18, 57, 19, 12, 20, 13, 21, 0, 22, 0, 3, 58, 0, 27, 0, 29, 34, -1, 3, 28, 59, 69, 12, 70, 60, 0, 27, 0, 38, 38, -1, 20, 27, 12, 71, 43, 51, 43, 68, 43, 52, 43, 39, 61, 40, 62, 17, 63, 18, 64, 19, 13, 20, 13, 21, 0, 41, 65, 42, 66, 43, 3, 72, 3, 55, 13, 44, 32, 45, 33, 46, 34, 0, 6, 0, 23, 73, -1, 8, 27, 12, 68, 3, 52, 3, 19, 12, 20, 13, 21, 0, 22, 0, 3, 67, 0, 30, 0, 77, 74, -1, 9, 75, 68, 68, 3, 52, 3, 19, 12, 20, 13, 21, 0, 22, 0, 28, 69, 76, 13, 0, 30, 0, 86, 78, -1, 18, 75, 70, 71, 0, 52, 0, 39, 71, 40, 72, 17, 73, 18, 74, 79, 75, 19, 12, 20, 13, 21, 0, 22, 0, 80, 12, 81, 76, 82, 77, 83, 77, 84, 77, 85, 78, 0, 30, 0, 86, 87, -1, 16, 68, 0, 52, 0, 39, 79, 17, 80, 18, 81, 88, 82, 19, 12, 20, 13, 21, 0, 22, 0, 80, 12, 81, 83, 82, 84, 83, 84, 84, 84, 85, 85, 0, 30, 0, 38, 38, -1, 15, 71, 43, 68, 43, 39, 61, 17, 63, 18, 86, 19, 13, 20, 13, 21, 0, 41, 40, 42, 87, 43, 3, 55, 13, 44, 32, 45, 33, 46, 34, 0, 30, 0, 77, 89, -1, 11, 75, 88, 51, 3, 68, 3, 52, 3, 40, 89, 19, 13, 20, 12, 21, 0, 22, 0, 28, 69, 76, 13, 0, 30, 0, 38, 90, -1, 14, 71, 0, 68, 43, 52, 3, 17, 90, 19, 13, 20, 13, 21, 0, 41, 40, 42, 91, 43, 3, 72, 0, 44, 32, 45, 33, 46, 34, 0, 30, 0, 38, 91, -1, 15, 71, 43, 68, 0, 52, 3, 39, 32, 17, 32, 19, 13, 20, 13, 21, 0, 41, 40, 42, 92, 43, 3, 72, 0, 44, 32, 45, 33, 46, 34, 0, 30, 0, 2147483647, 92, 93, 3, 25, 94, 93, 95, 2, 96, 0, 30, 0, 2147483647, 94, 97, 3, 25, 98, 93, 95, 2, 96, 0, 6, 0, 23, 95, -1, 6, 17, 11, 18, 11, 19, 12, 20, 13, 21, 0, 22, 0, 0, 40, 0, 4, 96, -1, 0, 0, 41, 0, 77, 74, -1, 12, 75, 99, 68, 3, 52, 3, 40, 100, 17, 101, 18, 102, 19, 12, 20, 13, 21, 0, 22, 0, 28, 69, 76, 13, 0, 41, 0, 97, 97, -1, 24, 25, 103, 98, 104, 99, 105, 100, 106, 101, 107, 102, 108, 103, 109, 104, 110, 105, 111, 106, 9, 107, 9, 108, 9, 109, 9, 110, 9, 111, 9, 112, 9, 113, 9, 114, 32, 115, 32, 116, 9, 117, 32, 118, 9, 119, 32, 120, 32, 0, 41, 0, 4, 121, -1, 0, 0, 44, 0, 29, 78, -1, 4, 122, 112, 28, 113, 69, 12, 13, 114, 0, 44, 0, 29, 87, -1, 5, 27, 12, 122, 115, 28, 116, 69, 12, 13, 114, 0, 40, 0, 56, 56, -1, 8, 57, 3, 58, 9, 59, 51, 123, 117, 63, 13, 64, 32, 65, 55, 66, 56, 0, 4, 0, 139, 124, -1, 14, 125, 3, 126, 118, 127, 9, 128, 32, 129, 9, 130, 9, 131, 9, 132, 33, 133, 119, 134, 32, 135, 32, 136, 0, 137, 9, 138, 9, 0, 0, 0, 149, 140, -1, 8, 141, 120, 142, 12, 143, 13, 144, 9, 145, 13, 146, 12, 147, 9, 148, 121, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="123" shared="false">
+			<array  len="122" shared="false">
 				<int> 2 </int>
 				<resource  external="0">  </resource>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "2D" </string>
+					<string> "Script" </string>
 					<string> "__editor_plugin_states__" </string>
 					<dictionary  shared="false">
 						<string> "2D" </string>
 						<dictionary  shared="false">
 							<string> "ofs" </string>
-							<vector2> -293.267, 55.8663 </vector2>
+							<vector2> -49.601, 45.4738 </vector2>
 							<string> "snap_grid" </string>
 							<bool> True </bool>
 							<string> "snap_offset" </string>
@@ -513,7 +515,7 @@
 							<string> "snap_step" </string>
 							<vector2> 16, 16 </vector2>
 							<string> "zoom" </string>
-							<real> 0.5 </real>
+							<real> 1 </real>
 						</dictionary>
 						<string> "3D" </string>
 						<dictionary  shared="false">
@@ -612,7 +614,7 @@
 							<string> "animation" </string>
 							<string> "demonic" </string>
 							<string> "editing" </string>
-							<bool> True </bool>
+							<bool> False </bool>
 							<string> "player" </string>
 							<node_path> "gui/CanvasLayer/sequences/AnimationPlayer" </node_path>
 							<string> "visible" </string>
@@ -694,9 +696,9 @@
 				<real> 240 </real>
 				<string> "KEY_NEWATTACK" </string>
 				<node_path> ".." </node_path>
-				<resource  resource_type="Animation" path="local://11">  </resource>
 				<resource  resource_type="Animation" path="local://9">  </resource>
 				<resource  resource_type="Animation" path="local://10">  </resource>
+				<resource  resource_type="Animation" path="local://11">  </resource>
 				<array  len="0" shared="false">
 				</array>
 				<string> "" </string>
@@ -749,10 +751,6 @@
 				<real> 0.08 </real>
 				<resource name=""></resource>				<resource  external="19">  </resource>
 				<vector2> 600, 480 </vector2>
-				<dictionary  shared="false">
-					<string> "_editor_collapsed" </string>
-					<bool> True </bool>
-				</dictionary>
 				<resource  resource_type="CanvasItemMaterial" path="local://14">  </resource>
 				<real> 300 </real>
 				<real> -736 </real>
@@ -766,15 +764,15 @@
 				<real> 90 </real>
 				<real> 10 </real>
 				<real> 120 </real>
-				<vector2> 800, 0 </vector2>
-				<real> -90 </real>
-				<real> -663 </real>
-				<real> 592 </real>
+				<vector2> 0.45, 0.45 </vector2>
 				<resource  external="21">  </resource>
+				<vector2> 0, 74 </vector2>
+				<vector2> 0.55, 0.55 </vector2>
+				<resource  external="22">  </resource>
 				<resource  resource_type="Animation" path="local://12">  </resource>
 				<resource  resource_type="SampleLibrary" path="local://4">  </resource>
 				<real> 5000 </real>
-				<resource  external="25">  </resource>
+				<resource  external="26">  </resource>
 				<int> 500 </int>
 			</array>
 			<string> "version" </string>

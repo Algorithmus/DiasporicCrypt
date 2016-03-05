@@ -962,18 +962,24 @@ func play_animation(animation, speed):
 			attack_frame = 0
 		current_animation = animation
 	if (is_demonic):
-		if (get_node("NormalSpriteGroup/" + current_animation).has_node("trail")):
-			if (prevPos != null):
-				var h = sqrt(pow(prevPos.x - get_global_pos().x, 2.0) + pow(prevPos.y - get_global_pos().y, 2.0))
-				var aura = get_node("NormalSpriteGroup/" + current_animation + "/trail")
-				aura.set_param(Particles2D.PARAM_LINEAR_VELOCITY, h * 4)
-				if (h != 0):
-					var angle = asin((prevPos.y - get_global_pos().y)/h)
-					if ((prevPos.x > get_global_pos().x && direction > 0) || (prevPos.x < get_global_pos().x && direction < 0)):
-						angle += PI
-					aura.set_param(Particles2D.PARAM_DIRECTION, rad2deg(angle) - 90)
-				
+		demonic_animation()
+
 	prevPos = get_global_pos()
+
+func demonic_animation():
+	if (get_node("NormalSpriteGroup/" + current_animation).has_node("trail")):
+		calculate_trail(get_node("NormalSpriteGroup/" + current_animation))
+
+func calculate_trail(sprite):
+	if (prevPos != null):
+		var h = sqrt(pow(prevPos.x - get_global_pos().x, 2.0) + pow(prevPos.y - get_global_pos().y, 2.0))
+		var aura = sprite.get_node("trail")
+		aura.set_param(Particles2D.PARAM_LINEAR_VELOCITY, h * 4)
+		if (h != 0):
+			var angle = asin((prevPos.y - get_global_pos().y)/h)
+			if ((prevPos.x > get_global_pos().x && direction > 0) || (prevPos.x < get_global_pos().x && direction < 0)):
+				angle += PI
+			aura.set_param(Particles2D.PARAM_DIRECTION, rad2deg(angle) - 90)
 
 func loop_jump_animation():
 	animation_player.seek(0.1, true)

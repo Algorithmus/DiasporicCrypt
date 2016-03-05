@@ -23,6 +23,7 @@ var chain_specials = [
 	{"combo":"aaf, d", "id":"void", "replace":"aafd", "collider":preload("res://scenes/weapons/void.scn"), "collider_offset":Vector2(32, 0), "db":10, "hurt_delay":4, "used": false},
 	{"combo":"aaa, f", "id":"rush", "replace":"aaaf", "collider":preload("res://scenes/weapons/rush.scn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":2, "used": false}
 	]
+var demonic_void = preload("res://scenes/weapons/demonic.scn")
 var target_enemy
 var is_chain_special = false
 var current_chain_special
@@ -65,6 +66,8 @@ func _ready():
 	
 	default_sprite = get_node("NormalSpriteGroup")
 	
+	demonic_display.get_node("demonic/sprite/friederich").show()
+	
 	weapon_type = "sword"
 	magic_spells.append({"id":"earth", "auracolor":Color(170/255.0, 1, 0), "weaponcolor1":Color(64/255.0, 58/255.0, 56/255.0), "weaponcolor2":Color(181/255.0, 188/255.0, 0), "is_single": false, "charge": preload("res://players/magic/earth/charge.scn"), "attack": preload("res://players/magic/earth/earth.scn"), "delay": true})
 	magic_spells.append({"id":"fire", "auracolor":Color(1, 77/255.0, 0), "weaponcolor1":Color(1, 1, 0), "weaponcolor2":Color(1, 0, 0), "is_single": false, "attack": preload("res://players/magic/fire/fire.scn"), "delay": false})
@@ -83,7 +86,7 @@ func check_jump():
 func falling_modifier(desiredY):
 	var modifier = .falling_modifier(desiredY)
 	if (is_demonic && desiredY > 0):
-		var modifier = modifier * 0.3
+		var modifier = modifier * 0.1
 		if (desiredY + modifier > 10 || is_attacking || is_charging || is_magic):
 			return 0
 		return modifier
@@ -256,6 +259,10 @@ func step_player(delta):
 						special_collider = current_chain_special["collider"].instance()
 						var special_offset = 0
 						if (current_chain_special["id"] == "void"):
+							if (is_demonic):
+								var sprite = demonic_void.instance()
+								special_collider.remove_child(special_collider.get_node("attack"))
+								special_collider.add_child(sprite)
 							special_offset = special_collider.get_node("weapon").get_shape().get_extents()
 							special_collider.set_pos(Vector2(((special_offset.x + sprite_offset.x + 4) + current_chain_special["collider_offset"].x) * direction, current_chain_special["collider_offset"].y))
 							if (target_enemy != null && target_enemy.get_ref()):

@@ -32,6 +32,8 @@ func _ready():
 	root.connect("size_changed", self, "_on_resolution_changed")
 	pause = get_node("gui/CanvasLayer/pause")
 	sequences = get_node("gui/CanvasLayer/sequences")
+	sequences.get_node("demonic/sprite/friederich").hide()
+	sequences.get_node("demonic/sprite/adela").hide()
 	sequences.get_node("demonic").hide()
 	sequences.hide()
 	music = get_node("music")
