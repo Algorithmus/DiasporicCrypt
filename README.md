@@ -12,3 +12,5 @@ You should have received a copy of the GNU General Public License along with thi
 ![GPLv3](https://raw.githubusercontent.com/Algorithmus/CastlevaniaClone/fullgame/gpl.png)
 
 ![Krita](https://raw.githubusercontent.com/Algorithmus/CastlevaniaClone/fullgame/krita.png)
+
+All graphical game art assets are CC-BY-SA 4.0.
