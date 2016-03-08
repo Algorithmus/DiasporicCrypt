@@ -25,6 +25,9 @@ var jump_requested = false
 var wall_direction
 var air_jump = false
 
+var wall_hanging_delay = 30
+var current_wall_hanging_delay = 0
+
 var whipswing = preload("res://players/adela/actions/whipswing.xml")
 var whipswing_obj
 
@@ -34,14 +37,18 @@ func check_animations(new_animation, animation_speed, horizontal_motion, ladderY
 		animations["animation"] = "swing"
 		animations["animationSpeed"] = 0
 		get_node("NormalSpriteGroup/"+new_animation).set_scale(Vector2(direction, 1))
+	if (wall_hanging):
+		animations["animation"] = "wall"
+		get_node("NormalSpriteGroup/wall").set_scale(Vector2(wall_direction, 1))
 	return animations
 
 func closestXTile(desired_direction, desiredX, space_state):
 	var xpos = .closestXTile(desired_direction, desiredX, space_state)
 	if (falling && is_demonic && !is_hurt):
 		var wallcheck = closestXTile_area_check(desired_direction, desiredX, space_state)
-		if (wallcheck == 0):
+		if (wallcheck == 0 && current_wall_hanging_delay == 0):
 			wall_hanging = true
+			current_wall_hanging_delay = 1
 			accel = 0
 			wall_direction = desired_direction
 	return xpos
@@ -71,6 +78,7 @@ func check_jump():
 	if (jumpPressed):
 		jump_requested = false
 		wall_hanging = false
+		current_wall_hanging_delay += 1
 
 func do_attack():
 	weapon_collider.set_rot(0)
@@ -313,6 +321,7 @@ func step_player(delta):
 	
 	if (is_hurt || input_down() || !is_demonic || (wall_hanging && ((wall_direction > 0 && input_left()) || (wall_direction < 0 && input_right())))):
 		wall_hanging = false
+		current_wall_hanging_delay += 1
 
 	# check animations
 	var animations = check_animations(new_animation, animation_speed, horizontal_motion, ladderY)
@@ -323,6 +332,11 @@ func step_player(delta):
 	
 	if (wall_hanging):
 		position.y = min(position.y, 0)
+		
+	if (current_wall_hanging_delay > 0):
+		current_wall_hanging_delay += 1
+		if (current_wall_hanging_delay >= wall_hanging_delay):
+			current_wall_hanging_delay = 0
 
 	if (!falling):
 		air_jump = false
