@@ -43,6 +43,8 @@ var current_consume_value
 var color_increments = Color()
 var consumable_instance = preload("res://scenes/common/damagables/consumable.xml")
 var consumable_offset
+var consumable_sprite_offset = Vector2()
+var consumable_size = Vector2(1, 1)
 var consume_factor = 1 # scale amount of blood consumed
 
 var is_attacking = false
@@ -192,8 +194,9 @@ func die():
 		if (has_node(damage_rect.get_name())):
 			remove_child(damage_rect)
 		damage_rect = consumable_instance.instance()
+		damage_rect.set_scale(consumable_size)
 		consumable_offset = damage_rect.get_node("CollisionShape2D").get_shape().get_extents()
-		damage_rect.set_pos(Vector2(0, sprite_offset.y - consumable_offset.y))
+		damage_rect.set_pos(Vector2(consumable_sprite_offset.x * direction, sprite_offset.y - consumable_offset.y + consumable_sprite_offset.y))
 		add_child(damage_rect)
 	else:
 		queue_free()

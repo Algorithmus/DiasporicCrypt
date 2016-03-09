@@ -35,12 +35,12 @@ func check_attack():
 
 func do_animation_check(new_animation, animation_speed, horizontal_motion, ladderY):
 	var new_animation = .do_animation_check(new_animation, animation_speed, horizontal_motion, ladderY)
-	if (is_attacking && !is_dying):
+	if (is_attacking && !is_dying && ((is_consumable && !consumable) || !is_consumable)):
 		new_animation = "attack"
 	return new_animation
 
 func can_attack():
-	return !is_attacking && current_attack_delay == 0
+	return !is_attacking && current_attack_delay == 0 && ((is_consumable && !consumable) || !is_consumable)
 
 func step_player(delta):
 	if (!player_loaded):
