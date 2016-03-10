@@ -24,7 +24,10 @@ func check_attack():
 			projectile_obj.queue_free()
 		projectile_obj = projectile.instance()
 		projectile_obj.set("origin", weakref(self))
-		projectile_obj.set("direction", direction)
+		if (follow_player):
+			projectile_obj.set("direction", get_player_direction())
+		else:
+			projectile_obj.set("direction", direction)
 		projectile_obj.set("camera", player.get_node("player/Camera2D"))
 		projectile_obj.set_global_pos(Vector2(get_global_pos().x + (sprite_offset.x + TILE_SIZE) * direction, get_global_pos().y))
 		get_parent().add_child(projectile_obj)

@@ -52,6 +52,11 @@ var attack_delay = 100
 var current_attack_delay = 0
 var follow_player = false # sprite faces player regardless of what direction the enemy is moving in
 
+func get_player_direction():
+	if (get_global_pos().x > player.get_node("player").get_global_pos().x):
+		return -1
+	return 1
+
 func can_attack():
 	return false
 
@@ -190,6 +195,7 @@ func die():
 	if (is_consumable):
 		# turn into consumable object instead of disappearing
 		consumable = true
+		follow_player = false
 		is_dying = false
 		if (has_node(damage_rect.get_name())):
 			remove_child(damage_rect)

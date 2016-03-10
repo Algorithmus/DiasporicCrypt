@@ -24,7 +24,10 @@ func check_attack():
 	if (can_attack() && ai_obj.get("input") == "attack"):
 		is_attacking = true
 		runspeed = 10
-		rush_direction = direction
+		if (follow_player):
+			rush_direction = get_player_direction()
+		else:
+			rush_direction = direction
 	if (is_attacking):
 		rush_current_duration += 1
 		if (rush_duration <= rush_current_duration):

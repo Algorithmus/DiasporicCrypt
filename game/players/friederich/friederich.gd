@@ -426,6 +426,7 @@ func reset_target_delay():
 func reset_chain():
 	attack_buffer.clear()
 	chain_counter = 0
+	current_chain_special = null
 	chaingui.get_node("chaintext").hide()
 	chaingui.get_node("newattack").hide()
 	chaingui.hide()

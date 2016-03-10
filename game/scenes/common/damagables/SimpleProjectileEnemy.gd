@@ -18,7 +18,10 @@ func check_attack():
 		is_attacking = true
 		var projectile_obj = projectile.instance()
 		projectile_obj.set("camera", player.get_node("player/Camera2D"))
-		projectile_obj.set("direction", direction)
+		if (follow_player):
+			projectile_obj.set("direction", get_player_direction())
+		else:
+			projectile_obj.set("direction", direction)
 		projectile_obj.set_global_pos(Vector2(get_global_pos().x + projectile_offset.x + (sprite_offset.x + TILE_SIZE) * direction, get_global_pos().y + projectile_offset.y))
 		get_parent().add_child(projectile_obj)
 	if (is_attacking && animation_player.get_current_animation_length() == animation_player.get_current_animation_pos()):
@@ -32,7 +35,7 @@ func do_animation_check(new_animation, animation_speed, horizontal_motion, ladde
 	return new_animation
 
 func can_attack():
-	return !is_attacking && current_attack_delay == 0
+	return !is_attacking && current_attack_delay == 0 && ((is_consumable && !consumable) || !is_consumable)
 
 func step_player(delta):
 	if (!player_loaded):
