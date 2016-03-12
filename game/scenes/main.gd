@@ -13,6 +13,7 @@ var is_paused = false
 var music
 
 var map
+var map_position = preload("res://gui/maps/position.scn")
 
 var select_f_size
 var select_a_size
@@ -85,13 +86,27 @@ func _input(event):
 		if (is_paused):
 			pause.hide()
 			is_paused = false
+			if (pause.has_node("objects")):
+				pause.get_node("objects").queue_free()
 			music.set_volume_db(0)
 		else:
 			pause.show()
-			pause.get_node("Label").show()
+			#pause.get_node("Label").show()
+			var big_map = map.get_node("objects").duplicate()
+			big_map.set_draw_behind_parent(false)
+			var map_pos_obj = map_position.instance()
+			map_pos_obj.set_pos(Vector2(map.get("offset").x-map.get("objects").get_pos().x, map.get("offset").y-map.get("objects").get_pos().y))
+			big_map.add_child(map_pos_obj)
+			big_map.set_pos(Vector2(original_size.x/2 - map_pos_obj.get_pos().x, original_size.y/2 - map_pos_obj.get_pos().y))
+			pause.add_child(big_map)
 			is_paused = true
 			music.set_volume_db(-20)
 		get_tree().set_pause(is_paused)
+	elif (event.is_action_pressed("ui_select") && event.is_pressed() && !event.is_echo() && !is_paused):
+		if (map.is_visible()):
+			map.hide()
+		else:
+			map.show()
 
 func _select_friederich():
 	var player = friederich.instance()
