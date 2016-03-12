@@ -312,6 +312,7 @@ func step_player(delta):
 			falling = true
 			attack_requested = false
 			accel = -JUMP_SPEED * current_gravity
+			swing_block = null
 			whipswing_obj.hide()
 			whipswing_obj.get_node("sound").stop_all()
 			if (input_up()):

@@ -52,6 +52,8 @@ var attack_delay = 100
 var current_attack_delay = 0
 var follow_player = false # sprite faces player regardless of what direction the enemy is moving in
 
+var sunbeam_immunity = true
+
 func get_player_direction():
 	if (get_global_pos().x > player.get_node("player").get_global_pos().x):
 		return -1
@@ -87,7 +89,7 @@ func check_damage():
 				if (i.has_node("weapon") && !magic_only):
 					collider = i.get_node("weapon")
 					player.get_node("player").set("hit_enemy", true)
-				if (i.has_node("magic")):
+				if (i.has_node("magic") || (!sunbeam_immunity && i.get_name() == "sunbeam")):
 					# freeze in collision block if hit with an ice attack
 					# freeze blocks are essentially one way platforms
 					# it's to allow any overlapping enemies to walk past
@@ -96,20 +98,29 @@ func check_damage():
 						frozen = true
 						freezeblock_obj = freezeblock.instance()
 						var freezescale = sprite_offset.y * 2 / TILE_SIZE
-						freezeblock_obj.get_node("block").set_scale(Vector2(sprite_offset.x * 2.0 / TILE_SIZE, freezescale))
-						freezeblock_obj.get_node("block").set_pos(Vector2(0, sprite_offset.y - TILE_SIZE / 2))
+						freezeblock_obj.get_node("sprite").set_scale(Vector2(sprite_offset.x * 2.0 / TILE_SIZE, freezescale))
+						freezeblock_obj.get_node("sprite").set_pos(Vector2(0, sprite_offset.y - TILE_SIZE / 2))
+						freezeblock_obj.get_node("oneway").set_scale(Vector2(sprite_offset.x * 2.0 / TILE_SIZE, 1))
+						if (sprite_offset.y > TILE_SIZE / 2):
+							freezeblock_obj.get_node("block").set_pos(Vector2(0, sprite_offset.y * 2 - TILE_SIZE))
+							freezeblock_obj.get_node("block").set_scale(Vector2(sprite_offset.x * 2.0 / TILE_SIZE, 1))
+						else:
+							freezeblock_obj.remove_child(freezeblock_obj.get_node("block"))
 						freezeblock_obj.set_pos(Vector2(0, -sprite_offset.y + TILE_SIZE / 2))
 						add_child(freezeblock_obj)
 						if (has_node(damage_rect.get_name())):
 							remove_child(damage_rect)
 					collider = i.get_node("magic")
+					if (collider == null):
+						collider = i.get_node("CollisionShape2D")
 					var hp = i.get_parent().get("hp")
 					if (hp != null):
 						i.get_parent().set("hp", hp - 1)
 				if (collider != null):
 					var hp_obj = hpclass.instance()
 					hud.add_child(hp_obj)
-					var hitpos = hp_obj.calculate_hitpos(i.get_global_pos(), collider.get_shape().get_extents(), get_pos(), sprite_offset)
+					var collider_offset = collider.get_shape().get_extents()
+					var hitpos = hp_obj.calculate_hitpos(i.get_global_pos(), Vector2(collider_offset.x * i.get_scale().x, collider_offset.y * i.get_scale().y), get_pos(), sprite_offset)
 					hp -= 1
 					is_hurt = true
 					check_dying()

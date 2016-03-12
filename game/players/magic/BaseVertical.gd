@@ -47,7 +47,7 @@ func step_spell():
 			if (!directionTile.empty()):
 				directionTileY = directionTile["position"].y
 			# non-platform tiles don't count
-			var check_directionSpecialTile = !directionSpecialTile.empty() && directionSpecialTile["collider"].get_name() != "ladder" && directionSpecialTile["collider"].get_name() != "magic" && directionSpecialTile["collider"].get_name() != "damagable" && directionSpecialTile["collider"].get_name() != "collision" && directionSpecialTile["collider"].get_name() != "potion"
+			var check_directionSpecialTile = !directionSpecialTile.empty() && (directionSpecialTile["collider"].get_name() == "oneway" || directionSpecialTile["collider"].get_name().match("slope*"))
 			if (check_directionSpecialTile):
 				directionTileSpecialY = directionSpecialTile["position"].y
 			var closestDirectionY = min(directionTileY, directionTileSpecialY)

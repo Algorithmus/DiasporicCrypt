@@ -39,6 +39,8 @@ var has_kinematic_collision = false
 var on_ladder = false
 var jumpPressed = false
 
+var MovingPlatform = preload("res://scenes/dungeon/movingplatform/MovingPlatform.gd")
+
 func min_array(array):
 	if (array.size() == 1):
 		return array[0]
@@ -165,7 +167,7 @@ func check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space
 			movingPlatform_check = relevantTileA["collider"]
 		else:
 			movingPlatform_check = relevantTileB["collider"]
-		if(movingPlatform_check.get_name() == "blockR" || movingPlatform_check.get_name() == "blockL"):
+		if((movingPlatform_check.get_name() == "blockR" || movingPlatform_check.get_name() == "blockL") && movingPlatform_check.get_parent() extends MovingPlatform):
 			if (movingPlatform_check.get_global_pos().y - TILE_SIZE/2 >= int(get_pos().y + sprite_offset.y)):
 				movingPlatform = movingPlatform_check
 			else:
@@ -180,7 +182,7 @@ func check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space
 		clearMovingPlatform()
 
 	if (climb_platform != null):
-		if (climb_platform.get_name() == "blockR" || climb_platform.get_name() == "blockL"):
+		if ((climb_platform.get_name() == "blockR" || climb_platform.get_name() == "blockL") && climb_platform.get_parent() extends MovingPlatform):
 			movingPlatform = climb_platform
 		else:
 			clearMovingPlatform()
@@ -201,18 +203,20 @@ func check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space
 	return onOneWayTile
 
 func check_underwater(areaTiles):
+	var watertile = false
 	for i in areaTiles:
 		if (i.get_name() == "water"):
-			if (i.get_global_pos().y - TILE_SIZE/2 <= get_pos().y - sprite_offset.y):
-				if (!underwater):
+			watertile = true
+			if (i.get_global_pos().y - TILE_SIZE * i.get_scale().y/2 <= get_pos().y - sprite_offset.y):
+				if (!underwater && has_node("sound") && get_node("sound").get_sample_library().has_sample("splash_down")):
 					get_node("sound").set_volume_db(get_node("sound").play("splash_down"), (fall_height/defaultfallheight*current_gravity - 1)*10)
 				underwater = true
 				current_gravity = WATER
-			elif (i.get_global_pos().y + TILE_SIZE/2 >= get_pos().y + sprite_offset.y):
-				if (underwater):
-					get_node("sound").set_volume_db(get_node("sound").play("splash_up"), 0)
-				underwater = false
-				current_gravity = DEFAULT_GRAVITY
+	if (!watertile):
+		if (underwater && has_node("sound") && get_node("sound").get_sample_library().has_sample("splash_up")):
+			get_node("sound").set_volume_db(get_node("sound").play("splash_up"), 0)
+		underwater = false
+		current_gravity = DEFAULT_GRAVITY
 
 func horizontal_input_permitted():
 	return !is_hurt

@@ -7,12 +7,16 @@ var is_valid = true
 var fail = false
 var sampleplayer
 var soundid
+var sprite_offset
+var nw_bound
+var se_bound
 
 func _ready():
 	set_fixed_process(true)
 	set_opacity(0.5)
 	get_node("AnimationPlayer").play("rotate")
 	collision = get_node("collision")
+	sprite_offset = collision.get_node("sensor").get_shape().get_extents()
 	sampleplayer = get_node("SamplePlayer")
 
 func _fixed_process(delta):
@@ -24,16 +28,14 @@ func _fixed_process(delta):
 				queue_free()
 	else:
 		if (!is_set):
-			# this algorithm doesn't yet detect edge of levels or
-			# certain zones (eg, underwater)
-			# clever level designs or implementations of blocks for
-			# detecting underwater may be designed for more "playable"
-			# levels.
 			is_valid = true
 			var collisions = collision.get_overlapping_areas()
 			for i in collisions:
 				if (i.get_name() == "oneway" || i.get_name().match("slope*") || i.get_name() == "damagable"):
 					is_valid = false
+			# check level boundaries
+			if (get_global_pos().x + sprite_offset.x >= se_bound.get_global_pos().x || get_global_pos().x - sprite_offset.x <= nw_bound.get_global_pos().x):
+				is_valid = false
 			if (is_valid):
 				collisions = collision.get_overlapping_bodies()
 				if (!collisions.empty()):

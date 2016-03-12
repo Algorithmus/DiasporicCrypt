@@ -134,7 +134,7 @@ func check_damage(damageTiles):
 
 	if (!invulnerable && !is_transforming && shield == null):
 		for i in damageTiles:
-			if (i.get_name() == "damagable"):
+			if (i.get_name() == "damagable" || (i.get_name() == "sunbeam" && !is_demonic)):
 				is_hurt_check = true
 				dx += get_global_pos().x - i.get_global_pos().x
 				dy += get_global_pos().y - i.get_global_pos().y
@@ -728,6 +728,8 @@ func check_magic():
 					charge_counter = 0
 			if (magic_spells[selected_spell]["id"] == "void"):
 				charge_obj = magic_spells[selected_spell]["attack"].instance()
+				charge_obj.set("nw_bound", tilemap.get_node("boundaries/NW"))
+				charge_obj.set("se_bound", tilemap.get_node("boundaries/SE"))
 				charge_obj.set_global_pos(Vector2(get_global_pos().x + direction * TILE_SIZE * 2, get_global_pos().y))
 				charge_obj.set_scale(Vector2(direction, 1))
 				tilemap.add_child(charge_obj)

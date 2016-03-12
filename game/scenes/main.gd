@@ -99,13 +99,29 @@ func _select_adela():
 	start(player)
 
 func start(player):
+	display_level_title("LVL_SANDBOX")
 	get_node("gui/sound").play("confirm")
 	player.set_global_pos(Vector2(-80, -416))
 	get_node("playercontainer").add_child(player)
-	player.load_tilemap(get_node("level/sandbox"))
+	player.load_tilemap(get_node("level/LVL_SANDBOX"))
 	select.hide()
 	is_paused = false
 	get_tree().set_pause(is_paused)
+
+func display_level_title(title):
+	var level = get_node("gui/CanvasLayer/level")
+	level.get_node("title").set_text(title)
+	level.get_node("AnimationPlayer").play("show")
+
+func teleport(new_level, pos):
+	var level = get_node("level")
+	level.remove_child(level.get_child(0))
+	var new_level_obj = new_level.instance()
+	level.add_child(new_level_obj)
+	player.load_tilemap(new_level_obj)
+	player.set_global_pos(pos)
+	if (new_level_obj.get_name() != "LVL_NOTITLE"):
+		display_level_title(new_level_obj.get_name())
 
 func sequence_finished():
 	sequences.get_node("demonic").hide()
