@@ -12,6 +12,8 @@ var root
 var is_paused = false
 var music
 
+var map
+
 var select_f_size
 var select_a_size
 var fscale
@@ -63,6 +65,7 @@ func _ready():
 	set_process_input(true)
 	#enable for keyboard input
 	#selectf.grab_focus()
+	map = get_node("gui/CanvasLayer/map/container")
 
 func _on_resolution_changed():
 	var new_size = root.get_rect().size
@@ -100,6 +103,8 @@ func _select_adela():
 
 func start(player):
 	display_level_title("LVL_SANDBOX")
+	map.set("camera", player.get_node("Camera2D"))
+	map.load_map(get_node("level/LVL_SANDBOX"))
 	get_node("gui/sound").play("confirm")
 	player.set_global_pos(Vector2(-80, -416))
 	get_node("playercontainer").add_child(player)
@@ -113,13 +118,19 @@ func display_level_title(title):
 	level.get_node("title").set_text(title)
 	level.get_node("AnimationPlayer").play("show")
 
-func teleport(new_level, pos):
+func teleport(new_level, pos, teleport):
+	var new_level_obj = load(new_level).instance()
+	map.set("current_teleport", teleport)
+	map.load_map(new_level_obj)
 	var level = get_node("level")
-	level.remove_child(level.get_child(0))
-	var new_level_obj = new_level.instance()
+	level.get_child(0).queue_free()
 	level.add_child(new_level_obj)
+	var player = get_node("playercontainer/player")
 	player.load_tilemap(new_level_obj)
 	player.set_global_pos(pos)
+	var level_title = get_node("gui/CanvasLayer/level/AnimationPlayer")
+	level_title.stop()
+	level_title.seek(0, true)
 	if (new_level_obj.get_name() != "LVL_NOTITLE"):
 		display_level_title(new_level_obj.get_name())
 
