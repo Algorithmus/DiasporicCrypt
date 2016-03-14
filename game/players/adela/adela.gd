@@ -324,6 +324,8 @@ func step_player(delta):
 		wall_hanging = false
 		current_wall_hanging_delay += 1
 
+	regenerate_mp()
+
 	# check animations
 	var animations = check_animations(new_animation, animation_speed, horizontal_motion, ladderY)
 	animation_speed = animations["animationSpeed"]
@@ -354,6 +356,30 @@ func _ready():
 	jumpspeed = 22
 	defaultfallheight = jumpspeed * (jumpspeed - 1)/2
 
+	base_hp = 200
+	base_mp = 120
+	current_mp = base_mp
+	current_hp = base_hp
+	hp = base_hp
+	mp = base_mp
+	base_atk = 45
+	base_def = 13
+	base_mag = 18
+	base_luck = 15
+
+	set_stats()
+
+	demonic_atk = 0.15
+	demonic_def = 0.15
+	demonic_hp = 0.15
+	demonic_mp = 0.2
+	demonic_mag = 0.2
+	demonic_luck = 1
+
+	exp_growth = preload("res://players/adela/AdelaExpGrowth.gd")
+	exp_growth_obj = exp_growth.new()
+	exp_growth_obj.setup(level)
+
 	demonic_sprite = preload("res://players/adela/demonic/demonic.scn")
 	demonic_sprite_obj = demonic_sprite.instance()
 	
@@ -366,8 +392,8 @@ func _ready():
 	whipswing_obj.hide()
 	
 	weapon_type = "whip"
-	magic_spells.append({"id":"wind", "auracolor": Color(0, 1, 149/255.0), "weaponcolor1": Color(187/255.0, 1, 231/255.0), "weaponcolor2": Color(0, 191/255.0, 92/255.0), "delay": true, "is_single": false, "charge": preload("res://players/magic/wind/charge.scn"), "attack": preload("res://players/magic/wind/wind.scn")})
-	magic_spells.append({"id":"ice", "auracolor": Color(0, 130/255.0, 207/255.0), "weaponcolor1": Color(0, 1, 1), "weaponcolor2": Color(0, 130/255.0, 207/255.0), "delay": false, "is_single": false, "attack": preload("res://players/magic/ice/ice.scn")})
+	magic_spells.append({"id":"wind", "mp": 120, "auracolor": Color(0, 1, 149/255.0), "weaponcolor1": Color(187/255.0, 1, 231/255.0), "weaponcolor2": Color(0, 191/255.0, 92/255.0), "delay": true, "is_single": false, "charge": preload("res://players/magic/wind/charge.scn"), "attack": preload("res://players/magic/wind/wind.scn")})
+	magic_spells.append({"id":"ice", "mp": 20, "auracolor": Color(0, 130/255.0, 207/255.0), "weaponcolor1": Color(0, 1, 1), "weaponcolor2": Color(0, 130/255.0, 207/255.0), "delay": false, "is_single": false, "attack": preload("res://players/magic/ice/ice.scn")})
 	selected_spell = magic_spells.size() - 1
 	spell_icons.get_node(magic_spells[selected_spell]["id"]).show()
 	update_fusion()

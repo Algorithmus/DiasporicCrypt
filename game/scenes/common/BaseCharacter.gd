@@ -13,6 +13,7 @@ const DEFAULT_FALL_HEIGHT = JUMP_SPEED * (JUMP_SPEED - 1)/2
 # restrict vertical speed to prevent skipping and other weirdness
 const SPEED_LIMIT = 30
 
+var hud
 var position = Vector2()
 var current_animation = "idle"
 var direction = 1
@@ -38,8 +39,21 @@ var area2d_blacklist = []
 var has_kinematic_collision = false
 var on_ladder = false
 var jumpPressed = false
+var hpclass = preload("res://gui/hud/hp.scn")
 
 var MovingPlatform = preload("res://scenes/dungeon/movingplatform/MovingPlatform.gd")
+
+var atk = 0
+var def = 0
+var hp = 0
+var current_hp = 0
+var ep = 0
+
+func get_def_adjusted_damage(damage):
+	return round(damage * (1 - def / 512.0))
+
+func get_atk_adjusted_damage(damage):
+	return round(damage * 2 + randf()*0.1*damage)
 
 func min_array(array):
 	if (array.size() == 1):
@@ -518,6 +532,7 @@ func step_player(delta):
 	play_animation(new_animation, animation_speed)
 
 func _ready():
+	hud = get_tree().get_root().get_node("world/gui/hpcontainer")
 	set_fixed_process(true)
 
 func play_animation(animation, speed):

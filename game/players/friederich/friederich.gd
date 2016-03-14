@@ -55,6 +55,30 @@ func check_ladder_top(a, b, c):
 		.check_ladder_top(a, b, c)
 
 func _ready():
+	base_hp = 250
+	base_mp = 80
+	current_mp = base_mp
+	current_hp = base_hp
+	hp = base_hp
+	mp = base_mp
+	base_atk = 10
+	base_def = 15
+	base_mag = 12
+	base_luck = 15
+
+	set_stats()
+
+	demonic_atk = 0.2
+	demonic_def = 0.15
+	demonic_hp = 0.2
+	demonic_mp = 0.1
+	demonic_mag = 0.15
+	demonic_luck = 1
+	
+	exp_growth = preload("res://players/friederich/FriederichExpGrowth.gd")
+	exp_growth_obj = exp_growth.new()
+	exp_growth_obj.setup(level)
+	
 	chaingui = get_tree().get_root().get_node("world/gui/CanvasLayer/chain")
 	
 	chain_collider = weapon.instance()
@@ -69,8 +93,8 @@ func _ready():
 	demonic_display.get_node("demonic/sprite/friederich").show()
 	
 	weapon_type = "sword"
-	magic_spells.append({"id":"earth", "auracolor":Color(170/255.0, 1, 0), "weaponcolor1":Color(64/255.0, 58/255.0, 56/255.0), "weaponcolor2":Color(181/255.0, 188/255.0, 0), "is_single": false, "charge": preload("res://players/magic/earth/charge.scn"), "attack": preload("res://players/magic/earth/earth.scn"), "delay": true})
-	magic_spells.append({"id":"fire", "auracolor":Color(1, 77/255.0, 0), "weaponcolor1":Color(1, 1, 0), "weaponcolor2":Color(1, 0, 0), "is_single": false, "attack": preload("res://players/magic/fire/fire.scn"), "delay": false})
+	magic_spells.append({"id":"earth", "mp": 100, "auracolor":Color(170/255.0, 1, 0), "weaponcolor1":Color(64/255.0, 58/255.0, 56/255.0), "weaponcolor2":Color(181/255.0, 188/255.0, 0), "is_single": false, "charge": preload("res://players/magic/earth/charge.scn"), "attack": preload("res://players/magic/earth/earth.scn"), "delay": true})
+	magic_spells.append({"id":"fire", "mp": 20, "auracolor":Color(1, 77/255.0, 0), "weaponcolor1":Color(1, 1, 0), "weaponcolor2":Color(1, 0, 0), "is_single": false, "attack": preload("res://players/magic/fire/fire.scn"), "delay": false})
 	selected_spell = magic_spells.size()-1
 	spell_icons.get_node(magic_spells[selected_spell]["id"]).show()
 	update_fusion()
@@ -396,7 +420,9 @@ func step_player(delta):
 			else:
 				remove_special_collider()
 				reset_target_delay()
-		
+	
+	regenerate_mp()
+	
 	# check animations
 	var animations = check_animations(new_animation, animation_speed, horizontal_motion, ladderY)
 	animation_speed = animations["animationSpeed"]

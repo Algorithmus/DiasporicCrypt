@@ -7,6 +7,7 @@ var speed = 6
 var collision
 var rateX = 0
 var rateY = 0
+var atk = 1
 
 func _ready():
 	set_fixed_process(true)

@@ -8,9 +8,6 @@ extends "res://scenes/common/BaseCharacter.gd"
 
 var is_dying = false
 var player
-var hpclass = preload("res://gui/hud/hp.scn")
-var hud
-var hp = 10
 var hurt_delay = 10
 var current_delay = 0
 var current_walk_delay = 0
@@ -53,6 +50,9 @@ var current_attack_delay = 0
 var follow_player = false # sprite faces player regardless of what direction the enemy is moving in
 
 var sunbeam_immunity = true
+var sunbeam_strength = 0.5
+
+var gold = 100
 
 func get_player_direction():
 	if (get_global_pos().x > player.get_node("player").get_global_pos().x):
@@ -65,7 +65,7 @@ func can_attack():
 func check_dying():
 	if (is_consumable):
 		bleed()
-	if (hp <= 0):
+	if (current_hp <= 0):
 		is_stunned = false
 		if (stun_obj != null):
 			stun_obj.hide()
@@ -86,9 +86,13 @@ func check_damage():
 			var damageTiles = damage_rect.get_overlapping_areas()
 			for i in damageTiles:
 				var collider
+				var damage = 0
 				if (i.has_node("weapon") && !magic_only):
 					collider = i.get_node("weapon")
 					player.get_node("player").set("hit_enemy", true)
+					var atk_adjusted = get_atk_adjusted_damage(player.get_node("player").get("atk"))
+					var critical = player.get_node("player").get_critical_bonus(atk_adjusted)
+					damage = max(get_def_adjusted_damage(atk_adjusted + critical), 0)
 				if (i.has_node("magic") || (!sunbeam_immunity && i.get_name() == "sunbeam")):
 					# freeze in collision block if hit with an ice attack
 					# freeze blocks are essentially one way platforms
@@ -111,21 +115,24 @@ func check_damage():
 						if (has_node(damage_rect.get_name())):
 							remove_child(damage_rect)
 					collider = i.get_node("magic")
+					damage = max(get_def_adjusted_damage(get_atk_adjusted_damage(player.get_node("player").get("mag"))), 0)
 					if (collider == null):
 						collider = i.get_node("CollisionShape2D")
-					var hp = i.get_parent().get("hp")
-					if (hp != null):
-						i.get_parent().set("hp", hp - 1)
-				if (collider != null):
+						damage = max(get_def_adjusted_damage(hp * sunbeam_strength), 0)
+					# some magic spells will disappear if hit too frequently
+					var magic_hp = i.get_parent().get("hp")
+					if (magic_hp != null):
+						i.get_parent().set("hp", magic_hp - 1)
+				if (collider != null && damage > 0):
 					var hp_obj = hpclass.instance()
 					hud.add_child(hp_obj)
 					var collider_offset = collider.get_shape().get_extents()
 					var hitpos = hp_obj.calculate_hitpos(i.get_global_pos(), Vector2(collider_offset.x * i.get_scale().x, collider_offset.y * i.get_scale().y), get_pos(), sprite_offset)
-					hp -= 1
+					current_hp -= damage
 					is_hurt = true
 					check_dying()
 					# TODO - calculate damage helper method
-					hp_obj.display_damage(hitpos, 1)
+					hp_obj.display_damage(hitpos, damage)
 					current_delay += 1
 					current_walk_delay += 1
 
@@ -377,11 +384,15 @@ func cleanup_bloodparticles():
 
 func _ready():
 	runspeed = 3
+	hp = 10
+	atk = 1
+	def = 0
+	ep = 50
+	current_hp = hp
 	damage_rect = get_node("damagable")
 	sprite_offset = damage_rect.get_node("CollisionShape2D").get_shape().get_extents()
 	animation_player = get_node("AnimationPlayer")
 	player = get_tree().get_root().get_node("world/playercontainer")
-	hud = get_tree().get_root().get_node("world/gui/hpcontainer")
 	stun_obj = get_node("Stun")
 	if (stun_obj != null):
 		stun_obj.hide()

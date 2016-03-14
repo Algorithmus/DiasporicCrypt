@@ -1,33 +1,119 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="44" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
-	<ext_resource path="res://players/magic/ice/icon.png" type="Texture" index="3"></ext_resource>
-	<ext_resource path="res://gui/maps/HudMap.gd" type="Script" index="12"></ext_resource>
+<resource_file type="PackedScene" subresource_count="57" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
+	<ext_resource path="res://players/magic/ice/icon.png" type="Texture" index="4"></ext_resource>
+	<ext_resource path="res://gui/maps/HudMap.gd" type="Script" index="18"></ext_resource>
 	<ext_resource path="res://scenes/main.gd" type="Script" index="0"></ext_resource>
-	<ext_resource path="res://gui/sequences/demonic_a.png" type="Texture" index="23"></ext_resource>
-	<ext_resource path="res://players/magic/fire/icon.png" type="Texture" index="2"></ext_resource>
-	<ext_resource path="res://players/magic/earth/icon.png" type="Texture" index="9"></ext_resource>
-	<ext_resource path="res://players/magic/magicmine/icon.png" type="Texture" index="6"></ext_resource>
-	<ext_resource path="res://gui/confirm.wav" type="Sample" index="24"></ext_resource>
+	<ext_resource path="res://gui/sequences/demonic_a.png" type="Texture" index="29"></ext_resource>
+	<ext_resource path="res://players/magic/fire/icon.png" type="Texture" index="3"></ext_resource>
+	<ext_resource path="res://players/magic/earth/icon.png" type="Texture" index="10"></ext_resource>
+	<ext_resource path="res://players/magic/magicmine/icon.png" type="Texture" index="7"></ext_resource>
+	<ext_resource path="res://gui/confirm.wav" type="Sample" index="30"></ext_resource>
 	<ext_resource path="res://levels/sandbox/sandbox.scn" type="PackedScene" index="1"></ext_resource>
-	<ext_resource path="res://gui/sequences/demonic.wav" type="Sample" index="26"></ext_resource>
-	<ext_resource path="res://gui/select/friederich.png" type="Texture" index="15"></ext_resource>
-	<ext_resource path="res://players/friederich/friederich.xml" type="PackedScene" index="19"></ext_resource>
-	<ext_resource path="res://players/adela/adela.xml" type="PackedScene" index="20"></ext_resource>
-	<ext_resource path="res://players/magic/wind/action.png" type="Texture" index="21"></ext_resource>
-	<ext_resource path="res://players/magic/shield/icon.png" type="Texture" index="7"></ext_resource>
-	<ext_resource path="res://gui/select/friederich-select.png" type="Texture" index="16"></ext_resource>
-	<ext_resource path="res://levels/common/BGM1.ogg" type="AudioStream" index="27"></ext_resource>
-	<ext_resource path="res://players/magic/hex/icon.png" type="Texture" index="5"></ext_resource>
-	<ext_resource path="res://players/magic/wind/icon.png" type="Texture" index="10"></ext_resource>
-	<ext_resource path="res://gui/cursor.wav" type="Sample" index="25"></ext_resource>
-	<ext_resource path="res://players/magic/void/icon.png" type="Texture" index="8"></ext_resource>
-	<ext_resource path="res://players/magic/thunder/icon.png" type="Texture" index="4"></ext_resource>
-	<ext_resource path="res://gui/fonts/XL-72.fnt" type="Font" index="14"></ext_resource>
-	<ext_resource path="res://gui/select/adela.png" type="Texture" index="17"></ext_resource>
-	<ext_resource path="res://gui/select/adela-select.png" type="Texture" index="18"></ext_resource>
-	<ext_resource path="res://gui/sequences/demonic_f.png" type="Texture" index="22"></ext_resource>
-	<ext_resource path="res://gui/fonts/XS-7.fnt" type="Font" index="11"></ext_resource>
-	<ext_resource path="res://gui/fonts/L-24.fnt" type="Font" index="13"></ext_resource>
+	<ext_resource path="res://gui/sequences/demonic.wav" type="Sample" index="32"></ext_resource>
+	<ext_resource path="res://gui/select/friederich.png" type="Texture" index="21"></ext_resource>
+	<ext_resource path="res://players/friederich/friederich.xml" type="PackedScene" index="25"></ext_resource>
+	<ext_resource path="res://players/adela/adela.xml" type="PackedScene" index="26"></ext_resource>
+	<ext_resource path="res://players/magic/wind/action.png" type="Texture" index="27"></ext_resource>
+	<ext_resource path="res://players/magic/shield/icon.png" type="Texture" index="8"></ext_resource>
+	<ext_resource path="res://gui/select/friederich-select.png" type="Texture" index="22"></ext_resource>
+	<ext_resource path="res://levels/common/BGM1.ogg" type="AudioStream" index="33"></ext_resource>
+	<ext_resource path="res://players/magic/hex/icon.png" type="Texture" index="6"></ext_resource>
+	<ext_resource path="res://players/magic/wind/icon.png" type="Texture" index="11"></ext_resource>
+	<ext_resource path="res://gui/cursor.wav" type="Sample" index="31"></ext_resource>
+	<ext_resource path="res://players/magic/void/icon.png" type="Texture" index="9"></ext_resource>
+	<ext_resource path="res://players/magic/thunder/icon.png" type="Texture" index="5"></ext_resource>
+	<ext_resource path="res://gui/fonts/XL-72.fnt" type="Font" index="20"></ext_resource>
+	<ext_resource path="res://gui/select/adela.png" type="Texture" index="23"></ext_resource>
+	<ext_resource path="res://gui/select/adela-select.png" type="Texture" index="24"></ext_resource>
+	<ext_resource path="res://gui/sequences/demonic_f.png" type="Texture" index="28"></ext_resource>
+	<ext_resource path="res://gui/fonts/XS-7.fnt" type="Font" index="12"></ext_resource>
+	<ext_resource path="res://gui/fonts/L-24.fnt" type="Font" index="19"></ext_resource>
+	<ext_resource path="res://gui/hud/bloodgauge-mask.png" type="Texture" index="16"></ext_resource>
+	<ext_resource path="res://gui/hud/MPGauge.png" type="Texture" index="13"></ext_resource>
+	<ext_resource path="res://gui/hud/bloodGauge.png" type="Texture" index="17"></ext_resource>
+	<ext_resource path="res://gui/hud/Hud.gd" type="Script" index="2"></ext_resource>
+	<ext_resource path="res://gui/hud/HPGauge.png" type="Texture" index="14"></ext_resource>
+	<ext_resource path="res://gui/fonts/XS-10.fnt" type="Font" index="15"></ext_resource>
+	<resource type="CanvasItemShader" path="local://16">
+		<dictionary name="_code" shared="false">
+			<string> "fragment" </string>
+			<string> "//this shader only works properly with premultiplied alpha blend mode&#000a;uniform float aura_width=2.0;&#000a;uniform color aura_color=vec4(0.4,0.7,0.3,1);&#000a;uniform float opacity = 1.0;&#000a;&#000a;vec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);&#000a;vec2 ps = TEXTURE_PIXEL_SIZE;&#000a;float a;&#000a;float maxa=col.a;&#000a;float mina=col.a;&#000a;a=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;&#000a;maxa=max(a,maxa); &#000a;mina=min(a,mina);&#000a;a=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;&#000a;maxa=max(a,maxa); &#000a;mina=min(a,mina);&#000a;a=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;&#000a;maxa=max(a,maxa); &#000a;mina=min(a,mina);&#000a;a=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;&#000a;maxa=max(a,maxa); &#000a;mina=min(a,mina);&#000a;col.rgb*=col.a;&#000a;COLOR=col;//mix(col,aura_color,maxa-mina);&#000a;float auraa=(maxa-mina);&#000a;&#000a;COLOR.rgb+=aura_color.rgb*(maxa-mina);" </string>
+			<string> "fragment_ofs" </string>
+			<int> 0 </int>
+			<string> "light" </string>
+			<string> "" </string>
+			<string> "light_ofs" </string>
+			<int> 0 </int>
+			<string> "vertex" </string>
+			<string> "" </string>
+			<string> "vertex_ofs" </string>
+			<int> 0 </int>
+		</dictionary>
+
+	</resource>
+	<resource type="CanvasItemMaterial" path="local://17">
+		<resource name="shader/shader" resource_type="Shader" path="local://16">  </resource>
+		<int name="shader/shading_mode"> 0 </int>
+		<real name="shader_param/aura_width"> 2 </real>
+		<color name="shader_param/aura_color"> 1, 0, 0, 1 </color>
+		<real name="shader_param/opacity"> 1 </real>
+
+	</resource>
+	<resource type="CanvasItemShader" path="local://18">
+		<dictionary name="_code" shared="false">
+			<string> "fragment" </string>
+			<string> "uniform texture source;&#000a;&#000a;COLOR.rgb = vec3(1, 0, 0);&#000a;COLOR.a = tex(source,vec2(UV.x+0.5, UV.y+0.5)).a*COLOR.a;" </string>
+			<string> "fragment_ofs" </string>
+			<int> 0 </int>
+			<string> "light" </string>
+			<string> "" </string>
+			<string> "light_ofs" </string>
+			<int> 0 </int>
+			<string> "vertex" </string>
+			<string> "" </string>
+			<string> "vertex_ofs" </string>
+			<int> 0 </int>
+		</dictionary>
+
+	</resource>
+	<resource type="CanvasItemMaterial" path="local://19">
+		<resource name="shader/shader" resource_type="Shader" path="local://18">  </resource>
+		<int name="shader/shading_mode"> 0 </int>
+		<resource name="shader_param/source" external="16">  </resource>
+
+	</resource>
+	<resource type="ImageTexture" path="local://20">
+		<int name="flags"> 2 </int>
+		<image name="image"></image>		<vector2 name="size"> 99, 69 </vector2>
+		<int name="storage"> 0 </int>
+		<real name="lossy_quality"> 1 </real>
+
+	</resource>
+	<resource type="CanvasItemShader" path="local://21">
+		<dictionary name="_code" shared="false">
+			<string> "fragment" </string>
+			<string> "//this shader only works properly with premultiplied alpha blend mode&#000a;uniform float aura_width=2.0;&#000a;uniform color aura_color=vec4(0.4,0.7,0.3,1);&#000a;uniform float opacity = 1.0;&#000a;&#000a;vec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);&#000a;vec2 ps = TEXTURE_PIXEL_SIZE;&#000a;float a;&#000a;float maxa=col.a;&#000a;float mina=col.a;&#000a;a=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;&#000a;maxa=max(a,maxa); &#000a;mina=min(a,mina);&#000a;a=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;&#000a;maxa=max(a,maxa); &#000a;mina=min(a,mina);&#000a;a=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;&#000a;maxa=max(a,maxa); &#000a;mina=min(a,mina);&#000a;a=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;&#000a;maxa=max(a,maxa); &#000a;mina=min(a,mina);&#000a;col.rgb*=col.a;&#000a;COLOR=col;//mix(col,aura_color,maxa-mina);&#000a;float auraa=(maxa-mina);&#000a;&#000a;COLOR.rgb+=aura_color.rgb*(maxa-mina);" </string>
+			<string> "fragment_ofs" </string>
+			<int> 0 </int>
+			<string> "light" </string>
+			<string> "" </string>
+			<string> "light_ofs" </string>
+			<int> 0 </int>
+			<string> "vertex" </string>
+			<string> "" </string>
+			<string> "vertex_ofs" </string>
+			<int> 0 </int>
+		</dictionary>
+
+	</resource>
+	<resource type="CanvasItemMaterial" path="local://22">
+		<resource name="shader/shader" resource_type="Shader" path="local://21">  </resource>
+		<int name="shader/shading_mode"> 0 </int>
+		<real name="shader_param/aura_width"> 3 </real>
+		<color name="shader_param/aura_color"> 1, 0.62358, 0, 1 </color>
+		<real name="shader_param/opacity"> 1 </real>
+
+	</resource>
 	<resource type="Animation" path="local://11">
 		<string name="resource/name"> "newattack" </string>
 		<real name="length"> 0.2 </real>
@@ -311,7 +397,7 @@
 			<string> "pitch" </string>
 			<real> 1 </real>
 			<string> "sample" </string>
-			<resource  external="25">  </resource>
+			<resource  external="31">  </resource>
 		</dictionary>
 		<dictionary name="samples/demonic" shared="false">
 			<string> "db" </string>
@@ -319,7 +405,7 @@
 			<string> "pitch" </string>
 			<real> 1 </real>
 			<string> "sample" </string>
-			<resource  external="26">  </resource>
+			<resource  external="32">  </resource>
 		</dictionary>
 		<dictionary name="samples/confirm" shared="false">
 			<string> "db" </string>
@@ -327,7 +413,7 @@
 			<string> "pitch" </string>
 			<real> 1 </real>
 			<string> "sample" </string>
-			<resource  external="24">  </resource>
+			<resource  external="30">  </resource>
 		</dictionary>
 
 	</resource>
@@ -336,12 +422,12 @@
 			<string> "conn_count" </string>
 			<int> 6 </int>
 			<string> "conns" </string>
-			<int_array  len="36"> 				38, 0, 169, 168, 2, 0, 38, 0, 171, 170, 2, 0, 38, 0, 173, 172, 2, 0, 39, 0, 169, 174, 2, 0, 39, 0, 171, 175, 2, 0, 39, 0, 173, 176, 2, 0 </int_array>
+			<int_array  len="36"> 				49, 0, 176, 175, 2, 0, 49, 0, 178, 177, 2, 0, 49, 0, 180, 179, 2, 0, 50, 0, 176, 181, 2, 0, 50, 0, 178, 182, 2, 0, 50, 0, 180, 183, 2, 0 </int_array>
 			<string> "editable_instances" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="177">
+			<string_array  len="184">
 				<string> "world" </string>
 				<string> "process/pause_mode" </string>
 				<string> "script/script" </string>
@@ -389,8 +475,8 @@
 				<string> "percent_visible" </string>
 				<string> "lines_skipped" </string>
 				<string> "max_lines_visible" </string>
-				<string> "map" </string>
-				<string> "container" </string>
+				<string> "mpbar" </string>
+				<string> "bar" </string>
 				<string> "polygon" </string>
 				<string> "uv" </string>
 				<string> "color" </string>
@@ -401,6 +487,15 @@
 				<string> "invert/enable" </string>
 				<string> "invert/border" </string>
 				<string> "Polygon2D" </string>
+				<string> "prebar" </string>
+				<string> "display" </string>
+				<string> "centered" </string>
+				<string> "hpbar" </string>
+				<string> "material/material" </string>
+				<string> "material/use_parent" </string>
+				<string> "bloodbar" </string>
+				<string> "map" </string>
+				<string> "container" </string>
 				<string> "objects" </string>
 				<string> "visibility/behind_parent" </string>
 				<string> "chain" </string>
@@ -431,11 +526,9 @@
 				<string> "autowrap" </string>
 				<string> "anims/show" </string>
 				<string> "pause" </string>
-				<string> "centered" </string>
 				<string> "modulate" </string>
 				<string> "select" </string>
 				<string> "BG" </string>
-				<string> "material/material" </string>
 				<string> "expand" </string>
 				<string> "TextureFrame" </string>
 				<string> "friederich" </string>
@@ -521,14 +614,14 @@
 				<string> "_adela_exit" </string>
 			</string_array>
 			<string> "node_count" </string>
-			<int> 56 </int>
+			<int> 67 </int>
 			<string> "node_paths" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="1176"> 				-1, -1, 4, 0, -1, 3, 1, 0, 2, 1, 3, 2, 0, 0, 0, 4, 5, -1, 2, 1, 3, 3, 4, 0, 1, 0, 2147483647, 6, 5, 0, 0, 0, 0, 4, 7, -1, 2, 1, 3, 3, 6, 0, 0, 0, 4, 8, -1, 2, 1, 0, 9, 7, 0, 4, 0, 4, 10, -1, 0, 0, 4, 0, 11, 11, -1, 4, 12, 3, 13, 8, 14, 9, 15, 10, 0, 6, 0, 23, 16, -1, 7, 17, 11, 18, 11, 19, 12, 20, 13, 21, 0, 22, 0, 3, 14, 0, 7, 0, 4, 24, -1, 2, 25, 15, 3, 16, 0, 8, 0, 29, 26, -1, 2, 27, 12, 28, 17, 0, 8, 0, 29, 30, -1, 2, 27, 12, 28, 18, 0, 8, 0, 29, 31, -1, 2, 27, 12, 28, 19, 0, 8, 0, 29, 32, -1, 2, 27, 12, 28, 20, 0, 8, 0, 29, 33, -1, 2, 27, 12, 28, 21, 0, 8, 0, 29, 34, -1, 2, 27, 12, 28, 22, 0, 8, 0, 29, 35, -1, 2, 27, 12, 28, 23, 0, 8, 0, 29, 36, -1, 2, 27, 12, 28, 24, 0, 8, 0, 29, 37, -1, 2, 27, 12, 28, 25, 0, 7, 0, 38, 38, -1, 13, 39, 26, 40, 27, 17, 28, 18, 29, 19, 13, 20, 13, 21, 0, 41, 30, 42, 31, 43, 3, 44, 32, 45, 33, 46, 34, 0, 6, 0, 23, 47, -1, 6, 17, 11, 18, 11, 19, 12, 20, 13, 21, 0, 22, 0, 0, 19, 0, 58, 48, -1, 12, 25, 35, 49, 36, 50, 37, 51, 38, 13, 8, 52, 39, 53, 8, 54, 10, 55, 9, 56, 12, 57, 40, 2, 41, 0, 20, 0, 4, 59, -1, 1, 60, 13, 0, 6, 0, 23, 61, -1, 7, 17, 11, 18, 11, 19, 12, 20, 13, 21, 0, 22, 0, 3, 42, 0, 22, 0, 4, 62, -1, 2, 25, 43, 3, 44, 0, 23, 0, 38, 61, -1, 11, 40, 45, 17, 46, 18, 47, 19, 13, 20, 13, 21, 0, 41, 48, 42, 49, 44, 32, 45, 33, 46, 34, 0, 23, 0, 4, 63, -1, 1, 25, 50, 0, 25, 0, 38, 64, -1, 13, 65, 51, 66, 51, 40, 52, 17, 53, 18, 47, 19, 13, 20, 13, 21, 0, 41, 48, 42, 54, 44, 32, 45, 33, 46, 34, 0, 22, 0, 4, 67, -1, 2, 25, 55, 3, 56, 0, 27, 0, 38, 68, -1, 12, 40, 45, 17, 57, 18, 47, 19, 13, 20, 13, 21, 0, 41, 48, 42, 58, 69, 13, 44, 32, 45, 33, 46, 34, 0, 22, 0, 70, 70, -1, 10, 71, 3, 72, 9, 73, 59, 74, 60, 75, 61, 76, 62, 77, 13, 78, 32, 79, 63, 80, 64, 0, 6, 0, 23, 5, -1, 8, 1, 3, 17, 11, 18, 11, 19, 12, 20, 13, 21, 0, 22, 0, 3, 65, 0, 30, 0, 38, 81, -1, 19, 82, 9, 83, 51, 65, 51, 84, 51, 66, 51, 39, 66, 40, 67, 17, 68, 18, 69, 19, 13, 20, 13, 21, 0, 41, 70, 43, 3, 85, 3, 86, 13, 44, 32, 45, 33, 46, 34, 0, 30, 0, 70, 70, -1, 8, 71, 3, 72, 9, 73, 59, 87, 71, 77, 13, 78, 32, 79, 63, 80, 64, 0, 6, 0, 23, 88, -1, 9, 84, 3, 66, 3, 17, 72, 18, 72, 19, 12, 20, 13, 21, 0, 22, 0, 3, 73, 0, 33, 0, 29, 34, -1, 3, 28, 74, 89, 12, 90, 75, 0, 33, 0, 38, 38, -1, 20, 27, 12, 83, 51, 65, 51, 84, 51, 66, 51, 39, 76, 40, 77, 17, 78, 18, 79, 19, 13, 20, 13, 21, 0, 41, 70, 42, 80, 43, 3, 85, 3, 69, 13, 44, 32, 45, 33, 46, 34, 0, 6, 0, 23, 91, -1, 8, 27, 12, 84, 3, 66, 3, 19, 12, 20, 13, 21, 0, 22, 0, 3, 81, 0, 36, 0, 95, 92, -1, 9, 93, 82, 84, 3, 66, 3, 19, 12, 20, 13, 21, 0, 22, 0, 28, 83, 94, 13, 0, 36, 0, 104, 96, -1, 18, 93, 84, 83, 0, 66, 0, 39, 85, 40, 86, 17, 87, 18, 88, 97, 89, 19, 12, 20, 13, 21, 0, 22, 0, 98, 12, 99, 90, 100, 91, 101, 91, 102, 91, 103, 92, 0, 36, 0, 104, 105, -1, 16, 84, 0, 66, 0, 39, 93, 17, 94, 18, 95, 106, 96, 19, 12, 20, 13, 21, 0, 22, 0, 98, 12, 99, 97, 100, 98, 101, 98, 102, 98, 103, 99, 0, 36, 0, 38, 38, -1, 15, 83, 51, 84, 51, 39, 76, 17, 78, 18, 100, 19, 13, 20, 13, 21, 0, 41, 48, 42, 101, 43, 3, 69, 13, 44, 32, 45, 33, 46, 34, 0, 36, 0, 95, 107, -1, 11, 93, 102, 65, 3, 84, 3, 66, 3, 40, 103, 19, 13, 20, 12, 21, 0, 22, 0, 28, 83, 94, 13, 0, 36, 0, 38, 108, -1, 14, 83, 0, 84, 51, 66, 3, 17, 104, 19, 13, 20, 13, 21, 0, 41, 48, 42, 105, 43, 3, 85, 0, 44, 32, 45, 33, 46, 34, 0, 36, 0, 38, 109, -1, 15, 83, 51, 84, 0, 66, 3, 39, 32, 17, 32, 19, 13, 20, 13, 21, 0, 41, 48, 42, 106, 43, 3, 85, 0, 44, 32, 45, 33, 46, 34, 0, 36, 0, 2147483647, 110, 107, 3, 25, 108, 111, 109, 2, 39, 0, 36, 0, 2147483647, 112, 110, 3, 25, 111, 111, 109, 2, 39, 0, 6, 0, 23, 113, -1, 8, 27, 12, 17, 11, 18, 11, 19, 12, 20, 13, 21, 0, 22, 0, 3, 112, 0, 46, 0, 4, 114, -1, 0, 0, 47, 0, 95, 92, -1, 12, 93, 113, 84, 3, 66, 3, 40, 114, 17, 115, 18, 116, 19, 12, 20, 13, 21, 0, 22, 0, 28, 83, 94, 13, 0, 47, 0, 115, 115, -1, 24, 25, 117, 116, 118, 117, 119, 118, 120, 119, 121, 120, 122, 121, 123, 122, 124, 123, 125, 124, 9, 125, 9, 126, 9, 127, 9, 128, 9, 129, 9, 130, 9, 131, 9, 132, 32, 133, 32, 134, 9, 135, 32, 136, 9, 137, 32, 138, 32, 0, 47, 0, 4, 139, -1, 0, 0, 50, 0, 29, 96, -1, 4, 140, 126, 28, 127, 89, 12, 13, 128, 0, 50, 0, 29, 105, -1, 5, 27, 12, 140, 129, 28, 130, 89, 12, 13, 128, 0, 46, 0, 70, 70, -1, 8, 71, 3, 72, 9, 73, 59, 141, 131, 77, 13, 78, 32, 79, 63, 80, 64, 0, 4, 0, 157, 142, -1, 14, 143, 3, 144, 132, 145, 9, 146, 32, 147, 9, 148, 9, 149, 9, 150, 33, 151, 133, 152, 32, 153, 32, 154, 0, 155, 9, 156, 9, 0, 0, 0, 167, 158, -1, 8, 159, 134, 160, 12, 161, 13, 162, 9, 163, 13, 164, 12, 165, 9, 166, 135, 0 </int_array>
+			<int_array  len="1395"> 				-1, -1, 4, 0, -1, 3, 1, 0, 2, 1, 3, 2, 0, 0, 0, 4, 5, -1, 2, 1, 3, 3, 4, 0, 1, 0, 2147483647, 6, 5, 0, 0, 0, 0, 4, 7, -1, 2, 1, 3, 3, 6, 0, 0, 0, 4, 8, -1, 2, 1, 0, 9, 7, 0, 4, 0, 4, 10, -1, 0, 0, 4, 0, 11, 11, -1, 4, 12, 3, 13, 8, 14, 9, 15, 10, 0, 6, 0, 23, 16, -1, 8, 1, 3, 17, 11, 18, 11, 19, 12, 20, 13, 21, 0, 22, 0, 2, 14, 0, 7, 0, 4, 24, -1, 2, 25, 15, 3, 16, 0, 8, 0, 29, 26, -1, 2, 27, 12, 28, 17, 0, 8, 0, 29, 30, -1, 2, 27, 12, 28, 18, 0, 8, 0, 29, 31, -1, 2, 27, 12, 28, 19, 0, 8, 0, 29, 32, -1, 2, 27, 12, 28, 20, 0, 8, 0, 29, 33, -1, 2, 27, 12, 28, 21, 0, 8, 0, 29, 34, -1, 2, 27, 12, 28, 22, 0, 8, 0, 29, 35, -1, 2, 27, 12, 28, 23, 0, 8, 0, 29, 36, -1, 2, 27, 12, 28, 24, 0, 8, 0, 29, 37, -1, 2, 27, 12, 28, 25, 0, 7, 0, 38, 38, -1, 13, 39, 26, 40, 27, 17, 28, 18, 29, 19, 13, 20, 13, 21, 0, 41, 30, 42, 31, 43, 3, 44, 32, 45, 33, 46, 34, 0, 7, 0, 4, 47, -1, 0, 0, 19, 0, 58, 48, -1, 11, 25, 35, 49, 36, 50, 37, 51, 38, 13, 8, 52, 39, 53, 8, 54, 10, 55, 9, 56, 12, 57, 40, 0, 19, 0, 58, 59, -1, 11, 25, 35, 49, 36, 50, 37, 51, 41, 13, 8, 52, 39, 53, 8, 54, 10, 55, 9, 56, 12, 57, 40, 0, 19, 0, 29, 60, -1, 2, 28, 42, 61, 12, 0, 7, 0, 4, 62, -1, 1, 3, 43, 0, 23, 0, 58, 48, -1, 11, 25, 44, 49, 45, 50, 37, 51, 46, 13, 8, 52, 39, 53, 8, 54, 10, 55, 9, 56, 12, 57, 40, 0, 23, 0, 29, 60, -1, 4, 63, 47, 64, 13, 28, 48, 61, 12, 0, 23, 0, 38, 5, -1, 12, 39, 49, 40, 50, 17, 51, 18, 52, 19, 13, 20, 13, 21, 0, 41, 53, 43, 3, 44, 32, 45, 33, 46, 34, 0, 7, 0, 4, 65, -1, 2, 25, 54, 3, 55, 0, 27, 0, 58, 48, -1, 11, 63, 56, 49, 57, 50, 37, 51, 58, 13, 8, 52, 59, 53, 8, 54, 10, 55, 9, 56, 12, 57, 40, 0, 27, 0, 29, 60, -1, 3, 63, 60, 64, 13, 28, 61, 0, 6, 0, 23, 66, -1, 7, 17, 11, 18, 11, 19, 12, 20, 13, 21, 0, 22, 0, 3, 62, 0, 30, 0, 58, 67, -1, 12, 25, 63, 49, 64, 50, 37, 51, 65, 13, 8, 52, 39, 53, 8, 54, 10, 55, 9, 56, 12, 57, 40, 2, 66, 0, 31, 0, 4, 68, -1, 1, 69, 13, 0, 6, 0, 23, 70, -1, 7, 17, 11, 18, 11, 19, 12, 20, 13, 21, 0, 22, 0, 3, 67, 0, 33, 0, 4, 71, -1, 2, 25, 68, 3, 69, 0, 34, 0, 38, 70, -1, 11, 40, 70, 17, 71, 18, 72, 19, 13, 20, 13, 21, 0, 41, 73, 42, 74, 44, 32, 45, 33, 46, 34, 0, 34, 0, 4, 72, -1, 1, 25, 75, 0, 36, 0, 38, 73, -1, 13, 74, 76, 75, 76, 40, 77, 17, 78, 18, 72, 19, 13, 20, 13, 21, 0, 41, 73, 42, 79, 44, 32, 45, 33, 46, 34, 0, 33, 0, 4, 76, -1, 2, 25, 80, 3, 81, 0, 38, 0, 38, 77, -1, 12, 40, 70, 17, 82, 18, 72, 19, 13, 20, 13, 21, 0, 41, 73, 42, 83, 78, 13, 44, 32, 45, 33, 46, 34, 0, 33, 0, 79, 79, -1, 10, 80, 3, 81, 9, 82, 84, 83, 85, 84, 86, 85, 87, 86, 13, 87, 32, 88, 88, 89, 89, 0, 6, 0, 23, 5, -1, 8, 1, 3, 17, 11, 18, 11, 19, 12, 20, 13, 21, 0, 22, 0, 3, 90, 0, 41, 0, 38, 90, -1, 19, 91, 9, 92, 76, 74, 76, 93, 76, 75, 76, 39, 91, 40, 92, 17, 93, 18, 94, 19, 13, 20, 13, 21, 0, 41, 95, 43, 3, 94, 3, 95, 13, 44, 32, 45, 33, 46, 34, 0, 41, 0, 79, 79, -1, 8, 80, 3, 81, 9, 82, 84, 96, 96, 86, 13, 87, 32, 88, 88, 89, 89, 0, 6, 0, 23, 97, -1, 10, 27, 12, 93, 3, 75, 3, 17, 97, 18, 97, 19, 12, 20, 13, 21, 0, 22, 0, 3, 98, 0, 44, 0, 29, 34, -1, 3, 28, 99, 61, 12, 98, 100, 0, 44, 0, 38, 38, -1, 20, 27, 12, 92, 76, 74, 76, 93, 76, 75, 76, 39, 101, 40, 102, 17, 103, 18, 104, 19, 13, 20, 13, 21, 0, 41, 95, 42, 105, 43, 3, 94, 3, 78, 13, 44, 32, 45, 33, 46, 34, 0, 6, 0, 23, 99, -1, 8, 27, 12, 93, 3, 75, 3, 19, 12, 20, 13, 21, 0, 22, 0, 3, 106, 0, 47, 0, 102, 100, -1, 9, 63, 107, 93, 3, 75, 3, 19, 12, 20, 13, 21, 0, 22, 0, 28, 108, 101, 13, 0, 47, 0, 111, 103, -1, 18, 63, 109, 92, 0, 75, 0, 39, 110, 40, 111, 17, 112, 18, 113, 104, 114, 19, 12, 20, 13, 21, 0, 22, 0, 105, 12, 106, 115, 107, 116, 108, 116, 109, 116, 110, 117, 0, 47, 0, 111, 112, -1, 16, 93, 0, 75, 0, 39, 118, 17, 119, 18, 120, 113, 121, 19, 12, 20, 13, 21, 0, 22, 0, 105, 12, 106, 122, 107, 123, 108, 123, 109, 123, 110, 124, 0, 47, 0, 38, 38, -1, 15, 92, 76, 93, 76, 39, 101, 17, 103, 18, 125, 19, 13, 20, 13, 21, 0, 41, 73, 42, 126, 43, 3, 78, 13, 44, 32, 45, 33, 46, 34, 0, 47, 0, 102, 114, -1, 11, 63, 127, 74, 3, 93, 3, 75, 3, 40, 128, 19, 13, 20, 12, 21, 0, 22, 0, 28, 108, 101, 13, 0, 47, 0, 38, 115, -1, 14, 92, 0, 93, 76, 75, 3, 17, 129, 19, 13, 20, 13, 21, 0, 41, 73, 42, 130, 43, 3, 94, 0, 44, 32, 45, 33, 46, 34, 0, 47, 0, 38, 116, -1, 15, 92, 76, 93, 0, 75, 3, 39, 32, 17, 32, 19, 13, 20, 13, 21, 0, 41, 73, 42, 131, 43, 3, 94, 0, 44, 32, 45, 33, 46, 34, 0, 47, 0, 2147483647, 117, 132, 3, 25, 133, 118, 134, 2, 39, 0, 47, 0, 2147483647, 119, 135, 3, 25, 136, 118, 134, 2, 39, 0, 6, 0, 23, 120, -1, 8, 27, 12, 17, 11, 18, 11, 19, 12, 20, 13, 21, 0, 22, 0, 3, 137, 0, 57, 0, 4, 121, -1, 0, 0, 58, 0, 102, 100, -1, 12, 63, 138, 93, 3, 75, 3, 40, 139, 17, 140, 18, 141, 19, 12, 20, 13, 21, 0, 22, 0, 28, 108, 101, 13, 0, 58, 0, 122, 122, -1, 24, 25, 142, 123, 143, 124, 144, 125, 145, 126, 146, 127, 147, 128, 148, 129, 149, 130, 150, 131, 9, 132, 9, 133, 9, 134, 9, 135, 9, 136, 9, 137, 9, 138, 9, 139, 32, 140, 32, 141, 9, 142, 32, 143, 9, 144, 32, 145, 32, 0, 58, 0, 4, 146, -1, 0, 0, 61, 0, 29, 103, -1, 4, 147, 151, 28, 152, 61, 12, 13, 153, 0, 61, 0, 29, 112, -1, 5, 27, 12, 147, 154, 28, 155, 61, 12, 13, 153, 0, 57, 0, 79, 79, -1, 8, 80, 3, 81, 9, 82, 84, 148, 156, 86, 13, 87, 32, 88, 88, 89, 89, 0, 4, 0, 164, 149, -1, 14, 150, 3, 151, 157, 152, 9, 153, 32, 154, 9, 155, 9, 156, 9, 157, 33, 158, 158, 159, 32, 160, 32, 161, 0, 162, 9, 163, 9, 0, 0, 0, 174, 165, -1, 8, 166, 159, 167, 12, 168, 13, 169, 9, 170, 13, 171, 12, 172, 9, 173, 160, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="136" shared="false">
+			<array  len="161" shared="false">
 				<int> 2 </int>
 				<resource  external="0">  </resource>
 				<dictionary  shared="false">
@@ -539,7 +632,7 @@
 						<string> "2D" </string>
 						<dictionary  shared="false">
 							<string> "ofs" </string>
-							<vector2> 6.0011, 57.8839 </vector2>
+							<vector2> -58.1056, -44.6953 </vector2>
 							<string> "snap_grid" </string>
 							<bool> True </bool>
 							<string> "snap_offset" </string>
@@ -655,14 +748,8 @@
 						</dictionary>
 						<string> "Anim" </string>
 						<dictionary  shared="false">
-							<string> "animation" </string>
-							<string> "show" </string>
-							<string> "editing" </string>
-							<bool> False </bool>
-							<string> "player" </string>
-							<node_path> "gui/CanvasLayer/level/AnimationPlayer" </node_path>
 							<string> "visible" </string>
-							<bool> True </bool>
+							<bool> False </bool>
 						</dictionary>
 					</dictionary>
 					<string> "__editor_run_settings__" </string>
@@ -690,16 +777,12 @@
 				<real> 40 </real>
 				<bool> False </bool>
 				<bool> True </bool>
-				<dictionary  shared="false">
-					<string> "_editor_collapsed" </string>
-					<bool> True </bool>
-				</dictionary>
-				<vector2> 48, 16 </vector2>
-				<dictionary  shared="false">
-					<string> "_editor_collapsed" </string>
-					<bool> True </bool>
-				</dictionary>
 				<resource  external="2">  </resource>
+				<vector2> 624, 48 </vector2>
+				<dictionary  shared="false">
+					<string> "_editor_collapsed" </string>
+					<bool> True </bool>
+				</dictionary>
 				<resource  external="3">  </resource>
 				<resource  external="4">  </resource>
 				<resource  external="5">  </resource>
@@ -708,21 +791,56 @@
 				<resource  external="8">  </resource>
 				<resource  external="9">  </resource>
 				<resource  external="10">  </resource>
-				<real> 30 </real>
-				<real> 32 </real>
-				<real> 66 </real>
-				<real> 41 </real>
 				<resource  external="11">  </resource>
+				<real> 606 </real>
+				<real> 64 </real>
+				<real> 642 </real>
+				<real> 73 </real>
+				<resource  external="12">  </resource>
 				<string> "KEY_SPELL" </string>
 				<real> 1 </real>
 				<int> 0 </int>
 				<int> -1 </int>
+				<vector2> 40, 56 </vector2>
+				<vector2_array  len="4"> 					0, 0, 500, 0, 500, 6, 0, 6 </vector2_array>
+				<vector2_array  len="0"> 					 </vector2_array>
+				<color> 0.0627451, 0.698039, 0.235294, 0.901961 </color>
+				<resource name=""></resource>				<real> 100 </real>
+				<color> 1, 0.764706, 0.0588235, 0.901961 </color>
+				<resource  external="13">  </resource>
+				<dictionary  shared="false">
+					<string> "_editor_collapsed" </string>
+					<bool> True </bool>
+				</dictionary>
+				<vector2> 40, 28 </vector2>
+				<vector2_array  len="4"> 					0, 0, 500, 0, 500, 11, 0, 11 </vector2_array>
+				<color> 0, 0.411765, 1, 0.901961 </color>
+				<resource  resource_type="CanvasItemMaterial" path="local://17">  </resource>
+				<resource  external="14">  </resource>
+				<real> 14 </real>
+				<real> 27 </real>
+				<real> 34 </real>
+				<real> 37 </real>
+				<resource  external="15">  </resource>
+				<vector2> 740, 48 </vector2>
+				<dictionary  shared="false">
+					<string> "_editor_collapsed" </string>
+					<bool> True </bool>
+				</dictionary>
+				<resource  resource_type="CanvasItemMaterial" path="local://19">  </resource>
+				<vector2_array  len="4"> 					-32, -32, 32, -32, 32, 32, -32, 32 </vector2_array>
+				<color> 1, 0, 0, 0.901961 </color>
+				<resource  resource_type="Texture" path="local://20">  </resource>
+				<resource  resource_type="CanvasItemMaterial" path="local://22">  </resource>
+				<resource  external="17">  </resource>
+				<dictionary  shared="false">
+					<string> "_editor_collapsed" </string>
+					<bool> True </bool>
+				</dictionary>
 				<vector2> 0, 416 </vector2>
 				<vector2_array  len="4"> 					0, 0, 256, 0, 256, 176, 0, 176 </vector2_array>
-				<vector2_array  len="0"> 					 </vector2_array>
 				<color> 1, 1, 1, 0 </color>
-				<resource name=""></resource>				<real> 100 </real>
-				<resource  external="12">  </resource>
+				<resource  external="18">  </resource>
 				<dictionary  shared="false">
 					<string> "_editor_collapsed" </string>
 					<bool> True </bool>
@@ -735,7 +853,7 @@
 				<real> -15 </real>
 				<real> 112 </real>
 				<real> 16 </real>
-				<resource  external="13">  </resource>
+				<resource  external="19">  </resource>
 				<string> "chain x" </string>
 				<vector2> 100, 0 </vector2>
 				<int> 3 </int>
@@ -764,11 +882,13 @@
 				<real> -164 </real>
 				<real> -748 </real>
 				<real> -382 </real>
-				<resource  external="14">  </resource>
+				<resource  external="20">  </resource>
 				<resource  resource_type="Animation" path="local://15">  </resource>
 				<real> 24 </real>
 				<dictionary  shared="false">
 					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+					<string> "_editor_collapsed" </string>
 					<bool> True </bool>
 				</dictionary>
 				<resource  resource_type="Texture" path="local://1">  </resource>
@@ -790,15 +910,15 @@
 				<real> 455 </real>
 				<real> 1.206081 </real>
 				<node_path> "../adela" </node_path>
-				<resource  external="15">  </resource>
-				<resource  external="16">  </resource>
+				<resource  external="21">  </resource>
+				<resource  external="22">  </resource>
 				<vector2> 0.43, 0.43 </vector2>
 				<real> 380 </real>
 				<real> 1.07 </real>
 				<real> 1.047297 </real>
 				<node_path> "../friederich" </node_path>
-				<resource  external="17">  </resource>
-				<resource  external="18">  </resource>
+				<resource  external="23">  </resource>
+				<resource  external="24">  </resource>
 				<vector2> 0.5, 0.5 </vector2>
 				<real> 31 </real>
 				<string> "KEY_CHARSELECT" </string>
@@ -807,10 +927,10 @@
 				<real> -64 </real>
 				<string> "Friederich" </string>
 				<string> "Adela" </string>
-				<resource  external="19">  </resource>
+				<resource  external="25">  </resource>
 				<vector2> 200, 480 </vector2>
 				<real> 0.08 </real>
-				<resource  external="20">  </resource>
+				<resource  external="26">  </resource>
 				<vector2> 600, 480 </vector2>
 				<dictionary  shared="false">
 					<string> "_editor_collapsed" </string>
@@ -825,19 +945,19 @@
 				<real> 2 </real>
 				<real> 20 </real>
 				<vector2> 400, 100 </vector2>
-				<resource  external="21">  </resource>
+				<resource  external="27">  </resource>
 				<real> 90 </real>
 				<real> 10 </real>
 				<real> 120 </real>
 				<vector2> 0.45, 0.45 </vector2>
-				<resource  external="22">  </resource>
+				<resource  external="28">  </resource>
 				<vector2> 0, 74 </vector2>
 				<vector2> 0.55, 0.55 </vector2>
-				<resource  external="23">  </resource>
+				<resource  external="29">  </resource>
 				<resource  resource_type="Animation" path="local://12">  </resource>
 				<resource  resource_type="SampleLibrary" path="local://4">  </resource>
 				<real> 5000 </real>
-				<resource  external="27">  </resource>
+				<resource  external="33">  </resource>
 				<int> 500 </int>
 			</array>
 			<string> "version" </string>

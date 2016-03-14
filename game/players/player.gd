@@ -7,6 +7,7 @@ const LADDER_SPEED = 5
 const DAMAGE_THROWBACK = 10
 const VERTICAL_DAMAGE_THROWBACK = 6
 const HURT_GRACE_PERIOD = 60
+const MP_REGEN_PERIOD = 1000
 
 var tilemap
 var climbspeed = 6
@@ -29,11 +30,11 @@ var blood_requested = false
 var hit_enemy = false
 var weapon_type = ""
 # shared spells
-var magic_spells = [{"id": "thunder", "auracolor": Color(1, 1, 1), "weaponcolor1": Color(1, 247/255.0, 138/255.0), "weaponcolor2": Color(0, 116/255.0, 1), "is_single": false, "charge": preload("res://players/magic/thunder/charge.scn"), "attack": preload("res://players/magic/thunder/thunder.scn"), "delay": true}, 
-					{"id":"hex", "auracolor": Color(169/255.0, 0, 1), "weaponcolor1": Color(0, 0, 0), "weaponcolor2": Color(1, 0, 0), "is_single": false, "delay": true, "attack": preload("res://players/magic/hex/hex.scn")}, 
-					{"id":"shield", "auracolor": Color(0, 0, 1), "weaponcolor1": Color(0, 55/255.0, 1), "weaponcolor2": Color(0, 208/255.0, 1), "is_single": false, "delay": false, "attack": preload("res://players/magic/shield/shield.scn"), "charge": preload("res://players/magic/shield/charge.scn")}, 
-					{"id":"magicmine", "auracolor": Color(1, 129/255.0, 0), "weaponcolor1": Color(1, 1, 0), "weaponcolor2": Color(78/255.0, 0 , 1), "is_single": true, "delay": false, "attack": preload("res://players/magic/magicmine/mine.scn")}, 
-					{"id":"void", "auracolor": Color(110/255.0, 110/255.0, 122/255.0), "weaponcolor1": Color(0, 0, 0), "weaponcolor2": Color(1, 1, 1), "is_single": false, "delay": true, "attack": preload("res://players/magic/void/void.scn")}]
+var magic_spells = [{"id": "thunder", "mp": 40, "auracolor": Color(1, 1, 1), "weaponcolor1": Color(1, 247/255.0, 138/255.0), "weaponcolor2": Color(0, 116/255.0, 1), "is_single": false, "charge": preload("res://players/magic/thunder/charge.scn"), "attack": preload("res://players/magic/thunder/thunder.scn"), "delay": true}, 
+					{"id":"hex", "mp": 40, "auracolor": Color(169/255.0, 0, 1), "weaponcolor1": Color(0, 0, 0), "weaponcolor2": Color(1, 0, 0), "is_single": false, "delay": true, "attack": preload("res://players/magic/hex/hex.scn")}, 
+					{"id":"shield", "mp": 60, "auracolor": Color(0, 0, 1), "weaponcolor1": Color(0, 55/255.0, 1), "weaponcolor2": Color(0, 208/255.0, 1), "is_single": false, "delay": false, "attack": preload("res://players/magic/shield/shield.scn"), "charge": preload("res://players/magic/shield/charge.scn")}, 
+					{"id":"magicmine", "mp": 20, "auracolor": Color(1, 129/255.0, 0), "weaponcolor1": Color(1, 1, 0), "weaponcolor2": Color(78/255.0, 0 , 1), "is_single": true, "delay": false, "attack": preload("res://players/magic/magicmine/mine.scn")}, 
+					{"id":"void", "mp": 80, "auracolor": Color(110/255.0, 110/255.0, 122/255.0), "weaponcolor1": Color(0, 0, 0), "weaponcolor2": Color(1, 1, 1), "is_single": false, "delay": true, "attack": preload("res://players/magic/void/void.scn")}]
 var selected_spell
 var request_spell_change = 0
 var spell_icons
@@ -64,6 +65,65 @@ var is_transforming = false
 var demonic_display
 
 var prevPos
+
+var base_atk = 0
+var base_def = 0
+var base_mag = 0
+var base_hp = 0
+var base_mp = 0
+var base_luck = 0
+var level = 1
+var mag = 0
+var luck = 0
+var mp = 0
+var current_mp = 0
+var prospective_mp = 0
+
+var demonic_atk = 0
+var demonic_def = 0
+var demonic_mag = 0
+var demonic_hp = 0
+var demonic_mp = 0
+var demonic_luck = 0
+
+var exp_growth = preload("res://players/BaseExpGrowth.gd")
+var exp_growth_obj
+
+var current_mp_cycle = 0
+
+func get_critical_bonus(damage):
+	var chance = randf()
+	if (chance <= luck / 100.0):
+		return 0.2 * damage
+	else:
+		return 0
+func set_stats():
+	if (is_demonic):
+		atk = base_atk + demonic_atk * base_atk
+		def = base_def + demonic_def * base_def
+		hp = base_hp + demonic_hp * base_hp
+		mp = base_mp + demonic_mp * base_mp
+		luck = base_luck + demonic_luck * base_luck
+		mag = base_mag + demonic_mag * base_mag
+	else:
+		atk = base_atk
+		def = base_def
+		current_hp = base_hp * float(current_hp) / hp
+		hp = base_hp
+		mp = base_mp
+		luck = base_luck
+		mag = base_mag
+
+func get_exp_orb(orb):
+	if (exp_growth_obj.check_exp(level, orb.get("ep"))):
+		level += 1
+		base_atk = exp_growth_obj.atk_growth(level)
+		base_def = exp_growth_obj.def_growth(level)
+		base_mag = exp_growth_obj.mag_growth(level)
+		base_luck = exp_growth_obj.luck_growth(level)
+		base_hp = exp_growth_obj.hp_growth(level)
+		base_mp = exp_growth_obj.mp_growth(level)
+		set_stats()
 
 func input_left():
 	return Input.is_action_pressed("ui_left") && !is_transforming
@@ -135,9 +195,26 @@ func check_damage(damageTiles):
 	if (!invulnerable && !is_transforming && shield == null):
 		for i in damageTiles:
 			if (i.get_name() == "damagable" || (i.get_name() == "sunbeam" && !is_demonic)):
-				is_hurt_check = true
-				dx += get_global_pos().x - i.get_global_pos().x
-				dy += get_global_pos().y - i.get_global_pos().y
+				var damage = 0
+				if (i.get_name() == "damagable"):
+					damage = max(get_def_adjusted_damage(hp * 0.075), 0)
+					if (i.get_parent() != null && i.get_parent().get("atk") != null):
+						damage = max(get_def_adjusted_damage(get_atk_adjusted_damage(i.get_parent().get("atk"))), 0)
+				elif (i.get_name() == "sunbeam"):
+					damage = max(get_def_adjusted_damage(hp * 0.1), 0)
+				current_hp = max(current_hp - damage, 0)
+				#check game over condition
+				if (damage > 0):
+					var hp_obj = hpclass.instance()
+					hp_obj.get_node("hptext").set("custom_colors/font_color", Color(1, 0, 0))
+					hud.add_child(hp_obj)
+					var collider_offset = i.get_shape(0).get_extents()
+					var hitpos = hp_obj.calculate_hitpos(i.get_global_pos(), Vector2(collider_offset.x * i.get_scale().x, collider_offset.y * i.get_scale().y), get_pos(), sprite_offset)
+					hp_obj.display_damage(hitpos, damage)
+					
+					is_hurt_check = true
+					dx += get_global_pos().x - i.get_global_pos().x
+					dy += get_global_pos().y - i.get_global_pos().y
 		
 		# calculate throwback based on sum total positions of damagables
 		if (dx != 0):
@@ -365,6 +442,9 @@ func check_blood(areaTiles):
 				get_node("NormalSpriteGroup/idle").hide()
 				update_fusion()
 				display_demonic()
+				set_stats()
+				current_hp = hp
+				current_mp = mp
 
 func display_demonic():
 	demonic_display.show()
@@ -382,6 +462,8 @@ func check_demonic():
 			add_child(default_sprite)
 			is_demonic = false
 			is_transforming = true
+			current_mp = base_mp * float(current_mp / mp)
+			set_stats()
 			update_fusion()
 
 func check_vertical_input(space_state, normalTileCheck, onOneWayTile, relevantTileA, relevantTileB, animation_speed):
@@ -656,7 +738,9 @@ func step_player(delta):
 		check_magic()
 		
 	check_demonic()
-		
+	
+	regenerate_mp()
+	
 	# check animations
 	var animations = check_animations(new_animation, animation_speed, horizontal_motion, ladderY)
 	animation_speed = animations["animationSpeed"]
@@ -666,6 +750,16 @@ func step_player(delta):
 	
 	move(position)
 	play_animation(new_animation, animation_speed)
+
+func regenerate_mp():
+	current_mp_cycle += 1
+	if (current_mp_cycle >= MP_REGEN_PERIOD - mag && !is_charging):
+		current_mp_cycle = 0
+		current_mp += 1
+
+func get_current_spell_mp():
+	if (selected_spell != null):
+		return magic_spells[selected_spell]["mp"]
 
 func check_magic():
 	# switch magic
@@ -688,7 +782,7 @@ func check_magic():
 			
 			update_fusion()
 	# detect magic requested
-	var magic_allowed = !is_hurt && !is_attacking && !is_crouching && !hanging && !is_charging && !is_magic && !magic_delay && !is_transforming
+	var magic_allowed = !is_hurt && !is_attacking && !is_crouching && !hanging && !is_charging && !is_magic && !magic_delay && !is_transforming && current_mp > 0
 	if (magic_allowed && Input.is_action_pressed("ui_magic")):
 		if (!magic_spells[selected_spell]["is_single"]):
 			request_single_spell = false
@@ -748,7 +842,10 @@ func check_magic():
 	# charge magic
 	elif (is_charging):
 		if (Input.is_action_pressed("ui_magic") && !is_transforming):
-			charge_counter = min(charge_counter + 1, MAX_CHARGE)
+			var prospective_charge = min(charge_counter + 1, MAX_CHARGE)
+			var mp_consumed = max(round(magic_spells[selected_spell]["mp"] * (prospective_charge) / 100.0), 1)
+			if (current_mp - mp_consumed >= 0):
+				charge_counter = prospective_charge
 			if (magic_spells[selected_spell]["id"] == "fire" || magic_spells[selected_spell]["id"] == "ice"):
 				charge_obj.set_global_pos(get_global_pos())
 				var scale = (3 - 0.7)*charge_counter/MAX_CHARGE + 0.7
@@ -797,7 +894,9 @@ func check_magic():
 				var volume = 10 * charge_counter / MAX_CHARGE - 5
 				sampleplayer.set_volume_db(charge_volume, volume)
 		else:
-			var scale = charge_counter/MAX_CHARGE
+			var scale = float(charge_counter)/MAX_CHARGE
+			var mp_consumed = max(round(magic_spells[selected_spell]["mp"] * scale), 1)
+			current_mp -= mp_consumed
 			var charge_power = charge_counter
 			charge_counter = 0
 			is_charging = false
@@ -889,15 +988,17 @@ func check_magic():
 	# handle single shot spells
 	if (magic_allowed && request_single_spell && magic_spells[selected_spell]["is_single"]):
 		request_single_spell = false
-		if (magic_spells[selected_spell]["id"] == "magicmine"):
-			if (current_mines.size() < max_mines):
-				var mine = magic_spells[selected_spell]["attack"].instance()
-				current_mines.append(mine)
-				mine.set("player", self)
-				area2d_blacklist.append(mine.get_node("sensor"))
-				mine.set_global_pos(Vector2(get_global_pos().x + TILE_SIZE * 2 * direction, get_global_pos().y))
-				tilemap.add_child(mine)
-				is_magic = true
+		var mp_consumed = magic_spells[selected_spell]["mp"]
+		if (current_mp - mp_consumed >= 0):
+			if (magic_spells[selected_spell]["id"] == "magicmine"):
+				if (current_mines.size() < max_mines):
+					var mine = magic_spells[selected_spell]["attack"].instance()
+					current_mines.append(mine)
+					mine.set("player", self)
+					area2d_blacklist.append(mine.get_node("sensor"))
+					mine.set_global_pos(Vector2(get_global_pos().x + TILE_SIZE * 2 * direction, get_global_pos().y))
+					tilemap.add_child(mine)
+					is_magic = true
 
 func clear_mine(mine):
 	var size = current_mines.size()

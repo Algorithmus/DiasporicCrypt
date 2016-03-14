@@ -7,6 +7,7 @@ var origin
 const MAX_SPEED = 20
 var speed = MAX_SPEED
 var collision
+var atk = 2
 
 func _ready():
 	set_fixed_process(true)

@@ -53,17 +53,18 @@ func _fixed_process(delta):
 		var damageTiles = collision_rect.get_overlapping_areas()
 		for i in damageTiles:
 			var collider
+			var damage = 0
+			var player_obj = player.get_node("player")
 			if (i.has_node("weapon")):
 				collider = i.get_node("weapon")
-				player.get_node("player").set("hit_enemy", true)
+				player_obj.set("hit_enemy", true)
+				damage = player_obj.get_atk_adjusted_damage(player_obj.get("atk"))
 			if (i.has_node("magic")):
 				# freeze enemy in a collision block when hit with an ice attack
 				if (i.get_parent() != null && i.get_parent().get_name() == "Ice"):
 					frozen = true
 					freezeblock_obj = freezeblock.instance()
 					var freezescale = sprite_offset.y / 16.0
-					print("freeze")
-					print(freezescale)
 					freezeblock_obj.get_node("block").set_scale(Vector2(sprite_offset.x / 16.0, freezescale))
 					freezeblock_obj.get_node("block").set_pos(Vector2(0, sprite_offset.y - 16))
 					freezeblock_obj.set_pos(Vector2(0, -sprite_offset.y + 16))
@@ -75,13 +76,14 @@ func _fixed_process(delta):
 				var hp = i.get_parent().get("hp")
 				if (hp != null):
 					i.get_parent().set("hp", hp - 1)
+				damage = player_obj.get_atk_adjusted_damage(player_obj.get("mag"))
 			if (collider != null):
 				var hp = hpclass.instance()
 				hud.add_child(hp)
 				bleed()
 				var hitpos = hp.calculate_hitpos(i.get_global_pos(), collider.get_shape().get_extents(), get_global_pos(), sprite_offset)
 				#TODO - calculate damage
-				hp.display_damage(hitpos, 1)
+				hp.display_damage(hitpos, damage)
 				#get_node("Sprite").set_modulate(Color(1, 0, 0, 1))
 				#damage_flash = true
 				current_delay += 1
