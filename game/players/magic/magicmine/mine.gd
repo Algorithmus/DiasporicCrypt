@@ -9,6 +9,7 @@ var countdown = 100
 var explosion
 var sensor
 var sampleplayer
+var atk = 40
 
 # This object has two collision shapes: one for detecting enemies
 # and the other for damage collision. Damage collision (the explosion)

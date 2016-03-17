@@ -14,14 +14,16 @@ func setup(level):
 	update_exp_required(level)
 
 func check_exp(level, value):
+	var levels = 0
 	if (exp_required > 0):
-		current_exp += value
 		total_exp += value
-		if (current_exp >= exp_required):
-			current_exp = 0
+		current_exp += value
+		while (current_exp >= exp_required && exp_required > 0):
+			current_exp = current_exp - exp_required
 			update_exp_required(level)
-			return true
-	return false
+			level += 1
+			levels += 1
+	return levels
 
 func update_exp_required(level):
 	pass

@@ -14,6 +14,7 @@ var earthquake_duration = 100
 var earthquake_power = 0
 var rock = preload("res://players/magic/earth/rock.scn")
 var sampleplayer
+var atk = 10
 
 func _ready():
 	set_fixed_process(true)
@@ -57,6 +58,7 @@ func _fixed_process(delta):
 			var rock_obj = rock.instance()
 			player.add_to_blacklist(rock_obj.get_node("collision"))
 			rock_obj.set_global_pos(Vector2(position, camera.get_camera_pos().y + camera_offset.y))
+			rock_obj.set("atk", max(atk - 10, 10) * size + 10)
 			rock_obj.set("player", player)
 			rock_obj.set("camera", camera)
 			tilemap.add_child(rock_obj)

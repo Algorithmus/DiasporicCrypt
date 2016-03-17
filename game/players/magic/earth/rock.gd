@@ -7,6 +7,7 @@ var collision
 var sprite
 var sprite_offset
 var player
+var atk = 10
 
 func _ready():
 	set_fixed_process(true)

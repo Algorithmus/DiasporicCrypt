@@ -36,6 +36,15 @@ func bleed():
 	blood_obj.get_node("sound").play("blood")
 	blood_particles.append(blood_obj)
 
+func calculate_atk_value(obj):
+	if (obj.get_parent().get("atk") != null):
+		return obj.get_parent().get("atk")
+	elif (obj.get_parent().get_parent() != null && obj.get_parent().get_parent().get("atk") != null):
+		return obj.get_parent().get_parent().get("atk")
+	else:
+		return player.get_node("player").get("mag")
+
+
 func _fixed_process(delta):
 	var new_animation = current_animation
 	# modulate color on hit
@@ -58,7 +67,13 @@ func _fixed_process(delta):
 			if (i.has_node("weapon")):
 				collider = i.get_node("weapon")
 				player_obj.set("hit_enemy", true)
-				damage = player_obj.get_atk_adjusted_damage(player_obj.get("atk"))
+				var special_factor = 1
+				if (i.get("atk")):
+					special_factor = i.get("atk")
+				var atk_adjusted = player_obj.get_atk_adjusted_damage(player_obj.get("atk")*special_factor)
+				var critical = player_obj.get_critical_bonus(atk_adjusted)
+				damage = max(atk_adjusted + critical, 0)
+
 			if (i.has_node("magic")):
 				# freeze enemy in a collision block when hit with an ice attack
 				if (i.get_parent() != null && i.get_parent().get_name() == "Ice"):
@@ -76,7 +91,7 @@ func _fixed_process(delta):
 				var hp = i.get_parent().get("hp")
 				if (hp != null):
 					i.get_parent().set("hp", hp - 1)
-				damage = player_obj.get_atk_adjusted_damage(player_obj.get("mag"))
+				damage = max(player_obj.get_atk_adjusted_damage(calculate_atk_value(i)), 0)
 			if (collider != null):
 				var hp = hpclass.instance()
 				hud.add_child(hp)

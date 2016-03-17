@@ -11,6 +11,8 @@ var sequences
 var root
 var is_paused = false
 var music
+var choice
+var gameover = false
 
 var map
 var map_position = preload("res://gui/maps/position.scn")
@@ -27,6 +29,7 @@ var aspriteOffset
 
 var friederich = preload("res://players/friederich/friederich.xml")
 var adela = preload("res://players/adela/adela.xml")
+var selected_character
 
 func _ready():
 	# Initialization here
@@ -67,6 +70,7 @@ func _ready():
 	#enable for keyboard input
 	#selectf.grab_focus()
 	map = get_node("gui/CanvasLayer/map/container")
+	choice = get_node("gui/CanvasLayer/choice")
 
 func _on_resolution_changed():
 	var new_size = root.get_rect().size
@@ -80,43 +84,47 @@ func _on_resolution_changed():
 	select.get_node("adela").set_pos(Vector2(new_size.x*0.75-select_a_size.x*charscale/2+aOffset.x*charscale, new_size.y-select_a_size.y*charscale+aOffset.y*charscale))
 	select.get_node("friederich_sprite").set_pos(Vector2(fspriteOffset.x*scaleX, new_size.y - fspriteOffset.y))
 	select.get_node("adela_sprite").set_pos(Vector2(new_size.x - aspriteOffset.x*scaleX, new_size.y - aspriteOffset.y))
-	
+
 func _input(event):
-	if (event.is_action("ui_pause") && event.is_pressed() && !event.is_echo() && get_node("playercontainer").has_node("player") && !get_node("playercontainer/player").get("is_transforming")):
-		if (is_paused):
-			pause.hide()
-			is_paused = false
-			if (pause.has_node("objects")):
-				pause.get_node("objects").queue_free()
-			music.set_volume_db(0)
-		else:
-			pause.show()
-			#pause.get_node("Label").show()
-			var big_map = map.get_node("objects").duplicate()
-			big_map.set_draw_behind_parent(false)
-			var map_pos_obj = map_position.instance()
-			map_pos_obj.set_pos(Vector2(map.get("offset").x-map.get("objects").get_pos().x, map.get("offset").y-map.get("objects").get_pos().y))
-			big_map.add_child(map_pos_obj)
-			big_map.set_pos(Vector2(original_size.x/2 - map_pos_obj.get_pos().x, original_size.y/2 - map_pos_obj.get_pos().y))
-			pause.add_child(big_map)
-			is_paused = true
-			music.set_volume_db(-20)
-		get_tree().set_pause(is_paused)
-	elif (event.is_action_pressed("ui_select") && event.is_pressed() && !event.is_echo() && !is_paused):
-		if (map.is_visible()):
-			map.hide()
-		else:
-			map.show()
+	if (!gameover):
+		if (event.is_action("ui_pause") && event.is_pressed() && !event.is_echo() && get_node("playercontainer").has_node("player") && !get_node("playercontainer/player").get("is_transforming")):
+			if (is_paused):
+				pause.hide()
+				is_paused = false
+				if (pause.has_node("objects")):
+					pause.get_node("objects").queue_free()
+				music.set_volume_db(0)
+			else:
+				pause.show()
+				var big_map = map.get_node("objects").duplicate()
+				big_map.set_draw_behind_parent(false)
+				var map_pos_obj = map_position.instance()
+				map_pos_obj.set_pos(Vector2(map.get("offset").x-map.get("objects").get_pos().x, map.get("offset").y-map.get("objects").get_pos().y))
+				big_map.add_child(map_pos_obj)
+				big_map.set_pos(Vector2(original_size.x/2 - map_pos_obj.get_pos().x, original_size.y/2 - map_pos_obj.get_pos().y))
+				pause.add_child(big_map)
+				is_paused = true
+				music.set_volume_db(-20)
+			get_tree().set_pause(is_paused)
+		elif (event.is_action_pressed("ui_select") && event.is_pressed() && !event.is_echo() && !is_paused):
+			if (map.is_visible()):
+				map.hide()
+			else:
+				map.show()
 
 func _select_friederich():
+	selected_character = friederich
 	var player = friederich.instance()
 	start(player)
 
 func _select_adela():
+	selected_character = adela
 	var player = adela.instance()
 	start(player)
 
 func start(player):
+	_friederich_exit()
+	_adela_exit()
 	display_level_title("LVL_SANDBOX")
 	map.set("camera", player.get_node("Camera2D"))
 	map.load_map(get_node("level/LVL_SANDBOX"))
@@ -128,6 +136,64 @@ func start(player):
 	is_paused = false
 	get_tree().set_pause(is_paused)
 
+func show_gameover():
+	pause.show()
+	var yes = choice.get_node("yes/button")
+	yes.connect("pressed", self, "reset_level")
+	yes.grab_focus()
+	var no = choice.get_node("no/button")
+	no.connect("pressed", self, "reset")
+	choice.show()
+
+func hide_choice():
+	choice.hide()
+	var yes = choice.get_node("yes/button")
+	choice.get_node("yes")._on_button_focus_exit()
+	yes.disconnect("pressed", self, "reset_level")
+	var no = choice.get_node("no/button")
+	choice.get_node("no")._on_button_focus_exit()
+	no.disconnect("pressed", self, "reset")
+
+func reset_level():
+	get_node("gui/sound").play("confirm")
+	hide_choice()
+	var old_player = get_node("playercontainer/player")
+	get_node("playercontainer").remove_child(old_player)
+	old_player.queue_free()
+	var player = selected_character.instance()
+	get_node("playercontainer").add_child(player)
+	map.set("camera", player.get_node("Camera2D"))
+	get_node("gui/CanvasLayer/hud").reset()
+	teleport("res://levels/sandbox/sandbox.scn", Vector2(-80, -416), null)
+	is_paused = false
+	pause.hide()
+	gameover = false
+	get_tree().set_pause(false)
+
+func reset():
+	get_node("gui/sound").play("confirm")
+	hide_choice()
+	map.reset()
+	sequences.get_node("demonic/sprite/friederich").hide()
+	sequences.get_node("demonic/sprite/adela").hide()
+	get_node("gui/CanvasLayer/chain/chaintext").hide()
+	get_node("gui/CanvasLayer/chain/newattack").hide()
+	get_node("gui/CanvasLayer/chain").hide()
+	get_node("gui/CanvasLayer/hud").reset()
+	var player = get_node("playercontainer/player")
+	get_node("gui/CanvasLayer/hud/SpellIcons/" + player.get_selected_spell_id()).hide()
+	player.queue_free()
+	get_node("gui/CanvasLayer/hud").set("player", null)
+	var old_level = get_node("level").get_child(0)
+	get_node("level").remove_child(old_level)
+	old_level.queue_free()
+	var level = load("res://levels/sandbox/sandbox.scn").instance()
+	get_node("level").add_child(level)
+	gameover = false
+	is_paused = true
+	pause.hide()
+	select.show()
+
 func display_level_title(title):
 	var level = get_node("gui/CanvasLayer/level")
 	level.get_node("title").set_text(title)
@@ -138,7 +204,9 @@ func teleport(new_level, pos, teleport):
 	map.set("current_teleport", teleport)
 	map.load_map(new_level_obj)
 	var level = get_node("level")
-	level.get_child(0).queue_free()
+	var old_level = level.get_child(0)
+	level.remove_child(old_level)
+	old_level.queue_free()
 	level.add_child(new_level_obj)
 	var player = get_node("playercontainer/player")
 	player.load_tilemap(new_level_obj)

@@ -23,6 +23,12 @@ func _fixed_process(delta):
 		var map = rooms[current_map]
 		objects.set_pos(Vector2(round(offset.x - map.get_pos().x - camera.get_camera_pos().x*MAP_SCALE), round(offset.y - map.get_pos().y - camera.get_camera_pos().y*MAP_SCALE)))
 
+func reset():
+	rooms = {}
+	current_map = null
+	for i in objects.get_children():
+		objects.remove_child(i)
+
 func _draw():
 	VisualServer.canvas_item_set_clip(get_canvas_item(), true)
 	draw_circle(offset, 2, Color(1, 0, 0))

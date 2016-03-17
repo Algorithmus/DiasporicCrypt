@@ -1,11 +1,15 @@
 
 extends "res://scenes/common/damagables/BoomerangProjectileEnemy.gd"
 
-# member variables here, example:
-# var a=2
-# var b="textvar"
-
 func _ready():
+	atk = 60
+	def = 10
+	hp = 500
+	gold = 2000
+	ep = 500
+
+	current_hp = hp
+
 	follow_player = true
 
 	is_consumable = true

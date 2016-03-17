@@ -9,6 +9,7 @@ var direction
 var gust_duration = 100
 var gust_current_duration = 0
 var sampleplayer
+var atk = 10
 
 func _ready():
 	set_fixed_process(true)

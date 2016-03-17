@@ -13,6 +13,7 @@ var soundid
 var collision
 var release_sfx
 var charge_sfx
+var atk = 10
 
 func _ready():
 	set_fixed_process(true)

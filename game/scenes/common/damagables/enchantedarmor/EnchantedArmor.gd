@@ -6,5 +6,12 @@ extends "res://scenes/common/damagables/BaseEnemy.gd"
 # var b="textvar"
 
 func _ready():
-	hp = 50
+	atk = 20
+	def = 0
+	hp = 200
+	gold = 500
+	ep = 300
+	
+	current_hp = hp
+
 	magic_only = true

@@ -1,11 +1,15 @@
 
 extends "res://scenes/common/damagables/Static.gd"
 
-# member variables here, example:
-# var a=2
-# var b="textvar"
-
 func _ready():
+	atk = 10
+	def = 128
+	hp = 50
+	gold = 200
+	ep = 500
+
+	current_hp = hp
+
 	projectile_offset.y = -72
 	ai_obj.set("player_distance", 0)
 

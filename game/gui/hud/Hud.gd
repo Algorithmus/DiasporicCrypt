@@ -26,13 +26,22 @@ func _ready():
 	mpprebar = get_node("mpbar/prebar")
 	bloodbar = get_node("bloodbar/bar")
 	level = get_node("hpbar/level")
-	
+	get_node("levelup").hide()
+
+	reset()
+
+func reset():
 	mpprebar.hide()
 	var polygon = bloodbar.get_polygon()
 	var blood_value = polygon[2].y
 	polygon[0].y = blood_value
 	polygon[1].y = blood_value
 	bloodbar.set_polygon(polygon)
+	hpbar.set_scale(Vector2(1, 1))
+	mpbar.set_scale(Vector2(1, 1))
+
+func play_levelup():
+	get_node("AnimationPlayer").play("levelup")
 
 func _fixed_process(delta):
 	if (get_tree().get_root().has_node("world/playercontainer/player")):

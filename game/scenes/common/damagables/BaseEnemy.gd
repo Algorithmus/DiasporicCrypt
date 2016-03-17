@@ -54,6 +54,9 @@ var sunbeam_strength = 0.5
 
 var gold = 100
 
+var expclass = preload("res://scenes/items/exporb/exporb.scn")
+var goldclass = preload("res://scenes/items/gold/gold.scn")
+
 func get_player_direction():
 	if (get_global_pos().x > player.get_node("player").get_global_pos().x):
 		return -1
@@ -90,7 +93,10 @@ func check_damage():
 				if (i.has_node("weapon") && !magic_only):
 					collider = i.get_node("weapon")
 					player.get_node("player").set("hit_enemy", true)
-					var atk_adjusted = get_atk_adjusted_damage(player.get_node("player").get("atk"))
+					var special_factor = 1
+					if (i.get("atk")):
+						special_factor = i.get("atk")
+					var atk_adjusted = get_atk_adjusted_damage(player.get_node("player").get("atk")*special_factor)
 					var critical = player.get_node("player").get_critical_bonus(atk_adjusted)
 					damage = max(get_def_adjusted_damage(atk_adjusted + critical), 0)
 				if (i.has_node("magic") || (!sunbeam_immunity && i.get_name() == "sunbeam")):
@@ -115,7 +121,7 @@ func check_damage():
 						if (has_node(damage_rect.get_name())):
 							remove_child(damage_rect)
 					collider = i.get_node("magic")
-					damage = max(get_def_adjusted_damage(get_atk_adjusted_damage(player.get_node("player").get("mag"))), 0)
+					damage = max(get_def_adjusted_damage(get_atk_adjusted_damage(calculate_atk_value(i))), 0)
 					if (collider == null):
 						collider = i.get_node("CollisionShape2D")
 						damage = max(get_def_adjusted_damage(hp * sunbeam_strength), 0)
@@ -135,6 +141,14 @@ func check_damage():
 					hp_obj.display_damage(hitpos, damage)
 					current_delay += 1
 					current_walk_delay += 1
+
+func calculate_atk_value(obj):
+	if (obj.get_parent().get("atk") != null):
+		return obj.get_parent().get("atk")
+	elif (obj.get_parent().get_parent() != null && obj.get_parent().get_parent().get("atk") != null):
+		return obj.get_parent().get_parent().get("atk")
+	else:
+		return player.get_node("player").get("mag")
 
 func horizontal_input_permitted():
 	return .horizontal_input_permitted() && !is_stunned && !is_dying && !consumable && !frozen
@@ -210,6 +224,14 @@ func bleed():
 			get_node("die").hide()
 
 func die():
+	var gold_obj = goldclass.instance()
+	gold_obj.set("title", gold)
+	var exporb = expclass.instance()
+	exporb.set_value(ep)
+	gold_obj.set_global_pos(Vector2(get_global_pos().x - sprite_offset.x, get_global_pos().y + sprite_offset.y - TILE_SIZE/2))
+	exporb.set_global_pos(Vector2(get_global_pos().x + sprite_offset.x, get_global_pos().y + sprite_offset.y - TILE_SIZE/2))
+	get_parent().add_child(gold_obj)
+	get_parent().add_child(exporb)
 	if (is_consumable):
 		# turn into consumable object instead of disappearing
 		consumable = true

@@ -8,6 +8,7 @@ var player
 var sampleplayer
 var direction
 var collision_blacklist
+var atk = 10
 
 # The pattern of this attack is to start at the player's current position
 # or at the top of the screen and move upwards or downwards until hitting a solid block (eg, regular collisions, one way

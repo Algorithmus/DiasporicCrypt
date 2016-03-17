@@ -33,13 +33,14 @@ var whipswing_obj
 
 func check_animations(new_animation, animation_speed, horizontal_motion, ladderY):
 	var animations = .check_animations(new_animation, animation_speed, horizontal_motion, ladderY)
-	if ((is_swinging || whip_hanging) && !is_transforming):
-		animations["animation"] = "swing"
-		animations["animationSpeed"] = 0
-		get_node("NormalSpriteGroup/"+new_animation).set_scale(Vector2(direction, 1))
-	if (wall_hanging):
-		animations["animation"] = "wall"
-		get_node("NormalSpriteGroup/wall").set_scale(Vector2(wall_direction, 1))
+	if (!gameover):
+		if ((is_swinging || whip_hanging) && !is_transforming):
+			animations["animation"] = "swing"
+			animations["animationSpeed"] = 0
+			get_node("NormalSpriteGroup/"+new_animation).set_scale(Vector2(direction, 1))
+		if (wall_hanging):
+			animations["animation"] = "wall"
+			get_node("NormalSpriteGroup/wall").set_scale(Vector2(wall_direction, 1))
 	return animations
 
 func closestXTile(desired_direction, desiredX, space_state):
@@ -132,220 +133,232 @@ func step_player(delta):
 	var onOneWayTile = false
 	var oneWayTile = null
 	
-	if (!is_swinging && !whip_hanging):
-		# check moving platforms before everything else
-		oneWayTile = getOneWayTile(space_state, max(accel, TILE_SIZE))
-		onOneWayTile = check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space_state, oneWayTile)
-	
-	var areaTiles = damage_rect.get_overlapping_areas()
-
-	if (!is_swinging && !whip_hanging):
-		# check underwater
-		check_underwater(areaTiles)
-
-	# check taking damage
-	check_damage(areaTiles)
-	
-	var horizontal_motion = false
-	var ladderY = 0
 	var new_animation = current_animation
-	if (!is_swinging && !whip_hanging):
-		# step horizontal motion first
-		var horizontal = step_horizontal(space_state)
-		new_animation = horizontal["animation"]
-		horizontal_motion = horizontal["motion"]
-		var onSlope = horizontal["slope"]
-		var slopeX = horizontal["slopeX"]
-		var relevantSlopeTile = horizontal["slopeTile"]
-		forwardY = get_global_pos().y + sprite_offset.y
+	
+	if (!gameover):
+		if (!is_swinging && !whip_hanging):
+			# check moving platforms before everything else
+			oneWayTile = getOneWayTile(space_state, max(accel, TILE_SIZE))
+			onOneWayTile = check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space_state, oneWayTile)
 		
-		# disengage hanging if hurt
-		check_hanging_damage()
+		var areaTiles = damage_rect.get_overlapping_areas()
 	
-		# check platform climbing after horizontal movement requested
-		var climb_vertically = check_climb_platform_horizontal(space_state)
+		if (!is_swinging && !whip_hanging):
+			# check underwater
+			check_underwater(areaTiles)
 	
-		step_horizontal_damage_throwback()
+		# check taking damage
+		check_damage(areaTiles)
 		
-		# check vertical motion
-		var vertical = step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, onSlope, oneWayTile, relevantSlopeTile)
-	
-		relevantSlopeTile = vertical["slopeTile"]
-		var onSlope = vertical["slope"]
-		var abSlope = vertical["abSlope"]
-		var desiredY = vertical["desiredY"]
-		animation_speed = vertical["animationSpeed"]
-		ladderY = vertical["ladderY"]
-		
-		if (!on_ladder):
-			# final falling status check for all kinds of collisions
-			check_falling(normalTileCheck, relevantSlopeTile, onSlope, abSlope, ladder_top, oneWayTile)
-	
-			# handle crouching now that we know if we are standing on ground blocks
-			check_crouch(normalTileCheck, abSlope, onSlope, onOneWayTile)
+		var horizontal_motion = false
+		var ladderY = 0
+		if (!is_swinging && !whip_hanging):
+			# step horizontal motion first
+			var horizontal = step_horizontal(space_state)
+			new_animation = horizontal["animation"]
+			horizontal_motion = horizontal["motion"]
+			var onSlope = horizontal["slope"]
+			var slopeX = horizontal["slopeX"]
+			var relevantSlopeTile = horizontal["slopeTile"]
+			forwardY = get_global_pos().y + sprite_offset.y
 			
-			check_climb_platform_vertical(climb_vertically)
-	
-			# don't fall while standing on moving platforms moving up
-			check_on_moving_platform(desiredY)
-	
-			check_attacking()
+			# disengage hanging if hurt
+			check_hanging_damage()
 		
-			position.y = accel
+			# check platform climbing after horizontal movement requested
+			var climb_vertically = check_climb_platform_horizontal(space_state)
+		
+			step_horizontal_damage_throwback()
 			
-			check_blood(areaTiles)
+			# check vertical motion
+			var vertical = step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, onSlope, oneWayTile, relevantSlopeTile)
+		
+			relevantSlopeTile = vertical["slopeTile"]
+			var onSlope = vertical["slope"]
+			var abSlope = vertical["abSlope"]
+			var desiredY = vertical["desiredY"]
+			animation_speed = vertical["animationSpeed"]
+			ladderY = vertical["ladderY"]
 			
-			check_magic()
-	elif (is_swinging):
-		request_spell_change = 0
-		# disable attacking from fixed process rather than when exactly collision is detected
-		if (weapon_collided):
-			remove_weapon_collider()
-			weapon_collided = false
-
-		# swinging algorithm is not in the blog article
-		# I made my own. Loosely modelled after the swinging mechanics
-		# and behavior in Super Castlevania IV (or what I could gleam from it anyways).
+			check_magic_allowed()
+			
+			if (!on_ladder):
+				# final falling status check for all kinds of collisions
+				check_falling(normalTileCheck, relevantSlopeTile, onSlope, abSlope, ladder_top, oneWayTile)
 		
-		# Swinging is treated similarly to ladders. Presumably, you will only use these where
-		# the blocks are positioned far away from any collision type objects except damagables.
-		# Also, this is not tested for swinging 2PI cycles. It is only guaranteed to work for swinging
-		# between 0 and PI angles.
-		# So ignore all collision detection except taking damage while swinging.
-		# First, detect that your attack hits the appropriate block (see below on overriden weapon collision signal)
-		# Then determine:
+				# handle crouching now that we know if we are standing on ground blocks
+				check_crouch(normalTileCheck, abSlope, onSlope, onOneWayTile)
+				
+				check_climb_platform_vertical(climb_vertically)
 		
-		# -the current radius (hypotenuse/distance away from the swing block)
-		# -current angle. Treat the swing block as the origin, and the angle is between the
-		# x-axis and the current radius.
-		# -range. This determines the angles between 0 and PI that the player is allowed to swing between. 
-		# If it is PI/2, no "swinging" occurs. The swinging range is basically PI - range * 2 (on both ends)
-		# -swinging speed. On smaller range values, swinging speed will be higher. You can always get a swing speed
-		# value so long as the range is determined.
-		# -swinging direction. Default to the player's current direction on entering swinging.
-		# We also assume the swinging range is based on the current angle so that the player is
-		# at the start of the swing.
+				# don't fall while standing on moving platforms moving up
+				check_on_moving_platform(desiredY)
 		
-		# When swinging, first determine changes to speed/range and/or radius from
-		# player interaction. Then update the angle a specific amount depending on range and speed.
-		# If reaching the end, we change the swinging direction and decrease the swing speed and range. We update the angle a small amount because
-		# being stuck at 0 is undesirable.
-		# The appropriate player coordinates are determined from the updated angle. Also update
-		# the whip display based on updated variables.
-		
-		# Swinging is only active when the attack button is held down. When released, we provide a small amount of vertical thrust
-		# depending on the current speed and position of the player during the end of the swing.
-		
-		# update swing speed from user interaction, but only once per swing
-		if (swing_speed_frame < 2 && ((input_left() && (swing_direction < 0 || swing_speed == 0)) || (input_right() && (swing_direction > 0 || swing_speed == 0)))):
-			swing_range = max(swing_range - SWING_RANGE_DELTA, MIN_SWING_RANGE)
-			swing_speed = MAX_SWING_SPEED * cos(swing_range)
-			# still allow increase in swing speed from either direction when completely stopped
-			if (input_left()):
-				swing_direction = -1
+				check_attacking()
+			
+				position.y = accel
+				
+				check_blood(areaTiles)
+				
+				check_magic()
 			else:
-				swing_direction = 1
-			swing_speed_frame += 1
-		# update swing radius from user interaction
-		if (input_up()):
-			swing_radius = max(MIN_SWING_RADIUS, swing_radius - SWING_RADIUS_DELTA)
-
-		if (input_down()):
-			swing_radius = min(MAX_SWING_RADIUS, swing_radius + SWING_RADIUS_DELTA)
-		# don't bother calculating swinging position and just clamp to position directly below swing block if there is not enough
-		# swinging speed
-		if (!whipswing_obj.get_node("sound").is_active()):
-			whipswing_obj.get_node("sound").play("whipswing")
-		if (swing_speed != 0 && PI/2 - swing_range != 0):
-			var angle_delta = sin((PI/2)*(swing_angle - swing_range)/(PI/2 - swing_range)) * swing_direction
-			# don't get stuck at updating angle with 0 change
-			angle_delta = max(deg2rad(1), abs(angle_delta)) * swing_direction
-			swing_angle += angle_delta * swing_speed
-			# detect reaching end of swing
-			if ((swing_angle >= PI - swing_range && swing_direction > 0) || (swing_angle <= swing_range && swing_direction < 0)):
-				swing_direction = swing_direction * -1
-				swing_range = min(PI/2, swing_range + SWING_RANGE_DELTA)
-				swing_angle = PI * (swing_direction - 1) / -2 + (swing_range + deg2rad(1))* swing_direction
+				step_shield()
+		elif (is_swinging):
+			request_spell_change = 0
+			# disable attacking from fixed process rather than when exactly collision is detected
+			if (weapon_collided):
+				remove_weapon_collider()
+				weapon_collided = false
+	
+			# swinging algorithm is not in the blog article
+			# I made my own. Loosely modelled after the swinging mechanics
+			# and behavior in Super Castlevania IV (or what I could gleam from it anyways).
+			
+			# Swinging is treated similarly to ladders. Presumably, you will only use these where
+			# the blocks are positioned far away from any collision type objects except damagables.
+			# Also, this is not tested for swinging 2PI cycles. It is only guaranteed to work for swinging
+			# between 0 and PI angles.
+			# So ignore all collision detection except taking damage while swinging.
+			# First, detect that your attack hits the appropriate block (see below on overriden weapon collision signal)
+			# Then determine:
+			
+			# -the current radius (hypotenuse/distance away from the swing block)
+			# -current angle. Treat the swing block as the origin, and the angle is between the
+			# x-axis and the current radius.
+			# -range. This determines the angles between 0 and PI that the player is allowed to swing between. 
+			# If it is PI/2, no "swinging" occurs. The swinging range is basically PI - range * 2 (on both ends)
+			# -swinging speed. On smaller range values, swinging speed will be higher. You can always get a swing speed
+			# value so long as the range is determined.
+			# -swinging direction. Default to the player's current direction on entering swinging.
+			# We also assume the swinging range is based on the current angle so that the player is
+			# at the start of the swing.
+			
+			# When swinging, first determine changes to speed/range and/or radius from
+			# player interaction. Then update the angle a specific amount depending on range and speed.
+			# If reaching the end, we change the swinging direction and decrease the swing speed and range. We update the angle a small amount because
+			# being stuck at 0 is undesirable.
+			# The appropriate player coordinates are determined from the updated angle. Also update
+			# the whip display based on updated variables.
+			
+			# Swinging is only active when the attack button is held down. When released, we provide a small amount of vertical thrust
+			# depending on the current speed and position of the player during the end of the swing.
+			
+			# update swing speed from user interaction, but only once per swing
+			if (swing_speed_frame < 2 && ((input_left() && (swing_direction < 0 || swing_speed == 0)) || (input_right() && (swing_direction > 0 || swing_speed == 0)))):
+				swing_range = max(swing_range - SWING_RANGE_DELTA, MIN_SWING_RANGE)
 				swing_speed = MAX_SWING_SPEED * cos(swing_range)
-				# clamp to exactly 0 speed if we've reached that point and stop moving
-				if (int(swing_speed*1000) == 0 || swing_speed == 0):
-					swing_speed = 0
-					swing_angle = PI/2
-					swing_range = PI/2
-				swing_speed_frame = 0
-		else:
-			swing_angle = PI/2
-			swing_range = PI/2
-		var swingX = swing_block.get_global_pos().x - cos(swing_angle)*swing_radius
-		var swingY = swing_block.get_global_pos().y + sin(swing_angle)*swing_radius
-		var swingPlayerY = swingY - get_global_pos().y + sprite_offset.y
-		move(Vector2(swingX - get_global_pos().x, swingPlayerY))
-		whipswing_obj.set_global_pos(swing_block.get_global_pos())
-		whipswing_obj.set_rot(swing_angle - PI/2)
-		whipswing_obj.get_node("whip").set_scale(Vector2(1, swing_radius-4))
-		if(!Input.is_action_pressed("ui_attack")):
-			is_swinging = false
-			attack_requested = false
-			accel = min(-JUMP_SPEED*abs(cos((PI/2)*(swing_angle - swing_range)/(PI/2 - swing_range))), 0)
-			whipswing_obj.hide()
-			whipswing_obj.get_node("sound").stop_all()
-			swing_speed_frame = 0
-	elif(whip_hanging):
-		request_spell_change = 0
-		if (weapon_collided):
-			weapon_collided = false
-			remove_weapon_collider()
-		if (!whipswing_obj.get_node("sound").is_active()):
-			whipswing_obj.get_node("sound").play("whipswing")
-		if (Input.is_action_pressed("ui_attack")):
-			var deltaX = 0
+				# still allow increase in swing speed from either direction when completely stopped
+				if (input_left()):
+					swing_direction = -1
+				else:
+					swing_direction = 1
+				swing_speed_frame += 1
+			# update swing radius from user interaction
 			if (input_up()):
 				swing_radius = max(MIN_SWING_RADIUS, swing_radius - SWING_RADIUS_DELTA)
-			elif (input_down()):
+	
+			if (input_down()):
 				swing_radius = min(MAX_SWING_RADIUS, swing_radius + SWING_RADIUS_DELTA)
-			move(Vector2(0, swing_block.get_global_pos().y + swing_radius - get_pos().y + sprite_offset.y))
-			whipswing_obj.set_rot(0)
-			whipswing_obj.set_pos(Vector2(0, -sprite_offset.y - swing_radius))
+			# don't bother calculating swinging position and just clamp to position directly below swing block if there is not enough
+			# swinging speed
+			if (!whipswing_obj.get_node("sound").is_active()):
+				whipswing_obj.get_node("sound").play("whipswing")
+			if (swing_speed != 0 && PI/2 - swing_range != 0):
+				var angle_delta = sin((PI/2)*(swing_angle - swing_range)/(PI/2 - swing_range)) * swing_direction
+				# don't get stuck at updating angle with 0 change
+				angle_delta = max(deg2rad(1), abs(angle_delta)) * swing_direction
+				swing_angle += angle_delta * swing_speed
+				# detect reaching end of swing
+				if ((swing_angle >= PI - swing_range && swing_direction > 0) || (swing_angle <= swing_range && swing_direction < 0)):
+					swing_direction = swing_direction * -1
+					swing_range = min(PI/2, swing_range + SWING_RANGE_DELTA)
+					swing_angle = PI * (swing_direction - 1) / -2 + (swing_range + deg2rad(1))* swing_direction
+					swing_speed = MAX_SWING_SPEED * cos(swing_range)
+					# clamp to exactly 0 speed if we've reached that point and stop moving
+					if (int(swing_speed*1000) == 0 || swing_speed == 0):
+						swing_speed = 0
+						swing_angle = PI/2
+						swing_range = PI/2
+					swing_speed_frame = 0
+			else:
+				swing_angle = PI/2
+				swing_range = PI/2
+			var swingX = swing_block.get_global_pos().x - cos(swing_angle)*swing_radius
+			var swingY = swing_block.get_global_pos().y + sin(swing_angle)*swing_radius
+			var swingPlayerY = swingY - get_global_pos().y + sprite_offset.y
+			move(Vector2(swingX - get_global_pos().x, swingPlayerY))
+			whipswing_obj.set_global_pos(swing_block.get_global_pos())
+			whipswing_obj.set_rot(swing_angle - PI/2)
 			whipswing_obj.get_node("whip").set_scale(Vector2(1, swing_radius-4))
-		else:
-			whip_hanging = false
-			falling = true
-			attack_requested = false
-			accel = -JUMP_SPEED * current_gravity
-			swing_block = null
-			whipswing_obj.hide()
-			whipswing_obj.get_node("sound").stop_all()
-			if (input_up()):
-				accel -= 4
-
-	check_demonic()
+			if(!Input.is_action_pressed("ui_attack")):
+				is_swinging = false
+				attack_requested = false
+				accel = min(-JUMP_SPEED*abs(cos((PI/2)*(swing_angle - swing_range)/(PI/2 - swing_range))), 0)
+				whipswing_obj.hide()
+				whipswing_obj.get_node("sound").stop_all()
+				swing_speed_frame = 0
+		elif(whip_hanging):
+			request_spell_change = 0
+			if (weapon_collided):
+				weapon_collided = false
+				remove_weapon_collider()
+			if (!whipswing_obj.get_node("sound").is_active()):
+				whipswing_obj.get_node("sound").play("whipswing")
+			if (Input.is_action_pressed("ui_attack")):
+				var deltaX = 0
+				if (input_up()):
+					swing_radius = max(MIN_SWING_RADIUS, swing_radius - SWING_RADIUS_DELTA)
+				elif (input_down()):
+					swing_radius = min(MAX_SWING_RADIUS, swing_radius + SWING_RADIUS_DELTA)
+				move(Vector2(0, swing_block.get_global_pos().y + swing_radius - get_pos().y + sprite_offset.y))
+				whipswing_obj.set_rot(0)
+				whipswing_obj.set_pos(Vector2(0, -sprite_offset.y - swing_radius))
+				whipswing_obj.get_node("whip").set_scale(Vector2(1, swing_radius-4))
+			else:
+				whip_hanging = false
+				falling = true
+				attack_requested = false
+				accel = -JUMP_SPEED * current_gravity
+				swing_block = null
+				whipswing_obj.hide()
+				whipswing_obj.get_node("sound").stop_all()
+				if (input_up()):
+					accel -= 4
 	
-	if (is_hurt || input_down() || !is_demonic || (wall_hanging && ((wall_direction > 0 && input_left()) || (wall_direction < 0 && input_right())))):
-		wall_hanging = false
-		current_wall_hanging_delay += 1
-
-	regenerate_mp()
-
-	# check animations
-	var animations = check_animations(new_animation, animation_speed, horizontal_motion, ladderY)
-	animation_speed = animations["animationSpeed"]
-	new_animation = animations["animation"]
-
-	calculate_fall_height()
-	
-	if (wall_hanging):
-		position.y = min(position.y, 0)
+		check_demonic()
 		
-	if (current_wall_hanging_delay > 0):
-		current_wall_hanging_delay += 1
-		if (current_wall_hanging_delay >= wall_hanging_delay):
-			current_wall_hanging_delay = 0
-
-	if (!falling):
-		air_jump = false
-
-	if (!is_swinging && !whip_hanging):
-		move(position)
+		if (is_hurt || input_down() || !is_demonic || (wall_hanging && ((wall_direction > 0 && input_left()) || (wall_direction < 0 && input_right())))):
+			wall_hanging = false
+			current_wall_hanging_delay += 1
+	
+		regenerate_mp()
+	
+		# check animations
+		var animations = check_animations(new_animation, animation_speed, horizontal_motion, ladderY)
+		animation_speed = animations["animationSpeed"]
+		new_animation = animations["animation"]
+	
+		calculate_fall_height()
+		
+		if (wall_hanging):
+			position.y = min(position.y, 0)
+			
+		if (current_wall_hanging_delay > 0):
+			current_wall_hanging_delay += 1
+			if (current_wall_hanging_delay >= wall_hanging_delay):
+				current_wall_hanging_delay = 0
+	
+		if (!falling):
+			air_jump = false
+	
+		if (!is_swinging && !whip_hanging):
+			move(position)
+	else:
+		new_animation = "gameover"
+		animation_speed = 1
+		if (!animation_player.is_playing()):
+			get_tree().get_root().get_node("world").show_gameover()
+			get_tree().set_pause(true)
 	play_animation(new_animation, animation_speed)
 
 func _init():
@@ -392,8 +405,8 @@ func _ready():
 	whipswing_obj.hide()
 	
 	weapon_type = "whip"
-	magic_spells.append({"id":"wind", "mp": 120, "auracolor": Color(0, 1, 149/255.0), "weaponcolor1": Color(187/255.0, 1, 231/255.0), "weaponcolor2": Color(0, 191/255.0, 92/255.0), "delay": true, "is_single": false, "charge": preload("res://players/magic/wind/charge.scn"), "attack": preload("res://players/magic/wind/wind.scn")})
-	magic_spells.append({"id":"ice", "mp": 20, "auracolor": Color(0, 130/255.0, 207/255.0), "weaponcolor1": Color(0, 1, 1), "weaponcolor2": Color(0, 130/255.0, 207/255.0), "delay": false, "is_single": false, "attack": preload("res://players/magic/ice/ice.scn")})
+	magic_spells.append({"id":"wind", "mp": 120, "auracolor": Color(0, 1, 149/255.0), "weaponcolor1": Color(187/255.0, 1, 231/255.0), "weaponcolor2": Color(0, 191/255.0, 92/255.0), "delay": true, "is_single": false, "charge": preload("res://players/magic/wind/charge.scn"), "attack": preload("res://players/magic/wind/wind.scn"), "atk": 1.2})
+	magic_spells.append({"id":"ice", "mp": 20, "auracolor": Color(0, 130/255.0, 207/255.0), "weaponcolor1": Color(0, 1, 1), "weaponcolor2": Color(0, 130/255.0, 207/255.0), "delay": false, "is_single": false, "attack": preload("res://players/magic/ice/ice.scn"), "atk": 0.75})
 	selected_spell = magic_spells.size() - 1
 	spell_icons.get_node(magic_spells[selected_spell]["id"]).show()
 	update_fusion()
