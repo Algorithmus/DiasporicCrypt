@@ -1,0 +1,554 @@
+[gd_resource type="TileSet" load_steps=50 format=1]
+
+[ext_resource path="res://scenes/dungeon/solids/tile.png" type="Texture" id=1]
+[ext_resource path="res://scenes/dungeon/platforms/floor3.png" type="Texture" id=2]
+[ext_resource path="res://scenes/dungeon/platforms/floor4.png" type="Texture" id=3]
+[ext_resource path="res://scenes/dungeon/platforms/floor5.png" type="Texture" id=4]
+[ext_resource path="res://scenes/dungeon/platforms/flooredge.png" type="Texture" id=5]
+[ext_resource path="res://scenes/dungeon/solids/wall.png" type="Texture" id=6]
+[ext_resource path="res://scenes/dungeon/solids/wall2.png" type="Texture" id=7]
+[ext_resource path="res://scenes/dungeon/solids/wall3.png" type="Texture" id=8]
+[ext_resource path="res://scenes/dungeon/slopes/slopetile0-31.png" type="Texture" id=9]
+[ext_resource path="res://scenes/dungeon/slopes/slopetile0-15.png" type="Texture" id=10]
+[ext_resource path="res://scenes/dungeon/BGs/bgtilegradient2.png" type="Texture" id=11]
+[ext_resource path="res://scenes/dungeon/BGs/bgtilegradient3.png" type="Texture" id=12]
+[ext_resource path="res://scenes/dungeon/BGs/bgtile.png" type="Texture" id=13]
+[ext_resource path="res://scenes/dungeon/BGs/bgtile2.png" type="Texture" id=14]
+[ext_resource path="res://scenes/dungeon/BGs/bgtile3.png" type="Texture" id=15]
+[ext_resource path="res://scenes/dungeon/water.png" type="Texture" id=16]
+[ext_resource path="res://scenes/dungeon/BGs/bgtiledark.png" type="Texture" id=17]
+[ext_resource path="res://scenes/dungeon/BGs/bgtiledark2.png" type="Texture" id=18]
+[ext_resource path="res://scenes/dungeon/BGs/bgtiledark3.png" type="Texture" id=19]
+[ext_resource path="res://scenes/dungeon/slopes/slopetile0-7.png" type="Texture" id=20]
+[ext_resource path="res://scenes/dungeon/solids/tile2.png" type="Texture" id=21]
+[ext_resource path="res://scenes/dungeon/solids/tile3.png" type="Texture" id=22]
+[ext_resource path="res://scenes/dungeon/platforms/floorblock.png" type="Texture" id=23]
+[ext_resource path="res://scenes/dungeon/platforms/floorblock2.png" type="Texture" id=24]
+[ext_resource path="res://scenes/dungeon/BGs/bgtilegradient.png" type="Texture" id=25]
+[ext_resource path="res://scenes/dungeon/platforms/floorblock3.png" type="Texture" id=26]
+[ext_resource path="res://scenes/dungeon/platforms/floorblock4.png" type="Texture" id=27]
+[ext_resource path="res://scenes/dungeon/platforms/floorblock5.png" type="Texture" id=28]
+[ext_resource path="res://scenes/dungeon/platforms/flooredge2.png" type="Texture" id=29]
+[ext_resource path="res://scenes/dungeon/platforms/midfloorblock.png" type="Texture" id=30]
+[ext_resource path="res://scenes/dungeon/BGs/banner.png" type="Texture" id=31]
+[ext_resource path="res://scenes/dungeon/BGs/torch.png" type="Texture" id=32]
+[ext_resource path="res://scenes/dungeon/BGs/pillar/pillar.png" type="Texture" id=33]
+[ext_resource path="res://scenes/dungeon/BGs/pillar/pillarcap.png" type="Texture" id=34]
+[ext_resource path="res://scenes/dungeon/BGs/pillar/pillarcap2.png" type="Texture" id=35]
+[ext_resource path="res://scenes/dungeon/BGs/pillar/pillarcap3.png" type="Texture" id=36]
+[ext_resource path="res://scenes/dungeon/BGs/pillar/pillarcap4.png" type="Texture" id=37]
+[ext_resource path="res://scenes/dungeon/platforms/crackedflooredge.png" type="Texture" id=38]
+[ext_resource path="res://scenes/dungeon/BGs/bgswingtile.png" type="Texture" id=39]
+[ext_resource path="res://scenes/dungeon/platforms/floor.png" type="Texture" id=40]
+[ext_resource path="res://scenes/dungeon/platforms/floor2.png" type="Texture" id=41]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[sub_resource type="ImageTexture" id=1]
+
+flags = 7
+image = Image( 32, 32, 0, RGBA, 0, 0, 0, 0, 0, 0, 0, 0, 88, 70, 33, 94, 99, 79, 39, 179, 102, 81, 42, 191, 102, 81, 42, 191, 102, 81, 42, 191, 102, 81, 42, 191, 102, 81, 42, 191, 102, 81, 42, 191, 102, 81, 41, 191, 102, 81, 41, 191, 101, 81, 41, 191, 101, 80, 41, 191, 101, 80, 41, 191, 101, 80, 41, 191, 101, 80, 41, 191, 101, 80, 40, 191, 101, 80, 40, 191, 101, 80, 40, 191, 101, 80, 40, 191, 101, 80, 40, 191, 101, 80, 40, 191, 101, 80, 40, 191, 101, 80, 40, 191, 101, 80, 40, 191, 101, 80, 40, 191, 101, 79, 38, 191, 99, 74, 27, 179, 85, 60, 14, 94, 0, 0, 0, 1, 0, 0, 0, 1, 255, 255, 255, 1, 103, 84, 48, 172, 155, 133, 91, 255, 207, 179, 123, 255, 226, 192, 125, 255, 228, 193, 125, 255, 228, 192, 123, 255, 228, 191, 120, 255, 228, 190, 118, 255, 227, 189, 115, 255, 227, 188, 113, 255, 227, 187, 110, 255, 227, 186, 108, 255, 226, 185, 105, 255, 226, 184, 103, 255, 226, 183, 101, 255, 226, 182, 98, 255, 226, 181, 96, 255, 226, 180, 93, 255, 226, 179, 91, 255, 226, 179, 90, 255, 226, 179, 90, 255, 226, 179, 90, 255, 226, 179, 90, 255, 226, 179, 90, 255, 226, 179, 90, 255, 226, 179, 90, 255, 223, 175, 82, 255, 202, 152, 58, 255, 140, 101, 25, 255, 91, 62, 6, 173, 0, 0, 0, 6, 89, 67, 27, 94, 155, 131, 86, 255, 244, 227, 193, 255, 254, 243, 221, 255, 254, 242, 220, 255, 254, 240, 213, 255, 254, 237, 205, 255, 254, 234, 196, 255, 254, 231, 188, 255, 254, 228, 179, 255, 254, 226, 171, 255, 254, 223, 162, 255, 254, 220, 154, 255, 254, 217, 146, 255, 254, 214, 137, 255, 254, 211, 129, 255, 254, 208, 120, 255, 254, 205, 112, 255, 254, 202, 104, 255, 254, 202, 100, 255, 254, 202, 100, 255, 254, 202, 100, 255, 254, 202, 100, 255, 254, 202, 100, 255, 254, 202, 100, 255, 254, 202, 100, 255, 254, 202, 100, 255, 254, 198, 90, 255, 255, 189, 62, 255, 238, 164, 24, 255, 138, 91, 2, 255, 70, 46, 0, 108, 100, 75, 28, 179, 208, 173, 106, 255, 254, 241, 216, 255, 254, 253, 251, 255, 254, 251, 245, 255, 254, 247, 234, 255, 254, 244, 224, 255, 254, 240, 213, 255, 254, 236, 202, 255, 254, 233, 192, 255, 254, 229, 181, 255, 254, 226, 171, 255, 254, 222, 160, 255, 254, 218, 149, 255, 254, 214, 139, 255, 254, 211, 128, 255, 254, 207, 118, 255, 254, 203, 107, 255, 254, 202, 102, 255, 254, 202, 102, 255, 254, 202, 102, 255, 254, 202, 102, 255, 254, 202, 102, 255, 254, 202, 102, 255, 254, 202, 102, 255, 254, 202, 102, 255, 254, 202, 101, 255, 254, 197, 84, 255, 253, 176, 26, 255, 238, 157, 1, 255, 177, 116, 0, 255, 77, 49, 0, 197, 103, 76, 25, 191, 227, 183, 99, 255, 255, 240, 212, 255, 255, 250, 243, 255, 255, 245, 227, 255, 254, 238, 208, 255, 254, 232, 191, 255, 254, 226, 174, 255, 254, 221, 157, 255, 254, 215, 140, 255, 254, 209, 123, 255, 254, 203, 106, 255, 254, 197, 88, 255, 254, 191, 71, 255, 254, 185, 54, 255, 254, 180, 38, 255, 254, 174, 20, 255, 254, 172, 12, 255, 254, 172, 12, 255, 254, 172, 12, 255, 254, 172, 12, 255, 254, 172, 12, 255, 254, 172, 12, 255, 254, 172, 12, 255, 254, 172, 12, 255, 254, 172, 12, 255, 254, 172, 12, 255, 248, 168, 13, 255, 208, 137, 0, 255, 200, 132, 0, 255, 171, 113, 0, 255, 66, 43, 0, 219, 103, 76, 24, 191, 229, 182, 93, 255, 255, 236, 201, 255, 255, 246, 228, 255, 254, 238, 207, 255, 254, 231, 188, 255, 254, 225, 170, 255, 254, 219, 152, 255, 254, 213, 134, 255, 254, 207, 116, 255, 254, 200, 98, 255, 254, 194, 80, 255, 254, 188, 63, 255, 254, 182, 45, 255, 254, 176, 27, 255, 254, 170, 9, 255, 254, 167, 0, 255, 254, 167, 0, 255, 254, 167, 0, 255, 254, 167, 0, 255, 254, 167, 0, 255, 254, 167, 0, 255, 254, 167, 0, 255, 254, 167, 0, 255, 254, 167, 0, 255, 254, 167, 0, 255, 254, 167, 0, 255, 245, 161, 0, 255, 187, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 61, 40, 0, 230, 103, 76, 24, 191, 229, 182, 90, 255, 255, 232, 190, 255, 255, 241, 214, 255, 254, 232, 190, 255, 254, 225, 170, 255, 254, 219, 152, 255, 254, 213, 134, 255, 254, 207, 116, 255, 254, 200, 98, 255, 254, 194, 80, 255, 254, 188, 62, 255, 254, 182, 45, 255, 254, 176, 27, 255, 254, 170, 9, 255, 254, 167, 0, 255, 254, 167, 0, 255, 254, 167, 0, 255, 254, 167, 0, 255, 254, 167, 0, 255, 254, 167, 0, 255, 254, 167, 1, 255, 254, 167, 2, 255, 254, 168, 4, 255, 254, 168, 5, 255, 254, 168, 5, 255, 254, 167, 2, 255, 245, 161, 0, 255, 186, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 59, 39, 0, 238, 103, 76, 24, 191, 229, 180, 87, 255, 255, 229, 179, 255, 255, 236, 200, 255, 254, 226, 172, 255, 254, 219, 152, 255, 254, 213, 134, 255, 254, 207, 116, 255, 254, 200, 98, 255, 254, 194, 81, 255, 254, 188, 63, 255, 254, 182, 45, 255, 254, 176, 27, 255, 254, 170, 9, 255, 254, 167, 0, 255, 254, 167, 0, 255, 254, 167, 0, 255, 254, 167, 1, 255, 254, 167, 2, 255, 254, 168, 4, 255, 254, 169, 6, 255, 254, 169, 7, 255, 254, 170, 9, 255, 254, 170, 11, 255, 254, 171, 12, 255, 254, 170, 11, 255, 254, 168, 3, 255, 245, 161, 0, 255, 186, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 58, 38, 0, 241, 103, 75, 24, 191, 228, 179, 84, 255, 255, 225, 168, 255, 255, 231, 186, 255, 254, 220, 155, 255, 254, 213, 134, 255, 254, 207, 116, 255, 254, 200, 98, 255, 254, 194, 80, 255, 254, 188, 62, 255, 254, 182, 45, 255, 254, 176, 27, 255, 254, 170, 9, 255, 254, 167, 1, 255, 254, 167, 2, 255, 254, 168, 3, 255, 254, 168, 5, 255, 254, 169, 7, 255, 254, 170, 8, 255, 254, 170, 10, 255, 254, 171, 12, 255, 254, 171, 14, 255, 254, 172, 15, 255, 254, 172, 17, 255, 254, 173, 19, 255, 254, 172, 16, 255, 254, 168, 5, 255, 245, 161, 0, 255, 186, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 58, 38, 0, 242, 103, 75, 24, 191, 228, 178, 81, 255, 255, 221, 157, 255, 255, 227, 172, 255, 254, 214, 137, 255, 254, 207, 116, 255, 254, 200, 98, 255, 254, 194, 80, 255, 254, 188, 63, 255, 254, 182, 45, 255, 254, 176, 28, 255, 254, 171, 11, 255, 254, 168, 5, 255, 254, 169, 6, 255, 254, 169, 8, 255, 254, 170, 10, 255, 254, 171, 12, 255, 254, 171, 13, 255, 254, 172, 15, 255, 254, 172, 16, 255, 254, 173, 18, 255, 254, 173, 20, 255, 254, 174, 22, 255, 254, 174, 23, 255, 254, 175, 25, 255, 254, 174, 21, 255, 254, 169, 6, 255, 245, 161, 0, 255, 186, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 58, 38, 0, 242, 103, 75, 23, 191, 228, 177, 78, 255, 255, 218, 146, 255, 255, 222, 158, 255, 254, 208, 120, 255, 254, 200, 98, 255, 254, 194, 81, 255, 254, 189, 64, 255, 254, 183, 48, 255, 254, 177, 32, 255, 254, 172, 16, 255, 254, 170, 10, 255, 254, 170, 11, 255, 254, 171, 13, 255, 254, 172, 15, 255, 254, 172, 16, 255, 254, 173, 18, 255, 254, 173, 20, 255, 254, 174, 21, 255, 254, 174, 23, 255, 254, 175, 25, 255, 254, 176, 26, 255, 254, 176, 28, 255, 254, 177, 30, 255, 254, 177, 31, 255, 254, 175, 26, 255, 254, 169, 8, 255, 245, 161, 0, 255, 186, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 58, 38, 0, 242, 102, 75, 23, 191, 228, 176, 75, 255, 255, 214, 135, 255, 255, 217, 145, 255, 254, 202, 102, 255, 254, 194, 81, 255, 254, 189, 66, 255, 254, 184, 51, 255, 254, 179, 36, 255, 254, 174, 20, 255, 254, 171, 14, 255, 254, 172, 16, 255, 254, 173, 18, 255, 254, 173, 19, 255, 254, 174, 21, 255, 254, 174, 22, 255, 254, 175, 24, 255, 254, 175, 26, 255, 254, 176, 28, 255, 254, 177, 29, 255, 254, 177, 31, 255, 254, 178, 33, 255, 254, 178, 34, 255, 254, 179, 36, 255, 254, 180, 37, 255, 254, 177, 31, 255, 254, 170, 9, 255, 245, 161, 0, 255, 186, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 58, 38, 0, 242, 102, 75, 23, 191, 228, 174, 71, 255, 255, 210, 124, 255, 255, 213, 131, 255, 254, 196, 85, 255, 254, 189, 64, 255, 254, 185, 53, 255, 254, 180, 40, 255, 254, 175, 25, 255, 254, 173, 19, 255, 254, 173, 20, 255, 254, 174, 22, 255, 254, 175, 24, 255, 254, 175, 25, 255, 254, 176, 27, 255, 254, 177, 29, 255, 254, 177, 31, 255, 254, 178, 32, 255, 254, 178, 34, 255, 254, 179, 36, 255, 254, 179, 37, 255, 254, 180, 39, 255, 254, 181, 41, 255, 254, 181, 42, 255, 254, 182, 44, 255, 254, 179, 36, 255, 254, 170, 11, 255, 245, 161, 0, 255, 186, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 58, 38, 0, 242, 102, 74, 22, 191, 228, 173, 68, 255, 255, 206, 113, 255, 255, 208, 117, 255, 254, 190, 68, 255, 254, 183, 48, 255, 254, 180, 40, 255, 254, 176, 30, 255, 254, 174, 23, 255, 254, 175, 25, 255, 254, 176, 27, 255, 254, 176, 28, 255, 254, 177, 30, 255, 254, 178, 32, 255, 254, 178, 34, 255, 254, 179, 35, 255, 254, 179, 37, 255, 254, 180, 39, 255, 254, 180, 40, 255, 254, 181, 42, 255, 254, 182, 44, 255, 254, 182, 45, 255, 254, 183, 47, 255, 254, 183, 49, 255, 254, 184, 50, 255, 254, 180, 40, 255, 254, 171, 12, 255, 245, 161, 1, 255, 186, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 58, 38, 0, 242, 102, 74, 22, 191, 228, 172, 65, 255, 255, 203, 102, 255, 255, 203, 103, 255, 254, 184, 50, 255, 254, 177, 32, 255, 254, 176, 29, 255, 254, 176, 28, 255, 254, 177, 30, 255, 254, 177, 31, 255, 254, 178, 33, 255, 254, 179, 35, 255, 254, 179, 36, 255, 254, 180, 38, 255, 254, 180, 40, 255, 254, 181, 42, 255, 254, 181, 43, 255, 254, 182, 45, 255, 254, 183, 47, 255, 254, 183, 48, 255, 254, 184, 50, 255, 254, 184, 52, 255, 254, 185, 54, 255, 254, 186, 55, 255, 254, 186, 56, 255, 254, 182, 45, 255, 254, 171, 13, 255, 245, 161, 1, 255, 186, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 58, 38, 0, 242, 102, 74, 22, 191, 227, 171, 62, 255, 255, 199, 91, 255, 255, 198, 89, 255, 254, 178, 33, 255, 254, 172, 15, 255, 254, 175, 26, 255, 254, 178, 34, 255, 254, 179, 36, 255, 254, 180, 38, 255, 254, 180, 40, 255, 254, 181, 41, 255, 254, 181, 43, 255, 254, 182, 44, 255, 254, 182, 46, 255, 254, 183, 48, 255, 254, 184, 50, 255, 254, 184, 51, 255, 254, 185, 53, 255, 254, 185, 55, 255, 254, 186, 56, 255, 254, 187, 58, 255, 254, 187, 60, 255, 254, 188, 62, 255, 254, 188, 63, 255, 254, 184, 50, 255, 254, 172, 15, 255, 245, 161, 1, 255, 186, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 58, 38, 0, 242, 102, 74, 22, 191, 227, 170, 59, 255, 255, 195, 80, 255, 255, 194, 76, 255, 254, 172, 16, 255, 254, 170, 9, 255, 254, 177, 30, 255, 254, 180, 40, 255, 254, 181, 42, 255, 254, 182, 44, 255, 254, 182, 46, 255, 254, 183, 47, 255, 254, 183, 49, 255, 254, 184, 51, 255, 254, 185, 53, 255, 254, 185, 54, 255, 254, 186, 56, 255, 254, 186, 58, 255, 254, 187, 59, 255, 254, 188, 61, 255, 254, 188, 63, 255, 254, 189, 64, 255, 254, 190, 66, 255, 254, 190, 68, 255, 254, 190, 69, 255, 254, 186, 56, 255, 254, 172, 16, 255, 245, 161, 1, 255, 186, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 58, 38, 0, 242, 102, 74, 22, 191, 227, 168, 56, 255, 255, 192, 70, 255, 255, 189, 62, 255, 254, 170, 8, 255, 254, 170, 10, 255, 254, 179, 35, 255, 254, 182, 47, 255, 254, 183, 49, 255, 254, 184, 50, 255, 254, 184, 52, 255, 254, 185, 54, 255, 254, 186, 56, 255, 254, 186, 57, 255, 254, 187, 59, 255, 254, 188, 61, 255, 254, 188, 62, 255, 254, 189, 64, 255, 254, 189, 66, 255, 254, 190, 67, 255, 254, 190, 69, 255, 254, 191, 71, 255, 254, 192, 73, 255, 254, 192, 74, 255, 254, 192, 75, 255, 254, 187, 60, 255, 254, 173, 18, 255, 245, 161, 1, 255, 186, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 58, 38, 0, 242, 102, 74, 22, 191, 226, 167, 52, 255, 255, 188, 59, 255, 255, 187, 55, 255, 254, 170, 8, 255, 254, 170, 11, 255, 254, 180, 40, 255, 254, 185, 53, 255, 254, 186, 55, 255, 254, 186, 57, 255, 254, 187, 59, 255, 254, 187, 60, 255, 254, 188, 62, 255, 254, 189, 64, 255, 254, 189, 65, 255, 254, 190, 67, 255, 254, 190, 69, 255, 254, 191, 70, 255, 254, 191, 72, 255, 254, 192, 74, 255, 254, 193, 76, 255, 254, 193, 77, 255, 254, 194, 79, 255, 254, 194, 81, 255, 254, 194, 81, 255, 254, 189, 65, 255, 254, 173, 19, 255, 245, 161, 1, 255, 186, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 58, 38, 0, 242, 102, 74, 22, 191, 226, 166, 49, 255, 255, 186, 54, 255, 255, 187, 55, 255, 254, 170, 8, 255, 254, 171, 13, 255, 254, 182, 45, 255, 254, 187, 59, 255, 254, 188, 61, 255, 254, 189, 63, 255, 254, 189, 65, 255, 254, 190, 67, 255, 254, 190, 68, 255, 254, 191, 70, 255, 254, 191, 72, 255, 254, 192, 73, 255, 254, 192, 75, 255, 254, 193, 77, 255, 254, 194, 79, 255, 254, 194, 80, 255, 254, 194, 82, 255, 254, 195, 84, 255, 254, 196, 85, 255, 254, 196, 87, 255, 254, 197, 88, 255, 254, 191, 70, 255, 254, 174, 20, 255, 245, 161, 1, 255, 186, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 58, 38, 0, 242, 102, 74, 22, 191, 226, 166, 48, 255, 255, 186, 54, 255, 255, 187, 55, 255, 254, 170, 8, 255, 254, 171, 14, 255, 254, 184, 50, 255, 254, 189, 65, 255, 254, 190, 68, 255, 254, 191, 70, 255, 254, 191, 71, 255, 254, 192, 73, 255, 254, 192, 75, 255, 254, 193, 76, 255, 254, 193, 78, 255, 254, 194, 80, 255, 254, 194, 81, 255, 254, 195, 83, 255, 254, 196, 85, 255, 254, 196, 87, 255, 254, 197, 88, 255, 254, 198, 90, 255, 254, 198, 92, 255, 254, 199, 94, 255, 254, 199, 94, 255, 254, 192, 75, 255, 254, 174, 22, 255, 245, 161, 1, 255, 186, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 58, 38, 0, 242, 102, 74, 22, 191, 226, 166, 48, 255, 255, 186, 54, 255, 255, 187, 55, 255, 254, 170, 8, 255, 254, 172, 16, 255, 254, 186, 55, 255, 254, 191, 72, 255, 254, 192, 74, 255, 254, 193, 76, 255, 254, 193, 78, 255, 254, 194, 79, 255, 254, 194, 81, 255, 254, 195, 83, 255, 254, 196, 84, 255, 254, 196, 86, 255, 254, 197, 88, 255, 254, 198, 90, 255, 254, 198, 91, 255, 254, 199, 93, 255, 254, 199, 95, 255, 254, 200, 96, 255, 254, 200, 98, 255, 254, 201, 100, 255, 254, 201, 100, 255, 254, 194, 80, 255, 254, 175, 23, 255, 245, 162, 1, 255, 186, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 58, 38, 0, 242, 102, 74, 22, 191, 226, 166, 48, 255, 255, 186, 54, 255, 255, 187, 55, 255, 254, 170, 8, 255, 254, 172, 17, 255, 254, 187, 60, 255, 254, 193, 78, 255, 254, 194, 81, 255, 254, 195, 82, 255, 254, 195, 84, 255, 254, 196, 86, 255, 254, 197, 87, 255, 254, 197, 89, 255, 254, 198, 91, 255, 254, 198, 93, 255, 254, 199, 94, 255, 254, 200, 96, 255, 254, 200, 97, 255, 254, 201, 99, 255, 254, 201, 101, 255, 254, 202, 103, 255, 254, 203, 104, 255, 254, 203, 106, 255, 254, 203, 107, 255, 254, 196, 85, 255, 254, 175, 25, 255, 245, 162, 1, 255, 186, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 58, 38, 0, 242, 102, 74, 22, 191, 226, 166, 48, 255, 255, 186, 54, 255, 255, 187, 55, 255, 254, 170, 8, 255, 254, 173, 18, 255, 254, 189, 65, 255, 254, 196, 84, 255, 254, 196, 87, 255, 254, 197, 89, 255, 254, 198, 90, 255, 254, 198, 92, 255, 254, 199, 94, 255, 254, 199, 95, 255, 254, 200, 97, 255, 254, 201, 99, 255, 254, 201, 101, 255, 254, 202, 102, 255, 254, 202, 104, 255, 254, 203, 106, 255, 254, 203, 107, 255, 254, 204, 109, 255, 254, 205, 111, 255, 254, 205, 112, 255, 254, 206, 113, 255, 254, 198, 90, 255, 254, 176, 26, 255, 245, 162, 1, 255, 186, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 58, 38, 0, 242, 102, 74, 22, 191, 226, 166, 48, 255, 255, 186, 54, 255, 255, 187, 55, 255, 254, 170, 8, 255, 254, 173, 20, 255, 254, 190, 69, 255, 254, 197, 90, 255, 254, 198, 92, 255, 254, 199, 94, 255, 254, 200, 96, 255, 254, 200, 97, 255, 254, 201, 99, 255, 254, 201, 101, 255, 254, 202, 102, 255, 254, 202, 104, 255, 254, 203, 106, 255, 254, 204, 107, 255, 254, 204, 109, 255, 254, 205, 111, 255, 254, 205, 113, 255, 254, 206, 114, 255, 254, 207, 116, 255, 254, 207, 118, 255, 254, 208, 118, 255, 254, 199, 94, 255, 254, 176, 27, 255, 245, 162, 1, 255, 186, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 58, 38, 0, 242, 102, 74, 22, 191, 226, 166, 48, 255, 255, 186, 54, 255, 255, 187, 55, 255, 254, 170, 8, 255, 254, 172, 17, 255, 254, 187, 58, 255, 254, 192, 75, 255, 254, 193, 77, 255, 254, 194, 79, 255, 254, 194, 80, 255, 254, 194, 81, 255, 254, 195, 83, 255, 254, 195, 84, 255, 254, 196, 85, 255, 254, 196, 86, 255, 254, 197, 88, 255, 254, 197, 89, 255, 254, 198, 90, 255, 254, 198, 92, 255, 254, 199, 93, 255, 254, 199, 94, 255, 254, 199, 96, 255, 254, 200, 97, 255, 254, 200, 97, 255, 254, 193, 77, 255, 254, 174, 23, 255, 245, 161, 1, 255, 186, 123, 0, 255, 186, 123, 0, 255, 165, 109, 0, 255, 58, 38, 0, 242, 102, 74, 22, 191, 226, 166, 48, 255, 255, 186, 53, 255, 255, 186, 53, 255, 254, 169, 7, 255, 254, 168, 5, 255, 254, 173, 18, 255, 254, 174, 23, 255, 254, 174, 23, 255, 254, 175, 24, 255, 254, 175, 24, 255, 254, 175, 25, 255, 254, 175, 25, 255, 254, 175, 25, 255, 254, 176, 26, 255, 254, 176, 26, 255, 254, 176, 27, 255, 254, 176, 27, 255, 254, 176, 27, 255, 254, 176, 28, 255, 254, 176, 28, 255, 254, 176, 28, 255, 254, 176, 29, 255, 254, 176, 29, 255, 254, 177, 29, 255, 254, 175, 23, 255, 254, 169, 7, 255, 244, 160, 0, 255, 183, 121, 0, 255, 185, 122, 0, 255, 165, 109, 0, 255, 58, 38, 0, 242, 102, 73, 19, 191, 224, 161, 39, 255, 255, 182, 40, 255, 255, 179, 33, 255, 238, 158, 4, 255, 238, 157, 0, 255, 239, 157, 1, 255, 239, 158, 1, 255, 239, 158, 1, 255, 239, 158, 1, 255, 239, 158, 1, 255, 239, 158, 1, 255, 239, 158, 1, 255, 239, 158, 1, 255, 239, 158, 1, 255, 239, 158, 1, 255, 239, 158, 2, 255, 239, 158, 2, 255, 239, 158, 2, 255, 239, 158, 2, 255, 239, 158, 2, 255, 239, 158, 2, 255, 239, 158, 2, 255, 239, 158, 2, 255, 239, 158, 2, 255, 239, 157, 1, 255, 238, 156, 0, 255, 214, 141, 0, 255, 166, 110, 0, 255, 172, 113, 0, 255, 154, 101, 0, 255, 56, 37, 0, 242, 99, 68, 9, 179, 202, 137, 14, 255, 251, 168, 8, 255, 216, 142, 0, 255, 153, 101, 0, 255, 137, 90, 0, 255, 134, 88, 0, 255, 134, 88, 0, 255, 134, 88, 0, 255, 134, 88, 0, 255, 134, 88, 0, 255, 134, 88, 0, 255, 134, 88, 0, 255, 134, 88, 0, 255, 134, 88, 0, 255, 134, 88, 0, 255, 134, 88, 0, 255, 134, 88, 0, 255, 134, 88, 0, 255, 134, 88, 0, 255, 134, 88, 0, 255, 134, 88, 0, 255, 134, 88, 0, 255, 134, 88, 0, 255, 134, 88, 0, 255, 134, 88, 0, 255, 134, 88, 0, 255, 129, 85, 0, 255, 127, 84, 0, 255, 147, 97, 0, 255, 120, 79, 0, 255, 50, 33, 0, 240, 84, 55, 0, 94, 133, 88, 0, 255, 201, 132, 0, 255, 177, 117, 0, 255, 146, 97, 0, 255, 138, 91, 0, 255, 136, 90, 0, 255, 136, 90, 0, 255, 136, 90, 0, 255, 136, 90, 0, 255, 136, 90, 0, 255, 136, 90, 0, 255, 136, 90, 0, 255, 136, 90, 0, 255, 136, 90, 0, 255, 136, 90, 0, 255, 136, 90, 0, 255, 136, 90, 0, 255, 136, 90, 0, 255, 136, 90, 0, 255, 136, 90, 0, 255, 136, 90, 0, 255, 136, 90, 0, 255, 136, 90, 0, 255, 136, 90, 0, 255, 136, 90, 0, 255, 136, 89, 0, 255, 130, 86, 0, 255, 124, 82, 0, 255, 115, 76, 0, 255, 77, 51, 0, 255, 26, 17, 0, 223, 0, 0, 0, 1, 81, 53, 0, 173, 106, 69, 0, 255, 129, 85, 0, 255, 126, 83, 0, 255, 120, 79, 0, 255, 119, 78, 0, 255, 119, 78, 0, 255, 119, 78, 0, 255, 119, 78, 0, 255, 119, 78, 0, 255, 119, 78, 0, 255, 119, 78, 0, 255, 119, 78, 0, 255, 119, 78, 0, 255, 119, 78, 0, 255, 119, 78, 0, 255, 119, 78, 0, 255, 119, 78, 0, 255, 119, 78, 0, 255, 119, 78, 0, 255, 119, 78, 0, 255, 119, 78, 0, 255, 119, 78, 0, 255, 119, 78, 0, 255, 119, 78, 0, 255, 119, 78, 0, 255, 116, 76, 0, 255, 96, 63, 0, 255, 69, 46, 0, 255, 41, 27, 0, 238, 0, 0, 0, 203, 0, 0, 0, 1, 0, 0, 0, 6, 59, 38, 0, 108, 60, 39, 0, 197, 48, 32, 0, 219, 44, 29, 0, 230, 42, 28, 0, 238, 42, 27, 0, 241, 41, 27, 0, 242, 41, 27, 0, 242, 41, 27, 0, 242, 41, 27, 0, 242, 41, 27, 0, 242, 41, 27, 0, 242, 41, 27, 0, 242, 41, 27, 0, 242, 41, 27, 0, 242, 41, 27, 0, 242, 41, 27, 0, 242, 41, 27, 0, 242, 41, 27, 0, 242, 41, 27, 0, 242, 41, 27, 0, 242, 41, 27, 0, 242, 41, 27, 0, 242, 41, 27, 0, 242, 41, 27, 0, 242, 41, 27, 0, 242, 42, 27, 0, 240, 23, 15, 0, 223, 0, 0, 0, 204, 0, 0, 0, 203 )
+size = Vector2( 32, 32 )
+storage = 0
+lossy_quality = 1.0
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=9]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[resource]
+
+0/name = "TestBlock"
+0/texture = SubResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/region = Rect2( 0, 0, 32, 32 )
+0/occluder_offset = Vector2( 16, 16 )
+0/navigation_offset = Vector2( 16, 16 )
+0/shape_offset = Vector2( 16, 16 )
+0/shapes = [ SubResource( 2 ) ]
+1/name = "TestLadderBlockL"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/region = Rect2( 0, 0, 0, 0 )
+1/occluder_offset = Vector2( 16, 16 )
+1/navigation_offset = Vector2( 16, 16 )
+1/shape_offset = Vector2( 16, 16 )
+1/shapes = [ SubResource( 5 ) ]
+2/name = "TestLadderBlockR"
+2/texture = ExtResource( 1 )
+2/tex_offset = Vector2( 0, 0 )
+2/region = Rect2( 0, 0, 0, 0 )
+2/occluder_offset = Vector2( 16, 16 )
+2/navigation_offset = Vector2( 16, 16 )
+2/shape_offset = Vector2( 16, 16 )
+2/shapes = [ SubResource( 4 ) ]
+3/name = "TestWater"
+3/texture = ExtResource( 16 )
+3/tex_offset = Vector2( 0, 0 )
+3/region = Rect2( 0, 0, 0, 0 )
+3/occluder_offset = Vector2( 16, 16 )
+3/navigation_offset = Vector2( 16, 16 )
+3/shape_offset = Vector2( 0, 0 )
+3/shapes = [  ]
+4/name = "BGGradient1"
+4/texture = ExtResource( 25 )
+4/tex_offset = Vector2( 0, 0 )
+4/region = Rect2( 0, 0, 32, 32 )
+4/occluder_offset = Vector2( 16, 16 )
+4/navigation_offset = Vector2( 16, 16 )
+4/shape_offset = Vector2( 0, 0 )
+4/shapes = [  ]
+5/name = "BGGradient2"
+5/texture = ExtResource( 25 )
+5/tex_offset = Vector2( 0, 0 )
+5/region = Rect2( 0, 32, 32, 32 )
+5/occluder_offset = Vector2( 16, 16 )
+5/navigation_offset = Vector2( 16, 16 )
+5/shape_offset = Vector2( 0, 0 )
+5/shapes = [  ]
+6/name = "BGGradient3"
+6/texture = ExtResource( 25 )
+6/tex_offset = Vector2( 0, 0 )
+6/region = Rect2( 0, 64, 32, 32 )
+6/occluder_offset = Vector2( 16, 16 )
+6/navigation_offset = Vector2( 16, 16 )
+6/shape_offset = Vector2( 0, 0 )
+6/shapes = [  ]
+7/name = "BGGradient4"
+7/texture = ExtResource( 25 )
+7/tex_offset = Vector2( 0, 0 )
+7/region = Rect2( 0, 96, 32, 32 )
+7/occluder_offset = Vector2( 16, 16 )
+7/navigation_offset = Vector2( 16, 16 )
+7/shape_offset = Vector2( 0, 0 )
+7/shapes = [  ]
+8/name = "Floor"
+8/texture = ExtResource( 40 )
+8/tex_offset = Vector2( 0, 0 )
+8/region = Rect2( 0, 0, 0, 0 )
+8/occluder_offset = Vector2( 16, 16 )
+8/navigation_offset = Vector2( 16, 16 )
+8/shape_offset = Vector2( 16, 16 )
+8/shapes = [ SubResource( 6 ) ]
+9/name = "Floor2"
+9/texture = ExtResource( 41 )
+9/tex_offset = Vector2( 0, 0 )
+9/region = Rect2( 0, 0, 0, 0 )
+9/occluder_offset = Vector2( 16, 16 )
+9/navigation_offset = Vector2( 16, 16 )
+9/shape_offset = Vector2( 16, 16 )
+9/shapes = [ SubResource( 6 ) ]
+10/name = "Floor3"
+10/texture = ExtResource( 2 )
+10/tex_offset = Vector2( 0, 0 )
+10/region = Rect2( 0, 0, 0, 0 )
+10/occluder_offset = Vector2( 16, 16 )
+10/navigation_offset = Vector2( 16, 16 )
+10/shape_offset = Vector2( 16, 16 )
+10/shapes = [ SubResource( 6 ) ]
+11/name = "Floor4"
+11/texture = ExtResource( 3 )
+11/tex_offset = Vector2( 0, 0 )
+11/region = Rect2( 0, 0, 0, 0 )
+11/occluder_offset = Vector2( 16, 16 )
+11/navigation_offset = Vector2( 16, 16 )
+11/shape_offset = Vector2( 16, 16 )
+11/shapes = [ SubResource( 6 ) ]
+12/name = "Floor5"
+12/texture = ExtResource( 4 )
+12/tex_offset = Vector2( 0, 0 )
+12/region = Rect2( 0, 0, 0, 0 )
+12/occluder_offset = Vector2( 16, 16 )
+12/navigation_offset = Vector2( 16, 16 )
+12/shape_offset = Vector2( 16, 16 )
+12/shapes = [ SubResource( 6 ) ]
+13/name = "FloorEdge"
+13/texture = ExtResource( 5 )
+13/tex_offset = Vector2( 0, 0 )
+13/region = Rect2( 0, 0, 38, 32 )
+13/occluder_offset = Vector2( -0, -0 )
+13/navigation_offset = Vector2( -0, -0 )
+13/shape_offset = Vector2( -0, -0 )
+13/shapes = [ SubResource( 9 ) ]
+14/name = "Wall"
+14/texture = ExtResource( 6 )
+14/tex_offset = Vector2( 0, 0 )
+14/region = Rect2( 0, 0, 0, 0 )
+14/occluder_offset = Vector2( 16, 16 )
+14/navigation_offset = Vector2( 16, 16 )
+14/shape_offset = Vector2( 16, 16 )
+14/shapes = [ SubResource( 6 ) ]
+15/name = "Wall2"
+15/texture = ExtResource( 7 )
+15/tex_offset = Vector2( 0, 0 )
+15/region = Rect2( 0, 0, 0, 0 )
+15/occluder_offset = Vector2( 16, 16 )
+15/navigation_offset = Vector2( 16, 16 )
+15/shape_offset = Vector2( 16, 16 )
+15/shapes = [ SubResource( 6 ) ]
+16/name = "Wall3"
+16/texture = ExtResource( 8 )
+16/tex_offset = Vector2( 0, 0 )
+16/region = Rect2( 0, 0, 0, 0 )
+16/occluder_offset = Vector2( 16, 16 )
+16/navigation_offset = Vector2( 16, 16 )
+16/shape_offset = Vector2( 16, 16 )
+16/shapes = [ SubResource( 6 ) ]
+17/name = "SlopeAB"
+17/texture = ExtResource( 9 )
+17/tex_offset = Vector2( 0, 0 )
+17/region = Rect2( 0, 32, 32, 32 )
+17/occluder_offset = Vector2( 16, 16 )
+17/navigation_offset = Vector2( 16, 16 )
+17/shape_offset = Vector2( 0, 0 )
+17/shapes = [  ]
+18/name = "SlopeAB2"
+18/texture = ExtResource( 10 )
+18/tex_offset = Vector2( 0, 0 )
+18/region = Rect2( 32, 32, 32, 32 )
+18/occluder_offset = Vector2( 16, 16 )
+18/navigation_offset = Vector2( 16, 16 )
+18/shape_offset = Vector2( 0, 0 )
+18/shapes = [  ]
+19/name = "BGGradient2-1"
+19/texture = ExtResource( 11 )
+19/tex_offset = Vector2( 0, 0 )
+19/region = Rect2( 0, 0, 32, 32 )
+19/occluder_offset = Vector2( 16, 16 )
+19/navigation_offset = Vector2( 16, 16 )
+19/shape_offset = Vector2( 0, 0 )
+19/shapes = [  ]
+20/name = "BGGradient2-2"
+20/texture = ExtResource( 11 )
+20/tex_offset = Vector2( 0, 0 )
+20/region = Rect2( 0, 32, 32, 32 )
+20/occluder_offset = Vector2( 16, 16 )
+20/navigation_offset = Vector2( 16, 16 )
+20/shape_offset = Vector2( 0, 0 )
+20/shapes = [  ]
+21/name = "BGGradient2-3"
+21/texture = ExtResource( 11 )
+21/tex_offset = Vector2( 0, 0 )
+21/region = Rect2( 0, 64, 32, 32 )
+21/occluder_offset = Vector2( 16, 16 )
+21/navigation_offset = Vector2( 16, 16 )
+21/shape_offset = Vector2( 0, 0 )
+21/shapes = [  ]
+22/name = "BGGradient2-4"
+22/texture = ExtResource( 11 )
+22/tex_offset = Vector2( 0, 0 )
+22/region = Rect2( 0, 96, 32, 32 )
+22/occluder_offset = Vector2( 16, 16 )
+22/navigation_offset = Vector2( 16, 16 )
+22/shape_offset = Vector2( 0, 0 )
+22/shapes = [  ]
+23/name = "BGGradient3-1"
+23/texture = ExtResource( 12 )
+23/tex_offset = Vector2( 0, 0 )
+23/region = Rect2( 0, 0, 32, 32 )
+23/occluder_offset = Vector2( 16, 16 )
+23/navigation_offset = Vector2( 16, 16 )
+23/shape_offset = Vector2( 0, 0 )
+23/shapes = [  ]
+24/name = "BGGradient3-2"
+24/texture = ExtResource( 12 )
+24/tex_offset = Vector2( 0, 0 )
+24/region = Rect2( 0, 32, 32, 32 )
+24/occluder_offset = Vector2( 16, 16 )
+24/navigation_offset = Vector2( 16, 16 )
+24/shape_offset = Vector2( 0, 0 )
+24/shapes = [  ]
+25/name = "BGGradient3-3"
+25/texture = ExtResource( 12 )
+25/tex_offset = Vector2( 0, 0 )
+25/region = Rect2( 0, 64, 32, 32 )
+25/occluder_offset = Vector2( 16, 16 )
+25/navigation_offset = Vector2( 16, 16 )
+25/shape_offset = Vector2( 0, 0 )
+25/shapes = [  ]
+26/name = "BGGradient3-4"
+26/texture = ExtResource( 12 )
+26/tex_offset = Vector2( 0, 0 )
+26/region = Rect2( 0, 96, 32, 32 )
+26/occluder_offset = Vector2( 16, 16 )
+26/navigation_offset = Vector2( 16, 16 )
+26/shape_offset = Vector2( 0, 0 )
+26/shapes = [  ]
+27/name = "BGTile"
+27/texture = ExtResource( 13 )
+27/tex_offset = Vector2( 0, 0 )
+27/region = Rect2( 0, 0, 0, 0 )
+27/occluder_offset = Vector2( 16, 16 )
+27/navigation_offset = Vector2( 16, 16 )
+27/shape_offset = Vector2( 0, 0 )
+27/shapes = [  ]
+28/name = "BGTile2"
+28/texture = ExtResource( 14 )
+28/tex_offset = Vector2( 0, 0 )
+28/region = Rect2( 0, 0, 0, 0 )
+28/occluder_offset = Vector2( 16, 16 )
+28/navigation_offset = Vector2( 16, 16 )
+28/shape_offset = Vector2( 0, 0 )
+28/shapes = [  ]
+29/name = "BGTile3"
+29/texture = ExtResource( 15 )
+29/tex_offset = Vector2( 0, 0 )
+29/region = Rect2( 0, 0, 0, 0 )
+29/occluder_offset = Vector2( 16, 16 )
+29/navigation_offset = Vector2( 16, 16 )
+29/shape_offset = Vector2( 0, 0 )
+29/shapes = [  ]
+30/name = "BGTileDark"
+30/texture = ExtResource( 17 )
+30/tex_offset = Vector2( 0, 0 )
+30/region = Rect2( 0, 0, 0, 0 )
+30/occluder_offset = Vector2( 16, 16 )
+30/navigation_offset = Vector2( 16, 16 )
+30/shape_offset = Vector2( 0, 0 )
+30/shapes = [  ]
+31/name = "BGTileDark2"
+31/texture = ExtResource( 18 )
+31/tex_offset = Vector2( 0, 0 )
+31/region = Rect2( 0, 0, 0, 0 )
+31/occluder_offset = Vector2( 16, 16 )
+31/navigation_offset = Vector2( 16, 16 )
+31/shape_offset = Vector2( 0, 0 )
+31/shapes = [  ]
+32/name = "BGTileDark3"
+32/texture = ExtResource( 19 )
+32/tex_offset = Vector2( 0, 0 )
+32/region = Rect2( 0, 0, 0, 0 )
+32/occluder_offset = Vector2( 16, 16 )
+32/navigation_offset = Vector2( 16, 16 )
+32/shape_offset = Vector2( 0, 0 )
+32/shapes = [  ]
+33/name = "SlopeAB3"
+33/texture = ExtResource( 20 )
+33/tex_offset = Vector2( 0, 0 )
+33/region = Rect2( 64, 32, 32, 32 )
+33/occluder_offset = Vector2( 16, 16 )
+33/navigation_offset = Vector2( 16, 16 )
+33/shape_offset = Vector2( 0, 0 )
+33/shapes = [  ]
+34/name = "SlopeAB4"
+34/texture = ExtResource( 20 )
+34/tex_offset = Vector2( 0, 0 )
+34/region = Rect2( 96, 32, 32, 32 )
+34/occluder_offset = Vector2( 16, 16 )
+34/navigation_offset = Vector2( 16, 16 )
+34/shape_offset = Vector2( 0, 0 )
+34/shapes = [  ]
+35/name = "Tile"
+35/texture = ExtResource( 1 )
+35/tex_offset = Vector2( 0, 0 )
+35/region = Rect2( 0, 0, 0, 0 )
+35/occluder_offset = Vector2( 16, 16 )
+35/navigation_offset = Vector2( 16, 16 )
+35/shape_offset = Vector2( 16, 16 )
+35/shapes = [ SubResource( 7 ) ]
+36/name = "Tile2"
+36/texture = ExtResource( 21 )
+36/tex_offset = Vector2( 0, 0 )
+36/region = Rect2( 0, 0, 0, 0 )
+36/occluder_offset = Vector2( 16, 16 )
+36/navigation_offset = Vector2( 16, 16 )
+36/shape_offset = Vector2( 16, 16 )
+36/shapes = [ SubResource( 7 ) ]
+37/name = "Tile3"
+37/texture = ExtResource( 22 )
+37/tex_offset = Vector2( 0, 0 )
+37/region = Rect2( 0, 0, 0, 0 )
+37/occluder_offset = Vector2( 16, 16 )
+37/navigation_offset = Vector2( 16, 16 )
+37/shape_offset = Vector2( 16, 16 )
+37/shapes = [ SubResource( 7 ) ]
+38/name = "FloorBlock"
+38/texture = ExtResource( 23 )
+38/tex_offset = Vector2( 0, 0 )
+38/region = Rect2( 0, 0, 0, 0 )
+38/occluder_offset = Vector2( 16, 16 )
+38/navigation_offset = Vector2( 16, 16 )
+38/shape_offset = Vector2( 16, 16 )
+38/shapes = [ SubResource( 6 ) ]
+39/name = "FloorBlock2"
+39/texture = ExtResource( 24 )
+39/tex_offset = Vector2( 0, 0 )
+39/region = Rect2( 0, 0, 0, 0 )
+39/occluder_offset = Vector2( 16, 16 )
+39/navigation_offset = Vector2( 16, 16 )
+39/shape_offset = Vector2( 16, 16 )
+39/shapes = [ SubResource( 6 ) ]
+40/name = "FloorBlock3"
+40/texture = ExtResource( 26 )
+40/tex_offset = Vector2( 0, 0 )
+40/region = Rect2( 0, 0, 0, 0 )
+40/occluder_offset = Vector2( 16, 16 )
+40/navigation_offset = Vector2( 16, 16 )
+40/shape_offset = Vector2( 16, 16 )
+40/shapes = [ SubResource( 6 ) ]
+41/name = "FloorBlock4"
+41/texture = ExtResource( 27 )
+41/tex_offset = Vector2( 0, 0 )
+41/region = Rect2( 0, 0, 0, 0 )
+41/occluder_offset = Vector2( 16, 16 )
+41/navigation_offset = Vector2( 16, 16 )
+41/shape_offset = Vector2( 16, 16 )
+41/shapes = [ SubResource( 6 ) ]
+42/name = "FloorBlock5"
+42/texture = ExtResource( 28 )
+42/tex_offset = Vector2( 0, 0 )
+42/region = Rect2( 0, 0, 0, 0 )
+42/occluder_offset = Vector2( 16, 16 )
+42/navigation_offset = Vector2( 16, 16 )
+42/shape_offset = Vector2( 16, 16 )
+42/shapes = [ SubResource( 6 ) ]
+43/name = "FloorSlope"
+43/texture = ExtResource( 23 )
+43/tex_offset = Vector2( 0, 0 )
+43/region = Rect2( 0, 0, 0, 0 )
+43/occluder_offset = Vector2( 16, 16 )
+43/navigation_offset = Vector2( 16, 16 )
+43/shape_offset = Vector2( 0, 0 )
+43/shapes = [  ]
+44/name = "FloorCorner"
+44/texture = ExtResource( 29 )
+44/tex_offset = Vector2( 0, 0 )
+44/region = Rect2( 0, 0, 38, 32 )
+44/occluder_offset = Vector2( -0, -0 )
+44/navigation_offset = Vector2( -0, -0 )
+44/shape_offset = Vector2( -0, -0 )
+44/shapes = [ SubResource( 10 ) ]
+45/name = "MidFloorBlock"
+45/texture = ExtResource( 30 )
+45/tex_offset = Vector2( 0, 0 )
+45/region = Rect2( 0, 0, 0, 0 )
+45/occluder_offset = Vector2( 16, 16 )
+45/navigation_offset = Vector2( 16, 16 )
+45/shape_offset = Vector2( 16, 16 )
+45/shapes = [ SubResource( 6 ) ]
+46/name = "Banner"
+46/texture = ExtResource( 31 )
+46/tex_offset = Vector2( 0, 0 )
+46/region = Rect2( 0, 0, 32, 32 )
+46/occluder_offset = Vector2( 16, 16 )
+46/navigation_offset = Vector2( 16, 16 )
+46/shape_offset = Vector2( 0, 0 )
+46/shapes = [  ]
+47/name = "Banner2"
+47/texture = ExtResource( 31 )
+47/tex_offset = Vector2( 0, 0 )
+47/region = Rect2( 0, 32, 32, 32 )
+47/occluder_offset = Vector2( 16, 16 )
+47/navigation_offset = Vector2( 16, 16 )
+47/shape_offset = Vector2( 0, 0 )
+47/shapes = [  ]
+48/name = "Banner3"
+48/texture = ExtResource( 31 )
+48/tex_offset = Vector2( 0, 0 )
+48/region = Rect2( 0, 64, 32, 32 )
+48/occluder_offset = Vector2( 16, 16 )
+48/navigation_offset = Vector2( 16, 16 )
+48/shape_offset = Vector2( 0, 0 )
+48/shapes = [  ]
+49/name = "Banner4"
+49/texture = ExtResource( 31 )
+49/tex_offset = Vector2( 0, 0 )
+49/region = Rect2( 0, 96, 32, 32 )
+49/occluder_offset = Vector2( 16, 16 )
+49/navigation_offset = Vector2( 16, 16 )
+49/shape_offset = Vector2( 0, 0 )
+49/shapes = [  ]
+50/name = "Torch"
+50/texture = ExtResource( 32 )
+50/tex_offset = Vector2( 0, 0 )
+50/region = Rect2( 0, 0, 0, 0 )
+50/occluder_offset = Vector2( 96, 96 )
+50/navigation_offset = Vector2( 96, 96 )
+50/shape_offset = Vector2( 0, 0 )
+50/shapes = [  ]
+51/name = "Pillar"
+51/texture = ExtResource( 33 )
+51/tex_offset = Vector2( 0, 0 )
+51/region = Rect2( 0, 0, 0, 0 )
+51/occluder_offset = Vector2( 16, 16 )
+51/navigation_offset = Vector2( 16, 16 )
+51/shape_offset = Vector2( 0, 0 )
+51/shapes = [  ]
+52/name = "PillarCap"
+52/texture = ExtResource( 34 )
+52/tex_offset = Vector2( 0, 0 )
+52/region = Rect2( 0, 0, 0, 0 )
+52/occluder_offset = Vector2( 48, 16 )
+52/navigation_offset = Vector2( 48, 16 )
+52/shape_offset = Vector2( 0, 0 )
+52/shapes = [  ]
+53/name = "PillarCap2"
+53/texture = ExtResource( 35 )
+53/tex_offset = Vector2( 0, 0 )
+53/region = Rect2( 0, 0, 0, 0 )
+53/occluder_offset = Vector2( 48, 16 )
+53/navigation_offset = Vector2( 48, 16 )
+53/shape_offset = Vector2( 0, 0 )
+53/shapes = [  ]
+54/name = "PillarCap3"
+54/texture = ExtResource( 36 )
+54/tex_offset = Vector2( 0, 0 )
+54/region = Rect2( 0, 0, 0, 0 )
+54/occluder_offset = Vector2( 48, 16 )
+54/navigation_offset = Vector2( 48, 16 )
+54/shape_offset = Vector2( 0, 0 )
+54/shapes = [  ]
+55/name = "PillarCap4"
+55/texture = ExtResource( 37 )
+55/tex_offset = Vector2( 0, 0 )
+55/region = Rect2( 0, 0, 0, 0 )
+55/occluder_offset = Vector2( 48, 16 )
+55/navigation_offset = Vector2( 48, 16 )
+55/shape_offset = Vector2( 0, 0 )
+55/shapes = [  ]
+56/name = "CrackedFloorBlock"
+56/texture = ExtResource( 38 )
+56/tex_offset = Vector2( 0, 0 )
+56/region = Rect2( 0, 0, 0, 0 )
+56/occluder_offset = Vector2( 16, 16 )
+56/navigation_offset = Vector2( 16, 16 )
+56/shape_offset = Vector2( 16, 16 )
+56/shapes = [ SubResource( 6 ) ]
+57/name = "BGSwingTile"
+57/texture = ExtResource( 39 )
+57/tex_offset = Vector2( 0, 0 )
+57/region = Rect2( 0, 0, 0, 0 )
+57/occluder_offset = Vector2( 16, 16 )
+57/navigation_offset = Vector2( 16, 16 )
+57/shape_offset = Vector2( 0, 0 )
+57/shapes = [  ]
+

@@ -129,7 +129,7 @@ func start(player):
 	map.set("camera", player.get_node("Camera2D"))
 	map.load_map(get_node("level/LVL_SANDBOX"))
 	get_node("gui/sound").play("confirm")
-	player.set_global_pos(Vector2(-80, -416))
+	player.set_global_pos(Vector2(-160, -416))
 	get_node("playercontainer").add_child(player)
 	player.load_tilemap(get_node("level/LVL_SANDBOX"))
 	select.hide()
@@ -164,7 +164,7 @@ func reset_level():
 	get_node("playercontainer").add_child(player)
 	map.set("camera", player.get_node("Camera2D"))
 	get_node("gui/CanvasLayer/hud").reset()
-	teleport("res://levels/sandbox/sandbox.scn", Vector2(-80, -416), null)
+	teleport("res://levels/sandbox/sandbox.scn", Vector2(-160, -416), null)
 	is_paused = false
 	pause.hide()
 	gameover = false
