@@ -93,6 +93,9 @@ var current_mp_cycle = 0
 
 var gameover = false
 
+var npc
+var dialog
+
 func get_critical_bonus(damage):
 	var chance = randf()
 	if (chance <= luck / 100.0):
@@ -196,6 +199,8 @@ func check_damage(damageTiles):
 	var dx = 0
 	var dy = 0
 
+	npc = null
+
 	if (!invulnerable && !is_transforming && shield == null):
 		for i in damageTiles:
 			if (i.get_name() == "damagable" || (i.get_name() == "sunbeam" && !is_demonic)):
@@ -223,6 +228,13 @@ func check_damage(damageTiles):
 					get_tree().get_root().get_node("world").set("gameover", true)
 					#set_pause_mode(2)
 					#get_tree().set_pause(true)
+			if (i.get_name() == "npc"):
+				npc = i.get_parent()
+		
+		if (npc != null):
+			get_node("talk").show()
+		else:
+			get_node("talk").hide()
 		
 		# calculate throwback based on sum total positions of damagables
 		if (dx != 0):
@@ -432,7 +444,6 @@ func check_blood(areaTiles):
 			consumable = i.get_parent()
 	
 	if (consumable != null && !is_transforming && blood_requested && consumable.get("current_consume_value") > 0):
-		blood_requested = false
 		consumable.bleed()
 		current_blood += consumable.get("consume_factor")
 		if (current_blood >= max_blood):
@@ -453,6 +464,13 @@ func check_blood(areaTiles):
 				set_stats()
 				current_hp = hp
 				current_mp = mp
+
+	if (npc != null && blood_requested && !is_transforming):
+		dialog.start(npc.get("dialogues"))
+		npc = null
+		blood_requested = false
+		get_tree().set_pause(true)
+	blood_requested = false
 
 func display_demonic():
 	demonic_display.show()
@@ -772,7 +790,6 @@ func step_player(delta):
 		new_animation = "gameover"
 		animation_speed = 1
 		if (!animation_player.is_playing()):
-			print("animation not playing anymore")
 			get_tree().get_root().get_node("world").show_gameover()
 			set_pause_mode(0)
 	play_animation(new_animation, animation_speed)
@@ -1081,6 +1098,7 @@ func _ready():
 	animation_player = get_node("AnimationPlayer")
 	climbspeed = animation_player.get_animation("climb").get_length() * 6
 	damage_rect = get_node("damage")
+	dialog = get_tree().get_root().get_node("world/gui/CanvasLayer/dialogue")
 	spell_icons = get_tree().get_root().get_node("world/gui/CanvasLayer/hud/SpellIcons")
 	demonic_display = get_tree().get_root().get_node("world/gui/CanvasLayer/sequences")
 	default_sprite = get_node("NormalSpriteGroup")

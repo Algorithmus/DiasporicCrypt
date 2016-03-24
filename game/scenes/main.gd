@@ -13,6 +13,7 @@ var is_paused = false
 var music
 var choice
 var gameover = false
+var dialog
 
 var map
 var map_position = preload("res://gui/maps/position.scn")
@@ -27,8 +28,8 @@ var aOffset
 var fspriteOffset
 var aspriteOffset
 
-var friederich = preload("res://players/friederich/friederich.xml")
-var adela = preload("res://players/adela/adela.xml")
+var friederich = preload("res://players/friederich/friederich.scn")
+var adela = preload("res://players/adela/adela.scn")
 var selected_character
 
 func _ready():
@@ -47,6 +48,7 @@ func _ready():
 	get_node("gui/CanvasLayer/chain/chaintext").hide()
 	get_node("gui/CanvasLayer/chain/newattack").hide()
 	get_node("gui/CanvasLayer/chain").hide()
+	dialog = get_node("gui/CanvasLayer/dialogue")
 	
 	for spell in get_node("gui/CanvasLayer/hud/SpellIcons").get_children():
 		spell.hide()
@@ -86,7 +88,7 @@ func _on_resolution_changed():
 	select.get_node("adela_sprite").set_pos(Vector2(new_size.x - aspriteOffset.x*scaleX, new_size.y - aspriteOffset.y))
 
 func _input(event):
-	if (!gameover):
+	if (!gameover && dialog.get("dialogs") == null):
 		if (event.is_action("ui_pause") && event.is_pressed() && !event.is_echo() && get_node("playercontainer").has_node("player") && !get_node("playercontainer/player").get("is_transforming")):
 			if (is_paused):
 				pause.hide()
@@ -111,6 +113,9 @@ func _input(event):
 				map.hide()
 			else:
 				map.show()
+	if (dialog.get("dialogs") != null):
+		if ((event.is_action_pressed("ui_select") || event.is_action_pressed("ui_accept") || event.is_action_pressed("ui_attack") || event.is_action_pressed("ui_magic") || event.is_action_pressed("ui_blood")) && event.is_pressed() && !event.is_echo()):
+			dialog.check_dialog()
 
 func _select_friederich():
 	selected_character = friederich
