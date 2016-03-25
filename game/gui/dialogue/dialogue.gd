@@ -27,7 +27,7 @@ const CHOICE_VALUE = 2
 #dialogue - another dialog array (replace current one completely) or index for current dialog array to jump to
 const CHOICE_ORIENTATION = 3
 
-var avatars = {"Friederich": preload("res://gui/dialogue/profiles/friederich.png")}
+var avatars = {"Friederich": preload("res://gui/dialogue/profiles/friederich.png"), "Kaleva": preload("res://gui/dialogue/profiles/kaleva.png")}
 
 func _ready():
 	get_node("frame").hide()
