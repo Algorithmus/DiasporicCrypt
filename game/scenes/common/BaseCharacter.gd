@@ -49,11 +49,21 @@ var hp = 0
 var current_hp = 0
 var ep = 0
 
+var elemental_weaknesses = []
+var elemental_protection = []
+
 func get_def_adjusted_damage(damage):
 	return round(damage * (1 - def / 512.0))
 
-func get_atk_adjusted_damage(damage):
-	return round(damage * 2 + randf()*0.1*damage)
+func get_atk_adjusted_damage(damage, type):
+	# calculate effects of elemental weaknesses/immunity
+	var elemental_constant = 1
+	if (elemental_weaknesses.find(type) >= 0):
+		elemental_constant = 1.5
+	if (elemental_protection.find(type) >= 0):
+		elemental_constant = 0
+	
+	return round(damage * 2 * elemental_constant + randf()*0.1*damage)
 
 func min_array(array):
 	if (array.size() == 1):

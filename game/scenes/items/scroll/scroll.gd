@@ -2,4 +2,7 @@
 extends "res://scenes/items/BaseItem.gd"
 
 func _ready():
-	type = "scroll"
+	pass
+
+func add_to_inventory():
+	Globals.get("scrolls")[item.title] = item

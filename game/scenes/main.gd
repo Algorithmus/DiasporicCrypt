@@ -6,6 +6,7 @@ extends Node2D
 # var b="textvar"
 var original_size
 var pause
+var pausemenu
 var select
 var sequences
 var root
@@ -32,24 +33,35 @@ var friederich = preload("res://players/friederich/friederich.scn")
 var adela = preload("res://players/adela/adela.scn")
 var selected_character
 
+var inventoryclass = preload("res://scenes/items/Inventory.gd")
+var itemfactory = preload("res://scenes/items/ItemFactory.gd")
+
 func _ready():
 	# Initialization here
+	Globals.set("itemfactory", itemfactory.new())
 	root = get_tree().get_root()
 	original_size = root.get_rect().size
 	root.connect("size_changed", self, "_on_resolution_changed")
 	pause = get_node("gui/CanvasLayer/pause")
+	pausemenu = pause.get_node("menu")
 	sequences = get_node("gui/CanvasLayer/sequences")
 	sequences.get_node("demonic/sprite/friederich").hide()
 	sequences.get_node("demonic/sprite/adela").hide()
 	sequences.get_node("demonic").hide()
 	sequences.hide()
 	music = get_node("music")
+	pausemenu.hide()
 	pause.hide()
 	get_node("gui/CanvasLayer/chain/chaintext").hide()
 	get_node("gui/CanvasLayer/chain/newattack").hide()
 	get_node("gui/CanvasLayer/chain").hide()
 	dialog = get_node("gui/CanvasLayer/dialogue")
 	
+	if (Globals.has("sfxvolume")):
+		AudioServer.set_fx_global_volume_scale(Globals.get("sfxvolume"))
+	if (Globals.has("bgmvolume")):
+		AudioServer.set_stream_global_volume_scale(Globals.get("bgmvolume"))
+
 	for spell in get_node("gui/CanvasLayer/hud/SpellIcons").get_children():
 		spell.hide()
 	select = get_node("gui/CanvasLayer/select")
@@ -90,22 +102,26 @@ func _on_resolution_changed():
 func _input(event):
 	if (!gameover && dialog.get("dialogs") == null):
 		if (event.is_action("ui_pause") && event.is_pressed() && !event.is_echo() && get_node("playercontainer").has_node("player") && !get_node("playercontainer/player").get("is_transforming")):
-			if (is_paused):
+			if (is_paused && pausemenu.can_unpause()):
+				pausemenu.reset()
+				pausemenu.hide()
 				pause.hide()
 				is_paused = false
-				if (pause.has_node("objects")):
-					pause.get_node("objects").queue_free()
+				if (pausemenu.get_node("panels/map/mapcontainer").has_node("objects")):
+					pausemenu.get_node("panels/map/mapcontainer/objects").queue_free()
 				music.set_volume_db(0)
-			else:
+			elif(!is_paused):
 				pause.show()
+				pausemenu.show()
 				var big_map = map.get_node("objects").duplicate()
 				big_map.set_draw_behind_parent(false)
 				var map_pos_obj = map_position.instance()
 				map_pos_obj.set_pos(Vector2(map.get("offset").x-map.get("objects").get_pos().x, map.get("offset").y-map.get("objects").get_pos().y))
 				big_map.add_child(map_pos_obj)
 				big_map.set_pos(Vector2(original_size.x/2 - map_pos_obj.get_pos().x, original_size.y/2 - map_pos_obj.get_pos().y))
-				pause.add_child(big_map)
+				pausemenu.get_node("panels/map/mapcontainer").add_child(big_map)
 				is_paused = true
+				pausemenu.focus_tab()
 				music.set_volume_db(-20)
 			get_tree().set_pause(is_paused)
 		elif (event.is_action_pressed("ui_select") && event.is_pressed() && !event.is_echo() && !is_paused):
@@ -114,22 +130,29 @@ func _input(event):
 			else:
 				map.show()
 	if (dialog.get("dialogs") != null):
-		if ((event.is_action_pressed("ui_select") || event.is_action_pressed("ui_accept") || event.is_action_pressed("ui_attack") || event.is_action_pressed("ui_magic") || event.is_action_pressed("ui_blood")) && event.is_pressed() && !event.is_echo()):
+		if (event.is_action_pressed("ui_accept") && event.is_pressed() && !event.is_echo()):
 			dialog.check_dialog()
 
 func _select_friederich():
 	selected_character = friederich
 	var player = friederich.instance()
+	Globals.set("player", "friederich")
 	start(player)
 
 func _select_adela():
 	selected_character = adela
 	var player = adela.instance()
+	Globals.set("player", "adela")
 	start(player)
 
 func start(player):
 	_friederich_exit()
 	_adela_exit()
+	var inventory = inventoryclass.new()
+	inventory.set("player", player)
+	Globals.set("inventory", inventory)
+	Globals.set("scrolls", {})
+	Globals.set("gold", 0)
 	display_level_title("LVL_SANDBOX")
 	map.set("camera", player.get_node("Camera2D"))
 	map.load_map(get_node("level/LVL_SANDBOX"))
@@ -163,16 +186,21 @@ func reset_level():
 	get_node("gui/sound").play("confirm")
 	hide_choice()
 	var old_player = get_node("playercontainer/player")
+	get_node("gui/CanvasLayer/hud/SpellIcons/" + old_player.get_selected_spell_id()).hide()
 	get_node("playercontainer").remove_child(old_player)
 	old_player.queue_free()
 	var player = selected_character.instance()
 	get_node("playercontainer").add_child(player)
+	Globals.get("inventory").set("player", player)
 	map.set("camera", player.get_node("Camera2D"))
 	get_node("gui/CanvasLayer/hud").reset()
 	teleport("res://levels/sandbox/sandbox.scn", Vector2(-160, -416), null)
 	is_paused = false
 	pause.hide()
 	gameover = false
+	Globals.get("inventory").clear_inventory()
+	Globals.set("gold", 0)
+	Globals.set("scrolls", {})
 	get_tree().set_pause(false)
 
 func reset():
@@ -221,6 +249,11 @@ func teleport(new_level, pos, teleport):
 	level_title.seek(0, true)
 	if (new_level_obj.get_name() != "LVL_NOTITLE"):
 		display_level_title(new_level_obj.get_name())
+	# check that any scrolls already collected do not appear in the level again
+	if (new_level_obj.has_node("tilemap/ScrollGroup")):
+		for i in new_level_obj.get_node("tilemap/ScrollGroup").get_children():
+			if (Globals.get("scrolls").has(i.get("title"))):
+				i.queue_free()
 
 func sequence_finished():
 	sequences.get_node("demonic").hide()

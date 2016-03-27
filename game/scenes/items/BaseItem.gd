@@ -4,8 +4,10 @@ extends Node2D
 var taken = false
 var sound
 export var title = "ITEM_POTION"
-var type = "item"
 var sfx = "potion"
+var itemfactory = preload("res://scenes/items/ItemFactory.gd")
+var itemfactory_obj
+var item
 
 func _fixed_process(delta):
 	if (!taken):
@@ -19,11 +21,17 @@ func _fixed_process(delta):
 func take_item(i):
 	sound.play(sfx)
 	taken = true
-	get_tree().get_root().get_node("world/gui/CanvasLayer/items").display_item(title, type)
+	get_tree().get_root().get_node("world/gui/CanvasLayer/items").display_item(title, item)
 	remove_child(get_node("Sprite"))
+	add_to_inventory()
+
+func add_to_inventory():
+	Globals.get("inventory").add_item(item, 1)
 
 func _ready():
-	# Initialization here
+	itemfactory_obj = itemfactory.new()
+	item = itemfactory_obj.items[title]
+	
 	sound = get_node("sound")
 	
 	set_fixed_process(true)

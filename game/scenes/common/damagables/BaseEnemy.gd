@@ -91,20 +91,22 @@ func check_damage():
 				var collider
 				var damage = 0
 				if (i.has_node("weapon") && !magic_only):
+					var type = i.get("type")
 					collider = i.get_node("weapon")
 					player.get_node("player").set("hit_enemy", true)
 					var special_factor = 1
 					if (i.get("atk")):
 						special_factor = i.get("atk")
-					var atk_adjusted = get_atk_adjusted_damage(player.get_node("player").get("atk")*special_factor)
+					var atk_adjusted = get_atk_adjusted_damage(player.get_node("player").get("atk")*special_factor, type)
 					var critical = player.get_node("player").get_critical_bonus(atk_adjusted)
 					damage = max(get_def_adjusted_damage(atk_adjusted + critical), 0)
 				if (i.has_node("magic") || (!sunbeam_immunity && i.get_name() == "sunbeam")):
+					var type = i.get_parent().get("type")
 					# freeze in collision block if hit with an ice attack
 					# freeze blocks are essentially one way platforms
 					# it's to allow any overlapping enemies to walk past
 					# without messing up collision detection
-					if (i.get_parent() != null && i.get_parent().get_name() == "Ice"):
+					if (i.get_parent() != null && type == "ice"):
 						frozen = true
 						freezeblock_obj = freezeblock.instance()
 						var freezescale = sprite_offset.y * 2 / TILE_SIZE
@@ -121,7 +123,7 @@ func check_damage():
 						if (has_node(damage_rect.get_name())):
 							remove_child(damage_rect)
 					collider = i.get_node("magic")
-					damage = max(get_def_adjusted_damage(get_atk_adjusted_damage(calculate_atk_value(i))), 0)
+					damage = max(get_def_adjusted_damage(get_atk_adjusted_damage(calculate_atk_value(i)), type), 0)
 					if (collider == null):
 						collider = i.get_node("CollisionShape2D")
 						damage = max(get_def_adjusted_damage(hp * sunbeam_strength), 0)
@@ -225,7 +227,7 @@ func bleed():
 
 func die():
 	var gold_obj = goldclass.instance()
-	gold_obj.set("title", gold)
+	gold_obj.set("value", gold)
 	var exporb = expclass.instance()
 	exporb.set_value(ep)
 	gold_obj.set_global_pos(Vector2(get_global_pos().x - sprite_offset.x, get_global_pos().y + sprite_offset.y - TILE_SIZE/2))

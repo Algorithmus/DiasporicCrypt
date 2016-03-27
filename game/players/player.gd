@@ -30,10 +30,10 @@ var blood_requested = false
 var hit_enemy = false
 var weapon_type = ""
 # shared spells
-var magic_spells = [{"id": "thunder", "mp": 40, "auracolor": Color(1, 1, 1), "weaponcolor1": Color(1, 247/255.0, 138/255.0), "weaponcolor2": Color(0, 116/255.0, 1), "is_single": false, "charge": preload("res://players/magic/thunder/charge.scn"), "attack": preload("res://players/magic/thunder/thunder.scn"), "delay": true, "atk": 0.8}, 
-					{"id":"hex", "mp": 40, "auracolor": Color(169/255.0, 0, 1), "weaponcolor1": Color(0, 0, 0), "weaponcolor2": Color(1, 0, 0), "is_single": false, "delay": true, "attack": preload("res://players/magic/hex/hex.scn"), "atk": 0.8}, 
+var magic_spells = [{"id": "thunder", "type": "thunder", "mp": 40, "auracolor": Color(1, 1, 1), "weaponcolor1": Color(1, 247/255.0, 138/255.0), "weaponcolor2": Color(0, 116/255.0, 1), "is_single": false, "charge": preload("res://players/magic/thunder/charge.scn"), "attack": preload("res://players/magic/thunder/thunder.scn"), "delay": true, "atk": 0.8}, 
+					{"id":"hex", "type": "dark", "mp": 40, "auracolor": Color(169/255.0, 0, 1), "weaponcolor1": Color(0, 0, 0), "weaponcolor2": Color(1, 0, 0), "is_single": false, "delay": true, "attack": preload("res://players/magic/hex/hex.scn"), "atk": 0.8}, 
 					{"id":"shield", "mp": 60, "auracolor": Color(0, 0, 1), "weaponcolor1": Color(0, 55/255.0, 1), "weaponcolor2": Color(0, 208/255.0, 1), "is_single": false, "delay": false, "attack": preload("res://players/magic/shield/shield.scn"), "charge": preload("res://players/magic/shield/charge.scn")}, 
-					{"id":"magicmine", "mp": 20, "auracolor": Color(1, 129/255.0, 0), "weaponcolor1": Color(1, 1, 0), "weaponcolor2": Color(78/255.0, 0 , 1), "is_single": true, "delay": false, "attack": preload("res://players/magic/magicmine/mine.scn")}, 
+					{"id":"magicmine", "mp": 20, "auracolor": Color(1, 129/255.0, 0), "weaponcolor1": Color(1, 1, 0), "weaponcolor2": Color(78/255.0, 0 , 1), "is_single": true, "delay": false, "attack": preload("res://players/magic/magicmine/mine.scn"), "atk": 40}, 
 					{"id":"void", "mp": 80, "auracolor": Color(110/255.0, 110/255.0, 122/255.0), "weaponcolor1": Color(0, 0, 0), "weaponcolor2": Color(1, 1, 1), "is_single": false, "delay": true, "attack": preload("res://players/magic/void/void.scn")}]
 var selected_spell
 var request_spell_change = 0
@@ -106,21 +106,21 @@ func set_stats():
 	if (is_demonic):
 		atk = base_atk + demonic_atk * base_atk
 		def = base_def + demonic_def * base_def
-		hp = base_hp + demonic_hp * base_hp
-		mp = base_mp + demonic_mp * base_mp
+		hp = round(base_hp + demonic_hp * base_hp)
+		mp = round(base_mp + demonic_mp * base_mp)
 		luck = base_luck + demonic_luck * base_luck
 		mag = base_mag + demonic_mag * base_mag
 	else:
 		atk = base_atk
 		def = base_def
-		current_hp = base_hp * float(current_hp) / hp
+		current_hp = round(base_hp * float(current_hp) / hp)
 		hp = base_hp
 		mp = base_mp
 		luck = base_luck
 		mag = base_mag
 
-func get_exp_orb(orb):
-	var level_up = exp_growth_obj.check_exp(level, orb.get("title"))
+func get_exp_orb(value):
+	var level_up = exp_growth_obj.check_exp(level, value)
 	if(level_up > 0):
 		level += level_up
 		base_atk = exp_growth_obj.atk_growth(level)
@@ -208,7 +208,7 @@ func check_damage(damageTiles):
 				if (i.get_name() == "damagable"):
 					damage = max(get_def_adjusted_damage(hp * 0.075), 0)
 					if (i.get_parent() != null && i.get_parent().get("atk") != null):
-						damage = max(get_def_adjusted_damage(get_atk_adjusted_damage(i.get_parent().get("atk"))), 0)
+						damage = max(get_def_adjusted_damage(get_atk_adjusted_damage(i.get_parent().get("atk"), null)), 0)
 				elif (i.get_name() == "sunbeam"):
 					damage = max(get_def_adjusted_damage(hp * 0.1), 0)
 				current_hp = max(current_hp - damage, 0)
@@ -466,7 +466,8 @@ func check_blood(areaTiles):
 				current_mp = mp
 
 	if (npc != null && blood_requested && !is_transforming):
-		dialog.start(npc.get("dialogues"))
+		npc.start(get_global_pos())
+		#dialog.start(npc.get("dialogues"))
 		npc = null
 		blood_requested = false
 		get_tree().set_pause(true)
@@ -488,7 +489,7 @@ func check_demonic():
 			add_child(default_sprite)
 			is_demonic = false
 			is_transforming = true
-			current_mp = base_mp * float(current_mp / mp)
+			current_mp = min(round(base_mp * float(current_mp / mp)), base_mp)
 			set_stats()
 			update_fusion()
 
@@ -579,6 +580,8 @@ func update_fusion():
 	var auracolor = current_spell["auracolor"]
 	var weaponcolor1 = current_spell["weaponcolor1"]
 	var weaponcolor2 = current_spell["weaponcolor2"]
+	if (current_spell.has("type")):
+		weapon_collider.set("type", current_spell["type"])
 	
 	update_attack_color("attack", auracolor, weaponcolor1, weaponcolor2)
 	update_attack_color("aattack", auracolor, weaponcolor1, weaponcolor2)
@@ -796,7 +799,7 @@ func step_player(delta):
 
 func regenerate_mp():
 	current_mp_cycle += 1
-	if (current_mp_cycle >= MP_REGEN_PERIOD - mag && !is_charging):
+	if (current_mp_cycle >= MP_REGEN_PERIOD - mag && !is_charging && current_mp < mp):
 		current_mp_cycle = 0
 		current_mp += 1
 

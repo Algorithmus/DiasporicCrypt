@@ -2,6 +2,7 @@
 extends "res://players/magic/BaseProjectile.gd"
 
 var dust
+var type = "ice"
 
 func _ready():
 	sprite = get_node("Iceball")

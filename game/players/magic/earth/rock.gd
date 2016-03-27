@@ -8,6 +8,7 @@ var sprite
 var sprite_offset
 var player
 var atk = 10
+var type = "earth"
 
 func _ready():
 	set_fixed_process(true)

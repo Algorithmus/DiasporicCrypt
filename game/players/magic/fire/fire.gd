@@ -1,6 +1,8 @@
 
 extends "res://players/magic/BaseProjectile.gd"
 
+var type = "fire"
+
 func _ready():
 	sprite = get_node("Fireball")
 	charge_sfx = "charge"

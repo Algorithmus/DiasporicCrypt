@@ -93,8 +93,9 @@ func _ready():
 	demonic_display.get_node("demonic/sprite/friederich").show()
 	
 	weapon_type = "sword"
-	magic_spells.append({"id":"earth", "mp": 100, "auracolor":Color(170/255.0, 1, 0), "weaponcolor1":Color(64/255.0, 58/255.0, 56/255.0), "weaponcolor2":Color(181/255.0, 188/255.0, 0), "is_single": false, "charge": preload("res://players/magic/earth/charge.scn"), "attack": preload("res://players/magic/earth/earth.scn"), "delay": true, "atk": 1.2})
-	magic_spells.append({"id":"fire", "mp": 20, "auracolor":Color(1, 77/255.0, 0), "weaponcolor1":Color(1, 1, 0), "weaponcolor2":Color(1, 0, 0), "is_single": false, "attack": preload("res://players/magic/fire/fire.scn"), "delay": false, "atk": 0.7})
+	magic_spells.append({"id":"earth", "type": "earth", "mp": 100, "auracolor":Color(170/255.0, 1, 0), "weaponcolor1":Color(64/255.0, 58/255.0, 56/255.0), "weaponcolor2":Color(181/255.0, 188/255.0, 0), "is_single": false, "charge": preload("res://players/magic/earth/charge.scn"), "attack": preload("res://players/magic/earth/earth.scn"), "delay": true, "atk": 1.2})
+	magic_spells.append({"id":"fire", "type": "fire", "mp": 20, "auracolor":Color(1, 77/255.0, 0), "weaponcolor1":Color(1, 1, 0), "weaponcolor2":Color(1, 0, 0), "is_single": false, "attack": preload("res://players/magic/fire/fire.scn"), "delay": false, "atk": 0.7})
+	Globals.set("available_spells", magic_spells)
 	selected_spell = magic_spells.size()-1
 	spell_icons.get_node(magic_spells[selected_spell]["id"]).show()
 	update_fusion()
@@ -284,6 +285,8 @@ func step_player(delta):
 								chaingui.get_node("AnimationPlayer").play("newattack")
 							remove_special_collider()
 							special_collider = current_chain_special["collider"].instance()
+							if (magic_spells[selected_spell].has("type")):
+								special_collider.set("type", magic_spells[selected_spell]["type"])
 							var special_offset = 0
 							if (current_chain_special["id"] == "void"):
 								if (is_demonic):
@@ -519,6 +522,8 @@ func update_fusion():
 	var auracolor = current_spell["auracolor"]
 	var weaponcolor1 = current_spell["weaponcolor1"]
 	var weaponcolor2 = current_spell["weaponcolor2"]
+	if (current_spell.has("type")):
+		chain_collider.set("type", current_spell["type"])
 	
 	update_attack_color("chainattack", auracolor, weaponcolor1, weaponcolor2)
 	update_attack_color("achainattack", auracolor, weaponcolor1, weaponcolor2)

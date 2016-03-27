@@ -9,3 +9,4 @@ func _ready():
 	ep = 100
 
 	current_hp = hp
+	elemental_weaknesses.append("fire")

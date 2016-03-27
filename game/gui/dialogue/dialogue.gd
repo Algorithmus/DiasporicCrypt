@@ -19,7 +19,7 @@ const DIAG_ITEM = 3
 const DIAG_CHOICE = 4
 
 const ITEM_TITLE = 0
-const ITEM_TYPE = 1
+const ITEM_VALUE = 1
 
 const CHOICE_TEXT = 0
 const CHOICE_ACTION = 1 #dialog, save, shop or end
@@ -27,7 +27,9 @@ const CHOICE_VALUE = 2
 #dialogue - another dialog array (replace current one completely) or index for current dialog array to jump to
 const CHOICE_ORIENTATION = 3
 
-var avatars = {"Friederich": preload("res://gui/dialogue/profiles/friederich.png"), "Kaleva": preload("res://gui/dialogue/profiles/kaleva.png")}
+var avatars = {"Friederich": preload("res://gui/dialogue/profiles/friederich.png"), 
+				"Kaleva": preload("res://gui/dialogue/profiles/kaleva.png"),
+				"Adela": preload("res://gui/dialogue/profiles/adela.png")}
 
 func _ready():
 	get_node("frame").hide()
@@ -139,11 +141,16 @@ func show_dialog():
 		if (current_dialog < dialogs.size()):
 			if (dialog[DIAG_DIRECTION] != 0):
 				profile.show()
-				profile.get_node("avatar").set_texture(avatars[dialog[DIAG_TITLE]])
+				var avatar = dialog[DIAG_TITLE]
+				var title = tr(dialog[DIAG_TITLE])
+				if (dialog[DIAG_TITLE] == "player"):
+					avatar = Globals.get("player").capitalize()
+					title = avatar
+				profile.get_node("avatar").set_texture(avatars[avatar])
 				textarea.set_pos(Vector2(191*(dialog[DIAG_DIRECTION] - 1)/2 + 215, textarea.get_pos().y))
 				hchoice.set_pos(Vector2(191*(dialog[DIAG_DIRECTION] - 1)/2 + 215, hchoice.get_pos().y))
 				vchoice.set_pos(Vector2(191*(dialog[DIAG_DIRECTION] - 1)/2 + 215, vchoice.get_pos().y))
-				profile.get_node("title").set_text(tr(dialog[DIAG_TITLE]))
+				profile.get_node("title").set_text(title)
 				profile.get_node("avatar").set_scale(Vector2(dialog[DIAG_DIRECTION], 1))
 				profile.get_node("title").set_align(-(dialog[DIAG_DIRECTION] - 1))
 				profile.get_node("title").set_pos(Vector2(242*(dialog[DIAG_DIRECTION] - 1) / 2 + 10, profile.get_node("title").get_pos().y))
@@ -158,19 +165,25 @@ func show_dialog():
 			if (dialog.size() > DIAG_ITEM && dialog[DIAG_ITEM] != null):
 				basetext = tr("ITEM_RECEIVED")
 				var item = dialog[DIAG_ITEM]
-				var itemtext = item[ITEM_TITLE]
+				var itemid = item[ITEM_TITLE]
+				var itemtext = tr(itemid)
+				var item_obj = Globals.get("itemfactory").items[itemid]
 				var itemicon = "res://gui/hud/potion.png"
-				if (item[ITEM_TYPE] == "exp"):
+				if (item_obj["type"] == "exp"):
 					itemicon = "res://gui/hud/exporb.png"
-					itemtext = itemtext + tr("ITEM_EXP")
-				if (item[ITEM_TYPE] == "gold"):
+					itemtext = str(item[ITEM_VALUE]) + tr("ITEM_EXP")
+					get_tree().get_root().get_node("world/playercontainer/player").get_exp_orb(item[ITEM_VALUE])
+				elif (item_obj["type"] == "gold"):
 					itemicon = "res://gui/hud/gold.png"
-					itemtext = itemtext + "G"
-				if (item[ITEM_TYPE] == "scroll"):
+					itemtext = str(item[ITEM_VALUE]) + "G"
+					Globals.set("gold", Globals.get("gold") + item[ITEM_VALUE])
+				elif (item_obj["type"] == "scroll"):
 					itemicon = "res://gui/hud/scroll.png"
+					Globals.get("scrolls")[itemid] = item_obj
+				else:
+					Globals.get("inventory").add_item(item_obj, item[ITEM_VALUE])
 				itemtext = "[img]" + itemicon + "[/img]" + itemtext
 				basetext = basetext.replace("[item]", itemtext)
-				#put item in inventory
 			text.set_bbcode(basetext)
 			text.set_visible_characters(0)
 		else :

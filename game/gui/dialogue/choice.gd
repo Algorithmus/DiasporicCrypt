@@ -1,5 +1,5 @@
 
-extends ToolButton
+extends Control
 
 var action
 var data
