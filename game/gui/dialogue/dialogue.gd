@@ -109,7 +109,7 @@ func find_choice():
 
 func check_dialog():
 	if (text.get_total_character_count() == text.get_visible_characters() || text.get_visible_characters() < 0):
-		if (has_choice()):
+		if (has_choice() && find_choice() != null):
 			var choice = find_choice()
 			if (choice.get("action") == "dialog"):
 				clear_choices()
@@ -147,9 +147,9 @@ func show_dialog():
 					avatar = Globals.get("player").capitalize()
 					title = avatar
 				profile.get_node("avatar").set_texture(avatars[avatar])
-				textarea.set_pos(Vector2(191*(dialog[DIAG_DIRECTION] - 1)/2 + 215, textarea.get_pos().y))
-				hchoice.set_pos(Vector2(191*(dialog[DIAG_DIRECTION] - 1)/2 + 215, hchoice.get_pos().y))
-				vchoice.set_pos(Vector2(191*(dialog[DIAG_DIRECTION] - 1)/2 + 215, vchoice.get_pos().y))
+				textarea.set_pos(Vector2(179*(dialog[DIAG_DIRECTION] - 1)/2 + 215, textarea.get_pos().y))
+				hchoice.set_pos(Vector2(179*(dialog[DIAG_DIRECTION] - 1)/2 + 215, hchoice.get_pos().y))
+				vchoice.set_pos(Vector2(179*(dialog[DIAG_DIRECTION] - 1)/2 + 215, vchoice.get_pos().y))
 				profile.get_node("title").set_text(title)
 				profile.get_node("avatar").set_scale(Vector2(dialog[DIAG_DIRECTION], 1))
 				profile.get_node("title").set_align(-(dialog[DIAG_DIRECTION] - 1))

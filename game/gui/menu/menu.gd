@@ -21,7 +21,8 @@ func _ready():
 	set_fixed_process(true)
 
 func _draw():
-	VisualServer.canvas_item_set_clip(get_canvas_item(), true)
+	#VisualServer.canvas_item_set_clip(get_canvas_item(), true)
+	pass
 
 func hide_panels():
 	for panel in panels.get_children():
@@ -34,6 +35,10 @@ func focus_tab():
 	tabs.get_node(selectedtab).grab_focus()
 	tabs.get_node(selectedtab).set("is_unfocused", false)
 	set_process_input(true)
+	if (Globals.get("player") == "friederich"):
+		tabs.get_node("stats").set_normal_texture(preload("res://gui/menu/tabs/friederich.png"))
+	else:
+		tabs.get_node("stats").set_normal_texture(preload("res://gui/menu/tabs/adela.png"))
 
 func change_tab(tab):
 	panels.get_node(selectedtab).hide()
@@ -41,14 +46,12 @@ func change_tab(tab):
 	if (panels.get_node(selectedtab).has_method("update_container")):
 		panels.get_node(selectedtab).update_container()
 	panels.get_node(selectedtab).show()
-	get_node("tabs").get_material().set_shader_param("start", TAB_FOCUS_START)
-	get_node("tabs").get_material().set_shader_param("stop", TAB_FOCUS_STOP)
+	tabs.set_opacity(1)
 
 func unfocus_tab():
 	var tab = panels.get_node(selectedtab)
 	if (tab.get("has_content")):
-		get_node("tabs").get_material().set_shader_param("start", TAB_START)
-		get_node("tabs").get_material().set_shader_param("stop", TAB_STOP)
+		tabs.set_opacity(0.5)
 	else:
 		focus_tab()
 

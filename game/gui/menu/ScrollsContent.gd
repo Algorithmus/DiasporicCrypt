@@ -36,12 +36,12 @@ func update_container():
 	var scrolllist = []
 	for scroll in scrollcontainer.get_children():
 		scrolllist.append(scrolls[scroll.get_name()])
+		scroll.set_opacity(0.5)
+		scroll.set("custom_colors/font_color", null)
 	if (scrolllist.size() > 0):
 		scrolllist.sort_custom(preload("res://scenes/items/scroll/ScrollItem.gd"), "sort_scrolls")
 	for i in range(0, scrolllist.size()-1):
 		var scrollitem = scrollcontainer.get_node(scrolllist[i].title)
-		scrollitem.set_opacity(0.5)
-		scrollitem.set("custom_colors/font_color", null)
 		scrollcontainer.move_child(scrollitem, i)
 	
 	show_scroll()
@@ -75,10 +75,12 @@ func show_scroll():
 		currentline = 0
 		scrollcontent.scroll_to_line(currentline)
 		has_content = true
+		get_parent().get_parent().get_node("tabs/HBoxContainer/scrolls").set_focus_neighbour(MARGIN_BOTTOM, "")
 	else:
 		scrolltitle.set_text("SCROLL_NONE")
 		scrollcontent.set_bbcode("")
 		get_node("empty").show()
+		get_parent().get_parent().get_node("tabs/HBoxContainer/scrolls").set_focus_neighbour(MARGIN_BOTTOM, ".")
 		has_content = false
 
 func _on_scroll_focus_enter():

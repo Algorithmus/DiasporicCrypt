@@ -12,6 +12,9 @@ var bgmMute = false
 var sfxValue
 var bgmValue
 
+var mute = preload("res://gui/menu/icons/mute.png")
+var sound = preload("res://gui/menu/icons/sound.png")
+
 func _ready():
 	has_content = true
 	if (!Globals.has("sfxvolume")):
@@ -36,7 +39,7 @@ func update_container():
 	bgmMute = Globals.get("bgmmute")
 	update_mute_controls()
 	var resetwidth = get_node("reset").get_size().x
-	get_node("reset").set_pos(Vector2(704 - resetwidth, get_node("reset").get_pos().y))
+	get_node("reset").set_pos(Vector2(689 - resetwidth, get_node("reset").get_pos().y))
 
 func _on_sfxslider_value_changed( value ):
 	if (!sfxMute):
@@ -87,6 +90,7 @@ func save():
 	Globals.set("bgmmute", bgmMute)
 	for key in get_node("inputs").get_children():
 		key.set_input()
+		key.get_node("key").set("custom_colors/font_color", null)
 
 func _on_sfxslider_focus_exit():
 	if (get_focus_owner() != null && get_focus_owner() == get_parent().get_node("tabs/HBoxContainer/settings")):
@@ -115,9 +119,11 @@ func _on_sfxslider_input_event( ev ):
 		if (sfxMute):
 			AudioServer.set_fx_global_volume_scale(0)
 			sfxslider.set_self_opacity(0.5)
+			sfxslider.get_node("mute").set_texture(mute)
 		else:
 			AudioServer.set_fx_global_volume_scale(sfxValue)
 			sfxslider.set_self_opacity(1)
+			sfxslider.get_node("mute").set_texture(sound)
 
 func _on_bgmslider_input_event( ev ):
 	if (ev.is_action_pressed("ui_accept") && ev.is_pressed() && !ev.is_echo()):
@@ -125,6 +131,8 @@ func _on_bgmslider_input_event( ev ):
 		if (bgmMute):
 			AudioServer.set_stream_global_volume_scale(0)
 			bgmslider.set_self_opacity(0.5)
+			bgmslider.get_node("mute").set_texture(mute)
 		else:
 			AudioServer.set_stream_global_volume_scale(bgmValue)
 			bgmslider.set_self_opacity(1)
+			bgmslider.get_node("mute").set_texture(sound)

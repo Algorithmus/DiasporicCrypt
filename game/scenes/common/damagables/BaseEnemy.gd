@@ -123,7 +123,7 @@ func check_damage():
 						if (has_node(damage_rect.get_name())):
 							remove_child(damage_rect)
 					collider = i.get_node("magic")
-					damage = max(get_def_adjusted_damage(get_atk_adjusted_damage(calculate_atk_value(i)), type), 0)
+					damage = max(get_def_adjusted_damage(get_atk_adjusted_damage(calculate_atk_value(i), type)), 0)
 					if (collider == null):
 						collider = i.get_node("CollisionShape2D")
 						damage = max(get_def_adjusted_damage(hp * sunbeam_strength), 0)

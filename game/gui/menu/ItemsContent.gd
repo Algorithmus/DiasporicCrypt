@@ -23,6 +23,7 @@ func _ready():
 
 func update_container():
 	var list = Globals.get("inventory").generate_list(currenttype)
+	set_type_colors()
 	for item in list:
 		if (!itemcontainer.has_node(item["item"].title)):
 			var item_obj = itemclass.instance()
@@ -76,12 +77,19 @@ func set_type(value):
 	clear_items()
 	update_container()
 	info.hide()
+	set_type_colors()
+
+func set_type_colors():
+	var tab = get_node("types/" + currenttype)
+	tab.set("custom_colors/font_color", Color(1, 1, 0))
 	if (currenttype == "special"):
 		use.hide()
 		drop.hide()
+		get_node("types/item").set("custom_colors/font_color", null)
 	else:
 		use.show()
 		drop.show()
+		get_node("types/special").set("custom_colors/font_color", null)
 
 func focus_item_enter():
 	info.show()
@@ -97,7 +105,7 @@ func focus_item_enter():
 	item.get_node("new").hide()
 	info.get_node("image").set_texture(load(item_obj.image))
 	info.get_node("title").set_text(item_obj.title)
-	info.get_node("description").set_bbcode(tr(item_obj.description))
+	info.get_node("description").set_bbcode("[fill]" + tr(item_obj.description) + "[/fill]")
 	if (scrollcontainer.get_v_scroll() + scrollcontainer.get_size().y < item.get_pos().y + item.get_size().y || scrollcontainer.get_v_scroll() > item.get_pos().y):
 		scrollcontainer.set_v_scroll(item.get_pos().y)
 
@@ -122,10 +130,12 @@ func _input(event):
 			newtype = get_node("types").get_child(type.get_index() - 1)
 			set_type(newtype.get_name())
 			newtype.grab_focus()
+			set_process_input(false)
 		if (event.is_action_pressed("ui_right") && selecteditem == null && type.get_index() < get_node("types").get_child_count() - 1):
 			newtype = get_node("types").get_child(type.get_index() + 1)
 			set_type(newtype.get_name())
 			newtype.grab_focus()
+			set_process_input(false)
 		if (event.is_action_pressed("ui_accept") && info.is_visible() && currenttype != "special"):
 			var focus = get_focus_owner()
 			var inventory = Globals.get("inventory")
