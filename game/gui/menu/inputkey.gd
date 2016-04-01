@@ -11,8 +11,11 @@ var isfocusable = true
 var focusup
 var focusdown
 var currentinput
+var keymapclass = preload("res://gui/KeyboardCharacters.gd")
+var keymap
 
 func _ready():
+	keymap = keymapclass.new()
 	key = get_node("key")
 	inputinfo = get_node("input")
 	inputinfo.hide()
@@ -30,12 +33,14 @@ func update_key():
 	key.set("custom_colors/font_color", null)
 
 func set_key(scancode):
-	key.set_text(OS.get_scancode_string(scancode))
+	key.set_text(keymap.map_key(OS.get_scancode_string(scancode)))
 
 func _input(event):
 	if (!iscapture && event.is_action_pressed("ui_accept") && event.is_pressed() && !event.is_echo()):
 		_on_key_pressed()
+		sfx.play("cursor")
 	elif(iscapture && event.type == InputEvent.KEY && event.is_pressed() && !event.is_echo()):
+		sfx.play("confirm")
 		inputinfo.hide()
 		var keylist = get_parent().get_children()
 		# also check to make sure the new input isn't already in use

@@ -14,6 +14,8 @@ var bgmValue
 
 var mute = preload("res://gui/menu/icons/mute.png")
 var sound = preload("res://gui/menu/icons/sound.png")
+var sfxclass = preload("res://gui/menu/sfx.scn")
+var sfx
 
 func _ready():
 	has_content = true
@@ -25,6 +27,8 @@ func _ready():
 	bgmValue = Globals.get("bgmvolume")
 	sfxslider = get_node("sfxslider")
 	bgmslider = get_node("bgmslider")
+	sfx = sfxclass.instance()
+	add_child(sfx)
 
 func update_container():
 	sfxValue = Globals.get("sfxvolume")
@@ -98,9 +102,11 @@ func _on_sfxslider_focus_exit():
 
 func _on_reset_pressed():
 	reset()
+	sfx.play("confirm")
 
 func _on_save_pressed():
 	save()
+	sfx.play("confirm")
 
 func block_cancel():
 	# block focusing on tabs while capturing input

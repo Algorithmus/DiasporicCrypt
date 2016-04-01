@@ -12,6 +12,8 @@ var selecteditem
 var echo = false
 var use
 var drop
+var sfxclass = preload("res://gui/menu/sfx.scn")
+var sfx
 
 func _ready():
 	has_content = true
@@ -20,6 +22,8 @@ func _ready():
 	use = info.get_node("use")
 	drop = info.get_node("drop")
 	itemcontainer = get_node("itemcontainer/VBoxContainer")
+	sfx = sfxclass.instance()
+	add_child(sfx)
 
 func update_container():
 	var list = Globals.get("inventory").generate_list(currenttype)
@@ -150,6 +154,7 @@ func _input(event):
 				else:
 					check_item(item)
 					selecteditem = itemcontainer.get_node(item.title)
+				sfx.play("confirm")
 			elif (focus.get_name() == drop.get_name()):
 				var item = inventory.get("inventory")[selecteditem.get_name()]["item"]
 				var quantity = inventory.remove_item(item, 1)
@@ -158,6 +163,7 @@ func _input(event):
 					clear_selection(item)
 				else:
 					selecteditem = itemcontainer.get_node(item.title)
+				sfx.play("confirm")
 			else:
 				# no items selected, select current item instead
 				var item = inventory.get("inventory")[focus.get_name()]["item"]
@@ -184,6 +190,7 @@ func clear_selection(item):
 	if (itemcontainer.get_child_count() > 0):
 		itemcontainer.get_child(0).grab_focus()
 	else:
+		get_node("noitems").show()
 		get_node("types/" + currenttype).grab_focus()
 
 func check_item(item):

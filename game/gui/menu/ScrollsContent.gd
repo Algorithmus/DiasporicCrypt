@@ -12,6 +12,8 @@ var isreading = false
 var scrollcontainerwidth
 var focusup
 var currentline = 0
+var sfxclass = preload("res://gui/menu/sfx.scn")
+var sfx
 
 func _ready():
 	scrolltitle = get_node("title")
@@ -20,6 +22,8 @@ func _ready():
 	scrollcontainerwidth = get_node("scrollselection").get_size().x
 	focusup = get_node("icon").get_focus_neighbour(MARGIN_TOP)
 	has_content = true
+	sfx = sfxclass.instance()
+	add_child(sfx)
 
 func update_container():
 	var scrolls = Globals.get("scrolls")
@@ -111,6 +115,7 @@ func _input(event):
 			oldscroll.set("custom_colors/font_color", null)
 			index = scrollcontainer.get_child(currentindex).get_name()
 			show_scroll()
+			sfx.play("cursor")
 		elif (event.is_action_pressed("ui_left") && currentindex > 0):
 			currentline = 0
 			currentindex -= 1
@@ -118,5 +123,6 @@ func _input(event):
 			oldscroll.set("custom_colors/font_color", null)
 			index = scrollcontainer.get_child(currentindex).get_name()
 			show_scroll()
+			sfx.play("cursor")
 		scrollcontent.scroll_to_line(currentline)
 		

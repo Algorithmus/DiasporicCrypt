@@ -25,7 +25,7 @@ func _init():
 	potionplus.description = "ITEM_POTION+_DESCRIPTION"
 	potionplus.type = "item"
 	potionplus.value = 500
-	potionplus.image = "res://scenes/items/potion/potion.png"
+	potionplus.image = "res://scenes/items/potion/potionplus.png"
 	potionplus.effect = "hp"
 	items[potionplus.title] = potionplus
 	
