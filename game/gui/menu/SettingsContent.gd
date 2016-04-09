@@ -41,6 +41,7 @@ func update_container():
 	if (!Globals.has("bgmmute")):
 		Globals.set("bgmmute", false)
 	bgmMute = Globals.get("bgmmute")
+	sfxMute = Globals.get("sfxmute")
 	update_mute_controls()
 	var resetwidth = get_node("reset").get_size().x
 	get_node("reset").set_pos(Vector2(689 - resetwidth, get_node("reset").get_pos().y))
@@ -78,12 +79,16 @@ func reset():
 func update_mute_controls():
 	if (sfxMute):
 		sfxslider.set_self_opacity(0.5)
+		sfxslider.get_node("mute").set_texture(mute)
 	else:
 		sfxslider.set_self_opacity(1)
+		sfxslider.get_node("mute").set_texture(sound)
 	if (bgmMute):
 		bgmslider.set_self_opacity(0.5)
+		bgmslider.get_node("mute").set_texture(mute)
 	else:
 		bgmslider.set_self_opacity(1)
+		bgmslider.get_node("mute").set_texture(sound)
 
 func save():
 	sfxValue = sfxslider.get_val()

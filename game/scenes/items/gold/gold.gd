@@ -9,3 +9,4 @@ func _ready():
 
 func add_to_inventory():
 	Globals.set("gold", Globals.get("gold") + value)
+	return true

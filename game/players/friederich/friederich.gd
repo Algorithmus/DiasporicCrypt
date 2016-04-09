@@ -93,10 +93,12 @@ func _ready():
 	demonic_display.get_node("demonic/sprite/friederich").show()
 	
 	weapon_type = "sword"
-	magic_spells.append({"id":"earth", "type": "earth", "mp": 100, "auracolor":Color(170/255.0, 1, 0), "weaponcolor1":Color(64/255.0, 58/255.0, 56/255.0), "weaponcolor2":Color(181/255.0, 188/255.0, 0), "is_single": false, "charge": preload("res://players/magic/earth/charge.scn"), "attack": preload("res://players/magic/earth/earth.scn"), "delay": true, "atk": 1.2})
-	magic_spells.append({"id":"fire", "type": "fire", "mp": 20, "auracolor":Color(1, 77/255.0, 0), "weaponcolor1":Color(1, 1, 0), "weaponcolor2":Color(1, 0, 0), "is_single": false, "attack": preload("res://players/magic/fire/fire.scn"), "delay": false, "atk": 0.7})
+	var spells = Globals.get("magic_spells")
+	for i in range(0, spells.size()):
+		if (spells[i].id == "fire"):
+			magic_spells.append(spells[i])
 	Globals.set("available_spells", magic_spells)
-	selected_spell = magic_spells.size()-1
+	selected_spell = 0
 	spell_icons.get_node(magic_spells[selected_spell]["id"]).show()
 	update_fusion()
 

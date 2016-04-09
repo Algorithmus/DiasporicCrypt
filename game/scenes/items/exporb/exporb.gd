@@ -23,4 +23,4 @@ func take_item(i):
 	.take_item(i)
 
 func add_to_inventory():
-	pass
+	return true

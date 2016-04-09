@@ -16,6 +16,8 @@ var choice
 var gameover = false
 var dialog
 
+var hideshop = false
+
 var map
 var map_position = preload("res://gui/maps/position.scn")
 
@@ -38,6 +40,16 @@ var itemfactory = preload("res://scenes/items/ItemFactory.gd")
 
 func _ready():
 	# Initialization here
+	var magic_spells = [{"id": "thunder", "type": "thunder", "mp": 40, "auracolor": Color(1, 1, 1), "weaponcolor1": Color(1, 247/255.0, 138/255.0), "weaponcolor2": Color(0, 116/255.0, 1), "is_single": false, "charge": preload("res://players/magic/thunder/charge.scn"), "attack": preload("res://players/magic/thunder/thunder.scn"), "delay": true, "atk": 0.8}, 
+					{"id":"hex", "type": "dark", "mp": 40, "auracolor": Color(169/255.0, 0, 1), "weaponcolor1": Color(0, 0, 0), "weaponcolor2": Color(1, 0, 0), "is_single": false, "delay": true, "attack": preload("res://players/magic/hex/hex.scn"), "atk": 0.8}, 
+					{"id":"shield", "mp": 60, "auracolor": Color(0, 0, 1), "weaponcolor1": Color(0, 55/255.0, 1), "weaponcolor2": Color(0, 208/255.0, 1), "is_single": false, "delay": false, "attack": preload("res://players/magic/shield/shield.scn"), "charge": preload("res://players/magic/shield/charge.scn")}, 
+					{"id":"magicmine", "mp": 20, "auracolor": Color(1, 129/255.0, 0), "weaponcolor1": Color(1, 1, 0), "weaponcolor2": Color(78/255.0, 0 , 1), "is_single": true, "delay": false, "attack": preload("res://players/magic/magicmine/mine.scn"), "atk": 40}, 
+					{"id":"void", "mp": 80, "auracolor": Color(110/255.0, 110/255.0, 122/255.0), "weaponcolor1": Color(0, 0, 0), "weaponcolor2": Color(1, 1, 1), "is_single": false, "delay": true, "attack": preload("res://players/magic/void/void.scn")},
+					{"id":"earth", "type": "earth", "mp": 100, "auracolor":Color(170/255.0, 1, 0), "weaponcolor1":Color(64/255.0, 58/255.0, 56/255.0), "weaponcolor2":Color(181/255.0, 188/255.0, 0), "is_single": false, "charge": preload("res://players/magic/earth/charge.scn"), "attack": preload("res://players/magic/earth/earth.scn"), "delay": true, "atk": 1.2},
+					{"id":"fire", "type": "fire", "mp": 20, "auracolor":Color(1, 77/255.0, 0), "weaponcolor1":Color(1, 1, 0), "weaponcolor2":Color(1, 0, 0), "is_single": false, "attack": preload("res://players/magic/fire/fire.scn"), "delay": false, "atk": 0.7},
+					{"id":"wind", "type": "wind", "mp": 120, "auracolor": Color(0, 1, 149/255.0), "weaponcolor1": Color(187/255.0, 1, 231/255.0), "weaponcolor2": Color(0, 191/255.0, 92/255.0), "delay": true, "is_single": false, "charge": preload("res://players/magic/wind/charge.scn"), "attack": preload("res://players/magic/wind/wind.scn"), "atk": 1.2},
+					{"id":"ice", "type": "ice", "mp": 20, "auracolor": Color(0, 130/255.0, 207/255.0), "weaponcolor1": Color(0, 1, 1), "weaponcolor2": Color(0, 130/255.0, 207/255.0), "delay": false, "is_single": false, "attack": preload("res://players/magic/ice/ice.scn"), "atk": 0.75}]
+	Globals.set("magic_spells", magic_spells)
 	Globals.set("itemfactory", itemfactory.new())
 	root = get_tree().get_root()
 	original_size = root.get_rect().size
@@ -100,7 +112,7 @@ func _on_resolution_changed():
 	select.get_node("adela_sprite").set_pos(Vector2(new_size.x - aspriteOffset.x*scaleX, new_size.y - aspriteOffset.y))
 
 func _input(event):
-	if (!gameover && dialog.get("dialogs") == null):
+	if (!gameover && dialog.get("dialogs") == null && !pause.has_node("shopping")):
 		if (event.is_action("ui_pause") && event.is_pressed() && !event.is_echo() && get_node("playercontainer").has_node("player") && !get_node("playercontainer/player").get("is_transforming")):
 			if (is_paused && pausemenu.can_unpause()):
 				pausemenu.reset()
@@ -129,6 +141,19 @@ func _input(event):
 				map.hide()
 			else:
 				map.show()
+	if (pause.has_node("shopping")):
+		if (event.is_action_pressed("ui_cancel") && event.is_pressed() && !event.is_echo()):
+			var shopping = pause.get_node("shopping")
+			if (!shopping.block_cancel()):
+				pause.hide()
+				pausemenu.show()
+				pause.remove_child(shopping)
+				shopping.queue_free()
+				hideshop = true
+	elif(hideshop):
+		hideshop = false
+		get_tree().set_pause(false)
+			
 	if (dialog.get("dialogs") != null):
 		if (event.is_action_pressed("ui_accept") && event.is_pressed() && !event.is_echo()):
 			dialog.check_dialog()
@@ -153,6 +178,7 @@ func start(player):
 	Globals.set("inventory", inventory)
 	Globals.set("scrolls", {})
 	Globals.set("gold", 0)
+	Globals.set("shops", {})
 	display_level_title("LVL_SANDBOX")
 	map.set("camera", player.get_node("Camera2D"))
 	map.load_map(get_node("level/LVL_SANDBOX"))

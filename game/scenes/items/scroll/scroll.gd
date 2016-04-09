@@ -6,3 +6,4 @@ func _ready():
 
 func add_to_inventory():
 	Globals.get("scrolls")[item.title] = item
+	return true

@@ -19,14 +19,14 @@ func _fixed_process(delta):
 		queue_free()
 
 func take_item(i):
-	sound.play(sfx)
-	taken = true
-	get_tree().get_root().get_node("world/gui/CanvasLayer/items").display_item(title, item)
-	remove_child(get_node("Sprite"))
-	add_to_inventory()
+	if (add_to_inventory()):
+		sound.play(sfx)
+		taken = true
+		get_tree().get_root().get_node("world/gui/CanvasLayer/items").display_item(title, item)
+		remove_child(get_node("Sprite"))
 
 func add_to_inventory():
-	Globals.get("inventory").add_item(item, 1)
+	return Globals.get("inventory").add_item(item, 1)
 
 func _ready():
 	itemfactory_obj = itemfactory.new()

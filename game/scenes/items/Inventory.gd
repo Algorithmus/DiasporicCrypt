@@ -11,11 +11,16 @@ func _ready():
 
 func add_item(item, quantity):
 	if (inventory.has(item.title)):
-		var old_item = inventory[item.title]
-		old_item["quantity"] += quantity
-		inventory[item.title] = old_item
+		if (inventory[item.title].quantity < 99):
+			var old_item = inventory[item.title]
+			old_item["quantity"] += quantity
+			inventory[item.title] = old_item
+			return true
+		else:
+			return false
 	else:
 		inventory[item.title] = {"item": item, "quantity": quantity}
+		return true
 
 func remove_item(item, quantity):
 	if (inventory.has(item.title)):

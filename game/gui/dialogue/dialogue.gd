@@ -12,6 +12,8 @@ var current_dialog
 
 var choiceclass = preload("res://gui/dialogue/choice.scn")
 
+var shopclass = preload("res://gui/menu/shopping.scn")
+
 const DIAG_DIRECTION = 0
 const DIAG_TITLE = 1
 const DIAG_TEXT = 2
@@ -119,6 +121,16 @@ func check_dialog():
 					current_dialog = -1
 					dialogs = choice.get("data")
 				show_dialog()
+			if (choice.get("action") == "shop"):
+				var shop = shopclass.instance()
+				shop.shopid = choice.get("data")
+				shop.set_pos(Vector2(32, 32))
+				hide_dialog()
+				get_tree().set_pause(true)
+				var pause = get_tree().get_root().get_node("world/gui/CanvasLayer/pause")
+				pause.get_node("menu").hide()
+				pause.add_child(shop)
+				pause.show()
 			elif (choice.get("action") == "end"):
 				hide_dialog()
 		else:

@@ -11,6 +11,7 @@ var effect
 var value
 var image
 var icon
+var cost = 0
 
 func _ready():
 	# Called every time the node is added to the scene.
