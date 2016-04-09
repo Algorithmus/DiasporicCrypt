@@ -260,74 +260,76 @@ func step_player(delta):
 					for combo in chain_specials:
 						var combopos = combos.rfind(combo["combo"])
 						if(combopos == 0 || (combopos > 0 && combos[combopos-1] == " ")):
-							hit_enemy = false
-							remove_weapon_collider()
-							remove_chain_collider()
-							weapon_collided = false
-							chain_collided = false
-							is_attacking = false
-							attack_requested = false
-							chain_next = false
-							# already counted the chain since attack button is required to trigger it
-							if (combo["id"] != "swift" && combo["id"] != "thrust"):
-								chain_counter += 1
-							chaingui.get_node("chaintext/counterGroup/counter").set_text(str(chain_counter))
-							chaingui.get_node("AnimationPlayer").play("counter")
-							# merge combo in attack buffer
-							var parta = combos.substr(0, combopos)
-							var partb = combos.substr(combopos+combo["combo"].length(), combos.length())
-							attack_buffer = convert(str(parta + combo["replace"] + partb).split(", "), TYPE_ARRAY)
-							# setup special attack
-							is_chain_special = true
-							current_chain_special = combo
-							current_chain_delay = 0
-							if (!current_chain_special["used"]):
-								current_chain_special["used"] = true
-								chaingui.get_node("newattack").show()
-								chaingui.get_node("AnimationPlayer").play("newattack")
-							remove_special_collider()
-							special_collider = current_chain_special["collider"].instance()
-							if (magic_spells[selected_spell].has("type")):
-								special_collider.set("type", magic_spells[selected_spell]["type"])
-							var special_offset = 0
-							if (current_chain_special["id"] == "void"):
-								if (is_demonic):
-									var sprite = demonic_void.instance()
-									special_collider.remove_child(special_collider.get_node("attack"))
-									special_collider.add_child(sprite)
-								special_offset = special_collider.get_node("weapon").get_shape().get_extents()
-								special_collider.set_pos(Vector2(((special_offset.x + sprite_offset.x + 4) + current_chain_special["collider_offset"].x) * direction, current_chain_special["collider_offset"].y))
-								if (target_enemy != null && target_enemy.get_ref()):
-									special_collider.set_pos(Vector2(target_enemy.get_ref().get_global_pos().x - get_global_pos().x + (target_enemy.get_ref().get_node("CollisionShape2D").get_shape().get_extents().x + special_offset.x) * direction))
-								special_collider.get_node("attack").set_scale(Vector2(direction*-1, 1))
-								special_collider.get_node("AnimationPlayer").play("attack")
-								special_collider.connect("area_enter", self, "_on_special_collision")
-								
-								var spell = magic_spells[selected_spell]
-								var auracolor = spell["auracolor"]
-								var weaponcolor1 = spell["weaponcolor1"]
-								var weaponcolor2 = spell["weaponcolor2"]
-								special_collider.get_node("attack/aura").set_modulate(auracolor)
-								special_collider.get_node("attack/sword").get_material().set_shader_param("modulate", weaponcolor1)
-								special_collider.get_node("attack/sword").get_material().set_shader_param("aura_color", weaponcolor2)
-							else:
-								if (current_chain_special["id"] != "dualspin"):
+							# only allow void attack if void spell is available
+							if (combo["id"] != "void" || (combo["id"] == "void" && find_spell("void") != null)):
+								hit_enemy = false
+								remove_weapon_collider()
+								remove_chain_collider()
+								weapon_collided = false
+								chain_collided = false
+								is_attacking = false
+								attack_requested = false
+								chain_next = false
+								# already counted the chain since attack button is required to trigger it
+								if (combo["id"] != "swift" && combo["id"] != "thrust"):
+									chain_counter += 1
+								chaingui.get_node("chaintext/counterGroup/counter").set_text(str(chain_counter))
+								chaingui.get_node("AnimationPlayer").play("counter")
+								# merge combo in attack buffer
+								var parta = combos.substr(0, combopos)
+								var partb = combos.substr(combopos+combo["combo"].length(), combos.length())
+								attack_buffer = convert(str(parta + combo["replace"] + partb).split(", "), TYPE_ARRAY)
+								# setup special attack
+								is_chain_special = true
+								current_chain_special = combo
+								current_chain_delay = 0
+								if (!current_chain_special["used"]):
+									current_chain_special["used"] = true
+									chaingui.get_node("newattack").show()
+									chaingui.get_node("AnimationPlayer").play("newattack")
+								remove_special_collider()
+								special_collider = current_chain_special["collider"].instance()
+								if (magic_spells[selected_spell].has("type")):
+									special_collider.set("type", magic_spells[selected_spell]["type"])
+								var special_offset = 0
+								if (current_chain_special["id"] == "void"):
+									if (is_demonic):
+										var sprite = demonic_void.instance()
+										special_collider.remove_child(special_collider.get_node("attack"))
+										special_collider.add_child(sprite)
 									special_offset = special_collider.get_node("weapon").get_shape().get_extents()
 									special_collider.set_pos(Vector2(((special_offset.x + sprite_offset.x + 4) + current_chain_special["collider_offset"].x) * direction, current_chain_special["collider_offset"].y))
+									if (target_enemy != null && target_enemy.get_ref()):
+										special_collider.set_pos(Vector2(target_enemy.get_ref().get_global_pos().x - get_global_pos().x + (target_enemy.get_ref().get_node("CollisionShape2D").get_shape().get_extents().x + special_offset.x) * direction))
+									special_collider.get_node("attack").set_scale(Vector2(direction*-1, 1))
+									special_collider.get_node("AnimationPlayer").play("attack")
 									special_collider.connect("area_enter", self, "_on_special_collision")
+									
+									var spell = magic_spells[selected_spell]
+									var auracolor = spell["auracolor"]
+									var weaponcolor1 = spell["weaponcolor1"]
+									var weaponcolor2 = spell["weaponcolor2"]
+									special_collider.get_node("attack/aura").set_modulate(auracolor)
+									special_collider.get_node("attack/sword").get_material().set_shader_param("modulate", weaponcolor1)
+									special_collider.get_node("attack/sword").get_material().set_shader_param("aura_color", weaponcolor2)
 								else:
-									special_collider.set_pos(Vector2(0, -16))
-									special_collider.get_node("Dualspin Part").connect("area_enter", self, "_on_special_collision")
-									special_collider.get_node("Dualspin Part 2").connect("area_enter", self, "_on_special_collision")
-								add_child(special_collider)
-							new_animation = current_chain_special["id"]
-							get_node("sound").set_volume_db(get_node("sound").play(current_chain_special["id"]), current_chain_special["db"])
-							if (current_chain_special["id"] == "slice"):
-								accel = -10
-							if (current_chain_special["id"] == "skewer"):
-								accel = -16
-							if (current_chain_special["id"] == "stab"):
-								accel = -5
+									if (current_chain_special["id"] != "dualspin"):
+										special_offset = special_collider.get_node("weapon").get_shape().get_extents()
+										special_collider.set_pos(Vector2(((special_offset.x + sprite_offset.x + 4) + current_chain_special["collider_offset"].x) * direction, current_chain_special["collider_offset"].y))
+										special_collider.connect("area_enter", self, "_on_special_collision")
+									else:
+										special_collider.set_pos(Vector2(0, -16))
+										special_collider.get_node("Dualspin Part").connect("area_enter", self, "_on_special_collision")
+										special_collider.get_node("Dualspin Part 2").connect("area_enter", self, "_on_special_collision")
+									add_child(special_collider)
+								new_animation = current_chain_special["id"]
+								get_node("sound").set_volume_db(get_node("sound").play(current_chain_special["id"]), current_chain_special["db"])
+								if (current_chain_special["id"] == "slice"):
+									accel = -10
+								if (current_chain_special["id"] == "skewer"):
+									accel = -16
+								if (current_chain_special["id"] == "stab"):
+									accel = -5
 				
 				# if attack connects with an enemy, count it as an attack in the attack buffer
 				if (hit_enemy):

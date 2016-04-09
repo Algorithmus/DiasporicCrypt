@@ -78,7 +78,7 @@ func _init():
 	strengthpotion.value = 1
 	strengthpotion.image = "res://scenes/items/potion/strengthpotion.png"
 	strengthpotion.effect = "atk"
-	strengthpotion.cost = 10000
+	strengthpotion.cost = 100
 	items[strengthpotion.title] = strengthpotion
 
 	var shieldpotion = itemclass.new()
@@ -142,7 +142,7 @@ func _init():
 	thunder.type = "magic"
 	thunder.image = "res://players/magic/thunder/icon.png"
 	thunder.value = "thunder"
-	thunder.cost = 100
+	thunder.cost = 50000
 	items[thunder.title] = thunder
 	
 	var hex = itemclass.new()
@@ -153,3 +153,12 @@ func _init():
 	hex.value = "hex"
 	hex.cost = 50000
 	items[hex.title] = hex
+	
+	var void = itemclass.new()
+	void.title = "MAGIC_VOID"
+	void.description = "MAGIC_VOID_SHORT"
+	void.type = "magic"
+	void.image = "res://players/magic/void/icon.png"
+	void.value = "void"
+	void.cost = 1000000
+	items[void.title] = void

@@ -75,6 +75,14 @@ var mp = 0
 var current_mp = 0
 var prospective_mp = 0
 
+# bonuses from using items or other events
+var bonus_atk = 0
+var bonus_def = 0
+var bonus_mag = 0
+var bonus_hp = 0
+var bonus_mp = 0
+var bonus_luck = 0
+
 var demonic_atk = 0
 var demonic_def = 0
 var demonic_mag = 0
@@ -119,12 +127,12 @@ func get_exp_orb(value):
 	var level_up = exp_growth_obj.check_exp(level, value)
 	if(level_up > 0):
 		level += level_up
-		base_atk = exp_growth_obj.atk_growth(level)
-		base_def = exp_growth_obj.def_growth(level)
-		base_mag = exp_growth_obj.mag_growth(level)
-		base_luck = exp_growth_obj.luck_growth(level)
-		base_hp = exp_growth_obj.hp_growth(level)
-		base_mp = exp_growth_obj.mp_growth(level)
+		base_atk = exp_growth_obj.atk_growth(level) + bonus_atk
+		base_def = exp_growth_obj.def_growth(level) + bonus_def
+		base_mag = exp_growth_obj.mag_growth(level) + bonus_mag
+		base_luck = exp_growth_obj.luck_growth(level) + bonus_luck
+		base_hp = exp_growth_obj.hp_growth(level) + bonus_hp
+		base_mp = exp_growth_obj.mp_growth(level) + bonus_mp
 		set_stats()
 		get_tree().get_root().get_node("world/gui/CanvasLayer/hud").play_levelup()
 
@@ -792,6 +800,12 @@ func step_player(delta):
 			get_tree().get_root().get_node("world").show_gameover()
 			set_pause_mode(0)
 	play_animation(new_animation, animation_speed)
+
+func find_spell(id):
+	for i in range(0, magic_spells.size()):
+		if (magic_spells[i].id == id):
+			return magic_spells[i]
+	return null
 
 func regenerate_mp():
 	current_mp_cycle += 1

@@ -15,6 +15,7 @@ func _init():
 	kaleva.inventory = [{"type": "item", "id": "ITEM_POTION", "quantity": -1},
 						{"type": "item", "id": "ITEM_POTION+", "quantity": -1},
 						{"type": "item", "id": "ITEM_MANAPOTION", "quantity": -1},
+						{"type": "item", "id": "ITEM_STRENGTHPOTION", "quantity": 3},
 						{"type": "scroll", "id": "SCROLL_FIGHT", "quantity": 1},
 						{"type": "magic", "id": "MAGIC_THUNDER", "quantity": 1}]
 	kaleva.sellrate = 0.5
