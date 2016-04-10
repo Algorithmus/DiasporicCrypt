@@ -21,6 +21,8 @@ var hideshop = false
 var map
 var map_position = preload("res://gui/maps/position.scn")
 
+var hidemap = false
+
 var select_f_size
 var select_a_size
 var fscale
@@ -37,6 +39,7 @@ var selected_character
 
 var inventoryclass = preload("res://scenes/items/Inventory.gd")
 var itemfactory = preload("res://scenes/items/ItemFactory.gd")
+var levelfactory = preload("res://levels/LevelFactory.gd")
 
 func _ready():
 	# Initialization here
@@ -51,6 +54,9 @@ func _ready():
 					{"id":"ice", "type": "ice", "mp": 20, "auracolor": Color(0, 130/255.0, 207/255.0), "weaponcolor1": Color(0, 1, 1), "weaponcolor2": Color(0, 130/255.0, 207/255.0), "delay": false, "is_single": false, "attack": preload("res://players/magic/ice/ice.scn"), "atk": 0.75}]
 	Globals.set("magic_spells", magic_spells)
 	Globals.set("itemfactory", itemfactory.new())
+	Globals.set("available_levels", ["LVL_SANDBOX", "LVL_FOREST1", "LVL_FOREST2", "LVL_MANOR", "LVL_LAVACAVE", "LVL_START", "LVL_COLOSSEUM1", "LVL_COLOSSEUM2"])
+	Globals.set("levels", levelfactory.new().levels)
+	Globals.set("current_level", "LVL_START")
 	root = get_tree().get_root()
 	original_size = root.get_rect().size
 	root.connect("size_changed", self, "_on_resolution_changed")
@@ -112,7 +118,8 @@ func _on_resolution_changed():
 	select.get_node("adela_sprite").set_pos(Vector2(new_size.x - aspriteOffset.x*scaleX, new_size.y - aspriteOffset.y))
 
 func _input(event):
-	if (!gameover && dialog.get("dialogs") == null && !pause.has_node("shopping")):
+	var canvas = get_node("gui/CanvasLayer")
+	if (!gameover && dialog.get("dialogs") == null && !pause.has_node("shopping") && !canvas.has_node("WorldMap")):
 		if (event.is_action("ui_pause") && event.is_pressed() && !event.is_echo() && get_node("playercontainer").has_node("player") && !get_node("playercontainer/player").get("is_transforming")):
 			if (is_paused && pausemenu.can_unpause()):
 				pausemenu.reset()
@@ -146,14 +153,22 @@ func _input(event):
 			var shopping = pause.get_node("shopping")
 			if (!shopping.block_cancel()):
 				pause.hide()
-				pausemenu.show()
 				pause.remove_child(shopping)
 				shopping.queue_free()
 				hideshop = true
 	elif(hideshop):
 		hideshop = false
 		get_tree().set_pause(false)
-			
+	if (canvas.has_node("WorldMap")):
+		if (event.is_action_pressed("ui_cancel") && event.is_pressed() && !event.is_echo()):
+			var map = canvas.get_node("WorldMap")
+			if (!map.block_cancel()):
+				canvas.remove_child(map)
+				map.queue_free()
+				hidemap = true
+	elif(hidemap):
+		hidemap = false
+		get_tree().set_pause(false)
 	if (dialog.get("dialogs") != null):
 		if (event.is_action_pressed("ui_accept") && event.is_pressed() && !event.is_echo()):
 			dialog.check_dialog()
@@ -179,13 +194,13 @@ func start(player):
 	Globals.set("scrolls", {})
 	Globals.set("gold", 0)
 	Globals.set("shops", {})
-	display_level_title("LVL_SANDBOX")
+	display_level_title("LVL_CATACOMB")
 	map.set("camera", player.get_node("Camera2D"))
-	map.load_map(get_node("level/LVL_SANDBOX"))
+	map.load_map(get_node("level/LVL_CATACOMB"))
 	get_node("gui/sound").play("confirm")
-	player.set_global_pos(Vector2(-160, -416))
+	player.set_global_pos(Vector2(0, 0))
 	get_node("playercontainer").add_child(player)
-	player.load_tilemap(get_node("level/LVL_SANDBOX"))
+	player.load_tilemap(get_node("level/LVL_CATACOMB"))
 	select.hide()
 	is_paused = false
 	get_tree().set_pause(is_paused)
@@ -220,7 +235,7 @@ func reset_level():
 	Globals.get("inventory").set("player", player)
 	map.set("camera", player.get_node("Camera2D"))
 	get_node("gui/CanvasLayer/hud").reset()
-	teleport("res://levels/sandbox/sandbox.scn", Vector2(-160, -416), null)
+	teleport("res://levels/common/catacombs.scn", Vector2(0, 0), null)
 	is_paused = false
 	pause.hide()
 	gameover = false
@@ -246,7 +261,7 @@ func reset():
 	var old_level = get_node("level").get_child(0)
 	get_node("level").remove_child(old_level)
 	old_level.queue_free()
-	var level = load("res://levels/sandbox/sandbox.scn").instance()
+	var level = load("res://levels/common/catacombs.scn").instance()
 	get_node("level").add_child(level)
 	gameover = false
 	is_paused = true

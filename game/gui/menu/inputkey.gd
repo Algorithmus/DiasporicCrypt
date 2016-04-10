@@ -83,6 +83,7 @@ func set_input():
 				if (e.type == InputEvent.KEY && e.scancode == old_event.scancode):
 					InputMap.action_erase_event(mapped_action, e)
 			InputMap.action_add_event(mapped_action, currentinput)
+		
 
 func _on_key_pressed():
 	iscapture = true

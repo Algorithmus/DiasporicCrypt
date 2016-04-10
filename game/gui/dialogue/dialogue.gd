@@ -13,6 +13,7 @@ var current_dialog
 var choiceclass = preload("res://gui/dialogue/choice.scn")
 
 var shopclass = preload("res://gui/menu/shopping.scn")
+var mapclass = preload("res://gui/worldmap/map.scn")
 
 const DIAG_DIRECTION = 0
 const DIAG_TITLE = 1
@@ -24,7 +25,7 @@ const ITEM_TITLE = 0
 const ITEM_VALUE = 1
 
 const CHOICE_TEXT = 0
-const CHOICE_ACTION = 1 #dialog, save, shop or end
+const CHOICE_ACTION = 1 #dialog, save, shop, map or end
 const CHOICE_VALUE = 2
 #dialogue - another dialog array (replace current one completely) or index for current dialog array to jump to
 const CHOICE_ORIENTATION = 3
@@ -72,14 +73,14 @@ func add_choices():
 	var choicecontainer = hchoice
 	var basemargin = 0
 	# set correct choice obj y pos
-	var obj_y = 48
+	var obj_y = 36
 	
 	if (!choices[0][CHOICE_ORIENTATION]):
 		choicecontainer = vchoice
 		basemargin += 1
 		obj_y = 0
 		# set correct y pos
-		vchoice.set_pos(Vector2(vchoice.get_pos().x, 48))
+		vchoice.set_pos(Vector2(vchoice.get_pos().x, 36))
 	for choice in choices:
 		var choice_obj = choiceclass.instance()
 		choice_obj.get_node("text").set_text(choice[CHOICE_TEXT])
@@ -121,7 +122,7 @@ func check_dialog():
 					current_dialog = -1
 					dialogs = choice.get("data")
 				show_dialog()
-			if (choice.get("action") == "shop"):
+			elif (choice.get("action") == "shop"):
 				var shop = shopclass.instance()
 				shop.shopid = choice.get("data")
 				shop.set_pos(Vector2(32, 32))
@@ -131,6 +132,12 @@ func check_dialog():
 				pause.get_node("menu").hide()
 				pause.add_child(shop)
 				pause.show()
+			elif (choice.get("action") == "map"):
+				var map = mapclass.instance()
+				hide_dialog()
+				get_tree().set_pause(true)
+				var canvas = get_tree().get_root().get_node("world/gui/CanvasLayer")
+				canvas.add_child(map)
 			elif (choice.get("action") == "end"):
 				hide_dialog()
 		else:

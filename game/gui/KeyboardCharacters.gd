@@ -117,17 +117,25 @@ var map = {	"Up":"CHAR_UP",
 			"Udiaeresis":"CHAR_Ü",
 			"NumberSign":"CHAR_#",
 			"Ssharp":"CHAR_ß"}
+var inputs = ["ui_up", "ui_down", "ui_left", "ui_right", "ui_jump", "ui_attack", "ui_magic", "ui_blood", "ui_spell_prev", "ui_spell_next", "ui_pause", "ui_select"]
+var keys = {}
 
-func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+func _init():
+	update_keys()
+
+func update_keys():
+	for i in inputs:
+		update_key(i)
+
+func update_key(key):
+	for i in InputMap.get_action_list(key):
+		if (i.type == InputEvent.KEY):
+			keys[key] = i.scancode
+
+func map_action(action):
+	return map_key(OS.get_scancode_string(keys[action]))
 
 func map_key(input):
 	if (map.has(input)):
-		print("map input")
-		print(input)
-		print(map[input])
-		print(tr(map[input]))
 		return tr(map[input])
 	return input
