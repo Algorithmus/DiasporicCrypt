@@ -9,6 +9,5 @@ func _ready():
 func _on_pin_focus_enter():
 	animation.play("active")
 
-
 func _on_pin_focus_exit():
 	animation.play("inactive")

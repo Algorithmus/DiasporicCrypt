@@ -75,6 +75,7 @@ func _ready():
 			listitem.get_node("new").show()
 		else:
 			listitem.get_node("new").hide()
+		listitem.get_node("map").set_text(str(level.map * 100) + "%")
 		pin.connect("focus_enter", self, "focus_pin")
 		listitem.connect("focus_enter", self, "focus_list")
 		for tag in level.tags:
@@ -118,11 +119,17 @@ func focus_list():
 	var scrollcontainer = list.get_node("listcontainer")
 	if (scrollcontainer.get_v_scroll() + scrollcontainer.get_size().y < item.get_pos().y + item.get_size().y || scrollcontainer.get_v_scroll() > item.get_pos().y):
 		scrollcontainer.set_v_scroll(item.get_pos().y)
+	unfocus_pins()
+	pincontainer.get_node(item.get_name() + "/AnimationPlayer").play("active")
 
 func select_list():
 	selectedlevel = pincontainer.get_node(get_focus_owner().get_name())
 	toggle_list(true)
 	do_select()
+
+func unfocus_pins():
+	for pin in pincontainer.get_children():
+		pin.get_node("AnimationPlayer").play("inactive")
 
 func focus_pin():
 	var pin = get_focus_owner()
@@ -191,7 +198,7 @@ func toggle_filters(state):
 			type.set_disabled(state)
 
 func _input(event):
-	if (event.is_pressed() && !event.is_echo()):
+	if (event.is_pressed() && !event.is_echo() && !animation.is_playing()):
 		if (event.is_action_pressed("ui_select") && !leveldisplay):
 			if (!filteractive || (filteractive && selectedlevel != null)):
 				toggle_filters(filteractive)
@@ -200,11 +207,15 @@ func _input(event):
 						toggle_list(false)
 						listcontainer.get_node(selectedlevel.get_name()).grab_focus()
 					else:
+						toggle_pins(false)
 						filters.get_node("bg").hide()
 						selectedlevel.grab_focus()
 				else:
 					if (islist):
-						selectedlevel = pincontainer.get_node(get_focus_owner().get_name())
+						if (get_focus_owner() != null):
+							selectedlevel = pincontainer.get_node(get_focus_owner().get_name())
+						else:
+							selectedlevel = null
 						toggle_list(true)
 						list.get_node("filters/tagtitle").grab_focus()
 					else:
