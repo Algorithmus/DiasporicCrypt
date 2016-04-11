@@ -30,8 +30,10 @@ var typeicons = {"quest": preload("res://gui/worldmap/icons/quest.png"),
 				"colosseum": preload("res://gui/worldmap/icons/colosseum.png")}
 var sfxclass = preload("res://gui/menu/sfx.scn")
 var sfx
+var hudmap
 
 func _ready():
+	hudmap = get_tree().get_root().get_node("world/gui/CanvasLayer/map/container")
 	set_process_input(true)
 	sfx = sfxclass.instance()
 	add_child(sfx)
@@ -58,7 +60,7 @@ func _ready():
 	var groupindex
 	# add pins to map and list
 	for i in range(0, levels.size()):
-		var level = levelfactory.levels[levels[i]]
+		var level = Globals.get("levels")[levels[i]]
 		var pin = pinclass.instance()
 		var listitem = listitemclass.instance()
 		pin.set_name(level.title)
@@ -147,7 +149,12 @@ func do_select():
 	sfx.play("confirm")
 
 func focus_warp():
-	content.get_node("warp").grab_focus()
+	if (selectedlevel.get_name() == currentlevel):
+		content.get_node("tags/purple").grab_focus()
+		content.get_node("warp").set_disabled(true)
+	else:
+		content.get_node("warp").set_disabled(false)
+		content.get_node("warp").grab_focus()
 
 func toggle_pins(state):
 	for pin in pincontainer.get_children():
@@ -429,4 +436,22 @@ func toggle_tags():
 		list.get_node("filters/type/quest").set_focus_neighbour(MARGIN_LEFT, list.get_node("filters/tags/purple").get_path())
 	toggle_filters(false)
 	update_filters()
+	sfx.play("confirm")
+
+func _on_warp_pressed():
+	# exit map screen
+	# hide hud minimap
+	hudmap.cache_map()
+	var levels = Globals.get("levels")
+	var map = levels[selectedlevel.get_name()]
+	map.new = false
+	Globals.get("levels")[map.title] = map
+	Globals.set("mapid", map.mapid)
+	var level = get_tree().get_root().get_node("world/level").get_child(0)
+	var teleport = level.get_node("tilemap/TeleportGroup").get_child(0)
+	teleport.target_level = map.node
+	teleport.teleport_to = map.teleportto
+	hudmap.clear_objects()
+	hudmap.load_cached_map(level)
+	Globals.set("current_level", map.title)
 	sfx.play("confirm")

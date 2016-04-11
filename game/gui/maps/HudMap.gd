@@ -13,6 +13,8 @@ var current_map
 var rooms = {}
 
 func _ready():
+	if (!Globals.has("mapid")):
+		Globals.set("mapid", "LVL_SANDBOX") # this should eventually be the training level by default
 	objects = get_node("objects")
 	set_fixed_process(true)
 	offset = Vector2(get_polygon()[1].x/2.0, get_polygon()[2].y/2.0)
@@ -26,17 +28,45 @@ func _fixed_process(delta):
 func reset():
 	rooms = {}
 	current_map = null
-	for i in objects.get_children():
-		objects.remove_child(i)
+	Globals.set("mapobjects", {})
+	Globals.set("mapindex", {})
 
 func _draw():
 	VisualServer.canvas_item_set_clip(get_canvas_item(), true)
 	draw_circle(offset, 2, Color(1, 0, 0))
-	
+
+func clear_objects():
+	for i in objects.get_children():
+		objects.remove_child(i)
+
 func load_map(root_node):
 	current_map = root_node.get_filename()
 	if (!rooms.has(root_node.get_filename())):
 		create_map(root_node)
+
+func load_cached_map(root_node):
+	if (Globals.has("mapindex")):
+		rooms = Globals.get("mapindex")
+	var mapid = Globals.get("mapid")
+	if (Globals.has("mapobjects") && Globals.get("mapobjects").has(mapid)):
+		var cache = Globals.get("mapobjects")[mapid]
+		remove_child(objects)
+		objects.queue_free()
+		add_child(cache)
+		objects = cache
+	elif(rooms.has(root_node.get_filename())):
+		objects.add_child(rooms[root_node.get_filename()])
+	load_map(root_node)
+
+func cache_map():
+	if (!Globals.has("mapobjects")):
+		Globals.set("mapobjects", {})
+	Globals.get("mapobjects")[Globals.get("mapid")] = objects.duplicate()
+	Globals.set("mapindex", rooms)
+	print("save cache")
+	print(Globals.get("mapobjects")[Globals.get("mapid")].get_child_count())
+	print(Globals.get("mapobjects"))
+	print(Globals.get("mapindex"))
 
 func create_map(root_node):
 	# create room

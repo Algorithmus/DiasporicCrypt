@@ -12,6 +12,7 @@ func _init():
 	sandbox.node = "res://levels/sandbox/sandbox.scn"
 	sandbox.teleportto = Vector2(-122, 480)
 	sandbox.description = "LVL_SANDBOX_DESCRIPTION"
+	sandbox.mapid = "LVL_SANDBOX"
 	levels[sandbox.title] = sandbox
 	
 	var forest1 = levelclass.new()
@@ -21,6 +22,7 @@ func _init():
 	forest1.node = "res://levels/sandbox/sandbox.scn"
 	forest1.teleportto = Vector2(-122, 480)
 	forest1.description = "LVL_FOREST1_DESCRIPTION"
+	forest1.mapid = "LVL_SANDBOX"
 	levels[forest1.title] = forest1
 	
 	var forest2 = levelclass.new()
@@ -30,6 +32,7 @@ func _init():
 	forest2.node = "res://levels/sandbox/sandbox.scn"
 	forest2.teleportto = Vector2(-122, 480)
 	forest2.description = "LVL_FOREST2_DESCRIPTION"
+	forest2.mapid = "LVL_SANDBOX"
 	levels[forest2.title] = forest2
 	
 	var lavacave = levelclass.new()
@@ -40,6 +43,7 @@ func _init():
 	lavacave.teleportto = Vector2(-122, 480)
 	lavacave.description = "LVL_LAVACAVE_DESCRIPTION"
 	lavacave.reward = 10000
+	lavacave.mapid = "LVL_SANDBOX"
 	levels[lavacave.title] = lavacave
 	
 	var manor = levelclass.new()
@@ -49,6 +53,7 @@ func _init():
 	manor.node = "res://levels/sandbox/sandbox.scn"
 	manor.teleportto = Vector2(-122, 480)
 	manor.description = "LVL_MANOR_DESCRIPTION"
+	manor.mapid = "LVL_SANDBOX"
 	manor.reward = 20000
 	levels[manor.title] = manor
 	
@@ -60,24 +65,27 @@ func _init():
 	start.teleportto = Vector2(-122, 480)
 	start.description = "LVL_START_DESCRIPTION"
 	start.reward = 100
+	start.mapid = "LVL_SANDBOX"
 	levels[start.title] = start
 	
 	var colosseum1 = levelclass.new()
 	colosseum1.title = "LVL_COLOSSEUM1"
 	colosseum1.type = "colosseum"
 	colosseum1.position = Vector2(256, 240)
-	colosseum1.node = "res://levels/sandbox/sandbox.scn"
-	colosseum1.teleportto = Vector2(-122, 480)
+	colosseum1.node = "res://levels/sandbox/colosseum-prototype0-0.scn"
+	colosseum1.teleportto = Vector2(48, 128)
 	colosseum1.description = "LVL_COLOSSEUM1_DESCRIPTION"
 	colosseum1.reward = 50000
+	colosseum1.mapid = "LVL_COLOSSEUM"
 	levels[colosseum1.title] = colosseum1
 	
 	var colosseum2 = levelclass.new()
 	colosseum2.title = "LVL_COLOSSEUM2"
 	colosseum2.type = "colosseum"
 	colosseum2.position = Vector2(256, 240)
-	colosseum2.node = "res://levels/sandbox/sandbox.scn"
-	colosseum2.teleportto = Vector2(-122, 480)
+	colosseum2.node = "res://levels/sandbox/colosseum-prototype0-0.scn"
+	colosseum2.teleportto = Vector2(48, 128)
 	colosseum2.description = "LVL_COLOSSEUM2_DESCRIPTION"
+	colosseum2.mapid = "LVL_COLOSSEUM"
 	colosseum2.reward = 100000
 	levels[colosseum2.title] = colosseum2

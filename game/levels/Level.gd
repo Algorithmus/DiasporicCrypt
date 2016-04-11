@@ -11,6 +11,7 @@ var new = true
 var node # level the catacombs should connect to
 var teleportto # coordinates in the level the player starts in when first entering the level
 var description
+var mapid # map layout to use
 var reward = 0
 
 func _ready():
