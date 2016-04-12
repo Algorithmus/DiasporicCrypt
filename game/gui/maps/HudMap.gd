@@ -63,10 +63,6 @@ func cache_map():
 		Globals.set("mapobjects", {})
 	Globals.get("mapobjects")[Globals.get("mapid")] = objects.duplicate()
 	Globals.set("mapindex", rooms)
-	print("save cache")
-	print(Globals.get("mapobjects")[Globals.get("mapid")].get_child_count())
-	print(Globals.get("mapobjects"))
-	print(Globals.get("mapindex"))
 
 func create_map(root_node):
 	# create room

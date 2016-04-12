@@ -137,19 +137,19 @@ func get_exp_orb(value):
 		get_tree().get_root().get_node("world/gui/CanvasLayer/hud").play_levelup()
 
 func input_left():
-	return Input.is_action_pressed("ui_left") && !is_transforming
+	return Input.is_action_pressed("ui_left") && !is_transforming && !Globals.get("eventmode")
 
 func input_right():
-	return Input.is_action_pressed("ui_right") && !is_transforming
+	return Input.is_action_pressed("ui_right") && !is_transforming && !Globals.get("eventmode")
 
 func input_up():
-	return Input.is_action_pressed("ui_up") && !is_transforming
+	return Input.is_action_pressed("ui_up") && !is_transforming && !Globals.get("eventmode")
 
 func input_down():
-	return Input.is_action_pressed("ui_down") && !is_transforming
+	return Input.is_action_pressed("ui_down") && !is_transforming && !Globals.get("eventmode")
 
 func input_jump():
-	return Input.is_action_pressed("ui_jump") && !is_transforming
+	return Input.is_action_pressed("ui_jump") && !is_transforming && !Globals.get("eventmode")
 
 # add and remove magic spell and other special effect collisions
 # to prevent interfering with regular collision detection
@@ -849,7 +849,7 @@ func check_magic():
 			
 			update_fusion()
 	# detect magic requested
-	var magic_allowed = !is_hurt && !is_attacking && !is_crouching && !hanging && !is_charging && !is_magic && !magic_delay && !is_transforming && current_mp > 0
+	var magic_allowed = !Globals.get("eventmode") && !is_hurt && !is_attacking && !is_crouching && !hanging && !is_charging && !is_magic && !magic_delay && !is_transforming && current_mp > 0
 	var void_check = true
 	if (magic_spells[selected_spell]["id"] == "void" && current_mp < magic_spells[selected_spell]["mp"]):
 		void_check = false
@@ -1092,7 +1092,7 @@ func clear_mine(mine):
 			current_mines.remove(i)
 
 func _input(event):
-	if (!is_transforming):
+	if (!is_transforming && !Globals.get("eventmode")):
 		if (event.is_action_pressed("ui_attack") && event.is_pressed() && !event.is_echo()):
 			attack_requested = true
 		if (event.is_action_pressed("ui_blood") && event.is_pressed() && !event.is_echo()):

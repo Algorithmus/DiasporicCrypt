@@ -22,6 +22,9 @@ var map
 var map_position = preload("res://gui/maps/position.scn")
 
 var hidemap = false
+var skipevent = false
+
+var is_minimap = true
 
 var select_f_size
 var select_a_size
@@ -41,6 +44,11 @@ var inventoryclass = preload("res://scenes/items/Inventory.gd")
 var itemfactory = preload("res://scenes/items/ItemFactory.gd")
 var levelfactory = preload("res://levels/LevelFactory.gd")
 
+var magiccircleclass = preload("res://scenes/animations/magiccircle/magiccircle.scn")
+var magicorbsclass = preload("res://scenes/animations/magiccircle/orbs.scn")
+
+var keymap = preload("res://gui/KeyboardCharacters.gd").new()
+
 func _ready():
 	# Initialization here
 	var magic_spells = [{"id": "thunder", "type": "thunder", "mp": 40, "auracolor": Color(1, 1, 1), "weaponcolor1": Color(1, 247/255.0, 138/255.0), "weaponcolor2": Color(0, 116/255.0, 1), "is_single": false, "charge": preload("res://players/magic/thunder/charge.scn"), "attack": preload("res://players/magic/thunder/thunder.scn"), "delay": true, "atk": 0.8}, 
@@ -57,6 +65,7 @@ func _ready():
 	Globals.set("available_levels", ["LVL_SANDBOX", "LVL_FOREST1", "LVL_FOREST2", "LVL_MANOR", "LVL_LAVACAVE", "LVL_START", "LVL_COLOSSEUM1", "LVL_COLOSSEUM2"])
 	Globals.set("levels", levelfactory.new().levels)
 	Globals.set("current_level", "LVL_START")
+	Globals.set("eventmode", false)
 	root = get_tree().get_root()
 	original_size = root.get_rect().size
 	root.connect("size_changed", self, "_on_resolution_changed")
@@ -66,6 +75,7 @@ func _ready():
 	sequences.get_node("demonic/sprite/friederich").hide()
 	sequences.get_node("demonic/sprite/adela").hide()
 	sequences.get_node("demonic").hide()
+	sequences.get_node("skip").hide()
 	sequences.hide()
 	music = get_node("music")
 	pausemenu.hide()
@@ -119,7 +129,7 @@ func _on_resolution_changed():
 
 func _input(event):
 	var canvas = get_node("gui/CanvasLayer")
-	if (!gameover && dialog.get("dialogs") == null && !pause.has_node("shopping") && !canvas.has_node("WorldMap")):
+	if (!gameover && dialog.get("dialogs") == null && !pause.has_node("shopping") && !canvas.has_node("WorldMap") && !Globals.get("eventmode")):
 		if (event.is_action("ui_pause") && event.is_pressed() && !event.is_echo() && get_node("playercontainer").has_node("player") && !get_node("playercontainer/player").get("is_transforming")):
 			if (is_paused && pausemenu.can_unpause()):
 				pausemenu.reset()
@@ -159,12 +169,12 @@ func _input(event):
 	elif(hideshop):
 		hideshop = false
 		get_tree().set_pause(false)
-	if (canvas.has_node("WorldMap")):
+	if (canvas.has_node("WorldMap") && !Globals.get("eventmode")):
 		if (event.is_action_pressed("ui_cancel") && event.is_pressed() && !event.is_echo()):
-			var map = canvas.get_node("WorldMap")
-			if (!map.block_cancel()):
-				canvas.remove_child(map)
-				map.queue_free()
+			var worldmap = canvas.get_node("WorldMap")
+			if (!worldmap.block_cancel()):
+				canvas.remove_child(worldmap)
+				worldmap.queue_free()
 				hidemap = true
 	elif(hidemap):
 		hidemap = false
@@ -172,6 +182,78 @@ func _input(event):
 	if (dialog.get("dialogs") != null):
 		if (event.is_action_pressed("ui_accept") && event.is_pressed() && !event.is_echo()):
 			dialog.check_dialog()
+	if (Globals.get("eventmode") && event.is_action_pressed("ui_cancel") && event.is_pressed() && !event.is_echo()):
+		skipevent = true
+	elif(skipevent):
+		skipevent = false
+		end_warp_animation()
+
+func toggle_eventmode():
+	Globals.set("eventmode", !Globals.get("eventmode"))
+	var skip = sequences.get_node("skip")
+	if (Globals.get("eventmode")):
+		is_minimap = map.is_visible()
+		map.hide()
+		skip.show()
+		skip.set_bbcode("[right]" + tr("KEY_SKIP") + ":  [code]" + keymap.map_action("ui_cancel") + "[/code][/right]")
+	else:
+		if (is_minimap):
+			map.show()
+		skip.hide()
+
+func warp_animation():
+	var canvas = get_node("gui/CanvasLayer")
+	var worldmap = canvas.get_node("WorldMap")
+	canvas.remove_child(worldmap)
+	worldmap.queue_free()
+	get_tree().set_pause(false)
+	if (!Globals.get("eventmode")):
+		toggle_eventmode()
+	var circle = magiccircleclass.instance()
+	circle.set_pos(Vector2(400, 274))
+	circle.get_node("AnimationPlayer").connect("finished", self, "circle_rotate")
+	sequences.add_child(circle)
+	sequences.show()
+	circle.get_node("AnimationPlayer").play("grow")
+	get_node("level/LVL_CATACOMB/tilemap/NPCGroup/Kaleva").warp_animation()
+
+func circle_rotate():
+	var circle = sequences.get_node("circle/AnimationPlayer")
+	circle.disconnect("finished", self, "circle_rotate")
+	circle.connect("finished", self, "circle_fade")
+	circle.play("rotate")
+
+func circle_fade():
+	var circle = sequences.get_node("circle/AnimationPlayer")
+	circle.disconnect("finished", self, "circle_fade")
+	circle.play("fade")
+	var orbs = magicorbsclass.instance()
+	orbs.set_pos(Vector2(400, 274))
+	orbs.get_node("AnimationPlayer").connect("finished", self, "orbs_fade")
+	sequences.add_child(orbs)
+	orbs.get_node("AnimationPlayer").play("show")
+
+func orbs_fade():
+	var orbs_animation = sequences.get_node("orbs/AnimationPlayer")
+	orbs_animation.disconnect("finished", self, "orbs_fade")
+	orbs_animation.connect("finished", self, "end_warp_animation")
+	orbs_animation.play("hide")
+
+func end_warp_animation():
+	if (sequences.has_node("circle")):
+		var circle = sequences.get_node("circle")
+		circle.get_node("AnimationPlayer").stop()
+		sequences.remove_child(circle)
+		circle.queue_free()
+	if (sequences.has_node("orbs")):
+		var orbs = sequences.get_node("orbs")
+		orbs.get_node("AnimationPlayer").stop()
+		sequences.remove_child(orbs)
+		orbs.queue_free()
+	sequences.hide()
+	get_node("level/LVL_CATACOMB/tilemap/NPCGroup/Kaleva").end_warp_animation()
+	if (Globals.get("eventmode")):
+		toggle_eventmode()
 
 func _select_friederich():
 	selected_character = friederich

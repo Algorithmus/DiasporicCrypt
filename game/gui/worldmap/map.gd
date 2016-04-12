@@ -439,8 +439,6 @@ func toggle_tags():
 	sfx.play("confirm")
 
 func _on_warp_pressed():
-	# exit map screen
-	# hide hud minimap
 	hudmap.cache_map()
 	var levels = Globals.get("levels")
 	var map = levels[selectedlevel.get_name()]
@@ -455,3 +453,4 @@ func _on_warp_pressed():
 	hudmap.load_cached_map(level)
 	Globals.set("current_level", map.title)
 	sfx.play("confirm")
+	get_tree().get_root().get_node("world").warp_animation()

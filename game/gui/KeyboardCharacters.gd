@@ -117,7 +117,7 @@ var map = {	"Up":"CHAR_UP",
 			"Udiaeresis":"CHAR_Ü",
 			"NumberSign":"CHAR_#",
 			"Ssharp":"CHAR_ß"}
-var inputs = ["ui_up", "ui_down", "ui_left", "ui_right", "ui_jump", "ui_attack", "ui_magic", "ui_blood", "ui_spell_prev", "ui_spell_next", "ui_pause", "ui_select"]
+var inputs = ["ui_up", "ui_down", "ui_left", "ui_right", "ui_jump", "ui_attack", "ui_magic", "ui_blood", "ui_spell_prev", "ui_spell_next", "ui_pause", "ui_select", "ui_cancel"]
 var keys = {}
 
 func _init():

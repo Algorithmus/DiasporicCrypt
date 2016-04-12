@@ -13,7 +13,6 @@ func _ready():
 	set_fixed_process(true)
 
 func display_item(title, item_obj):
-	print(item_obj)
 	var item = itemclass.instance()
 	var icon = itemicon
 	if (item_obj.type == "exp"):
