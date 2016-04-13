@@ -24,10 +24,15 @@ func _fixed_process(delta):
 func _ready():
 	# Initialization here
 	sound = get_node("sound")
-	set_fixed_process(true)
 
 func sprite_opacity(alpha):
 	get_node("KinematicBody2D/Sprite").set_opacity(alpha)
 
 func check_crumble(i):
 	return i.has_node("weapon")
+
+func enter_screen():
+	set_fixed_process(true)
+
+func exit_screen():
+	set_fixed_process(false)

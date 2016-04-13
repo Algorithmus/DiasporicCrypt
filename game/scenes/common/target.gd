@@ -21,7 +21,6 @@ var freezeblock = preload("res://scenes/common/iceblock.scn")
 var freezeblock_obj
 
 func _ready():
-	set_fixed_process(true)
 	collision_rect = get_node("collision")
 	sprite_offset = collision_rect.get_node("CollisionShape2D").get_shape().get_extents()
 	player = get_tree().get_root().get_node("world/playercontainer")
@@ -141,3 +140,10 @@ func _fixed_process(delta):
 		animation_player.play(current_animation)
 	if (frozen):
 		animation_player.stop()
+
+
+func enter_screen():
+	set_fixed_process(true)
+
+func exit_screen():
+	set_fixed_process(false)

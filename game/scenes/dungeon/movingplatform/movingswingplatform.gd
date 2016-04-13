@@ -13,6 +13,8 @@ func _fixed_process(delta):
 	xf[2]= motion*d
 	get_node("SwingBlock").set_transform(xf)
 
-func _ready():
-
+func enter_screen():
 	set_fixed_process(true)
+
+func _on_enabler_exit_screen():
+	set_fixed_process(false)

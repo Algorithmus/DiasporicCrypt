@@ -8,7 +8,6 @@ var consumable_offset
 var consume_factor = 50
 
 func _ready():
-	set_fixed_process(true)
 	consumable_offset = get_node("consumable/CollisionShape2D").get_shape().get_extents()
 
 func bleed():

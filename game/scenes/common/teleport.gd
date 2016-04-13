@@ -12,8 +12,6 @@ func _ready():
 	teleport = get_node("teleport")
 	main = get_tree().get_root().get_node("world")
 
-	set_fixed_process(true)
-
 func _fixed_process(delta):
 	var tiles = teleport.get_overlapping_areas()
 	for i in tiles:
@@ -27,3 +25,9 @@ func _fixed_process(delta):
 				var player_delta = i.get_global_pos().x - get_global_pos().x
 				pos.x = teleport_to.x + player_delta
 				main.teleport(target_level, pos, self)
+
+func enter_screen():
+	set_fixed_process(true)
+
+func exit_screen():
+	set_fixed_process(false)

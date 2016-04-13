@@ -33,5 +33,9 @@ func _ready():
 	item = itemfactory_obj.items[title]
 	
 	sound = get_node("sound")
-	
+
+func enter_screen():
 	set_fixed_process(true)
+
+func exit_screen():
+	set_fixed_process(false)

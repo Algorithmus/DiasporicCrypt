@@ -66,5 +66,9 @@ func _ready():
 	climbableR = blockR.get_node("climbable")
 	lOffset = blockL.get_pos().x
 	rOffset = blockR.get_pos().x
-	
+
+func enter_screen():
 	set_fixed_process(true)
+
+func exit_screen():
+	set_fixed_process(false)

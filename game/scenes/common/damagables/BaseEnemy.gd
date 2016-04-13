@@ -429,3 +429,10 @@ func _ready():
 	var color = get_node("die").get_modulate()
 	color_increments = Color((1 - color.r)/current_consume_value, -color.g/current_consume_value, -color.b/current_consume_value)
 	consumable_offset = sprite_offset
+	set_fixed_process(false)
+
+func enter_screen():
+	set_fixed_process(true)
+
+func exit_screen():
+	set_fixed_process(false)

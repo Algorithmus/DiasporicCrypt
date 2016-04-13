@@ -32,7 +32,7 @@ func remove_item(item, quantity):
 
 func clear_inventory():
 	for item in inventory:
-		item["quantity"] = 0
+		inventory[item]["quantity"] = 0
 
 func check_usable(item):
 	if (item.effect == "hp"):

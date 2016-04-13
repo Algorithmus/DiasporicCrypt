@@ -373,6 +373,12 @@ func teleport(new_level, pos, teleport):
 	level_title.seek(0, true)
 	if (new_level_obj.get_name() != "LVL_NOTITLE"):
 		display_level_title(new_level_obj.get_name())
+	# make sure catacombs level connects to the correct level
+	if (new_level == "res://levels/common/catacombs.scn"):
+		var teleport = new_level_obj.get_node("tilemap/TeleportGroup").get_child(0)
+		var map = Globals.get("levels")[Globals.get("current_level")]
+		teleport.target_level = map.node
+		teleport.teleport_to = map.teleportto
 	# check that any scrolls already collected do not appear in the level again
 	if (new_level_obj.has_node("tilemap/ScrollGroup")):
 		for i in new_level_obj.get_node("tilemap/ScrollGroup").get_children():

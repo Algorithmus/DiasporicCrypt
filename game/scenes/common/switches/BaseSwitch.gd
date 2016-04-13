@@ -10,7 +10,6 @@ var target_containers = []
 var tilemap
 
 func _ready():
-	set_fixed_process(true)
 	tilemap = get_parent().get_parent()
 	for target in target_nodes:
 		print(target)
@@ -39,6 +38,12 @@ func _fixed_process(delta):
 	if ((once && !activated) || !once):
 		check_activation()
 		activate()
-	
+
+func enter_screen():
+	set_fixed_process(true)
+
+func exit_screen():
+	set_fixed_process(false)
+
 func check_activation():
 	pass
