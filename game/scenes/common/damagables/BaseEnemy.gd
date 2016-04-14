@@ -308,10 +308,12 @@ func check_stunned():
 			animation_player.play(current_animation)
 
 func step_player(delta):
+	"""
 	if (!player_loaded):
 		if (player.has_node("player/damage")):
 			area2d_blacklist.append(player.get_node("player/damage"))
 			player_loaded = true
+	"""
 	# ignore expensive calculations on flying enemies
 	if (ignore_collision):
 		on_ladder = true

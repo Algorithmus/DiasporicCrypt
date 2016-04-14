@@ -38,7 +38,6 @@ func _ready():
 	get_node("frame").hide()
 	textarea = get_node("frame/textarea")
 	text = textarea.get_node("textcontent")
-	var test = RichTextLabel.new()
 	next = get_node("next")
 	profile = get_node("profile")
 	hchoice = textarea.get_node("hchoice")

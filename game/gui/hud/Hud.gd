@@ -16,7 +16,7 @@ var bloodbar
 var level
 var is_magic = false
 
-var blood_height = 64
+var blood_height = 63
 
 func _ready():
 	set_fixed_process(true)
@@ -34,8 +34,8 @@ func reset():
 	mpprebar.hide()
 	var polygon = bloodbar.get_polygon()
 	var blood_value = polygon[2].y
-	polygon[0].y = blood_value
-	polygon[1].y = blood_value
+	polygon[0].y = blood_value - 1
+	polygon[1].y = blood_value - 1
 	bloodbar.set_polygon(polygon)
 	hpbar.set_scale(Vector2(1, 1))
 	mpbar.set_scale(Vector2(1, 1))
@@ -87,7 +87,7 @@ func _fixed_process(delta):
 		# Update blood bar
 		var bloodscale = player.get("current_blood") / float(player.get("max_blood"))
 		var polygon = bloodbar.get_polygon()
-		var current_blood_value = (polygon[2].y - polygon[0].y) / float(blood_height)
+		var current_blood_value = (polygon[2].y - polygon[0].y - 1) / float(blood_height)
 		var bloodstep = bloodscale - current_blood_value
 		if (abs(bloodstep) > 0.01):
 			bloodstep = 0.01*sign(bloodstep)

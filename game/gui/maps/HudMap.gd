@@ -11,7 +11,7 @@ var camera
 var offset
 var current_map
 var rooms = {}
-
+#256, 176
 func _ready():
 	if (!Globals.has("mapid")):
 		Globals.set("mapid", "LVL_SANDBOX") # this should eventually be the training level by default

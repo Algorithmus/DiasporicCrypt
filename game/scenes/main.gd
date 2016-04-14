@@ -46,6 +46,7 @@ var levelfactory = preload("res://levels/LevelFactory.gd")
 
 var magiccircleclass = preload("res://scenes/animations/magiccircle/magiccircle.scn")
 var magicorbsclass = preload("res://scenes/animations/magiccircle/orbs.scn")
+var stardustclass = preload("res://scenes/animations/stardust.scn")
 
 var keymap = preload("res://gui/KeyboardCharacters.gd").new()
 
@@ -191,15 +192,24 @@ func _input(event):
 func toggle_eventmode():
 	Globals.set("eventmode", !Globals.get("eventmode"))
 	var skip = sequences.get_node("skip")
+	var canvas = get_node("gui/CanvasLayer")
 	if (Globals.get("eventmode")):
 		is_minimap = map.is_visible()
 		map.hide()
 		skip.show()
 		skip.set_bbcode("[right]" + tr("KEY_SKIP") + ":  [code]" + keymap.map_action("ui_cancel") + "[/code][/right]")
+		#canvas.get_node("chain").hide()
+		canvas.get_node("hud").hide()
+		canvas.get_node("items").hide()
+		canvas.get_node("level").hide()
 	else:
 		if (is_minimap):
 			map.show()
 		skip.hide()
+		canvas.get_node("chain").show()
+		canvas.get_node("hud").show()
+		canvas.get_node("items").show()
+		canvas.get_node("level").show()
 
 func warp_animation():
 	var canvas = get_node("gui/CanvasLayer")
@@ -236,8 +246,31 @@ func circle_fade():
 func orbs_fade():
 	var orbs_animation = sequences.get_node("orbs/AnimationPlayer")
 	orbs_animation.disconnect("finished", self, "orbs_fade")
-	orbs_animation.connect("finished", self, "end_warp_animation")
+	orbs_animation.connect("finished", self, "fade_level")
 	orbs_animation.play("hide")
+
+func fade_level():
+	get_node("level/LVL_CATACOMB/tilemap/NPCGroup/Kaleva").end_warp_animation()
+	var orbs = sequences.get_node("orbs")
+	orbs.get_node("AnimationPlayer").stop()
+	sequences.remove_child(orbs)
+	orbs.queue_free()
+	get_node("AnimationPlayer").connect("finished", self, "show_level")
+	get_node("AnimationPlayer").play("hide")
+	var stardust = stardustclass.instance()
+	stardust.set_pos(Vector2(400, 296))
+	sequences.add_child(stardust)
+	stardust.set_emitting(true)
+
+func show_level():
+	if (sequences.has_node("circle")):
+		var circle = sequences.get_node("circle")
+		circle.get_node("AnimationPlayer").stop()
+		sequences.remove_child(circle)
+		circle.queue_free()
+	get_node("AnimationPlayer").disconnect("finished", self, "show_level")
+	get_node("AnimationPlayer").connect("finished", self, "end_warp_animation")
+	get_node("AnimationPlayer").play("show")
 
 func end_warp_animation():
 	if (sequences.has_node("circle")):
@@ -250,8 +283,16 @@ func end_warp_animation():
 		orbs.get_node("AnimationPlayer").stop()
 		sequences.remove_child(orbs)
 		orbs.queue_free()
-	sequences.hide()
+	if (sequences.has_node("stardust")):
+		var stardust = sequences.get_node("stardust")
+		sequences.remove_child(stardust)
+		stardust.queue_free()
+	get_node("level").set_opacity(1)
+	get_node("playercontainer").set_opacity(1)
+	get_node("AnimationPlayer").disconnect("finished", self, "end_warp_animation")
+	get_node("AnimationPlayer").stop()
 	get_node("level/LVL_CATACOMB/tilemap/NPCGroup/Kaleva").end_warp_animation()
+	sequences.hide()
 	if (Globals.get("eventmode")):
 		toggle_eventmode()
 
@@ -362,7 +403,7 @@ func teleport(new_level, pos, teleport):
 	map.load_map(new_level_obj)
 	var level = get_node("level")
 	var old_level = level.get_child(0)
-	level.remove_child(old_level)
+	#level.remove_child(old_level)
 	old_level.queue_free()
 	level.add_child(new_level_obj)
 	var player = get_node("playercontainer/player")
@@ -375,10 +416,10 @@ func teleport(new_level, pos, teleport):
 		display_level_title(new_level_obj.get_name())
 	# make sure catacombs level connects to the correct level
 	if (new_level == "res://levels/common/catacombs.scn"):
-		var teleport = new_level_obj.get_node("tilemap/TeleportGroup").get_child(0)
+		var new_teleport = new_level_obj.get_node("tilemap/TeleportGroup").get_child(0)
 		var map = Globals.get("levels")[Globals.get("current_level")]
-		teleport.target_level = map.node
-		teleport.teleport_to = map.teleportto
+		new_teleport.target_level = map.node
+		new_teleport.teleport_to = map.teleportto
 	# check that any scrolls already collected do not appear in the level again
 	if (new_level_obj.has_node("tilemap/ScrollGroup")):
 		for i in new_level_obj.get_node("tilemap/ScrollGroup").get_children():

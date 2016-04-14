@@ -235,7 +235,7 @@ func check_damage(damageTiles):
 			if (i.get_name() == "npc"):
 				npc = i.get_parent()
 		
-		if (npc != null):
+		if (npc != null && !Globals.get("eventmode")):
 			get_node("talk").show()
 		else:
 			get_node("talk").hide()

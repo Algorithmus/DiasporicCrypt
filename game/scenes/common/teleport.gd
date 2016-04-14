@@ -20,10 +20,12 @@ func _fixed_process(delta):
 			if (is_horizontal && i.get_global_pos().y - 64 >= get_global_pos().y - teleport.get_scale().y * 32 && i.get_global_pos().y + 64 <= get_global_pos().y + teleport.get_scale().y * 32):
 				var player_delta = i.get_global_pos().y - get_global_pos().y
 				pos.y = teleport_to.y + player_delta
+				set_fixed_process(false)
 				main.teleport(target_level, pos, self)
 			elif (!is_horizontal && i.get_global_pos().x - 16 >= get_global_pos().x - teleport.get_scale().x * 32 && i.get_global_pos().x + 16 <= get_global_pos().x + teleport.get_scale().x * 32):
 				var player_delta = i.get_global_pos().x - get_global_pos().x
 				pos.x = teleport_to.x + player_delta
+				set_fixed_process(false)
 				main.teleport(target_level, pos, self)
 
 func enter_screen():
