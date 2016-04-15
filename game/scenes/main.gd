@@ -453,6 +453,8 @@ func _friederich_exit():
 func _adela_exit():
 	select.get_node("adela_sprite/AnimationPlayer").play("idle")
 
+# Globals with preloaded assets are not cleared properly. Until this is
+# fixed, we are clearing them manually ourselves.
 func _notification(what):
 	if (what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST):
 		Globals.set("magic_spells", null)
