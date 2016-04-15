@@ -452,3 +452,16 @@ func _friederich_exit():
 
 func _adela_exit():
 	select.get_node("adela_sprite/AnimationPlayer").play("idle")
+
+func _notification(what):
+	if (what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST):
+		Globals.set("magic_spells", null)
+		Globals.set("itemfactory", null)
+		Globals.set("levels", null)
+		Globals.set("inventory", null)
+		Globals.set("scrolls", null)
+		Globals.set("shops", null)
+		Globals.set("mapobjects", null)
+		Globals.set("mapindex", null)
+		Globals.set("available_spells", null)
+		get_tree().quit()

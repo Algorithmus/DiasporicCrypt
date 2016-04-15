@@ -1,0 +1,1094 @@
+[gd_scene load_steps=66 format=1]
+
+[ext_resource path="res://scenes/main.gd" type="Script" id=1]
+[ext_resource path="res://levels/common/catacombs.scn" type="PackedScene" id=2]
+[ext_resource path="res://gui/hud/Hud.gd" type="Script" id=3]
+[ext_resource path="res://players/magic/fire/icon.png" type="Texture" id=4]
+[ext_resource path="res://players/magic/ice/icon.png" type="Texture" id=5]
+[ext_resource path="res://players/magic/thunder/icon.png" type="Texture" id=6]
+[ext_resource path="res://players/magic/hex/icon.png" type="Texture" id=7]
+[ext_resource path="res://players/magic/magicmine/icon.png" type="Texture" id=8]
+[ext_resource path="res://players/magic/shield/icon.png" type="Texture" id=9]
+[ext_resource path="res://players/magic/void/icon.png" type="Texture" id=10]
+[ext_resource path="res://players/magic/earth/icon.png" type="Texture" id=11]
+[ext_resource path="res://players/magic/wind/icon.png" type="Texture" id=12]
+[ext_resource path="res://gui/fonts/S-10-pixel.fnt" type="Font" id=13]
+[ext_resource path="res://gui/hud/MPGauge.png" type="Texture" id=14]
+[ext_resource path="res://gui/hud/HPGauge.png" type="Texture" id=15]
+[ext_resource path="res://gui/fonts/XS-10.fnt" type="Font" id=16]
+[ext_resource path="res://gui/fonts/L-24.fnt" type="Font" id=17]
+[ext_resource path="res://gui/hud/bloodgauge-mask.png" type="Texture" id=18]
+[ext_resource path="res://gui/hud/bloodGauge.png" type="Texture" id=19]
+[ext_resource path="res://gui/hud/ItemDisplay.gd" type="Script" id=20]
+[ext_resource path="res://gui/maps/HudMap.gd" type="Script" id=21]
+[ext_resource path="res://gui/fonts/XL-72.fnt" type="Font" id=22]
+[ext_resource path="res://gui/dialogue/dialogue.scn" type="PackedScene" id=23]
+[ext_resource path="res://gui/menu/menu.scn" type="PackedScene" id=24]
+[ext_resource path="res://gui/TextButton.scn" type="PackedScene" id=25]
+[ext_resource path="res://gui/select/friederich.png" type="Texture" id=26]
+[ext_resource path="res://gui/select/friederich-select.png" type="Texture" id=27]
+[ext_resource path="res://gui/select/adela.png" type="Texture" id=28]
+[ext_resource path="res://gui/select/adela-select.png" type="Texture" id=29]
+[ext_resource path="res://players/friederich/friederich.scn" type="PackedScene" id=30]
+[ext_resource path="res://players/adela/adela.scn" type="PackedScene" id=31]
+[ext_resource path="res://players/magic/wind/action.png" type="Texture" id=32]
+[ext_resource path="res://gui/sequences/demonic_f.png" type="Texture" id=33]
+[ext_resource path="res://gui/sequences/demonic_a.png" type="Texture" id=34]
+[ext_resource path="res://gui/fonts/L-24-Keyboard-outline.fnt" type="Font" id=35]
+[ext_resource path="res://gui/fonts/S-13-dialog.fnt" type="Font" id=36]
+[ext_resource path="res://gui/confirm.wav" type="Sample" id=37]
+[ext_resource path="res://gui/cursor.wav" type="Sample" id=38]
+[ext_resource path="res://gui/sequences/demonic.wav" type="Sample" id=39]
+[ext_resource path="res://levels/common/BGM1.ogg" type="AudioStream" id=40]
+
+[sub_resource type="CanvasItemShader" id=16]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=17]
+
+shader/shader = SubResource( 16 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=18]
+
+_code = { "fragment":"uniform texture source;\n\nCOLOR.rgb = vec3(1, 0, 0);\nCOLOR.a = tex(source,vec2(UV.x+0.5, UV.y+0.5)).a*COLOR.a;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=19]
+
+shader/shader = SubResource( 18 )
+shader/shading_mode = 0
+shader_param/source = ExtResource( 18 )
+
+[sub_resource type="ImageTexture" id=20]
+
+flags = 2
+image = Image()
+size = Vector2( 99, 69 )
+storage = 0
+lossy_quality = 1.0
+
+[sub_resource type="CanvasItemShader" id=21]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=22]
+
+shader/shader = SubResource( 21 )
+shader/shading_mode = 0
+shader_param/aura_width = 3.0
+shader_param/aura_color = Color( 1, 0.62358, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="Animation" id=23]
+
+resource/name = "levelup"
+length = 2.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("levelup:transform/scale")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.3 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 1, 1 ) ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("levelup:visibility/visible")
+tracks/1/interp = 1
+tracks/1/keys = { "cont":false, "times":FloatArray( 0, 1.9 ), "transitions":FloatArray( 1, 1 ), "values":[ true, false ] }
+
+[sub_resource type="Animation" id=9]
+
+resource/name = "appear"
+length = 0.2
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("chaintext:transform/scale")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 0.25, 0.25, 1 ), "values":[ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ] }
+
+[sub_resource type="Animation" id=10]
+
+resource/name = "counter"
+length = 0.2
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("chaintext/counterGroup:transform/scale")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 0.25, 0.25, 1 ), "values":[ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ] }
+
+[sub_resource type="Animation" id=11]
+
+resource/name = "newattack"
+length = 0.2
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("newattack:transform/scale")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 0.25, 0.25, 1 ), "values":[ Vector2( 1, 1 ), Vector2( 1.34375, 1.34375 ), Vector2( 1, 1 ) ] }
+
+[sub_resource type="Animation" id=15]
+
+resource/name = "show"
+length = 2.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("title:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.2, 1.8, 2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 0.0, 1.0, 1.0, 0.0 ] }
+
+[sub_resource type="ImageTexture" id=1]
+
+flags = 2
+image = Image()
+size = Vector2( 800, 592 )
+storage = 0
+lossy_quality = 0.7
+
+[sub_resource type="CanvasItemShader" id=5]
+
+_code = { "fragment":"uniform color start=color(0.2,0.4,1.0,0.8);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, UV.y);\n\nCOLOR.a = tex(TEXTURE,UV).a*COLOR.a;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=6]
+
+shader/shader = SubResource( 5 )
+shader/shading_mode = 0
+shader_param/start = Color( 0.0506629, 0.0610795, 0.0899857, 1 )
+shader_param/stop = Color( 0.181345, 0.191761, 0.214338, 1 )
+
+[sub_resource type="ImageTexture" id=24]
+
+flags = 6
+image = Image()
+size = Vector2( 1, 1 )
+storage = 0
+lossy_quality = 1.0
+
+[sub_resource type="CanvasItemMaterial" id=2]
+
+shader/shading_mode = 0
+
+[sub_resource type="CanvasItemShader" id=25]
+
+_code = { "fragment":"uniform color start=color(0.2,0.4,1.0,0.8);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, UV.y*3);\n\nCOLOR.a = tex(TEXTURE,UV).a*COLOR.a;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=26]
+
+shader/shader = SubResource( 25 )
+shader/shading_mode = 0
+shader_param/start = Color( 0.137255, 0.176471, 0.215686, 0 )
+shader_param/stop = Color( 0.137757, 0.163544, 0.200135, 0.443396 )
+
+[sub_resource type="CanvasItemShader" id=13]
+
+_code = { "fragment":"uniform color start=color(0.2,0.4,1.0,1.0);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, sin(UV.y*3.1415926535897932384626));\n\nCOLOR.a = tex(TEXTURE,UV).a*COLOR.a;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=14]
+
+shader/shader = SubResource( 13 )
+shader/shading_mode = 0
+shader_param/start = Color( 0.0994318, 0.077178, 0.197857, 1 )
+shader_param/stop = Color( 0.380682, 0, 0.366588, 1 )
+
+[sub_resource type="Animation" id=12]
+
+resource/name = "demonic"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../sequences/demonic/sprite:transform/pos")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.8, 0.9 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( -800, 0 ), Vector2( 0, 0 ), Vector2( 32, 0 ), Vector2( 800, 0 ) ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../pause:visibility/visible")
+tracks/1/interp = 1
+tracks/1/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ true ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("../choice/gameover:visibility/visible")
+tracks/2/interp = 1
+tracks/2/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
+tracks/3/type = "method"
+tracks/3/path = NodePath("../../..")
+tracks/3/interp = 1
+tracks/3/keys = { "times":FloatArray( 1 ), "transitions":FloatArray( 1 ), "values":[ { "args":[  ], "method":"sequence_finished" } ] }
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../sound:play/play")
+tracks/4/interp = 1
+tracks/4/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ "demonic" ] }
+
+[sub_resource type="SampleLibrary" id=29]
+
+samples/cursor = { "db":0.0, "pitch":1.0, "sample":ExtResource( 38 ) }
+samples/confirm = { "db":0.0, "pitch":1.0, "sample":ExtResource( 37 ) }
+samples/demonic = { "db":0.0, "pitch":1.0, "sample":ExtResource( 39 ) }
+
+[sub_resource type="Animation" id=27]
+
+resource/name = "hide"
+length = 0.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("level:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ 1.0, 0.0 ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("playercontainer:visibility/opacity")
+tracks/1/interp = 1
+tracks/1/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ 1.0, 0.0 ] }
+
+[sub_resource type="Animation" id=28]
+
+resource/name = "show"
+length = 1.8
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("level:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 1.3, 1.8, 1.8 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ 0.0, 1.0, 1.0 ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("playercontainer:visibility/opacity")
+tracks/1/interp = 1
+tracks/1/keys = { "cont":true, "times":FloatArray( 1.3, 1.8, 1.8 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ 0.0, 1.0, 1.0 ] }
+
+[node name="world" type="Node2D"]
+
+process/pause_mode = 2
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="level" type="Node2D" parent="."]
+
+process/pause_mode = 1
+__meta__ = { "_edit_lock_":true, "_editor_collapsed":true }
+
+[node name="LVL_CATACOMB" parent="level" instance=ExtResource( 2 )]
+
+[node name="playercontainer" type="Node2D" parent="."]
+
+process/pause_mode = 1
+__meta__ = { "_edit_lock_":true }
+
+[node name="gui" type="Node2D" parent="."]
+
+process/pause_mode = 2
+z/z = 5
+
+[node name="hpcontainer" type="Node2D" parent="gui"]
+
+process/pause_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="gui"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="hud" type="Control" parent="gui/CanvasLayer"]
+
+process/pause_mode = 1
+margin/right = 40.0
+margin/bottom = 40.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+script/script = ExtResource( 3 )
+__meta__ = { "_editor_collapsed":true }
+
+[node name="SpellIcons" type="Node2D" parent="gui/CanvasLayer/hud"]
+
+transform/pos = Vector2( 624, 40 )
+__meta__ = { "_editor_collapsed":true }
+
+[node name="fire" type="Sprite" parent="gui/CanvasLayer/hud/SpellIcons"]
+
+visibility/visible = false
+texture = ExtResource( 4 )
+
+[node name="ice" type="Sprite" parent="gui/CanvasLayer/hud/SpellIcons"]
+
+visibility/visible = false
+texture = ExtResource( 5 )
+
+[node name="thunder" type="Sprite" parent="gui/CanvasLayer/hud/SpellIcons"]
+
+visibility/visible = false
+texture = ExtResource( 6 )
+
+[node name="hex" type="Sprite" parent="gui/CanvasLayer/hud/SpellIcons"]
+
+visibility/visible = false
+texture = ExtResource( 7 )
+
+[node name="magicmine" type="Sprite" parent="gui/CanvasLayer/hud/SpellIcons"]
+
+visibility/visible = false
+texture = ExtResource( 8 )
+
+[node name="shield" type="Sprite" parent="gui/CanvasLayer/hud/SpellIcons"]
+
+visibility/visible = false
+texture = ExtResource( 9 )
+
+[node name="void" type="Sprite" parent="gui/CanvasLayer/hud/SpellIcons"]
+
+visibility/visible = false
+texture = ExtResource( 10 )
+
+[node name="earth" type="Sprite" parent="gui/CanvasLayer/hud/SpellIcons"]
+
+visibility/visible = false
+texture = ExtResource( 11 )
+
+[node name="wind" type="Sprite" parent="gui/CanvasLayer/hud/SpellIcons"]
+
+visibility/visible = false
+texture = ExtResource( 12 )
+
+[node name="Label" type="Label" parent="gui/CanvasLayer/hud"]
+
+margin/left = 606.0
+margin/top = 56.0
+margin/right = 642.0
+margin/bottom = 65.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 13 )
+text = "KEY_SPELL"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="mpbar" type="Node2D" parent="gui/CanvasLayer/hud"]
+
+[node name="bar" type="Polygon2D" parent="gui/CanvasLayer/hud/mpbar"]
+
+transform/pos = Vector2( 40, 56 )
+polygon = Vector2Array( 0, 0, 500, 0, 500, 6, 0, 6 )
+uv = Vector2Array(  )
+color = Color( 0.0627451, 0.698039, 0.235294, 0.901961 )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="prebar" type="Polygon2D" parent="gui/CanvasLayer/hud/mpbar"]
+
+transform/pos = Vector2( 40, 56 )
+polygon = Vector2Array( 0, 0, 500, 0, 500, 6, 0, 6 )
+uv = Vector2Array(  )
+color = Color( 1, 0.764706, 0.0588235, 0.901961 )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="display" type="Sprite" parent="gui/CanvasLayer/hud/mpbar"]
+
+texture = ExtResource( 14 )
+centered = false
+
+[node name="hpbar" type="Node2D" parent="gui/CanvasLayer/hud"]
+
+[node name="bar" type="Polygon2D" parent="gui/CanvasLayer/hud/hpbar"]
+
+transform/pos = Vector2( 40, 28 )
+polygon = Vector2Array( 0, 0, 500, 0, 500, 11, 0, 11 )
+uv = Vector2Array(  )
+color = Color( 0, 0.411765, 1, 0.901961 )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="display" type="Sprite" parent="gui/CanvasLayer/hud/hpbar"]
+
+material/material = SubResource( 17 )
+material/use_parent = true
+texture = ExtResource( 15 )
+centered = false
+
+[node name="level" type="Label" parent="gui/CanvasLayer/hud/hpbar"]
+
+margin/left = 14.0
+margin/top = 27.0
+margin/right = 34.0
+margin/bottom = 37.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 16 )
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="levelup" type="Node2D" parent="gui/CanvasLayer/hud"]
+
+transform/pos = Vector2( 18, 68 )
+
+[node name="Label" type="Label" parent="gui/CanvasLayer/hud/levelup"]
+
+margin/right = 40.0
+margin/bottom = 13.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 17 )
+text = "KEY_LEVELUP"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="bloodbar" type="Node2D" parent="gui/CanvasLayer/hud"]
+
+transform/pos = Vector2( 740, 48 )
+
+[node name="bar" type="Polygon2D" parent="gui/CanvasLayer/hud/bloodbar"]
+
+material/material = SubResource( 19 )
+polygon = Vector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
+uv = Vector2Array(  )
+color = Color( 1, 0, 0, 0.901961 )
+offset = Vector2( 0, 0 )
+texture/texture = SubResource( 20 )
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="display" type="Sprite" parent="gui/CanvasLayer/hud/bloodbar"]
+
+material/material = SubResource( 22 )
+material/use_parent = true
+texture = ExtResource( 19 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="gui/CanvasLayer/hud"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/levelup = SubResource( 23 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="items" type="Control" parent="gui/CanvasLayer"]
+
+process/pause_mode = 1
+margin/left = 544.0
+margin/top = 488.0
+margin/right = 784.0
+margin/bottom = 588.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+script/script = ExtResource( 20 )
+__meta__ = { "_editor_collapsed":true }
+
+[node name="container" type="Node2D" parent="gui/CanvasLayer/items"]
+
+transform/pos = Vector2( 192, 84 )
+
+[node name="map" type="Control" parent="gui/CanvasLayer"]
+
+margin/right = 40.0
+margin/bottom = 40.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+__meta__ = { "_editor_collapsed":true }
+
+[node name="container" type="Polygon2D" parent="gui/CanvasLayer/map"]
+
+transform/pos = Vector2( 0, 416 )
+polygon = Vector2Array( 0, 0, 256, 0, 256, 176, 0, 176 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 0 )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+script/script = ExtResource( 21 )
+
+[node name="objects" type="Node2D" parent="gui/CanvasLayer/map/container"]
+
+visibility/behind_parent = true
+
+[node name="chain" type="Control" parent="gui/CanvasLayer"]
+
+margin/right = 40.0
+margin/bottom = 40.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+__meta__ = { "_editor_collapsed":true }
+
+[node name="chaintext" type="Node2D" parent="gui/CanvasLayer/chain"]
+
+transform/pos = Vector2( 32, 211 )
+
+[node name="chain" type="Label" parent="gui/CanvasLayer/chain/chaintext"]
+
+margin/top = -15.0
+margin/right = 112.0
+margin/bottom = 16.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 17 )
+text = "chain x"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="counterGroup" type="Node2D" parent="gui/CanvasLayer/chain/chaintext"]
+
+transform/pos = Vector2( 100, 0 )
+
+[node name="counter" type="Label" parent="gui/CanvasLayer/chain/chaintext/counterGroup"]
+
+anchor/top = 3
+anchor/bottom = 3
+margin/top = 47.0
+margin/right = 44.0
+margin/bottom = 16.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 17 )
+text = "100"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="newattack" type="Node2D" parent="gui/CanvasLayer/chain"]
+
+transform/pos = Vector2( 32, 186 )
+
+[node name="newattack_text" type="Label" parent="gui/CanvasLayer/chain/newattack"]
+
+margin/top = -15.0
+margin/right = 240.0
+margin/bottom = 16.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 17 )
+text = "KEY_NEWATTACK"
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="gui/CanvasLayer/chain"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/appear = SubResource( 9 )
+anims/counter = SubResource( 10 )
+anims/newattack = SubResource( 11 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="level" type="Control" parent="gui/CanvasLayer"]
+
+process/pause_mode = 1
+margin/right = 40.0
+margin/bottom = 40.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+__meta__ = { "_editor_collapsed":true }
+
+[node name="title" type="Label" parent="gui/CanvasLayer/level"]
+
+visibility/opacity = 0.0
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+margin/left = -12.0
+margin/top = -164.0
+margin/right = -748.0
+margin/bottom = -382.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 22 )
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="gui/CanvasLayer/level"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/show = SubResource( 15 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="dialogue" parent="gui/CanvasLayer" instance=ExtResource( 23 )]
+
+[node name="pause" type="Control" parent="gui/CanvasLayer"]
+
+anchor/right = 1
+anchor/bottom = 1
+margin/right = 24.0
+margin/bottom = 24.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+__meta__ = { "_edit_lock_":true }
+
+[node name="shield" type="Sprite" parent="gui/CanvasLayer/pause"]
+
+texture = SubResource( 1 )
+centered = false
+modulate = Color( 1, 1, 1, 0.590791 )
+
+[node name="menu" parent="gui/CanvasLayer/pause" instance=ExtResource( 24 )]
+
+margin/left = 32.0
+margin/top = 32.0
+margin/right = 768.0
+margin/bottom = 560.0
+
+[node name="choice" type="Control" parent="gui/CanvasLayer"]
+
+visibility/visible = false
+anchor/right = 1
+anchor/bottom = 1
+margin/right = 24.0
+margin/bottom = 24.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+__meta__ = { "_editor_collapsed":true }
+
+[node name="gameover" type="Label" parent="gui/CanvasLayer/choice"]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+margin/left = 396.0
+margin/top = 252.0
+margin/right = -420.0
+margin/bottom = 162.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 22 )
+text = "KEY_GAMEOVER"
+align = 1
+valign = 1
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="continue" type="Label" parent="gui/CanvasLayer/choice"]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+margin/left = 372.0
+margin/top = 92.0
+margin/right = -396.0
+margin/bottom = 44.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 17 )
+text = "KEY_CONTINUE"
+align = 1
+valign = 1
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="yes" parent="gui/CanvasLayer/choice" instance=ExtResource( 25 )]
+
+transform/pos = Vector2( 256, 404 )
+default_focus = true
+
+[node name="button" parent="gui/CanvasLayer/choice/yes"]
+
+focus_neighbour/right = NodePath("../../no/button")
+text = "KEY_YES"
+
+[node name="no" parent="gui/CanvasLayer/choice" instance=ExtResource( 25 )]
+
+transform/pos = Vector2( 544, 404 )
+
+[node name="button" parent="gui/CanvasLayer/choice/no"]
+
+focus_neighbour/left = NodePath("../../yes/button")
+text = "KEY_NO"
+
+[node name="select" type="Control" parent="gui/CanvasLayer"]
+
+visibility/visible = false
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+__meta__ = { "_editor_collapsed":true }
+
+[node name="BG" type="TextureFrame" parent="gui/CanvasLayer/select"]
+
+material/material = SubResource( 6 )
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+texture = SubResource( 24 )
+expand = true
+
+[node name="friederich" type="TextureButton" parent="gui/CanvasLayer/select"]
+
+material/material = SubResource( 2 )
+anchor/left = 2
+anchor/bottom = 2
+margin/left = -0.045
+margin/top = -18.0
+margin/right = 455.0
+margin/bottom = 1.20608
+focus_neighbour/right = NodePath("../adela")
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+toggle_mode = false
+textures/normal = ExtResource( 26 )
+textures/pressed = ExtResource( 27 )
+textures/hover = ExtResource( 27 )
+textures/focused = ExtResource( 27 )
+params/scale = Vector2( 0.43, 0.43 )
+
+[node name="adela" type="TextureButton" parent="gui/CanvasLayer/select"]
+
+anchor/right = 2
+anchor/bottom = 2
+margin/left = 380.0
+margin/right = 1.07
+margin/bottom = 1.0473
+focus_neighbour/left = NodePath("../friederich")
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+toggle_mode = false
+textures/normal = ExtResource( 28 )
+textures/pressed = ExtResource( 29 )
+textures/hover = ExtResource( 29 )
+textures/focused = ExtResource( 29 )
+params/scale = Vector2( 0.5, 0.5 )
+
+[node name="Label" type="Label" parent="gui/CanvasLayer/select"]
+
+anchor/left = 3
+anchor/right = 3
+margin/left = 180.0
+margin/right = -180.0
+margin/bottom = 31.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 17 )
+text = "KEY_CHARSELECT"
+align = 1
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="mask" type="TextureFrame" parent="gui/CanvasLayer/select"]
+
+material/material = SubResource( 26 )
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+margin/top = 296.0
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+texture = SubResource( 24 )
+expand = true
+
+[node name="friederich_title" type="Label" parent="gui/CanvasLayer/select"]
+
+anchor/left = 2
+anchor/right = 3
+anchor/bottom = 1
+margin/right = -64.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 17 )
+text = "Friederich"
+align = 1
+valign = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="adela_title" type="Label" parent="gui/CanvasLayer/select"]
+
+anchor/left = 3
+anchor/right = 2
+anchor/bottom = 1
+margin/left = 1.0
+margin/right = 1.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 17 )
+text = "Adela"
+align = 1
+valign = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="friederich_sprite" parent="gui/CanvasLayer/select" instance=ExtResource( 30 )]
+
+transform/pos = Vector2( 200, 480 )
+script/script = null
+
+[node name="Camera2D" parent="gui/CanvasLayer/select/friederich_sprite"]
+
+current = false
+
+[node name="talk" parent="gui/CanvasLayer/select/friederich_sprite"]
+
+visibility/visible = false
+
+[node name="adela_sprite" parent="gui/CanvasLayer/select" instance=ExtResource( 31 )]
+
+transform/pos = Vector2( 600, 480 )
+script/script = null
+
+[node name="idle" parent="NormalSpriteGroup/adela_sprite/select/CanvasLayer/gui"]
+
+visibility/visible = false
+
+[node name="aattack" parent="NormalSpriteGroup/adela_sprite/select/CanvasLayer/gui"]
+
+visibility/visible = true
+
+[node name="Camera2D" parent="gui/CanvasLayer/select/adela_sprite"]
+
+current = false
+
+[node name="talk" parent="gui/CanvasLayer/select/adela_sprite"]
+
+visibility/visible = false
+
+[node name="sequences" type="Control" parent="gui/CanvasLayer"]
+
+margin/right = 40.0
+margin/bottom = 40.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+__meta__ = { "_editor_collapsed":true }
+
+[node name="demonic" type="Node2D" parent="gui/CanvasLayer/sequences"]
+
+visibility/visible = false
+
+[node name="BG" type="TextureFrame" parent="gui/CanvasLayer/sequences/demonic"]
+
+material/material = SubResource( 14 )
+anchor/right = 1
+anchor/bottom = 1
+margin/top = 300.0
+margin/right = -736.0
+margin/bottom = -436.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+texture = SubResource( 24 )
+expand = true
+
+[node name="Particles2D" type="Particles2D" parent="gui/CanvasLayer/sequences/demonic"]
+
+transform/pos = Vector2( 400, 400 )
+config/amount = 12
+config/lifetime = 2.0
+config/time_scale = 20.0
+config/half_extents = Vector2( 400, 100 )
+config/texture = ExtResource( 32 )
+params/direction = 90.0
+params/spread = 10.0
+params/linear_velocity = 120.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/linear_velocity = 1.0
+randomness/initial_size = 1.0
+
+[node name="sprite" type="Node2D" parent="gui/CanvasLayer/sequences/demonic"]
+
+[node name="friederich" type="Sprite" parent="gui/CanvasLayer/sequences/demonic/sprite"]
+
+transform/scale = Vector2( 0.45, 0.45 )
+texture = ExtResource( 33 )
+centered = false
+offset = Vector2( 0, 74 )
+
+[node name="adela" type="Sprite" parent="gui/CanvasLayer/sequences/demonic/sprite"]
+
+visibility/visible = false
+transform/scale = Vector2( 0.55, 0.55 )
+texture = ExtResource( 34 )
+centered = false
+offset = Vector2( 0, 74 )
+
+[node name="skip" type="RichTextLabel" parent="gui/CanvasLayer/sequences"]
+
+margin/left = 512.0
+margin/top = 552.0
+margin/right = 768.0
+margin/bottom = 584.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+custom_fonts/mono_font = ExtResource( 35 )
+custom_fonts/normal_font = ExtResource( 36 )
+bbcode/enabled = true
+bbcode/bbcode = "[right]KEY_SKIP:  [code]Z[/code][/right]"
+visible_characters = -1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="gui/CanvasLayer/sequences"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/demonic = SubResource( 12 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="sound" type="SamplePlayer" parent="gui"]
+
+config/polyphony = 1
+config/samples = SubResource( 29 )
+default/volume_db = 0.0
+default/pitch_scale = 1.0
+default/pan = 0.0
+default/depth = 0.0
+default/height = 0.0
+default/filter/type = 0
+default/filter/cutoff = 5000.0
+default/filter/resonance = 1.0
+default/filter/gain = 1.0
+default/reverb_room = 2
+default/reverb_send = 0.0
+default/chorus_send = 0.0
+
+[node name="music" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 40 )
+stream/play = false
+stream/loop = true
+stream/volume_db = 0.0
+stream/autoplay = true
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/hide = SubResource( 27 )
+anims/show = SubResource( 28 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[connection signal="pressed" from="gui/CanvasLayer/choice/yes/button" to="." method="confirm_selected"]
+
+[connection signal="pressed" from="gui/CanvasLayer/select/friederich" to="." method="_select_friederich"]
+
+[connection signal="mouse_enter" from="gui/CanvasLayer/select/friederich" to="." method="_friederich_hover"]
+
+[connection signal="mouse_exit" from="gui/CanvasLayer/select/friederich" to="." method="_friederich_exit"]
+
+[connection signal="pressed" from="gui/CanvasLayer/select/adela" to="." method="_select_adela"]
+
+[connection signal="mouse_enter" from="gui/CanvasLayer/select/adela" to="." method="_adela_hover"]
+
+[connection signal="mouse_exit" from="gui/CanvasLayer/select/adela" to="." method="_adela_exit"]
+
+
+[editable path="gui/CanvasLayer/choice/yes"]
+[editable path="gui/CanvasLayer/choice/no"]
+[editable path="gui/CanvasLayer/select/friederich_sprite"]
+[editable path="gui/CanvasLayer/select/adela_sprite"]
