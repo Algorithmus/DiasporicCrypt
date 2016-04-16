@@ -144,7 +144,6 @@ func _fixed_process(delta):
 	if (frozen):
 		animation_player.stop()
 
-
 func enter_screen():
 	set_fixed_process(true)
 
