@@ -5,7 +5,7 @@ var player
 #var damage_flash = false
 var flash_delay = 0
 var collision_rect
-var hpclass = preload("res://gui/hud/hp.scn")
+var hpclass = preload("res://gui/hud/hp.tscn")
 var hud
 var hurt_delay = 10
 var current_delay = 0

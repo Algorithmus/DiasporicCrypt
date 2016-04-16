@@ -39,7 +39,7 @@ var area2d_blacklist = []
 var has_kinematic_collision = false
 var on_ladder = false
 var jumpPressed = false
-var hpclass = preload("res://gui/hud/hp.scn")
+var hpclass = preload("res://gui/hud/hp.tscn")
 
 var MovingPlatform = preload("res://scenes/dungeon/movingplatform/MovingPlatform.gd")
 

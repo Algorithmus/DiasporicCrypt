@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=1]
+
+[sub_resource type="CanvasItemShader" id=9]
+
+_code = { "fragment":"uniform color start=color(0.2,0.4,1.0,1);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, UV.x);\n\nCOLOR.a = tex(TEXTURE,UV).a*COLOR.a;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=8]
+
+shader/shader = SubResource( 9 )
+shader/shading_mode = 0
+shader_param/start = Color( 0.0352941, 0.219608, 0.207843, 0 )
+shader_param/stop = Color( 0.0352941, 0.219608, 0.207843, 0.686275 )
+
+[sub_resource type="ImageTexture" id=10]
+
+flags = 6
+image = Image()
+size = Vector2( 1, 1 )
+storage = 0
+lossy_quality = 1.0
+
+[node name="title_bg" type="Control"]
+
+margin/right = 40.0
+margin/bottom = 40.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[node name="body" type="Polygon2D" parent="."]
+
+polygon = Vector2Array( 0, 0, 78, 0, 78, 42, 0, 42 )
+uv = Vector2Array(  )
+color = Color( 0.0352941, 0.219608, 0.207843, 0.686275 )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 0, 0 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="fade" type="TextureFrame" parent="."]
+
+material/material = SubResource( 8 )
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+margin/left = -136.0
+margin/top = 40.0
+margin/right = 40.0
+margin/bottom = -2.0
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+texture = SubResource( 10 )
+expand = true
+
+

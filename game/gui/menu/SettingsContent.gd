@@ -14,7 +14,7 @@ var bgmValue
 
 var mute = preload("res://gui/menu/icons/mute.png")
 var sound = preload("res://gui/menu/icons/sound.png")
-var sfxclass = preload("res://gui/menu/sfx.scn")
+var sfxclass = preload("res://gui/menu/sfx.tscn")
 var sfx
 
 func _ready():

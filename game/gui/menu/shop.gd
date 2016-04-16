@@ -3,7 +3,7 @@ extends Control
 
 # Displays user interface for shopping
 
-var itemclass = preload("res://gui/menu/shoppingitem.scn")
+var itemclass = preload("res://gui/menu/shoppingitem.tscn")
 var itemfactory
 
 var selecteditem
@@ -26,7 +26,7 @@ var shopid
 var sellrate
 var inventory
 
-var sfxclass = preload("res://gui/menu/sfx.scn")
+var sfxclass = preload("res://gui/menu/sfx.tscn")
 var sfx
 
 func _ready():

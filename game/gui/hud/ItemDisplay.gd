@@ -2,7 +2,7 @@
 extends Control
 
 var container
-var itemclass = preload("res://gui/hud/item.scn")
+var itemclass = preload("res://gui/hud/item.tscn")
 var itemicon = preload("res://gui/hud/potion.png")
 var goldicon = preload("res://gui/hud/gold.png")
 var exporbicon = preload("res://gui/hud/exporb.png")

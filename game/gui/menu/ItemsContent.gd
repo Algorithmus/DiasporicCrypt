@@ -4,7 +4,7 @@ extends "res://gui/menu/MenuContent.gd"
 # display currently collected items
 
 var info
-var itemclass = preload("res://gui/menu/inventoryitem.scn")
+var itemclass = preload("res://gui/menu/inventoryitem.tscn")
 var itemcontainer
 var tab
 var currenttype = "item"
@@ -12,7 +12,7 @@ var selecteditem
 var echo = false
 var use
 var drop
-var sfxclass = preload("res://gui/menu/sfx.scn")
+var sfxclass = preload("res://gui/menu/sfx.tscn")
 var sfx
 
 func _ready():

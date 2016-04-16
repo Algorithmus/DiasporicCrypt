@@ -3,7 +3,7 @@ extends ToolButton
 
 var selected = false
 var icon
-var sfxclass = preload("res://gui/menu/sfx.scn")
+var sfxclass = preload("res://gui/menu/sfx.tscn")
 var sfx
 
 func _ready():

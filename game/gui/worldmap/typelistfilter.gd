@@ -8,7 +8,7 @@ var active = true
 const RED = Color(146/255.0, 0, 0)
 const BLACK = Color(35/255.0, 18/255.0, 18/255.0)
 
-var sfxclass = preload("res://gui/menu/sfx.scn")
+var sfxclass = preload("res://gui/menu/sfx.tscn")
 var sfx
 
 func _ready():

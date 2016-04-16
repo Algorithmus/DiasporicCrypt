@@ -10,10 +10,10 @@ var hchoice
 var vchoice
 var current_dialog
 
-var choiceclass = preload("res://gui/dialogue/choice.scn")
+var choiceclass = preload("res://gui/dialogue/choice.tscn")
 
-var shopclass = preload("res://gui/menu/shopping.scn")
-var mapclass = preload("res://gui/worldmap/map.scn")
+var shopclass = preload("res://gui/menu/shopping.tscn")
+var mapclass = preload("res://gui/worldmap/map.tscn")
 
 const DIAG_DIRECTION = 0
 const DIAG_TITLE = 1

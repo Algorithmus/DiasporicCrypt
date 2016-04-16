@@ -5,7 +5,7 @@ signal tab_changed
 signal unfocus_tab
 
 var is_unfocused = false
-var sfxclass = preload("res://gui/menu/sfx.scn")
+var sfxclass = preload("res://gui/menu/sfx.tscn")
 var sfx
 
 var unselected_color

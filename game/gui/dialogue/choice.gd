@@ -3,7 +3,7 @@ extends Control
 
 var action
 var data
-var sfxclass = preload("res://gui/menu/sfx.scn")
+var sfxclass = preload("res://gui/menu/sfx.tscn")
 var sfx
 
 func _ready():

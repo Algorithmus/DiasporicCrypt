@@ -9,8 +9,8 @@ var filters
 var currentlevel
 var list
 var listcontainer
-var pinclass = preload("res://gui/worldmap/pin.scn")
-var listitemclass = preload("res://gui/worldmap/listitem.scn")
+var pinclass = preload("res://gui/worldmap/pin.tscn")
+var listitemclass = preload("res://gui/worldmap/listitem.tscn")
 var levelfactory = preload("res://levels/LevelFactory.gd").new()
 var keyboardmap = preload("res://gui/KeyboardCharacters.gd").new()
 const RED = Color(146/255.0, 0, 0)
@@ -28,7 +28,7 @@ var typeicons = {"quest": preload("res://gui/worldmap/icons/quest.png"),
 				"boss": preload("res://gui/worldmap/icons/boss.png"), 
 				"bonus": preload("res://gui/worldmap/icons/bonus.png"),
 				"colosseum": preload("res://gui/worldmap/icons/colosseum.png")}
-var sfxclass = preload("res://gui/menu/sfx.scn")
+var sfxclass = preload("res://gui/menu/sfx.tscn")
 var sfx
 var hudmap
 

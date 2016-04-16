@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://gui/menu/tabs/friederich.png" type="Texture" id=1]
+[ext_resource path="res://gui/menu/tab.gd" type="Script" id=2]
+[ext_resource path="res://gui/menu/tabs/tab_ornaments.png" type="Texture" id=3]
+[ext_resource path="res://gui/menu/tabs/tabBG.png" type="Texture" id=4]
+[ext_resource path="res://gui/menu/tabs/tabFG.png" type="Texture" id=5]
+
+[sub_resource type="CanvasItemShader" id=1]
+
+_code = { "fragment":"uniform color modulate = vec4(1, 1, 0, 1);\nfloat m = (COLOR.r + COLOR.g + COLOR.b) / 3.0;\nCOLOR.rgb = vec3(m, m, m);\nCOLOR.rgb = mix(COLOR.rgb, modulate.rgb, 0.5);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=2]
+
+shader/shader = SubResource( 1 )
+shader/shading_mode = 0
+shader_param/modulate = Color( 0.788235, 0.74902, 0.631373, 1 )
+
+[node name="tab" type="TextureButton"]
+
+material/material = SubResource( 2 )
+margin/left = 68.0
+margin/right = 132.0
+margin/bottom = 64.0
+rect/min_size = Vector2( 0, 36 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+toggle_mode = false
+textures/normal = ExtResource( 1 )
+script/script = ExtResource( 2 )
+
+[node name="ornaments" type="Sprite" parent="."]
+
+transform/pos = Vector2( 10, 26 )
+texture = ExtResource( 3 )
+
+[node name="bg" type="Sprite" parent="."]
+
+visibility/behind_parent = true
+transform/pos = Vector2( 10, 26 )
+texture = ExtResource( 4 )
+modulate = Color( 0.788235, 0.74902, 0.631373, 1 )
+
+[node name="fg" type="Sprite" parent="."]
+
+visibility/behind_parent = true
+transform/pos = Vector2( 10, 26 )
+texture = ExtResource( 5 )
+
+[connection signal="focus_enter" from="." to="." method="_on_tab_focus_enter"]
+
+[connection signal="focus_exit" from="." to="." method="_on_tab_focus_exit"]
+
+

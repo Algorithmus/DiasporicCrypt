@@ -19,7 +19,7 @@ var dialog
 var hideshop = false
 
 var map
-var map_position = preload("res://gui/maps/position.scn")
+var map_position = preload("res://gui/maps/position.tscn")
 
 var hidemap = false
 var skipevent = false

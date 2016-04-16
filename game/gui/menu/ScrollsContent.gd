@@ -4,7 +4,7 @@ extends "res://gui/menu/MenuContent.gd"
 # Displays all scrolls collected
 
 var index
-var itemclass = preload("res://gui/menu/scrollitem.scn")
+var itemclass = preload("res://gui/menu/scrollitem.tscn")
 var scrollcontainer
 var scrollcontent
 var scrolltitle
@@ -12,7 +12,7 @@ var isreading = false
 var scrollcontainerwidth
 var focusup
 var currentline = 0
-var sfxclass = preload("res://gui/menu/sfx.scn")
+var sfxclass = preload("res://gui/menu/sfx.tscn")
 var sfx
 
 func _ready():

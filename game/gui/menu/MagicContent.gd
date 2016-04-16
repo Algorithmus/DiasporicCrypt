@@ -4,7 +4,7 @@ extends "res://gui/menu/MenuContent.gd"
 # display current magic spells
 
 var items
-var itemclass = preload("res://gui/menu/magicitem.scn")
+var itemclass = preload("res://gui/menu/magicitem.tscn")
 var scrollrange
 
 func _ready():

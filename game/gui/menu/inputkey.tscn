@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://gui/fonts/S-12-dialog.fnt" type="Font" id=1]
+[ext_resource path="res://gui/menu/inputkey.gd" type="Script" id=2]
+[ext_resource path="res://gui/menu/cursor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gui/fonts/L-24-Keyboard-outline.fnt" type="Font" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[node name="key" type="ToolButton"]
+
+margin/left = 50.0
+margin/right = 704.0
+margin/bottom = 31.0
+focus_neighbour/left = NodePath(".")
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 6 )
+custom_fonts/font = ExtResource( 1 )
+toggle_mode = false
+text = "KEY_UP"
+flat = true
+align = 0
+script/script = ExtResource( 2 )
+actionid = "ui_up"
+
+[node name="icon" parent="." instance=ExtResource( 3 )]
+
+margin/left = -50.0
+margin/top = 4.0
+margin/right = -38.0
+margin/bottom = 25.0
+
+[node name="key" type="Label" parent="."]
+
+margin/left = 256.0
+margin/right = 416.0
+margin/bottom = 31.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 4 )
+text = "KEY"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="input" type="Label" parent="."]
+
+margin/left = 444.0
+margin/top = 4.0
+margin/right = 650.0
+margin/bottom = 28.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 1 )
+text = "KEY_INPUT"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="focus_enter" from="." to="." method="_on_choice_focus_enter"]
+
+[connection signal="focus_enter" from="." to="." method="_on_key_focus_enter"]
+
+[connection signal="focus_exit" from="." to="." method="_on_choice_focus_exit"]
+
+[connection signal="focus_exit" from="." to="." method="_on_key_focus_exit"]
+
+

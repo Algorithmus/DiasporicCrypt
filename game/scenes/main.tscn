@@ -22,9 +22,9 @@
 [ext_resource path="res://gui/hud/ItemDisplay.gd" type="Script" id=20]
 [ext_resource path="res://gui/maps/HudMap.gd" type="Script" id=21]
 [ext_resource path="res://gui/fonts/XL-72.fnt" type="Font" id=22]
-[ext_resource path="res://gui/dialogue/dialogue.scn" type="PackedScene" id=23]
-[ext_resource path="res://gui/menu/menu.scn" type="PackedScene" id=24]
-[ext_resource path="res://gui/TextButton.scn" type="PackedScene" id=25]
+[ext_resource path="res://gui/dialogue/dialogue.tscn" type="PackedScene" id=23]
+[ext_resource path="res://gui/menu/menu.tscn" type="PackedScene" id=24]
+[ext_resource path="res://gui/TextButton.tscn" type="PackedScene" id=25]
 [ext_resource path="res://gui/select/friederich.png" type="Texture" id=26]
 [ext_resource path="res://gui/select/friederich-select.png" type="Texture" id=27]
 [ext_resource path="res://gui/select/adela.png" type="Texture" id=28]
@@ -40,6 +40,9 @@
 [ext_resource path="res://gui/cursor.wav" type="Sample" id=38]
 [ext_resource path="res://gui/sequences/demonic.wav" type="Sample" id=39]
 [ext_resource path="res://levels/common/BGM1.ogg" type="AudioStream" id=40]
+
+
+
 
 [sub_resource type="CanvasItemShader" id=1]
 

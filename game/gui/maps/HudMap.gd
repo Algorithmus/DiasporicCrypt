@@ -3,7 +3,7 @@ extends Polygon2D
 
 # Displays an HUD minimap.
 
-var unit_class = preload("res://gui/maps/unit.scn")
+var unit_class = preload("res://gui/maps/unit.tscn")
 const MAP_SCALE = 0.05
 var objects
 var current_teleport
