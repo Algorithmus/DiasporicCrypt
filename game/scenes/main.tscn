@@ -1,7 +1,7 @@
 [gd_scene load_steps=66 format=1]
 
 [ext_resource path="res://scenes/main.gd" type="Script" id=1]
-[ext_resource path="res://levels/common/catacombs.scn" type="PackedScene" id=2]
+[ext_resource path="res://levels/common/catacombs.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gui/hud/Hud.gd" type="Script" id=3]
 [ext_resource path="res://players/magic/fire/icon.png" type="Texture" id=4]
 [ext_resource path="res://players/magic/ice/icon.png" type="Texture" id=5]
@@ -29,8 +29,8 @@
 [ext_resource path="res://gui/select/friederich-select.png" type="Texture" id=27]
 [ext_resource path="res://gui/select/adela.png" type="Texture" id=28]
 [ext_resource path="res://gui/select/adela-select.png" type="Texture" id=29]
-[ext_resource path="res://players/friederich/friederich.scn" type="PackedScene" id=30]
-[ext_resource path="res://players/adela/adela.scn" type="PackedScene" id=31]
+[ext_resource path="res://players/friederich/friederich.tscn" type="PackedScene" id=30]
+[ext_resource path="res://players/adela/adela.tscn" type="PackedScene" id=31]
 [ext_resource path="res://players/magic/wind/action.png" type="Texture" id=32]
 [ext_resource path="res://gui/sequences/demonic_f.png" type="Texture" id=33]
 [ext_resource path="res://gui/sequences/demonic_a.png" type="Texture" id=34]
@@ -41,29 +41,29 @@
 [ext_resource path="res://gui/sequences/demonic.wav" type="Sample" id=39]
 [ext_resource path="res://levels/common/BGM1.ogg" type="AudioStream" id=40]
 
-[sub_resource type="CanvasItemShader" id=16]
+[sub_resource type="CanvasItemShader" id=1]
 
 _code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
 
-[sub_resource type="CanvasItemMaterial" id=17]
+[sub_resource type="CanvasItemMaterial" id=2]
 
-shader/shader = SubResource( 16 )
+shader/shader = SubResource( 1 )
 shader/shading_mode = 0
 shader_param/aura_width = 2.0
 shader_param/aura_color = Color( 1, 0, 0, 1 )
 shader_param/opacity = 1.0
 
-[sub_resource type="CanvasItemShader" id=18]
+[sub_resource type="CanvasItemShader" id=3]
 
 _code = { "fragment":"uniform texture source;\n\nCOLOR.rgb = vec3(1, 0, 0);\nCOLOR.a = tex(source,vec2(UV.x+0.5, UV.y+0.5)).a*COLOR.a;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
 
-[sub_resource type="CanvasItemMaterial" id=19]
+[sub_resource type="CanvasItemMaterial" id=4]
 
-shader/shader = SubResource( 18 )
+shader/shader = SubResource( 3 )
 shader/shading_mode = 0
 shader_param/source = ExtResource( 18 )
 
-[sub_resource type="ImageTexture" id=20]
+[sub_resource type="ImageTexture" id=5]
 
 flags = 2
 image = Image()
@@ -71,19 +71,19 @@ size = Vector2( 99, 69 )
 storage = 0
 lossy_quality = 1.0
 
-[sub_resource type="CanvasItemShader" id=21]
+[sub_resource type="CanvasItemShader" id=6]
 
 _code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
 
-[sub_resource type="CanvasItemMaterial" id=22]
+[sub_resource type="CanvasItemMaterial" id=7]
 
-shader/shader = SubResource( 21 )
+shader/shader = SubResource( 6 )
 shader/shading_mode = 0
 shader_param/aura_width = 3.0
 shader_param/aura_color = Color( 1, 0.62358, 0, 1 )
 shader_param/opacity = 1.0
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=8]
 
 resource/name = "levelup"
 length = 2.0
@@ -131,7 +131,7 @@ tracks/0/path = NodePath("newattack:transform/scale")
 tracks/0/interp = 1
 tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 0.25, 0.25, 1 ), "values":[ Vector2( 1, 1 ), Vector2( 1.34375, 1.34375 ), Vector2( 1, 1 ) ] }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=12]
 
 resource/name = "show"
 length = 2.0
@@ -142,7 +142,7 @@ tracks/0/path = NodePath("title:visibility/opacity")
 tracks/0/interp = 1
 tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.2, 1.8, 2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 0.0, 1.0, 1.0, 0.0 ] }
 
-[sub_resource type="ImageTexture" id=1]
+[sub_resource type="ImageTexture" id=13]
 
 flags = 2
 image = Image()
@@ -150,18 +150,18 @@ size = Vector2( 800, 592 )
 storage = 0
 lossy_quality = 0.7
 
-[sub_resource type="CanvasItemShader" id=5]
+[sub_resource type="CanvasItemShader" id=14]
 
 _code = { "fragment":"uniform color start=color(0.2,0.4,1.0,0.8);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, UV.y);\n\nCOLOR.a = tex(TEXTURE,UV).a*COLOR.a;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
 
-[sub_resource type="CanvasItemMaterial" id=6]
+[sub_resource type="CanvasItemMaterial" id=15]
 
-shader/shader = SubResource( 5 )
+shader/shader = SubResource( 14 )
 shader/shading_mode = 0
 shader_param/start = Color( 0.0506629, 0.0610795, 0.0899857, 1 )
 shader_param/stop = Color( 0.181345, 0.191761, 0.214338, 1 )
 
-[sub_resource type="ImageTexture" id=24]
+[sub_resource type="ImageTexture" id=16]
 
 flags = 6
 image = Image()
@@ -169,35 +169,34 @@ size = Vector2( 1, 1 )
 storage = 0
 lossy_quality = 1.0
 
-[sub_resource type="CanvasItemMaterial" id=2]
+[sub_resource type="CanvasItemMaterial" id=17]
 
 shader/shading_mode = 0
 
-[sub_resource type="CanvasItemShader" id=25]
+[sub_resource type="CanvasItemShader" id=18]
 
 _code = { "fragment":"uniform color start=color(0.2,0.4,1.0,0.8);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, UV.y*3);\n\nCOLOR.a = tex(TEXTURE,UV).a*COLOR.a;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
 
-[sub_resource type="CanvasItemMaterial" id=26]
+[sub_resource type="CanvasItemMaterial" id=19]
 
-shader/shader = SubResource( 25 )
+shader/shader = SubResource( 18 )
 shader/shading_mode = 0
 shader_param/start = Color( 0.137255, 0.176471, 0.215686, 0 )
 shader_param/stop = Color( 0.137757, 0.163544, 0.200135, 0.443396 )
 
-[sub_resource type="CanvasItemShader" id=13]
+[sub_resource type="CanvasItemShader" id=20]
 
 _code = { "fragment":"uniform color start=color(0.2,0.4,1.0,1.0);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, sin(UV.y*3.1415926535897932384626));\n\nCOLOR.a = tex(TEXTURE,UV).a*COLOR.a;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
 
-[sub_resource type="CanvasItemMaterial" id=14]
+[sub_resource type="CanvasItemMaterial" id=21]
 
-shader/shader = SubResource( 13 )
+shader/shader = SubResource( 20 )
 shader/shading_mode = 0
 shader_param/start = Color( 0.0994318, 0.077178, 0.197857, 1 )
 shader_param/stop = Color( 0.380682, 0, 0.366588, 1 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=22]
 
-resource/name = "demonic"
 length = 1.0
 loop = false
 step = 0.1
@@ -222,13 +221,13 @@ tracks/4/path = NodePath("../../sound:play/play")
 tracks/4/interp = 1
 tracks/4/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ "demonic" ] }
 
-[sub_resource type="SampleLibrary" id=29]
+[sub_resource type="SampleLibrary" id=23]
 
 samples/cursor = { "db":0.0, "pitch":1.0, "sample":ExtResource( 38 ) }
 samples/confirm = { "db":0.0, "pitch":1.0, "sample":ExtResource( 37 ) }
 samples/demonic = { "db":0.0, "pitch":1.0, "sample":ExtResource( 39 ) }
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=24]
 
 resource/name = "hide"
 length = 0.5
@@ -243,7 +242,7 @@ tracks/1/path = NodePath("playercontainer:visibility/opacity")
 tracks/1/interp = 1
 tracks/1/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ 1.0, 0.0 ] }
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=25]
 
 resource/name = "show"
 length = 1.8
@@ -267,7 +266,7 @@ __meta__ = { "__editor_plugin_screen__":"2D" }
 [node name="level" type="Node2D" parent="."]
 
 process/pause_mode = 1
-__meta__ = { "_edit_lock_":true, "_editor_collapsed":true }
+__meta__ = { "_edit_lock_":true }
 
 [node name="LVL_CATACOMB" parent="level" instance=ExtResource( 2 )]
 
@@ -423,7 +422,7 @@ invert/border = 100.0
 
 [node name="display" type="Sprite" parent="gui/CanvasLayer/hud/hpbar"]
 
-material/material = SubResource( 17 )
+material/material = SubResource( 2 )
 material/use_parent = true
 texture = ExtResource( 15 )
 centered = false
@@ -466,12 +465,12 @@ transform/pos = Vector2( 740, 48 )
 
 [node name="bar" type="Polygon2D" parent="gui/CanvasLayer/hud/bloodbar"]
 
-material/material = SubResource( 19 )
+material/material = SubResource( 4 )
 polygon = Vector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
 uv = Vector2Array(  )
 color = Color( 1, 0, 0, 0.901961 )
 offset = Vector2( 0, 0 )
-texture/texture = SubResource( 20 )
+texture/texture = SubResource( 5 )
 texture/offset = Vector2( 0, 0 )
 texture/scale = Vector2( 1, 1 )
 texture/rotation = 0.0
@@ -480,7 +479,7 @@ invert/border = 100.0
 
 [node name="display" type="Sprite" parent="gui/CanvasLayer/hud/bloodbar"]
 
-material/material = SubResource( 22 )
+material/material = SubResource( 7 )
 material/use_parent = true
 texture = ExtResource( 19 )
 
@@ -489,7 +488,7 @@ texture = ExtResource( 19 )
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/levelup = SubResource( 23 )
+anims/levelup = SubResource( 8 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -660,7 +659,7 @@ max_lines_visible = -1
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/show = SubResource( 15 )
+anims/show = SubResource( 12 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -682,7 +681,7 @@ __meta__ = { "_edit_lock_":true }
 
 [node name="shield" type="Sprite" parent="gui/CanvasLayer/pause"]
 
-texture = SubResource( 1 )
+texture = SubResource( 13 )
 centered = false
 modulate = Color( 1, 1, 1, 0.590791 )
 
@@ -782,19 +781,19 @@ __meta__ = { "_editor_collapsed":true }
 
 [node name="BG" type="TextureFrame" parent="gui/CanvasLayer/select"]
 
-material/material = SubResource( 6 )
+material/material = SubResource( 15 )
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-texture = SubResource( 24 )
+texture = SubResource( 16 )
 expand = true
 
 [node name="friederich" type="TextureButton" parent="gui/CanvasLayer/select"]
 
-material/material = SubResource( 2 )
+material/material = SubResource( 17 )
 anchor/left = 2
 anchor/bottom = 2
 margin/left = -0.045
@@ -852,7 +851,7 @@ max_lines_visible = -1
 
 [node name="mask" type="TextureFrame" parent="gui/CanvasLayer/select"]
 
-material/material = SubResource( 26 )
+material/material = SubResource( 19 )
 anchor/top = 1
 anchor/right = 1
 anchor/bottom = 1
@@ -861,7 +860,7 @@ focus/ignore_mouse = true
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-texture = SubResource( 24 )
+texture = SubResource( 16 )
 expand = true
 
 [node name="friederich_title" type="Label" parent="gui/CanvasLayer/select"]
@@ -902,11 +901,20 @@ max_lines_visible = -1
 [node name="friederich_sprite" parent="gui/CanvasLayer/select" instance=ExtResource( 30 )]
 
 transform/pos = Vector2( 200, 480 )
+collision/margin = 0.08
 script/script = null
 
 [node name="Camera2D" parent="gui/CanvasLayer/select/friederich_sprite"]
 
 current = false
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+
+[node name="damage" parent="gui/CanvasLayer/select/friederich_sprite"]
+
+linear_damp = 0.1
 
 [node name="talk" parent="gui/CanvasLayer/select/friederich_sprite"]
 
@@ -915,19 +923,20 @@ visibility/visible = false
 [node name="adela_sprite" parent="gui/CanvasLayer/select" instance=ExtResource( 31 )]
 
 transform/pos = Vector2( 600, 480 )
+collision/margin = 0.08
 script/script = null
-
-[node name="idle" parent="NormalSpriteGroup/adela_sprite/select/CanvasLayer/gui"]
-
-visibility/visible = false
-
-[node name="aattack" parent="NormalSpriteGroup/adela_sprite/select/CanvasLayer/gui"]
-
-visibility/visible = true
 
 [node name="Camera2D" parent="gui/CanvasLayer/select/adela_sprite"]
 
 current = false
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+
+[node name="damage" parent="gui/CanvasLayer/select/adela_sprite"]
+
+linear_damp = 0.1
 
 [node name="talk" parent="gui/CanvasLayer/select/adela_sprite"]
 
@@ -949,7 +958,7 @@ visibility/visible = false
 
 [node name="BG" type="TextureFrame" parent="gui/CanvasLayer/sequences/demonic"]
 
-material/material = SubResource( 14 )
+material/material = SubResource( 21 )
 anchor/right = 1
 anchor/bottom = 1
 margin/top = 300.0
@@ -959,7 +968,7 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-texture = SubResource( 24 )
+texture = SubResource( 16 )
 expand = true
 
 [node name="Particles2D" type="Particles2D" parent="gui/CanvasLayer/sequences/demonic"]
@@ -1027,7 +1036,7 @@ visible_characters = -1
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/demonic = SubResource( 12 )
+anims/demonic = SubResource( 22 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -1036,7 +1045,7 @@ autoplay = ""
 [node name="sound" type="SamplePlayer" parent="gui"]
 
 config/polyphony = 1
-config/samples = SubResource( 29 )
+config/samples = SubResource( 23 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
 default/pan = 0.0
@@ -1066,8 +1075,8 @@ stream/buffering_ms = 500
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/hide = SubResource( 27 )
-anims/show = SubResource( 28 )
+anims/hide = SubResource( 24 )
+anims/show = SubResource( 25 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]

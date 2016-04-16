@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="11" version="2.0" version_name="Godot Engine v2.0.alpha.custom_build">
-	<ext_resource path="res://scenes/common/stun.scn" type="PackedScene" index="4"></ext_resource>
-	<ext_resource path="res://scenes/common/damagables/skeleton/die.wav" type="Sample" index="3"></ext_resource>
-	<ext_resource path="res://scenes/common/damagables/skeleton/die.png" type="Texture" index="2"></ext_resource>
-	<ext_resource path="res://scenes/common/damagables/skeleton/Consumable.gd" type="Script" index="0"></ext_resource>
-	<ext_resource path="res://scenes/common/damagables/skeleton/walk.png" type="Texture" index="1"></ext_resource>
+<resource_file type="PackedScene" subresource_count="11" version="2.0" version_name="Godot Engine v2.0.stable.official">
+	<ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" index="4">
+	</ext_resource>
+	<ext_resource path="res://scenes/common/damagables/skeleton/die.wav" type="Sample" index="3">
+	</ext_resource>
+	<ext_resource path="res://scenes/common/damagables/skeleton/die.png" type="Texture" index="2">
+	</ext_resource>
+	<ext_resource path="res://scenes/common/damagables/skeleton/Consumable.gd" type="Script" index="0">
+	</ext_resource>
+	<ext_resource path="res://scenes/common/damagables/skeleton/walk.png" type="Texture" index="1">
+	</ext_resource>
 	<resource type="Animation" path="local://2">
+
 		<string name="resource/name"> "die" </string>
 		<real name="length"> 0.6 </real>
 		<bool name="loop"> False </bool>

@@ -9,7 +9,7 @@ var hpclass = preload("res://gui/hud/hp.scn")
 var hud
 var hurt_delay = 10
 var current_delay = 0
-var blood = preload("res://scenes/common/blood.xml")
+var blood = preload("res://scenes/common/blood.tscn")
 var blood_particles = []
 var sprite_offset
 var current_animation = "idle"
@@ -17,7 +17,7 @@ var animation_player
 var frozen = false
 const FREEZE_DELAY = 300
 var freeze_counter = 0
-var freezeblock = preload("res://scenes/common/iceblock.scn")
+var freezeblock = preload("res://scenes/common/iceblock.tscn")
 var freezeblock_obj
 
 func _ready():
@@ -81,6 +81,9 @@ func _fixed_process(delta):
 					frozen = true
 					freezeblock_obj = freezeblock.instance()
 					var freezescale = sprite_offset.y / 16.0
+					freezeblock_obj.get_node("sprite").set_scale(Vector2(sprite_offset.x / 16, freezescale))
+					freezeblock_obj.get_node("sprite").set_pos(Vector2(0, sprite_offset.y - 16))
+					freezeblock_obj.get_node("oneway").set_scale(Vector2(sprite_offset.x / 16, 1))
 					freezeblock_obj.get_node("block").set_scale(Vector2(sprite_offset.x / 16.0, freezescale))
 					freezeblock_obj.get_node("block").set_pos(Vector2(0, sprite_offset.y - 16))
 					freezeblock_obj.set_pos(Vector2(0, -sprite_offset.y + 16))

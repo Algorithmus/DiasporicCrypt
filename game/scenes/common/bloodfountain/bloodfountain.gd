@@ -1,7 +1,7 @@
 
 extends Node2D
 
-var blood = preload("res://scenes/common/blood.xml")
+var blood = preload("res://scenes/common/blood.tscn")
 var blood_particles = []
 var current_consume_value = 100
 var consumable_offset

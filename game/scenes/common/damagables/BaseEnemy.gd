@@ -15,7 +15,7 @@ var walk_delay = 60
 var frozen = false
 const FREEZE_DELAY = 300
 var freeze_counter = 0
-var freezeblock = preload("res://scenes/common/iceblock.scn")
+var freezeblock = preload("res://scenes/common/iceblock.tscn")
 var freezeblock_obj
 var stun_obj
 var stun_delay = 300
@@ -34,11 +34,11 @@ var player_loaded = false
 var is_consumable = false
 var consumable = false
 var base_consume_value = 10
-var blood = preload("res://scenes/common/blood.xml")
+var blood = preload("res://scenes/common/blood.tscn")
 var blood_particles = []
 var current_consume_value
 var color_increments = Color()
-var consumable_instance = preload("res://scenes/common/damagables/consumable.xml")
+var consumable_instance = preload("res://scenes/common/damagables/consumable.tscn")
 var consumable_offset
 var consumable_sprite_offset = Vector2()
 var consumable_size = Vector2(1, 1)
@@ -54,8 +54,8 @@ var sunbeam_strength = 0.5
 
 var gold = 100
 
-var expclass = preload("res://scenes/items/exporb/exporb.scn")
-var goldclass = preload("res://scenes/items/gold/gold.scn")
+var expclass = preload("res://scenes/items/exporb/exporb.tscn")
+var goldclass = preload("res://scenes/items/gold/gold.tscn")
 
 func get_player_direction():
 	if (get_global_pos().x > player.get_node("player").get_global_pos().x):

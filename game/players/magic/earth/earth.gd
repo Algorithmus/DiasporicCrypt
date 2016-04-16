@@ -12,7 +12,7 @@ var earthquake_direction = 1
 var earthquake_delay = 0
 var earthquake_duration = 100
 var earthquake_power = 0
-var rock = preload("res://players/magic/earth/rock.scn")
+var rock = preload("res://players/magic/earth/rock.tscn")
 var sampleplayer
 var atk = 10
 

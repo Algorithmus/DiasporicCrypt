@@ -1,0 +1,1324 @@
+[gd_scene load_steps=87 format=1]
+
+[ext_resource path="res://players/adela/demonic/idle.png" type="Texture" id=1]
+[ext_resource path="res://players/adela/demonic/run.png" type="Texture" id=2]
+[ext_resource path="res://players/adela/demonic/jump.png" type="Texture" id=3]
+[ext_resource path="res://players/adela/demonic/fall.png" type="Texture" id=4]
+[ext_resource path="res://players/adela/demonic/land.png" type="Texture" id=5]
+[ext_resource path="res://players/adela/demonic/climb.png" type="Texture" id=6]
+[ext_resource path="res://players/adela/demonic/ladder.png" type="Texture" id=7]
+[ext_resource path="res://players/adela/demonic/crouch.png" type="Texture" id=8]
+[ext_resource path="res://players/adela/demonic/hurt.png" type="Texture" id=9]
+[ext_resource path="res://players/adela/demonic/swing.png" type="Texture" id=10]
+[ext_resource path="res://players/adela/demonic/magic.png" type="Texture" id=11]
+[ext_resource path="res://players/adela/demonic/transform.png" type="Texture" id=12]
+[ext_resource path="res://players/adela/demonic/detransform.png" type="Texture" id=13]
+[ext_resource path="res://players/adela/wall.png" type="Texture" id=14]
+[ext_resource path="res://players/adela/demonic/gameover.png" type="Texture" id=15]
+[ext_resource path="res://players/adela/demonic/attack.png" type="Texture" id=16]
+[ext_resource path="res://players/adela/attacks/aura.png" type="Texture" id=17]
+[ext_resource path="res://players/adela/attacks/whip.png" type="Texture" id=18]
+[ext_resource path="res://players/adela/demonic/dattack.png" type="Texture" id=19]
+[ext_resource path="res://players/adela/attacks/dwhip.png" type="Texture" id=20]
+[ext_resource path="res://players/adela/attacks/daura.png" type="Texture" id=21]
+[ext_resource path="res://players/adela/demonic/aattack.png" type="Texture" id=22]
+[ext_resource path="res://players/adela/demonic/uattack.png" type="Texture" id=23]
+[ext_resource path="res://players/adela/attacks/uwhip.png" type="Texture" id=24]
+[ext_resource path="res://players/adela/attacks/uaura.png" type="Texture" id=25]
+[ext_resource path="res://players/adela/demonic/uaattack.png" type="Texture" id=26]
+[ext_resource path="res://players/adela/demonic/daattack.png" type="Texture" id=27]
+[ext_resource path="res://players/adela/attacks/dawhip.png" type="Texture" id=28]
+[ext_resource path="res://players/adela/attacks/daaura.png" type="Texture" id=29]
+[ext_resource path="res://players/adela/demonic/dgattack.png" type="Texture" id=30]
+[ext_resource path="res://players/adela/attacks/dgwhip.png" type="Texture" id=31]
+[ext_resource path="res://players/adela/attacks/dgaura.png" type="Texture" id=32]
+[ext_resource path="res://players/adela/demonic/dgaattack.png" type="Texture" id=33]
+[ext_resource path="res://players/adela/demonic/ddgaattack.png" type="Texture" id=34]
+[ext_resource path="res://players/adela/attacks/ddgawhip.png" type="Texture" id=35]
+[ext_resource path="res://players/adela/attacks/ddgaaura.png" type="Texture" id=36]
+
+[sub_resource type="CanvasItemShader" id=17]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=18]
+
+shader/shader = SubResource( 17 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=19]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=20]
+
+shader/shader = SubResource( 19 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=21]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=22]
+
+shader/shader = SubResource( 21 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=23]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=24]
+
+shader/shader = SubResource( 23 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=25]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=26]
+
+shader/shader = SubResource( 25 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=27]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=28]
+
+shader/shader = SubResource( 27 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=29]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=30]
+
+shader/shader = SubResource( 29 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=31]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=32]
+
+shader/shader = SubResource( 31 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=33]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=34]
+
+shader/shader = SubResource( 33 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=35]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=36]
+
+shader/shader = SubResource( 35 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=37]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=38]
+
+shader/shader = SubResource( 37 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=39]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=40]
+
+shader/shader = SubResource( 39 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=59]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=60]
+
+shader/shader = SubResource( 59 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=61]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=62]
+
+shader/shader = SubResource( 61 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=41]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=42]
+
+shader/shader = SubResource( 41 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=10]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform color modulate=color(0.2,0.4,1.0,1.0);\n\nvec4 col = vec4(modulate.rgb,tex(TEXTURE,UV).a*modulate.a);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\n\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=11]
+
+shader/shader = SubResource( 10 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 0, 0.749527, 0.360938, 1 )
+shader_param/modulate = Color( 0.734848, 1, 0.90577, 1 )
+
+[sub_resource type="CanvasItemShader" id=43]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=44]
+
+shader/shader = SubResource( 43 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=15]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform color modulate=color(0.2,0.4,1.0,1.0);\n\nvec4 col = vec4(modulate.rgb,tex(TEXTURE,UV).a*modulate.a);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\n\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=16]
+
+shader/shader = SubResource( 15 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 0, 0.509804, 0.811765, 1 )
+shader_param/modulate = Color( 0, 1, 1, 1 )
+
+[sub_resource type="CanvasItemShader" id=45]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=46]
+
+shader/shader = SubResource( 45 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=47]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=48]
+
+shader/shader = SubResource( 47 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=49]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=50]
+
+shader/shader = SubResource( 49 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=51]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=52]
+
+shader/shader = SubResource( 51 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=53]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=54]
+
+shader/shader = SubResource( 53 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=55]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=56]
+
+shader/shader = SubResource( 55 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=57]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=58]
+
+shader/shader = SubResource( 57 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[node name="NormalSpriteGroup" type="Node2D"]
+
+z/z = 1
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="idle" type="Sprite" parent="."]
+
+material/material = SubResource( 18 )
+texture = ExtResource( 1 )
+hframes = 4
+
+[node name="trail" type="Particles2D" parent="idle"]
+
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 3
+config/lifetime = 2.0
+config/texture = ExtResource( 1 )
+config/h_frames = 4
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="run" type="Sprite" parent="."]
+
+visibility/visible = false
+material/material = SubResource( 20 )
+texture = ExtResource( 2 )
+offset = Vector2( -16, 0 )
+vframes = 2
+hframes = 4
+__meta__ = { "_editor_collapsed":true }
+
+[node name="trail" type="Particles2D" parent="run"]
+
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 6
+config/lifetime = 4.0
+config/offset = Vector2( -16, 0 )
+config/texture = ExtResource( 2 )
+config/h_frames = 4
+config/v_frames = 2
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="jump" type="Sprite" parent="."]
+
+visibility/visible = false
+material/material = SubResource( 22 )
+texture = ExtResource( 3 )
+hframes = 3
+frame = 2
+__meta__ = { "_editor_collapsed":true }
+
+[node name="trail" type="Particles2D" parent="jump"]
+
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 6
+config/lifetime = 4.0
+config/texture = ExtResource( 3 )
+config/h_frames = 3
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="fall" type="Sprite" parent="."]
+
+visibility/visible = false
+material/material = SubResource( 24 )
+transform/pos = Vector2( 0, -35 )
+texture = ExtResource( 4 )
+offset = Vector2( -16, 40 )
+hframes = 4
+frame = 2
+__meta__ = { "_editor_collapsed":true }
+
+[node name="trail" type="Particles2D" parent="fall"]
+
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 6
+config/lifetime = 4.0
+config/offset = Vector2( -16, 40 )
+config/texture = ExtResource( 4 )
+config/h_frames = 4
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="land" type="Sprite" parent="."]
+
+visibility/visible = false
+material/material = SubResource( 26 )
+transform/pos = Vector2( 0, -9 )
+texture = ExtResource( 5 )
+offset = Vector2( -18, 10 )
+hframes = 3
+frame = 2
+__meta__ = { "_editor_collapsed":true }
+
+[node name="trail" type="Particles2D" parent="land"]
+
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 6
+config/lifetime = 4.0
+config/offset = Vector2( -18, 10 )
+config/texture = ExtResource( 4 )
+config/h_frames = 4
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="climb" type="Sprite" parent="."]
+
+visibility/visible = false
+material/material = SubResource( 28 )
+texture = ExtResource( 6 )
+offset = Vector2( -6, 16 )
+hframes = 7
+__meta__ = { "_editor_collapsed":true }
+
+[node name="trail" type="Particles2D" parent="climb"]
+
+visibility/visible = false
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 3
+config/lifetime = 2.0
+config/offset = Vector2( -6, 16 )
+config/texture = ExtResource( 6 )
+config/h_frames = 7
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="ladder" type="Sprite" parent="."]
+
+visibility/visible = false
+material/material = SubResource( 30 )
+texture = ExtResource( 7 )
+offset = Vector2( 0, -11 )
+hframes = 4
+frame = 3
+__meta__ = { "_editor_collapsed":true }
+
+[node name="trail" type="Particles2D" parent="ladder"]
+
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 6
+config/lifetime = 4.0
+config/offset = Vector2( 0, -11 )
+config/texture = ExtResource( 7 )
+config/h_frames = 4
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="crouch" type="Sprite" parent="."]
+
+visibility/visible = false
+material/material = SubResource( 32 )
+texture = ExtResource( 8 )
+hframes = 2
+frame = 1
+__meta__ = { "_editor_collapsed":true }
+
+[node name="trail" type="Particles2D" parent="crouch"]
+
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 3
+config/lifetime = 2.0
+config/texture = ExtResource( 8 )
+config/h_frames = 2
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="hurt" type="Sprite" parent="."]
+
+visibility/visible = false
+material/material = SubResource( 34 )
+texture = ExtResource( 9 )
+hframes = 2
+frame = 1
+__meta__ = { "_editor_collapsed":true }
+
+[node name="trail" type="Particles2D" parent="hurt"]
+
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 6
+config/lifetime = 4.0
+config/texture = ExtResource( 9 )
+config/h_frames = 2
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="swing" type="Sprite" parent="."]
+
+visibility/visible = false
+material/material = SubResource( 36 )
+texture = ExtResource( 10 )
+offset = Vector2( -4, 0 )
+hframes = 5
+frame = 4
+__meta__ = { "_editor_collapsed":true }
+
+[node name="trail" type="Particles2D" parent="swing"]
+
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 6
+config/lifetime = 4.0
+config/offset = Vector2( -4, 0 )
+config/texture = ExtResource( 10 )
+config/h_frames = 5
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="charge" type="Sprite" parent="."]
+
+visibility/visible = false
+material/material = SubResource( 38 )
+transform/pos = Vector2( 0, -35 )
+texture = ExtResource( 11 )
+offset = Vector2( 0, 35 )
+hframes = 2
+__meta__ = { "_editor_collapsed":true }
+
+[node name="trail" type="Particles2D" parent="charge"]
+
+visibility/visible = false
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 3
+config/lifetime = 2.0
+config/offset = Vector2( 0, 35 )
+config/texture = ExtResource( 11 )
+config/h_frames = 2
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="magic" type="Sprite" parent="."]
+
+visibility/visible = false
+material/material = SubResource( 40 )
+transform/pos = Vector2( 0, -35 )
+texture = ExtResource( 11 )
+offset = Vector2( 0, 35 )
+hframes = 2
+frame = 1
+__meta__ = { "_editor_collapsed":true }
+
+[node name="trail" type="Particles2D" parent="magic"]
+
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 3
+config/lifetime = 2.0
+config/offset = Vector2( 0, 35 )
+config/texture = ExtResource( 11 )
+config/h_frames = 2
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="transform" type="Sprite" parent="."]
+
+visibility/visible = false
+transform/pos = Vector2( 0, -35 )
+texture = ExtResource( 12 )
+offset = Vector2( 0, 30 )
+vframes = 2
+hframes = 4
+
+[node name="detransform" type="Sprite" parent="."]
+
+visibility/visible = false
+transform/pos = Vector2( 0, -35 )
+texture = ExtResource( 13 )
+offset = Vector2( -8, 50 )
+hframes = 5
+
+[node name="wall" type="Sprite" parent="."]
+
+visibility/visible = false
+material/material = SubResource( 60 )
+transform/pos = Vector2( 0, -35 )
+texture = ExtResource( 14 )
+offset = Vector2( -28, 32 )
+
+[node name="gameover" type="Sprite" parent="."]
+
+visibility/visible = false
+material/material = SubResource( 62 )
+transform/pos = Vector2( -50, -150 )
+texture = ExtResource( 15 )
+vframes = 2
+hframes = 3
+
+[node name="attack" type="Node2D" parent="."]
+
+visibility/visible = false
+__meta__ = { "_editor_collapsed":true }
+
+[node name="trail" type="Particles2D" parent="attack"]
+
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 6
+config/lifetime = 4.0
+config/offset = Vector2( 48, -29 )
+config/texture = ExtResource( 16 )
+config/h_frames = 3
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="attack" type="Sprite" parent="attack"]
+
+material/material = SubResource( 42 )
+texture = ExtResource( 16 )
+offset = Vector2( 48, -29 )
+hframes = 3
+frame = 2
+
+[node name="aura" type="Sprite" parent="attack"]
+
+texture = ExtResource( 17 )
+offset = Vector2( 48, -60 )
+hframes = 5
+frame = 2
+modulate = Color( 0, 1, 0.586195, 1 )
+
+[node name="whip" type="Sprite" parent="attack"]
+
+visibility/blend_mode = 4
+material/material = SubResource( 11 )
+texture = ExtResource( 18 )
+offset = Vector2( 48, -60 )
+hframes = 5
+frame = 2
+
+[node name="dattack" type="Node2D" parent="."]
+
+visibility/visible = false
+__meta__ = { "_editor_collapsed":true }
+
+[node name="trail" type="Particles2D" parent="dattack"]
+
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 3
+config/lifetime = 2.0
+config/texture = ExtResource( 19 )
+config/h_frames = 3
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="dattack" type="Sprite" parent="dattack"]
+
+material/material = SubResource( 44 )
+texture = ExtResource( 19 )
+hframes = 3
+frame = 2
+
+[node name="whip" type="Sprite" parent="dattack"]
+
+visibility/blend_mode = 4
+material/material = SubResource( 16 )
+texture = ExtResource( 20 )
+offset = Vector2( 44, -60 )
+hframes = 5
+frame = 2
+
+[node name="aura" type="Sprite" parent="dattack"]
+
+texture = ExtResource( 21 )
+offset = Vector2( 44, -60 )
+hframes = 5
+frame = 4
+modulate = Color( 0, 0.509804, 0.811765, 1 )
+
+[node name="aattack" type="Node2D" parent="."]
+
+visibility/visible = false
+__meta__ = { "_editor_collapsed":true }
+
+[node name="trail" type="Particles2D" parent="aattack"]
+
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 6
+config/lifetime = 4.0
+config/offset = Vector2( 48, -36 )
+config/texture = ExtResource( 22 )
+config/h_frames = 3
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="aattack" type="Sprite" parent="aattack"]
+
+material/material = SubResource( 46 )
+texture = ExtResource( 22 )
+offset = Vector2( 48, -36 )
+hframes = 3
+frame = 2
+
+[node name="whip" type="Sprite" parent="aattack"]
+
+visibility/blend_mode = 4
+material/material = SubResource( 11 )
+texture = ExtResource( 18 )
+offset = Vector2( 48, -68 )
+hframes = 5
+frame = 2
+
+[node name="aura" type="Sprite" parent="aattack"]
+
+texture = ExtResource( 17 )
+offset = Vector2( 48, -68 )
+hframes = 5
+frame = 4
+modulate = Color( 0, 0.509804, 0.811765, 1 )
+
+[node name="uattack" type="Node2D" parent="."]
+
+visibility/visible = false
+__meta__ = { "_editor_collapsed":true }
+
+[node name="trail" type="Particles2D" parent="uattack"]
+
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 6
+config/lifetime = 4.0
+config/offset = Vector2( 48, -29 )
+config/texture = ExtResource( 23 )
+config/h_frames = 3
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="attack" type="Sprite" parent="uattack"]
+
+material/material = SubResource( 48 )
+texture = ExtResource( 23 )
+offset = Vector2( 48, -29 )
+hframes = 3
+frame = 2
+
+[node name="whip" type="Sprite" parent="uattack"]
+
+visibility/blend_mode = 4
+material/material = SubResource( 11 )
+texture = ExtResource( 24 )
+offset = Vector2( 0, -46 )
+hframes = 5
+frame = 4
+
+[node name="aura" type="Sprite" parent="uattack"]
+
+texture = ExtResource( 25 )
+offset = Vector2( 0, -52 )
+hframes = 5
+frame = 4
+modulate = Color( 0, 0.509804, 0.811765, 1 )
+
+[node name="uaattack" type="Node2D" parent="."]
+
+visibility/visible = false
+__meta__ = { "_editor_collapsed":true }
+
+[node name="trail" type="Particles2D" parent="uaattack"]
+
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 6
+config/lifetime = 4.0
+config/offset = Vector2( 48, -36 )
+config/texture = ExtResource( 26 )
+config/h_frames = 3
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="attack" type="Sprite" parent="uaattack"]
+
+material/material = SubResource( 50 )
+texture = ExtResource( 26 )
+offset = Vector2( 48, -36 )
+hframes = 3
+frame = 2
+
+[node name="whip" type="Sprite" parent="uaattack"]
+
+visibility/blend_mode = 4
+material/material = SubResource( 11 )
+texture = ExtResource( 24 )
+offset = Vector2( 0, -46 )
+hframes = 5
+frame = 4
+
+[node name="aura" type="Sprite" parent="uaattack"]
+
+texture = ExtResource( 25 )
+offset = Vector2( 0, -52 )
+hframes = 5
+frame = 4
+modulate = Color( 0, 0.509804, 0.811765, 1 )
+
+[node name="daattack" type="Node2D" parent="."]
+
+visibility/visible = false
+__meta__ = { "_editor_collapsed":true }
+
+[node name="trail" type="Particles2D" parent="daattack"]
+
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 6
+config/lifetime = 4.0
+config/offset = Vector2( 48, 16 )
+config/texture = ExtResource( 27 )
+config/h_frames = 3
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="aattack" type="Sprite" parent="daattack"]
+
+material/material = SubResource( 52 )
+texture = ExtResource( 27 )
+offset = Vector2( 48, 16 )
+hframes = 3
+frame = 2
+
+[node name="whip" type="Sprite" parent="daattack"]
+
+visibility/blend_mode = 4
+material/material = SubResource( 11 )
+texture = ExtResource( 28 )
+offset = Vector2( 48, 16 )
+hframes = 5
+frame = 2
+
+[node name="aura" type="Sprite" parent="daattack"]
+
+texture = ExtResource( 29 )
+offset = Vector2( 48, 16 )
+hframes = 5
+modulate = Color( 0, 0.509804, 0.811765, 1 )
+
+[node name="dgattack" type="Node2D" parent="."]
+
+visibility/visible = false
+__meta__ = { "_editor_collapsed":true }
+
+[node name="trail" type="Particles2D" parent="dgattack"]
+
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 6
+config/lifetime = 4.0
+config/offset = Vector2( 48, -29 )
+config/texture = ExtResource( 30 )
+config/h_frames = 3
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="attack" type="Sprite" parent="dgattack"]
+
+material/material = SubResource( 54 )
+texture = ExtResource( 30 )
+offset = Vector2( 48, -29 )
+hframes = 3
+
+[node name="whip" type="Sprite" parent="dgattack"]
+
+visibility/blend_mode = 4
+material/material = SubResource( 11 )
+texture = ExtResource( 31 )
+offset = Vector2( 48, -60 )
+hframes = 5
+
+[node name="aura" type="Sprite" parent="dgattack"]
+
+texture = ExtResource( 32 )
+offset = Vector2( 48, -60 )
+hframes = 5
+modulate = Color( 0, 0.509804, 0.811765, 1 )
+
+[node name="dgaattack" type="Node2D" parent="."]
+
+visibility/visible = false
+__meta__ = { "_editor_collapsed":true }
+
+[node name="trail" type="Particles2D" parent="dgaattack"]
+
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 6
+config/lifetime = 4.0
+config/offset = Vector2( 48, -36 )
+config/texture = ExtResource( 33 )
+config/h_frames = 3
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="aattack" type="Sprite" parent="dgaattack"]
+
+material/material = SubResource( 56 )
+texture = ExtResource( 33 )
+offset = Vector2( 48, -36 )
+hframes = 3
+frame = 2
+
+[node name="whip" type="Sprite" parent="dgaattack"]
+
+visibility/blend_mode = 4
+material/material = SubResource( 11 )
+texture = ExtResource( 31 )
+offset = Vector2( 48, -68 )
+hframes = 5
+frame = 4
+
+[node name="aura" type="Sprite" parent="dgaattack"]
+
+texture = ExtResource( 32 )
+offset = Vector2( 48, -68 )
+hframes = 5
+frame = 4
+modulate = Color( 0, 0.509804, 0.811765, 1 )
+
+[node name="ddgaattack" type="Node2D" parent="."]
+
+visibility/visible = false
+__meta__ = { "_editor_collapsed":true }
+
+[node name="trail" type="Particles2D" parent="ddgaattack"]
+
+visibility/opacity = 0.5
+visibility/behind_parent = true
+config/amount = 6
+config/lifetime = 4.0
+config/offset = Vector2( 48, 16 )
+config/texture = ExtResource( 34 )
+config/h_frames = 3
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 1, 0, 0, 1 )
+
+[node name="aattack" type="Sprite" parent="ddgaattack"]
+
+material/material = SubResource( 58 )
+texture = ExtResource( 34 )
+offset = Vector2( 48, 16 )
+hframes = 3
+frame = 2
+
+[node name="whip" type="Sprite" parent="ddgaattack"]
+
+visibility/blend_mode = 4
+material/material = SubResource( 11 )
+texture = ExtResource( 35 )
+offset = Vector2( 48, 16 )
+hframes = 5
+frame = 4
+
+[node name="aura" type="Sprite" parent="ddgaattack"]
+
+texture = ExtResource( 36 )
+offset = Vector2( 48, 16 )
+hframes = 5
+frame = 4
+modulate = Color( 0, 0.509804, 0.811765, 1 )
+
+

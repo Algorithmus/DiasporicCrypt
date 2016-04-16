@@ -3,7 +3,7 @@ extends "res://scenes/npcs/BaseNPC.gd"
 
 # Main NPC for catacomb functions
 
-var chargeclass = preload("res://scenes/animations/magiccircle/charge.scn")
+var chargeclass = preload("res://scenes/animations/magiccircle/charge.tscn")
 var charge
 
 func _ready():

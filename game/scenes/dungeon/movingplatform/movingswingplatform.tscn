@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scenes/dungeon/movingplatform/movingswingplatform.gd" type="Script" id=1]
+[ext_resource path="res://scenes/common/swingable.tscn" type="PackedScene" id=2]
+
+[node name="MovingSwingPlatform" type="Node2D"]
+
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"Script" }
+motion = Vector2( 0, 0 )
+cycle = 1.0
+
+[node name="SwingBlock" parent="." instance=ExtResource( 2 )]
+
+collision/margin = 0.08
+
+[node name="enabler" type="VisibilityEnabler2D" parent="SwingBlock"]
+
+transform/scale = Vector2( 3, 3 )
+rect = Rect2( -10, -10, 20, 20 )
+enabler/pause_animations = true
+enabler/freeze_bodies = true
+enabler/pause_particles = true
+enabler/process_parent = false
+enabler/fixed_process_parent = false
+
+[connection signal="enter_screen" from="SwingBlock/enabler" to="." method="enter_screen"]
+
+[connection signal="exit_screen" from="SwingBlock/enabler" to="." method="_on_enabler_exit_screen"]
+
+

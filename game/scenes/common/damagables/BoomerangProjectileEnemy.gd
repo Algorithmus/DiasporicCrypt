@@ -6,7 +6,7 @@ var projectile_available = true
 var projectile_obj
 
 func _ready():
-	projectile = preload("res://scenes/common/damagables/attacks/boomerang.scn")
+	projectile = preload("res://scenes/common/damagables/attacks/boomerang.tscn")
 	attack_delay = 30
 	pass
 

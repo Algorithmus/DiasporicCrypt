@@ -9,7 +9,7 @@ func _init():
 	sandbox.title = "LVL_SANDBOX"
 	sandbox.type = "quest"
 	sandbox.position = Vector2(160, 368)
-	sandbox.node = "res://levels/sandbox/sandbox.scn"
+	sandbox.node = "res://levels/sandbox/sandbox.tscn"
 	sandbox.teleportto = Vector2(-122, 480)
 	sandbox.description = "LVL_SANDBOX_DESCRIPTION"
 	sandbox.mapid = "LVL_SANDBOX"
@@ -19,7 +19,7 @@ func _init():
 	forest1.title = "LVL_FOREST1"
 	forest1.type = "bonus"
 	forest1.position = Vector2(192, 160)
-	forest1.node = "res://levels/sandbox/sandbox.scn"
+	forest1.node = "res://levels/sandbox/sandbox.tscn"
 	forest1.teleportto = Vector2(-122, 480)
 	forest1.description = "LVL_FOREST1_DESCRIPTION"
 	forest1.mapid = "LVL_SANDBOX"
@@ -29,7 +29,7 @@ func _init():
 	forest2.title = "LVL_FOREST2"
 	forest2.type = "bonus"
 	forest2.position = Vector2(192, 160)
-	forest2.node = "res://levels/sandbox/sandbox.scn"
+	forest2.node = "res://levels/sandbox/sandbox.tscn"
 	forest2.teleportto = Vector2(-122, 480)
 	forest2.description = "LVL_FOREST2_DESCRIPTION"
 	forest2.mapid = "LVL_SANDBOX"
@@ -39,7 +39,7 @@ func _init():
 	lavacave.title = "LVL_LAVACAVE"
 	lavacave.type = "boss"
 	lavacave.position = Vector2(432, 352)
-	lavacave.node = "res://levels/sandbox/sandbox.scn"
+	lavacave.node = "res://levels/sandbox/sandbox.tscn"
 	lavacave.teleportto = Vector2(-122, 480)
 	lavacave.description = "LVL_LAVACAVE_DESCRIPTION"
 	lavacave.reward = 10000
@@ -50,7 +50,7 @@ func _init():
 	manor.title = "LVL_MANOR"
 	manor.type = "quest"
 	manor.position = Vector2(436, 95)
-	manor.node = "res://levels/sandbox/sandbox.scn"
+	manor.node = "res://levels/sandbox/sandbox.tscn"
 	manor.teleportto = Vector2(-122, 480)
 	manor.description = "LVL_MANOR_DESCRIPTION"
 	manor.mapid = "LVL_SANDBOX"
@@ -61,7 +61,7 @@ func _init():
 	start.title = "LVL_START"
 	start.type = "quest"
 	start.position = Vector2(314, 133)
-	start.node = "res://levels/sandbox/sandbox.scn"
+	start.node = "res://levels/sandbox/sandbox.tscn"
 	start.teleportto = Vector2(-122, 480)
 	start.description = "LVL_START_DESCRIPTION"
 	start.reward = 100
@@ -72,7 +72,7 @@ func _init():
 	colosseum1.title = "LVL_COLOSSEUM1"
 	colosseum1.type = "colosseum"
 	colosseum1.position = Vector2(256, 240)
-	colosseum1.node = "res://levels/sandbox/colosseum-prototype0-0.scn"
+	colosseum1.node = "res://levels/sandbox/colosseum-prototype0-0.tscn"
 	colosseum1.teleportto = Vector2(48, 128)
 	colosseum1.description = "LVL_COLOSSEUM1_DESCRIPTION"
 	colosseum1.reward = 50000
@@ -83,7 +83,7 @@ func _init():
 	colosseum2.title = "LVL_COLOSSEUM2"
 	colosseum2.type = "colosseum"
 	colosseum2.position = Vector2(256, 240)
-	colosseum2.node = "res://levels/sandbox/colosseum-prototype0-0.scn"
+	colosseum2.node = "res://levels/sandbox/colosseum-prototype0-0.tscn"
 	colosseum2.teleportto = Vector2(48, 128)
 	colosseum2.description = "LVL_COLOSSEUM2_DESCRIPTION"
 	colosseum2.mapid = "LVL_COLOSSEUM"

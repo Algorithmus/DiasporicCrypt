@@ -28,7 +28,7 @@ var air_jump = false
 var wall_hanging_delay = 30
 var current_wall_hanging_delay = 0
 
-var whipswing = preload("res://players/adela/actions/whipswing.xml")
+var whipswing = preload("res://players/adela/actions/whipswing.tscn")
 var whipswing_obj
 
 func check_animations(new_animation, animation_speed, horizontal_motion, ladderY):
@@ -362,7 +362,7 @@ func step_player(delta):
 	play_animation(new_animation, animation_speed)
 
 func _init():
-	weapon = preload("res://scenes/weapons/whip.xml")
+	weapon = preload("res://scenes/weapons/whip.tscn")
 
 func _ready():
 	runspeed = 9
@@ -393,7 +393,7 @@ func _ready():
 	exp_growth_obj = exp_growth.new()
 	exp_growth_obj.setup(level)
 
-	demonic_sprite = preload("res://players/adela/demonic/demonic.scn")
+	demonic_sprite = preload("res://players/adela/demonic/demonic.tscn")
 	demonic_sprite_obj = demonic_sprite.instance()
 	
 	default_sprite = get_node("NormalSpriteGroup")

@@ -36,31 +36,31 @@ var aOffset
 var fspriteOffset
 var aspriteOffset
 
-var friederich = preload("res://players/friederich/friederich.scn")
-var adela = preload("res://players/adela/adela.scn")
+var friederich = preload("res://players/friederich/friederich.tscn")
+var adela = preload("res://players/adela/adela.tscn")
 var selected_character
 
 var inventoryclass = preload("res://scenes/items/Inventory.gd")
 var itemfactory = preload("res://scenes/items/ItemFactory.gd")
 var levelfactory = preload("res://levels/LevelFactory.gd")
 
-var magiccircleclass = preload("res://scenes/animations/magiccircle/magiccircle.scn")
-var magicorbsclass = preload("res://scenes/animations/magiccircle/orbs.scn")
-var stardustclass = preload("res://scenes/animations/stardust.scn")
+var magiccircleclass = preload("res://scenes/animations/magiccircle/magiccircle.tscn")
+var magicorbsclass = preload("res://scenes/animations/magiccircle/orbs.tscn")
+var stardustclass = preload("res://scenes/animations/stardust.tscn")
 
 var keymap = preload("res://gui/KeyboardCharacters.gd").new()
 
 func _ready():
 	# Initialization here
-	var magic_spells = [{"id": "thunder", "type": "thunder", "mp": 40, "auracolor": Color(1, 1, 1), "weaponcolor1": Color(1, 247/255.0, 138/255.0), "weaponcolor2": Color(0, 116/255.0, 1), "is_single": false, "charge": preload("res://players/magic/thunder/charge.scn"), "attack": preload("res://players/magic/thunder/thunder.scn"), "delay": true, "atk": 0.8}, 
-					{"id":"hex", "type": "dark", "mp": 40, "auracolor": Color(169/255.0, 0, 1), "weaponcolor1": Color(0, 0, 0), "weaponcolor2": Color(1, 0, 0), "is_single": false, "delay": true, "attack": preload("res://players/magic/hex/hex.scn"), "atk": 0.8}, 
-					{"id":"shield", "mp": 60, "auracolor": Color(0, 0, 1), "weaponcolor1": Color(0, 55/255.0, 1), "weaponcolor2": Color(0, 208/255.0, 1), "is_single": false, "delay": false, "attack": preload("res://players/magic/shield/shield.scn"), "charge": preload("res://players/magic/shield/charge.scn")}, 
-					{"id":"magicmine", "mp": 20, "auracolor": Color(1, 129/255.0, 0), "weaponcolor1": Color(1, 1, 0), "weaponcolor2": Color(78/255.0, 0 , 1), "is_single": true, "delay": false, "attack": preload("res://players/magic/magicmine/mine.scn"), "atk": 40}, 
-					{"id":"void", "mp": 80, "auracolor": Color(110/255.0, 110/255.0, 122/255.0), "weaponcolor1": Color(0, 0, 0), "weaponcolor2": Color(1, 1, 1), "is_single": false, "delay": true, "attack": preload("res://players/magic/void/void.scn")},
-					{"id":"earth", "type": "earth", "mp": 100, "auracolor":Color(170/255.0, 1, 0), "weaponcolor1":Color(64/255.0, 58/255.0, 56/255.0), "weaponcolor2":Color(181/255.0, 188/255.0, 0), "is_single": false, "charge": preload("res://players/magic/earth/charge.scn"), "attack": preload("res://players/magic/earth/earth.scn"), "delay": true, "atk": 1.2},
-					{"id":"fire", "type": "fire", "mp": 20, "auracolor":Color(1, 77/255.0, 0), "weaponcolor1":Color(1, 1, 0), "weaponcolor2":Color(1, 0, 0), "is_single": false, "attack": preload("res://players/magic/fire/fire.scn"), "delay": false, "atk": 0.7},
-					{"id":"wind", "type": "wind", "mp": 120, "auracolor": Color(0, 1, 149/255.0), "weaponcolor1": Color(187/255.0, 1, 231/255.0), "weaponcolor2": Color(0, 191/255.0, 92/255.0), "delay": true, "is_single": false, "charge": preload("res://players/magic/wind/charge.scn"), "attack": preload("res://players/magic/wind/wind.scn"), "atk": 1.2},
-					{"id":"ice", "type": "ice", "mp": 20, "auracolor": Color(0, 130/255.0, 207/255.0), "weaponcolor1": Color(0, 1, 1), "weaponcolor2": Color(0, 130/255.0, 207/255.0), "delay": false, "is_single": false, "attack": preload("res://players/magic/ice/ice.scn"), "atk": 0.75}]
+	var magic_spells = [{"id": "thunder", "type": "thunder", "mp": 40, "auracolor": Color(1, 1, 1), "weaponcolor1": Color(1, 247/255.0, 138/255.0), "weaponcolor2": Color(0, 116/255.0, 1), "is_single": false, "charge": preload("res://players/magic/thunder/charge.tscn"), "attack": preload("res://players/magic/thunder/thunder.tscn"), "delay": true, "atk": 0.8}, 
+					{"id":"hex", "type": "dark", "mp": 40, "auracolor": Color(169/255.0, 0, 1), "weaponcolor1": Color(0, 0, 0), "weaponcolor2": Color(1, 0, 0), "is_single": false, "delay": true, "attack": preload("res://players/magic/hex/hex.tscn"), "atk": 0.8}, 
+					{"id":"shield", "mp": 60, "auracolor": Color(0, 0, 1), "weaponcolor1": Color(0, 55/255.0, 1), "weaponcolor2": Color(0, 208/255.0, 1), "is_single": false, "delay": false, "attack": preload("res://players/magic/shield/shield.tscn"), "charge": preload("res://players/magic/shield/charge.tscn")}, 
+					{"id":"magicmine", "mp": 20, "auracolor": Color(1, 129/255.0, 0), "weaponcolor1": Color(1, 1, 0), "weaponcolor2": Color(78/255.0, 0 , 1), "is_single": true, "delay": false, "attack": preload("res://players/magic/magicmine/mine.tscn"), "atk": 40}, 
+					{"id":"void", "mp": 80, "auracolor": Color(110/255.0, 110/255.0, 122/255.0), "weaponcolor1": Color(0, 0, 0), "weaponcolor2": Color(1, 1, 1), "is_single": false, "delay": true, "attack": preload("res://players/magic/void/void.tscn")},
+					{"id":"earth", "type": "earth", "mp": 100, "auracolor":Color(170/255.0, 1, 0), "weaponcolor1":Color(64/255.0, 58/255.0, 56/255.0), "weaponcolor2":Color(181/255.0, 188/255.0, 0), "is_single": false, "charge": preload("res://players/magic/earth/charge.tscn"), "attack": preload("res://players/magic/earth/earth.tscn"), "delay": true, "atk": 1.2},
+					{"id":"fire", "type": "fire", "mp": 20, "auracolor":Color(1, 77/255.0, 0), "weaponcolor1":Color(1, 1, 0), "weaponcolor2":Color(1, 0, 0), "is_single": false, "attack": preload("res://players/magic/fire/fire.tscn"), "delay": false, "atk": 0.7},
+					{"id":"wind", "type": "wind", "mp": 120, "auracolor": Color(0, 1, 149/255.0), "weaponcolor1": Color(187/255.0, 1, 231/255.0), "weaponcolor2": Color(0, 191/255.0, 92/255.0), "delay": true, "is_single": false, "charge": preload("res://players/magic/wind/charge.tscn"), "attack": preload("res://players/magic/wind/wind.tscn"), "atk": 1.2},
+					{"id":"ice", "type": "ice", "mp": 20, "auracolor": Color(0, 130/255.0, 207/255.0), "weaponcolor1": Color(0, 1, 1), "weaponcolor2": Color(0, 130/255.0, 207/255.0), "delay": false, "is_single": false, "attack": preload("res://players/magic/ice/ice.tscn"), "atk": 0.75}]
 	Globals.set("magic_spells", magic_spells)
 	Globals.set("itemfactory", itemfactory.new())
 	Globals.set("available_levels", ["LVL_SANDBOX", "LVL_FOREST1", "LVL_FOREST2", "LVL_MANOR", "LVL_LAVACAVE", "LVL_START", "LVL_COLOSSEUM1", "LVL_COLOSSEUM2"])
@@ -358,7 +358,7 @@ func reset_level():
 	Globals.get("inventory").set("player", player)
 	map.set("camera", player.get_node("Camera2D"))
 	get_node("gui/CanvasLayer/hud").reset()
-	teleport("res://levels/common/catacombs.scn", Vector2(0, 0), null)
+	teleport("res://levels/common/catacombs.tscn", Vector2(0, 0), null)
 	is_paused = false
 	pause.hide()
 	gameover = false
@@ -385,7 +385,7 @@ func reset():
 	var old_level = get_node("level").get_child(0)
 	get_node("level").remove_child(old_level)
 	old_level.queue_free()
-	var level = load("res://levels/common/catacombs.scn").instance()
+	var level = load("res://levels/common/catacombs.tscn").instance()
 	get_node("level").add_child(level)
 	gameover = false
 	is_paused = true
@@ -415,7 +415,7 @@ func teleport(new_level, pos, teleport):
 	if (new_level_obj.get_name() != "LVL_NOTITLE"):
 		display_level_title(new_level_obj.get_name())
 	# make sure catacombs level connects to the correct level
-	if (new_level == "res://levels/common/catacombs.scn"):
+	if (new_level == "res://levels/common/catacombs.tscn"):
 		var new_teleport = new_level_obj.get_node("tilemap/TeleportGroup").get_child(0)
 		var map = Globals.get("levels")[Globals.get("current_level")]
 		new_teleport.target_level = map.node

@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://scenes/dungeon/movingplatform/MovingPlatform.gd" type="Script" id=1]
+[ext_resource path="res://scenes/dungeon/climbableblock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/dungeon/movingplatform/movingplatform.png" type="Texture" id=3]
+
+
+[node name="MovingPlatform" type="Node2D"]
+
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"Script" }
+motion = Vector2( 0, 0 )
+cycle = 1.0
+
+[node name="enabler" type="VisibilityEnabler2D" parent="."]
+
+transform/scale = Vector2( 20, 10 )
+rect = Rect2( -10, -10, 20, 20 )
+enabler/pause_animations = true
+enabler/freeze_bodies = true
+enabler/pause_particles = true
+enabler/process_parent = false
+enabler/fixed_process_parent = false
+
+[node name="blockR" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 16, 0 )
+
+[node name="Sprite" parent="blockR"]
+
+texture = ExtResource( 3 )
+flip_h = false
+
+[node name="blockL" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -16, 0 )
+
+[node name="Sprite" parent="blockL"]
+
+texture = ExtResource( 3 )
+
+[connection signal="enter_screen" from="enabler" to="." method="enter_screen"]
+
+[connection signal="exit_screen" from="enabler" to="." method="exit_screen"]
+
+
+[editable path="blockR"]
+[editable path="blockL"]

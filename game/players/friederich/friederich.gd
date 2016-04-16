@@ -13,17 +13,17 @@ var chain_collided = false
 var attack_reset_interrupt = false
 var direction_requested = ""
 var chain_specials = [
-	{"combo":"a, a, d", "id":"chop", "replace":"aad", "collider":preload("res://scenes/weapons/chop.scn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":10, "used": false},
-	{"combo":"aad, u", "id":"slice", "replace":"aadu", "collider":preload("res://scenes/weapons/slice.scn"), "collider_offset":Vector2(0, -96), "db":10, "hurt_delay":8, "used": false},
-	{"combo":"a, a, u", "id":"skewer", "replace":"aau", "collider":preload("res://scenes/weapons/skewer.scn"), "collider_offset":Vector2(0, -32), "db":10, "hurt_delay":8, "used": false},
-	{"combo":"aau, d", "id":"stab", "replace":"aaud", "collider":preload("res://scenes/weapons/stab.scn"), "collider_offset":Vector2(0, 80), "db":10, "hurt_delay":7, "used": false},
-	{"combo":"a, a, a", "id":"thrust", "replace":"aaa", "collider":preload("res://scenes/weapons/thrust.scn"), "collider_offset":Vector2(0, -32), "db":10, "hurt_delay":10, "used": false},
-	{"combo":"aaa, a", "id":"swift", "replace":"aaaa", "collider":preload("res://scenes/weapons/swift.scn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":6, "used": false},
-	{"combo":"a, a, f", "id":"dualspin", "replace":"aaf", "collider":preload("res://scenes/weapons/dualspin.scn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":8, "used": false},
-	{"combo":"aaf, d", "id":"void", "replace":"aafd", "collider":preload("res://scenes/weapons/void.scn"), "collider_offset":Vector2(32, 0), "db":10, "hurt_delay":4, "used": false},
-	{"combo":"aaa, f", "id":"rush", "replace":"aaaf", "collider":preload("res://scenes/weapons/rush.scn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":2, "used": false}
+	{"combo":"a, a, d", "id":"chop", "replace":"aad", "collider":preload("res://scenes/weapons/chop.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":10, "used": false},
+	{"combo":"aad, u", "id":"slice", "replace":"aadu", "collider":preload("res://scenes/weapons/slice.tscn"), "collider_offset":Vector2(0, -96), "db":10, "hurt_delay":8, "used": false},
+	{"combo":"a, a, u", "id":"skewer", "replace":"aau", "collider":preload("res://scenes/weapons/skewer.tscn"), "collider_offset":Vector2(0, -32), "db":10, "hurt_delay":8, "used": false},
+	{"combo":"aau, d", "id":"stab", "replace":"aaud", "collider":preload("res://scenes/weapons/stab.tscn"), "collider_offset":Vector2(0, 80), "db":10, "hurt_delay":7, "used": false},
+	{"combo":"a, a, a", "id":"thrust", "replace":"aaa", "collider":preload("res://scenes/weapons/thrust.tscn"), "collider_offset":Vector2(0, -32), "db":10, "hurt_delay":10, "used": false},
+	{"combo":"aaa, a", "id":"swift", "replace":"aaaa", "collider":preload("res://scenes/weapons/swift.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":6, "used": false},
+	{"combo":"a, a, f", "id":"dualspin", "replace":"aaf", "collider":preload("res://scenes/weapons/dualspin.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":8, "used": false},
+	{"combo":"aaf, d", "id":"void", "replace":"aafd", "collider":preload("res://scenes/weapons/void.tscn"), "collider_offset":Vector2(32, 0), "db":10, "hurt_delay":4, "used": false},
+	{"combo":"aaa, f", "id":"rush", "replace":"aaaf", "collider":preload("res://scenes/weapons/rush.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":2, "used": false}
 	]
-var demonic_void = preload("res://scenes/weapons/demonic.scn")
+var demonic_void = preload("res://scenes/weapons/demonic.tscn")
 var target_enemy
 var is_chain_special = false
 var current_chain_special
@@ -85,7 +85,7 @@ func _ready():
 
 	chain_collider.connect("area_enter", self, "_on_chain_collision")
 	
-	demonic_sprite = preload("res://players/friederich/demonic/demonic.scn")
+	demonic_sprite = preload("res://players/friederich/demonic/demonic.tscn")
 	demonic_sprite_obj = demonic_sprite.instance()
 	
 	default_sprite = get_node("NormalSpriteGroup")
@@ -553,4 +553,4 @@ func _input(event):
 			jump_requested = true
 
 func _init():
-	weapon = preload("res://scenes/weapons/sword.xml")
+	weapon = preload("res://scenes/weapons/sword.tscn")
