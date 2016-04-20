@@ -475,7 +475,8 @@ func calculate_fall_height():
 		fall_height = 0
 
 func _fixed_process(delta):
-	step_player(delta)
+	if (is_fixed_processing()):
+		step_player(delta)
 
 func step_player(delta):
 	var space = get_world_2d().get_space()

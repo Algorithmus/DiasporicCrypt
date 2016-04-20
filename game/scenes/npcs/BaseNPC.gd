@@ -14,7 +14,6 @@ func _fixed_process(delta):
 		get_node("Sprite").set_scale(Vector2(direction, 1))
 
 func start(pos):
-	print("start talking")
 	get_tree().get_root().get_node("world/gui/CanvasLayer/dialogue").start(dialogues)
 	if (get_global_pos().x * direction > pos.x * direction):
 		get_node("Sprite").set_scale(Vector2(-direction, 1))

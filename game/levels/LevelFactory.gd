@@ -10,7 +10,7 @@ func _init():
 	sandbox.type = "quest"
 	sandbox.position = Vector2(160, 368)
 	sandbox.node = "res://levels/sandbox/sandbox.tscn"
-	sandbox.teleportto = Vector2(-122, 480)
+	sandbox.teleportto = Vector2(-112, 480)
 	sandbox.description = "LVL_SANDBOX_DESCRIPTION"
 	sandbox.mapid = "LVL_SANDBOX"
 	levels[sandbox.title] = sandbox
@@ -20,7 +20,7 @@ func _init():
 	forest1.type = "bonus"
 	forest1.position = Vector2(192, 160)
 	forest1.node = "res://levels/sandbox/sandbox.tscn"
-	forest1.teleportto = Vector2(-122, 480)
+	forest1.teleportto = Vector2(-112, 480)
 	forest1.description = "LVL_FOREST1_DESCRIPTION"
 	forest1.mapid = "LVL_SANDBOX"
 	levels[forest1.title] = forest1
@@ -30,7 +30,7 @@ func _init():
 	forest2.type = "bonus"
 	forest2.position = Vector2(192, 160)
 	forest2.node = "res://levels/sandbox/sandbox.tscn"
-	forest2.teleportto = Vector2(-122, 480)
+	forest2.teleportto = Vector2(-112, 480)
 	forest2.description = "LVL_FOREST2_DESCRIPTION"
 	forest2.mapid = "LVL_SANDBOX"
 	levels[forest2.title] = forest2
@@ -40,7 +40,7 @@ func _init():
 	lavacave.type = "boss"
 	lavacave.position = Vector2(432, 352)
 	lavacave.node = "res://levels/sandbox/sandbox.tscn"
-	lavacave.teleportto = Vector2(-122, 480)
+	lavacave.teleportto = Vector2(-112, 480)
 	lavacave.description = "LVL_LAVACAVE_DESCRIPTION"
 	lavacave.reward = 10000
 	lavacave.mapid = "LVL_SANDBOX"
@@ -51,7 +51,7 @@ func _init():
 	manor.type = "quest"
 	manor.position = Vector2(436, 95)
 	manor.node = "res://levels/sandbox/sandbox.tscn"
-	manor.teleportto = Vector2(-122, 480)
+	manor.teleportto = Vector2(-112, 480)
 	manor.description = "LVL_MANOR_DESCRIPTION"
 	manor.mapid = "LVL_SANDBOX"
 	manor.reward = 20000
@@ -61,11 +61,11 @@ func _init():
 	start.title = "LVL_START"
 	start.type = "quest"
 	start.position = Vector2(314, 133)
-	start.node = "res://levels/sandbox/sandbox.tscn"
-	start.teleportto = Vector2(-122, 480)
+	start.node = "res://levels/roomoftrials/0-0.tscn"
+	start.teleportto = Vector2(336, 128)
 	start.description = "LVL_START_DESCRIPTION"
 	start.reward = 100
-	start.mapid = "LVL_SANDBOX"
+	start.mapid = "LVL_START"
 	levels[start.title] = start
 	
 	var colosseum1 = levelclass.new()

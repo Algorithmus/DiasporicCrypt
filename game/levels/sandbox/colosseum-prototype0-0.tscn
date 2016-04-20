@@ -5,9 +5,6 @@
 [ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=4]
 
-
-
-
 [node name="LVL_COLOSSEUM" type="Node2D"]
 
 __meta__ = { "__editor_plugin_screen__":"2D" }
@@ -70,7 +67,7 @@ transform/scale = Vector2( 3, 1 )
 
 transform/pos = Vector2( 496, -112 )
 target_level = "res://levels/sandbox/colosseum-prototype0-1.tscn"
-teleport_to = Vector2( -432, -48 )
+teleport_to = Vector2( -428, -48 )
 
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
 

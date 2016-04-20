@@ -408,7 +408,9 @@ func teleport(new_level, pos, teleport):
 	level.add_child(new_level_obj)
 	var player = get_node("playercontainer/player")
 	player.load_tilemap(new_level_obj)
-	player.set_global_pos(pos)
+	#physics server lags behind, causing calls to move() to mess up
+	#so we delay moving the player until physics server catches up
+	player.call_deferred("teleport", pos, player.on_ladder)
 	var level_title = get_node("gui/CanvasLayer/level/AnimationPlayer")
 	level_title.stop()
 	level_title.seek(0, true)

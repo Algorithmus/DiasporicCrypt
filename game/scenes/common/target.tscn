@@ -18,11 +18,11 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteGroup/target:frame")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":false, "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ 0, 1, 2 ] }
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ 0, 1, 2 ] }
 tracks/1/type = "value"
 tracks/1/path = NodePath("SpriteGroup/pole:frame")
 tracks/1/interp = 1
-tracks/1/keys = { "cont":false, "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 0, 1, 2, 3 ] }
+tracks/1/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 0, 1, 2, 3 ] }
 tracks/2/type = "value"
 tracks/2/path = NodePath("SpriteGroup/target:offset")
 tracks/2/interp = 1
@@ -36,11 +36,11 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteGroup/pole:frame")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0 ] }
+tracks/0/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0 ] }
 tracks/1/type = "value"
 tracks/1/path = NodePath("SpriteGroup/target:frame")
 tracks/1/interp = 1
-tracks/1/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0 ] }
+tracks/1/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0 ] }
 
 [node name="target" type="KinematicBody2D"]
 

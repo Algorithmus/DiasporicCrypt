@@ -37,6 +37,102 @@
 [ext_resource path="res://players/adela/attacks/ddgawhip.png" type="Texture" id=35]
 [ext_resource path="res://players/adela/attacks/ddgaaura.png" type="Texture" id=36]
 
+[sub_resource type="CanvasItemShader" id=1]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=2]
+
+shader/shader = SubResource( 1 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=3]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=4]
+
+shader/shader = SubResource( 3 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=5]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=6]
+
+shader/shader = SubResource( 5 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=7]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=8]
+
+shader/shader = SubResource( 7 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=9]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=10]
+
+shader/shader = SubResource( 9 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=11]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=12]
+
+shader/shader = SubResource( 11 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=13]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=14]
+
+shader/shader = SubResource( 13 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=15]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=16]
+
+shader/shader = SubResource( 15 )
+shader/shading_mode = 0
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+
 [sub_resource type="CanvasItemShader" id=17]
 
 _code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
@@ -123,15 +219,15 @@ shader_param/opacity = 1.0
 
 [sub_resource type="CanvasItemShader" id=31]
 
-_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform color modulate=color(0.2,0.4,1.0,1.0);\n\nvec4 col = vec4(modulate.rgb,tex(TEXTURE,UV).a*modulate.a);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\n\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
 
 [sub_resource type="CanvasItemMaterial" id=32]
 
 shader/shader = SubResource( 31 )
 shader/shading_mode = 0
 shader_param/aura_width = 2.0
-shader_param/aura_color = Color( 1, 0, 0, 1 )
-shader_param/opacity = 1.0
+shader_param/aura_color = Color( 0, 0.749527, 0.360938, 1 )
+shader_param/modulate = Color( 0.734848, 1, 0.90577, 1 )
 
 [sub_resource type="CanvasItemShader" id=33]
 
@@ -147,15 +243,15 @@ shader_param/opacity = 1.0
 
 [sub_resource type="CanvasItemShader" id=35]
 
-_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform color modulate=color(0.2,0.4,1.0,1.0);\n\nvec4 col = vec4(modulate.rgb,tex(TEXTURE,UV).a*modulate.a);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\n\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
 
 [sub_resource type="CanvasItemMaterial" id=36]
 
 shader/shader = SubResource( 35 )
 shader/shading_mode = 0
 shader_param/aura_width = 2.0
-shader_param/aura_color = Color( 1, 0, 0, 1 )
-shader_param/opacity = 1.0
+shader_param/aura_color = Color( 0, 0.509804, 0.811765, 1 )
+shader_param/modulate = Color( 0, 1, 1, 1 )
 
 [sub_resource type="CanvasItemShader" id=37]
 
@@ -181,30 +277,6 @@ shader_param/aura_width = 2.0
 shader_param/aura_color = Color( 1, 0, 0, 1 )
 shader_param/opacity = 1.0
 
-[sub_resource type="CanvasItemShader" id=59]
-
-_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
-
-[sub_resource type="CanvasItemMaterial" id=60]
-
-shader/shader = SubResource( 59 )
-shader/shading_mode = 0
-shader_param/aura_width = 2.0
-shader_param/aura_color = Color( 1, 0, 0, 1 )
-shader_param/opacity = 1.0
-
-[sub_resource type="CanvasItemShader" id=61]
-
-_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
-
-[sub_resource type="CanvasItemMaterial" id=62]
-
-shader/shader = SubResource( 61 )
-shader/shading_mode = 0
-shader_param/aura_width = 2.0
-shader_param/aura_color = Color( 1, 0, 0, 1 )
-shader_param/opacity = 1.0
-
 [sub_resource type="CanvasItemShader" id=41]
 
 _code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
@@ -217,18 +289,6 @@ shader_param/aura_width = 2.0
 shader_param/aura_color = Color( 1, 0, 0, 1 )
 shader_param/opacity = 1.0
 
-[sub_resource type="CanvasItemShader" id=10]
-
-_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform color modulate=color(0.2,0.4,1.0,1.0);\n\nvec4 col = vec4(modulate.rgb,tex(TEXTURE,UV).a*modulate.a);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\n\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
-
-[sub_resource type="CanvasItemMaterial" id=11]
-
-shader/shader = SubResource( 10 )
-shader/shading_mode = 0
-shader_param/aura_width = 2.0
-shader_param/aura_color = Color( 0, 0.749527, 0.360938, 1 )
-shader_param/modulate = Color( 0.734848, 1, 0.90577, 1 )
-
 [sub_resource type="CanvasItemShader" id=43]
 
 _code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
@@ -240,18 +300,6 @@ shader/shading_mode = 0
 shader_param/aura_width = 2.0
 shader_param/aura_color = Color( 1, 0, 0, 1 )
 shader_param/opacity = 1.0
-
-[sub_resource type="CanvasItemShader" id=15]
-
-_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform color modulate=color(0.2,0.4,1.0,1.0);\n\nvec4 col = vec4(modulate.rgb,tex(TEXTURE,UV).a*modulate.a);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\n\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
-
-[sub_resource type="CanvasItemMaterial" id=16]
-
-shader/shader = SubResource( 15 )
-shader/shading_mode = 0
-shader_param/aura_width = 2.0
-shader_param/aura_color = Color( 0, 0.509804, 0.811765, 1 )
-shader_param/modulate = Color( 0, 1, 1, 1 )
 
 [sub_resource type="CanvasItemShader" id=45]
 
@@ -289,54 +337,6 @@ shader_param/aura_width = 2.0
 shader_param/aura_color = Color( 1, 0, 0, 1 )
 shader_param/opacity = 1.0
 
-[sub_resource type="CanvasItemShader" id=51]
-
-_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
-
-[sub_resource type="CanvasItemMaterial" id=52]
-
-shader/shader = SubResource( 51 )
-shader/shading_mode = 0
-shader_param/aura_width = 2.0
-shader_param/aura_color = Color( 1, 0, 0, 1 )
-shader_param/opacity = 1.0
-
-[sub_resource type="CanvasItemShader" id=53]
-
-_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
-
-[sub_resource type="CanvasItemMaterial" id=54]
-
-shader/shader = SubResource( 53 )
-shader/shading_mode = 0
-shader_param/aura_width = 2.0
-shader_param/aura_color = Color( 1, 0, 0, 1 )
-shader_param/opacity = 1.0
-
-[sub_resource type="CanvasItemShader" id=55]
-
-_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
-
-[sub_resource type="CanvasItemMaterial" id=56]
-
-shader/shader = SubResource( 55 )
-shader/shading_mode = 0
-shader_param/aura_width = 2.0
-shader_param/aura_color = Color( 1, 0, 0, 1 )
-shader_param/opacity = 1.0
-
-[sub_resource type="CanvasItemShader" id=57]
-
-_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
-
-[sub_resource type="CanvasItemMaterial" id=58]
-
-shader/shader = SubResource( 57 )
-shader/shading_mode = 0
-shader_param/aura_width = 2.0
-shader_param/aura_color = Color( 1, 0, 0, 1 )
-shader_param/opacity = 1.0
-
 [node name="NormalSpriteGroup" type="Node2D"]
 
 z/z = 1
@@ -344,7 +344,7 @@ __meta__ = { "__editor_plugin_screen__":"2D" }
 
 [node name="idle" type="Sprite" parent="."]
 
-material/material = SubResource( 18 )
+material/material = SubResource( 2 )
 texture = ExtResource( 1 )
 hframes = 4
 
@@ -377,7 +377,7 @@ color/color = Color( 1, 0, 0, 1 )
 [node name="run" type="Sprite" parent="."]
 
 visibility/visible = false
-material/material = SubResource( 20 )
+material/material = SubResource( 4 )
 texture = ExtResource( 2 )
 offset = Vector2( -16, 0 )
 vframes = 2
@@ -415,7 +415,7 @@ color/color = Color( 1, 0, 0, 1 )
 [node name="jump" type="Sprite" parent="."]
 
 visibility/visible = false
-material/material = SubResource( 22 )
+material/material = SubResource( 6 )
 texture = ExtResource( 3 )
 hframes = 3
 frame = 2
@@ -450,7 +450,7 @@ color/color = Color( 1, 0, 0, 1 )
 [node name="fall" type="Sprite" parent="."]
 
 visibility/visible = false
-material/material = SubResource( 24 )
+material/material = SubResource( 8 )
 transform/pos = Vector2( 0, -35 )
 texture = ExtResource( 4 )
 offset = Vector2( -16, 40 )
@@ -488,7 +488,7 @@ color/color = Color( 1, 0, 0, 1 )
 [node name="land" type="Sprite" parent="."]
 
 visibility/visible = false
-material/material = SubResource( 26 )
+material/material = SubResource( 10 )
 transform/pos = Vector2( 0, -9 )
 texture = ExtResource( 5 )
 offset = Vector2( -18, 10 )
@@ -526,7 +526,7 @@ color/color = Color( 1, 0, 0, 1 )
 [node name="climb" type="Sprite" parent="."]
 
 visibility/visible = false
-material/material = SubResource( 28 )
+material/material = SubResource( 12 )
 texture = ExtResource( 6 )
 offset = Vector2( -6, 16 )
 hframes = 7
@@ -563,7 +563,7 @@ color/color = Color( 1, 0, 0, 1 )
 [node name="ladder" type="Sprite" parent="."]
 
 visibility/visible = false
-material/material = SubResource( 30 )
+material/material = SubResource( 14 )
 texture = ExtResource( 7 )
 offset = Vector2( 0, -11 )
 hframes = 4
@@ -600,7 +600,7 @@ color/color = Color( 1, 0, 0, 1 )
 [node name="crouch" type="Sprite" parent="."]
 
 visibility/visible = false
-material/material = SubResource( 32 )
+material/material = SubResource( 16 )
 texture = ExtResource( 8 )
 hframes = 2
 frame = 1
@@ -635,7 +635,7 @@ color/color = Color( 1, 0, 0, 1 )
 [node name="hurt" type="Sprite" parent="."]
 
 visibility/visible = false
-material/material = SubResource( 34 )
+material/material = SubResource( 18 )
 texture = ExtResource( 9 )
 hframes = 2
 frame = 1
@@ -670,7 +670,7 @@ color/color = Color( 1, 0, 0, 1 )
 [node name="swing" type="Sprite" parent="."]
 
 visibility/visible = false
-material/material = SubResource( 36 )
+material/material = SubResource( 20 )
 texture = ExtResource( 10 )
 offset = Vector2( -4, 0 )
 hframes = 5
@@ -707,7 +707,7 @@ color/color = Color( 1, 0, 0, 1 )
 [node name="charge" type="Sprite" parent="."]
 
 visibility/visible = false
-material/material = SubResource( 38 )
+material/material = SubResource( 22 )
 transform/pos = Vector2( 0, -35 )
 texture = ExtResource( 11 )
 offset = Vector2( 0, 35 )
@@ -745,7 +745,7 @@ color/color = Color( 1, 0, 0, 1 )
 [node name="magic" type="Sprite" parent="."]
 
 visibility/visible = false
-material/material = SubResource( 40 )
+material/material = SubResource( 24 )
 transform/pos = Vector2( 0, -35 )
 texture = ExtResource( 11 )
 offset = Vector2( 0, 35 )
@@ -800,7 +800,7 @@ hframes = 5
 [node name="wall" type="Sprite" parent="."]
 
 visibility/visible = false
-material/material = SubResource( 60 )
+material/material = SubResource( 26 )
 transform/pos = Vector2( 0, -35 )
 texture = ExtResource( 14 )
 offset = Vector2( -28, 32 )
@@ -808,7 +808,7 @@ offset = Vector2( -28, 32 )
 [node name="gameover" type="Sprite" parent="."]
 
 visibility/visible = false
-material/material = SubResource( 62 )
+material/material = SubResource( 28 )
 transform/pos = Vector2( -50, -150 )
 texture = ExtResource( 15 )
 vframes = 2
@@ -848,7 +848,7 @@ color/color = Color( 1, 0, 0, 1 )
 
 [node name="attack" type="Sprite" parent="attack"]
 
-material/material = SubResource( 42 )
+material/material = SubResource( 30 )
 texture = ExtResource( 16 )
 offset = Vector2( 48, -29 )
 hframes = 3
@@ -856,6 +856,7 @@ frame = 2
 
 [node name="aura" type="Sprite" parent="attack"]
 
+z/z = 1
 texture = ExtResource( 17 )
 offset = Vector2( 48, -60 )
 hframes = 5
@@ -865,7 +866,8 @@ modulate = Color( 0, 1, 0.586195, 1 )
 [node name="whip" type="Sprite" parent="attack"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 32 )
+z/z = 1
 texture = ExtResource( 18 )
 offset = Vector2( 48, -60 )
 hframes = 5
@@ -904,7 +906,7 @@ color/color = Color( 1, 0, 0, 1 )
 
 [node name="dattack" type="Sprite" parent="dattack"]
 
-material/material = SubResource( 44 )
+material/material = SubResource( 34 )
 texture = ExtResource( 19 )
 hframes = 3
 frame = 2
@@ -912,7 +914,8 @@ frame = 2
 [node name="whip" type="Sprite" parent="dattack"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 16 )
+material/material = SubResource( 36 )
+z/z = 1
 texture = ExtResource( 20 )
 offset = Vector2( 44, -60 )
 hframes = 5
@@ -920,6 +923,7 @@ frame = 2
 
 [node name="aura" type="Sprite" parent="dattack"]
 
+z/z = 1
 texture = ExtResource( 21 )
 offset = Vector2( 44, -60 )
 hframes = 5
@@ -960,7 +964,7 @@ color/color = Color( 1, 0, 0, 1 )
 
 [node name="aattack" type="Sprite" parent="aattack"]
 
-material/material = SubResource( 46 )
+material/material = SubResource( 38 )
 texture = ExtResource( 22 )
 offset = Vector2( 48, -36 )
 hframes = 3
@@ -969,7 +973,8 @@ frame = 2
 [node name="whip" type="Sprite" parent="aattack"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 32 )
+z/z = 1
 texture = ExtResource( 18 )
 offset = Vector2( 48, -68 )
 hframes = 5
@@ -977,6 +982,7 @@ frame = 2
 
 [node name="aura" type="Sprite" parent="aattack"]
 
+z/z = 1
 texture = ExtResource( 17 )
 offset = Vector2( 48, -68 )
 hframes = 5
@@ -1017,7 +1023,7 @@ color/color = Color( 1, 0, 0, 1 )
 
 [node name="attack" type="Sprite" parent="uattack"]
 
-material/material = SubResource( 48 )
+material/material = SubResource( 40 )
 texture = ExtResource( 23 )
 offset = Vector2( 48, -29 )
 hframes = 3
@@ -1026,7 +1032,8 @@ frame = 2
 [node name="whip" type="Sprite" parent="uattack"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 32 )
+z/z = 1
 texture = ExtResource( 24 )
 offset = Vector2( 0, -46 )
 hframes = 5
@@ -1034,6 +1041,7 @@ frame = 4
 
 [node name="aura" type="Sprite" parent="uattack"]
 
+z/z = 1
 texture = ExtResource( 25 )
 offset = Vector2( 0, -52 )
 hframes = 5
@@ -1074,7 +1082,7 @@ color/color = Color( 1, 0, 0, 1 )
 
 [node name="attack" type="Sprite" parent="uaattack"]
 
-material/material = SubResource( 50 )
+material/material = SubResource( 42 )
 texture = ExtResource( 26 )
 offset = Vector2( 48, -36 )
 hframes = 3
@@ -1083,7 +1091,8 @@ frame = 2
 [node name="whip" type="Sprite" parent="uaattack"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 32 )
+z/z = 1
 texture = ExtResource( 24 )
 offset = Vector2( 0, -46 )
 hframes = 5
@@ -1091,6 +1100,7 @@ frame = 4
 
 [node name="aura" type="Sprite" parent="uaattack"]
 
+z/z = 1
 texture = ExtResource( 25 )
 offset = Vector2( 0, -52 )
 hframes = 5
@@ -1131,7 +1141,7 @@ color/color = Color( 1, 0, 0, 1 )
 
 [node name="aattack" type="Sprite" parent="daattack"]
 
-material/material = SubResource( 52 )
+material/material = SubResource( 44 )
 texture = ExtResource( 27 )
 offset = Vector2( 48, 16 )
 hframes = 3
@@ -1140,7 +1150,8 @@ frame = 2
 [node name="whip" type="Sprite" parent="daattack"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 32 )
+z/z = 1
 texture = ExtResource( 28 )
 offset = Vector2( 48, 16 )
 hframes = 5
@@ -1148,6 +1159,7 @@ frame = 2
 
 [node name="aura" type="Sprite" parent="daattack"]
 
+z/z = 1
 texture = ExtResource( 29 )
 offset = Vector2( 48, 16 )
 hframes = 5
@@ -1187,7 +1199,7 @@ color/color = Color( 1, 0, 0, 1 )
 
 [node name="attack" type="Sprite" parent="dgattack"]
 
-material/material = SubResource( 54 )
+material/material = SubResource( 46 )
 texture = ExtResource( 30 )
 offset = Vector2( 48, -29 )
 hframes = 3
@@ -1195,13 +1207,15 @@ hframes = 3
 [node name="whip" type="Sprite" parent="dgattack"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 32 )
+z/z = 1
 texture = ExtResource( 31 )
 offset = Vector2( 48, -60 )
 hframes = 5
 
 [node name="aura" type="Sprite" parent="dgattack"]
 
+z/z = 1
 texture = ExtResource( 32 )
 offset = Vector2( 48, -60 )
 hframes = 5
@@ -1241,7 +1255,7 @@ color/color = Color( 1, 0, 0, 1 )
 
 [node name="aattack" type="Sprite" parent="dgaattack"]
 
-material/material = SubResource( 56 )
+material/material = SubResource( 48 )
 texture = ExtResource( 33 )
 offset = Vector2( 48, -36 )
 hframes = 3
@@ -1250,7 +1264,8 @@ frame = 2
 [node name="whip" type="Sprite" parent="dgaattack"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 32 )
+z/z = 1
 texture = ExtResource( 31 )
 offset = Vector2( 48, -68 )
 hframes = 5
@@ -1258,6 +1273,7 @@ frame = 4
 
 [node name="aura" type="Sprite" parent="dgaattack"]
 
+z/z = 1
 texture = ExtResource( 32 )
 offset = Vector2( 48, -68 )
 hframes = 5
@@ -1298,7 +1314,7 @@ color/color = Color( 1, 0, 0, 1 )
 
 [node name="aattack" type="Sprite" parent="ddgaattack"]
 
-material/material = SubResource( 58 )
+material/material = SubResource( 50 )
 texture = ExtResource( 34 )
 offset = Vector2( 48, 16 )
 hframes = 3
@@ -1307,7 +1323,8 @@ frame = 2
 [node name="whip" type="Sprite" parent="ddgaattack"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 32 )
+z/z = 1
 texture = ExtResource( 35 )
 offset = Vector2( 48, 16 )
 hframes = 5
@@ -1315,6 +1332,7 @@ frame = 4
 
 [node name="aura" type="Sprite" parent="ddgaattack"]
 
+z/z = 1
 texture = ExtResource( 36 )
 offset = Vector2( 48, 16 )
 hframes = 5

@@ -1170,6 +1170,10 @@ func calculate_trail(sprite):
 				angle += PI
 			aura.set_param(Particles2D.PARAM_DIRECTION, rad2deg(angle) - 90)
 
+func teleport(pos, ladder):
+	set_global_pos(pos)
+	on_ladder = ladder
+
 func loop_jump_animation():
 	animation_player.seek(0.1, true)
 	

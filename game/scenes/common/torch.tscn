@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://scenes/common/torch.png" type="Texture" id=1]
+[ext_resource path="res://players/magic/fire/magic.png" type="Texture" id=2]
+
+[sub_resource type="ColorRamp" id=1]
+
+offsets = FloatArray( 0, 0.467262, 0.998512 )
+colors = ColorArray( 0, 0, 0, 1, 1, 0.622611, 0, 1, 1, 1, 1, 0 )
+
+[node name="torch" type="Node2D"]
+
+[node name="torch" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+
+[node name="flame" type="Particles2D" parent="."]
+
+visibility/blend_mode = 1
+transform/pos = Vector2( 0, -10 )
+transform/rot = 180.0
+config/amount = 12
+config/lifetime = 1.0
+config/half_extents = Vector2( 5, 5 )
+config/local_space = false
+config/texture = ExtResource( 2 )
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 180.0
+params/gravity_strength = 80.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 180.0
+params/initial_size = 0.7
+params/final_size = 0.3
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/initial_angle = 1.0
+color/color_ramp = SubResource( 1 )
+
+

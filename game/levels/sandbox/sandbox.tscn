@@ -49,50 +49,6 @@
 [ext_resource path="res://scenes/common/switches/pullswitch.tscn" type="PackedScene" id=47]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=48]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [node name="LVL_SANDBOX" type="Node2D"]
 
 __meta__ = { "__editor_plugin_screen__":"2D" }
@@ -177,30 +133,37 @@ collision/margin = 0.08
 [node name="EnchantedArmor" parent="tilemap/EnemiesGroup" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( -1600, 464 )
+collision/margin = 0.08
 
 [node name="FlyingSkull" parent="tilemap/EnemiesGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( -512, -64 )
+collision/margin = 0.08
 
 [node name="Ghost" parent="tilemap/EnemiesGroup" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( -1616, 208 )
+collision/margin = 0.08
 
 [node name="Werewolf" parent="tilemap/EnemiesGroup" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( -1472, 464 )
+collision/margin = 0.08
 
 [node name="Statue1" parent="tilemap/EnemiesGroup" instance=ExtResource( 10 )]
 
 transform/pos = Vector2( 384, 0 )
+collision/margin = 0.08
 
 [node name="Zombie" parent="tilemap/EnemiesGroup" instance=ExtResource( 11 )]
 
 transform/pos = Vector2( 1008, -64 )
+collision/margin = 0.08
 
 [node name="Minotaur" parent="tilemap/EnemiesGroup" instance=ExtResource( 12 )]
 
 transform/pos = Vector2( -1552, 464 )
+collision/margin = 0.08
 
 [node name="BreakableGroup" type="Node2D" parent="tilemap"]
 
@@ -887,6 +850,7 @@ __meta__ = { "_editor_collapsed":true }
 [node name="Sunbeam" parent="tilemap/SunbeamGroup" instance=ExtResource( 45 )]
 
 transform/pos = Vector2( -656, -96 )
+collision/margin = 0.08
 
 [node name="block" parent="tilemap/SunbeamGroup/Sunbeam"]
 
@@ -895,6 +859,7 @@ transform/scale = Vector2( 3, 40 )
 [node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam"]
 
 transform/scale = Vector2( 3, 40 )
+linear_damp = 0.1
 
 [node name="SwitchGroup" type="Node2D" parent="tilemap"]
 
@@ -908,6 +873,7 @@ target_nodes = [ "SunbeamGroup/Sunbeam", "FallingPlatformGroup/FallingPlatform" 
 [node name="PullSwitch" parent="tilemap/SwitchGroup" instance=ExtResource( 47 )]
 
 transform/pos = Vector2( -16, -304 )
+collision/margin = 0.08
 target_nodes = [ "SwingableGroup/SwingBlock 2" ]
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
@@ -916,7 +882,7 @@ target_nodes = [ "SwingableGroup/SwingBlock 2" ]
 
 transform/pos = Vector2( -1936, -736 )
 target_level = "res://levels/sandbox/sandbox0-1.tscn"
-teleport_to = Vector2( -48, -256 )
+teleport_to = Vector2( -52, -256 )
 
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
 

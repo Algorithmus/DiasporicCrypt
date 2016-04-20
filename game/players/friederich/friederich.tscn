@@ -67,48 +67,48 @@
 [ext_resource path="res://players/magic/void/void.wav" type="Sample" id=65]
 [ext_resource path="res://gui/dialogue/talk.png" type="Texture" id=66]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 64 )
 
-[sub_resource type="CanvasItemShader" id=36]
+[sub_resource type="CanvasItemShader" id=2]
 
 _code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
 
-[sub_resource type="CanvasItemMaterial" id=37]
+[sub_resource type="CanvasItemMaterial" id=3]
 
-shader/shader = SubResource( 36 )
+shader/shader = SubResource( 2 )
 shader/shading_mode = 0
 shader_param/aura_width = 2.0
 shader_param/aura_color = Color( 1, 0, 0, 1 )
 shader_param/opacity = 1.0
 
-[sub_resource type="CanvasItemShader" id=10]
+[sub_resource type="CanvasItemShader" id=4]
 
 _code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform color modulate=color(0.2,0.4,1.0,1.0);\n\nvec4 col = vec4(modulate.rgb,tex(TEXTURE,UV).a*modulate.a);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\n\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
 
-[sub_resource type="CanvasItemMaterial" id=11]
+[sub_resource type="CanvasItemMaterial" id=5]
 
-shader/shader = SubResource( 10 )
+shader/shader = SubResource( 4 )
 shader/shading_mode = 0
 shader_param/aura_width = 2.0
 shader_param/aura_color = Color( 0.710227, 0.737216, 0, 1 )
 shader_param/modulate = Color( 0.25098, 0.227451, 0.219608, 1 )
 
-[sub_resource type="CanvasItemShader" id=15]
+[sub_resource type="CanvasItemShader" id=6]
 
 _code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform color modulate=color(0.2,0.4,1.0,1.0);\n\nvec4 col = vec4(modulate.rgb,tex(TEXTURE,UV).a*modulate.a);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\n\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
 
-[sub_resource type="CanvasItemMaterial" id=16]
+[sub_resource type="CanvasItemMaterial" id=7]
 
-shader/shader = SubResource( 15 )
+shader/shader = SubResource( 6 )
 shader/shading_mode = 0
 shader_param/aura_width = 2.0
 shader_param/aura_color = Color( 1, 0, 0, 1 )
 shader_param/modulate = Color( 1, 1, 0, 1 )
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=8]
 
 resource/name = "aattack"
 length = 0.3
@@ -239,7 +239,7 @@ tracks/30/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/30/interp = 1
 tracks/30/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=9]
 
 resource/name = "achainattack"
 length = 0.3
@@ -374,7 +374,7 @@ tracks/31/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/31/interp = 1
 tracks/31/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=10]
 
 resource/name = "attack"
 length = 0.3
@@ -509,7 +509,7 @@ tracks/31/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/31/interp = 1
 tracks/31/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=11]
 
 resource/name = "chainattack"
 length = 0.3
@@ -644,7 +644,7 @@ tracks/31/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/31/interp = 1
 tracks/31/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=31]
+[sub_resource type="Animation" id=12]
 
 resource/name = "charge"
 length = 0.3
@@ -775,7 +775,7 @@ tracks/30/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/30/interp = 1
 tracks/30/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=13]
 
 resource/name = "chop"
 length = 0.45
@@ -910,9 +910,8 @@ tracks/31/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/31/interp = 1
 tracks/31/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=14]
 
-resource/name = "climb"
 length = 0.7
 loop = false
 step = 0.05
@@ -1037,9 +1036,8 @@ tracks/29/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/29/interp = 1
 tracks/29/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=15]
 
-resource/name = "crouch"
 length = 0.1
 loop = false
 step = 0.1
@@ -1164,7 +1162,7 @@ tracks/29/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/29/interp = 1
 tracks/29/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=16]
 
 resource/name = "dattack"
 length = 0.3
@@ -1295,7 +1293,7 @@ tracks/30/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/30/interp = 1
 tracks/30/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=34]
+[sub_resource type="Animation" id=17]
 
 resource/name = "detransform"
 length = 0.9
@@ -1422,7 +1420,7 @@ tracks/29/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/29/interp = 1
 tracks/29/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=18]
 
 resource/name = "dualspin"
 length = 0.7
@@ -1565,9 +1563,8 @@ tracks/33/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/33/interp = 1
 tracks/33/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=19]
 
-resource/name = "fall"
 length = 0.4
 loop = true
 step = 0.1
@@ -1696,7 +1693,7 @@ tracks/30/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/30/interp = 1
 tracks/30/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=35]
+[sub_resource type="Animation" id=20]
 
 resource/name = "gameover"
 length = 1.4
@@ -1835,9 +1832,8 @@ tracks/32/path = NodePath("NormalSpriteGroup/gameover:frame")
 tracks/32/interp = 1
 tracks/32/keys = { "cont":false, "times":FloatArray( 0.5, 0.6, 0.7, 0.8, 0.9, 1 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1 ), "values":[ 0, 1, 2, 3, 4, 5 ] }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=21]
 
-resource/name = "hurt"
 length = 0.4
 loop = false
 step = 0.1
@@ -1978,9 +1974,8 @@ tracks/33/path = NodePath("NormalSpriteGroup/hurt:modulate")
 tracks/33/interp = 1
 tracks/33/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Color( 1, 1, 1, 1 ) ] }
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=22]
 
-resource/name = "idle"
 length = 0.6
 loop = true
 step = 0.1
@@ -2105,9 +2100,8 @@ tracks/29/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/29/interp = 1
 tracks/29/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=23]
 
-resource/name = "jump"
 length = 0.3
 loop = false
 step = 0.1
@@ -2240,9 +2234,8 @@ tracks/31/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/31/interp = 1
 tracks/31/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=24]
 
-resource/name = "ladder"
 length = 0.4
 loop = true
 step = 0.05
@@ -2367,9 +2360,8 @@ tracks/29/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/29/interp = 1
 tracks/29/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=25]
 
-resource/name = "land"
 length = 0.3
 loop = false
 step = 0.1
@@ -2494,7 +2486,7 @@ tracks/29/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/29/interp = 1
 tracks/29/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=32]
+[sub_resource type="Animation" id=26]
 
 resource/name = "magic"
 length = 0.3
@@ -2621,9 +2613,8 @@ tracks/29/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/29/interp = 1
 tracks/29/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=27]
 
-resource/name = "run"
 length = 0.8
 loop = true
 step = 0.1
@@ -2748,7 +2739,7 @@ tracks/29/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/29/interp = 1
 tracks/29/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=29]
+[sub_resource type="Animation" id=28]
 
 resource/name = "rush"
 length = 0.3
@@ -2883,9 +2874,8 @@ tracks/31/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/31/interp = 1
 tracks/31/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=29]
 
-resource/name = "skewer"
 length = 0.45
 loop = false
 step = 0.05
@@ -3018,9 +3008,8 @@ tracks/31/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/31/interp = 1
 tracks/31/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=30]
 
-resource/name = "slice"
 length = 0.6
 loop = false
 step = 0.05
@@ -3153,9 +3142,8 @@ tracks/31/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/31/interp = 1
 tracks/31/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=31]
 
-resource/name = "stab"
 length = 0.75
 loop = false
 step = 0.05
@@ -3288,9 +3276,8 @@ tracks/31/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/31/interp = 1
 tracks/31/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=32]
 
-resource/name = "swift"
 length = 0.8
 loop = false
 step = 0.05
@@ -3423,9 +3410,8 @@ tracks/31/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/31/interp = 1
 tracks/31/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=33]
 
-resource/name = "thrust"
 length = 0.5
 loop = false
 step = 0.05
@@ -3558,9 +3544,8 @@ tracks/31/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/31/interp = 1
 tracks/31/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=33]
+[sub_resource type="Animation" id=34]
 
-resource/name = "transform"
 length = 1.2
 loop = false
 step = 0.1
@@ -3685,9 +3670,8 @@ tracks/29/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/29/interp = 1
 tracks/29/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=30]
+[sub_resource type="Animation" id=35]
 
-resource/name = "void"
 length = 0.9
 loop = false
 step = 0.05
@@ -3816,29 +3800,29 @@ tracks/30/path = NodePath("NormalSpriteGroup/gameover:visibility/visible")
 tracks/30/interp = 1
 tracks/30/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=36]
 
 custom_solver_bias = 0.0
 extents = Vector2( 18, 66 )
 
-[sub_resource type="SampleLibrary" id=19]
+[sub_resource type="SampleLibrary" id=37]
 
-samples/jump2 = { "db":0.0, "pitch":1.0, "sample":ExtResource( 55 ) }
-samples/splash_down = { "db":0.0, "pitch":1.0, "sample":ExtResource( 60 ) }
-samples/splash_up = { "db":0.0, "pitch":1.0, "sample":ExtResource( 61 ) }
-samples/chain = { "db":0.0, "pitch":1.0, "sample":ExtResource( 51 ) }
-samples/void = { "db":0.0, "pitch":1.0, "sample":ExtResource( 65 ) }
-samples/land = { "db":0.0, "pitch":1.0, "sample":ExtResource( 56 ) }
-samples/hurt = { "db":0.0, "pitch":1.0, "sample":ExtResource( 54 ) }
-samples/attack = { "db":0.0, "pitch":1.0, "sample":ExtResource( 50 ) }
 samples/stab = { "db":0.0, "pitch":1.0, "sample":ExtResource( 62 ) }
 samples/dualspin = { "db":0.0, "pitch":1.0, "sample":ExtResource( 53 ) }
-samples/rush = { "db":0.0, "pitch":1.0, "sample":ExtResource( 57 ) }
-samples/chop = { "db":0.0, "pitch":1.0, "sample":ExtResource( 52 ) }
-samples/thrust = { "db":0.0, "pitch":1.0, "sample":ExtResource( 64 ) }
 samples/swift = { "db":0.0, "pitch":1.0, "sample":ExtResource( 63 ) }
-samples/slice = { "db":0.0, "pitch":1.0, "sample":ExtResource( 59 ) }
 samples/skewer = { "db":0.0, "pitch":1.0, "sample":ExtResource( 58 ) }
+samples/thrust = { "db":0.0, "pitch":1.0, "sample":ExtResource( 64 ) }
+samples/rush = { "db":0.0, "pitch":1.0, "sample":ExtResource( 57 ) }
+samples/slice = { "db":0.0, "pitch":1.0, "sample":ExtResource( 59 ) }
+samples/chop = { "db":0.0, "pitch":1.0, "sample":ExtResource( 52 ) }
+samples/land = { "db":0.0, "pitch":1.0, "sample":ExtResource( 56 ) }
+samples/attack = { "db":0.0, "pitch":1.0, "sample":ExtResource( 50 ) }
+samples/hurt = { "db":0.0, "pitch":1.0, "sample":ExtResource( 54 ) }
+samples/void = { "db":0.0, "pitch":1.0, "sample":ExtResource( 65 ) }
+samples/splash_up = { "db":0.0, "pitch":1.0, "sample":ExtResource( 61 ) }
+samples/splash_down = { "db":0.0, "pitch":1.0, "sample":ExtResource( 60 ) }
+samples/jump2 = { "db":0.0, "pitch":1.0, "sample":ExtResource( 55 ) }
+samples/chain = { "db":0.0, "pitch":1.0, "sample":ExtResource( 51 ) }
 
 [sub_resource type="CanvasItemShader" id=38]
 
@@ -3855,8 +3839,8 @@ shader_param/opacity = 1.0
 [node name="player" type="KinematicBody2D"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 3 )
-shapes/0/transform = Matrix32( 1, -0, 0, 1, 0, 0 )
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 0
 collision/mask = 1
@@ -3867,7 +3851,6 @@ __meta__ = { "__editor_plugin_screen__":"2D" }
 [node name="NormalSpriteGroup" type="Node2D" parent="."]
 
 z/z = 1
-__meta__ = { "_editor_collapsed":true }
 
 [node name="idle" type="Sprite" parent="NormalSpriteGroup"]
 
@@ -3970,7 +3953,7 @@ frame = 3
 [node name="gameover" type="Sprite" parent="NormalSpriteGroup"]
 
 visibility/visible = false
-material/material = SubResource( 37 )
+material/material = SubResource( 3 )
 transform/pos = Vector2( 18, -143 )
 texture = ExtResource( 15 )
 vframes = 2
@@ -3991,6 +3974,7 @@ frame = 2
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/attack"]
 
+z/z = 1
 texture = ExtResource( 17 )
 offset = Vector2( 0, -70 )
 vframes = 2
@@ -4001,7 +3985,8 @@ modulate = Color( 0.668561, 1, 0, 1 )
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/attack"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 5 )
+z/z = 1
 texture = ExtResource( 18 )
 offset = Vector2( 0, -70 )
 vframes = 2
@@ -4022,13 +4007,15 @@ hframes = 3
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/dattack"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 16 )
+material/material = SubResource( 7 )
+z/z = 1
 texture = ExtResource( 20 )
 offset = Vector2( 48, 15 )
 hframes = 6
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/dattack"]
 
+z/z = 1
 texture = ExtResource( 21 )
 offset = Vector2( 48, 15 )
 hframes = 5
@@ -4047,7 +4034,8 @@ frame = 2
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/aattack"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 5 )
+z/z = 1
 texture = ExtResource( 18 )
 offset = Vector2( 10, -60 )
 vframes = 2
@@ -4056,6 +4044,7 @@ frame = 5
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/aattack"]
 
+z/z = 1
 texture = ExtResource( 17 )
 offset = Vector2( 10, -60 )
 vframes = 2
@@ -4078,7 +4067,8 @@ frame = 2
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/chainattack"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 5 )
+z/z = 1
 texture = ExtResource( 18 )
 offset = Vector2( 0, -65 )
 vframes = 2
@@ -4087,6 +4077,7 @@ frame = 8
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/chainattack"]
 
+z/z = 1
 texture = ExtResource( 17 )
 offset = Vector2( 0, -65 )
 vframes = 2
@@ -4108,7 +4099,8 @@ frame = 5
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/achainattack"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 5 )
+z/z = 1
 texture = ExtResource( 18 )
 offset = Vector2( 10, -60 )
 vframes = 2
@@ -4117,6 +4109,7 @@ frame = 10
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/achainattack"]
 
+z/z = 1
 texture = ExtResource( 17 )
 offset = Vector2( 10, -60 )
 vframes = 2
@@ -4139,7 +4132,8 @@ frame = 5
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/chop"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 5 )
+z/z = 1
 texture = ExtResource( 25 )
 offset = Vector2( 75, -56 )
 vframes = 2
@@ -4148,6 +4142,7 @@ frame = 5
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/chop"]
 
+z/z = 1
 texture = ExtResource( 26 )
 offset = Vector2( 75, -56 )
 vframes = 2
@@ -4170,7 +4165,8 @@ frame = 3
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/thrust"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 5 )
+z/z = 1
 texture = ExtResource( 28 )
 offset = Vector2( 100, -34 )
 hframes = 4
@@ -4178,6 +4174,7 @@ frame = 3
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/thrust"]
 
+z/z = 1
 texture = ExtResource( 29 )
 offset = Vector2( 100, -34 )
 hframes = 3
@@ -4198,7 +4195,8 @@ frame = 1
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/swift"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 5 )
+z/z = 1
 texture = ExtResource( 31 )
 offset = Vector2( 100, -34 )
 hframes = 2
@@ -4206,6 +4204,7 @@ frame = 1
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/swift"]
 
+z/z = 1
 texture = ExtResource( 32 )
 offset = Vector2( 100, -34 )
 hframes = 2
@@ -4227,7 +4226,8 @@ frame = 2
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/slice"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 5 )
+z/z = 1
 texture = ExtResource( 34 )
 offset = Vector2( 66, -90 )
 hframes = 4
@@ -4235,6 +4235,7 @@ frame = 3
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/slice"]
 
+z/z = 1
 texture = ExtResource( 35 )
 offset = Vector2( 66, -90 )
 hframes = 4
@@ -4253,6 +4254,7 @@ hframes = 4
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/skewer"]
 
+z/z = 1
 texture = ExtResource( 37 )
 offset = Vector2( 76, -36 )
 vframes = 2
@@ -4262,7 +4264,8 @@ modulate = Color( 1, 0.30303, 0, 1 )
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/skewer"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 5 )
+z/z = 1
 texture = ExtResource( 38 )
 offset = Vector2( 76, -36 )
 hframes = 4
@@ -4282,6 +4285,7 @@ frame = 2
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/stab"]
 
+z/z = 1
 texture = ExtResource( 40 )
 offset = Vector2( 78, 35 )
 vframes = 2
@@ -4292,7 +4296,8 @@ modulate = Color( 1, 0.30303, 0, 1 )
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/stab"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 5 )
+z/z = 1
 texture = ExtResource( 41 )
 offset = Vector2( 78, 35 )
 hframes = 5
@@ -4306,7 +4311,7 @@ __meta__ = { "_editor_collapsed":true }
 [node name="swordBG" type="Sprite" parent="NormalSpriteGroup/dualspin"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 5 )
 texture = ExtResource( 42 )
 offset = Vector2( 36, -60 )
 hframes = 3
@@ -4329,7 +4334,8 @@ frame = 2
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/dualspin"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 5 )
+z/z = 1
 texture = ExtResource( 45 )
 offset = Vector2( 36, -60 )
 vframes = 2
@@ -4338,6 +4344,7 @@ frame = 2
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/dualspin"]
 
+z/z = 1
 texture = ExtResource( 46 )
 offset = Vector2( 36, -60 )
 vframes = 2
@@ -4360,7 +4367,8 @@ frame = 1
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/rush"]
 
 visibility/blend_mode = 4
-material/material = SubResource( 11 )
+material/material = SubResource( 5 )
+z/z = 1
 texture = ExtResource( 48 )
 offset = Vector2( 32, -65 )
 hframes = 3
@@ -4368,6 +4376,7 @@ frame = 1
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/rush"]
 
+z/z = 1
 texture = ExtResource( 49 )
 offset = Vector2( 32, -65 )
 vframes = 2
@@ -4378,7 +4387,6 @@ modulate = Color( 1, 0.30303, 0, 1 )
 [node name="void" type="Node2D" parent="NormalSpriteGroup"]
 
 visibility/visible = false
-__meta__ = { "_editor_collapsed":true }
 
 [node name="attack" type="Sprite" parent="NormalSpriteGroup/void"]
 
@@ -4391,34 +4399,34 @@ frame = 3
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/aattack = SubResource( 18 )
-anims/achainattack = SubResource( 20 )
-anims/attack = SubResource( 12 )
-anims/chainattack = SubResource( 21 )
-anims/charge = SubResource( 31 )
-anims/chop = SubResource( 22 )
-anims/climb = SubResource( 7 )
-anims/crouch = SubResource( 9 )
-anims/dattack = SubResource( 17 )
-anims/detransform = SubResource( 34 )
-anims/dualspin = SubResource( 28 )
-anims/fall = SubResource( 5 )
-anims/gameover = SubResource( 35 )
-anims/hurt = SubResource( 14 )
-anims/idle = SubResource( 1 )
-anims/jump = SubResource( 4 )
-anims/ladder = SubResource( 8 )
-anims/land = SubResource( 6 )
-anims/magic = SubResource( 32 )
-anims/run = SubResource( 2 )
-anims/rush = SubResource( 29 )
-anims/skewer = SubResource( 26 )
-anims/slice = SubResource( 25 )
-anims/stab = SubResource( 27 )
-anims/swift = SubResource( 24 )
-anims/thrust = SubResource( 23 )
-anims/transform = SubResource( 33 )
-anims/void = SubResource( 30 )
+anims/aattack = SubResource( 8 )
+anims/achainattack = SubResource( 9 )
+anims/attack = SubResource( 10 )
+anims/chainattack = SubResource( 11 )
+anims/charge = SubResource( 12 )
+anims/chop = SubResource( 13 )
+anims/climb = SubResource( 14 )
+anims/crouch = SubResource( 15 )
+anims/dattack = SubResource( 16 )
+anims/detransform = SubResource( 17 )
+anims/dualspin = SubResource( 18 )
+anims/fall = SubResource( 19 )
+anims/gameover = SubResource( 20 )
+anims/hurt = SubResource( 21 )
+anims/idle = SubResource( 22 )
+anims/jump = SubResource( 23 )
+anims/ladder = SubResource( 24 )
+anims/land = SubResource( 25 )
+anims/magic = SubResource( 26 )
+anims/run = SubResource( 27 )
+anims/rush = SubResource( 28 )
+anims/skewer = SubResource( 29 )
+anims/slice = SubResource( 30 )
+anims/stab = SubResource( 31 )
+anims/swift = SubResource( 32 )
+anims/thrust = SubResource( 33 )
+anims/transform = SubResource( 34 )
+anims/void = SubResource( 35 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -4427,7 +4435,7 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 z/z = 1
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
@@ -4454,7 +4462,7 @@ drag_margin/bottom = 0.2
 [node name="damage" type="Area2D" parent="."]
 
 input/pickable = true
-shapes/0/shape = SubResource( 13 )
+shapes/0/shape = SubResource( 36 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -4464,14 +4472,14 @@ angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage"]
 
-shape = SubResource( 13 )
+shape = SubResource( 36 )
 trigger = false
 _update_shape_index = 0
 
 [node name="sound" type="SamplePlayer" parent="."]
 
 config/polyphony = 2
-config/samples = SubResource( 19 )
+config/samples = SubResource( 37 )
 default/volume_db = -10.0
 default/pitch_scale = 1.0
 default/pan = 0.0

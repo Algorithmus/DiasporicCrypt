@@ -3,7 +3,6 @@
 [ext_resource path="res://scenes/dungeon/debugtiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=2]
 
-
 [node name="LVL_NOTITLE" type="Node2D"]
 
 __meta__ = { "__editor_plugin_screen__":"2D" }
@@ -32,7 +31,7 @@ tile_data = IntArray( -1376270, 1610612780, -1376269, 1073741832, -1376268, 1073
 
 transform/pos = Vector2( -464, -48 )
 target_level = "res://levels/sandbox/colosseum-prototype0-0.tscn"
-teleport_to = Vector2( 464, -112 )
+teleport_to = Vector2( 460, -112 )
 
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
 
