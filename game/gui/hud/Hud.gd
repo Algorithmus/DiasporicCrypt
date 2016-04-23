@@ -13,6 +13,7 @@ var hpbar
 var mpbar
 var mpprebar
 var bloodbar
+var bloodcounter
 var level
 var is_magic = false
 
@@ -25,6 +26,7 @@ func _ready():
 	mpbar = get_node("mpbar/bar")
 	mpprebar = get_node("mpbar/prebar")
 	bloodbar = get_node("bloodbar/bar")
+	bloodcounter = get_node("bloodcounter")
 	level = get_node("hpbar/level")
 	get_node("levelup").hide()
 
@@ -96,6 +98,11 @@ func _fixed_process(delta):
 		polygon[1].y = blood_value
 		bloodbar.set_polygon(polygon)
 		get_node("bloodbar/display").set_use_parent_material(!player.get("is_demonic"))
+		if (Globals.get("show_blood_counter")):
+			bloodcounter.show()
+			bloodcounter.get_node("counter").set_text(str(Globals.get("blood_count")))
+		else:
+			bloodcounter.hide()
 		
 func right_align_prebar(scale):
 	var polygon = mpprebar.get_polygon()

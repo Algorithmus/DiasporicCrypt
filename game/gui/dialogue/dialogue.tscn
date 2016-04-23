@@ -144,7 +144,6 @@ autoplay = "next"
 
 [node name="profile" type="Node2D" parent="."]
 
-visibility/visible = false
 transform/pos = Vector2( 0, 308 )
 
 [node name="avatar" type="Sprite" parent="profile"]

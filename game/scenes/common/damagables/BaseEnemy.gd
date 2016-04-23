@@ -407,6 +407,15 @@ func cleanup_bloodparticles():
 				remove_child(i)
 			blood_particles.erase(i)
 	if (blood_particles.empty() && current_consume_value <= 0):
+		Globals.set("blood_count", Globals.get("blood_count") + 1)
+		var level = Globals.get("levels")[Globals.get("current_level")]
+		if (level.type == "bonus" && Globals.get("blood_count") >= level.mincounter && !Globals.get("current_quest_complete")):
+			Globals.set("current_quest_complete", true)
+			level.complete = true
+			Globals.get("levels")[Globals.get("current_level")] = level
+			var level_display = get_tree().get_root().get_node("world/gui/CanvasLayer/level")
+			level_display.get_node("title").set_text("KEY_COMPLETE")
+			level_display.get_node("AnimationPlayer").play("quest")
 		queue_free()
 
 func _ready():

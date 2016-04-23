@@ -446,11 +446,11 @@ func _on_warp_pressed():
 	Globals.set("current_quest_complete", false)
 	Globals.set("reward_taken", false)
 	Globals.get("levels")[map.title] = map
-	Globals.set("mapid", map.mapid)
+	Globals.set("mapid", map.location.id)
 	var level = get_tree().get_root().get_node("world/level").get_child(0)
 	var teleport = level.get_node("tilemap/TeleportGroup").get_child(0)
-	teleport.target_level = map.node
-	teleport.teleport_to = map.teleportto
+	teleport.target_level = map.location.node
+	teleport.teleport_to = map.location.teleportto
 	hudmap.clear_objects()
 	hudmap.load_cached_map(level)
 	Globals.set("current_level", map.title)

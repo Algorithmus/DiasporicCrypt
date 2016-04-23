@@ -1,0 +1,181 @@
+[gd_scene load_steps=10 format=1]
+
+[ext_resource path="res://scenes/dungeon/debugtiles.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/common/damagables/skeleton/testconsumable.xml" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/forest/bonus.gd" type="Script" id=6]
+
+[sub_resource type="CanvasItemShader" id=1]
+
+_code = { "fragment":"uniform color start=color(0.2,0.4,1.0,0.8);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, UV.y);\n\nCOLOR.a = tex(TEXTURE,UV).a*COLOR.a;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=2]
+
+shader/shader = SubResource( 1 )
+shader/shading_mode = 0
+shader_param/start = Color( 0.192157, 0.270588, 0.454902, 1 )
+shader_param/stop = Color( 1, 0.627451, 0.270588, 1 )
+
+[sub_resource type="ImageTexture" id=3]
+
+flags = 2
+image = Image()
+size = Vector2( 32, 32 )
+storage = 0
+lossy_quality = 0.7
+
+[node name="LVL_NOCTURNFOREST" type="Node2D"]
+
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -2752523, 1073741862, -2752522, 1073741862, -2752521, 1073741862, -2752520, 1073741862, -2752519, 1073741862, -2752518, 1073741862, -2752517, 1073741862, -2752516, 1073741862, -2752515, 1073741862, -2752514, 1073741862, -2752513, 1073741862, -2818048, 1073741862, -2818047, 1073741862, -2818046, 1073741862, -2818045, 1073741862, -2818044, 1073741862, -2818043, 1073741862, -2818042, 1073741862, -2818041, 1073741862, -2818040, 1073741862, -2818039, 1073741862, -2818038, 1073741862, -2818037, 1073741862, -2818036, 1073741862, -2818035, 1073741862, -2818034, 1073741862, -2818033, 1073741862, -2818032, 1073741862, -2818031, 1073741862, -2818030, 1073741862, -2818029, 1073741862, -2818028, 1073741862, -2818027, 1073741862, -2818026, 1073741862, -2818025, 1073741862, -2818024, 1073741862, -2818023, 1073741862, -2818022, 1073741862, -2818021, 1073741862, -2818020, 1073741862, -2818019, 1073741862, -2818018, 1073741862, -2818017, 1073741862, -2818016, 1073741862, -2818015, 1073741862, -2818014, 1073741862, -2818013, 1073741862, -2818012, 1073741862, -2818011, 1073741862, -2818010, 1073741862, -2818009, 1073741862, -2818008, 1073741862, -2818007, 1073741862, -2818006, 1073741862, -2818005, 1073741862, -2818004, 1073741862, -2818003, 1073741862, -2818002, 1073741862, -2818001, 1073741862, -2818000, 1073741862, -2817999, 1073741862, -2817998, 1073741862, -2817997, 1073741862, -2817996, 1073741862, -2817995, 1073741862, -2817994, 1073741862, -2817993, 1073741862, -2817992, 1073741862, -2817991, 1073741862, -2817990, 1073741862, -2817989, 1073741862, -2817988, 1073741862, -2817987, 1073741862, -2817986, 1073741862, -2817985, 1073741862, -2817984, 1073741862, -2817983, 1073741862, -2817982, 1073741862, -2817981, 1073741862, -2817980, 1073741862, -2817979, 1073741862, -2817978, 1073741862, -2817977, 1073741862, -2817976, 1073741862, -2817975, 1073741862, -2817974, 1073741862, -2817973, 1073741862, -2817972, 1073741862, -2817971, 1073741862, -2817970, 1073741862, -2817969, 1073741862, -2817968, 1073741862, -2817967, 1073741862, -2817966, 1073741862, -2817965, 1073741862, -2817964, 1073741862, -2817963, 1073741862, -2817962, 1073741862, -2817961, 1073741862, -2817960, 1073741862, -2817959, 1073741862, -2817958, 1073741862, -2817957, 1073741862, -2817956, 1073741862, -2817955, 1073741862, -2817954, 1073741862, -2817953, 1073741862, -2686987, 14, -2752417, 14, -2621451, 14, -2686881, 14, -2555915, 14, -2621345, 14, -2490379, 14, -2555809, 14, -2424843, 14, -2490273, 14, -2359307, 14, -2424737, 14, -2293771, 14, -2359201, 14, -2228235, 14, -2293665, 14, -2162699, 14, -2228129, 14, -2097163, 14, -2162593, 14, -2031627, 14, -2097057, 14, -1966091, 14, -2031521, 14, -1900555, 14, -1965985, 14, -1835019, 14, -1900449, 14, -1769483, 14, -1834913, 14, -1703947, 14, -1769377, 14, -1638411, 14, -1703841, 14, -1572875, 14, -1638305, 14, -1507339, 14, -1572769, 14, -1441803, 14, -1507233, 14, -1376267, 14, -1441697, 14, -1310731, 14, -1376161, 14, -1245195, 14, -1310625, 14, -1179659, 14, -1245089, 14, -1114123, 14, -1179553, 14, -1048587, 14, -1114017, 14, -983051, 14, -1048481, 14, -917515, 14, -982945, 14, -851979, 14, -917409, 14, -786443, 14, -851873, 14, -720907, 14, -786337, 14, -655371, 14, -720801, 14, -589835, 14, -655265, 14, -524299, 14, -589729, 14, -458763, 14, -524193, 14, -393227, 14, -458657, 14, -327691, 14, -393121, 14, -262155, 14, -327585, 14, -196619, 14, -262049, 14, -131083, 14, -196513, 14, -65547, 14, -130977, 14, -11, 14, -65441, 14, 65525, 14, 95, 14, 131061, 14, 65631, 14, 196597, 14, 131167, 14, 262133, 38, 262134, 38, 262135, 38, 262136, 38, 262137, 38, 262138, 38, 262139, 38, 262140, 38, 262141, 38, 262142, 13, 196610, 536870925, 196611, 38, 196612, 38, 196613, 38, 196614, 38, 196615, 38, 196616, 38, 196617, 38, 196618, 38, 196619, 38, 196620, 38, 196621, 38, 196622, 38, 196623, 38, 196624, 38, 196625, 38, 196626, 38, 196627, 38, 196628, 38, 196629, 38, 196630, 38, 196631, 38, 196632, 38, 196633, 38, 196634, 38, 196635, 38, 196636, 38, 196637, 38, 196638, 38, 196639, 38, 196640, 38, 196641, 38, 196642, 38, 196643, 38, 196644, 38, 196645, 38, 196646, 38, 196647, 38, 196648, 38, 196649, 38, 196650, 38, 196651, 38, 196652, 38, 196653, 38, 196654, 38, 196655, 38, 196656, 38, 196657, 38, 196658, 38, 196659, 38, 196660, 38, 196661, 38, 196662, 38, 196663, 38, 196664, 38, 196665, 38, 196666, 38, 196667, 38, 196668, 38, 196669, 38, 196670, 38, 196671, 38, 196672, 38, 196673, 38, 196674, 38, 196675, 38, 196676, 38, 196677, 38, 196678, 38, 196679, 38, 196680, 38, 196681, 38, 196682, 38, 196683, 38, 196684, 38, 196685, 38, 196686, 38, 196687, 38, 196688, 38, 196689, 38, 196690, 38, 196691, 38, 196692, 38, 196693, 38, 196694, 38, 196695, 38, 196696, 38, 196697, 38, 196698, 38, 196699, 38, 196700, 38, 196701, 38, 196702, 38, 196703, 38, 327670, 35, 327671, 35, 327672, 35, 327673, 35, 327674, 35, 327675, 35, 327676, 35, 327677, 35, 327678, 14, 262146, 14, 262147, 35, 262148, 35, 262149, 35, 262150, 35, 262151, 35, 262152, 35, 262153, 35, 262154, 35, 262155, 35, 262156, 35, 262157, 35, 393206, 35, 393207, 35, 393208, 35, 393209, 35, 393210, 35, 393211, 35, 393212, 35, 393213, 35, 393214, 14, 327682, 14, 327683, 35, 327684, 35, 327685, 35, 327686, 35, 327687, 35, 327688, 35, 327689, 35, 327690, 35, 327691, 35, 327692, 35, 327693, 35, 458742, 35, 458743, 35, 458744, 35, 458745, 35, 458746, 35, 458747, 35, 458748, 35, 458749, 35, 458750, 14, 393218, 14, 393219, 35, 393220, 35, 393221, 35, 393222, 35, 393223, 35, 393224, 35, 393225, 35, 393226, 35, 393227, 35, 393228, 35, 393229, 35 )
+
+[node name="LadderGroup" type="Node2D" parent="tilemap"]
+
+__meta__ = { "_editor_collapsed":true }
+
+[node name="TestLadder" parent="tilemap/LadderGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 16, 160 )
+
+[node name="KinematicBody2D" parent="tilemap/LadderGroup/TestLadder"]
+
+collision/margin = 0.08
+
+[node name="Sprite" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
+
+region_rect = Rect2( 0, 0, 32, 128 )
+
+[node name="ladder" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
+
+transform/scale = Vector2( 1, 4 )
+linear_damp = 0.1
+
+[node name="TestLadder 2" parent="tilemap/LadderGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 16, 80 )
+
+[node name="EnemiesGroup" type="Node2D" parent="tilemap"]
+
+[node name="TestConsumable" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 608, 48 )
+collision/margin = 0.08
+
+[node name="TestConsumable1" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 880, 48 )
+collision/margin = 0.08
+
+[node name="TestConsumable2" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1136, 48 )
+collision/margin = 0.08
+
+[node name="TestConsumable3" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1392, 48 )
+collision/margin = 0.08
+
+[node name="TestConsumable4" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1664, 48 )
+collision/margin = 0.08
+
+[node name="TestConsumable5" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1920, 48 )
+collision/margin = 0.08
+
+[node name="TestConsumable6" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2176, 48 )
+collision/margin = 0.08
+
+[node name="TestConsumable7" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2448, 48 )
+collision/margin = 0.08
+
+[node name="TestConsumable8" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2720, 48 )
+collision/margin = 0.08
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+__meta__ = { "_editor_collapsed":true }
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 16, 240 )
+is_horizontal = false
+target_level = "res://levels/common/catacombs.tscn"
+teleport_to = Vector2( -16, -272 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+
+transform/scale = Vector2( 3, 1 )
+linear_damp = 0.1
+
+[node name="boundaries" type="Node2D" parent="tilemap"]
+
+__meta__ = { "_editor_collapsed":true }
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( -358, -1382 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( 3082, 234 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+scroll/offset = Vector2( 0, 0 )
+scroll/base_offset = Vector2( 0, 0 )
+scroll/base_scale = Vector2( 1, 1 )
+scroll/limit_begin = Vector2( -400, 96 )
+scroll/limit_end = Vector2( 400, 96 )
+scroll/ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+motion/scale = Vector2( 1, 1 )
+motion/mirroring = Vector2( 0, 0 )
+
+[node name="sky" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+
+material/material = SubResource( 2 )
+transform/pos = Vector2( -400, -1664 )
+transform/scale = Vector2( 25, 55 )
+texture = SubResource( 3 )
+centered = false
+region_rect = Rect2( 0, 0, 1200, 1744 )
+script/script = ExtResource( 6 )
+
+
+[editable path="tilemap/LadderGroup/TestLadder"]
+[editable path="tilemap/TeleportGroup/Teleport"]

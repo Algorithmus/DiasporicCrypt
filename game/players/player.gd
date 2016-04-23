@@ -197,6 +197,13 @@ func remove_weapon_collider():
 	if (has_node(weapon_collider.get_name())):
 		remove_child(weapon_collider)
 
+func check_gameover():
+	if (current_hp <= 0):
+		gameover = true
+		get_tree().get_root().get_node("world").set("gameover", true)
+		#set_pause_mode(2)
+		#get_tree().set_pause(true)
+
 func check_damage(damageTiles):
 	var is_hurt_check = false
 	
@@ -227,13 +234,18 @@ func check_damage(damageTiles):
 					is_hurt_check = true
 					dx += get_global_pos().x - i.get_global_pos().x
 					dy += get_global_pos().y - i.get_global_pos().y
-				if (current_hp <= 0):
-					gameover = true
-					get_tree().get_root().get_node("world").set("gameover", true)
-					#set_pause_mode(2)
-					#get_tree().set_pause(true)
+				check_gameover()
 			if (i.get_name() == "npc"):
 				npc = i.get_parent()
+		if (Globals.get("sun") && !is_hurt_check):
+			var damage = max(get_def_adjusted_damage(hp * 0.1), 0)
+			current_hp = max(current_hp - damage, 0)
+			var hp_obj = hpclass.instance()
+			hp_obj.get_node("hptext").set("custom_colors/font_color", Color(1, 0, 0))
+			hud.add_child(hp_obj)
+			hp_obj.display_damage(get_global_pos(), damage)
+			
+			is_hurt_check = true
 		
 		if (npc != null && !Globals.get("eventmode")):
 			get_node("talk").show()

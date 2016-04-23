@@ -74,6 +74,8 @@ func _ready():
 	Globals.set("eventmode", false)
 	Globals.set("current_quest_complete", false)
 	Globals.set("reward_taken", false)
+	Globals.set("sun", false)
+	Globals.set("show_blood_counter", false)
 	root = get_tree().get_root()
 	original_size = root.get_rect().size
 	root.connect("size_changed", self, "_on_resolution_changed")
@@ -445,10 +447,11 @@ func display_level_title(title):
 func connect_catacombs(level):
 	var new_teleport = level.get_node("tilemap/TeleportGroup").get_child(0)
 	var map = Globals.get("levels")[Globals.get("current_level")]
-	new_teleport.target_level = map.node
-	new_teleport.teleport_to = map.teleportto
+	new_teleport.target_level = map.location.node
+	new_teleport.teleport_to = map.location.teleportto
 
 func teleport(new_level, pos, teleport):
+	Globals.set("show_blood_counter", false)
 	var new_level_obj = load(new_level).instance()
 	var level_title_string = new_level_obj.get_name()
 	map.set("current_teleport", teleport)
@@ -468,16 +471,21 @@ func teleport(new_level, pos, teleport):
 	level_title.seek(0, true)
 	if (level_title_string != "LVL_NOTITLE"):
 		display_level_title(level_title_string)
+	var currentlevel = Globals.get("levels")[Globals.get("current_level")]
+	var currentbgm = currentlevel.location.bgm
 	# make sure catacombs level connects to the correct level
 	if (new_level == "res://levels/common/catacombs.tscn"):
 		connect_catacombs(new_level_obj)
-		var currentlevel = Globals.get("levels")[Globals.get("current_level")]
+		currentbgm = preload("res://levels/common/catacombs.ogg")
 		if (Globals.get("current_quest_complete") && !Globals.get("reward_taken") && currentlevel.reward > 0):
 			var gold = goldclass.instance()
 			gold.isreward = true
 			gold.value = currentlevel.reward
 			new_level_obj.get_node("tilemap").add_child(gold)
 			gold.set_global_pos(Vector2(-16, 368))
+	if (currentbgm != music.get_stream()):
+		music.set_stream(currentbgm)
+		music.play()
 	# check that any scrolls already collected do not appear in the level again
 	if (new_level_obj.has_node("tilemap/ScrollGroup")):
 		for i in new_level_obj.get_node("tilemap/ScrollGroup").get_children():
@@ -489,11 +497,11 @@ func teleport(new_level, pos, teleport):
 		if (Globals.get("current_quest_complete")):
 			specialgroup.queue_free()
 		else:
-			var level = Globals.get("levels")[Globals.get("current_level")]
-			if (Globals.get("inventory").inventory.has(level.item)):
+			if (Globals.get("inventory").inventory.has(currentlevel.item)):
 				specialgroup.get_child(1).queue_free()
 			else:
 				specialgroup.get_child(0).queue_free()
+	Globals.set("sun", false)
 
 func sequence_finished():
 	sequences.get_node("demonic").hide()

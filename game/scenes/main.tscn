@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=1]
+[gd_scene load_steps=71 format=1]
 
 [ext_resource path="res://scenes/main.gd" type="Script" id=1]
 [ext_resource path="res://levels/common/catacombs.tscn" type="PackedScene" id=2]
@@ -19,27 +19,29 @@
 [ext_resource path="res://gui/fonts/L-24.fnt" type="Font" id=17]
 [ext_resource path="res://gui/hud/bloodgauge-mask.png" type="Texture" id=18]
 [ext_resource path="res://gui/hud/bloodGauge.png" type="Texture" id=19]
-[ext_resource path="res://gui/hud/ItemDisplay.gd" type="Script" id=20]
-[ext_resource path="res://gui/maps/HudMap.gd" type="Script" id=21]
-[ext_resource path="res://gui/fonts/XL-72.fnt" type="Font" id=22]
-[ext_resource path="res://gui/dialogue/dialogue.tscn" type="PackedScene" id=23]
-[ext_resource path="res://gui/menu/menu.tscn" type="PackedScene" id=24]
-[ext_resource path="res://gui/TextButton.tscn" type="PackedScene" id=25]
-[ext_resource path="res://gui/select/friederich.png" type="Texture" id=26]
-[ext_resource path="res://gui/select/friederich-select.png" type="Texture" id=27]
-[ext_resource path="res://gui/select/adela.png" type="Texture" id=28]
-[ext_resource path="res://gui/select/adela-select.png" type="Texture" id=29]
-[ext_resource path="res://players/friederich/friederich.tscn" type="PackedScene" id=30]
-[ext_resource path="res://players/adela/adela.tscn" type="PackedScene" id=31]
-[ext_resource path="res://players/magic/wind/action.png" type="Texture" id=32]
-[ext_resource path="res://gui/sequences/demonic_f.png" type="Texture" id=33]
-[ext_resource path="res://gui/sequences/demonic_a.png" type="Texture" id=34]
-[ext_resource path="res://gui/fonts/L-24-Keyboard-outline.fnt" type="Font" id=35]
-[ext_resource path="res://gui/fonts/S-13-dialog.fnt" type="Font" id=36]
-[ext_resource path="res://gui/confirm.wav" type="Sample" id=37]
-[ext_resource path="res://gui/cursor.wav" type="Sample" id=38]
-[ext_resource path="res://gui/sequences/demonic.wav" type="Sample" id=39]
-[ext_resource path="res://levels/common/BGM1.ogg" type="AudioStream" id=40]
+[ext_resource path="res://gui/worldmap/icons/bonus.png" type="Texture" id=20]
+[ext_resource path="res://gui/fonts/S-12-dialog.fnt" type="Font" id=21]
+[ext_resource path="res://gui/hud/ItemDisplay.gd" type="Script" id=22]
+[ext_resource path="res://gui/maps/HudMap.gd" type="Script" id=23]
+[ext_resource path="res://gui/fonts/XL-72.fnt" type="Font" id=24]
+[ext_resource path="res://gui/dialogue/dialogue.tscn" type="PackedScene" id=25]
+[ext_resource path="res://gui/menu/menu.tscn" type="PackedScene" id=26]
+[ext_resource path="res://gui/TextButton.tscn" type="PackedScene" id=27]
+[ext_resource path="res://gui/select/friederich.png" type="Texture" id=28]
+[ext_resource path="res://gui/select/friederich-select.png" type="Texture" id=29]
+[ext_resource path="res://gui/select/adela.png" type="Texture" id=30]
+[ext_resource path="res://gui/select/adela-select.png" type="Texture" id=31]
+[ext_resource path="res://players/friederich/friederich.tscn" type="PackedScene" id=32]
+[ext_resource path="res://players/adela/adela.tscn" type="PackedScene" id=33]
+[ext_resource path="res://players/magic/wind/action.png" type="Texture" id=34]
+[ext_resource path="res://gui/sequences/demonic_f.png" type="Texture" id=35]
+[ext_resource path="res://gui/sequences/demonic_a.png" type="Texture" id=36]
+[ext_resource path="res://gui/fonts/L-24-Keyboard-outline.fnt" type="Font" id=37]
+[ext_resource path="res://gui/fonts/S-13-dialog.fnt" type="Font" id=38]
+[ext_resource path="res://gui/confirm.wav" type="Sample" id=39]
+[ext_resource path="res://gui/cursor.wav" type="Sample" id=40]
+[ext_resource path="res://gui/sequences/demonic.wav" type="Sample" id=41]
+[ext_resource path="res://levels/common/catacombs.ogg" type="AudioStream" id=42]
 
 [sub_resource type="CanvasItemShader" id=1]
 
@@ -82,6 +84,18 @@ shader/shading_mode = 0
 shader_param/aura_width = 3.0
 shader_param/aura_color = Color( 1, 0.62358, 0, 1 )
 shader_param/opacity = 1.0
+
+[sub_resource type="CanvasItemShader" id=27]
+
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform color modulate=color(0.2,0.4,1.0,1.0);\n\nvec4 col = vec4(modulate.rgb,tex(TEXTURE,UV).a*modulate.a);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\n\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+
+[sub_resource type="CanvasItemMaterial" id=28]
+
+shader/shader = SubResource( 27 )
+shader/shading_mode = 0
+shader_param/aura_width = 1.0
+shader_param/aura_color = Color( 1, 1, 1, 1 )
+shader_param/modulate = Color( 0.40625, 0.0650635, 0.0650635, 1 )
 
 [sub_resource type="Animation" id=8]
 
@@ -131,7 +145,7 @@ tracks/0/path = NodePath("newattack:transform/scale")
 tracks/0/interp = 1
 tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 0.25, 0.25, 1 ), "values":[ Vector2( 1, 1 ), Vector2( 1.34375, 1.34375 ), Vector2( 1, 1 ) ] }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=12]
 
 resource/name = "quest"
 length = 2.0
@@ -150,9 +164,8 @@ tracks/2/path = NodePath("title:rect/pos")
 tracks/2/interp = 1
 tracks/2/keys = { "cont":true, "times":FloatArray( 0, 0.1, 1.8, 2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( 226, 456 ), Vector2( 32, 384 ), Vector2( 32, 384 ), Vector2( 226, 456 ) ] }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 
-resource/name = "show"
 length = 2.0
 loop = false
 step = 0.1
@@ -169,7 +182,7 @@ tracks/2/path = NodePath("title:rect/scale")
 tracks/2/interp = 1
 tracks/2/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( 1, 1 ) ] }
 
-[sub_resource type="ImageTexture" id=13]
+[sub_resource type="ImageTexture" id=14]
 
 flags = 2
 image = Image()
@@ -177,18 +190,18 @@ size = Vector2( 800, 592 )
 storage = 0
 lossy_quality = 0.7
 
-[sub_resource type="CanvasItemShader" id=14]
+[sub_resource type="CanvasItemShader" id=15]
 
 _code = { "fragment":"uniform color start=color(0.2,0.4,1.0,0.8);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, UV.y);\n\nCOLOR.a = tex(TEXTURE,UV).a*COLOR.a;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
 
-[sub_resource type="CanvasItemMaterial" id=15]
+[sub_resource type="CanvasItemMaterial" id=16]
 
-shader/shader = SubResource( 14 )
+shader/shader = SubResource( 15 )
 shader/shading_mode = 0
 shader_param/start = Color( 0.0506629, 0.0610795, 0.0899857, 1 )
 shader_param/stop = Color( 0.181345, 0.191761, 0.214338, 1 )
 
-[sub_resource type="ImageTexture" id=16]
+[sub_resource type="ImageTexture" id=17]
 
 flags = 6
 image = Image()
@@ -196,33 +209,33 @@ size = Vector2( 1, 1 )
 storage = 0
 lossy_quality = 1.0
 
-[sub_resource type="CanvasItemMaterial" id=17]
+[sub_resource type="CanvasItemMaterial" id=18]
 
 shader/shading_mode = 0
 
-[sub_resource type="CanvasItemShader" id=18]
+[sub_resource type="CanvasItemShader" id=19]
 
 _code = { "fragment":"uniform color start=color(0.2,0.4,1.0,0.8);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, UV.y*3);\n\nCOLOR.a = tex(TEXTURE,UV).a*COLOR.a;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
 
-[sub_resource type="CanvasItemMaterial" id=19]
+[sub_resource type="CanvasItemMaterial" id=20]
 
-shader/shader = SubResource( 18 )
+shader/shader = SubResource( 19 )
 shader/shading_mode = 0
 shader_param/start = Color( 0.137255, 0.176471, 0.215686, 0 )
 shader_param/stop = Color( 0.137757, 0.163544, 0.200135, 0.443396 )
 
-[sub_resource type="CanvasItemShader" id=20]
+[sub_resource type="CanvasItemShader" id=21]
 
 _code = { "fragment":"uniform color start=color(0.2,0.4,1.0,1.0);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, sin(UV.y*3.1415926535897932384626));\n\nCOLOR.a = tex(TEXTURE,UV).a*COLOR.a;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
 
-[sub_resource type="CanvasItemMaterial" id=21]
+[sub_resource type="CanvasItemMaterial" id=22]
 
-shader/shader = SubResource( 20 )
+shader/shader = SubResource( 21 )
 shader/shading_mode = 0
 shader_param/start = Color( 0.0994318, 0.077178, 0.197857, 1 )
 shader_param/stop = Color( 0.380682, 0, 0.366588, 1 )
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=23]
 
 length = 1.0
 loop = false
@@ -248,15 +261,14 @@ tracks/4/path = NodePath("../../sound:play/play")
 tracks/4/interp = 1
 tracks/4/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ "demonic" ] }
 
-[sub_resource type="SampleLibrary" id=23]
+[sub_resource type="SampleLibrary" id=24]
 
-samples/cursor = { "db":0.0, "pitch":1.0, "sample":ExtResource( 38 ) }
-samples/confirm = { "db":0.0, "pitch":1.0, "sample":ExtResource( 37 ) }
-samples/demonic = { "db":0.0, "pitch":1.0, "sample":ExtResource( 39 ) }
+samples/cursor = { "db":0.0, "pitch":1.0, "sample":ExtResource( 40 ) }
+samples/confirm = { "db":0.0, "pitch":1.0, "sample":ExtResource( 39 ) }
+samples/demonic = { "db":0.0, "pitch":1.0, "sample":ExtResource( 41 ) }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=25]
 
-resource/name = "hide"
 length = 0.5
 loop = false
 step = 0.1
@@ -269,9 +281,8 @@ tracks/1/path = NodePath("playercontainer:visibility/opacity")
 tracks/1/interp = 1
 tracks/1/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ 1.0, 0.0 ] }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=26]
 
-resource/name = "show"
 length = 1.8
 loop = false
 step = 0.1
@@ -293,6 +304,7 @@ __meta__ = { "__editor_plugin_screen__":"2D" }
 [node name="level" type="Node2D" parent="."]
 
 process/pause_mode = 1
+visibility/opacity = 0.0
 __meta__ = { "_edit_lock_":true }
 
 [node name="LVL_CATACOMB" parent="level" instance=ExtResource( 2 )]
@@ -300,6 +312,7 @@ __meta__ = { "_edit_lock_":true }
 [node name="playercontainer" type="Node2D" parent="."]
 
 process/pause_mode = 1
+visibility/opacity = 0.0
 __meta__ = { "_edit_lock_":true }
 
 [node name="gui" type="Node2D" parent="."]
@@ -328,7 +341,6 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 script/script = ExtResource( 3 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="SpellIcons" type="Node2D" parent="gui/CanvasLayer/hud"]
 
@@ -398,6 +410,8 @@ max_lines_visible = -1
 
 [node name="mpbar" type="Node2D" parent="gui/CanvasLayer/hud"]
 
+__meta__ = { "_editor_collapsed":true }
+
 [node name="bar" type="Polygon2D" parent="gui/CanvasLayer/hud/mpbar"]
 
 transform/pos = Vector2( 40, 56 )
@@ -432,6 +446,8 @@ texture = ExtResource( 14 )
 centered = false
 
 [node name="hpbar" type="Node2D" parent="gui/CanvasLayer/hud"]
+
+__meta__ = { "_editor_collapsed":true }
 
 [node name="bar" type="Polygon2D" parent="gui/CanvasLayer/hud/hpbar"]
 
@@ -472,6 +488,7 @@ max_lines_visible = -1
 [node name="levelup" type="Node2D" parent="gui/CanvasLayer/hud"]
 
 transform/pos = Vector2( 18, 68 )
+__meta__ = { "_editor_collapsed":true }
 
 [node name="Label" type="Label" parent="gui/CanvasLayer/hud/levelup"]
 
@@ -489,6 +506,7 @@ max_lines_visible = -1
 [node name="bloodbar" type="Node2D" parent="gui/CanvasLayer/hud"]
 
 transform/pos = Vector2( 740, 48 )
+__meta__ = { "_editor_collapsed":true }
 
 [node name="bar" type="Polygon2D" parent="gui/CanvasLayer/hud/bloodbar"]
 
@@ -509,6 +527,32 @@ invert/border = 100.0
 material/material = SubResource( 7 )
 material/use_parent = true
 texture = ExtResource( 19 )
+
+[node name="bloodcounter" type="Node2D" parent="gui/CanvasLayer/hud"]
+
+transform/pos = Vector2( 720, 96 )
+__meta__ = { "_editor_collapsed":true }
+
+[node name="icon" type="Sprite" parent="gui/CanvasLayer/hud/bloodcounter"]
+
+material/material = SubResource( 28 )
+texture = ExtResource( 20 )
+centered = false
+
+[node name="counter" type="Label" parent="gui/CanvasLayer/hud/bloodcounter"]
+
+margin/left = 20.0
+margin/right = 60.0
+margin/bottom = 23.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 21 )
+text = "0"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="gui/CanvasLayer/hud"]
 
@@ -532,7 +576,7 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-script/script = ExtResource( 20 )
+script/script = ExtResource( 22 )
 __meta__ = { "_editor_collapsed":true }
 
 [node name="container" type="Node2D" parent="gui/CanvasLayer/items"]
@@ -562,7 +606,7 @@ texture/scale = Vector2( 1, 1 )
 texture/rotation = 0.0
 invert/enable = false
 invert/border = 100.0
-script/script = ExtResource( 21 )
+script/script = ExtResource( 23 )
 
 [node name="objects" type="Node2D" parent="gui/CanvasLayer/map/container"]
 
@@ -657,6 +701,7 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+__meta__ = { "_editor_collapsed":true }
 
 [node name="title" type="Label" parent="gui/CanvasLayer/level"]
 
@@ -672,7 +717,7 @@ margin/bottom = -382.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-custom_fonts/font = ExtResource( 22 )
+custom_fonts/font = ExtResource( 24 )
 align = 1
 valign = 1
 autowrap = true
@@ -685,14 +730,14 @@ max_lines_visible = -1
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/quest = SubResource( 26 )
-anims/show = SubResource( 12 )
+anims/quest = SubResource( 12 )
+anims/show = SubResource( 13 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="dialogue" parent="gui/CanvasLayer" instance=ExtResource( 23 )]
+[node name="dialogue" parent="gui/CanvasLayer" instance=ExtResource( 25 )]
 
 [node name="pause" type="Control" parent="gui/CanvasLayer"]
 
@@ -709,11 +754,11 @@ __meta__ = { "_edit_lock_":true, "_editor_collapsed":true }
 
 [node name="shield" type="Sprite" parent="gui/CanvasLayer/pause"]
 
-texture = SubResource( 13 )
+texture = SubResource( 14 )
 centered = false
 modulate = Color( 1, 1, 1, 0.590791 )
 
-[node name="menu" parent="gui/CanvasLayer/pause" instance=ExtResource( 24 )]
+[node name="menu" parent="gui/CanvasLayer/pause" instance=ExtResource( 26 )]
 
 margin/left = 32.0
 margin/top = 32.0
@@ -746,7 +791,7 @@ margin/bottom = 162.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-custom_fonts/font = ExtResource( 22 )
+custom_fonts/font = ExtResource( 24 )
 text = "KEY_GAMEOVER"
 align = 1
 valign = 1
@@ -777,7 +822,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="yes" parent="gui/CanvasLayer/choice" instance=ExtResource( 25 )]
+[node name="yes" parent="gui/CanvasLayer/choice" instance=ExtResource( 27 )]
 
 transform/pos = Vector2( 256, 404 )
 default_focus = true
@@ -787,7 +832,7 @@ default_focus = true
 focus_neighbour/right = NodePath("../../no/button")
 text = "KEY_YES"
 
-[node name="no" parent="gui/CanvasLayer/choice" instance=ExtResource( 25 )]
+[node name="no" parent="gui/CanvasLayer/choice" instance=ExtResource( 27 )]
 
 transform/pos = Vector2( 544, 404 )
 
@@ -809,19 +854,19 @@ __meta__ = { "_editor_collapsed":true }
 
 [node name="BG" type="TextureFrame" parent="gui/CanvasLayer/select"]
 
-material/material = SubResource( 15 )
+material/material = SubResource( 16 )
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-texture = SubResource( 16 )
+texture = SubResource( 17 )
 expand = true
 
 [node name="friederich" type="TextureButton" parent="gui/CanvasLayer/select"]
 
-material/material = SubResource( 17 )
+material/material = SubResource( 18 )
 anchor/left = 2
 anchor/bottom = 2
 margin/left = -0.045
@@ -834,10 +879,10 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 toggle_mode = false
-textures/normal = ExtResource( 26 )
-textures/pressed = ExtResource( 27 )
-textures/hover = ExtResource( 27 )
-textures/focused = ExtResource( 27 )
+textures/normal = ExtResource( 28 )
+textures/pressed = ExtResource( 29 )
+textures/hover = ExtResource( 29 )
+textures/focused = ExtResource( 29 )
 params/scale = Vector2( 0.43, 0.43 )
 
 [node name="adela" type="TextureButton" parent="gui/CanvasLayer/select"]
@@ -853,10 +898,10 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 toggle_mode = false
-textures/normal = ExtResource( 28 )
-textures/pressed = ExtResource( 29 )
-textures/hover = ExtResource( 29 )
-textures/focused = ExtResource( 29 )
+textures/normal = ExtResource( 30 )
+textures/pressed = ExtResource( 31 )
+textures/hover = ExtResource( 31 )
+textures/focused = ExtResource( 31 )
 params/scale = Vector2( 0.5, 0.5 )
 
 [node name="Label" type="Label" parent="gui/CanvasLayer/select"]
@@ -879,7 +924,7 @@ max_lines_visible = -1
 
 [node name="mask" type="TextureFrame" parent="gui/CanvasLayer/select"]
 
-material/material = SubResource( 19 )
+material/material = SubResource( 20 )
 anchor/top = 1
 anchor/right = 1
 anchor/bottom = 1
@@ -888,7 +933,7 @@ focus/ignore_mouse = true
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-texture = SubResource( 16 )
+texture = SubResource( 17 )
 expand = true
 
 [node name="friederich_title" type="Label" parent="gui/CanvasLayer/select"]
@@ -926,7 +971,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="friederich_sprite" parent="gui/CanvasLayer/select" instance=ExtResource( 30 )]
+[node name="friederich_sprite" parent="gui/CanvasLayer/select" instance=ExtResource( 32 )]
 
 transform/pos = Vector2( 200, 480 )
 collision/margin = 0.08
@@ -948,7 +993,7 @@ linear_damp = 0.1
 
 visibility/visible = false
 
-[node name="adela_sprite" parent="gui/CanvasLayer/select" instance=ExtResource( 31 )]
+[node name="adela_sprite" parent="gui/CanvasLayer/select" instance=ExtResource( 33 )]
 
 transform/pos = Vector2( 600, 480 )
 collision/margin = 0.08
@@ -986,7 +1031,7 @@ visibility/visible = false
 
 [node name="BG" type="TextureFrame" parent="gui/CanvasLayer/sequences/demonic"]
 
-material/material = SubResource( 21 )
+material/material = SubResource( 22 )
 anchor/right = 1
 anchor/bottom = 1
 margin/top = 300.0
@@ -996,7 +1041,7 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-texture = SubResource( 16 )
+texture = SubResource( 17 )
 expand = true
 
 [node name="Particles2D" type="Particles2D" parent="gui/CanvasLayer/sequences/demonic"]
@@ -1006,7 +1051,7 @@ config/amount = 12
 config/lifetime = 2.0
 config/time_scale = 20.0
 config/half_extents = Vector2( 400, 100 )
-config/texture = ExtResource( 32 )
+config/texture = ExtResource( 34 )
 params/direction = 90.0
 params/spread = 10.0
 params/linear_velocity = 120.0
@@ -1031,7 +1076,7 @@ randomness/initial_size = 1.0
 [node name="friederich" type="Sprite" parent="gui/CanvasLayer/sequences/demonic/sprite"]
 
 transform/scale = Vector2( 0.45, 0.45 )
-texture = ExtResource( 33 )
+texture = ExtResource( 35 )
 centered = false
 offset = Vector2( 0, 74 )
 
@@ -1039,7 +1084,7 @@ offset = Vector2( 0, 74 )
 
 visibility/visible = false
 transform/scale = Vector2( 0.55, 0.55 )
-texture = ExtResource( 34 )
+texture = ExtResource( 36 )
 centered = false
 offset = Vector2( 0, 74 )
 
@@ -1053,8 +1098,8 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-custom_fonts/mono_font = ExtResource( 35 )
-custom_fonts/normal_font = ExtResource( 36 )
+custom_fonts/mono_font = ExtResource( 37 )
+custom_fonts/normal_font = ExtResource( 38 )
 bbcode/enabled = true
 bbcode/bbcode = "[right]KEY_SKIP:  [code]Z[/code][/right]"
 visible_characters = -1
@@ -1064,7 +1109,7 @@ visible_characters = -1
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/demonic = SubResource( 22 )
+anims/demonic = SubResource( 23 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -1073,7 +1118,7 @@ autoplay = ""
 [node name="sound" type="SamplePlayer" parent="gui"]
 
 config/polyphony = 1
-config/samples = SubResource( 23 )
+config/samples = SubResource( 24 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
 default/pan = 0.0
@@ -1089,7 +1134,7 @@ default/chorus_send = 0.0
 
 [node name="music" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 40 )
+stream/stream = ExtResource( 42 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0
@@ -1103,8 +1148,8 @@ stream/buffering_ms = 500
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/hide = SubResource( 24 )
-anims/show = SubResource( 25 )
+anims/hide = SubResource( 25 )
+anims/show = SubResource( 26 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
