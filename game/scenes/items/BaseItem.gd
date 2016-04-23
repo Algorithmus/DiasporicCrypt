@@ -4,6 +4,7 @@ extends Node2D
 var taken = false
 var sound
 export var title = "ITEM_POTION"
+export var isgoal = false
 var sfx = "potion"
 var itemfactory = preload("res://scenes/items/ItemFactory.gd")
 var itemfactory_obj
@@ -23,6 +24,14 @@ func take_item(i):
 		sound.play(sfx)
 		taken = true
 		get_tree().get_root().get_node("world/gui/CanvasLayer/items").display_item(title, item)
+		if (isgoal):
+			Globals.set("current_quest_complete", true)
+			var level = Globals.get("levels")[Globals.get("current_level")]
+			level.complete = true
+			Globals.get("levels")[Globals.get("current_level")] = level
+			var level_display = get_tree().get_root().get_node("world/gui/CanvasLayer/level")
+			level_display.get_node("title").set_text("KEY_COMPLETE")
+			level_display.get_node("AnimationPlayer").play("quest")
 		remove_child(get_node("Sprite"))
 
 func add_to_inventory():

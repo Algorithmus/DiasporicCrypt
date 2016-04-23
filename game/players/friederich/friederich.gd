@@ -4,7 +4,7 @@ extends "res://players/player.gd"
 var attack_buffer = []
 var chaingui
 var chain_counter = 0
-var chain_delay = 60
+var chain_delay = 25
 var current_chain_delay = 0
 var chain_next = false # whether or not to show the second chain attack animation
 var chain_animation = ""
@@ -13,15 +13,15 @@ var chain_collided = false
 var attack_reset_interrupt = false
 var direction_requested = ""
 var chain_specials = [
-	{"combo":"a, a, d", "id":"chop", "replace":"aad", "collider":preload("res://scenes/weapons/chop.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":10, "used": false},
-	{"combo":"aad, u", "id":"slice", "replace":"aadu", "collider":preload("res://scenes/weapons/slice.tscn"), "collider_offset":Vector2(0, -96), "db":10, "hurt_delay":8, "used": false},
-	{"combo":"a, a, u", "id":"skewer", "replace":"aau", "collider":preload("res://scenes/weapons/skewer.tscn"), "collider_offset":Vector2(0, -32), "db":10, "hurt_delay":8, "used": false},
-	{"combo":"aau, d", "id":"stab", "replace":"aaud", "collider":preload("res://scenes/weapons/stab.tscn"), "collider_offset":Vector2(0, 80), "db":10, "hurt_delay":7, "used": false},
-	{"combo":"a, a, a", "id":"thrust", "replace":"aaa", "collider":preload("res://scenes/weapons/thrust.tscn"), "collider_offset":Vector2(0, -32), "db":10, "hurt_delay":10, "used": false},
-	{"combo":"aaa, a", "id":"swift", "replace":"aaaa", "collider":preload("res://scenes/weapons/swift.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":6, "used": false},
-	{"combo":"a, a, f", "id":"dualspin", "replace":"aaf", "collider":preload("res://scenes/weapons/dualspin.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":8, "used": false},
-	{"combo":"aaf, d", "id":"void", "replace":"aafd", "collider":preload("res://scenes/weapons/void.tscn"), "collider_offset":Vector2(32, 0), "db":10, "hurt_delay":4, "used": false},
-	{"combo":"aaa, f", "id":"rush", "replace":"aaaf", "collider":preload("res://scenes/weapons/rush.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":2, "used": false}
+	{"combo":"a, a, d", "id":"chop", "replace":"aad", "collider":preload("res://scenes/weapons/chop.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":10},
+	{"combo":"aad, u", "id":"slice", "replace":"aadu", "collider":preload("res://scenes/weapons/slice.tscn"), "collider_offset":Vector2(0, -96), "db":10, "hurt_delay":8},
+	{"combo":"a, a, u", "id":"skewer", "replace":"aau", "collider":preload("res://scenes/weapons/skewer.tscn"), "collider_offset":Vector2(0, -32), "db":10, "hurt_delay":8},
+	{"combo":"aau, d", "id":"stab", "replace":"aaud", "collider":preload("res://scenes/weapons/stab.tscn"), "collider_offset":Vector2(0, 80), "db":10, "hurt_delay":7},
+	{"combo":"a, a, a", "id":"thrust", "replace":"aaa", "collider":preload("res://scenes/weapons/thrust.tscn"), "collider_offset":Vector2(0, -32), "db":10, "hurt_delay":10},
+	{"combo":"aaa, a", "id":"swift", "replace":"aaaa", "collider":preload("res://scenes/weapons/swift.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":6},
+	{"combo":"a, a, f", "id":"dualspin", "replace":"aaf", "collider":preload("res://scenes/weapons/dualspin.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":8},
+	{"combo":"aaf, d", "id":"void", "replace":"aafd", "collider":preload("res://scenes/weapons/void.tscn"), "collider_offset":Vector2(32, 0), "db":10, "hurt_delay":4},
+	{"combo":"aaa, f", "id":"rush", "replace":"aaaf", "collider":preload("res://scenes/weapons/rush.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":2}
 	]
 var demonic_void = preload("res://scenes/weapons/demonic.tscn")
 var target_enemy
@@ -283,8 +283,8 @@ func step_player(delta):
 								is_chain_special = true
 								current_chain_special = combo
 								current_chain_delay = 0
-								if (!current_chain_special["used"]):
-									current_chain_special["used"] = true
+								if (!Globals.get("chain")[combo["id"]]):
+									Globals.get("chain")[combo["id"]] = true
 									chaingui.get_node("newattack").show()
 									chaingui.get_node("AnimationPlayer").play("newattack")
 								remove_special_collider()

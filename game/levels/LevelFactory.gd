@@ -65,6 +65,7 @@ func _init():
 	start.teleportto = Vector2(336, 128)
 	start.description = "LVL_START_DESCRIPTION"
 	start.reward = 100
+	start.item = "ITEM_AMULET"
 	start.mapid = "LVL_START"
 	levels[start.title] = start
 	

@@ -26,8 +26,21 @@ static func sort_scrolls(a, b):
 	return a.order <= b.order
 
 func parse_content():
+	var translation = do_parse(content)
+	if (title == "SCROLL_WARRIOR"):
+		var chains = Globals.get("chain")
+		for chain in chains:
+			var used = chains[chain]
+			var combostring = ""
+			var idstring = "CHAIN_" + chain.to_upper()
+			if (used):
+				combostring = do_parse(idstring)
+			translation = translation.replace("[" + idstring + "]", combostring)
+	return translation
+
+func do_parse(text):
 	keymap.update_keys()
-	var translation = tr(content)
+	var translation = tr(text)
 	translation = translation.replace("[break]", "\n")
 	for i in inputs:
 		translation = translation.replace("[" + i + "]", keymap.map_action(i))

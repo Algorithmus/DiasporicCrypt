@@ -278,8 +278,6 @@ linear_damp = 0.1
 
 [node name="SlopeGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
-
 [node name="TestSlope0-15" parent="tilemap/SlopeGroup" instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 496, 112 )
@@ -833,6 +831,7 @@ __meta__ = { "_editor_collapsed":true }
 [node name="target1" parent="tilemap/TargetGroup" instance=ExtResource( 43 )]
 
 transform/pos = Vector2( -720, 480 )
+collision/margin = 0.08
 
 [node name="BloodFountainGroup" type="Node2D" parent="tilemap"]
 
@@ -887,6 +886,7 @@ teleport_to = Vector2( -52, -256 )
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
 
 transform/scale = Vector2( 1, 6 )
+linear_damp = 0.1
 
 [node name="Teleport 2" parent="tilemap/TeleportGroup" instance=ExtResource( 48 )]
 
@@ -898,6 +898,7 @@ teleport_to = Vector2( -16, -272 )
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport 2"]
 
 transform/scale = Vector2( 3, 1 )
+linear_damp = 0.1
 
 [node name="boundaries" type="Node2D" parent="tilemap"]
 

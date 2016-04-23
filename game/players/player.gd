@@ -1132,9 +1132,9 @@ func _ready():
 func _on_weapon_collision(area):
 	var collisions = weapon_collider.get_overlapping_areas()
 	for i in collisions:
-		if (i.get_name() != "damage" && i != weapon_collider && i.get_name() != "oneway" && !i.get_name().match("slope*") && i.get_name() != "ladder"):
+		if (i.get_name() != "damage" && i != weapon_collider && i.get_name() != "oneway" && !i.get_name().match("slope*") && i.get_name() != "ladder" && i.get_name() != "item"):
 			weapon_collided = true
-	if(area.get_name() != "damage" && area != weapon_collider && area.get_name() != "oneway" && !area.get_name().match("slope*") && area.get_name() != "ladder"):
+	if(area.get_name() != "damage" && area != weapon_collider && area.get_name() != "oneway" && !area.get_name().match("slope*") && area.get_name() != "ladder" && area.get_name() != "item"):
 		weapon_collided = true
 
 func load_tilemap(var tilemap_node):
@@ -1172,7 +1172,15 @@ func calculate_trail(sprite):
 
 func teleport(pos, ladder):
 	set_global_pos(pos)
+	ladder_top = null
 	on_ladder = ladder
+	if (on_ladder):
+		is_crouching = false
+		get_node("CollisionShape2D").set_scale(Vector2(1, 1))
+		get_node("CollisionShape2D").set_pos(Vector2(0, 0))
+		damage_rect.set_scale(Vector2(1, 1))
+		damage_rect.set_pos(Vector2(0, 0))
+	is_delay = true
 
 func loop_jump_animation():
 	animation_player.seek(0.1, true)

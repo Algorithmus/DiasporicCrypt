@@ -25,7 +25,7 @@ const ITEM_TITLE = 0
 const ITEM_VALUE = 1
 
 const CHOICE_TEXT = 0
-const CHOICE_ACTION = 1 #dialog, save, shop, map or end
+const CHOICE_ACTION = 1 #dialog, save, shop, map, heal or end
 const CHOICE_VALUE = 2
 #dialogue - another dialog array (replace current one completely) or index for current dialog array to jump to
 const CHOICE_ORIENTATION = 3
@@ -78,8 +78,8 @@ func add_choices():
 		choicecontainer = vchoice
 		basemargin += 1
 		obj_y = 0
-		# set correct y pos
-		vchoice.set_pos(Vector2(vchoice.get_pos().x, 36))
+	# set correct y pos
+	choicecontainer.set_pos(Vector2(choicecontainer.get_pos().x, 36))
 	for choice in choices:
 		var choice_obj = choiceclass.instance()
 		choice_obj.get_node("text").set_text(choice[CHOICE_TEXT])
@@ -137,6 +137,9 @@ func check_dialog():
 				get_tree().set_pause(true)
 				var canvas = get_tree().get_root().get_node("world/gui/CanvasLayer")
 				canvas.add_child(map)
+			elif (choice.get("action") == "restore"):
+				hide_dialog()
+				get_tree().get_root().get_node("world").restore_animation()
 			elif (choice.get("action") == "end"):
 				hide_dialog()
 		else:
@@ -177,8 +180,8 @@ func show_dialog():
 			else:
 				profile.hide()
 				textarea.set_pos(Vector2(119, textarea.get_pos().y))
-				hchoice.set_pos(Vector2(119, hchoice.get_pos().y))
-				vchoice.set_pos(Vector2(119, vchoice.get_pos().y))
+				hchoice.set_pos(Vector2(-60, hchoice.get_pos().y))
+				vchoice.set_pos(Vector2(-60, vchoice.get_pos().y))
 			var basetext = tr(dialog[DIAG_TEXT])
 			if (dialog.size() > DIAG_ITEM && dialog[DIAG_ITEM] != null):
 				basetext = tr("ITEM_RECEIVED")

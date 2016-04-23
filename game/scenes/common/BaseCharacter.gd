@@ -13,6 +13,7 @@ const DEFAULT_FALL_HEIGHT = JUMP_SPEED * (JUMP_SPEED - 1)/2
 # restrict vertical speed to prevent skipping and other weirdness
 const SPEED_LIMIT = 30
 
+var is_delay = false
 var hud
 var position = Vector2()
 var current_animation = "idle"
@@ -475,8 +476,10 @@ func calculate_fall_height():
 		fall_height = 0
 
 func _fixed_process(delta):
-	if (is_fixed_processing()):
+	if (is_fixed_processing() && !is_delay):
 		step_player(delta)
+	elif (is_delay):
+		is_delay = false
 
 func step_player(delta):
 	var space = get_world_2d().get_space()

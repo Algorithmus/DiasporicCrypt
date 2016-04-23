@@ -11,6 +11,13 @@ func _init():
 	items["exp"] = {"type": "exp"}
 	items["gold"] = {"type": "gold"}
 	
+	var amulet = itemclass.new()
+	amulet.title = "ITEM_AMULET"
+	amulet.description = "ITEM_AMULET_DESCRIPTION"
+	amulet.type = "special"
+	amulet.image = "res://scenes/items/special/amulet.png"
+	items[amulet.title] = amulet
+	
 	var potion = itemclass.new()
 	potion.title = "ITEM_POTION"
 	potion.description = "ITEM_POTION_DESCRIPTION"
@@ -135,6 +142,22 @@ func _init():
 	scrollmagic.description = "SCROLL_MAGIC_SHORT"
 	scrollmagic.order = 2
 	items[scrollmagic.title] = scrollmagic
+	
+	var scrollwarrior = scrollclass.new()
+	scrollwarrior.title = "SCROLL_WARRIOR"
+	scrollwarrior.display = "SCROLL_WARRIOR_TITLE"
+	scrollwarrior.content = "SCROLL_WARRIOR_DESCRIPTION"
+	scrollwarrior.description = "SCROLL_WARRIOR_SHORT"
+	scrollwarrior.order = 3
+	items[scrollwarrior.title] = scrollwarrior
+	
+	var scrolladventure = scrollclass.new()
+	scrolladventure.title = "SCROLL_ADVENTURE"
+	scrolladventure.display = "SCROLL_ADVENTURE_TITLE"
+	scrolladventure.content = "SCROLL_ADVENTURE_DESCRIPTION"
+	scrolladventure.description = "SCROLL_ADVENTURE_SHORT"
+	scrolladventure.order = 3
+	items[scrolladventure.title] = scrolladventure
 	
 	var thunder = itemclass.new()
 	thunder.title = "MAGIC_THUNDER"

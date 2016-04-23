@@ -443,6 +443,8 @@ func _on_warp_pressed():
 	var levels = Globals.get("levels")
 	var map = levels[selectedlevel.get_name()]
 	map.new = false
+	Globals.set("current_quest_complete", false)
+	Globals.set("reward_taken", false)
 	Globals.get("levels")[map.title] = map
 	Globals.set("mapid", map.mapid)
 	var level = get_tree().get_root().get_node("world/level").get_child(0)

@@ -44,11 +44,15 @@ var inventoryclass = preload("res://scenes/items/Inventory.gd")
 var itemfactory = preload("res://scenes/items/ItemFactory.gd")
 var levelfactory = preload("res://levels/LevelFactory.gd")
 
+var goldclass = preload("res://scenes/items/gold/gold.tscn")
+
 var magiccircleclass = preload("res://scenes/animations/magiccircle/magiccircle.tscn")
 var magicorbsclass = preload("res://scenes/animations/magiccircle/orbs.tscn")
 var stardustclass = preload("res://scenes/animations/stardust.tscn")
 
 var keymap = preload("res://gui/KeyboardCharacters.gd").new()
+
+var chainlist = {"chop": false, "slice": false, "skewer": false, "stab": false, "thrust": false, "swift": false, "dualspin": false, "void": false, "rush": false}
 
 func _ready():
 	# Initialization here
@@ -62,11 +66,14 @@ func _ready():
 					{"id":"wind", "type": "wind", "mp": 120, "auracolor": Color(0, 1, 149/255.0), "weaponcolor1": Color(187/255.0, 1, 231/255.0), "weaponcolor2": Color(0, 191/255.0, 92/255.0), "delay": true, "is_single": false, "charge": preload("res://players/magic/wind/charge.tscn"), "attack": preload("res://players/magic/wind/wind.tscn"), "atk": 1.2},
 					{"id":"ice", "type": "ice", "mp": 20, "auracolor": Color(0, 130/255.0, 207/255.0), "weaponcolor1": Color(0, 1, 1), "weaponcolor2": Color(0, 130/255.0, 207/255.0), "delay": false, "is_single": false, "attack": preload("res://players/magic/ice/ice.tscn"), "atk": 0.75}]
 	Globals.set("magic_spells", magic_spells)
+	Globals.set("chain", chainlist)
 	Globals.set("itemfactory", itemfactory.new())
 	Globals.set("available_levels", ["LVL_SANDBOX", "LVL_FOREST1", "LVL_FOREST2", "LVL_MANOR", "LVL_LAVACAVE", "LVL_START", "LVL_COLOSSEUM1", "LVL_COLOSSEUM2"])
 	Globals.set("levels", levelfactory.new().levels)
 	Globals.set("current_level", "LVL_START")
 	Globals.set("eventmode", false)
+	Globals.set("current_quest_complete", false)
+	Globals.set("reward_taken", false)
 	root = get_tree().get_root()
 	original_size = root.get_rect().size
 	root.connect("size_changed", self, "_on_resolution_changed")
@@ -188,9 +195,10 @@ func _input(event):
 	elif(skipevent):
 		skipevent = false
 		end_warp_animation()
+		end_restore_animation()
 
-func toggle_eventmode():
-	Globals.set("eventmode", !Globals.get("eventmode"))
+func toggle_eventmode(value):
+	Globals.set("eventmode", value)
 	var skip = sequences.get_node("skip")
 	var canvas = get_node("gui/CanvasLayer")
 	if (Globals.get("eventmode")):
@@ -211,6 +219,38 @@ func toggle_eventmode():
 		canvas.get_node("items").show()
 		canvas.get_node("level").show()
 
+func restore_animation():
+	var canvas = get_node("gui/CanvasLayer")
+	get_tree().set_pause(false)
+	if (!Globals.get("eventmode")):
+		toggle_eventmode(true)
+	get_node("AnimationPlayer").connect("finished", self, "show_restore")
+	get_node("AnimationPlayer").play("hide")
+	sequences.show()
+
+func show_restore():
+	get_node("AnimationPlayer").disconnect("finished", self, "show_restore")
+	get_node("AnimationPlayer").connect("finished", self, "end_restore_animation")
+	get_node("AnimationPlayer").play("show")
+	var player = get_node("playercontainer/player")
+	player.current_hp = player.hp
+	player.current_mp = player.mp
+
+func end_restore_animation():
+	if (get_node("AnimationPlayer").is_connected("finished", self, "show_restore")):
+		get_node("AnimationPlayer").disconnect("finished", self, "show_restore")
+	if (get_node("AnimationPlayer").is_connected("finished", self, "end_restore_animation")):
+		get_node("AnimationPlayer").disconnect("finished", self, "end_restore_animation")
+	get_node("level").set_opacity(1)
+	get_node("playercontainer").set_opacity(1)
+	get_node("AnimationPlayer").stop()
+	var player = get_node("playercontainer/player")
+	player.current_hp = player.hp
+	player.current_mp = player.mp
+	if (Globals.get("eventmode")):
+		toggle_eventmode(false)
+	sequences.hide()
+
 func warp_animation():
 	var canvas = get_node("gui/CanvasLayer")
 	var worldmap = canvas.get_node("WorldMap")
@@ -218,7 +258,7 @@ func warp_animation():
 	worldmap.queue_free()
 	get_tree().set_pause(false)
 	if (!Globals.get("eventmode")):
-		toggle_eventmode()
+		toggle_eventmode(true)
 	var circle = magiccircleclass.instance()
 	circle.set_pos(Vector2(400, 274))
 	circle.get_node("AnimationPlayer").connect("finished", self, "circle_rotate")
@@ -294,7 +334,7 @@ func end_warp_animation():
 	get_node("level/LVL_CATACOMB/tilemap/NPCGroup/Kaleva").end_warp_animation()
 	sequences.hide()
 	if (Globals.get("eventmode")):
-		toggle_eventmode()
+		toggle_eventmode(false)
 
 func _select_friederich():
 	selected_character = friederich
@@ -318,12 +358,14 @@ func start(player):
 	Globals.set("gold", 0)
 	Globals.set("shops", {})
 	display_level_title("LVL_CATACOMB")
+	var level = get_node("level/LVL_CATACOMB")
 	map.set("camera", player.get_node("Camera2D"))
-	map.load_cached_map(get_node("level/LVL_CATACOMB"))
+	map.load_cached_map(level)
+	connect_catacombs(level)
 	get_node("gui/sound").play("confirm")
-	player.set_global_pos(Vector2(0, 0))
+	player.set_global_pos(Vector2(-16, 320))
 	get_node("playercontainer").add_child(player)
-	player.load_tilemap(get_node("level/LVL_CATACOMB"))
+	player.load_tilemap(level)
 	select.hide()
 	is_paused = false
 	get_tree().set_pause(is_paused)
@@ -358,19 +400,22 @@ func reset_level():
 	Globals.get("inventory").set("player", player)
 	map.set("camera", player.get_node("Camera2D"))
 	get_node("gui/CanvasLayer/hud").reset()
-	teleport("res://levels/common/catacombs.tscn", Vector2(0, 0), null)
+	teleport("res://levels/common/catacombs.tscn", Vector2(-16, 320), null)
 	is_paused = false
 	pause.hide()
 	gameover = false
 	Globals.get("inventory").clear_inventory()
 	Globals.set("gold", 0)
 	Globals.set("scrolls", {})
+	Globals.set("current_quest_complete", false)
+	Globals.set("reward_taken", false)
 	get_tree().set_pause(false)
 
 func reset():
 	get_node("gui/sound").play("confirm")
 	hide_choice()
 	map.reset()
+	Globals.set("chain", chainlist)
 	Globals.set("mapid", "LVL_SANDBOX")
 	sequences.get_node("demonic/sprite/friederich").hide()
 	sequences.get_node("demonic/sprite/adela").hide()
@@ -397,8 +442,15 @@ func display_level_title(title):
 	level.get_node("title").set_text(title)
 	level.get_node("AnimationPlayer").play("show")
 
+func connect_catacombs(level):
+	var new_teleport = level.get_node("tilemap/TeleportGroup").get_child(0)
+	var map = Globals.get("levels")[Globals.get("current_level")]
+	new_teleport.target_level = map.node
+	new_teleport.teleport_to = map.teleportto
+
 func teleport(new_level, pos, teleport):
 	var new_level_obj = load(new_level).instance()
+	var level_title_string = new_level_obj.get_name()
 	map.set("current_teleport", teleport)
 	map.load_map(new_level_obj)
 	var level = get_node("level")
@@ -414,19 +466,34 @@ func teleport(new_level, pos, teleport):
 	var level_title = get_node("gui/CanvasLayer/level/AnimationPlayer")
 	level_title.stop()
 	level_title.seek(0, true)
-	if (new_level_obj.get_name() != "LVL_NOTITLE"):
-		display_level_title(new_level_obj.get_name())
+	if (level_title_string != "LVL_NOTITLE"):
+		display_level_title(level_title_string)
 	# make sure catacombs level connects to the correct level
 	if (new_level == "res://levels/common/catacombs.tscn"):
-		var new_teleport = new_level_obj.get_node("tilemap/TeleportGroup").get_child(0)
-		var map = Globals.get("levels")[Globals.get("current_level")]
-		new_teleport.target_level = map.node
-		new_teleport.teleport_to = map.teleportto
+		connect_catacombs(new_level_obj)
+		var currentlevel = Globals.get("levels")[Globals.get("current_level")]
+		if (Globals.get("current_quest_complete") && !Globals.get("reward_taken") && currentlevel.reward > 0):
+			var gold = goldclass.instance()
+			gold.isreward = true
+			gold.value = currentlevel.reward
+			new_level_obj.get_node("tilemap").add_child(gold)
+			gold.set_global_pos(Vector2(-16, 368))
 	# check that any scrolls already collected do not appear in the level again
 	if (new_level_obj.has_node("tilemap/ScrollGroup")):
 		for i in new_level_obj.get_node("tilemap/ScrollGroup").get_children():
 			if (Globals.get("scrolls").has(i.get("title"))):
 				i.queue_free()
+	# check that goal item in quest levels is the correct one (or remove if already obtained)
+	if (new_level_obj.has_node("tilemap/SpecialItemGroup")):
+		var specialgroup = new_level_obj.get_node("tilemap/SpecialItemGroup")
+		if (Globals.get("current_quest_complete")):
+			specialgroup.queue_free()
+		else:
+			var level = Globals.get("levels")[Globals.get("current_level")]
+			if (Globals.get("inventory").inventory.has(level.item)):
+				specialgroup.get_child(1).queue_free()
+			else:
+				specialgroup.get_child(0).queue_free()
 
 func sequence_finished():
 	sequences.get_node("demonic").hide()

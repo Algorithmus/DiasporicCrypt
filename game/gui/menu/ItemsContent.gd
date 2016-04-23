@@ -26,6 +26,8 @@ func _ready():
 	add_child(sfx)
 
 func update_container():
+	print("update container")
+	print(currenttype)
 	var list = Globals.get("inventory").generate_list(currenttype)
 	set_type_colors()
 	for item in list:
@@ -34,6 +36,8 @@ func update_container():
 			item_obj.set_name(item["item"].title)
 			item_obj.get_node("title").set_text(item["item"].title)
 			item_obj.get_node("quantity").set_text(str(item["quantity"]))
+			if (item["item"].type == "special"):
+				item_obj.get_node("Sprite").set_texture(preload("res://gui/menu/icons/special.png"))
 			if (!item["item"].new):
 				item_obj.get_node("new").hide()
 			# don't lose focus on irrelevant inputs
@@ -65,6 +69,7 @@ func unfocus_all():
 	for item in get_node("types").get_children():
 		item.release_focus()
 	currenttype = "item"
+	clear_items()
 	use.set_opacity(0.5)
 	drop.set_opacity(0.5)
 	use.release_focus()

@@ -13,6 +13,7 @@ var teleportto # coordinates in the level the player starts in when first enteri
 var description
 var mapid # map layout to use
 var reward = 0
+var item # goal item for quest type levels
 
 func _ready():
 	# Called every time the node is added to the scene.

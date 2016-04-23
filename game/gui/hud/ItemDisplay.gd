@@ -4,6 +4,7 @@ extends Control
 var container
 var itemclass = preload("res://gui/hud/item.tscn")
 var itemicon = preload("res://gui/hud/potion.png")
+var specialicon = preload("res://gui/menu/icons/special.png")
 var goldicon = preload("res://gui/hud/gold.png")
 var exporbicon = preload("res://gui/hud/exporb.png")
 var scrollicon = preload("res://gui/hud/scroll.png")
@@ -21,6 +22,8 @@ func display_item(title, item_obj):
 	if (item_obj.type == "gold"):
 		title = str(item_obj.value) + "G"
 		icon = goldicon
+	if (item_obj.type == "special"):
+		icon = specialicon
 
 	item.get_node("text").set_text(title)
 	if (item_obj.type == "scroll"):

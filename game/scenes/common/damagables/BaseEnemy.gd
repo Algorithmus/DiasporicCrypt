@@ -337,7 +337,8 @@ func step_player(delta):
 	var normalTileCheck = !relevantTileA.empty() || !relevantTileB.empty()
 
 	# check moving platforms before everything else
-	var oneWayTile = getOneWayTile(space_state, max(accel, TILE_SIZE))
+	var oneWayTile = getOneWayTile(space_state, max(accel, TILE_SIZE-1))
+	
 	var onOneWayTile = check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space_state, oneWayTile)
 
 	var areaTiles = damage_rect.get_overlapping_areas()

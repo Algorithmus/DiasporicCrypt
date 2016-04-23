@@ -1,20 +1,19 @@
-[gd_scene load_steps=23 format=1]
+[gd_scene load_steps=22 format=1]
 
 [ext_resource path="res://scenes/catacombs/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/torch.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/catacombs/solids/coffin.png" type="Texture" id=3]
-[ext_resource path="res://scenes/catacombs/solids/coffin-closed.png" type="Texture" id=4]
-[ext_resource path="res://scenes/catacombs/solids/skulls.png" type="Texture" id=5]
-[ext_resource path="res://scenes/catacombs/solids/hill.png" type="Texture" id=6]
-[ext_resource path="res://scenes/catacombs/solids/web.png" type="Texture" id=7]
-[ext_resource path="res://scenes/catacombs/solids/web2.png" type="Texture" id=8]
-[ext_resource path="res://scenes/catacombs/solids/web3.png" type="Texture" id=9]
-[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/items/scroll/scroll.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/common/target.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/npcs/kaleva/Kaleva.gd" type="Script" id=14]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/catacombs/solids/coffin-closed.png" type="Texture" id=3]
+[ext_resource path="res://scenes/catacombs/solids/skulls.png" type="Texture" id=4]
+[ext_resource path="res://scenes/catacombs/solids/hill.png" type="Texture" id=5]
+[ext_resource path="res://scenes/catacombs/solids/web.png" type="Texture" id=6]
+[ext_resource path="res://scenes/catacombs/solids/web2.png" type="Texture" id=7]
+[ext_resource path="res://scenes/catacombs/solids/web3.png" type="Texture" id=8]
+[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/target.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/npcs/kaleva/Kaleva.gd" type="Script" id=12]
+[ext_resource path="res://scenes/catacombs/solids/coffin.png" type="Texture" id=13]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=14]
 
 [sub_resource type="CanvasItemShader" id=1]
 
@@ -98,144 +97,139 @@ transform/pos = Vector2( -288, 192 )
 
 __meta__ = { "_editor_collapsed":true }
 
-[node name="Sprite" type="Sprite" parent="tilemap/DecoGroup"]
-
-transform/pos = Vector2( -416, 304 )
-texture = ExtResource( 3 )
-
 [node name="Sprite1" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( -288, 304 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 modulate = Color( 0.603922, 0.541176, 0.658824, 1 )
 
 [node name="Sprite2" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( -192, 304 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 modulate = Color( 0.603922, 0.541176, 0.658824, 1 )
 
 [node name="Sprite3" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( -96, 304 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 modulate = Color( 0.603922, 0.541176, 0.658824, 1 )
 
 [node name="Sprite4" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( 464, 304 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 modulate = Color( 0.603922, 0.541176, 0.658824, 1 )
 
 [node name="Sprite5" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( 352, 304 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 modulate = Color( 0.603922, 0.541176, 0.658824, 1 )
 
 [node name="Sprite 2" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( -480, 368 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 
 [node name="Sprite6" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( -304, 368 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 modulate = Color( 0.603922, 0.537255, 0.658824, 1 )
 
 [node name="Sprite7" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( -128, 368 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 flip_h = true
 modulate = Color( 0.603922, 0.537255, 0.658824, 1 )
 
 [node name="Sprite8" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( 80, 368 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 modulate = Color( 0.603922, 0.537255, 0.658824, 1 )
 
 [node name="Sprite9" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( 272, 368 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 flip_h = true
 modulate = Color( 0.603922, 0.537255, 0.658824, 1 )
 
 [node name="Sprite10" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( 464, 368 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 flip_h = true
 modulate = Color( 0.603922, 0.537255, 0.658824, 1 )
 
 [node name="Sprite11" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( 608, 112 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 
 [node name="Sprite12" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( -512, -16 )
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 modulate = Color( 1, 1, 1, 0.509804 )
 
 [node name="Sprite13" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( -416, -16 )
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 modulate = Color( 1, 1, 1, 0.509804 )
 
 [node name="Sprite14" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( -352, -16 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 modulate = Color( 1, 1, 1, 0.509804 )
 
 [node name="Sprite15" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( -208, -16 )
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 modulate = Color( 1, 1, 1, 0.509804 )
 
 [node name="Sprite16" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( -128, -16 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 modulate = Color( 1, 1, 1, 0.509804 )
 
 [node name="Sprite17" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( 512, -16 )
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 flip_h = true
 modulate = Color( 1, 1, 1, 0.509804 )
 
 [node name="Sprite18" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( 400, -16 )
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 modulate = Color( 1, 1, 1, 0.509804 )
 
 [node name="Sprite19" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( 192, -16 )
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 modulate = Color( 1, 1, 1, 0.509804 )
 
 [node name="Sprite20" type="Sprite" parent="tilemap/DecoGroup"]
 
 transform/pos = Vector2( 272, -16 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 modulate = Color( 1, 1, 1, 0.509804 )
 
 [node name="LadderGroup" type="Node2D" parent="tilemap"]
 
 __meta__ = { "_editor_collapsed":true }
 
-[node name="TestLadder" parent="tilemap/LadderGroup" instance=ExtResource( 10 )]
+[node name="TestLadder" parent="tilemap/LadderGroup" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( -16, -32 )
 
@@ -252,41 +246,21 @@ region_rect = Rect2( 0, 0, 32, 640 )
 transform/scale = Vector2( 1, 20 )
 linear_damp = 0.1
 
-[node name="ScrollGroup" type="Node2D" parent="tilemap"]
-
-__meta__ = { "_editor_collapsed":true }
-
-[node name="Scroll" parent="tilemap/ScrollGroup" instance=ExtResource( 11 )]
-
-transform/pos = Vector2( -16, 368 )
-title = "SCROLL_START"
-
-[node name="Scroll1" parent="tilemap/ScrollGroup" instance=ExtResource( 11 )]
-
-transform/pos = Vector2( 48, 368 )
-title = "SCROLL_MAGIC"
-
-[node name="Scroll2" parent="tilemap/ScrollGroup" instance=ExtResource( 11 )]
-
-transform/pos = Vector2( -80, 368 )
-title = "SCROLL_FIGHT"
-
 [node name="TargetGroup" type="Node2D" parent="tilemap"]
 
 __meta__ = { "_editor_collapsed":true }
 
-[node name="target" parent="tilemap/TargetGroup" instance=ExtResource( 12 )]
+[node name="target" parent="tilemap/TargetGroup" instance=ExtResource( 10 )]
 
 transform/pos = Vector2( 368, 320 )
+collision/margin = 0.08
 
 [node name="NPCGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
-
-[node name="Kaleva" parent="tilemap/NPCGroup" instance=ExtResource( 13 )]
+[node name="Kaleva" parent="tilemap/NPCGroup" instance=ExtResource( 11 )]
 
 transform/pos = Vector2( 176, 304 )
-script/script = ExtResource( 14 )
+script/script = ExtResource( 12 )
 
 [node name="Sprite" parent="tilemap/NPCGroup/Kaleva"]
 
@@ -296,9 +270,32 @@ transform/scale = Vector2( -1, 1 )
 
 linear_damp = 0.1
 
+[node name="Coffin" parent="tilemap/NPCGroup" instance=ExtResource( 11 )]
+
+transform/pos = Vector2( -416, 304 )
+dialogues = [ [ 0, null, "DIAG_RESTORE", null, [ [ "KEY_YES", "restore", null, true ], [ "KEY_NO", "end" ] ] ] ]
+
+[node name="Sprite" parent="tilemap/NPCGroup/Coffin"]
+
+texture = ExtResource( 13 )
+offset = Vector2( 0, 0 )
+hframes = 1
+frame = 0
+
+[node name="npc" parent="tilemap/NPCGroup/Coffin"]
+
+visibility/visible = false
+linear_damp = 0.1
+
+[node name="AnimationPlayer" parent="tilemap/NPCGroup/Coffin"]
+
+autoplay = ""
+
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
 
-[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 15 )]
+__meta__ = { "_editor_collapsed":true }
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( -16, -368 )
 is_horizontal = false
@@ -308,6 +305,7 @@ teleport_to = Vector2( -112, 480 )
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
 
 transform/scale = Vector2( 3, 1 )
+linear_damp = 0.1
 
 [node name="boundaries" type="Node2D" parent="tilemap"]
 
@@ -356,4 +354,5 @@ centered = false
 
 [editable path="tilemap/LadderGroup/TestLadder"]
 [editable path="tilemap/NPCGroup/Kaleva"]
+[editable path="tilemap/NPCGroup/Coffin"]
 [editable path="tilemap/TeleportGroup/Teleport"]
