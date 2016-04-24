@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=1]
+[gd_scene load_steps=75 format=1]
 
 [ext_resource path="res://scenes/main.gd" type="Script" id=1]
 [ext_resource path="res://levels/common/catacombs.tscn" type="PackedScene" id=2]
@@ -38,10 +38,13 @@
 [ext_resource path="res://gui/sequences/demonic_a.png" type="Texture" id=36]
 [ext_resource path="res://gui/fonts/L-24-Keyboard-outline.fnt" type="Font" id=37]
 [ext_resource path="res://gui/fonts/S-13-dialog.fnt" type="Font" id=38]
-[ext_resource path="res://gui/confirm.wav" type="Sample" id=39]
-[ext_resource path="res://gui/cursor.wav" type="Sample" id=40]
-[ext_resource path="res://gui/sequences/demonic.wav" type="Sample" id=41]
-[ext_resource path="res://levels/common/catacombs.ogg" type="AudioStream" id=42]
+[ext_resource path="res://gui/worldmap/shield.png" type="Texture" id=39]
+[ext_resource path="res://gui/loading/bat.tscn" type="PackedScene" id=40]
+[ext_resource path="res://gui/loading/cat.tscn" type="PackedScene" id=41]
+[ext_resource path="res://gui/confirm.wav" type="Sample" id=42]
+[ext_resource path="res://gui/cursor.wav" type="Sample" id=43]
+[ext_resource path="res://gui/sequences/demonic.wav" type="Sample" id=44]
+[ext_resource path="res://levels/common/catacombs.ogg" type="AudioStream" id=45]
 
 [sub_resource type="CanvasItemShader" id=1]
 
@@ -263,9 +266,9 @@ tracks/4/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArra
 
 [sub_resource type="SampleLibrary" id=24]
 
-samples/cursor = { "db":0.0, "pitch":1.0, "sample":ExtResource( 40 ) }
-samples/confirm = { "db":0.0, "pitch":1.0, "sample":ExtResource( 39 ) }
-samples/demonic = { "db":0.0, "pitch":1.0, "sample":ExtResource( 41 ) }
+samples/cursor = { "db":0.0, "pitch":1.0, "sample":ExtResource( 43 ) }
+samples/confirm = { "db":0.0, "pitch":1.0, "sample":ExtResource( 42 ) }
+samples/demonic = { "db":0.0, "pitch":1.0, "sample":ExtResource( 44 ) }
 
 [sub_resource type="Animation" id=25]
 
@@ -280,6 +283,17 @@ tracks/1/type = "value"
 tracks/1/path = NodePath("playercontainer:visibility/opacity")
 tracks/1/interp = 1
 tracks/1/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ 1.0, 0.0 ] }
+
+[sub_resource type="Animation" id=32]
+
+resource/name = "loading"
+length = 0.6
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("gui/CanvasLayer/loading/text:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.3, 0.6 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ 1.0, 0.5, 1.0 ] }
 
 [sub_resource type="Animation" id=26]
 
@@ -304,7 +318,6 @@ __meta__ = { "__editor_plugin_screen__":"2D" }
 [node name="level" type="Node2D" parent="."]
 
 process/pause_mode = 1
-visibility/opacity = 0.0
 __meta__ = { "_edit_lock_":true }
 
 [node name="LVL_CATACOMB" parent="level" instance=ExtResource( 2 )]
@@ -312,7 +325,6 @@ __meta__ = { "_edit_lock_":true }
 [node name="playercontainer" type="Node2D" parent="."]
 
 process/pause_mode = 1
-visibility/opacity = 0.0
 __meta__ = { "_edit_lock_":true }
 
 [node name="gui" type="Node2D" parent="."]
@@ -341,6 +353,7 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 script/script = ExtResource( 3 )
+__meta__ = { "_editor_collapsed":true }
 
 [node name="SpellIcons" type="Node2D" parent="gui/CanvasLayer/hud"]
 
@@ -1115,6 +1128,53 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
+[node name="loading" type="Control" parent="gui/CanvasLayer"]
+
+margin/right = 40.0
+margin/bottom = 40.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[node name="TextureFrame" type="TextureFrame" parent="gui/CanvasLayer/loading"]
+
+margin/right = 800.0
+margin/bottom = 592.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+texture = ExtResource( 39 )
+modulate = Color( 0.28125, 0.28125, 0.28125, 1 )
+expand = true
+
+[node name="text" type="Label" parent="gui/CanvasLayer/loading"]
+
+visibility/opacity = 0.522959
+margin/top = 544.0
+margin/right = 768.0
+margin/bottom = 575.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 17 )
+text = "KEY_LOADING"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="bat" parent="gui/CanvasLayer/loading" instance=ExtResource( 40 )]
+
+transform/pos = Vector2( 720, 464 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="cat" parent="gui/CanvasLayer/loading" instance=ExtResource( 41 )]
+
+transform/pos = Vector2( 704, 488 )
+transform/scale = Vector2( 0.75, 0.75 )
+
 [node name="sound" type="SamplePlayer" parent="gui"]
 
 config/polyphony = 1
@@ -1134,7 +1194,7 @@ default/chorus_send = 0.0
 
 [node name="music" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 42 )
+stream/stream = ExtResource( 45 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0
@@ -1149,6 +1209,7 @@ playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
 anims/hide = SubResource( 25 )
+anims/loading = SubResource( 32 )
 anims/show = SubResource( 26 )
 playback/active = true
 playback/speed = 1.0

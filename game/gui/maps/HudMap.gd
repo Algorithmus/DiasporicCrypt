@@ -7,6 +7,7 @@ var unit_class = preload("res://gui/maps/unit.tscn")
 const MAP_SCALE = 0.05
 var objects
 var current_teleport
+var previous_id
 var camera
 var offset
 var current_map
@@ -14,7 +15,7 @@ var rooms = {}
 #256, 176
 func _ready():
 	if (!Globals.has("mapid")):
-		Globals.set("mapid", "LVL_SANDBOX") # this should eventually be the training level by default
+		Globals.set("mapid", "LVL_START")
 	objects = get_node("objects")
 	set_fixed_process(true)
 	offset = Vector2(get_polygon()[1].x/2.0, get_polygon()[2].y/2.0)
@@ -59,6 +60,8 @@ func load_cached_map(root_node):
 	load_map(root_node)
 
 func cache_map():
+	print("cache map")
+	print(Globals.get("mapid"))
 	if (!Globals.has("mapobjects")):
 		Globals.set("mapobjects", {})
 	Globals.get("mapobjects")[Globals.get("mapid")] = objects.duplicate()
@@ -76,7 +79,7 @@ func create_map(root_node):
 	var current_node
 	# position room relative to previous room if there is one
 	if (current_teleport != null):
-		previous_node = current_teleport.get_parent().get_parent().get_parent().get_filename()
+		previous_node = previous_id
 	# mark exits in room
 	var teleports = root_node.get_node("tilemap/TeleportGroup")
 	for teleport in teleports.get_children():
@@ -101,3 +104,5 @@ func create_map(root_node):
 		unit.set_pos(Vector2(previous_node_pos.x + previous_node_teleport.x - current_node_teleport.x, previous_node_pos.y + previous_node_teleport.y - current_node_teleport.y))
 	objects.add_child(unit)
 	rooms[root_node.get_filename()] = unit
+	print("save room to")
+	print(root_node.get_filename())

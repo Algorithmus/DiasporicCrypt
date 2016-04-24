@@ -54,6 +54,11 @@ var keymap = preload("res://gui/KeyboardCharacters.gd").new()
 
 var chainlist = {"chop": false, "slice": false, "skewer": false, "stab": false, "thrust": false, "swift": false, "dualspin": false, "void": false, "rush": false}
 
+var loading
+var loader
+var wait_frames
+var teleport_params = []
+
 func _ready():
 	# Initialization here
 	var magic_spells = [{"id": "thunder", "type": "thunder", "mp": 40, "auracolor": Color(1, 1, 1), "weaponcolor1": Color(1, 247/255.0, 138/255.0), "weaponcolor2": Color(0, 116/255.0, 1), "is_single": false, "charge": preload("res://players/magic/thunder/charge.tscn"), "attack": preload("res://players/magic/thunder/thunder.tscn"), "delay": true, "atk": 0.8}, 
@@ -115,6 +120,8 @@ func _ready():
 	select.get_node("adela_sprite/AnimationPlayer").play("idle")
 	fspriteOffset = Vector2(select.get_node("friederich_sprite").get_pos().x, original_size.y - select.get_node("friederich_sprite").get_pos().y)
 	aspriteOffset = Vector2(original_size.x - select.get_node("adela_sprite").get_pos().x, original_size.y - select.get_node("adela_sprite").get_pos().y)
+	loading = get_node("gui/CanvasLayer/loading")
+	loading.hide()
 	select.show()
 	is_paused = true
 	get_tree().set_pause(is_paused)
@@ -418,7 +425,7 @@ func reset():
 	hide_choice()
 	map.reset()
 	Globals.set("chain", chainlist)
-	Globals.set("mapid", "LVL_SANDBOX")
+	Globals.set("mapid", "LVL_START")
 	sequences.get_node("demonic/sprite/friederich").hide()
 	sequences.get_node("demonic/sprite/adela").hide()
 	get_node("gui/CanvasLayer/chain/chaintext").hide()
@@ -452,14 +459,42 @@ func connect_catacombs(level):
 
 func teleport(new_level, pos, teleport):
 	Globals.set("show_blood_counter", false)
-	var new_level_obj = load(new_level).instance()
+	teleport_params = [new_level, pos, teleport.duplicate()]
+	var level = get_node("level").get_child(0)
+	map.set("previous_id", level.get_filename())
+	#var new_level_obj = load(new_level).instance()
+	loader = ResourceLoader.load_interactive(new_level)
+	if (loader == null):
+		print("error loading resource: " + new_level)
+		return
+	set_process(true)
+	
+	level.queue_free()
+	
+	loading.show()
+	if (Globals.get("player") == "friederich"):
+		loading.get_node("bat").show()
+		loading.get_node("cat").hide()
+	else:
+		loading.get_node("cat").show()
+		loading.get_node("bat").hide()
+	get_node("AnimationPlayer").play("loading")
+	
+	get_tree().set_pause(true)
+	
+	wait_frames = 1
+
+func do_teleport(resource, new_level, pos, teleport):
+	get_tree().set_pause(false)
+	var new_level_obj = resource.instance()
+	new_level_obj.set_filename(new_level)
 	var level_title_string = new_level_obj.get_name()
 	map.set("current_teleport", teleport)
 	map.load_map(new_level_obj)
 	var level = get_node("level")
-	var old_level = level.get_child(0)
+	#var old_level = level.get_child(0)
 	#level.remove_child(old_level)
-	old_level.queue_free()
+	#old_level.queue_free()
 	level.add_child(new_level_obj)
 	var player = get_node("playercontainer/player")
 	player.load_tilemap(new_level_obj)
@@ -502,6 +537,38 @@ func teleport(new_level, pos, teleport):
 			else:
 				specialgroup.get_child(0).queue_free()
 	Globals.set("sun", false)
+
+func _process(delta):
+	if (loader == null):
+		loading.hide()
+		get_node("AnimationPlayer").stop()
+		set_process(false)
+		return
+	
+	if (wait_frames > 0):
+		wait_frames -= 1
+		return
+	
+	var t = OS.get_ticks_msec()
+	while (OS.get_ticks_msec() < t + 100 && loader != null):
+		var err = loader.poll()
+		
+		if (err == ERR_FILE_EOF):
+			var resource = loader.get_resource()
+			loader = null
+			do_teleport(resource, teleport_params[0], teleport_params[1], teleport_params[2])
+		elif (err == OK):
+			update_progress()
+		else:
+			print("error loading resource: " + teleport_params[0])
+			loader = null
+			break
+
+func update_progress():
+	pass
+	#var progress = float(loader.get_stage()) / loader.get_stage_count()
+	#var bat = loading.get_node("bat")
+	#bat.set_pos(Vector2(progress * 720 + 40, bat.get_pos().y))
 
 func sequence_finished():
 	sequences.get_node("demonic").hide()
