@@ -32,3 +32,10 @@ func _init():
 	colosseum1.id = "LVL_COLOSSEUM"
 	colosseum1.bgm = preload("res://levels/common/BGM1.ogg")
 	locations[colosseum1.id] = colosseum1
+	
+	var lavacave = locationclass.new()
+	lavacave.node = "res://levels/lavacave/0-0.tscn"
+	lavacave.teleportto = Vector2(-16, 128)
+	lavacave.id = "LVL_LAVACAVE"
+	lavacave.bgm = preload("res://levels/common/BGM1.ogg")
+	locations[lavacave.id] = lavacave

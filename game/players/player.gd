@@ -214,7 +214,7 @@ func check_damage(damageTiles):
 
 	if (!invulnerable && !is_transforming && shield == null):
 		for i in damageTiles:
-			if (i.get_name() == "damagable" || (i.get_name() == "sunbeam" && !is_demonic)):
+			if (i.get_name() == "damagable" || (i.get_name() == "sunbeam" && !is_demonic) || i.get_name() == "lava"):
 				var damage = 0
 				if (i.get_name() == "damagable"):
 					damage = max(get_def_adjusted_damage(hp * 0.075), 0)
@@ -222,6 +222,8 @@ func check_damage(damageTiles):
 						damage = max(get_def_adjusted_damage(get_atk_adjusted_damage(i.get_parent().get("atk"), null)), 0)
 				elif (i.get_name() == "sunbeam"):
 					damage = max(get_def_adjusted_damage(hp * 0.1), 0)
+				elif (i.get_name() == "lava"):
+					damage = max(get_def_adjusted_damage(hp * 0.01), 0)
 				current_hp = max(current_hp - damage, 0)
 				if (damage > 0):
 					var hp_obj = hpclass.instance()

@@ -18,6 +18,55 @@ func _init():
 	amulet.image = "res://scenes/items/special/amulet.png"
 	items[amulet.title] = amulet
 	
+	var rubykey = itemclass.new()
+	rubykey.title = "ITEM_RUBYKEY"
+	rubykey.description = "ITEM_RUBYKEY_DESCRIPTION"
+	rubykey.type = "special"
+	rubykey.image = "res://scenes/items/special/rubykey.png"
+	items[rubykey.title] = rubykey
+	
+	var emeraldkey = itemclass.new()
+	emeraldkey.title = "ITEM_EMERALDKEY"
+	emeraldkey.description = "ITEM_EMERALDKEY_DESCRIPTION"
+	emeraldkey.type = "special"
+	emeraldkey.image = "res://scenes/items/special/emeraldkey.png"
+	items[emeraldkey.title] = emeraldkey
+	
+	var sapphirekey = itemclass.new()
+	sapphirekey.title = "ITEM_SAPPHIREKEY"
+	sapphirekey.description = "ITEM_SAPPHIREKEY_DESCRIPTION"
+	sapphirekey.type = "special"
+	sapphirekey.image = "res://scenes/items/special/sapphirekey.png"
+	items[sapphirekey.title] = sapphirekey
+	
+	var diamondkey = itemclass.new()
+	diamondkey.title = "ITEM_DIAMONDKEY"
+	diamondkey.description = "ITEM_DIAMONDKEY_DESCRIPTION"
+	diamondkey.type = "special"
+	diamondkey.image = "res://scenes/items/special/diamondkey.png"
+	items[diamondkey.title] = diamondkey
+	
+	var topazkey = itemclass.new()
+	topazkey.title = "ITEM_TOPAZKEY"
+	topazkey.description = "ITEM_TOPAZKEY_DESCRIPTION"
+	topazkey.type = "special"
+	topazkey.image = "res://scenes/items/special/topazkey.png"
+	items[topazkey.title] = topazkey
+	
+	var peridotkey = itemclass.new()
+	peridotkey.title = "ITEM_PERIDOTKEY"
+	peridotkey.description = "ITEM_PERIDOTKEY_DESCRIPTION"
+	peridotkey.type = "special"
+	peridotkey.image = "res://scenes/items/special/peridotkey.png"
+	items[peridotkey.title] = peridotkey
+	
+	var amethystkey = itemclass.new()
+	amethystkey.title = "ITEM_AMETHYSTKEY"
+	amethystkey.description = "ITEM_AMETHYSTKEY_DESCRIPTION"
+	amethystkey.type = "special"
+	amethystkey.image = "res://scenes/items/special/amethystkey.png"
+	items[amethystkey.title] = amethystkey
+	
 	var potion = itemclass.new()
 	potion.title = "ITEM_POTION"
 	potion.description = "ITEM_POTION_DESCRIPTION"

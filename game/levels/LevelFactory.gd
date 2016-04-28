@@ -38,7 +38,7 @@ func _init():
 	lavacave.position = Vector2(432, 352)
 	lavacave.description = "LVL_LAVACAVE_DESCRIPTION"
 	lavacave.reward = 10000
-	lavacave.location = locationfactory.locations["LVL_SANDBOX"]
+	lavacave.location = locationfactory.locations["LVL_LAVACAVE"]
 	levels[lavacave.title] = lavacave
 	
 	var manor = levelclass.new()

@@ -4,7 +4,6 @@
 [ext_resource path="res://scenes/dungeon/climbableblock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/dungeon/movingplatform/movingplatform.png" type="Texture" id=3]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
@@ -14,6 +13,7 @@ extents = Vector2( 32, 16 )
 
 script/script = ExtResource( 1 )
 __meta__ = { "__editor_plugin_screen__":"Script" }
+is_climbable = true
 
 [node name="enabler" type="VisibilityEnabler2D" parent="."]
 

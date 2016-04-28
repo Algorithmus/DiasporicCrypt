@@ -14,6 +14,7 @@ var camera
 var accel = 0
 var dormant_duration = 200
 var current_dormant_duration = 0
+export var is_climbable = true
 
 func _fixed_process(delta):
 	if (camera == null):
@@ -23,10 +24,12 @@ func _fixed_process(delta):
 		var space_state = Physics2DServer.space_get_direct_state(space)
 		var collisions = space_state.intersect_ray(Vector2(lOffset + get_global_pos().x - 16, get_global_pos().y - 18), Vector2(rOffset + get_global_pos().x + 16, get_global_pos().y - 18), [self, get_node("Area2D")], 2147483647, 16)
 		if (collisions.has("collider") && collisions["collider"].get_name() == "damage"):
-			current_duration += 1
-			if (current_duration >= platform_duration):
-				current_duration = 0
-				state = "falling"
+			var player = collisions["collider"]
+			if (is_climbable || (!is_climbable && player.get_global_pos().y + player.get_parent().sprite_offset.y <= get_global_pos().y - 16)):
+				current_duration += 1
+				if (current_duration >= platform_duration):
+					current_duration = 0
+					state = "falling"
 	elif (state == "falling"):
 		accel += 1
 		blockL.set_global_pos(Vector2(blockL.get_global_pos().x, blockL.get_global_pos().y + accel))
@@ -64,6 +67,9 @@ func _ready():
 	blockR = get_node("blockR")
 	climbableL = blockL.get_node("climbable")
 	climbableR = blockR.get_node("climbable")
+	if (!is_climbable):
+		blockL.get_node("climbable").set_name("CollisionShape2D")
+		blockR.get_node("climbable").set_name("CollisionShape2D")
 	lOffset = blockL.get_pos().x
 	rOffset = blockR.get_pos().x
 

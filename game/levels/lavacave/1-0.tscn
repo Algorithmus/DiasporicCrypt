@@ -1,0 +1,146 @@
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://scenes/dungeon/debugtiles.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/lavacave/boss/firedragon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/common/fluid/lava.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/dungeon/fallingplatform/fallingplatform.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/dungeon/movingplatform/movingplatform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/lavacave/sensor.gd" type="Script" id=6]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[node name="LVL_NOTITLE" type="Node2D"]
+
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -1441799, 1073741862, -1441798, 1073741862, -1441797, 1073741862, -1441796, 1073741862, -1441795, 1073741862, -1441794, 1073741862, -1441793, 1073741862, -1507328, 1073741862, -1507327, 1073741862, -1507326, 1073741862, -1507325, 1073741862, -1507324, 1073741862, -1507323, 1073741862, -1507322, 1073741862, -1507321, 1073741862, -1507320, 1073741862, -1507319, 1073741862, -1507318, 1073741862, -1507317, 1073741862, -1507316, 1073741862, -1507315, 1073741862, -1507314, 1073741862, -1507313, 1073741862, -1507312, 1073741862, -1507311, 1073741862, -1507310, 1073741862, -1507309, 1073741862, -1507308, 1073741862, -1507307, 1073741862, -1507306, 1073741862, -1507305, 1073741862, -1507304, 1073741862, -1507303, 1073741862, -1507302, 1073741862, -1507301, 1073741862, -1507300, 1073741862, -1507299, 1073741862, -1507298, 1073741862, -1507297, 1073741862, -1507296, 1073741862, -1507295, 1073741862, -1507294, 1073741862, -1507293, 1073741862, -1507292, 1073741862, -1507291, 1073741862, -1507290, 1073741862, -1507289, 1073741862, -1507288, 1073741862, -1507287, 1073741862, -1507286, 1073741862, -1507285, 1073741862, -1376263, 14, -1441749, 14, -1310727, 14, -1376213, 14, -1245191, 14, -1310677, 14, -1179655, 14, -1245141, 14, -1114119, 14, -1179605, 14, -1048583, 14, -1114069, 14, -983047, 14, -1048533, 14, -982997, 14, -917461, 14, -851925, 14, -786389, 14, -720853, 14, -589831, 13, -655317, 14, -524295, 14, -589781, 14, -458759, 14, -524245, 14, -393223, 14, -458709, 14, -327687, 14, -393173, 14, -262151, 14, -327637, 14, -196615, 14, -262101, 14, -131079, 14, -196565, 14, -65543, 14, -131029, 14, -7, 14, -65493, 14, 65529, 14, 43, 14, 131065, 14, 65579, 14, 196601, 14, 131115, 14, 262137, 14, 196651, 14, 327673, 14, 262187, 14, 393209, 38, 393210, 38, 393211, 38, 393212, 38, 393213, 38, 393214, 38, 393215, 38, 327680, 38, 327681, 38, 327682, 38, 327683, 38, 327684, 38, 327685, 38, 327686, 38, 327687, 38, 327688, 38, 327689, 38, 327690, 38, 327691, 38, 327692, 38, 327693, 38, 327694, 38, 327695, 38, 327696, 38, 327697, 38, 327698, 38, 327699, 38, 327700, 38, 327701, 38, 327702, 38, 327703, 38, 327704, 38, 327705, 38, 327706, 38, 327707, 38, 327708, 38, 327709, 38, 327710, 38, 327711, 38, 327712, 38, 327713, 38, 327714, 38, 327715, 38, 327716, 38, 327717, 38, 327718, 38, 327719, 38, 327720, 38, 327721, 38, 327722, 38, 327723, 38 )
+
+[node name="BossGroup" type="Node2D" parent="tilemap"]
+
+[node name="FireDragon" parent="tilemap/BossGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 608, -432 )
+
+[node name="LavaGroup" type="Node2D" parent="tilemap"]
+
+[node name="LavaSurface" parent="tilemap/LavaGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 592, 112 )
+
+[node name="Sprite" parent="tilemap/LavaGroup/LavaSurface"]
+
+region = true
+region_rect = Rect2( 0, 0, 1568, 96 )
+
+[node name="lava" parent="tilemap/LavaGroup/LavaSurface"]
+
+transform/scale = Vector2( 49, 3 )
+linear_damp = 0.1
+
+[node name="GateGroup" type="Node2D" parent="tilemap"]
+
+[node name="FallingPlatformGroup" type="Node2D" parent="tilemap"]
+
+__meta__ = { "_editor_collapsed":true }
+
+[node name="FallingPlatform" parent="tilemap/FallingPlatformGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 32, 48 )
+is_climbable = false
+
+[node name="FallingPlatform1" parent="tilemap/FallingPlatformGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 240, 48 )
+is_climbable = false
+
+[node name="FallingPlatform2" parent="tilemap/FallingPlatformGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 448, 48 )
+is_climbable = false
+
+[node name="MovingPlatformGroup" type="Node2D" parent="tilemap"]
+
+__meta__ = { "_editor_collapsed":true }
+
+[node name="MovingPlatform" parent="tilemap/MovingPlatformGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 272, -240 )
+motion = Vector2( 192, 0 )
+cycle = 3.0
+
+[node name="MovingPlatform1" parent="tilemap/MovingPlatformGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -96, -208 )
+motion = Vector2( 0, 64 )
+cycle = 5.0
+
+[node name="SensorGroup" type="Node2D" parent="tilemap"]
+
+[node name="sensor" type="Area2D" parent="tilemap/SensorGroup"]
+
+transform/pos = Vector2( -112, -272 )
+transform/scale = Vector2( 1, 27 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tilemap/SensorGroup/sensor"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+__meta__ = { "_editor_collapsed":true }
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( -240, -400 )
+target_level = "res://levels/lavacave/0-0.tscn"
+teleport_to = Vector2( 652, 16 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+
+transform/scale = Vector2( 1, 5 )
+linear_damp = 0.1
+
+[node name="boundaries" type="Node2D" parent="tilemap"]
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( -230, -742 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( 1418, 202 )
+
+
+[editable path="tilemap/LavaGroup/LavaSurface"]
+[editable path="tilemap/TeleportGroup/Teleport"]

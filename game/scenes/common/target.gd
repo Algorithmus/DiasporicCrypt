@@ -13,12 +13,15 @@ var blood = preload("res://scenes/common/blood.tscn")
 var blood_particles = []
 var sprite_offset
 var current_animation = "idle"
+var dying = false
 var animation_player
 var frozen = false
 const FREEZE_DELAY = 300
 var freeze_counter = 0
 var freezeblock = preload("res://scenes/common/iceblock.tscn")
 var freezeblock_obj
+var elemental_weaknesses = []
+var elemental_protection = []
 
 func _ready():
 	collision_rect = get_node("collision")
@@ -43,6 +46,8 @@ func calculate_atk_value(obj):
 	else:
 		return player.get_node("player").get("mag")
 
+func check_hp(damage):
+	pass
 
 func _fixed_process(delta):
 	var new_animation = current_animation
@@ -57,12 +62,12 @@ func _fixed_process(delta):
 			damage_flash = false
 	get_node("Sprite").set_modulate(color)
 	"""
-	if (current_delay == 0 && !frozen):
+	if (current_delay == 0 && !frozen && !dying):
+		var player_obj = player.get_node("player")
 		var damageTiles = collision_rect.get_overlapping_areas()
 		for i in damageTiles:
 			var collider
 			var damage = 0
-			var player_obj = player.get_node("player")
 			if (i.has_node("weapon")):
 				var type = i.get("type")
 				collider = i.get_node("weapon")
@@ -70,7 +75,7 @@ func _fixed_process(delta):
 				var special_factor = 1
 				if (i.get("atk")):
 					special_factor = i.get("atk")
-				var atk_adjusted = player_obj.get_atk_adjusted_damage(player_obj.get("atk")*special_factor, type)
+				var atk_adjusted = get_atk_adjusted_damage(player_obj.get("atk")*special_factor, type)
 				var critical = player_obj.get_critical_bonus(atk_adjusted)
 				damage = max(atk_adjusted + critical, 0)
 
@@ -95,11 +100,12 @@ func _fixed_process(delta):
 				var hp = i.get_parent().get("hp")
 				if (hp != null):
 					i.get_parent().set("hp", hp - 1)
-				damage = max(player_obj.get_atk_adjusted_damage(calculate_atk_value(i), type), 0)
-			if (collider != null):
+				damage = max(get_atk_adjusted_damage(calculate_atk_value(i), type), 0)
+			if (collider != null && damage > 0):
 				var hp = hpclass.instance()
 				hud.add_child(hp)
 				bleed()
+				check_hp(damage)
 				var hitpos = hp.calculate_hitpos(i.get_global_pos(), collider.get_shape().get_extents(), get_global_pos(), sprite_offset)
 				#TODO - calculate damage
 				hp.display_damage(hitpos, damage)
@@ -138,11 +144,24 @@ func _fixed_process(delta):
 	if (current_animation == "hurt" && animation_player.get_current_animation_pos() == animation_player.get_current_animation_length()):
 		new_animation = "idle"
 
+	update_animation(new_animation)
+
+func update_animation(new_animation):
 	if (current_animation != new_animation):
 		current_animation = new_animation
 		animation_player.play(current_animation)
 	if (frozen):
 		animation_player.stop()
+
+func get_atk_adjusted_damage(damage, type):
+	# calculate effects of elemental weaknesses/immunity
+	var elemental_constant = 1
+	if (elemental_weaknesses.find(type) >= 0):
+		elemental_constant = 1.5
+	if (elemental_protection.find(type) >= 0):
+		elemental_constant = 0
+	
+	return round(elemental_constant * (damage * 2 + randf()*0.1*damage))
 
 func enter_screen():
 	set_fixed_process(true)

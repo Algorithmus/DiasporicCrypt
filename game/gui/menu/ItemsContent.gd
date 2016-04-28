@@ -26,8 +26,6 @@ func _ready():
 	add_child(sfx)
 
 func update_container():
-	print("update container")
-	print(currenttype)
 	var list = Globals.get("inventory").generate_list(currenttype)
 	set_type_colors()
 	for item in list:

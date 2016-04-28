@@ -64,7 +64,7 @@ func get_atk_adjusted_damage(damage, type):
 	if (elemental_protection.find(type) >= 0):
 		elemental_constant = 0
 	
-	return round(damage * 2 * elemental_constant + randf()*0.1*damage)
+	return round(elemental_constant * (damage * 2 + randf()*0.1*damage))
 
 func min_array(array):
 	if (array.size() == 1):
@@ -230,7 +230,7 @@ func check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space
 func check_underwater(areaTiles):
 	var watertile = false
 	for i in areaTiles:
-		if (i.get_name() == "water"):
+		if (i.get_name() == "water" || i.get_name() == "lava"):
 			watertile = true
 			if (i.get_global_pos().y - TILE_SIZE * i.get_scale().y/2 <= get_pos().y - sprite_offset.y):
 				if (!underwater && has_node("sound") && get_node("sound").get_sample_library().has_sample("splash_down")):

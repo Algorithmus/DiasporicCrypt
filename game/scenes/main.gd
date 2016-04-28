@@ -58,6 +58,7 @@ var loading
 var loader
 var wait_frames
 var teleport_params = []
+var currentevent
 
 func _ready():
 	# Initialization here
@@ -203,8 +204,10 @@ func _input(event):
 		skipevent = true
 	elif(skipevent):
 		skipevent = false
-		end_warp_animation()
-		end_restore_animation()
+		if (currentevent == "warp"):
+			end_warp_animation()
+		elif (currentevent == "restore"):
+			end_restore_animation()
 
 func toggle_eventmode(value):
 	Globals.set("eventmode", value)
@@ -229,6 +232,7 @@ func toggle_eventmode(value):
 		canvas.get_node("level").show()
 
 func restore_animation():
+	currentevent = "restore"
 	var canvas = get_node("gui/CanvasLayer")
 	get_tree().set_pause(false)
 	if (!Globals.get("eventmode")):
@@ -261,6 +265,7 @@ func end_restore_animation():
 	sequences.hide()
 
 func warp_animation():
+	currentevent = "warp"
 	var canvas = get_node("gui/CanvasLayer")
 	var worldmap = canvas.get_node("WorldMap")
 	canvas.remove_child(worldmap)
@@ -457,6 +462,7 @@ func connect_catacombs(level):
 	new_teleport.target_level = map.location.node
 	new_teleport.teleport_to = map.location.teleportto
 
+# load new level
 func teleport(new_level, pos, teleport):
 	Globals.set("show_blood_counter", false)
 	teleport_params = [new_level, pos, teleport.duplicate()]
@@ -480,10 +486,12 @@ func teleport(new_level, pos, teleport):
 		loading.get_node("bat").hide()
 	get_node("AnimationPlayer").play("loading")
 	
+	#stop player processing
 	get_tree().set_pause(true)
 	
 	wait_frames = 1
 
+# handle loaded level
 func do_teleport(resource, new_level, pos, teleport):
 	get_tree().set_pause(false)
 	var new_level_obj = resource.instance()
@@ -538,6 +546,7 @@ func do_teleport(resource, new_level, pos, teleport):
 				specialgroup.get_child(0).queue_free()
 	Globals.set("sun", false)
 
+# background loading
 func _process(delta):
 	if (loader == null):
 		loading.hide()
@@ -565,10 +574,8 @@ func _process(delta):
 			break
 
 func update_progress():
-	pass
-	#var progress = float(loader.get_stage()) / loader.get_stage_count()
-	#var bat = loading.get_node("bat")
-	#bat.set_pos(Vector2(progress * 720 + 40, bat.get_pos().y))
+	var progress = float(loader.get_stage()) / loader.get_stage_count()
+	loading.get_node("text").set_text(tr("KEY_LOADING") + " " + str(int(progress * 100)) + "%")
 
 func sequence_finished():
 	sequences.get_node("demonic").hide()
