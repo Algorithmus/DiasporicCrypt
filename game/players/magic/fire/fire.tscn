@@ -17,8 +17,8 @@ extents = Vector2( 16, 16 )
 
 [sub_resource type="SampleLibrary" id=3]
 
-samples/charge = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
 samples/fire = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
+samples/charge = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
 
 [node name="Fire" type="Node2D"]
 

@@ -83,8 +83,17 @@ func create_map(root_node):
 	# mark exits in room
 	var teleports = root_node.get_node("tilemap/TeleportGroup")
 	for teleport in teleports.get_children():
+		# check if the exit links to the previous room
 		if (previous_node != null && teleport.get("target_level") == previous_node):
-			current_node = teleport
+			var isCorrectTeleport = false
+			# there may be multiple exits linking to the previous room
+			# so check position as well
+			if (teleport.get("is_horizontal")):
+				isCorrectTeleport = current_teleport.get("teleport_to").y == teleport.get_global_pos().y
+			else:
+				isCorrectTeleport = current_teleport.get("teleport_to").x == teleport.get_global_pos().x
+			if (isCorrectTeleport):
+				current_node = teleport
 		var gate = Polygon2D.new()
 		gate.set_color(Color(1, 0, 0))
 		var scale = teleport.get_node("teleport").get_scale()

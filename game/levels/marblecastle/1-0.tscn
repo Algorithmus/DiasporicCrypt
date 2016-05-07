@@ -1,0 +1,253 @@
+[gd_scene load_steps=16 format=1]
+
+[ext_resource path="res://scenes/dungeon/debugtiles.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/marblecastle/boss/statue.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/marblecastle/boss/soprano.png" type="Texture" id=3]
+[ext_resource path="res://scenes/marblecastle/boss/sopranoline.png" type="Texture" id=4]
+[ext_resource path="res://scenes/marblecastle/boss/sopranorubble.png" type="Texture" id=5]
+[ext_resource path="res://scenes/marblecastle/boss/alto.png" type="Texture" id=6]
+[ext_resource path="res://scenes/marblecastle/boss/altoline.png" type="Texture" id=7]
+[ext_resource path="res://scenes/marblecastle/boss/altorubble.png" type="Texture" id=8]
+[ext_resource path="res://scenes/marblecastle/boss/tenor.png" type="Texture" id=9]
+[ext_resource path="res://scenes/marblecastle/boss/tenorline.png" type="Texture" id=10]
+[ext_resource path="res://scenes/marblecastle/boss/tenorrubble.png" type="Texture" id=11]
+[ext_resource path="res://scenes/marblecastle/boss/statuehead.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/marblecastle/sensor.gd" type="Script" id=13]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=14]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[node name="LVL_NOTITLE" type="Node2D"]
+
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -1638432, 1073741862, -1638431, 1073741862, -1638430, 1073741862, -1638429, 1073741862, -1638428, 1073741862, -1638427, 1073741862, -1638426, 1073741862, -1638425, 1073741862, -1638424, 1073741862, -1638423, 1073741862, -1638422, 1073741862, -1638421, 1073741862, -1638420, 1073741862, -1638419, 1073741862, -1638418, 1073741862, -1638417, 1073741862, -1638416, 1073741862, -1638415, 1073741862, -1638414, 1073741862, -1638413, 1073741862, -1638412, 1073741862, -1638411, 1073741862, -1638410, 1073741862, -1638409, 1073741862, -1638408, 1073741862, -1638407, 1073741862, -1572896, 1073741838, -1572871, 1073741838, -1507360, 1073741838, -1507335, 1073741838, -1441824, 1073741838, -1441799, 1073741838, -1376288, 1073741838, -1376263, 1073741838, -1310752, 1073741838, -1310727, 1073741838, -1245216, 1073741838, -1245191, 1073741838, -1179680, 1073741838, -1179655, 1073741838, -1114144, 1073741838, -1114119, 1073741838, -1048608, 1073741838, -1048583, 1073741838, -983072, 1073741838, -983047, 1610612749, -917536, 1073741838, -852000, 1073741838, -786464, 1073741838, -720928, 1073741838, -655392, 1073741838, -589856, 536870925, -589855, 38, -589854, 38, -589853, 38, -589852, 38, -589851, 38, -589850, 38, -589849, 38, -589848, 38, -589847, 38, -589846, 38, -589845, 38, -589844, 38, -589843, 38, -589842, 38, -589841, 38, -589840, 38, -589839, 38, -589838, 38, -589837, 38, -589836, 38, -589835, 38, -589834, 38, -589833, 38, -589832, 38, -589831, 13, -524320, 14, -524319, 1073741859, -524318, 1073741859, -524317, 35, -524316, 35, -524315, 35, -524314, 35, -524313, 35, -524312, 35, -524311, 35, -524310, 35, -524309, 35, -524308, 35, -524307, 35, -524306, 35, -524305, 35, -524304, 35, -524303, 35, -524302, 35, -524301, 35, -524300, 35, -524299, 35, -524298, 35, -524297, 35, -524296, 35, -524295, 14, -458784, 14, -458783, 1073741859, -458782, 1073741859, -458781, 35, -458780, 35, -458779, 35, -458778, 35, -458777, 35, -458776, 35, -458775, 35, -458774, 35, -458773, 35, -458772, 35, -458771, 35, -458770, 35, -458769, 35, -458768, 35, -458767, 35, -458766, 35, -458765, 35, -458764, 35, -458763, 35, -458762, 35, -458761, 35, -458760, 35, -458759, 14, -393248, 14, -393247, 1073741859, -393246, 1073741859, -393245, 35, -393244, 35, -393243, 35, -393242, 35, -393241, 35, -393240, 35, -393239, 35, -393238, 35, -393237, 35, -393236, 35, -393235, 35, -393234, 35, -393233, 35, -393232, 35, -393231, 35, -393230, 35, -393229, 35, -393228, 35, -393227, 35, -393226, 35, -393225, 35, -393224, 35, -393223, 14 )
+
+[node name="StatueGroup" type="Node2D" parent="tilemap"]
+
+[node name="soprano" parent="tilemap/StatueGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -896, -640 )
+
+[node name="Sprite" parent="tilemap/StatueGroup/soprano"]
+
+texture = ExtResource( 3 )
+
+[node name="line" parent="tilemap/StatueGroup/soprano"]
+
+visibility/opacity = 1.0
+texture = ExtResource( 4 )
+modulate = Color( 0, 0.859375, 1, 1 )
+
+[node name="rubble" parent="tilemap/StatueGroup/soprano"]
+
+texture = ExtResource( 5 )
+
+[node name="dust" parent="tilemap/StatueGroup/soprano"]
+
+color/color = Color( 0.815686, 0.847059, 0.905882, 1 )
+
+[node name="dust1" parent="tilemap/StatueGroup/soprano"]
+
+color/color = Color( 0.815686, 0.847059, 0.905882, 1 )
+
+[node name="dust2" parent="tilemap/StatueGroup/soprano"]
+
+color/color = Color( 0.815686, 0.847059, 0.905882, 1 )
+
+[node name="dust3" parent="tilemap/StatueGroup/soprano"]
+
+color/color = Color( 0.815686, 0.847059, 0.905882, 1 )
+
+[node name="dust4" parent="tilemap/StatueGroup/soprano"]
+
+color/color = Color( 0.815686, 0.847059, 0.905882, 1 )
+
+[node name="explode" parent="tilemap/StatueGroup/soprano"]
+
+color/color = Color( 0.815686, 0.847059, 0.905882, 1 )
+
+[node name="collision" parent="tilemap/StatueGroup/soprano"]
+
+visibility/visible = true
+
+[node name="alto" parent="tilemap/StatueGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -736, -640 )
+
+[node name="Sprite" parent="tilemap/StatueGroup/alto"]
+
+texture = ExtResource( 6 )
+
+[node name="line" parent="tilemap/StatueGroup/alto"]
+
+visibility/opacity = 1.0
+texture = ExtResource( 7 )
+modulate = Color( 0.828125, 0, 1, 1 )
+
+[node name="rubble" parent="tilemap/StatueGroup/alto"]
+
+texture = ExtResource( 8 )
+
+[node name="dust" parent="tilemap/StatueGroup/alto"]
+
+color/color = Color( 0.611765, 0.54902, 0.635294, 1 )
+
+[node name="dust1" parent="tilemap/StatueGroup/alto"]
+
+color/color = Color( 0.611765, 0.54902, 0.635294, 1 )
+
+[node name="dust2" parent="tilemap/StatueGroup/alto"]
+
+color/color = Color( 0.611765, 0.54902, 0.635294, 1 )
+
+[node name="dust3" parent="tilemap/StatueGroup/alto"]
+
+color/color = Color( 0.611765, 0.54902, 0.635294, 1 )
+
+[node name="dust4" parent="tilemap/StatueGroup/alto"]
+
+color/color = Color( 0.611765, 0.54902, 0.635294, 1 )
+
+[node name="explode" parent="tilemap/StatueGroup/alto"]
+
+color/color = Color( 0.611765, 0.54902, 0.635294, 1 )
+
+[node name="collision" parent="tilemap/StatueGroup/alto"]
+
+visibility/visible = true
+
+[node name="tenor" parent="tilemap/StatueGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -576, -640 )
+
+[node name="Sprite" parent="tilemap/StatueGroup/tenor"]
+
+texture = ExtResource( 9 )
+
+[node name="line" parent="tilemap/StatueGroup/tenor"]
+
+visibility/opacity = 1.0
+texture = ExtResource( 10 )
+modulate = Color( 0, 1, 0.414062, 1 )
+
+[node name="rubble" parent="tilemap/StatueGroup/tenor"]
+
+texture = ExtResource( 11 )
+
+[node name="dust" parent="tilemap/StatueGroup/tenor"]
+
+color/color = Color( 0.423529, 0.470588, 0.435294, 1 )
+
+[node name="dust1" parent="tilemap/StatueGroup/tenor"]
+
+color/color = Color( 0.423529, 0.470588, 0.435294, 1 )
+
+[node name="dust2" parent="tilemap/StatueGroup/tenor"]
+
+color/color = Color( 0.423529, 0.470588, 0.435294, 1 )
+
+[node name="dust3" parent="tilemap/StatueGroup/tenor"]
+
+color/color = Color( 0.423529, 0.470588, 0.435294, 1 )
+
+[node name="dust4" parent="tilemap/StatueGroup/tenor"]
+
+color/color = Color( 0.423529, 0.470588, 0.435294, 1 )
+
+[node name="explode" parent="tilemap/StatueGroup/tenor"]
+
+color/color = Color( 0.423529, 0.470588, 0.435294, 1 )
+
+[node name="collision" parent="tilemap/StatueGroup/tenor"]
+
+visibility/visible = true
+
+[node name="bass" parent="tilemap/StatueGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -416, -640 )
+
+[node name="collision" parent="tilemap/StatueGroup/bass"]
+
+visibility/visible = true
+
+[node name="BossGroup" type="Node2D" parent="tilemap"]
+
+[node name="StatueHead" parent="tilemap/BossGroup" instance=ExtResource( 12 )]
+
+transform/pos = Vector2( -640, -592 )
+
+[node name="GateGroup" type="Node2D" parent="tilemap"]
+
+[node name="SensorGroup" type="Node2D" parent="tilemap"]
+
+[node name="sensor" type="Area2D" parent="tilemap/SensorGroup"]
+
+transform/pos = Vector2( -272, -560 )
+transform/scale = Vector2( 1, 15 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, -0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 13 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tilemap/SensorGroup/sensor"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+__meta__ = { "_editor_collapsed":true }
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( -176, -400 )
+target_level = "res://levels/marblecastle/0-0.tscn"
+teleport_to = Vector2( -620, 16 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+
+transform/scale = Vector2( 1, 5 )
+linear_damp = 0.1
+
+[node name="boundaries" type="Node2D" parent="tilemap"]
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( -1030, -838 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( -182, -182 )
+
+
+[editable path="tilemap/StatueGroup/soprano"]
+[editable path="tilemap/StatueGroup/alto"]
+[editable path="tilemap/StatueGroup/tenor"]
+[editable path="tilemap/StatueGroup/bass"]
+[editable path="tilemap/TeleportGroup/Teleport"]

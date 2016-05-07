@@ -3807,22 +3807,22 @@ extents = Vector2( 18, 66 )
 
 [sub_resource type="SampleLibrary" id=37]
 
-samples/stab = { "db":0.0, "pitch":1.0, "sample":ExtResource( 62 ) }
+samples/void = { "db":0.0, "pitch":1.0, "sample":ExtResource( 65 ) }
+samples/attack = { "db":0.0, "pitch":1.0, "sample":ExtResource( 50 ) }
+samples/land = { "db":0.0, "pitch":1.0, "sample":ExtResource( 56 ) }
+samples/hurt = { "db":0.0, "pitch":1.0, "sample":ExtResource( 54 ) }
+samples/chain = { "db":0.0, "pitch":1.0, "sample":ExtResource( 51 ) }
+samples/jump2 = { "db":0.0, "pitch":1.0, "sample":ExtResource( 55 ) }
+samples/splash_down = { "db":0.0, "pitch":1.0, "sample":ExtResource( 60 ) }
+samples/splash_up = { "db":0.0, "pitch":1.0, "sample":ExtResource( 61 ) }
+samples/slice = { "db":0.0, "pitch":1.0, "sample":ExtResource( 59 ) }
 samples/dualspin = { "db":0.0, "pitch":1.0, "sample":ExtResource( 53 ) }
-samples/swift = { "db":0.0, "pitch":1.0, "sample":ExtResource( 63 ) }
+samples/chop = { "db":0.0, "pitch":1.0, "sample":ExtResource( 52 ) }
 samples/skewer = { "db":0.0, "pitch":1.0, "sample":ExtResource( 58 ) }
 samples/thrust = { "db":0.0, "pitch":1.0, "sample":ExtResource( 64 ) }
+samples/swift = { "db":0.0, "pitch":1.0, "sample":ExtResource( 63 ) }
+samples/stab = { "db":0.0, "pitch":1.0, "sample":ExtResource( 62 ) }
 samples/rush = { "db":0.0, "pitch":1.0, "sample":ExtResource( 57 ) }
-samples/slice = { "db":0.0, "pitch":1.0, "sample":ExtResource( 59 ) }
-samples/chop = { "db":0.0, "pitch":1.0, "sample":ExtResource( 52 ) }
-samples/land = { "db":0.0, "pitch":1.0, "sample":ExtResource( 56 ) }
-samples/attack = { "db":0.0, "pitch":1.0, "sample":ExtResource( 50 ) }
-samples/hurt = { "db":0.0, "pitch":1.0, "sample":ExtResource( 54 ) }
-samples/void = { "db":0.0, "pitch":1.0, "sample":ExtResource( 65 ) }
-samples/splash_up = { "db":0.0, "pitch":1.0, "sample":ExtResource( 61 ) }
-samples/splash_down = { "db":0.0, "pitch":1.0, "sample":ExtResource( 60 ) }
-samples/jump2 = { "db":0.0, "pitch":1.0, "sample":ExtResource( 55 ) }
-samples/chain = { "db":0.0, "pitch":1.0, "sample":ExtResource( 51 ) }
 
 [sub_resource type="CanvasItemShader" id=38]
 

@@ -20,8 +20,8 @@ var chain_specials = [
 	{"combo":"a, a, a", "id":"thrust", "replace":"aaa", "collider":preload("res://scenes/weapons/thrust.tscn"), "collider_offset":Vector2(0, -32), "db":10, "hurt_delay":10},
 	{"combo":"aaa, a", "id":"swift", "replace":"aaaa", "collider":preload("res://scenes/weapons/swift.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":6},
 	{"combo":"a, a, f", "id":"dualspin", "replace":"aaf", "collider":preload("res://scenes/weapons/dualspin.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":8},
-	{"combo":"aaf, d", "id":"void", "replace":"aafd", "collider":preload("res://scenes/weapons/void.tscn"), "collider_offset":Vector2(32, 0), "db":10, "hurt_delay":4},
-	{"combo":"aaa, f", "id":"rush", "replace":"aaaf", "collider":preload("res://scenes/weapons/rush.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":2}
+	{"combo":"aaa, f", "id":"rush", "replace":"aaaf", "collider":preload("res://scenes/weapons/rush.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":2},
+	{"combo":"aaf, d", "id":"void", "replace":"aafd", "collider":preload("res://scenes/weapons/void.tscn"), "collider_offset":Vector2(32, 0), "db":10, "hurt_delay":4}
 	]
 var demonic_void = preload("res://scenes/weapons/demonic.tscn")
 var target_enemy

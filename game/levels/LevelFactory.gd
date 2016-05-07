@@ -43,10 +43,10 @@ func _init():
 	
 	var manor = levelclass.new()
 	manor.title = "LVL_MANOR"
-	manor.type = "quest"
+	manor.type = "boss"
 	manor.position = Vector2(436, 95)
 	manor.description = "LVL_MANOR_DESCRIPTION"
-	manor.location = locationfactory.locations["LVL_SANDBOX"]
+	manor.location = locationfactory.locations["LVL_MARBLECASTLE"]
 	manor.reward = 20000
 	levels[manor.title] = manor
 	

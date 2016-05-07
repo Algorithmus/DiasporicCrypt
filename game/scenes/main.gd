@@ -465,7 +465,10 @@ func connect_catacombs(level):
 # load new level
 func teleport(new_level, pos, teleport):
 	Globals.set("show_blood_counter", false)
-	teleport_params = [new_level, pos, teleport.duplicate()]
+	var teleport_copy = null
+	if (teleport != null):
+		teleport_copy = teleport.duplicate()
+	teleport_params = [new_level, pos, teleport_copy]
 	var level = get_node("level").get_child(0)
 	map.set("previous_id", level.get_filename())
 	#var new_level_obj = load(new_level).instance()
