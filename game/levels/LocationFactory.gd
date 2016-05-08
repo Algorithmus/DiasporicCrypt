@@ -46,3 +46,10 @@ func _init():
 	marblecastle.id = "LVL_MARBLECASTLE"
 	marblecastle.bgm = preload("res://levels/common/BGM1.ogg")
 	locations[marblecastle.id] = marblecastle
+	
+	var aquaduct = locationclass.new()
+	aquaduct.node = "res://levels/aquaduct/0-0.tscn"
+	aquaduct.teleportto = Vector2(-16, 128)
+	aquaduct.id = "LVL_AQUADUCT"
+	aquaduct.bgm = preload("res://levels/common/BGM1.ogg")
+	locations[aquaduct.id] = aquaduct

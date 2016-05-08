@@ -291,12 +291,7 @@ func step_player(delta):
 			whipswing_obj.set_rot(swing_angle - PI/2)
 			whipswing_obj.get_node("whip").set_scale(Vector2(1, swing_radius-4))
 			if(!Input.is_action_pressed("ui_attack")):
-				is_swinging = false
-				attack_requested = false
-				accel = min(-JUMP_SPEED*abs(cos((PI/2)*(swing_angle - swing_range)/(PI/2 - swing_range))), 0)
-				whipswing_obj.hide()
-				whipswing_obj.get_node("sound").stop_all()
-				swing_speed_frame = 0
+				stop_swinging()
 		elif(whip_hanging):
 			request_spell_change = 0
 			if (weapon_collided):
@@ -363,6 +358,14 @@ func step_player(delta):
 
 func _init():
 	weapon = preload("res://scenes/weapons/whip.tscn")
+
+func stop_swinging():
+	is_swinging = false
+	attack_requested = false
+	accel = min(-JUMP_SPEED*abs(cos((PI/2)*(swing_angle - swing_range)/(PI/2 - swing_range))), 0)
+	whipswing_obj.hide()
+	whipswing_obj.get_node("sound").stop_all()
+	swing_speed_frame = 0
 
 func _ready():
 	runspeed = 9

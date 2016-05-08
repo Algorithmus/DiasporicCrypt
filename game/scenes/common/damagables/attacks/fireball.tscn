@@ -13,6 +13,7 @@ extents = Vector2( 16, 16 )
 z/z = 3
 script/script = ExtResource( 1 )
 __meta__ = { "__editor_plugin_screen__":"Script" }
+atk = 1
 
 [node name="Sprite" type="Sprite" parent="."]
 

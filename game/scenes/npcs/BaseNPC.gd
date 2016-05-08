@@ -2,6 +2,7 @@
 extends Node2D
 
 export var dialogues = []
+export var static_direction = false
 var direction
 var interacting = false
 
@@ -15,7 +16,7 @@ func _fixed_process(delta):
 
 func start(pos):
 	get_tree().get_root().get_node("world/gui/CanvasLayer/dialogue").start(dialogues)
-	if (get_global_pos().x * direction > pos.x * direction):
+	if (!static_direction && get_global_pos().x * direction > pos.x * direction):
 		get_node("Sprite").set_scale(Vector2(-direction, 1))
 	interacting = true
 

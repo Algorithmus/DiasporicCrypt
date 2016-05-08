@@ -74,7 +74,7 @@ func _ready():
 	Globals.set("magic_spells", magic_spells)
 	Globals.set("chain", chainlist)
 	Globals.set("itemfactory", itemfactory.new())
-	Globals.set("available_levels", ["LVL_SANDBOX", "LVL_FOREST1", "LVL_FOREST2", "LVL_MANOR", "LVL_LAVACAVE", "LVL_START", "LVL_COLOSSEUM1", "LVL_COLOSSEUM2"])
+	Globals.set("available_levels", ["LVL_SANDBOX", "LVL_FOREST1", "LVL_FOREST2", "LVL_MANOR", "LVL_LAVACAVE", "LVL_START", "LVL_COLOSSEUM1", "LVL_COLOSSEUM2", "LVL_AQUADUCT"])
 	Globals.set("levels", levelfactory.new().levels)
 	Globals.set("current_level", "LVL_START")
 	Globals.set("eventmode", false)
@@ -509,6 +509,15 @@ func do_teleport(resource, new_level, pos, teleport):
 	level.add_child(new_level_obj)
 	var player = get_node("playercontainer/player")
 	player.load_tilemap(new_level_obj)
+	# blacklist sensors and other types of area2D objects that should
+	# not interfere with one way platform detection
+	player.reset_blacklist()
+	if (new_level_obj.has_node("tilemap/SensorGroup")):
+		for sensor in new_level_obj.get_node("tilemap/SensorGroup").get_children():
+			player.area2d_blacklist.append(sensor)
+	if (new_level_obj.has_node("tilemap/SwingBoulderGroup")):
+		for boulder in new_level_obj.get_node("tilemap/SwingBoulderGroup").get_children():
+			player.area2d_blacklist.append(boulder.get_node("boulder/swingboulder"))
 	#physics server lags behind, causing calls to move() to mess up
 	#so we delay moving the player until physics server catches up
 	player.call_deferred("teleport", pos, player.on_ladder)

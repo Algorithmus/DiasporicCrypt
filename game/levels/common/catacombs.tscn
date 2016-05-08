@@ -261,6 +261,7 @@ collision/margin = 0.08
 
 transform/pos = Vector2( 176, 304 )
 script/script = ExtResource( 12 )
+static_direction = false
 
 [node name="Sprite" parent="tilemap/NPCGroup/Kaleva"]
 
@@ -274,6 +275,7 @@ linear_damp = 0.1
 
 transform/pos = Vector2( -416, 304 )
 dialogues = [ [ 0, null, "DIAG_RESTORE", null, [ [ "KEY_YES", "restore", null, true ], [ "KEY_NO", "end" ] ] ] ]
+static_direction = true
 
 [node name="Sprite" parent="tilemap/NPCGroup/Coffin"]
 

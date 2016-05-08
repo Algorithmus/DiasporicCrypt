@@ -1135,20 +1135,23 @@ func _ready():
 
 	weapon_collider.connect("area_enter", self, "_on_weapon_collision")
 	
-	area2d_blacklist = [self, damage_rect, weapon_collider]
+	reset_blacklist()
 	
 	get_node("sound").set_polyphony(10)
 	
 	set_process_input(true)
 	camera_offset = get_node("Camera2D").get_offset()
 
+func reset_blacklist():
+	area2d_blacklist = [self, damage_rect, weapon_collider]
+
 # notify when weapon collides with stuff
 func _on_weapon_collision(area):
 	var collisions = weapon_collider.get_overlapping_areas()
 	for i in collisions:
-		if (i.get_name() != "damage" && i != weapon_collider && i.get_name() != "oneway" && !i.get_name().match("slope*") && i.get_name() != "ladder" && i.get_name() != "item"):
+		if (i.get_name() != "damage" && i != weapon_collider && i.get_name() != "oneway" && !i.get_name().match("slope*") && i.get_name() != "ladder" && i.get_name() != "item" && i.get_name() != "swingboulder" && i.get_name() != "sensor"):
 			weapon_collided = true
-	if(area.get_name() != "damage" && area != weapon_collider && area.get_name() != "oneway" && !area.get_name().match("slope*") && area.get_name() != "ladder" && area.get_name() != "item"):
+	if(area.get_name() != "damage" && area != weapon_collider && area.get_name() != "oneway" && !area.get_name().match("slope*") && area.get_name() != "ladder" && area.get_name() != "item" && area.get_name() != "swingboulder" && area.get_name() != "sensor"):
 		weapon_collided = true
 
 func load_tilemap(var tilemap_node):

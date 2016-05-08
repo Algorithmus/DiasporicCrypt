@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://scenes/dungeon/debugtiles.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=4]
+
+[node name="LVL_AQUADUCT" type="Node2D"]
+
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -524308, 1073741862, -524307, 1073741862, -524306, 1073741862, -524305, 1073741862, -524304, 1073741862, -524303, 1073741862, -524302, 1073741862, -524301, 1073741862, -524300, 1073741862, -524299, 1073741862, -524298, 1073741862, -524297, 1073741862, -524296, 1073741862, -524295, 1073741862, -524294, 1073741862, -524293, 1073741862, -524292, 1073741862, -524291, 1073741862, -524290, 1073741862, -524289, 1073741862, -589824, 1073741862, -589823, 1073741862, -589822, 1073741862, -589821, 1073741862, -589820, 1073741862, -589819, 1073741862, -589818, 1073741862, -589817, 1073741862, -589816, 1073741862, -589815, 1073741862, -589814, 1073741862, -589813, 1073741862, -589812, 1073741862, -458772, 1073741838, -524276, 14, -393236, 1073741838, -458740, 14, -327700, 1073741838, -393204, 14, -262164, 1073741838, -327668, 14, -196628, 1073741838, -262132, 14, -131092, 1073741838, -196596, 14, -131060, 14, -65524, 14, 12, 14, 65548, 14, 131084, 14, 262124, 38, 262125, 38, 262126, 38, 262127, 38, 262128, 38, 262129, 38, 262130, 38, 262131, 38, 262132, 38, 262133, 38, 262134, 38, 262135, 38, 262136, 38, 262137, 38, 262138, 38, 262139, 38, 262140, 38, 262141, 13, 196609, 536870925, 196610, 38, 196611, 38, 196612, 38, 196613, 38, 196614, 38, 196615, 38, 196616, 38, 196617, 38, 196618, 38, 196619, 38, 196620, 14, 327660, 14, 327661, 35, 327662, 35, 327663, 35, 327664, 35, 327665, 35, 327666, 35, 327667, 35, 327668, 35, 327669, 35, 327670, 35, 327671, 35, 327672, 35, 327673, 35, 327674, 35, 327675, 35, 327676, 35, 327677, 14, 262145, 14, 262146, 35, 262147, 35, 262148, 35, 262149, 35, 262150, 35, 262151, 35, 262152, 35, 262153, 35, 262154, 35, 262155, 35, 262156, 14, 393196, 14, 393197, 35, 393198, 35, 393199, 35, 393200, 35, 393201, 35, 393202, 35, 393203, 35, 393204, 35, 393205, 35, 393206, 35, 393207, 35, 393208, 35, 393209, 35, 393210, 35, 393211, 35, 393212, 35, 393213, 14, 327681, 14, 327682, 35, 327683, 35, 327684, 35, 327685, 35, 327686, 35, 327687, 35, 327688, 35, 327689, 35, 327690, 35, 327691, 35, 327692, 14, 458732, 14, 458733, 35, 458734, 35, 458735, 35, 458736, 35, 458737, 35, 458738, 35, 458739, 35, 458740, 35, 458741, 35, 458742, 35, 458743, 35, 458744, 35, 458745, 35, 458746, 35, 458747, 35, 458748, 35, 458749, 14, 393217, 14, 393218, 35, 393219, 35, 393220, 35, 393221, 35, 393222, 35, 393223, 35, 393224, 35, 393225, 35, 393226, 35, 393227, 35, 393228, 14 )
+
+[node name="LadderGroup" type="Node2D" parent="tilemap"]
+
+__meta__ = { "_editor_collapsed":true }
+
+[node name="TestLadder" parent="tilemap/LadderGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -16, 160 )
+
+[node name="KinematicBody2D" parent="tilemap/LadderGroup/TestLadder"]
+
+collision/margin = 0.08
+
+[node name="Sprite" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
+
+region_rect = Rect2( 0, 0, 32, 128 )
+
+[node name="ladder" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
+
+transform/scale = Vector2( 1, 4 )
+linear_damp = 0.1
+
+[node name="TestLadder 2" parent="tilemap/LadderGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -16, 80 )
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -16, 240 )
+is_horizontal = false
+target_level = "res://levels/common/catacombs.tscn"
+teleport_to = Vector2( -16, -272 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+
+transform/scale = Vector2( 3, 1 )
+linear_damp = 0.1
+
+[node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -656, 16 )
+target_level = "res://levels/aquaduct/1-0.tscn"
+teleport_to = Vector2( -212, -400 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
+
+transform/scale = Vector2( 1, 5 )
+linear_damp = 0.1
+
+[node name="boundaries" type="Node2D" parent="tilemap"]
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( -646, -294 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( 426, 234 )
+
+
+[editable path="tilemap/LadderGroup/TestLadder"]
+[editable path="tilemap/TeleportGroup/Teleport"]
+[editable path="tilemap/TeleportGroup/Teleport1"]

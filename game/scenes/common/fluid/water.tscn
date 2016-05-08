@@ -13,7 +13,7 @@ __meta__ = { "__editor_plugin_screen__":"2D" }
 
 [node name="Sprite" type="Sprite" parent="."]
 
-z/z = 2
+z/z = 3
 texture = ExtResource( 1 )
 
 [node name="water" type="Area2D" parent="."]

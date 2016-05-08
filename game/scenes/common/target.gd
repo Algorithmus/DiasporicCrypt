@@ -101,6 +101,9 @@ func _fixed_process(delta):
 				if (hp != null):
 					i.get_parent().set("hp", hp - 1)
 				damage = max(get_atk_adjusted_damage(calculate_atk_value(i), type), 0)
+			if (i.get_name() == "swingboulder"):
+				damage = 1
+				collider = i.get_node("CollisionShape2D")
 			if (collider != null && damage > 0):
 				var hp = hpclass.instance()
 				hud.add_child(hp)

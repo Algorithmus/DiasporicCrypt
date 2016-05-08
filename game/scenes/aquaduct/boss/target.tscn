@@ -1,0 +1,227 @@
+[gd_scene load_steps=14 format=1]
+
+[ext_resource path="res://scenes/aquaduct/boss/stalk.png" type="Texture" id=1]
+[ext_resource path="res://scenes/aquaduct/boss/target.gd" type="Script" id=2]
+[ext_resource path="res://scenes/aquaduct/boss/eye.png" type="Texture" id=3]
+[ext_resource path="res://players/magic/magicmine/explosion.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 48 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 160, 16 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[sub_resource type="Animation" id=6]
+
+resource/name = "hurt"
+length = 1.0
+loop = false
+step = 0.1
+
+[sub_resource type="Animation" id=7]
+
+resource/name = "idle"
+length = 1.0
+loop = false
+step = 0.1
+
+[sub_resource type="ColorRamp" id=9]
+
+offsets = FloatArray( 0, 0.125, 0.660714, 1 )
+colors = ColorArray( 0, 0.507066, 1, 0, 0.886275, 0.4, 0, 1, 1, 0.678431, 0.431373, 0.12549, 0, 0, 0, 0 )
+
+[sub_resource type="Animation" id=4]
+
+resource/name = "appear"
+length = 0.2
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:transform/scale")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.2 ), "transitions":FloatArray( 0.25, 1 ), "values":[ Vector2( 1, 1e-05 ), Vector2( 1, 1 ) ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("stalk:visibility/opacity")
+tracks/1/interp = 1
+tracks/1/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 1.0 ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("target:visibility/opacity")
+tracks/2/interp = 1
+tracks/2/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 1.0 ] }
+
+[sub_resource type="Animation" id=10]
+
+length = 1.1
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("explode:config/emitting")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":false, "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "values":[ true, false ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("target:visibility/opacity")
+tracks/1/interp = 1
+tracks/1/keys = { "cont":false, "times":FloatArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0 ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("stalk:visibility/opacity")
+tracks/2/interp = 1
+tracks/2/keys = { "cont":false, "times":FloatArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0 ] }
+
+[sub_resource type="Animation" id=5]
+
+resource/name = "disappear"
+length = 0.2
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:transform/scale")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.2 ), "transitions":FloatArray( 4, 1 ), "values":[ Vector2( 1, 1 ), Vector2( 1, 1e-05 ) ] }
+
+[node name="target" type="Node2D"]
+
+[node name="stalk" type="Sprite" parent="."]
+
+z/z = 1
+texture = ExtResource( 1 )
+offset = Vector2( 0, -112 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+transform/pos = Vector2( 0, -64 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="StaticBody2D 2" type="StaticBody2D" parent="."]
+
+transform/pos = Vector2( 0, -128 )
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D 2"]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="target" type="KinematicBody2D" parent="."]
+
+transform/pos = Vector2( 0, -224 )
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 2 )
+
+[node name="eye" type="Sprite" parent="target"]
+
+texture = ExtResource( 3 )
+offset = Vector2( 0, -6 )
+
+[node name="collision" type="Area2D" parent="target"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="target/collision"]
+
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="target"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/hurt = SubResource( 6 )
+anims/idle = SubResource( 7 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "idle"
+
+[node name="explode" type="Particles2D" parent="."]
+
+visibility/blend_mode = 1
+transform/pos = Vector2( 5.72268e-06, -240 )
+transform/rot = -180.0
+z/z = 3
+config/amount = 32
+config/lifetime = 1.0
+config/time_scale = 2.0
+config/emit_timeout = 0.5
+config/emitting = false
+config/half_extents = Vector2( 15, 15 )
+config/local_space = false
+config/explosiveness = 0.05
+config/texture = ExtResource( 4 )
+params/direction = 0.0
+params/spread = 180.0
+params/linear_velocity = 184.55
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 180.0
+params/gravity_strength = 80.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 366.3
+params/initial_angle = 1.0
+params/initial_size = 0.7
+params/final_size = 3.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color_ramp = SubResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/appear = SubResource( 4 )
+anims/die = SubResource( 10 )
+anims/disappear = SubResource( 5 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "appear"
+
+

@@ -41,6 +41,15 @@ func _init():
 	lavacave.location = locationfactory.locations["LVL_LAVACAVE"]
 	levels[lavacave.title] = lavacave
 	
+	var aquaduct = levelclass.new()
+	aquaduct.title = "LVL_AQUADUCT"
+	aquaduct.type = "boss"
+	aquaduct.position = Vector2(378, 90)
+	aquaduct.description = "LVL_AQUADUCT_DESCRIPTION"
+	aquaduct.reward = 8000
+	aquaduct.location = locationfactory.locations["LVL_AQUADUCT"]
+	levels[aquaduct.title] = aquaduct
+	
 	var manor = levelclass.new()
 	manor.title = "LVL_MANOR"
 	manor.type = "boss"
