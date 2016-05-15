@@ -9,6 +9,8 @@ func _ready():
 	title = "exp"
 	item = itemfactory_obj.items[title]
 	item["value"] = value
+	var material = get_node("Sprite").get_material().duplicate(true)
+	get_node("Sprite").set_material(material)
 
 func set_value(amount):
 	value = amount

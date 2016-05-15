@@ -17,7 +17,7 @@ func _init():
 	var forest1 = levelclass.new()
 	forest1.title = "LVL_FOREST1"
 	forest1.type = "bonus"
-	forest1.position = Vector2(192, 160)
+	forest1.position = Vector2(241, 297)
 	forest1.description = "LVL_FOREST1_DESCRIPTION"
 	forest1.location = locationfactory.locations["LVL_NOCTURNFOREST"]
 	forest1.time = 6000
@@ -27,7 +27,7 @@ func _init():
 	var forest2 = levelclass.new()
 	forest2.title = "LVL_FOREST2"
 	forest2.type = "bonus"
-	forest2.position = Vector2(192, 160)
+	forest2.position = Vector2(669, 238)
 	forest2.description = "LVL_FOREST2_DESCRIPTION"
 	forest2.location = locationfactory.locations["LVL_SANDBOX"]
 	levels[forest2.title] = forest2
@@ -35,7 +35,7 @@ func _init():
 	var lavacave = levelclass.new()
 	lavacave.title = "LVL_LAVACAVE"
 	lavacave.type = "boss"
-	lavacave.position = Vector2(432, 352)
+	lavacave.position = Vector2(347, 555)
 	lavacave.description = "LVL_LAVACAVE_DESCRIPTION"
 	lavacave.reward = 10000
 	lavacave.location = locationfactory.locations["LVL_LAVACAVE"]
@@ -44,7 +44,7 @@ func _init():
 	var aquaduct = levelclass.new()
 	aquaduct.title = "LVL_AQUADUCT"
 	aquaduct.type = "boss"
-	aquaduct.position = Vector2(378, 90)
+	aquaduct.position = Vector2(131, 207)
 	aquaduct.description = "LVL_AQUADUCT_DESCRIPTION"
 	aquaduct.reward = 8000
 	aquaduct.location = locationfactory.locations["LVL_AQUADUCT"]
@@ -53,16 +53,25 @@ func _init():
 	var manor = levelclass.new()
 	manor.title = "LVL_MANOR"
 	manor.type = "boss"
-	manor.position = Vector2(436, 95)
+	manor.position = Vector2(503, 186)
 	manor.description = "LVL_MANOR_DESCRIPTION"
 	manor.location = locationfactory.locations["LVL_MARBLECASTLE"]
 	manor.reward = 20000
 	levels[manor.title] = manor
 	
+	var holyruins = levelclass.new()
+	holyruins.title = "LVL_HOLYRUINS"
+	holyruins.type = "boss"
+	holyruins.position = Vector2(307, 327)
+	holyruins.description = "LVL_HOLYRUINS_DESCRIPTION"
+	holyruins.location = locationfactory.locations["LVL_HOLYRUINS"]
+	holyruins.reward = 20000
+	levels[holyruins.title] = holyruins
+	
 	var start = levelclass.new()
 	start.title = "LVL_START"
 	start.type = "quest"
-	start.position = Vector2(314, 133)
+	start.position = Vector2(295, 356)
 	start.description = "LVL_START_DESCRIPTION"
 	start.reward = 100
 	start.item = "ITEM_AMULET"
@@ -72,7 +81,7 @@ func _init():
 	var colosseum1 = levelclass.new()
 	colosseum1.title = "LVL_COLOSSEUM1"
 	colosseum1.type = "colosseum"
-	colosseum1.position = Vector2(256, 240)
+	colosseum1.position = Vector2(193, 360)
 	colosseum1.description = "LVL_COLOSSEUM1_DESCRIPTION"
 	colosseum1.reward = 50000
 	colosseum1.location = locationfactory.locations["LVL_COLOSSEUM"]
@@ -82,7 +91,7 @@ func _init():
 	var colosseum2 = levelclass.new()
 	colosseum2.title = "LVL_COLOSSEUM2"
 	colosseum2.type = "colosseum"
-	colosseum2.position = Vector2(256, 240)
+	colosseum2.position = Vector2(193, 360)
 	colosseum2.description = "LVL_COLOSSEUM2_DESCRIPTION"
 	colosseum2.location = "LVL_COLOSSEUM"
 	colosseum2.reward = 100000

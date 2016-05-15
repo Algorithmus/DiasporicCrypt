@@ -53,3 +53,10 @@ func _init():
 	aquaduct.id = "LVL_AQUADUCT"
 	aquaduct.bgm = preload("res://levels/common/BGM1.ogg")
 	locations[aquaduct.id] = aquaduct
+	
+	var holyruins = locationclass.new()
+	holyruins.node = "res://levels/holyruins/0-0.tscn"
+	holyruins.teleportto = Vector2(-16, 128)
+	holyruins.id = "LVL_HOLYRUINS"
+	holyruins.bgm = preload("res://levels/common/BGM1.ogg")
+	locations[holyruins.id] = holyruins

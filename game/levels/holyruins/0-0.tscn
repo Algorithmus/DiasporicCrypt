@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://scenes/dungeon/debugtiles.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=4]
+
+[node name="LVL_HOLYRUINS" type="Node2D"]
+
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -524296, 1073741862, -524295, 1073741862, -524294, 1073741862, -524293, 1073741862, -524292, 1073741862, -524291, 1073741862, -524290, 1073741862, -524289, 1073741862, -589824, 1073741862, -589823, 1073741862, -589822, 1073741862, -589821, 1073741862, -589820, 1073741862, -589819, 1073741862, -589818, 1073741862, -589817, 1073741862, -589816, 1073741862, -589815, 1073741862, -589814, 1073741862, -589813, 1073741862, -589812, 1073741862, -589811, 1073741862, -589810, 1073741862, -589809, 1073741862, -589808, 1073741862, -589807, 1073741862, -589806, 1073741862, -589805, 1073741862, -589804, 1073741862, -589803, 1073741862, -589802, 1073741862, -589801, 1073741862, -589800, 1073741862, -589799, 1073741862, -589798, 1073741862, -589797, 1073741862, -589796, 1073741862, -589795, 1073741862, -589794, 1073741862, -589793, 1073741862, -589792, 1073741862, -589791, 1073741862, -589790, 1073741862, -589789, 1073741862, -589788, 1073741862, -589787, 1073741862, -589786, 1073741862, -589785, 1073741862, -589784, 1073741862, -589783, 1073741862, -589782, 1073741862, -589781, 1073741862, -589780, 1073741862, -589779, 1073741862, -589778, 14, -458760, 14, -524242, 14, -393224, 14, -458706, 14, -327688, 14, -393170, 14, -262152, 14, -327634, 14, -196616, 14, -262098, 14, -131080, 14, -196562, 14, -65544, 14, -131026, 14, -8, 14, -65490, 14, 65528, 14, 46, 14, 131064, 14, 65582, 14, 196600, 14, 131118, 14, 262136, 38, 262137, 38, 262138, 38, 262139, 38, 262140, 38, 262141, 13, 196609, 536870925, 196610, 38, 196611, 38, 196612, 38, 196613, 38, 196614, 38, 196615, 38, 196616, 38, 196617, 38, 196618, 38, 196619, 38, 196620, 38, 196621, 38, 196622, 38, 196623, 38, 196624, 38, 196625, 38, 196626, 38, 196627, 38, 196628, 38, 196629, 38, 196630, 38, 196631, 38, 196632, 38, 196633, 38, 196634, 38, 196635, 38, 196636, 38, 196637, 38, 196638, 38, 196639, 38, 196640, 38, 196641, 38, 196645, 38, 196646, 38, 196647, 38, 196648, 38, 196649, 38, 196650, 38, 196651, 38, 196652, 38, 196653, 38, 196654, 14, 327672, 14, 327673, 35, 327674, 35, 327675, 35, 327676, 35, 327677, 14, 262145, 14, 262146, 35, 262147, 35, 262148, 35, 262149, 35, 262150, 35, 262151, 35, 262152, 35, 262153, 35, 262154, 35, 262155, 35, 262156, 35, 262157, 35, 262158, 35, 262159, 35, 262160, 35, 262161, 35, 262162, 35, 262163, 35, 262164, 35, 262165, 35, 262166, 35, 262167, 35, 262168, 35, 262169, 35, 262170, 35, 262171, 35, 262172, 35, 262173, 35, 262174, 35, 262175, 35, 262176, 35, 262177, 35, 262181, 35, 262182, 35, 262183, 35, 262184, 35, 262185, 35, 262186, 35, 262187, 35, 262188, 35, 262189, 35, 262190, 14, 393208, 14, 393209, 35, 393210, 35, 393211, 35, 393212, 35, 393213, 14, 327681, 14, 327682, 35, 327683, 35, 327684, 35, 327685, 35, 327686, 35, 327687, 35, 327688, 35, 327689, 35, 327690, 35, 327691, 35, 327692, 35, 327693, 35, 327694, 35, 327695, 35, 327696, 35, 327697, 35, 327698, 35, 327699, 35, 327700, 35, 327701, 35, 327702, 35, 327703, 35, 327704, 35, 327705, 35, 327706, 35, 327707, 35, 327708, 35, 327709, 35, 327710, 35, 327711, 35, 327712, 35, 327713, 35, 327717, 35, 327718, 35, 327719, 35, 327720, 35, 327721, 35, 327722, 35, 327723, 35, 327724, 35, 327725, 35, 327726, 14, 458744, 14, 458745, 35, 458746, 35, 458747, 35, 458748, 35, 458749, 14, 393217, 14, 393218, 35, 393219, 35, 393220, 35, 393221, 35, 393222, 35, 393223, 35, 393224, 35, 393225, 35, 393226, 35, 393227, 35, 393228, 35, 393229, 35, 393230, 35, 393231, 35, 393232, 35, 393233, 35, 393234, 35, 393235, 35, 393236, 35, 393237, 35, 393238, 35, 393239, 35, 393240, 35, 393241, 35, 393242, 35, 393243, 35, 393244, 35, 393245, 35, 393246, 35, 393247, 35, 393248, 35, 393249, 35, 393253, 35, 393254, 35, 393255, 35, 393256, 35, 393257, 35, 393258, 35, 393259, 35, 393260, 35, 393261, 35, 393262, 14 )
+
+[node name="LadderGroup" type="Node2D" parent="tilemap"]
+
+__meta__ = { "_editor_collapsed":true }
+
+[node name="TestLadder" parent="tilemap/LadderGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -16, 160 )
+
+[node name="KinematicBody2D" parent="tilemap/LadderGroup/TestLadder"]
+
+collision/margin = 0.08
+
+[node name="Sprite" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
+
+region_rect = Rect2( 0, 0, 32, 128 )
+
+[node name="ladder" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
+
+transform/scale = Vector2( 1, 4 )
+linear_damp = 0.1
+
+[node name="TestLadder 2" parent="tilemap/LadderGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -16, 80 )
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -16, 240 )
+is_horizontal = false
+target_level = "res://levels/common/catacombs.tscn"
+teleport_to = Vector2( -16, -272 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+
+transform/scale = Vector2( 3, 1 )
+linear_damp = 0.1
+
+[node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1136, 240 )
+is_horizontal = false
+target_level = "res://levels/holyruins/1-0.tscn"
+teleport_to = Vector2( 48, -240 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
+
+transform/scale = Vector2( 3, 1 )
+linear_damp = 0.1
+
+[node name="boundaries" type="Node2D" parent="tilemap"]
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( -262, -294 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( 1514, 234 )
+
+
+[editable path="tilemap/LadderGroup/TestLadder"]
+[editable path="tilemap/TeleportGroup/Teleport"]
+[editable path="tilemap/TeleportGroup/Teleport1"]

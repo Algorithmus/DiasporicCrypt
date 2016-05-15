@@ -53,6 +53,7 @@ var sunbeam_immunity = true
 var sunbeam_strength = 0.5
 
 var gold = 100
+var custom_drop # drop another item instead of gold
 
 var expclass = preload("res://scenes/items/exporb/exporb.tscn")
 var goldclass = preload("res://scenes/items/gold/gold.tscn")
@@ -226,13 +227,19 @@ func bleed():
 			get_node("die").hide()
 
 func die():
-	var gold_obj = goldclass.instance()
-	gold_obj.set("value", gold)
+	var drop
+	if (custom_drop != null):
+		var custom = custom_drop.instance()
+		drop = custom
+	else:
+		var gold_obj = goldclass.instance()
+		gold_obj.set("value", gold)
+		drop = gold_obj
 	var exporb = expclass.instance()
 	exporb.set_value(ep)
-	gold_obj.set_global_pos(Vector2(get_global_pos().x - sprite_offset.x, get_global_pos().y + sprite_offset.y - TILE_SIZE/2))
+	drop.set_global_pos(Vector2(get_global_pos().x - sprite_offset.x, get_global_pos().y + sprite_offset.y - TILE_SIZE/2))
 	exporb.set_global_pos(Vector2(get_global_pos().x + sprite_offset.x, get_global_pos().y + sprite_offset.y - TILE_SIZE/2))
-	get_parent().add_child(gold_obj)
+	get_parent().add_child(drop)
 	get_parent().add_child(exporb)
 	if (is_consumable):
 		# turn into consumable object instead of disappearing

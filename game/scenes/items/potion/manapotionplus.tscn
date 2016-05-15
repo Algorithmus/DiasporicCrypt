@@ -1,20 +1,19 @@
 [gd_scene load_steps=8 format=1]
 
-[ext_resource path="res://scenes/items/exporb/exporb.gd" type="Script" id=1]
-[ext_resource path="res://scenes/items/exporb/orb.png" type="Texture" id=2]
+[ext_resource path="res://scenes/items/BaseItem.gd" type="Script" id=1]
+[ext_resource path="res://scenes/items/potion/manapotionplus.png" type="Texture" id=2]
 [ext_resource path="res://scenes/items/potion/potion.wav" type="Sample" id=3]
 
 [sub_resource type="CanvasItemShader" id=1]
 
-_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform color modulate_color;\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb*modulate_color.rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
 
 [sub_resource type="CanvasItemMaterial" id=2]
 
 shader/shader = SubResource( 1 )
 shader/shading_mode = 0
-shader_param/aura_width = 2.0
-shader_param/aura_color = Color( 1, 0, 0, 1 )
-shader_param/modulate_color = Color( 1, 1, 1, 1 )
+shader_param/aura_width = 0.5
+shader_param/aura_color = Color( 1, 1, 0, 1 )
 shader_param/opacity = 1.0
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -26,12 +25,12 @@ extents = Vector2( 16, 16 )
 
 samples/potion = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
 
-[node name="EXPOrb" type="Node2D"]
+[node name="ManaPotionPlus" type="Node2D"]
 
 z/z = 2
 script/script = ExtResource( 1 )
 __meta__ = { "__editor_plugin_screen__":"2D" }
-title = "ITEM_POTION"
+title = "ITEM_MANAPOTION+"
 isgoal = false
 
 [node name="enabler" type="VisibilityEnabler2D" parent="."]

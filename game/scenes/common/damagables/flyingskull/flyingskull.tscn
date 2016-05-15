@@ -6,7 +6,7 @@
 [ext_resource path="res://scenes/common/damagables/skeleton/die.wav" type="Sample" id=4]
 [ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=5]
 
-[sub_resource type="ColorRamp" id=6]
+[sub_resource type="ColorRamp" id=1]
 
 offsets = FloatArray( 0, 0.502976, 1 )
 colors = ColorArray( 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1 )
@@ -42,7 +42,7 @@ tracks/5/path = NodePath("aura:config/emitting")
 tracks/5/interp = 1
 tracks/5/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 
 resource/name = "hurt"
 length = 0.5
@@ -73,9 +73,8 @@ tracks/5/path = NodePath("aura:config/emitting")
 tracks/5/interp = 1
 tracks/5/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ true ] }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 
-resource/name = "walk"
 length = 0.1
 loop = true
 step = 0.1
@@ -100,12 +99,12 @@ tracks/4/path = NodePath("aura:config/emitting")
 tracks/4/interp = 1
 tracks/4/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ true ] }
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[sub_resource type="SampleLibrary" id=4]
+[sub_resource type="SampleLibrary" id=6]
 
 samples/s_die = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
 
@@ -156,7 +155,7 @@ params/hue_variation = 0.0
 params/anim_speed_scale = 1.0
 params/anim_initial_pos = 0.0
 randomness/initial_angle = 1.0
-color/color_ramp = SubResource( 6 )
+color/color_ramp = SubResource( 1 )
 
 [node name="walk" type="Sprite" parent="."]
 
@@ -192,8 +191,8 @@ playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
 anims/die = SubResource( 2 )
-anims/hurt = SubResource( 5 )
-anims/walk = SubResource( 3 )
+anims/hurt = SubResource( 3 )
+anims/walk = SubResource( 4 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -202,7 +201,7 @@ autoplay = "walk"
 [node name="damagable" type="Area2D" parent="."]
 
 input/pickable = true
-shapes/0/shape = SubResource( 1 )
+shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -212,14 +211,14 @@ angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damagable"]
 
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 
 [node name="SamplePlayer" type="SamplePlayer" parent="."]
 
 config/polyphony = 1
-config/samples = SubResource( 4 )
+config/samples = SubResource( 6 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
 default/pan = 0.0
