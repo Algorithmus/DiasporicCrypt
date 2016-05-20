@@ -860,7 +860,6 @@ transform/pos = Vector2( -448, 128 )
 [node name="SunbeamGroup" type="Node2D" parent="tilemap"]
 
 z/z = 1
-__meta__ = { "_editor_collapsed":true }
 
 [node name="Sunbeam" parent="tilemap/SunbeamGroup" instance=ExtResource( 45 )]
 
@@ -877,8 +876,6 @@ transform/scale = Vector2( 3, 40 )
 linear_damp = 0.1
 
 [node name="SwitchGroup" type="Node2D" parent="tilemap"]
-
-__meta__ = { "_editor_collapsed":true }
 
 [node name="FloorSwitch" parent="tilemap/SwitchGroup" instance=ExtResource( 46 )]
 

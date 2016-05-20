@@ -8,14 +8,17 @@ func check_activation():
 	if (is_toggle):
 		is_on = false
 	var tiles = get_node("switch").get_overlapping_areas()
+	var active = false
 	for i in tiles:
 		if (i.get_name() == "damage" || i.get_name() == "damagable" || i.get_name() == "block" || i.get_name() == "oneway" || i.has_node("magic")):
-			get_node("Sprite").set_frame(0)
-			if (is_toggle):
-				is_on = true
-			elif (!is_echo):
-				is_on = !is_on
-				is_echo = true
-	if (tiles.empty()):
+			if (!i.has_node("inversehex")):
+				active = true
+				get_node("Sprite").set_frame(0)
+				if (is_toggle):
+					is_on = true
+				elif (!is_echo):
+					is_on = !is_on
+					is_echo = true
+	if (!active):
 		get_node("Sprite").set_frame(1)
 		is_echo = false

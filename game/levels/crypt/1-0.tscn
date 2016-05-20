@@ -1,0 +1,338 @@
+[gd_scene load_steps=10 format=1]
+
+[ext_resource path="res://scenes/dungeon/debugtiles.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/dungeon/climbableblock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/crypt/boss/lich.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/dungeon/movingplatform/movingplatform.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/sunbeam.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/crypt/boss/sensor.gd" type="Script" id=6]
+[ext_resource path="res://scenes/common/switches/floorswitch.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[node name="LVL_NOTITLE" type="Node2D"]
+
+transform/pos = Vector2( 0, -1 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -2818055, 1073741862, -2818054, 1073741862, -2818053, 1073741862, -2818052, 1073741862, -2818051, 1073741862, -2818050, 1073741862, -2818049, 1073741862, -2883584, 1073741862, -2883583, 1073741862, -2883582, 1073741862, -2883581, 1073741862, -2883580, 1073741862, -2883579, 1073741862, -2883578, 1073741862, -2883577, 1073741862, -2883576, 1073741862, -2883575, 1073741862, -2883574, 1073741862, -2883573, 1073741862, -2883572, 1073741862, -2883571, 1073741862, -2883570, 1073741862, -2883569, 1073741862, -2883568, 1073741862, -2883567, 1073741862, -2883566, 1073741862, -2883565, 1073741862, -2883564, 1073741862, -2883563, 1073741862, -2883562, 1073741862, -2883561, 1073741862, -2883560, 1073741862, -2883559, 1073741862, -2883558, 1073741862, -2883557, 1073741862, -2883556, 1073741862, -2883555, 1073741862, -2883554, 1073741862, -2883553, 1073741862, -2883552, 1073741862, -2883551, 1073741862, -2883550, 1073741862, -2883549, 1073741862, -2883548, 1073741862, -2883547, 1073741862, -2883546, 1073741862, -2752519, 14, -2818010, 536870926, -2686983, 14, -2752474, 536870926, -2621447, 14, -2686938, 536870926, -2555911, 14, -2621402, 536870926, -2490375, 14, -2555866, 536870926, -2424839, 14, -2490330, 536870926, -2359303, 14, -2424794, 536870926, -2293767, 14, -2359258, 536870926, -2228231, 14, -2293722, 536870926, -2162695, 14, -2162694, 38, -2162693, 38, -2162692, 38, -2228219, 38, -2228218, 38, -2228209, 38, -2228208, 38, -2228199, 38, -2228198, 38, -2228189, 38, -2228188, 38, -2228187, 38, -2228186, 536870926, -2097159, 14, -2162650, 536870926, -2031623, 14, -2097114, 536870926, -1966087, 14, -2031578, 536870926, -1900551, 14, -1966042, 536870926, -1835015, 14, -1900506, 536870926, -1769479, 14, -1834970, 536870926, -1703943, 14, -1769434, 536870926, -1638407, 14, -1703898, 536870926, -1572871, 14, -1638362, 536870926, -1507335, 14, -1572826, 536870926, -1441799, 14, -1507290, 536870926, -1376263, 14, -1441754, 536870926, -1310727, 14, -1376218, 536870926, -1245191, 14, -1310682, 536870926, -1179655, 14, -1245146, 536870926, -1114119, 14, -1179610, 536870926, -1048583, 14, -1114074, 536870926, -983047, 14, -1048538, 536870926, -983002, 536870926, -917466, 536870926, -851930, 536870926, -786394, 536870926, -720858, 536870926, -589831, 13, -589830, 38, -589829, 38, -589828, 38, -589827, 38, -589826, 38, -589825, 38, -655360, 536870950, -655359, 536870950, -655358, 536870950, -655357, 536870950, -655356, 536870950, -655355, 536870950, -655354, 536870950, -655353, 536870950, -655352, 536870950, -655351, 536870950, -655350, 536870950, -655349, 536870950, -655348, 536870950, -655347, 536870950, -655346, 536870950, -655345, 536870950, -655344, 536870950, -655343, 536870950, -655342, 536870950, -655341, 536870950, -655340, 536870950, -655339, 536870950, -655338, 536870950, -655337, 536870950, -655336, 536870950, -655335, 536870950, -655334, 536870950, -655333, 536870950, -655332, 536870950, -655331, 38, -655330, 38, -655329, 38, -655328, 38, -655327, 38, -655326, 38, -655325, 38, -655324, 38, -655323, 38, -655322, 536870926, -524295, 14, -524294, 35, -524293, 35, -524292, 35, -524291, 35, -524290, 35, -524289, 35, -589824, 35, -589823, 536870947, -589822, 536870947, -589821, 536870947, -589820, 536870947, -589819, 536870947, -589818, 536870947, -589817, 536870947, -589816, 536870947, -589815, 536870947, -589814, 536870947, -589813, 536870947, -589812, 536870947, -589811, 536870947, -589810, 536870947, -589809, 536870947, -589808, 536870947, -589807, 536870947, -589806, 536870947, -589805, 536870947, -589804, 536870947, -589803, 536870947, -589802, 536870947, -589801, 536870947, -589800, 536870947, -589799, 536870947, -589798, 536870947, -589797, 536870947, -589796, 536870947, -589795, 536870947, -589794, 536870947, -589793, 35, -589792, 35, -589791, 35, -589790, 35, -589789, 35, -589788, 35, -589787, 35, -589786, 536870926, -458759, 14, -458758, 35, -458757, 35, -458756, 35, -458755, 35, -458754, 35, -458753, 35, -524288, 35, -524287, 35, -524286, 35, -524285, 35, -524284, 35, -524283, 35, -524282, 536870947, -524281, 536870947, -524280, 536870947, -524279, 536870947, -524278, 536870947, -524277, 536870947, -524276, 536870947, -524275, 536870947, -524274, 536870947, -524273, 536870947, -524272, 536870947, -524271, 536870947, -524270, 536870947, -524269, 536870947, -524268, 536870947, -524267, 536870947, -524266, 536870947, -524265, 536870947, -524264, 536870947, -524263, 536870947, -524262, 536870947, -524261, 536870947, -524260, 536870947, -524259, 536870947, -524258, 536870947, -524257, 35, -524256, 35, -524255, 35, -524254, 35, -524253, 35, -524252, 35, -524251, 35, -524250, 536870926 )
+
+[node name="ClimbableGroup" type="Node2D" parent="tilemap"]
+
+__meta__ = { "_editor_collapsed":true }
+
+[node name="ClimbableBlock" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -80, -1072 )
+
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock"]
+
+offset = Vector2( 3, 0 )
+flip_h = false
+
+[node name="ClimbableBlock1" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 144, -1072 )
+
+[node name="ClimbableBlock2" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 240, -1072 )
+
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock2"]
+
+offset = Vector2( 3, 0 )
+flip_h = false
+
+[node name="ClimbableBlock3" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 464, -1072 )
+
+[node name="ClimbableBlock4" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 560, -1072 )
+
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock4"]
+
+offset = Vector2( 3, 0 )
+flip_h = false
+
+[node name="ClimbableBlock5" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 784, -1072 )
+
+[node name="ClimbableBlock6" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 880, -1072 )
+
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock6"]
+
+offset = Vector2( 3, 0 )
+flip_h = false
+
+[node name="ClimbableBlock7" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 1104, -1072 )
+
+[node name="BossGroup" type="Node2D" parent="tilemap"]
+
+[node name="Lich" parent="tilemap/BossGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 512, -848 )
+
+[node name="GateGroup" type="Node2D" parent="tilemap"]
+
+[node name="MovingPlatformGroup" type="Node2D" parent="tilemap"]
+
+__meta__ = { "_editor_collapsed":true }
+
+[node name="MovingPlatform" parent="tilemap/MovingPlatformGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 992, -704 )
+motion = Vector2( 0, 64 )
+cycle = 5.0
+
+[node name="MovingPlatform1" parent="tilemap/MovingPlatformGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 32, -704 )
+motion = Vector2( 0, 64 )
+cycle = 5.0
+
+[node name="SunbeamGroup" type="Node2D" parent="tilemap"]
+
+__meta__ = { "_editor_collapsed":true }
+
+[node name="Sunbeam" parent="tilemap/SunbeamGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -16, -1088 )
+collision/margin = 0.08
+
+[node name="block" parent="tilemap/SunbeamGroup/Sunbeam"]
+
+region = true
+region_rect = Rect2( 0, 0, 96, 1536 )
+
+[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam"]
+
+transform/scale = Vector2( 3, 48 )
+linear_damp = 0.1
+
+[node name="Sunbeam1" parent="tilemap/SunbeamGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 80, -1088 )
+collision/margin = 0.08
+
+[node name="block" parent="tilemap/SunbeamGroup/Sunbeam1"]
+
+region = true
+region_rect = Rect2( 0, 0, 96, 1536 )
+
+[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam1"]
+
+transform/scale = Vector2( 3, 48 )
+linear_damp = 0.1
+
+[node name="Sunbeam2" parent="tilemap/SunbeamGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 304, -1088 )
+collision/margin = 0.08
+
+[node name="block" parent="tilemap/SunbeamGroup/Sunbeam2"]
+
+region = true
+region_rect = Rect2( 0, 0, 96, 1536 )
+
+[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam2"]
+
+transform/scale = Vector2( 3, 48 )
+linear_damp = 0.1
+
+[node name="Sunbeam3" parent="tilemap/SunbeamGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 400, -1088 )
+collision/margin = 0.08
+
+[node name="block" parent="tilemap/SunbeamGroup/Sunbeam3"]
+
+region = true
+region_rect = Rect2( 0, 0, 96, 1536 )
+
+[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam3"]
+
+transform/scale = Vector2( 3, 48 )
+linear_damp = 0.1
+
+[node name="Sunbeam4" parent="tilemap/SunbeamGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 624, -1088 )
+collision/margin = 0.08
+
+[node name="block" parent="tilemap/SunbeamGroup/Sunbeam4"]
+
+region = true
+region_rect = Rect2( 0, 0, 96, 1536 )
+
+[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam4"]
+
+transform/scale = Vector2( 3, 48 )
+linear_damp = 0.1
+
+[node name="Sunbeam5" parent="tilemap/SunbeamGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 720, -1088 )
+collision/margin = 0.08
+
+[node name="block" parent="tilemap/SunbeamGroup/Sunbeam5"]
+
+region = true
+region_rect = Rect2( 0, 0, 96, 1536 )
+
+[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam5"]
+
+transform/scale = Vector2( 3, 48 )
+linear_damp = 0.1
+
+[node name="Sunbeam6" parent="tilemap/SunbeamGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 944, -1088 )
+collision/margin = 0.08
+
+[node name="block" parent="tilemap/SunbeamGroup/Sunbeam6"]
+
+region = true
+region_rect = Rect2( 0, 0, 96, 1536 )
+
+[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam6"]
+
+transform/scale = Vector2( 3, 48 )
+linear_damp = 0.1
+
+[node name="Sunbeam7" parent="tilemap/SunbeamGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1040, -1088 )
+collision/margin = 0.08
+
+[node name="block" parent="tilemap/SunbeamGroup/Sunbeam7"]
+
+region = true
+region_rect = Rect2( 0, 0, 96, 1536 )
+
+[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam7"]
+
+transform/scale = Vector2( 3, 48 )
+linear_damp = 0.1
+
+[node name="SensorGroup" type="Node2D" parent="tilemap"]
+
+[node name="sensor" type="Area2D" parent="tilemap/SensorGroup"]
+
+transform/pos = Vector2( -112, -848 )
+transform/scale = Vector2( 1, 33 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, -0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tilemap/SensorGroup/sensor"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="SwitchGroup" type="Node2D" parent="tilemap"]
+
+__meta__ = { "_editor_collapsed":true }
+
+[node name="FloorSwitch" parent="tilemap/SwitchGroup" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( -128, -1088 )
+target_nodes = [ "SunbeamGroup/Sunbeam" ]
+is_toggle = true
+
+[node name="FloorSwitch1" parent="tilemap/SwitchGroup" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 192, -1088 )
+target_nodes = [ "SunbeamGroup/Sunbeam1", "SunbeamGroup/Sunbeam2" ]
+is_toggle = true
+
+[node name="FloorSwitch2" parent="tilemap/SwitchGroup" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 512, -1088 )
+target_nodes = [ "SunbeamGroup/Sunbeam3", "SunbeamGroup/Sunbeam4" ]
+is_toggle = true
+
+[node name="FloorSwitch3" parent="tilemap/SwitchGroup" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 832, -1088 )
+target_nodes = [ "SunbeamGroup/Sunbeam5", "SunbeamGroup/Sunbeam6" ]
+is_toggle = true
+
+[node name="FloorSwitch4" parent="tilemap/SwitchGroup" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 1152, -1088 )
+target_nodes = [ "SunbeamGroup/Sunbeam7" ]
+is_toggle = true
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+__meta__ = { "_editor_collapsed":true }
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 8 )]
+
+transform/pos = Vector2( -240, -400 )
+target_level = "res://levels/crypt/0-0.tscn"
+teleport_to = Vector2( 652, 16 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+
+transform/scale = Vector2( 1, 5 )
+linear_damp = 0.1
+
+[node name="boundaries" type="Node2D" parent="tilemap"]
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( -230, -1414 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( 1258, -214 )
+
+
+[editable path="tilemap/ClimbableGroup/ClimbableBlock"]
+[editable path="tilemap/ClimbableGroup/ClimbableBlock2"]
+[editable path="tilemap/ClimbableGroup/ClimbableBlock4"]
+[editable path="tilemap/ClimbableGroup/ClimbableBlock6"]
+[editable path="tilemap/SunbeamGroup/Sunbeam"]
+[editable path="tilemap/SunbeamGroup/Sunbeam1"]
+[editable path="tilemap/SunbeamGroup/Sunbeam2"]
+[editable path="tilemap/SunbeamGroup/Sunbeam3"]
+[editable path="tilemap/SunbeamGroup/Sunbeam4"]
+[editable path="tilemap/SunbeamGroup/Sunbeam5"]
+[editable path="tilemap/SunbeamGroup/Sunbeam6"]
+[editable path="tilemap/SunbeamGroup/Sunbeam7"]
+[editable path="tilemap/TeleportGroup/Teleport"]

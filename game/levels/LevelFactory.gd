@@ -68,6 +68,15 @@ func _init():
 	holyruins.reward = 20000
 	levels[holyruins.title] = holyruins
 	
+	var capecrypt = levelclass.new()
+	capecrypt.title = "LVL_CAPECRYPT"
+	capecrypt.type = "boss"
+	capecrypt.position = Vector2(560, 424)
+	capecrypt.description = "LVL_CAPECRYPT_DESCRIPTION"
+	capecrypt.location = locationfactory.locations["LVL_CAPECRYPT"]
+	capecrypt.reward = 50000
+	levels[capecrypt.title] = capecrypt
+	
 	var start = levelclass.new()
 	start.title = "LVL_START"
 	start.type = "quest"

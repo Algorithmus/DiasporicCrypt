@@ -60,3 +60,10 @@ func _init():
 	holyruins.id = "LVL_HOLYRUINS"
 	holyruins.bgm = preload("res://levels/common/BGM1.ogg")
 	locations[holyruins.id] = holyruins
+	
+	var crypt = locationclass.new()
+	crypt.node = "res://levels/crypt/0-0.tscn"
+	crypt.teleportto = Vector2(-16, 128)
+	crypt.id = "LVL_CAPECRYPT"
+	crypt.bgm = preload("res://levels/common/BGM1.ogg")
+	locations[crypt.id] = crypt
