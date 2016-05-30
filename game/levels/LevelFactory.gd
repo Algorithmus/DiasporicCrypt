@@ -41,6 +41,15 @@ func _init():
 	lavacave.location = locationfactory.locations["LVL_LAVACAVE"]
 	levels[lavacave.title] = lavacave
 	
+	var bergfortress = levelclass.new()
+	bergfortress.title = "LVL_BERGFORTRESS"
+	bergfortress.type = "boss"
+	bergfortress.position = Vector2(259, 495)
+	bergfortress.description = "LVL_BERGFORTRESS_DESCRIPTION"
+	bergfortress.reward = 5000
+	bergfortress.location = locationfactory.locations["LVL_BERGFORTRESS"]
+	levels[bergfortress.title] = bergfortress
+	
 	var aquaduct = levelclass.new()
 	aquaduct.title = "LVL_AQUADUCT"
 	aquaduct.type = "boss"

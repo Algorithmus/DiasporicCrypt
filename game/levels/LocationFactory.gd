@@ -47,6 +47,13 @@ func _init():
 	marblecastle.bgm = preload("res://levels/common/BGM1.ogg")
 	locations[marblecastle.id] = marblecastle
 	
+	var bergfortress = locationclass.new()
+	bergfortress.node = "res://levels/bergfortress/0-0.tscn"
+	bergfortress.teleportto = Vector2(-16, 128)
+	bergfortress.id = "LVL_BERGFORTRESS"
+	bergfortress.bgm = preload("res://levels/common/BGM1.ogg")
+	locations[bergfortress.id] = bergfortress
+	
 	var aquaduct = locationclass.new()
 	aquaduct.node = "res://levels/aquaduct/0-0.tscn"
 	aquaduct.teleportto = Vector2(-16, 128)

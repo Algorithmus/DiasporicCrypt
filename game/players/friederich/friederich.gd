@@ -33,6 +33,7 @@ var target_enemy_offset
 #seamlessly
 var special_delay = 10
 var static_enemy = preload("res://scenes/common/damagables/Static.gd")
+var chain_target = preload("res://scenes/bergfortress/boss/ChainTarget.gd")
 var jump_requested = false
 
 const MAX_CHAIN = 100
@@ -377,22 +378,24 @@ func step_player(delta):
 			var animation_pos = animation_player.get_current_animation_pos()
 			var animation_length = animation_player.get_current_animation_length()
 			var animation_end = animation_length - special_delay * delta
+			var is_valid_target = false
 			# make sure the target is still in the world before matching up coordinates
 			if (target_enemy != null && target_enemy.get_ref() && target_enemy.get_ref().get_parent() != null):
 				target_exists = true
 				newpos = target_enemy.get_ref().get_global_pos().y - get_global_pos().y + target_enemy_offset.y
+				is_valid_target = target_enemy.get_ref().get_name() == "damagable" && !(target_enemy.get_ref().get_parent() extends chain_target)
 			# do special attack specific actions
 			if (current_chain_special["id"] == "thrust"):
-				if (target_exists && hit_enemy && target_enemy.get_ref().get_name() == "damagable"):
+				if (target_exists && hit_enemy && is_valid_target):
 					target_enemy.get_ref().get_parent().set_global_pos(Vector2(target_enemy.get_ref().get_global_pos().x + direction * 5, target_enemy.get_ref().get_global_pos().y))
 			elif (current_chain_special["id"] == "slice"):
 				newpos = min(newpos + 1, 0)
-				if (target_exists && hit_enemy && target_enemy.get_ref().get_name() == "damagable"):
+				if (target_exists && hit_enemy && is_valid_target):
 					target_enemy.get_ref().get_parent().set("floortile_check_requested", false)
 					target_enemy.get_ref().get_parent().set_global_pos(Vector2(target_enemy.get_ref().get_global_pos().x, target_enemy.get_ref().get_global_pos().y + target_enemy_offset.y))
 			elif (current_chain_special["id"] == "skewer"):
 				newpos = min(position.y + 1, 0)
-				if (target_exists && hit_enemy && target_enemy.get_ref().get_name() == "damagable"):
+				if (target_exists && hit_enemy && is_valid_target):
 					target_enemy.get_ref().get_parent().set("floortile_check_requested", false)
 					target_enemy.get_ref().get_parent().set_global_pos(Vector2(target_enemy.get_ref().get_global_pos().x, get_global_pos().y - TILE_SIZE))
 			elif (current_chain_special["id"] == "stab"):
@@ -404,10 +407,10 @@ func step_player(delta):
 					#	target_enemy.get_parent().set_global_pos(Vector2(target_enemy.get_global_pos().x, get_global_pos().y + target_enemy_offset.y))
 			# prevent enemy dropping through the floor on certain attacks
 			elif (current_chain_special["id"] == "dualspin"):
-				if (target_exists && hit_enemy && target_enemy.get_ref().get_name() == "damagable"):
+				if (target_exists && hit_enemy && is_valid_target):
 					target_enemy.get_ref().get_parent().set("floortile_check_requested", true)
 			elif (current_chain_special["id"] == "swift"):
-				if (target_exists && hit_enemy && target_enemy.get_ref().get_name() == "damagable"):
+				if (target_exists && hit_enemy && is_valid_target):
 					target_enemy.get_ref().get_parent().set("floortile_check_requested", true)
 			elif (current_chain_special["id"] == "rush"):
 				move(Vector2(direction*15, 0))
@@ -514,7 +517,7 @@ func _on_special_collision(area):
 				target_enemy = null
 	if(area.get_name() != "damage" && area != special_collider && area.get_name() != "oneway" && !area.get_name().match("slope*") && area.get_name() != "ladder"):
 		target_enemy = weakref(area)
-		if (area.get_parent() != null && area.get_parent() extends static_enemy):
+		if (area.get_parent() != null && (area.get_parent() extends static_enemy)):
 			target_enemy = null
 	if (target_enemy != null && target_enemy.get_ref() && target_enemy.get_ref().get_parent() != null):
 		target_enemy_offset = Vector2(get_global_pos().x - target_enemy.get_ref().get_global_pos().x, get_global_pos().y - target_enemy.get_ref().get_global_pos().y)
