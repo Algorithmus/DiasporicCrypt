@@ -15,8 +15,6 @@ func _ready():
 		var target_obj = tilemap.get_node(target)
 		targets.append(target_obj)
 		target_containers.append(target_obj.get_parent())
-	activate()
-	activated = false
 
 func activate():
 	if (!is_on):

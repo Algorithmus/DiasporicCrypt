@@ -74,3 +74,31 @@ func _init():
 	crypt.id = "LVL_CAPECRYPT"
 	crypt.bgm = preload("res://levels/common/BGM1.ogg")
 	locations[crypt.id] = crypt
+	
+	var springislandcastle = locationclass.new()
+	springislandcastle.node = "res://levels/springislandcastle/0-0.tscn"
+	springislandcastle.teleportto = Vector2(272, 192)
+	springislandcastle.id = "LVL_SPRINGISLANDCASTLE"
+	springislandcastle.bgm = preload("res://levels/common/BGM1.ogg")
+	locations[springislandcastle.id] = springislandcastle
+	
+	var cave = locationclass.new()
+	cave.node = "res://levels/cave/0-0.tscn"
+	cave.teleportto = Vector2(16, 32)
+	cave.id = "LVL_CAVE"
+	cave.bgm = preload("res://levels/common/BGM1.ogg")
+	locations[cave.id] = cave
+	
+	var mausoleum = locationclass.new()
+	mausoleum.node = "res://levels/mausoleum/0-0.tscn"
+	mausoleum.teleportto = Vector2(336, 160)
+	mausoleum.id = "LVL_MAUSOLEUM"
+	mausoleum.bgm = preload("res://levels/common/BGM1.ogg")
+	locations[mausoleum.id] = mausoleum
+	
+	var dungeon = locationclass.new()
+	dungeon.node = "res://levels/dungeon/0-0.tscn"
+	dungeon.teleportto = Vector2(48, 128)
+	dungeon.id = "LVL_DUNGEON"
+	dungeon.bgm = preload("res://levels/common/BGM1.ogg")
+	locations[dungeon.id] = dungeon

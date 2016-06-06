@@ -14,6 +14,30 @@ func _init():
 	sandbox.location = locationfactory.locations["LVL_SANDBOX"]
 	levels[sandbox.title] = sandbox
 	
+	var springislandcastle = levelclass.new()
+	springislandcastle.title = "LVL_SPRINGISLANDCASTLE"
+	springislandcastle.type = "quest"
+	springislandcastle.position = Vector2(463, 26)
+	springislandcastle.description = "LVL_SPRINGISLANDCASTLE_DESCRIPTION"
+	springislandcastle.location = locationfactory.locations["LVL_SPRINGISLANDCASTLE"]
+	levels[springislandcastle.title] = springislandcastle
+	
+	var mausoleum = levelclass.new()
+	mausoleum.title = "LVL_MAUSOLEUM"
+	mausoleum.type = "quest"
+	mausoleum.position = Vector2(288, 288)
+	mausoleum.description = "LVL_MAUSOLEUM"
+	mausoleum.location = locationfactory.locations["LVL_MAUSOLEUM"]
+	levels[mausoleum.title] = mausoleum
+	
+	var cave = levelclass.new()
+	cave.title = "LVL_CAVE"
+	cave.type = "quest"
+	cave.position = Vector2(424, 73)
+	cave.description = "LVL_CAVE_DESCRIPTION"
+	cave.location = locationfactory.locations["LVL_CAVE"]
+	levels[cave.title] = cave
+	
 	var forest1 = levelclass.new()
 	forest1.title = "LVL_FOREST1"
 	forest1.type = "bonus"
@@ -58,6 +82,15 @@ func _init():
 	aquaduct.reward = 8000
 	aquaduct.location = locationfactory.locations["LVL_AQUADUCT"]
 	levels[aquaduct.title] = aquaduct
+	
+	var dungeon = levelclass.new()
+	dungeon.title = "LVL_DUNGEON"
+	dungeon.type = "quest"
+	dungeon.position = Vector2(362, 389)
+	dungeon.description = "LVL_DUNGEON_DESCRIPTION"
+	dungeon.reward = 4000
+	dungeon.location = locationfactory.locations["LVL_DUNGEON"]
+	levels[dungeon.title] = dungeon
 	
 	var manor = levelclass.new()
 	manor.title = "LVL_MANOR"
