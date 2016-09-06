@@ -89,6 +89,7 @@ func _init():
 	dungeon.position = Vector2(362, 389)
 	dungeon.description = "LVL_DUNGEON_DESCRIPTION"
 	dungeon.reward = 4000
+	dungeon.item = "ITEM_GLYPH1"
 	dungeon.location = locationfactory.locations["LVL_DUNGEON"]
 	levels[dungeon.title] = dungeon
 	

@@ -1,41 +1,62 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
-[ext_resource path="res://scenes/common/breakables/BaseBreakable.gd" type="Script" id=1]
-[ext_resource path="res://scenes/common/breakables/breakabletile.png" type="Texture" id=2]
+[ext_resource path="res://scenes/common/breakables/pot.gd" type="Script" id=1]
+[ext_resource path="res://scenes/common/breakables/pot.png" type="Texture" id=2]
 [ext_resource path="res://scenes/common/breakables/crumble.wav" type="Sample" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16, 16 )
+extents = Vector2( 18, 48 )
 
-[sub_resource type="RectangleShape2D" id=2]
-
-custom_solver_bias = 0.0
-extents = Vector2( 18, 18 )
-
-[sub_resource type="SampleLibrary" id=3]
+[sub_resource type="SampleLibrary" id=2]
 
 samples/crumble = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
 
-[node name="TestBreakable" type="Node2D"]
+[sub_resource type="Animation" id=3]
+
+resource/name = "break"
+length = 0.4
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("KinematicBody2D/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":false, "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 0, 1, 2, 3 ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("KinematicBody2D/Sprite:visibility/visible")
+tracks/1/interp = 1
+tracks/1/keys = { "cont":false, "times":FloatArray( 0, 0.4 ), "transitions":FloatArray( 1, 1 ), "values":[ true, false ] }
+
+[sub_resource type="Animation" id=4]
+
+resource/name = "idle"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("KinematicBody2D/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0 ] }
+
+[node name="Pot" type="Node2D"]
 
 script/script = ExtResource( 1 )
 __meta__ = { "__editor_plugin_screen__":"Script" }
+type = "NONE"
+reward = ""
+value = 0
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 
 input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 
 [node name="enabler" type="VisibilityEnabler2D" parent="KinematicBody2D"]
 
-transform/scale = Vector2( 3, 3 )
+transform/scale = Vector2( 3, 6 )
 rect = Rect2( -10, -10, 20, 20 )
 enabler/pause_animations = true
 enabler/freeze_bodies = true
@@ -46,17 +67,14 @@ enabler/fixed_process_parent = false
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]
 
 texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
+hframes = 4
+modulate = Color( 0.925781, 0.862496, 0.520752, 1 )
+region_rect = Rect2( 0, 0, 32, 96 )
 
 [node name="breakable" type="Area2D" parent="KinematicBody2D"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -66,14 +84,14 @@ angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/breakable"]
 
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
 [node name="sound" type="SamplePlayer" parent="."]
 
 config/polyphony = 1
-config/samples = SubResource( 3 )
+config/samples = SubResource( 2 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
 default/pan = 0.0
@@ -86,6 +104,18 @@ default/filter/gain = 1.0
 default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/break = SubResource( 3 )
+anims/idle = SubResource( 4 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
 
 [connection signal="enter_screen" from="KinematicBody2D/enabler" to="." method="enter_screen"]
 

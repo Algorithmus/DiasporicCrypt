@@ -10,3 +10,4 @@ func _ready():
 
 	current_hp = hp
 	elemental_weaknesses.append("fire")
+	sunbeam_immunity = false

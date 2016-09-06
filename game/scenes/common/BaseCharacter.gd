@@ -28,6 +28,7 @@ var climbing_platform = false
 var hanging = false
 var movingPlatform = null
 var movingPlatformPos = null
+var onMovingPlatform = false
 var damage_rect
 var is_hurt = false
 var current_gravity = DEFAULT_GRAVITY
@@ -185,6 +186,7 @@ func closestYTile(tileA, tileB):
 
 func check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space_state, oneWayTile):
 	movingPlatform = null
+	onMovingPlatform = false
 
 	if (normalTileCheck):
 		var movingPlatform_check = null
@@ -193,6 +195,7 @@ func check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space
 		else:
 			movingPlatform_check = relevantTileB["collider"]
 		if((movingPlatform_check.get_name() == "blockR" || movingPlatform_check.get_name() == "blockL") && movingPlatform_check.get_parent() extends MovingPlatform):
+			onMovingPlatform = true
 			if (movingPlatform_check.get_global_pos().y - TILE_SIZE/2 >= int(get_pos().y + sprite_offset.y)):
 				movingPlatform = movingPlatform_check
 			else:
@@ -209,6 +212,7 @@ func check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space
 	if (climb_platform != null):
 		if ((climb_platform.get_name() == "blockR" || climb_platform.get_name() == "blockL") && climb_platform.get_parent() extends MovingPlatform):
 			movingPlatform = climb_platform
+			onMovingPlatform = true
 		else:
 			clearMovingPlatform()
 

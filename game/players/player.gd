@@ -622,7 +622,7 @@ func check_attack_animation(new_animation):
 
 func check_animations(new_animation, animation_speed, horizontal_motion, ladderY):
 	if (!on_ladder):
-		if (falling):
+		if (falling && !onMovingPlatform):
 			if (accel < 0):
 				new_animation = "jump"
 			else:
@@ -774,7 +774,7 @@ func step_player(delta):
 		if (!on_ladder):
 			# final falling status check for all kinds of collisions
 			check_falling(normalTileCheck, relevantSlopeTile, onSlope, abSlope, ladder_top, oneWayTile)
-	
+			
 			# handle crouching now that we know if we are standing on ground blocks
 			check_crouch(normalTileCheck, abSlope, onSlope, onOneWayTile)
 			

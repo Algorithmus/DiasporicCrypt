@@ -92,8 +92,6 @@ linear_damp = 0.1
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
-
 [node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( -688, -80 )
@@ -108,6 +106,8 @@ linear_damp = 0.1
 [node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 848, -80 )
+target_level = "res://levels/dungeon/0-2.tscn"
+teleport_to = Vector2( -332, -80 )
 
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
 

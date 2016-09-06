@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=1]
+[gd_scene load_steps=23 format=1]
 
 [ext_resource path="res://scenes/catacombs/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/torch.tscn" type="PackedScene" id=2]
@@ -12,8 +12,9 @@
 [ext_resource path="res://scenes/common/target.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/npcs/kaleva/Kaleva.gd" type="Script" id=12]
-[ext_resource path="res://scenes/catacombs/solids/coffin.png" type="Texture" id=13]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/npcs/kaleva/idle.png" type="Texture" id=13]
+[ext_resource path="res://scenes/catacombs/solids/coffin.png" type="Texture" id=14]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=15]
 
 [sub_resource type="CanvasItemShader" id=1]
 
@@ -261,15 +262,16 @@ collision/margin = 0.08
 
 transform/pos = Vector2( 176, 304 )
 script/script = ExtResource( 12 )
-static_direction = false
+
+[node name="enabler" parent="tilemap/NPCGroup/Kaleva"]
+
+transform/pos = Vector2( 0, -9.53674e-06 )
+transform/scale = Vector2( 8, 16 )
 
 [node name="Sprite" parent="tilemap/NPCGroup/Kaleva"]
 
 transform/scale = Vector2( -1, 1 )
-
-[node name="npc" parent="tilemap/NPCGroup/Kaleva"]
-
-linear_damp = 0.1
+texture = ExtResource( 13 )
 
 [node name="Coffin" parent="tilemap/NPCGroup" instance=ExtResource( 11 )]
 
@@ -279,15 +281,13 @@ static_direction = true
 
 [node name="Sprite" parent="tilemap/NPCGroup/Coffin"]
 
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 offset = Vector2( 0, 0 )
 hframes = 1
-frame = 0
 
 [node name="npc" parent="tilemap/NPCGroup/Coffin"]
 
 visibility/visible = false
-linear_damp = 0.1
 
 [node name="AnimationPlayer" parent="tilemap/NPCGroup/Coffin"]
 
@@ -297,7 +297,7 @@ autoplay = ""
 
 __meta__ = { "_editor_collapsed":true }
 
-[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 14 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( -16, -368 )
 is_horizontal = false

@@ -18,6 +18,13 @@ func _init():
 	amulet.image = "res://scenes/items/special/amulet.png"
 	items[amulet.title] = amulet
 	
+	var glyph1 = itemclass.new()
+	glyph1.title = "ITEM_GLYPH1"
+	glyph1.description = "ITEM_GLYPH1_DESCRIPTION"
+	glyph1.type = "special"
+	glyph1.image = "res://scenes/items/special/amulet.png"
+	items[glyph1.title] = glyph1
+	
 	var rubykey = itemclass.new()
 	rubykey.title = "ITEM_RUBYKEY"
 	rubykey.description = "ITEM_RUBYKEY_DESCRIPTION"

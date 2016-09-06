@@ -126,8 +126,8 @@ linear_damp = 0.1
 [node name="Teleport2" parent="tilemap/TeleportGroup" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( -560, -528 )
-target_level = "res://levels/common/catacombs.tscn"
-teleport_to = Vector2( -16, -272 )
+target_level = "res://levels/dungeon/0-8.tscn"
+teleport_to = Vector2( 268, 80 )
 
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport2"]
 

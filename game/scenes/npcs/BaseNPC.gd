@@ -1,7 +1,7 @@
 
 extends Node2D
 
-export var dialogues = []
+export var dialogues = [[-1, "CHARACTER_NPC", "DIAG_DEFAULT", null, null]]
 export var static_direction = false
 var direction
 var interacting = false

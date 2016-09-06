@@ -32,7 +32,8 @@ const CHOICE_ORIENTATION = 3
 
 var avatars = {"Friederich": preload("res://gui/dialogue/profiles/friederich.png"), 
 				"Kaleva": preload("res://gui/dialogue/profiles/kaleva.png"),
-				"Adela": preload("res://gui/dialogue/profiles/adela.png")}
+				"Adela": preload("res://gui/dialogue/profiles/adela.png"),
+				"CHARACTER_NPC": preload("res://gui/dialogue/profiles/npc.png")}
 
 func _ready():
 	get_node("frame").hide()

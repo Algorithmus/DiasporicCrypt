@@ -15,11 +15,15 @@ func _fixed_process(delta):
 			if (check_crumble(i)):
 				sound.set_volume_db(sound.play("crumble"), -10)
 				is_crumbling = true
+				crumble()
 	else:
 		sprite_opacity(0.5 + fmod(crumble_cycle, 4) * 0.3)
 		crumble_cycle += 1
 		if (!sound.is_active()):
 			queue_free()
+
+func crumble():
+	pass
 
 func _ready():
 	# Initialization here

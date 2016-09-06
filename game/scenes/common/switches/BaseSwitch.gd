@@ -5,9 +5,13 @@ export var once = false
 var activated = false
 export var is_on = false
 export var target_nodes = []
+export var related_switches = []
+export var enabled = true
 var targets = []
 var target_containers = []
+var switches = []
 var tilemap
+var onscreen = false
 
 func _ready():
 	tilemap = get_parent().get_parent()
@@ -15,6 +19,10 @@ func _ready():
 		var target_obj = tilemap.get_node(target)
 		targets.append(target_obj)
 		target_containers.append(target_obj.get_parent())
+
+	for i in related_switches:
+		var switch_obj = tilemap.get_node(i)
+		switches.append(switch_obj)
 
 func activate():
 	if (!is_on):
@@ -30,16 +38,27 @@ func activate():
 				target_containers[index].add_child(targets[index])
 				activated = true
 
+func enable(value):
+	enabled = value
+	if (enabled && onscreen):
+		set_fixed_process(true)
+	else:
+		set_fixed_process(false)
+
 func _fixed_process(delta):
 	if ((once && !activated) || !once):
-		check_activation()
-		activate()
+		var update = check_activation()
+		if (update):
+			activate()
 
 func enter_screen():
-	set_fixed_process(true)
+	onscreen = true
+	if (enabled):
+		set_fixed_process(true)
 
 func exit_screen():
+	onscreen = false
 	set_fixed_process(false)
 
 func check_activation():
-	pass
+	return false

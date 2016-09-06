@@ -3,6 +3,7 @@ extends Node2D
 # Member variables
 export var motion = Vector2()
 export var cycle = 1.0
+export var offset = 0.0
 var accum = 0.0
 var lOffset = 0
 var rOffset = 0
@@ -14,7 +15,14 @@ func _fixed_process(delta):
 	previousPos_blockL = get_node("blockL").get_global_pos()
 	accum += delta*(1.0/cycle)*PI*2.0
 	accum = fmod(accum, PI*2.0)
+	# circular motion
 	var d = sin(accum)
+	# uncomment for linear motion
+	#var d = fposmod(accum * sign(cos(accum)*sin(accum)), PI / 2.0) / (PI / 2.0)
+	#if (cos(accum) == 0):
+	#	d = 1
+	#d = sign(sin(accum)) * d
+	
 	var xfR = Matrix32()
 	var xfL = Matrix32()
 	xfR[2]= Vector2(motion.x*d + lOffset, motion.y*d)
@@ -25,9 +33,8 @@ func _fixed_process(delta):
 func _ready():
 	lOffset = get_node("blockL").get_pos().x
 	rOffset = get_node("blockR").get_pos().x
-
-func enter_screen():
+	var scalex = motion.x / 32.0
+	var scaley = motion.y / 32.0
+	accum = offset * PI / 180
 	set_fixed_process(true)
 
-func exit_screen():
-	set_fixed_process(false)

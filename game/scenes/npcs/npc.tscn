@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://scenes/npcs/BaseNPC.gd" type="Script" id=1]
-[ext_resource path="res://scenes/npcs/kaleva/idle.png" type="Texture" id=2]
+[ext_resource path="res://scenes/npcs/generic/idle.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -22,11 +22,13 @@ tracks/0/keys = { "cont":false, "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transit
 [node name="NPC" type="Node2D"]
 
 script/script = ExtResource( 1 )
-dialogues = [  ]
+dialogues = [ [ -1, "CHARACTER_NPC", "DIAG_DEFAULT", null, null ] ]
+static_direction = false
 
 [node name="enabler" type="VisibilityEnabler2D" parent="."]
 
-transform/scale = Vector2( 8, 15 )
+transform/pos = Vector2( 0, 2.86102e-06 )
+transform/scale = Vector2( 8, 14.4 )
 rect = Rect2( -10, -10, 20, 20 )
 enabler/pause_animations = true
 enabler/freeze_bodies = true
@@ -39,7 +41,6 @@ enabler/fixed_process_parent = false
 texture = ExtResource( 2 )
 offset = Vector2( 4, 0 )
 hframes = 3
-frame = 1
 
 [node name="npc" type="Area2D" parent="."]
 

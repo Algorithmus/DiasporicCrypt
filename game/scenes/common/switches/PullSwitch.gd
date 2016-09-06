@@ -6,6 +6,7 @@ var is_echo = false
 var player
 
 func check_activation():
+	var active = false
 	if (player == null):
 		player = get_tree().get_root().get_node("world/playercontainer/player")
 	if (is_toggle):
@@ -16,5 +17,9 @@ func check_activation():
 		elif (!is_echo):
 			is_on = !is_on
 			is_echo = true
+		active = true
 	else:
 		is_echo = false
+	for j in switches:
+		j.set("is_on", is_on)
+	return active

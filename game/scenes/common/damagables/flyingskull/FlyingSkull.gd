@@ -9,3 +9,4 @@ func _ready():
 	ep = 50
 
 	current_hp = hp
+	sunbeam_immunity = false

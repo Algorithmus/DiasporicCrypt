@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
-[ext_resource path="res://scenes/common/breakables/BaseBreakable.gd" type="Script" id=1]
+[ext_resource path="res://scenes/common/breakables/SunbeamBreakable.gd" type="Script" id=1]
 [ext_resource path="res://scenes/common/breakables/breakabletile.png" type="Texture" id=2]
 [ext_resource path="res://scenes/common/breakables/crumble.wav" type="Sample" id=3]
 
@@ -18,7 +18,18 @@ extents = Vector2( 18, 18 )
 
 samples/crumble = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
 
-[node name="TestBreakable" type="Node2D"]
+[sub_resource type="Animation" id=4]
+
+resource/name = "dust"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("KinematicBody2D/Dust:config/emitting")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ true ] }
+
+[node name="SunbeamBreakable" type="Node2D"]
 
 script/script = ExtResource( 1 )
 __meta__ = { "__editor_plugin_screen__":"Script" }
@@ -35,6 +46,7 @@ collision/margin = 0.08
 
 [node name="enabler" type="VisibilityEnabler2D" parent="KinematicBody2D"]
 
+visibility/visible = false
 transform/scale = Vector2( 3, 3 )
 rect = Rect2( -10, -10, 20, 20 )
 enabler/pause_animations = true
@@ -46,15 +58,52 @@ enabler/fixed_process_parent = false
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]
 
 texture = ExtResource( 2 )
+modulate = Color( 0.151611, 0.16563, 0.1875, 1 )
+
+[node name="Dust" type="Particles2D" parent="KinematicBody2D"]
+
+transform/pos = Vector2( 0, -16 )
+config/amount = 96
+config/lifetime = 1.0
+config/time_scale = 4.0
+config/preprocess = 0.1
+config/emit_timeout = 1.0
+config/emitting = false
+config/half_extents = Vector2( 8, 0 )
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 16.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 16.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 1.0
+randomness/linear_velocity = 1.0
+randomness/spin_velocity = 1.0
+randomness/damping = 1.0
+randomness/initial_angle = 1.0
+randomness/initial_size = 1.0
+randomness/final_size = 1.0
+color/color = Color( 0, 0, 0, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 
+visibility/visible = false
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
 [node name="breakable" type="Area2D" parent="KinematicBody2D"]
 
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -86,6 +135,17 @@ default/filter/gain = 1.0
 default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/dust = SubResource( 4 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
 
 [connection signal="enter_screen" from="KinematicBody2D/enabler" to="." method="enter_screen"]
 
