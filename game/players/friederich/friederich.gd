@@ -1,7 +1,7 @@
 
 extends "res://players/player.gd"
 
-var attack_buffer = []
+var attack_buffer = ""
 var chaingui
 var chain_counter = 0
 var chain_delay = 25
@@ -13,15 +13,15 @@ var chain_collided = false
 var attack_reset_interrupt = false
 var direction_requested = ""
 var chain_specials = [
-	{"combo":"a, a, d", "id":"chop", "replace":"aad", "collider":preload("res://scenes/weapons/chop.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":10},
-	{"combo":"aad, u", "id":"slice", "replace":"aadu", "collider":preload("res://scenes/weapons/slice.tscn"), "collider_offset":Vector2(0, -96), "db":10, "hurt_delay":8},
-	{"combo":"a, a, u", "id":"skewer", "replace":"aau", "collider":preload("res://scenes/weapons/skewer.tscn"), "collider_offset":Vector2(0, -32), "db":10, "hurt_delay":8},
-	{"combo":"aau, d", "id":"stab", "replace":"aaud", "collider":preload("res://scenes/weapons/stab.tscn"), "collider_offset":Vector2(0, 80), "db":10, "hurt_delay":7},
-	{"combo":"a, a, a", "id":"thrust", "replace":"aaa", "collider":preload("res://scenes/weapons/thrust.tscn"), "collider_offset":Vector2(0, -32), "db":10, "hurt_delay":10},
-	{"combo":"aaa, a", "id":"swift", "replace":"aaaa", "collider":preload("res://scenes/weapons/swift.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":6},
-	{"combo":"a, a, f", "id":"dualspin", "replace":"aaf", "collider":preload("res://scenes/weapons/dualspin.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":8},
-	{"combo":"aaa, f", "id":"rush", "replace":"aaaf", "collider":preload("res://scenes/weapons/rush.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":2},
-	{"combo":"aaf, d", "id":"void", "replace":"aafd", "collider":preload("res://scenes/weapons/void.tscn"), "collider_offset":Vector2(32, 0), "db":10, "hurt_delay":4}
+	{"combo":"a a d", "id":"chop", "replace":"aad", "collider":preload("res://scenes/weapons/chop.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":10},
+	{"combo":"aad u", "id":"slice", "replace":"aadu", "collider":preload("res://scenes/weapons/slice.tscn"), "collider_offset":Vector2(0, -96), "db":10, "hurt_delay":8},
+	{"combo":"a a u", "id":"skewer", "replace":"aau", "collider":preload("res://scenes/weapons/skewer.tscn"), "collider_offset":Vector2(0, -32), "db":10, "hurt_delay":8},
+	{"combo":"aau d", "id":"stab", "replace":"aaud", "collider":preload("res://scenes/weapons/stab.tscn"), "collider_offset":Vector2(0, 80), "db":10, "hurt_delay":7},
+	{"combo":"a a a", "id":"thrust", "replace":"aaa", "collider":preload("res://scenes/weapons/thrust.tscn"), "collider_offset":Vector2(0, -32), "db":10, "hurt_delay":10},
+	{"combo":"aaa a", "id":"swift", "replace":"aaaa", "collider":preload("res://scenes/weapons/swift.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":6},
+	{"combo":"a a f", "id":"dualspin", "replace":"aaf", "collider":preload("res://scenes/weapons/dualspin.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":8},
+	{"combo":"aaa f", "id":"rush", "replace":"aaaf", "collider":preload("res://scenes/weapons/rush.tscn"), "collider_offset":Vector2(0, 0), "db":10, "hurt_delay":2},
+	{"combo":"aaf d", "id":"void", "replace":"aafd", "collider":preload("res://scenes/weapons/void.tscn"), "collider_offset":Vector2(32, 0), "db":10, "hurt_delay":4}
 	]
 var demonic_void = preload("res://scenes/weapons/demonic.tscn")
 var target_enemy
@@ -37,6 +37,9 @@ var chain_target = preload("res://scenes/bergfortress/boss/ChainTarget.gd")
 var jump_requested = false
 
 const MAX_CHAIN = 100
+
+func attack_buffer_size():
+	return attack_buffer.split(" ").size()
 
 # disable ladder detection for demonic ability
 func check_ladder_up(a):
@@ -252,12 +255,12 @@ func step_player(delta):
 				
 				# add direction buttons to chain specials if applicable
 				if (direction_requested != "" && chain_counter > 1):
-					attack_buffer.append(direction_requested)
+					attack_buffer = attack_buffer + direction_requested + " "
 					direction_requested = ""
 				
 				# check attack buffer for chain special combos
-				if (attack_buffer.size() > 1):
-					var combos = str(attack_buffer)
+				if (attack_buffer_size() > 1):
+					var combos = attack_buffer
 					for combo in chain_specials:
 						var combopos = combos.rfind(combo["combo"])
 						if(combopos == 0 || (combopos > 0 && combos[combopos-1] == " ")):
@@ -279,7 +282,7 @@ func step_player(delta):
 								# merge combo in attack buffer
 								var parta = combos.substr(0, combopos)
 								var partb = combos.substr(combopos+combo["combo"].length(), combos.length())
-								attack_buffer = convert(str(parta + combo["replace"] + partb).split(", "), TYPE_ARRAY)
+								attack_buffer = parta + combo["replace"] + partb
 								# setup special attack
 								is_chain_special = true
 								current_chain_special = combo
@@ -337,7 +340,7 @@ func step_player(delta):
 					hit_enemy = false
 					attack_reset_interrupt = true
 					current_chain_delay = 0
-					attack_buffer.append("a")
+					attack_buffer = attack_buffer + "a "
 					chain_counter += 1
 					chaingui.get_node("chaintext/counterGroup/counter").set_text(str(chain_counter))
 					# secondary chain attack
@@ -462,8 +465,9 @@ func step_player(delta):
 	play_animation(new_animation, animation_speed)
 	
 	#clear attack buffer overflow
-	while (attack_buffer.size() >= 10):
-		attack_buffer.remove(0)
+	while (attack_buffer_size() >= 10):
+		var new_buffer = attack_buffer.split(" ")
+		attack_buffer = attack_buffer.substr(new_buffer[0].length() + 1, attack_buffer.length() - new_buffer[0].length() - 1)
 
 func check_damage(damageTiles):
 	if (current_chain_special == null || (current_chain_special != null && current_chain_special["id"] != "rush" && current_chain_special["id"] != "void")):
@@ -474,7 +478,7 @@ func reset_target_delay():
 		target_enemy.get_ref().get_parent().set("hurt_delay", 10)
 
 func reset_chain():
-	attack_buffer.clear()
+	attack_buffer = ""
 	chain_counter = 0
 	current_chain_special = null
 	chaingui.get_node("chaintext").hide()
