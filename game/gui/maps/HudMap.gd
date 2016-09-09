@@ -113,5 +113,5 @@ func create_map(root_node):
 		unit.set_pos(Vector2(previous_node_pos.x + previous_node_teleport.x - current_node_teleport.x, previous_node_pos.y + previous_node_teleport.y - current_node_teleport.y))
 	objects.add_child(unit)
 	rooms[root_node.get_filename()] = unit
-	print("save room to")
-	print(root_node.get_filename())
+	#print("save room to")
+	#print(root_node.get_filename())

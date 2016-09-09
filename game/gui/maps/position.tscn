@@ -9,6 +9,7 @@ __meta__ = { "__editor_plugin_screen__":"Script" }
 polygon = Vector2Array( -1, -1.73205, 1, -1.73205, 2, 0, 1, 1.73205, -1, 1.73205, -2, 0 )
 uv = Vector2Array(  )
 color = Color( 1, 0, 0, 1 )
+vertex_colors = ColorArray(  )
 offset = Vector2( 0, 0 )
 texture/texture = null
 texture/offset = Vector2( 0, 0 )

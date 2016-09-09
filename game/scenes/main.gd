@@ -154,8 +154,8 @@ func _input(event):
 				pausemenu.hide()
 				pause.hide()
 				is_paused = false
-				if (pausemenu.get_node("panels/map/mapcontainer").has_node("objects")):
-					pausemenu.get_node("panels/map/mapcontainer/objects").queue_free()
+				if (pausemenu.get_node("panels/map/mapcontainer/viewport").has_node("objects")):
+					pausemenu.get_node("panels/map/mapcontainer/viewport/objects").queue_free()
 				music.set_volume_db(0)
 			elif(!is_paused):
 				pause.show()
@@ -165,8 +165,9 @@ func _input(event):
 				var map_pos_obj = map_position.instance()
 				map_pos_obj.set_pos(Vector2(map.get("offset").x-map.get("objects").get_pos().x, map.get("offset").y-map.get("objects").get_pos().y))
 				big_map.add_child(map_pos_obj)
-				big_map.set_pos(Vector2(original_size.x/2 - map_pos_obj.get_pos().x, original_size.y/2 - map_pos_obj.get_pos().y))
-				pausemenu.get_node("panels/map/mapcontainer").add_child(big_map)
+				# center in viewport in menu map
+				big_map.set_pos(Vector2(270 - map_pos_obj.get_pos().x, 107 - map_pos_obj.get_pos().y))
+				pausemenu.get_node("panels/map/mapcontainer/viewport").add_child(big_map)
 				is_paused = true
 				pausemenu.focus_tab()
 				music.set_volume_db(-20)
@@ -546,6 +547,8 @@ func do_teleport(resource, new_level, pos, teleport):
 		for i in new_level_obj.get_node("tilemap/SwitchGroup").get_children():
 			i.activate()
 			i.set("activated", false)
+			print("activated")
+			print(i.get("activated"))
 	# check that any scrolls already collected do not appear in the level again
 	if (new_level_obj.has_node("tilemap/ScrollGroup")):
 		for i in new_level_obj.get_node("tilemap/ScrollGroup").get_children():

@@ -12,18 +12,18 @@
 [ext_resource path="res://players/magic/void/icon.png" type="Texture" id=10]
 [ext_resource path="res://players/magic/earth/icon.png" type="Texture" id=11]
 [ext_resource path="res://players/magic/wind/icon.png" type="Texture" id=12]
-[ext_resource path="res://gui/fonts/S-10-pixel.fnt" type="Font" id=13]
+[ext_resource path="res://gui/fonts/S-10-pixel.fnt" type="BitmapFont" id=13]
 [ext_resource path="res://gui/hud/MPGauge.png" type="Texture" id=14]
 [ext_resource path="res://gui/hud/HPGauge.png" type="Texture" id=15]
-[ext_resource path="res://gui/fonts/XS-10.fnt" type="Font" id=16]
-[ext_resource path="res://gui/fonts/L-24.fnt" type="Font" id=17]
+[ext_resource path="res://gui/fonts/XS-10.fnt" type="BitmapFont" id=16]
+[ext_resource path="res://gui/fonts/L-24.fnt" type="BitmapFont" id=17]
 [ext_resource path="res://gui/hud/bloodgauge-mask.png" type="Texture" id=18]
 [ext_resource path="res://gui/hud/bloodGauge.png" type="Texture" id=19]
 [ext_resource path="res://gui/worldmap/icons/bonus.png" type="Texture" id=20]
-[ext_resource path="res://gui/fonts/S-12-dialog.fnt" type="Font" id=21]
+[ext_resource path="res://gui/fonts/S-12-dialog.fnt" type="BitmapFont" id=21]
 [ext_resource path="res://gui/hud/ItemDisplay.gd" type="Script" id=22]
 [ext_resource path="res://gui/maps/HudMap.gd" type="Script" id=23]
-[ext_resource path="res://gui/fonts/XL-72.fnt" type="Font" id=24]
+[ext_resource path="res://gui/fonts/XL-72.fnt" type="BitmapFont" id=24]
 [ext_resource path="res://gui/dialogue/dialogue.tscn" type="PackedScene" id=25]
 [ext_resource path="res://gui/menu/menu.tscn" type="PackedScene" id=26]
 [ext_resource path="res://gui/TextButton.tscn" type="PackedScene" id=27]
@@ -36,8 +36,8 @@
 [ext_resource path="res://players/magic/wind/action.png" type="Texture" id=34]
 [ext_resource path="res://gui/sequences/demonic_f.png" type="Texture" id=35]
 [ext_resource path="res://gui/sequences/demonic_a.png" type="Texture" id=36]
-[ext_resource path="res://gui/fonts/L-24-Keyboard-outline.fnt" type="Font" id=37]
-[ext_resource path="res://gui/fonts/S-13-dialog.fnt" type="Font" id=38]
+[ext_resource path="res://gui/fonts/L-24-Keyboard-outline.fnt" type="BitmapFont" id=37]
+[ext_resource path="res://gui/fonts/S-13-dialog.fnt" type="BitmapFont" id=38]
 [ext_resource path="res://gui/worldmap/shield.png" type="Texture" id=39]
 [ext_resource path="res://gui/loading/bat.tscn" type="PackedScene" id=40]
 [ext_resource path="res://gui/loading/cat.tscn" type="PackedScene" id=41]
@@ -108,11 +108,13 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("levelup:transform/scale")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.3 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 1, 1 ) ] }
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.3 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 1, 1 ) ] }
 tracks/1/type = "value"
 tracks/1/path = NodePath("levelup:visibility/visible")
 tracks/1/interp = 1
-tracks/1/keys = { "cont":false, "times":FloatArray( 0, 1.9 ), "transitions":FloatArray( 1, 1 ), "values":[ true, false ] }
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0, 1.9 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ true, false ] }
 
 [sub_resource type="Animation" id=11]
 
@@ -122,7 +124,8 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("chaintext:transform/scale")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 0.25, 0.25, 1 ), "values":[ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ] }
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 0.25, 0.25, 1 ), "update":0, "values":[ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ] }
 
 [sub_resource type="Animation" id=12]
 
@@ -132,7 +135,8 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("chaintext/counterGroup:transform/scale")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 0.25, 0.25, 1 ), "values":[ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ] }
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 0.25, 0.25, 1 ), "update":0, "values":[ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ] }
 
 [sub_resource type="Animation" id=13]
 
@@ -142,7 +146,8 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("newattack:transform/scale")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 0.25, 0.25, 1 ), "values":[ Vector2( 1, 1 ), Vector2( 1.34375, 1.34375 ), Vector2( 1, 1 ) ] }
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 0.25, 0.25, 1 ), "update":0, "values":[ Vector2( 1, 1 ), Vector2( 1.34375, 1.34375 ), Vector2( 1, 1 ) ] }
 
 [sub_resource type="Animation" id=14]
 
@@ -152,15 +157,18 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("title:visibility/opacity")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.3, 1.6, 2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 0.0, 1.0, 1.0, 0.0 ] }
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.3, 1.6, 2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ 0.0, 1.0, 1.0, 0.0 ] }
 tracks/1/type = "value"
 tracks/1/path = NodePath("title:rect/scale")
 tracks/1/interp = 1
-tracks/1/keys = { "cont":true, "times":FloatArray( 0, 0.1, 1.8, 2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( 0.5, 0.5 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ] }
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0, 0.1, 1.8, 2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ Vector2( 0.5, 0.5 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ] }
 tracks/2/type = "value"
 tracks/2/path = NodePath("title:rect/pos")
 tracks/2/interp = 1
-tracks/2/keys = { "cont":true, "times":FloatArray( 0, 0.1, 1.8, 2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( 226, 456 ), Vector2( 32, 384 ), Vector2( 32, 384 ), Vector2( 226, 456 ) ] }
+tracks/2/imported = false
+tracks/2/keys = { "times":FloatArray( 0, 0.1, 1.8, 2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ Vector2( 226, 456 ), Vector2( 32, 384 ), Vector2( 32, 384 ), Vector2( 226, 456 ) ] }
 
 [sub_resource type="Animation" id=15]
 
@@ -170,15 +178,18 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("title:visibility/opacity")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.2, 1.8, 2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 0.0, 1.0, 1.0, 0.0 ] }
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.2, 1.8, 2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ 0.0, 1.0, 1.0, 0.0 ] }
 tracks/1/type = "value"
 tracks/1/path = NodePath("title:rect/pos")
 tracks/1/interp = 1
-tracks/1/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( 32, 184 ) ] }
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( 32, 184 ) ] }
 tracks/2/type = "value"
 tracks/2/path = NodePath("title:rect/scale")
 tracks/2/interp = 1
-tracks/2/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( 1, 1 ) ] }
+tracks/2/imported = false
+tracks/2/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( 1, 1 ) ] }
 
 [sub_resource type="ImageTexture" id=16]
 
@@ -241,28 +252,33 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("../sequences/demonic/sprite:transform/pos")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.8, 0.9 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( -800, 0 ), Vector2( 0, 0 ), Vector2( 32, 0 ), Vector2( 800, 0 ) ] }
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.8, 0.9 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ Vector2( -800, 0 ), Vector2( 0, 0 ), Vector2( 32, 0 ), Vector2( 800, 0 ) ] }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../pause:visibility/visible")
 tracks/1/interp = 1
-tracks/1/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ true ] }
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
 tracks/2/type = "value"
 tracks/2/path = NodePath("../choice/gameover:visibility/visible")
 tracks/2/interp = 1
-tracks/2/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ false ] }
+tracks/2/imported = false
+tracks/2/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
 tracks/3/type = "method"
 tracks/3/path = NodePath("../../..")
 tracks/3/interp = 1
+tracks/3/imported = false
 tracks/3/keys = { "times":FloatArray( 1 ), "transitions":FloatArray( 1 ), "values":[ { "args":[  ], "method":"sequence_finished" } ] }
 tracks/4/type = "value"
 tracks/4/path = NodePath("../../sound:play/play")
 tracks/4/interp = 1
-tracks/4/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ "demonic" ] }
+tracks/4/imported = false
+tracks/4/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ "demonic" ] }
 
 [sub_resource type="SampleLibrary" id=26]
 
-samples/cursor = { "db":0.0, "pitch":1.0, "sample":ExtResource( 43 ) }
 samples/confirm = { "db":0.0, "pitch":1.0, "sample":ExtResource( 42 ) }
+samples/cursor = { "db":0.0, "pitch":1.0, "sample":ExtResource( 43 ) }
 samples/demonic = { "db":0.0, "pitch":1.0, "sample":ExtResource( 44 ) }
 
 [sub_resource type="Animation" id=27]
@@ -273,11 +289,13 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("level:visibility/opacity")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ 1.0, 0.0 ] }
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 1.0, 0.0 ] }
 tracks/1/type = "value"
 tracks/1/path = NodePath("playercontainer:visibility/opacity")
 tracks/1/interp = 1
-tracks/1/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ 1.0, 0.0 ] }
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 1.0, 0.0 ] }
 
 [sub_resource type="Animation" id=28]
 
@@ -288,7 +306,8 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("gui/CanvasLayer/loading/text:visibility/opacity")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.3, 0.6 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ 1.0, 0.5, 1.0 ] }
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.3, 0.6 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 1.0, 0.5, 1.0 ] }
 
 [sub_resource type="Animation" id=29]
 
@@ -298,11 +317,13 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("level:visibility/opacity")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":true, "times":FloatArray( 1.3, 1.8, 1.8 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ 0.0, 1.0, 1.0 ] }
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 1.3, 1.8, 1.8 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.0, 1.0, 1.0 ] }
 tracks/1/type = "value"
 tracks/1/path = NodePath("playercontainer:visibility/opacity")
 tracks/1/interp = 1
-tracks/1/keys = { "cont":true, "times":FloatArray( 1.3, 1.8, 1.8 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ 0.0, 1.0, 1.0 ] }
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 1.3, 1.8, 1.8 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.0, 1.0, 1.0 ] }
 
 [node name="world" type="Node2D"]
 
@@ -341,19 +362,21 @@ scale = Vector2( 1, 1 )
 [node name="hud" type="Control" parent="gui/CanvasLayer"]
 
 process/pause_mode = 1
-margin/right = 40.0
-margin/bottom = 40.0
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
 script/script = ExtResource( 3 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="SpellIcons" type="Node2D" parent="gui/CanvasLayer/hud"]
 
+editor/display_folded = true
 transform/pos = Vector2( 624, 40 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="fire" type="Sprite" parent="gui/CanvasLayer/hud/SpellIcons"]
 
@@ -402,13 +425,14 @@ texture = ExtResource( 12 )
 
 [node name="Label" type="Label" parent="gui/CanvasLayer/hud"]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 606.0
 margin/top = 56.0
 margin/right = 642.0
 margin/bottom = 65.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
 custom_fonts/font = ExtResource( 13 )
 text = "KEY_SPELL"
 align = 1
@@ -418,7 +442,7 @@ max_lines_visible = -1
 
 [node name="mpbar" type="Node2D" parent="gui/CanvasLayer/hud"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="bar" type="Polygon2D" parent="gui/CanvasLayer/hud/mpbar"]
 
@@ -426,6 +450,7 @@ transform/pos = Vector2( 40, 56 )
 polygon = Vector2Array( 0, 0, 500, 0, 500, 6, 0, 6 )
 uv = Vector2Array(  )
 color = Color( 0.0627451, 0.698039, 0.235294, 0.901961 )
+vertex_colors = ColorArray(  )
 offset = Vector2( 0, 0 )
 texture/texture = null
 texture/offset = Vector2( 0, 0 )
@@ -440,6 +465,7 @@ transform/pos = Vector2( 40, 56 )
 polygon = Vector2Array( 0, 0, 500, 0, 500, 6, 0, 6 )
 uv = Vector2Array(  )
 color = Color( 1, 0.764706, 0.0588235, 0.901961 )
+vertex_colors = ColorArray(  )
 offset = Vector2( 0, 0 )
 texture/texture = null
 texture/offset = Vector2( 0, 0 )
@@ -455,7 +481,7 @@ centered = false
 
 [node name="hpbar" type="Node2D" parent="gui/CanvasLayer/hud"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="bar" type="Polygon2D" parent="gui/CanvasLayer/hud/hpbar"]
 
@@ -463,6 +489,7 @@ transform/pos = Vector2( 40, 28 )
 polygon = Vector2Array( 0, 0, 500, 0, 500, 11, 0, 11 )
 uv = Vector2Array(  )
 color = Color( 0, 0.411765, 1, 0.901961 )
+vertex_colors = ColorArray(  )
 offset = Vector2( 0, 0 )
 texture/texture = null
 texture/offset = Vector2( 0, 0 )
@@ -480,13 +507,14 @@ centered = false
 
 [node name="level" type="Label" parent="gui/CanvasLayer/hud/hpbar"]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 14.0
 margin/top = 27.0
 margin/right = 34.0
 margin/bottom = 37.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
 custom_fonts/font = ExtResource( 16 )
 align = 1
 percent_visible = 1.0
@@ -495,16 +523,19 @@ max_lines_visible = -1
 
 [node name="levelup" type="Node2D" parent="gui/CanvasLayer/hud"]
 
+editor/display_folded = true
 transform/pos = Vector2( 18, 68 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="Label" type="Label" parent="gui/CanvasLayer/hud/levelup"]
 
-margin/right = 40.0
-margin/bottom = 13.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 13.0
 custom_fonts/font = ExtResource( 17 )
 text = "KEY_LEVELUP"
 percent_visible = 1.0
@@ -513,8 +544,8 @@ max_lines_visible = -1
 
 [node name="bloodbar" type="Node2D" parent="gui/CanvasLayer/hud"]
 
+editor/display_folded = true
 transform/pos = Vector2( 740, 48 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="bar" type="Polygon2D" parent="gui/CanvasLayer/hud/bloodbar"]
 
@@ -522,6 +553,7 @@ material/material = SubResource( 4 )
 polygon = Vector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
 uv = Vector2Array(  )
 color = Color( 1, 0, 0, 0.901961 )
+vertex_colors = ColorArray(  )
 offset = Vector2( 0, 0 )
 texture/texture = SubResource( 5 )
 texture/offset = Vector2( 0, 0 )
@@ -538,8 +570,8 @@ texture = ExtResource( 19 )
 
 [node name="bloodcounter" type="Node2D" parent="gui/CanvasLayer/hud"]
 
+editor/display_folded = true
 transform/pos = Vector2( 720, 96 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="icon" type="Sprite" parent="gui/CanvasLayer/hud/bloodcounter"]
 
@@ -549,12 +581,14 @@ centered = false
 
 [node name="counter" type="Label" parent="gui/CanvasLayer/hud/bloodcounter"]
 
-margin/left = 20.0
-margin/right = 60.0
-margin/bottom = 23.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 20.0
+margin/top = 0.0
+margin/right = 60.0
+margin/bottom = 23.0
 custom_fonts/font = ExtResource( 21 )
 text = "0"
 valign = 1
@@ -576,16 +610,16 @@ autoplay = ""
 [node name="items" type="Control" parent="gui/CanvasLayer"]
 
 process/pause_mode = 1
-margin/left = 544.0
-margin/top = 488.0
-margin/right = 784.0
-margin/bottom = 588.0
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 544.0
+margin/top = 488.0
+margin/right = 784.0
+margin/bottom = 588.0
 script/script = ExtResource( 22 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="container" type="Node2D" parent="gui/CanvasLayer/items"]
 
@@ -593,13 +627,14 @@ transform/pos = Vector2( 192, 84 )
 
 [node name="map" type="Control" parent="gui/CanvasLayer"]
 
-margin/right = 40.0
-margin/bottom = 40.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-__meta__ = { "_editor_collapsed":true }
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
 
 [node name="container" type="Polygon2D" parent="gui/CanvasLayer/map"]
 
@@ -607,6 +642,7 @@ transform/pos = Vector2( 0, 416 )
 polygon = Vector2Array( 0, 0, 256, 0, 256, 176, 0, 176 )
 uv = Vector2Array(  )
 color = Color( 1, 1, 1, 0 )
+vertex_colors = ColorArray(  )
 offset = Vector2( 0, 0 )
 texture/texture = null
 texture/offset = Vector2( 0, 0 )
@@ -622,13 +658,15 @@ visibility/behind_parent = true
 
 [node name="chain" type="Control" parent="gui/CanvasLayer"]
 
-margin/right = 40.0
-margin/bottom = 40.0
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-__meta__ = { "_editor_collapsed":true }
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
 
 [node name="chaintext" type="Node2D" parent="gui/CanvasLayer/chain"]
 
@@ -636,12 +674,14 @@ transform/pos = Vector2( 32, 211 )
 
 [node name="chain" type="Label" parent="gui/CanvasLayer/chain/chaintext"]
 
-margin/top = -15.0
-margin/right = 112.0
-margin/bottom = 16.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = -15.0
+margin/right = 112.0
+margin/bottom = 16.0
 custom_fonts/font = ExtResource( 17 )
 text = "chain x"
 percent_visible = 1.0
@@ -656,12 +696,14 @@ transform/pos = Vector2( 100, 0 )
 
 anchor/top = 3
 anchor/bottom = 3
-margin/top = 47.0
-margin/right = 44.0
-margin/bottom = 16.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 47.0
+margin/right = 44.0
+margin/bottom = 16.0
 custom_fonts/font = ExtResource( 17 )
 text = "100"
 percent_visible = 1.0
@@ -674,12 +716,14 @@ transform/pos = Vector2( 32, 186 )
 
 [node name="newattack_text" type="Label" parent="gui/CanvasLayer/chain/newattack"]
 
-margin/top = -15.0
-margin/right = 240.0
-margin/bottom = 16.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = -15.0
+margin/right = 240.0
+margin/bottom = 16.0
 custom_fonts/font = ExtResource( 17 )
 text = "KEY_NEWATTACK"
 uppercase = true
@@ -703,13 +747,15 @@ autoplay = ""
 [node name="level" type="Control" parent="gui/CanvasLayer"]
 
 process/pause_mode = 1
-margin/right = 40.0
-margin/bottom = 40.0
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-__meta__ = { "_editor_collapsed":true }
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
 
 [node name="title" type="Label" parent="gui/CanvasLayer/level"]
 
@@ -718,13 +764,14 @@ anchor/left = 3
 anchor/top = 3
 anchor/right = 3
 anchor/bottom = 3
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = -12.0
 margin/top = -164.0
 margin/right = -749.0
 margin/bottom = -382.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
 custom_fonts/font = ExtResource( 24 )
 align = 1
 valign = 1
@@ -747,18 +794,24 @@ autoplay = ""
 
 [node name="dialogue" parent="gui/CanvasLayer" instance=ExtResource( 25 )]
 
+margin/left = 0.0
+margin/top = 0.0
+
 [node name="pause" type="Control" parent="gui/CanvasLayer"]
 
+editor/display_folded = true
 visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
-margin/right = 24.0
-margin/bottom = 24.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-__meta__ = { "_edit_lock_":true, "_editor_collapsed":true }
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 24.0
+margin/bottom = 24.0
+__meta__ = { "_edit_lock_":true }
 
 [node name="shield" type="Sprite" parent="gui/CanvasLayer/pause"]
 
@@ -775,16 +828,18 @@ margin/bottom = 560.0
 
 [node name="choice" type="Control" parent="gui/CanvasLayer"]
 
+editor/display_folded = true
 visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
-margin/right = 24.0
-margin/bottom = 24.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-__meta__ = { "_editor_collapsed":true }
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 24.0
+margin/bottom = 24.0
 
 [node name="gameover" type="Label" parent="gui/CanvasLayer/choice"]
 
@@ -792,13 +847,14 @@ anchor/left = 3
 anchor/top = 3
 anchor/right = 3
 anchor/bottom = 3
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 396.0
 margin/top = 252.0
 margin/right = -420.0
 margin/bottom = 162.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
 custom_fonts/font = ExtResource( 24 )
 text = "KEY_GAMEOVER"
 align = 1
@@ -814,13 +870,14 @@ anchor/left = 3
 anchor/top = 3
 anchor/right = 3
 anchor/bottom = 3
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 372.0
 margin/top = 92.0
 margin/right = -396.0
 margin/bottom = 44.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
 custom_fonts/font = ExtResource( 17 )
 text = "KEY_CONTINUE"
 align = 1
@@ -838,6 +895,8 @@ default_focus = true
 [node name="button" parent="gui/CanvasLayer/choice/yes"]
 
 focus_neighbour/right = NodePath("../../no/button")
+enabled_focus_mode = 2
+shortcut = null
 text = "KEY_YES"
 
 [node name="no" parent="gui/CanvasLayer/choice" instance=ExtResource( 27 )]
@@ -847,10 +906,13 @@ transform/pos = Vector2( 544, 404 )
 [node name="button" parent="gui/CanvasLayer/choice/no"]
 
 focus_neighbour/left = NodePath("../../yes/button")
+enabled_focus_mode = 2
+shortcut = null
 text = "KEY_NO"
 
 [node name="select" type="Control" parent="gui/CanvasLayer"]
 
+editor/display_folded = true
 visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
@@ -858,7 +920,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-__meta__ = { "_editor_collapsed":true }
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
 
 [node name="BG" type="TextureFrame" parent="gui/CanvasLayer/select"]
 
@@ -869,24 +934,31 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
 texture = SubResource( 19 )
 expand = true
+stretch_mode = 0
 
 [node name="friederich" type="TextureButton" parent="gui/CanvasLayer/select"]
 
 material/material = SubResource( 20 )
 anchor/left = 2
 anchor/bottom = 2
-margin/left = -0.045
-margin/top = -18.0
-margin/right = 455.0
-margin/bottom = 1.20608
 focus_neighbour/right = NodePath("../adela")
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = -0.045
+margin/top = -18.0
+margin/right = 455.0
+margin/bottom = 1.20608
 toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
 textures/normal = ExtResource( 28 )
 textures/pressed = ExtResource( 29 )
 textures/hover = ExtResource( 29 )
@@ -897,15 +969,18 @@ params/scale = Vector2( 0.43, 0.43 )
 
 anchor/right = 2
 anchor/bottom = 2
-margin/left = 380.0
-margin/right = 1.07
-margin/bottom = 1.0473
 focus_neighbour/left = NodePath("../friederich")
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 380.0
+margin/top = 0.0
+margin/right = 1.07
+margin/bottom = 1.0473
 toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
 textures/normal = ExtResource( 30 )
 textures/pressed = ExtResource( 31 )
 textures/hover = ExtResource( 31 )
@@ -916,12 +991,14 @@ params/scale = Vector2( 0.5, 0.5 )
 
 anchor/left = 3
 anchor/right = 3
-margin/left = 180.0
-margin/right = -180.0
-margin/bottom = 31.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 180.0
+margin/top = 0.0
+margin/right = -180.0
+margin/bottom = 31.0
 custom_fonts/font = ExtResource( 17 )
 text = "KEY_CHARSELECT"
 align = 1
@@ -936,23 +1013,31 @@ material/material = SubResource( 22 )
 anchor/top = 1
 anchor/right = 1
 anchor/bottom = 1
-margin/top = 296.0
 focus/ignore_mouse = true
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 296.0
+margin/right = 0.0
+margin/bottom = 0.0
 texture = SubResource( 19 )
 expand = true
+stretch_mode = 0
 
 [node name="friederich_title" type="Label" parent="gui/CanvasLayer/select"]
 
 anchor/left = 2
 anchor/right = 3
 anchor/bottom = 1
-margin/right = -64.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = -64.0
+margin/bottom = 0.0
 custom_fonts/font = ExtResource( 17 )
 text = "Friederich"
 align = 1
@@ -966,11 +1051,14 @@ max_lines_visible = -1
 anchor/left = 3
 anchor/right = 2
 anchor/bottom = 1
-margin/left = 1.0
-margin/right = 1.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 1.0
+margin/top = 0.0
+margin/right = 1.0
+margin/bottom = 0.0
 custom_fonts/font = ExtResource( 17 )
 text = "Adela"
 align = 1
@@ -982,20 +1070,11 @@ max_lines_visible = -1
 [node name="friederich_sprite" parent="gui/CanvasLayer/select" instance=ExtResource( 32 )]
 
 transform/pos = Vector2( 200, 480 )
-collision/margin = 0.08
 script/script = null
 
 [node name="Camera2D" parent="gui/CanvasLayer/select/friederich_sprite"]
 
 current = false
-drag_margin/left = 0.2
-drag_margin/top = 0.2
-drag_margin/right = 0.2
-drag_margin/bottom = 0.2
-
-[node name="damage" parent="gui/CanvasLayer/select/friederich_sprite"]
-
-linear_damp = 0.1
 
 [node name="talk" parent="gui/CanvasLayer/select/friederich_sprite"]
 
@@ -1004,20 +1083,11 @@ visibility/visible = false
 [node name="adela_sprite" parent="gui/CanvasLayer/select" instance=ExtResource( 33 )]
 
 transform/pos = Vector2( 600, 480 )
-collision/margin = 0.08
 script/script = null
 
 [node name="Camera2D" parent="gui/CanvasLayer/select/adela_sprite"]
 
 current = false
-drag_margin/left = 0.2
-drag_margin/top = 0.2
-drag_margin/right = 0.2
-drag_margin/bottom = 0.2
-
-[node name="damage" parent="gui/CanvasLayer/select/adela_sprite"]
-
-linear_damp = 0.1
 
 [node name="talk" parent="gui/CanvasLayer/select/adela_sprite"]
 
@@ -1025,13 +1095,15 @@ visibility/visible = false
 
 [node name="sequences" type="Control" parent="gui/CanvasLayer"]
 
-margin/right = 40.0
-margin/bottom = 40.0
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-__meta__ = { "_editor_collapsed":true }
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
 
 [node name="demonic" type="Node2D" parent="gui/CanvasLayer/sequences"]
 
@@ -1042,15 +1114,17 @@ visibility/visible = false
 material/material = SubResource( 24 )
 anchor/right = 1
 anchor/bottom = 1
-margin/top = 300.0
-margin/right = -736.0
-margin/bottom = -436.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 300.0
+margin/right = -736.0
+margin/bottom = -436.0
 texture = SubResource( 19 )
 expand = true
+stretch_mode = 0
 
 [node name="Particles2D" type="Particles2D" parent="gui/CanvasLayer/sequences/demonic"]
 
@@ -1098,14 +1172,14 @@ offset = Vector2( 0, 74 )
 
 [node name="skip" type="RichTextLabel" parent="gui/CanvasLayer/sequences"]
 
-margin/left = 512.0
-margin/top = 552.0
-margin/right = 768.0
-margin/bottom = 584.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 512.0
+margin/top = 552.0
+margin/right = 768.0
+margin/bottom = 584.0
 custom_fonts/mono_font = ExtResource( 37 )
 custom_fonts/normal_font = ExtResource( 38 )
 bbcode/enabled = true
@@ -1125,36 +1199,43 @@ autoplay = ""
 
 [node name="loading" type="Control" parent="gui/CanvasLayer"]
 
+editor/display_folded = true
 visibility/visible = false
-margin/right = 40.0
-margin/bottom = 40.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-__meta__ = { "_editor_collapsed":true }
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
 
 [node name="TextureFrame" type="TextureFrame" parent="gui/CanvasLayer/loading"]
 
-margin/right = 800.0
-margin/bottom = 592.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 800.0
+margin/bottom = 592.0
 texture = ExtResource( 39 )
 modulate = Color( 0.28125, 0.28125, 0.28125, 1 )
 expand = true
+stretch_mode = 0
 
 [node name="text" type="Label" parent="gui/CanvasLayer/loading"]
 
 visibility/opacity = 0.522959
-margin/top = 544.0
-margin/right = 768.0
-margin/bottom = 575.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 544.0
+margin/right = 768.0
+margin/bottom = 575.0
 custom_fonts/font = ExtResource( 17 )
 text = "KEY_LOADING"
 align = 2
@@ -1213,19 +1294,31 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
+[connection signal="focus_enter" from="gui/CanvasLayer/choice/yes/button" to="gui/CanvasLayer/choice/yes" method="_on_button_focus_enter"]
+
+[connection signal="focus_exit" from="gui/CanvasLayer/choice/yes/button" to="gui/CanvasLayer/choice/yes" method="_on_button_focus_exit"]
+
+[connection signal="mouse_enter" from="gui/CanvasLayer/choice/yes/button" to="gui/CanvasLayer/choice/yes" method="_on_button_mouse_enter"]
+
 [connection signal="pressed" from="gui/CanvasLayer/choice/yes/button" to="." method="confirm_selected"]
 
-[connection signal="pressed" from="gui/CanvasLayer/select/friederich" to="." method="_select_friederich"]
+[connection signal="focus_enter" from="gui/CanvasLayer/choice/no/button" to="gui/CanvasLayer/choice/no" method="_on_button_focus_enter"]
+
+[connection signal="focus_exit" from="gui/CanvasLayer/choice/no/button" to="gui/CanvasLayer/choice/no" method="_on_button_focus_exit"]
+
+[connection signal="mouse_enter" from="gui/CanvasLayer/choice/no/button" to="gui/CanvasLayer/choice/no" method="_on_button_mouse_enter"]
 
 [connection signal="mouse_enter" from="gui/CanvasLayer/select/friederich" to="." method="_friederich_hover"]
 
 [connection signal="mouse_exit" from="gui/CanvasLayer/select/friederich" to="." method="_friederich_exit"]
 
-[connection signal="pressed" from="gui/CanvasLayer/select/adela" to="." method="_select_adela"]
+[connection signal="pressed" from="gui/CanvasLayer/select/friederich" to="." method="_select_friederich"]
 
 [connection signal="mouse_enter" from="gui/CanvasLayer/select/adela" to="." method="_adela_hover"]
 
 [connection signal="mouse_exit" from="gui/CanvasLayer/select/adela" to="." method="_adela_exit"]
+
+[connection signal="pressed" from="gui/CanvasLayer/select/adela" to="." method="_select_adela"]
 
 
 [editable path="gui/CanvasLayer/choice/yes"]
