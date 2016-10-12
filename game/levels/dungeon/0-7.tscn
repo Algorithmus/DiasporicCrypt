@@ -31,7 +31,7 @@ tile_data = IntArray( -327691, 1610612749, -327690, 1073741862, -327689, 1073741
 
 [node name="ClimbableGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="ClimbableBlock" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
 
@@ -63,11 +63,10 @@ isgoal = true
 [node name="Skeleton" parent="tilemap/EnemiesGroup" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 16, 560 )
-collision/margin = 0.08
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 6 )]
 
@@ -79,7 +78,10 @@ teleport_to = Vector2( -1616, -64 )
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
 
 transform/scale = Vector2( 5, 1 )
-linear_damp = 0.1
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
 
 [node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 6 )]
 
@@ -90,7 +92,10 @@ teleport_to = Vector2( -940, -80 )
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
 
 transform/scale = Vector2( 1, 5 )
-linear_damp = 0.1
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport1/teleport"]
+
+enabler/pause_animated_sprites = true
 
 [node name="Teleport2" parent="tilemap/TeleportGroup" instance=ExtResource( 6 )]
 
@@ -102,7 +107,10 @@ teleport_to = Vector2( -1360, -240 )
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport2"]
 
 transform/scale = Vector2( 5, 1 )
-linear_damp = 0.1
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport2/teleport"]
+
+enabler/pause_animated_sprites = true
 
 [node name="boundaries" type="Node2D" parent="tilemap"]
 
@@ -113,6 +121,18 @@ transform/pos = Vector2( -358, -198 )
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
 transform/pos = Vector2( 394, 1514 )
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport2/teleport/enabler" to="tilemap/TeleportGroup/Teleport2" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport2/teleport/enabler" to="tilemap/TeleportGroup/Teleport2" method="exit_screen"]
 
 
 [editable path="tilemap/ClimbableGroup/ClimbableBlock"]

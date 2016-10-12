@@ -34,7 +34,7 @@ tile_data = IntArray( -851984, 1073741838, -851983, 1073741859, -851982, 1073741
 
 [node name="TorchGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="torch" parent="tilemap/TorchGroup" instance=ExtResource( 2 )]
 
@@ -50,15 +50,11 @@ transform/pos = Vector2( -256, -128 )
 
 [node name="LadderGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="TestLadder" parent="tilemap/LadderGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 336, 128 )
-
-[node name="KinematicBody2D" parent="tilemap/LadderGroup/TestLadder"]
-
-collision/margin = 0.08
 
 [node name="Sprite" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
 
@@ -67,7 +63,6 @@ region_rect = Rect2( 0, 0, 32, 192 )
 [node name="ladder" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
 
 transform/scale = Vector2( 1, 6 )
-linear_damp = 0.1
 
 [node name="TestLadder 2" parent="tilemap/LadderGroup" instance=ExtResource( 4 )]
 
@@ -75,91 +70,74 @@ transform/pos = Vector2( 336, 16 )
 
 [node name="BreakableGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="TestBreakable" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 720, 16 )
 
-[node name="KinematicBody2D" parent="tilemap/BreakableGroup/TestBreakable"]
+[node name="enabler" parent="tilemap/BreakableGroup/TestBreakable/KinematicBody2D"]
 
-collision/margin = 0.08
+enabler/pause_animated_sprites = true
 
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable/KinematicBody2D"]
 
 texture = ExtResource( 6 )
 
-[node name="breakable" parent="tilemap/BreakableGroup/TestBreakable/KinematicBody2D"]
-
-linear_damp = 0.1
-
 [node name="TestBreakable1" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 720, -16 )
 
-[node name="KinematicBody2D" parent="tilemap/BreakableGroup/TestBreakable1"]
+[node name="enabler" parent="tilemap/BreakableGroup/TestBreakable1/KinematicBody2D"]
 
-collision/margin = 0.08
+enabler/pause_animated_sprites = true
 
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable1/KinematicBody2D"]
 
 texture = ExtResource( 6 )
 
-[node name="breakable" parent="tilemap/BreakableGroup/TestBreakable1/KinematicBody2D"]
-
-linear_damp = 0.1
-
 [node name="TestBreakable2" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 720, -48 )
 
-[node name="KinematicBody2D" parent="tilemap/BreakableGroup/TestBreakable2"]
+[node name="enabler" parent="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D"]
 
-collision/margin = 0.08
+enabler/pause_animated_sprites = true
 
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D"]
 
 texture = ExtResource( 6 )
 
-[node name="breakable" parent="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D"]
-
-linear_damp = 0.1
-
 [node name="TestBreakable3" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 720, -80 )
 
-[node name="KinematicBody2D" parent="tilemap/BreakableGroup/TestBreakable3"]
+[node name="enabler" parent="tilemap/BreakableGroup/TestBreakable3/KinematicBody2D"]
 
-collision/margin = 0.08
+enabler/pause_animated_sprites = true
 
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable3/KinematicBody2D"]
 
 texture = ExtResource( 6 )
 
-[node name="breakable" parent="tilemap/BreakableGroup/TestBreakable3/KinematicBody2D"]
-
-linear_damp = 0.1
-
 [node name="TestBreakable4" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 720, -112 )
 
-[node name="KinematicBody2D" parent="tilemap/BreakableGroup/TestBreakable4"]
+[node name="enabler" parent="tilemap/BreakableGroup/TestBreakable4/KinematicBody2D"]
 
-collision/margin = 0.08
+enabler/pause_animated_sprites = true
 
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable4/KinematicBody2D"]
 
 texture = ExtResource( 6 )
 
-[node name="breakable" parent="tilemap/BreakableGroup/TestBreakable4/KinematicBody2D"]
-
-linear_damp = 0.1
-
 [node name="FakeGroup" type="Node2D" parent="tilemap"]
-
-__meta__ = { "_editor_collapsed":true }
 
 [node name="Fake" parent="tilemap/FakeGroup" instance=ExtResource( 7 )]
 
@@ -169,10 +147,14 @@ overlay = "../overlay"
 [node name="fake" parent="tilemap/FakeGroup/Fake"]
 
 transform/scale = Vector2( 8, 5 )
-linear_damp = 0.1
+
+[node name="enabler" parent="tilemap/FakeGroup/Fake/fake"]
+
+enabler/pause_animated_sprites = true
 
 [node name="overlay" type="Node2D" parent="tilemap/FakeGroup"]
 
+visibility/visible = false
 transform/pos = Vector2( 848, -32 )
 z/z = 2
 
@@ -191,6 +173,8 @@ region_rect = Rect2( 0, 0, 32, 192 )
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
 
+editor/display_folded = true
+
 [node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 336, 240 )
@@ -201,7 +185,10 @@ teleport_to = Vector2( -16, -272 )
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
 
 transform/scale = Vector2( 3, 1 )
-linear_damp = 0.1
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
 
 [node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 9 )]
 
@@ -212,7 +199,10 @@ teleport_to = Vector2( -268, 656 )
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
 
 transform/scale = Vector2( 1, 5 )
-linear_damp = 0.1
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport1/teleport"]
+
+enabler/pause_animated_sprites = true
 
 [node name="Teleport2" parent="tilemap/TeleportGroup" instance=ExtResource( 9 )]
 
@@ -223,9 +213,14 @@ teleport_to = Vector2( 172, -80 )
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport2"]
 
 transform/scale = Vector2( 1, 5 )
-linear_damp = 0.1
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport2/teleport"]
+
+enabler/pause_animated_sprites = true
 
 [node name="boundaries" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
 
 [node name="NW" type="Position2D" parent="tilemap/boundaries"]
 
@@ -234,6 +229,42 @@ transform/pos = Vector2( -518, -342 )
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
 transform/pos = Vector2( 1002, 234 )
+
+[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable1/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable1" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable1/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable1" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable2" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable2" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable3/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable3" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable3/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable3" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable4/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable4" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable4/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable4" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/FakeGroup/Fake/fake/enabler" to="tilemap/FakeGroup/Fake" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/FakeGroup/Fake/fake/enabler" to="tilemap/FakeGroup/Fake" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport2/teleport/enabler" to="tilemap/TeleportGroup/Teleport2" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport2/teleport/enabler" to="tilemap/TeleportGroup/Teleport2" method="exit_screen"]
 
 
 [editable path="tilemap/LadderGroup/TestLadder"]

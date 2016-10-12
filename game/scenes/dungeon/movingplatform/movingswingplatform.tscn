@@ -12,20 +12,4 @@ cycle = 1.0
 
 [node name="SwingBlock" parent="." instance=ExtResource( 2 )]
 
-collision/margin = 0.08
-
-[node name="enabler" type="VisibilityEnabler2D" parent="SwingBlock"]
-
-transform/scale = Vector2( 3, 3 )
-rect = Rect2( -10, -10, 20, 20 )
-enabler/pause_animations = true
-enabler/freeze_bodies = true
-enabler/pause_particles = true
-enabler/process_parent = false
-enabler/fixed_process_parent = false
-
-[connection signal="enter_screen" from="SwingBlock/enabler" to="." method="enter_screen"]
-
-[connection signal="exit_screen" from="SwingBlock/enabler" to="." method="_on_enabler_exit_screen"]
-
 

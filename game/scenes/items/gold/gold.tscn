@@ -19,6 +19,7 @@ z/z = 2
 script/script = ExtResource( 1 )
 __meta__ = { "__editor_plugin_screen__":"2D" }
 title = "ITEM_POTION"
+isgoal = false
 
 [node name="enabler" type="VisibilityEnabler2D" parent="."]
 
@@ -27,6 +28,7 @@ rect = Rect2( -10, -10, 20, 20 )
 enabler/pause_animations = true
 enabler/freeze_bodies = true
 enabler/pause_particles = true
+enabler/pause_animated_sprites = true
 enabler/process_parent = false
 enabler/fixed_process_parent = false
 
@@ -38,7 +40,7 @@ texture = ExtResource( 2 )
 
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, -0, 0, 1, 0, 0 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0

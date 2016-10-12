@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=1]
+[gd_scene load_steps=76 format=1]
 
 [ext_resource path="res://scenes/main.gd" type="Script" id=1]
 [ext_resource path="res://levels/common/catacombs.tscn" type="PackedScene" id=2]
@@ -41,10 +41,11 @@
 [ext_resource path="res://gui/worldmap/shield.png" type="Texture" id=39]
 [ext_resource path="res://gui/loading/bat.tscn" type="PackedScene" id=40]
 [ext_resource path="res://gui/loading/cat.tscn" type="PackedScene" id=41]
-[ext_resource path="res://gui/confirm.wav" type="Sample" id=42]
-[ext_resource path="res://gui/cursor.wav" type="Sample" id=43]
-[ext_resource path="res://gui/sequences/demonic.wav" type="Sample" id=44]
-[ext_resource path="res://levels/common/catacombs.ogg" type="AudioStream" id=45]
+[ext_resource path="res://gui/loading/logo.png" type="Texture" id=42]
+[ext_resource path="res://gui/confirm.wav" type="Sample" id=43]
+[ext_resource path="res://gui/cursor.wav" type="Sample" id=44]
+[ext_resource path="res://gui/sequences/demonic.wav" type="Sample" id=45]
+[ext_resource path="res://levels/common/catacombs.ogg" type="AudioStream" id=46]
 
 [sub_resource type="CanvasItemShader" id=1]
 
@@ -277,9 +278,9 @@ tracks/4/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "updat
 
 [sub_resource type="SampleLibrary" id=26]
 
-samples/confirm = { "db":0.0, "pitch":1.0, "sample":ExtResource( 42 ) }
-samples/cursor = { "db":0.0, "pitch":1.0, "sample":ExtResource( 43 ) }
-samples/demonic = { "db":0.0, "pitch":1.0, "sample":ExtResource( 44 ) }
+samples/confirm = { "db":0.0, "pitch":1.0, "sample":ExtResource( 43 ) }
+samples/cursor = { "db":0.0, "pitch":1.0, "sample":ExtResource( 44 ) }
+samples/demonic = { "db":0.0, "pitch":1.0, "sample":ExtResource( 45 ) }
 
 [sub_resource type="Animation" id=27]
 
@@ -610,7 +611,6 @@ autoplay = ""
 [node name="items" type="Control" parent="gui/CanvasLayer"]
 
 process/pause_mode = 1
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -1253,6 +1253,13 @@ transform/scale = Vector2( 0.5, 0.5 )
 transform/pos = Vector2( 704, 488 )
 transform/scale = Vector2( 0.75, 0.75 )
 
+[node name="logo" type="Sprite" parent="gui/CanvasLayer/loading"]
+
+visibility/opacity = 0.5
+transform/pos = Vector2( 400, 256 )
+transform/scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 42 )
+
 [node name="sound" type="SamplePlayer" parent="gui"]
 
 config/polyphony = 1
@@ -1272,7 +1279,7 @@ default/chorus_send = 0.0
 
 [node name="music" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 45 )
+stream/stream = ExtResource( 46 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0

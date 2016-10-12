@@ -102,3 +102,10 @@ func _init():
 	dungeon.id = "LVL_DUNGEON"
 	dungeon.bgm = preload("res://levels/common/BGM1.ogg")
 	locations[dungeon.id] = dungeon
+
+	var icecave = locationclass.new()
+	icecave.node = "res://levels/icecave/0-0.tscn"
+	icecave.teleportto = Vector2(16, 64)
+	icecave.id = "LVL_ICECAVE"
+	icecave.bgm = preload("res://levels/common/BGM1.ogg")
+	locations[icecave.id] = icecave

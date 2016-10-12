@@ -73,7 +73,7 @@ tile_data = IntArray( -2031589, 1610612780, -2031588, 1073741832, -2031587, 1073
 
 [node name="MovingPlatformGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="MovingTestPlatform" parent="tilemap/MovingPlatformGroup" instance=ExtResource( 2 )]
 
@@ -95,7 +95,7 @@ cycle = 3.0
 
 [node name="FallingPlatformGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="FallingPlatform" parent="tilemap/FallingPlatformGroup" instance=ExtResource( 3 )]
 
@@ -103,71 +103,59 @@ transform/pos = Vector2( -256, -128 )
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="TestEnemy1" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 2512, -720 )
-collision/margin = 0.08
 
 [node name="TestEnemy2" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 2592, -496 )
-collision/margin = 0.08
 
 [node name="TestEnemy3" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 2128, 176 )
-collision/margin = 0.08
 
 [node name="Skeleton" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -1696, 464 )
-collision/margin = 0.08
 
 [node name="SimpleProjectile" parent="tilemap/EnemiesGroup" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( -1760, 464 )
-collision/margin = 0.08
 
 [node name="EnchantedArmor" parent="tilemap/EnemiesGroup" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( -1600, 464 )
-collision/margin = 0.08
 
 [node name="FlyingSkull" parent="tilemap/EnemiesGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( -512, -64 )
-collision/margin = 0.08
 
 [node name="Ghost" parent="tilemap/EnemiesGroup" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( -1616, 208 )
-collision/margin = 0.08
 
 [node name="Werewolf" parent="tilemap/EnemiesGroup" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( -1472, 464 )
-collision/margin = 0.08
 
 [node name="Statue1" parent="tilemap/EnemiesGroup" instance=ExtResource( 10 )]
 
 transform/pos = Vector2( 384, 0 )
-collision/margin = 0.08
 
 [node name="Zombie" parent="tilemap/EnemiesGroup" instance=ExtResource( 11 )]
 
 transform/pos = Vector2( 1008, -64 )
-collision/margin = 0.08
 
 [node name="Minotaur" parent="tilemap/EnemiesGroup" instance=ExtResource( 12 )]
 
 transform/pos = Vector2( -1552, 464 )
-collision/margin = 0.08
 
 [node name="BreakableGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="TestBreakable" parent="tilemap/BreakableGroup" instance=ExtResource( 13 )]
 
@@ -210,6 +198,8 @@ transform/pos = Vector2( 1392, -816 )
 transform/pos = Vector2( 1392, -720 )
 
 [node name="DamageGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
 
 [node name="TestHurt" parent="tilemap/DamageGroup" instance=ExtResource( 15 )]
 
@@ -264,7 +254,7 @@ transform/scale = Vector2( 1, -1 )
 
 [node name="WaterGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="TestWaterSurface" parent="tilemap/WaterGroup" instance=ExtResource( 16 )]
 
@@ -277,11 +267,10 @@ transform/scale = Vector2( 23, 18 )
 [node name="water" parent="tilemap/WaterGroup/TestWaterSurface"]
 
 transform/scale = Vector2( 23, 18 )
-linear_damp = 0.1
 
 [node name="SlopeGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="TestSlope0-15" parent="tilemap/SlopeGroup" instance=ExtResource( 17 )]
 
@@ -405,7 +394,7 @@ transform/pos = Vector2( 240, 144 )
 
 [node name="ClimbableGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="ClimbableBlock" parent="tilemap/ClimbableGroup" instance=ExtResource( 31 )]
 
@@ -454,7 +443,8 @@ transform/pos = Vector2( -528, 208 )
 
 [node name="LadderGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_edit_lock_":true, "_editor_collapsed":true }
+editor/display_folded = true
+__meta__ = { "_edit_lock_":true }
 
 [node name="TestLadder" parent="tilemap/LadderGroup" instance=ExtResource( 32 )]
 
@@ -469,10 +459,6 @@ transform/scale = Vector2( -1, 1 )
 
 transform/pos = Vector2( 464, -416 )
 
-[node name="KinematicBody2D" parent="tilemap/LadderGroup/TestLadder14"]
-
-collision/margin = 0.08
-
 [node name="Sprite" parent="tilemap/LadderGroup/TestLadder14/KinematicBody2D"]
 
 region_rect = Rect2( 0, 0, 32, 448 )
@@ -480,7 +466,6 @@ region_rect = Rect2( 0, 0, 32, 448 )
 [node name="ladder" parent="tilemap/LadderGroup/TestLadder14/KinematicBody2D"]
 
 transform/scale = Vector2( 1, 14 )
-linear_damp = 0.1
 
 [node name="TestLadder22" parent="tilemap/LadderGroup" instance=ExtResource( 32 )]
 
@@ -490,10 +475,6 @@ transform/pos = Vector2( 48, -496 )
 
 transform/pos = Vector2( 48, -384 )
 
-[node name="KinematicBody2D" parent="tilemap/LadderGroup/TestLadder21"]
-
-collision/margin = 0.08
-
 [node name="Sprite" parent="tilemap/LadderGroup/TestLadder21/KinematicBody2D"]
 
 region_rect = Rect2( 0, 0, 32, 192 )
@@ -501,7 +482,6 @@ region_rect = Rect2( 0, 0, 32, 192 )
 [node name="ladder" parent="tilemap/LadderGroup/TestLadder21/KinematicBody2D"]
 
 transform/scale = Vector2( 1, 6 )
-linear_damp = 0.1
 
 [node name="TestLadderBlockR1" parent="tilemap/LadderGroup" instance=ExtResource( 33 )]
 
@@ -511,25 +491,13 @@ transform/pos = Vector2( 429, -624 )
 
 transform/pos = Vector2( -112, 176 )
 
-[node name="KinematicBody2D" parent="tilemap/LadderGroup/TestLadder23"]
-
-collision/margin = 0.08
-
 [node name="Sprite" parent="tilemap/LadderGroup/TestLadder23/KinematicBody2D"]
 
 region_rect = Rect2( 0, 0, 32, 32 )
 
-[node name="ladder_top" parent="tilemap/LadderGroup/TestLadder23/KinematicBody2D"]
-
-linear_damp = 0.1
-
 [node name="TestLadder24" parent="tilemap/LadderGroup" instance=ExtResource( 34 )]
 
 transform/pos = Vector2( -112, 384 )
-
-[node name="KinematicBody2D" parent="tilemap/LadderGroup/TestLadder24"]
-
-collision/margin = 0.08
 
 [node name="Sprite" parent="tilemap/LadderGroup/TestLadder24/KinematicBody2D"]
 
@@ -538,11 +506,10 @@ region_rect = Rect2( 0, 0, 32, 384 )
 [node name="ladder" parent="tilemap/LadderGroup/TestLadder24/KinematicBody2D"]
 
 transform/scale = Vector2( 1, 12 )
-linear_damp = 0.1
 
 [node name="One-WayPlatformGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="One-WayPlatform" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 35 )]
 
@@ -564,10 +531,6 @@ transform/pos = Vector2( 688, 16 )
 
 transform/pos = Vector2( 656, 16 )
 
-[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform4"]
-
-collision/margin = 0.08
-
 [node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform4/KinematicBody2D"]
 
 texture = ExtResource( 36 )
@@ -575,10 +538,6 @@ offset = Vector2( -3, 0 )
 flip_h = true
 region = true
 region_rect = Rect2( 0, 0, 38, 32 )
-
-[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform4/KinematicBody2D"]
-
-linear_damp = 0.1
 
 [node name="One-WayPlatform5" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 35 )]
 
@@ -612,10 +571,6 @@ transform/pos = Vector2( 1136, -112 )
 
 transform/pos = Vector2( 1104, -112 )
 
-[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform12"]
-
-collision/margin = 0.08
-
 [node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform12/KinematicBody2D"]
 
 texture = ExtResource( 36 )
@@ -623,10 +578,6 @@ offset = Vector2( -3, 0 )
 flip_h = true
 region = true
 region_rect = Rect2( 0, 0, 38, 32 )
-
-[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform12/KinematicBody2D"]
-
-linear_damp = 0.1
 
 [node name="One-WayPlatform13" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 35 )]
 
@@ -636,18 +587,10 @@ transform/pos = Vector2( -1584, -624 )
 
 transform/pos = Vector2( -1552, -624 )
 
-[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform14"]
-
-collision/margin = 0.08
-
 [node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform14/KinematicBody2D"]
 
 texture = ExtResource( 36 )
 offset = Vector2( 3, 0 )
-
-[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform14/KinematicBody2D"]
-
-linear_damp = 0.1
 
 [node name="One-WayPlatform15" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 35 )]
 
@@ -677,23 +620,15 @@ transform/pos = Vector2( -1776, -624 )
 
 transform/pos = Vector2( -1808, -624 )
 
-[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform21"]
-
-collision/margin = 0.08
-
 [node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform21/KinematicBody2D"]
 
 texture = ExtResource( 36 )
 offset = Vector2( -3, 0 )
 flip_h = true
 
-[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform21/KinematicBody2D"]
-
-linear_damp = 0.1
-
 [node name="PotionGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="Potion" parent="tilemap/PotionGroup" instance=ExtResource( 37 )]
 
@@ -742,12 +677,11 @@ isgoal = false
 
 [node name="SwingableGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="SwingBlock 2" parent="tilemap/SwingableGroup" instance=ExtResource( 39 )]
 
 transform/pos = Vector2( -176, -272 )
-collision/margin = 0.08
 
 [node name="MovingSwingPlatform" parent="tilemap/SwingableGroup" instance=ExtResource( 40 )]
 
@@ -775,83 +709,66 @@ cycle = 2.0
 
 [node name="HangableGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_edit_lock_":true, "_editor_collapsed":true }
+editor/display_folded = true
+__meta__ = { "_edit_lock_":true }
 
 [node name="HangBlock" parent="tilemap/HangableGroup" instance=ExtResource( 41 )]
 
 transform/pos = Vector2( -1584, -592 )
-collision/margin = 0.08
 
 [node name="HangBlock1" parent="tilemap/HangableGroup" instance=ExtResource( 41 )]
 
 transform/pos = Vector2( -1552, -592 )
-collision/margin = 0.08
 
 [node name="Sprite" parent="tilemap/HangableGroup/HangBlock1"]
 
 texture = ExtResource( 42 )
 flip_h = true
 
-[node name="hangable" parent="tilemap/HangableGroup/HangBlock1"]
-
-linear_damp = 0.1
-
 [node name="HangBlock2" parent="tilemap/HangableGroup" instance=ExtResource( 41 )]
 
 transform/pos = Vector2( -1616, -592 )
-collision/margin = 0.08
 
 [node name="HangBlock3" parent="tilemap/HangableGroup" instance=ExtResource( 41 )]
 
 transform/pos = Vector2( -1648, -592 )
-collision/margin = 0.08
 
 [node name="HangBlock4" parent="tilemap/HangableGroup" instance=ExtResource( 41 )]
 
 transform/pos = Vector2( -1680, -592 )
-collision/margin = 0.08
 
 [node name="HangBlock5" parent="tilemap/HangableGroup" instance=ExtResource( 41 )]
 
 transform/pos = Vector2( -1712, -592 )
-collision/margin = 0.08
 
 [node name="HangBlock6" parent="tilemap/HangableGroup" instance=ExtResource( 41 )]
 
 transform/pos = Vector2( -1744, -592 )
-collision/margin = 0.08
 
 [node name="HangBlock7" parent="tilemap/HangableGroup" instance=ExtResource( 41 )]
 
 transform/pos = Vector2( -1776, -592 )
-collision/margin = 0.08
 
 [node name="HangBlock8" parent="tilemap/HangableGroup" instance=ExtResource( 41 )]
 
 transform/pos = Vector2( -1808, -592 )
-collision/margin = 0.08
 
 [node name="Sprite" parent="tilemap/HangableGroup/HangBlock8"]
 
 texture = ExtResource( 42 )
 
-[node name="hangable" parent="tilemap/HangableGroup/HangBlock8"]
-
-linear_damp = 0.1
-
 [node name="TargetGroup" type="Node2D" parent="tilemap"]
 
+editor/display_folded = true
 transform/pos = Vector2( -64, 0 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="target1" parent="tilemap/TargetGroup" instance=ExtResource( 43 )]
 
 transform/pos = Vector2( -720, 480 )
-collision/margin = 0.08
 
 [node name="BloodFountainGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="BloodFountain" parent="tilemap/BloodFountainGroup" instance=ExtResource( 44 )]
 
@@ -859,12 +776,12 @@ transform/pos = Vector2( -448, 128 )
 
 [node name="SunbeamGroup" type="Node2D" parent="tilemap"]
 
+editor/display_folded = true
 z/z = 1
 
 [node name="Sunbeam" parent="tilemap/SunbeamGroup" instance=ExtResource( 45 )]
 
 transform/pos = Vector2( -656, -96 )
-collision/margin = 0.08
 
 [node name="block" parent="tilemap/SunbeamGroup/Sunbeam"]
 
@@ -873,22 +790,30 @@ transform/scale = Vector2( 3, 40 )
 [node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam"]
 
 transform/scale = Vector2( 3, 40 )
-linear_damp = 0.1
 
 [node name="SwitchGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
 
 [node name="FloorSwitch" parent="tilemap/SwitchGroup" instance=ExtResource( 46 )]
 
 transform/pos = Vector2( -368, 192 )
 target_nodes = [ "SunbeamGroup/Sunbeam", "FallingPlatformGroup/FallingPlatform" ]
+related_switches = [  ]
+enabled = true
+invert = false
 
 [node name="PullSwitch" parent="tilemap/SwitchGroup" instance=ExtResource( 47 )]
 
 transform/pos = Vector2( -16, -304 )
-collision/margin = 0.08
 target_nodes = [ "SwingableGroup/SwingBlock 2" ]
+related_switches = [  ]
+enabled = true
+invert = false
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
 
 [node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 48 )]
 
@@ -899,7 +824,10 @@ teleport_to = Vector2( -52, -256 )
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
 
 transform/scale = Vector2( 1, 6 )
-linear_damp = 0.1
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
 
 [node name="Teleport 2" parent="tilemap/TeleportGroup" instance=ExtResource( 48 )]
 
@@ -911,7 +839,10 @@ teleport_to = Vector2( -16, -272 )
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport 2"]
 
 transform/scale = Vector2( 3, 1 )
-linear_damp = 0.1
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport 2/teleport"]
+
+enabler/pause_animated_sprites = true
 
 [node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 48 )]
 
@@ -922,7 +853,10 @@ teleport_to = Vector2( -52, 48 )
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
 
 transform/scale = Vector2( 1, 5 )
-linear_damp = 0.1
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport1/teleport"]
+
+enabler/pause_animated_sprites = true
 
 [node name="boundaries" type="Node2D" parent="tilemap"]
 
@@ -933,6 +867,18 @@ transform/pos = Vector2( -1926, -918 )
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
 transform/pos = Vector2( 2730, 586 )
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport 2/teleport/enabler" to="tilemap/TeleportGroup/Teleport 2" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport 2/teleport/enabler" to="tilemap/TeleportGroup/Teleport 2" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="exit_screen"]
 
 
 [editable path="tilemap/WaterGroup/TestWaterSurface"]

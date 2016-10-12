@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=1]
+[gd_scene load_steps=24 format=1]
 
 [ext_resource path="res://scenes/catacombs/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/torch.tscn" type="PackedScene" id=2]
@@ -15,6 +15,11 @@
 [ext_resource path="res://scenes/npcs/kaleva/idle.png" type="Texture" id=13]
 [ext_resource path="res://scenes/catacombs/solids/coffin.png" type="Texture" id=14]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=15]
+
+[sub_resource type="RectangleShape2D" id=8]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 80 )
 
 [sub_resource type="CanvasItemShader" id=1]
 
@@ -84,7 +89,7 @@ tile_data = IntArray( -655380, -1610612727, -655379, 0, -655378, 0, -655377, 0, 
 
 [node name="TorchGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="torch" parent="tilemap/TorchGroup" instance=ExtResource( 2 )]
 
@@ -96,7 +101,7 @@ transform/pos = Vector2( -288, 192 )
 
 [node name="DecoGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="Sprite1" type="Sprite" parent="tilemap/DecoGroup"]
 
@@ -228,15 +233,11 @@ modulate = Color( 1, 1, 1, 0.509804 )
 
 [node name="LadderGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="TestLadder" parent="tilemap/LadderGroup" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( -16, -32 )
-
-[node name="KinematicBody2D" parent="tilemap/LadderGroup/TestLadder"]
-
-collision/margin = 0.08
 
 [node name="Sprite" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
 
@@ -245,16 +246,14 @@ region_rect = Rect2( 0, 0, 32, 640 )
 [node name="ladder" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
 
 transform/scale = Vector2( 1, 20 )
-linear_damp = 0.1
 
 [node name="TargetGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="target" parent="tilemap/TargetGroup" instance=ExtResource( 10 )]
 
 transform/pos = Vector2( 368, 320 )
-collision/margin = 0.08
 
 [node name="NPCGroup" type="Node2D" parent="tilemap"]
 
@@ -272,6 +271,10 @@ transform/scale = Vector2( 8, 16 )
 
 transform/scale = Vector2( -1, 1 )
 texture = ExtResource( 13 )
+
+[node name="CollisionShape2D" parent="tilemap/NPCGroup/Kaleva/npc"]
+
+shape = SubResource( 8 )
 
 [node name="Coffin" parent="tilemap/NPCGroup" instance=ExtResource( 11 )]
 
@@ -295,7 +298,7 @@ autoplay = ""
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 15 )]
 
@@ -307,7 +310,10 @@ teleport_to = Vector2( -112, 480 )
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
 
 transform/scale = Vector2( 3, 1 )
-linear_damp = 0.1
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
 
 [node name="boundaries" type="Node2D" parent="tilemap"]
 
@@ -352,6 +358,18 @@ transform/pos = Vector2( -672, -352 )
 transform/scale = Vector2( 43, 2 )
 texture = SubResource( 3 )
 centered = false
+
+[connection signal="enter_screen" from="tilemap/NPCGroup/Kaleva/enabler" to="tilemap/NPCGroup/Kaleva" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/NPCGroup/Kaleva/enabler" to="tilemap/NPCGroup/Kaleva" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/NPCGroup/Coffin/enabler" to="tilemap/NPCGroup/Coffin" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/NPCGroup/Coffin/enabler" to="tilemap/NPCGroup/Coffin" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
 
 
 [editable path="tilemap/LadderGroup/TestLadder"]

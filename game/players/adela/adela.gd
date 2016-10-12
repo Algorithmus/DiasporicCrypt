@@ -112,6 +112,17 @@ func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, o
 	var step = .step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, onSlope, oneWayTile, relevantSlopeTile)
 	return step
 
+func disengage_hanging():
+	whip_hanging = false
+	falling = true
+	attack_requested = false
+	accel = -JUMP_SPEED * current_gravity
+	swing_block = null
+	whipswing_obj.hide()
+	whipswing_obj.get_node("sound").stop_all()
+	if (input_up()):
+		accel -= 4
+
 func step_player(delta):
 	var space = get_world_2d().get_space()
 	var space_state = Physics2DServer.space_get_direct_state(space)
@@ -293,33 +304,28 @@ func step_player(delta):
 			if(!Input.is_action_pressed("ui_attack")):
 				stop_swinging()
 		elif(whip_hanging):
-			request_spell_change = 0
-			if (weapon_collided):
-				weapon_collided = false
-				remove_weapon_collider()
-			if (!whipswing_obj.get_node("sound").is_active()):
-				whipswing_obj.get_node("sound").play("whipswing")
-			if (Input.is_action_pressed("ui_attack")):
-				var deltaX = 0
-				if (input_up()):
-					swing_radius = max(MIN_SWING_RADIUS, swing_radius - SWING_RADIUS_DELTA)
-				elif (input_down()):
-					swing_radius = min(MAX_SWING_RADIUS, swing_radius + SWING_RADIUS_DELTA)
-				move(Vector2(0, swing_block.get_global_pos().y + swing_radius - get_pos().y + sprite_offset.y))
-				whipswing_obj.set_rot(0)
-				whipswing_obj.set_pos(Vector2(0, -sprite_offset.y - swing_radius))
-				whipswing_obj.get_node("whip").set_scale(Vector2(1, swing_radius-4))
+			if (swing_block.get_parent().get_parent() != null):
+				request_spell_change = 0
+				if (weapon_collided):
+					weapon_collided = false
+					remove_weapon_collider()
+				if (!whipswing_obj.get_node("sound").is_active()):
+					whipswing_obj.get_node("sound").play("whipswing")
+				if (Input.is_action_pressed("ui_attack")):
+					var deltaX = 0
+					if (input_up()):
+						swing_radius = max(MIN_SWING_RADIUS, swing_radius - SWING_RADIUS_DELTA)
+					elif (input_down()):
+						swing_radius = min(MAX_SWING_RADIUS, swing_radius + SWING_RADIUS_DELTA)
+					move(Vector2(0, swing_block.get_global_pos().y + swing_radius - get_pos().y + sprite_offset.y))
+					whipswing_obj.set_rot(0)
+					whipswing_obj.set_pos(Vector2(0, -sprite_offset.y - swing_radius))
+					whipswing_obj.get_node("whip").set_scale(Vector2(1, swing_radius-4))
+				else:
+					disengage_hanging()
 			else:
-				whip_hanging = false
-				falling = true
-				attack_requested = false
-				accel = -JUMP_SPEED * current_gravity
-				swing_block = null
-				whipswing_obj.hide()
-				whipswing_obj.get_node("sound").stop_all()
-				if (input_up()):
-					accel -= 4
-	
+				disengage_hanging()
+
 		check_demonic()
 		
 		if (is_hurt || input_down() || !is_demonic || (wall_hanging && ((wall_direction > 0 && input_left()) || (wall_direction < 0 && input_right())))):

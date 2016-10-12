@@ -93,6 +93,16 @@ func _init():
 	dungeon.location = locationfactory.locations["LVL_DUNGEON"]
 	levels[dungeon.title] = dungeon
 	
+	var icecave = levelclass.new()
+	icecave.title = "LVL_ICECAVE"
+	icecave.type = "quest"
+	icecave.position = Vector2(77, 198)
+	icecave.description = "LVL_ICECAVE_DESCRIPTION"
+	icecave.reward = 4000
+	icecave.item = "ITEM_GLYPH1"
+	icecave.location = locationfactory.locations["LVL_ICECAVE"]
+	levels[icecave.title] = icecave
+	
 	var manor = levelclass.new()
 	manor.title = "LVL_MANOR"
 	manor.type = "boss"

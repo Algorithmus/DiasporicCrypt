@@ -1,6 +1,6 @@
 
 extends "res://scenes/items/BaseItem.gd"
-var value
+export var value = 0
 var isreward = false
 
 func _ready():

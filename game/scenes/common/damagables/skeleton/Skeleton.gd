@@ -11,3 +11,11 @@ func _ready():
 	current_hp = hp
 	elemental_weaknesses.append("fire")
 	sunbeam_immunity = false
+	set_fixed_process(true)
+
+# unfortunately needed to be active off screen for some puzzles...
+func enter_screen():
+	pass
+
+func exit_screen():
+	pass

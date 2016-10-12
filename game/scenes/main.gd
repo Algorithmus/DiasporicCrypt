@@ -74,7 +74,7 @@ func _ready():
 	Globals.set("magic_spells", magic_spells)
 	Globals.set("chain", chainlist)
 	Globals.set("itemfactory", itemfactory.new())
-	Globals.set("available_levels", ["LVL_SANDBOX", "LVL_FOREST1", "LVL_FOREST2", "LVL_MANOR", "LVL_LAVACAVE", "LVL_START", "LVL_COLOSSEUM1", "LVL_COLOSSEUM2", "LVL_AQUADUCT", "LVL_HOLYRUINS", "LVL_CAPECRYPT", "LVL_BERGFORTRESS", "LVL_SPRINGISLANDCASTLE", "LVL_CAVE", "LVL_MAUSOLEUM", "LVL_DUNGEON"])
+	Globals.set("available_levels", ["LVL_SANDBOX", "LVL_FOREST1", "LVL_FOREST2", "LVL_MANOR", "LVL_LAVACAVE", "LVL_START", "LVL_COLOSSEUM1", "LVL_COLOSSEUM2", "LVL_AQUADUCT", "LVL_HOLYRUINS", "LVL_CAPECRYPT", "LVL_BERGFORTRESS", "LVL_SPRINGISLANDCASTLE", "LVL_CAVE", "LVL_MAUSOLEUM", "LVL_DUNGEON", "LVL_ICECAVE"])
 	Globals.set("levels", levelfactory.new().levels)
 	Globals.set("current_level", "LVL_START")
 	Globals.set("eventmode", false)
@@ -547,8 +547,6 @@ func do_teleport(resource, new_level, pos, teleport):
 		for i in new_level_obj.get_node("tilemap/SwitchGroup").get_children():
 			i.activate()
 			i.set("activated", false)
-			print("activated")
-			print(i.get("activated"))
 	# check that any scrolls already collected do not appear in the level again
 	if (new_level_obj.has_node("tilemap/ScrollGroup")):
 		for i in new_level_obj.get_node("tilemap/ScrollGroup").get_children():

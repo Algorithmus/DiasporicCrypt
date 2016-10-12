@@ -13,7 +13,7 @@ var current_delay = 0
 var current_walk_delay = 0
 var walk_delay = 60
 var frozen = false
-const FREEZE_DELAY = 300
+const FREEZE_DELAY = 360
 var freeze_counter = 0
 var freezeblock = preload("res://scenes/common/iceblock.tscn")
 var freezeblock_obj

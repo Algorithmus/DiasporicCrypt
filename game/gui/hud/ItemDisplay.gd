@@ -8,6 +8,7 @@ var specialicon = preload("res://gui/menu/icons/special.png")
 var goldicon = preload("res://gui/hud/gold.png")
 var exporbicon = preload("res://gui/hud/exporb.png")
 var scrollicon = preload("res://gui/hud/scroll.png")
+var magicicon = preload("res://gui/hud/magic.png")
 
 func _ready():
 	container = get_node("container")
@@ -24,6 +25,8 @@ func display_item(title, item_obj):
 		icon = goldicon
 	if (item_obj.type == "special"):
 		icon = specialicon
+	if (item_obj.type == "magic"):
+		icon = magicicon
 
 	item.get_node("text").set_text(title)
 	if (item_obj.type == "scroll"):
