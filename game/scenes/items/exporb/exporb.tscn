@@ -41,6 +41,7 @@ rect = Rect2( -10, -10, 20, 20 )
 enabler/pause_animations = true
 enabler/freeze_bodies = true
 enabler/pause_particles = true
+enabler/pause_animated_sprites = true
 enabler/process_parent = false
 enabler/fixed_process_parent = false
 

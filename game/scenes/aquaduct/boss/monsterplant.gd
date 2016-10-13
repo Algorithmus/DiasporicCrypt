@@ -186,7 +186,8 @@ func check_damage():
 			current_hurt_delay = 0
 
 func die():
-	trap.queue_free()
+	if (trap != null):
+		trap.queue_free()
 	Globals.set("current_quest_complete", true)
 	var level = Globals.get("levels")[Globals.get("current_level")]
 	level.complete = true

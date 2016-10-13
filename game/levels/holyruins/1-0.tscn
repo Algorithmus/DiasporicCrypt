@@ -39,15 +39,11 @@ tile_data = IntArray( -589836, 14, -589835, 1073741859, -589834, 1073741859, -58
 
 [node name="One-WayPlatformGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="One-WayPlatform" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 48, 592 )
-
-[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform"]
-
-collision/margin = 0.08
 
 [node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform/KinematicBody2D"]
 
@@ -57,148 +53,118 @@ region_rect = Rect2( 0, 0, 800, 32 )
 [node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform/KinematicBody2D"]
 
 transform/scale = Vector2( 25, 1 )
-linear_damp = 0.1
 
 [node name="HangableGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="HangBlock" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -336, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock1" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -304, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock2" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -272, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock3" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -240, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock4" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -208, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock5" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -176, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock6" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -144, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock7" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -112, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock8" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -80, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock9" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -48, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock10" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -16, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock11" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 16, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock12" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 48, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock13" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 80, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock14" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 112, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock15" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 144, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock16" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 176, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock17" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 208, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock18" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 240, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock19" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 272, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock20" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 304, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock21" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 336, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock22" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 368, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock23" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 400, 624 )
-collision/margin = 0.08
 
 [node name="HangBlock24" parent="tilemap/HangableGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 432, 624 )
-collision/margin = 0.08
 
 [node name="AccessGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="One-WayPlatform" parent="tilemap/AccessGroup" instance=ExtResource( 2 )]
 
 transform/pos = Vector2( -320, -16 )
-
-[node name="KinematicBody2D" parent="tilemap/AccessGroup/One-WayPlatform"]
-
-collision/margin = 0.08
 
 [node name="Sprite" parent="tilemap/AccessGroup/One-WayPlatform/KinematicBody2D"]
 
@@ -208,71 +174,49 @@ region_rect = Rect2( 0, 0, 64, 32 )
 [node name="oneway" parent="tilemap/AccessGroup/One-WayPlatform/KinematicBody2D"]
 
 transform/scale = Vector2( 2, 1 )
-linear_damp = 0.1
 
 [node name="One-WayPlatform1" parent="tilemap/AccessGroup" instance=ExtResource( 2 )]
 
 transform/pos = Vector2( -272, -16 )
-
-[node name="KinematicBody2D" parent="tilemap/AccessGroup/One-WayPlatform1"]
-
-collision/margin = 0.08
 
 [node name="Sprite" parent="tilemap/AccessGroup/One-WayPlatform1/KinematicBody2D"]
 
 texture = ExtResource( 4 )
 offset = Vector2( 3, 0 )
 
-[node name="oneway" parent="tilemap/AccessGroup/One-WayPlatform1/KinematicBody2D"]
-
-linear_damp = 0.1
-
 [node name="HangBlock" parent="tilemap/AccessGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -336, 16 )
-collision/margin = 0.08
 
 [node name="HangBlock1" parent="tilemap/AccessGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -304, 16 )
-collision/margin = 0.08
 
 [node name="HangBlock2" parent="tilemap/AccessGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -272, 16 )
-collision/margin = 0.08
 
 [node name="Sprite" parent="tilemap/AccessGroup/HangBlock2"]
 
 texture = ExtResource( 5 )
 flip_h = true
 
-[node name="hangable" parent="tilemap/AccessGroup/HangBlock2"]
-
-linear_damp = 0.1
-
 [node name="HangBlock3" parent="tilemap/AccessGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -336, 272 )
-collision/margin = 0.08
 
 [node name="HangBlock4" parent="tilemap/AccessGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -304, 272 )
-collision/margin = 0.08
 
 [node name="Sprite" parent="tilemap/AccessGroup/HangBlock4"]
 
 texture = ExtResource( 5 )
 flip_h = true
 
-[node name="hangable" parent="tilemap/AccessGroup/HangBlock4"]
-
-linear_damp = 0.1
-
 [node name="SpikeGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="SpikeTile" parent="tilemap/SpikeGroup" instance=ExtResource( 6 )]
 
@@ -286,13 +230,12 @@ region_rect = Rect2( 0, 0, 800, 32 )
 [node name="damagable" parent="tilemap/SpikeGroup/SpikeTile"]
 
 transform/scale = Vector2( 25, 1 )
-linear_damp = 0.1
 
 [node name="GateGroup" type="Node2D" parent="tilemap"]
 
 [node name="BossGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="GiantEyeball" parent="tilemap/BossGroup" instance=ExtResource( 7 )]
 
@@ -305,7 +248,7 @@ transform/pos = Vector2( 48, 32 )
 transform/pos = Vector2( 0, 560 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 0.92502, -0, 0, 1, 49.3303, 3 )
+shapes/0/transform = Matrix32( 0.92502, 0, 0, 1, 49.3303, 3 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -323,7 +266,7 @@ _update_shape_index = 0
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 9 )]
 
@@ -335,11 +278,14 @@ teleport_to = Vector2( 1136, 128 )
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
 
 transform/scale = Vector2( 3, 1 )
-linear_damp = 0.1
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
 
 [node name="boundaries" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="NW" type="Position2D" parent="tilemap/boundaries"]
 
@@ -348,6 +294,10 @@ transform/pos = Vector2( -390, -326 )
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
 transform/pos = Vector2( 490, 938 )
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
 
 
 [editable path="tilemap/One-WayPlatformGroup/One-WayPlatform"]
