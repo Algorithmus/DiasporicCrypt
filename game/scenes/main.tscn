@@ -658,7 +658,6 @@ visibility/behind_parent = true
 
 [node name="chain" type="Control" parent="gui/CanvasLayer"]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -793,9 +792,6 @@ blend_times = [  ]
 autoplay = ""
 
 [node name="dialogue" parent="gui/CanvasLayer" instance=ExtResource( 25 )]
-
-margin/left = 0.0
-margin/top = 0.0
 
 [node name="pause" type="Control" parent="gui/CanvasLayer"]
 

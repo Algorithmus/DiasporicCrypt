@@ -94,10 +94,6 @@ flip_h = false
 
 transform/pos = Vector2( 272, 160 )
 
-[node name="KinematicBody2D" parent="tilemap/LadderGroup/TestLadder"]
-
-collision/margin = 0.08
-
 [node name="Sprite" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
 
 region_rect = Rect2( 0, 0, 32, 256 )
@@ -105,7 +101,6 @@ region_rect = Rect2( 0, 0, 32, 256 )
 [node name="ladder" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
 
 transform/scale = Vector2( 1, 8 )
-linear_damp = 0.1
 
 [node name="TestLadder 2" parent="tilemap/LadderGroup" instance=ExtResource( 5 )]
 
@@ -123,7 +118,10 @@ teleport_to = Vector2( -16, -272 )
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
 
 transform/scale = Vector2( 3, 1 )
-linear_damp = 0.1
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
 
 [node name="boundaries" type="Node2D" parent="tilemap"]
 
@@ -134,6 +132,10 @@ transform/pos = Vector2( -358, -454 )
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
 transform/pos = Vector2( 746, 298 )
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
 
 
 [editable path="tilemap/ClimbableGroup/ClimbableBlock1"]

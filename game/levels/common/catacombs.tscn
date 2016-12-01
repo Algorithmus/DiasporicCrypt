@@ -16,23 +16,23 @@
 [ext_resource path="res://scenes/catacombs/solids/coffin.png" type="Texture" id=14]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=15]
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 80 )
 
-[sub_resource type="CanvasItemShader" id=1]
+[sub_resource type="CanvasItemShader" id=2]
 
 _code = { "fragment":"uniform color start=color(0.2,0.4,1.0,0.8);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, UV.x);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
 
-[sub_resource type="CanvasItemMaterial" id=2]
+[sub_resource type="CanvasItemMaterial" id=3]
 
-shader/shader = SubResource( 1 )
+shader/shader = SubResource( 2 )
 shader/shading_mode = 0
 shader_param/start = Color( 0, 0, 0, 0 )
 shader_param/stop = Color( 0, 0, 0, 1 )
 
-[sub_resource type="ImageTexture" id=3]
+[sub_resource type="ImageTexture" id=4]
 
 flags = 2
 image = Image()
@@ -40,27 +40,27 @@ size = Vector2( 32, 32 )
 storage = 0
 lossy_quality = 0.7
 
-[sub_resource type="CanvasItemMaterial" id=4]
+[sub_resource type="CanvasItemMaterial" id=5]
 
-shader/shader = SubResource( 1 )
+shader/shader = SubResource( 2 )
 shader/shading_mode = 0
 shader_param/start = Color( 0, 0, 0, 0 )
 shader_param/stop = Color( 0, 0, 0, 1 )
 
-[sub_resource type="CanvasItemMaterial" id=5]
+[sub_resource type="CanvasItemMaterial" id=6]
 
-shader/shader = SubResource( 1 )
+shader/shader = SubResource( 2 )
 shader/shading_mode = 0
 shader_param/start = Color( 0, 0, 0, 1 )
 shader_param/stop = Color( 0, 0, 0, 0 )
 
-[sub_resource type="CanvasItemShader" id=6]
+[sub_resource type="CanvasItemShader" id=7]
 
 _code = { "fragment":"uniform color start=color(0.2,0.4,1.0,0.8);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, UV.y);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
 
-[sub_resource type="CanvasItemMaterial" id=7]
+[sub_resource type="CanvasItemMaterial" id=8]
 
-shader/shader = SubResource( 6 )
+shader/shader = SubResource( 7 )
 shader/shading_mode = 0
 shader_param/start = Color( 0, 0, 0, 1 )
 shader_param/stop = Color( 0, 0, 0, 0 )
@@ -259,6 +259,7 @@ transform/pos = Vector2( 368, 320 )
 
 [node name="Kaleva" parent="tilemap/NPCGroup" instance=ExtResource( 11 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 176, 304 )
 script/script = ExtResource( 12 )
 
@@ -274,7 +275,7 @@ texture = ExtResource( 13 )
 
 [node name="CollisionShape2D" parent="tilemap/NPCGroup/Kaleva/npc"]
 
-shape = SubResource( 8 )
+shape = SubResource( 1 )
 
 [node name="Coffin" parent="tilemap/NPCGroup" instance=ExtResource( 11 )]
 
@@ -329,34 +330,34 @@ transform/pos = Vector2( 586, 474 )
 
 [node name="Sprite2" type="Sprite" parent="fg_deco"]
 
-material/material = SubResource( 2 )
+material/material = SubResource( 3 )
 transform/pos = Vector2( 544, -32 )
 transform/scale = Vector2( 4, 13 )
-texture = SubResource( 3 )
+texture = SubResource( 4 )
 centered = false
 
 [node name="Sprite3" type="Sprite" parent="fg_deco"]
 
-material/material = SubResource( 4 )
+material/material = SubResource( 5 )
 transform/pos = Vector2( 576, 480 )
 transform/scale = Vector2( 4, 2 )
-texture = SubResource( 3 )
+texture = SubResource( 4 )
 centered = false
 
 [node name="Sprite5" type="Sprite" parent="fg_deco"]
 
-material/material = SubResource( 5 )
+material/material = SubResource( 6 )
 transform/pos = Vector2( -640, 480 )
 transform/scale = Vector2( 2, 2 )
-texture = SubResource( 3 )
+texture = SubResource( 4 )
 centered = false
 
 [node name="Sprite6" type="Sprite" parent="fg_deco"]
 
-material/material = SubResource( 7 )
+material/material = SubResource( 8 )
 transform/pos = Vector2( -672, -352 )
 transform/scale = Vector2( 43, 2 )
-texture = SubResource( 3 )
+texture = SubResource( 4 )
 centered = false
 
 [connection signal="enter_screen" from="tilemap/NPCGroup/Kaleva/enabler" to="tilemap/NPCGroup/Kaleva" method="enter_screen"]

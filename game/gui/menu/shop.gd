@@ -146,7 +146,8 @@ func focus_item_enter():
 		owned = player_inventory[item_obj.title]["quantity"]
 	var title = item_obj.title
 	# display short title for scrolls
-	if (inventory[find_item(item_obj.title)].type == "scroll"):
+	var index = find_item(item_obj.title)
+	if (index >= 0 && inventory[index].type == "scroll"):
 		title = item_obj.display
 	item.get_node("new").hide()
 	info.get_node("image").set_texture(load(item_obj.image))
@@ -222,21 +223,22 @@ func _input(event):
 					Globals.set("gold", gold + basecost * currentamount)
 				else:
 					var index = find_item(currentitem.title)
-					if (inventory[index].type == "item"):
-						Globals.get("inventory").add_item(currentitem, currentamount)
-					elif (inventory[index].type == "scroll"):
-						Globals.get("scrolls")[currentitem.title] = currentitem
-					elif (inventory[index].type == "magic"):
-						var magic_spells = Globals.get("magic_spells")
-						var spell
-						for i in range(0, magic_spells.size()):
-							if (magic_spells[i].id == currentitem.value):
-								spell = magic_spells[i]
-						Globals.get("available_spells").append(spell)
-					if (inventory[index].quantity > 0):
-						inventory[index].quantity -= currentamount
-					if (inventory[index].quantity == 0):
-						inventory.erase(inventory[index])
+					if (index >= 0):
+						if (inventory[index].type == "item"):
+							Globals.get("inventory").add_item(currentitem, currentamount)
+						elif (inventory[index].type == "scroll"):
+							Globals.get("scrolls")[currentitem.title] = currentitem
+						elif (inventory[index].type == "magic"):
+							var magic_spells = Globals.get("magic_spells")
+							var spell
+							for i in range(0, magic_spells.size()):
+								if (magic_spells[i].id == currentitem.value):
+									spell = magic_spells[i]
+							Globals.get("available_spells").append(spell)
+						if (inventory[index].quantity > 0):
+							inventory[index].quantity -= currentamount
+						if (inventory[index].quantity == 0):
+							inventory.erase(inventory[index])
 					Globals.get("shops")[shopid] = inventory
 					Globals.set("gold", gold - basecost * currentamount)
 				transaction.hide()

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
-[ext_resource path="res://scenes/common/damagables/spiketile.png" type="Texture" id=1]
+[ext_resource path="res://scenes/common/NonTarget.gd" type="Script" id=1]
+[ext_resource path="res://scenes/common/damagables/spiketile.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -9,11 +10,12 @@ extents = Vector2( 16, 16 )
 
 [node name="SpikeTile" type="Node2D"]
 
+script/script = ExtResource( 1 )
 __meta__ = { "__editor_plugin_screen__":"Script" }
 
 [node name="Sprite" type="Sprite" parent="."]
 
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="damagable" type="Area2D" parent="."]
 

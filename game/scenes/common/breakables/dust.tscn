@@ -1,0 +1,38 @@
+[gd_scene format=1]
+
+[node name="dust" type="Node2D"]
+
+[node name="particles" type="Particles2D" parent="."]
+
+transform/pos = Vector2( 0, -1 )
+config/amount = 128
+config/lifetime = 2.0
+config/time_scale = 3.0
+config/preprocess = 0.1
+config/emit_timeout = 2.0
+config/emitting = false
+config/local_space = false
+config/explosiveness = 0.5
+params/direction = 180.0
+params/spread = 0.0
+params/linear_velocity = 16.0
+params/spin_velocity = 3.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 64.0
+params/radial_accel = 0.0
+params/tangential_accel = 10.0
+params/damping = 64.0
+params/initial_angle = 180.0
+params/initial_size = 2.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/linear_velocity = 1.0
+randomness/spin_velocity = 1.0
+randomness/damping = 1.0
+randomness/initial_angle = 1.0
+color/color = Color( 0.392157, 0.376471, 0.423529, 1 )
+
+
