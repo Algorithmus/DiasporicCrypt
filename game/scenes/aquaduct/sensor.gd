@@ -23,4 +23,5 @@ func trigger_fighting():
 func process_fighting():
 	if (!tilemap.get_node("BossGroup").has_node("MonsterPlant")):
 		gate.queue_free()
+		tilemap.get_node("SolidGroup").queue_free()
 		set_fixed_process(false)

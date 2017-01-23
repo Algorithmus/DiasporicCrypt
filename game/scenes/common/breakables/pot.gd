@@ -37,3 +37,4 @@ func crumble():
 		get_parent().add_child(reward_obj)
 	elif (type == "SWITCH"):
 		reward_obj.enable(true)
+		reward_obj.set_fixed_process(true)

@@ -26,6 +26,9 @@ func _ready():
 	var sprite = Image()
 	sprite.load(Globals.get("itemfactory").items[key].image)
 	keysprite.get_texture().set_data(sprite)
+	#print("setup gem gate")
+	#print(aura)
+	#print(get_node(".").get_name())
 	aura.set_shader_param("aura_color", keycolors[key])
 
 func _fixed_process(delta):

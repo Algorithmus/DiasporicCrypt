@@ -31,7 +31,6 @@ tile_data = IntArray( -458768, 1610612739, -458754, 1073741827, -524288, 1610612
 [node name="GemGate" parent="tilemap/GateGroup" instance=ExtResource( 2 )]
 
 transform/pos = Vector2( -16, 48 )
-key = "ITEM_PERIDOTKEY"
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
 

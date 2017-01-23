@@ -23,6 +23,7 @@ func _fixed_process(delta):
 				if (i.get_global_pos().y + playeroffset.y <= get_global_pos().y + sprite_offset.y && i.get_global_pos().y - playeroffset.y >= get_global_pos().y - sprite_offset.y):
 					playerfound = true
 					overlay_obj.hide()
+			i.get("area2d_blacklist").append(area)
 	if (!playerfound):
 		overlay_obj.show()
 

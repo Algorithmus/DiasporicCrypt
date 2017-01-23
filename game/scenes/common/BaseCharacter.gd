@@ -8,7 +8,7 @@ const DEFAULT_GRAVITY = 1
 const RUN_SPEED = 7
 const JUMP_SPEED = 20
 const TILE_SIZE = 32
-const WATER = 0.5
+const WATER = 0.25
 const DEFAULT_FALL_HEIGHT = JUMP_SPEED * (JUMP_SPEED - 1)/2
 # restrict vertical speed to prevent skipping and other weirdness
 const SPEED_LIMIT = 30
@@ -42,6 +42,7 @@ var has_kinematic_collision = false
 var on_ladder = false
 var jumpPressed = false
 var hpclass = preload("res://gui/hud/hp.tscn")
+var ignore_gravity = false
 
 var MovingPlatform = preload("res://scenes/dungeon/movingplatform/MovingPlatform.gd")
 
@@ -210,11 +211,13 @@ func check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space
 		clearMovingPlatform()
 
 	if (climb_platform != null):
-		if ((climb_platform.get_name() == "blockR" || climb_platform.get_name() == "blockL") && climb_platform.get_parent() extends MovingPlatform):
-			movingPlatform = climb_platform
-			onMovingPlatform = true
-		else:
-			clearMovingPlatform()
+		var climb_platform_ref = weakref(climb_platform)
+		if (climb_platform_ref != null && climb_platform_ref.get_ref()):
+			if ((climb_platform_ref.get_ref().get_name() == "blockR" || climb_platform_ref.get_ref().get_name() == "blockL") && climb_platform_ref.get_ref().get_parent() extends MovingPlatform):
+				movingPlatform = climb_platform_ref.get_ref()
+				onMovingPlatform = true
+			else:
+				clearMovingPlatform()
 
 	if (movingPlatform != null):
 		var newPos = Vector2(movingPlatform.get_global_pos().x, movingPlatform.get_global_pos().y)
@@ -232,20 +235,21 @@ func check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space
 	return onOneWayTile
 
 func check_underwater(areaTiles):
-	var watertile = false
-	for i in areaTiles:
-		if (i.get_name() == "water" || i.get_name() == "lava"):
-			watertile = true
-			if (i.get_global_pos().y - TILE_SIZE * i.get_scale().y/2 <= get_pos().y - sprite_offset.y):
-				if (!underwater && has_node("sound") && get_node("sound").get_sample_library().has_sample("splash_down")):
-					get_node("sound").set_volume_db(get_node("sound").play("splash_down"), (fall_height/defaultfallheight*current_gravity - 1)*10)
-				underwater = true
-				current_gravity = WATER
-	if (!watertile):
-		if (underwater && has_node("sound") && get_node("sound").get_sample_library().has_sample("splash_up")):
-			get_node("sound").set_volume_db(get_node("sound").play("splash_up"), 0)
-		underwater = false
-		current_gravity = DEFAULT_GRAVITY
+	if (!ignore_gravity):
+		var watertile = false
+		for i in areaTiles:
+			if (i.get_name() == "water" || i.get_name() == "lava"):
+				watertile = true
+				if (i.get_global_pos().y - TILE_SIZE * i.get_scale().y/2 <= get_pos().y - sprite_offset.y):
+					if (!underwater && has_node("sound") && get_node("sound").get_sample_library().has_sample("splash_down")):
+						get_node("sound").set_volume_db(get_node("sound").play("splash_down"), (fall_height/defaultfallheight*current_gravity - 1)*10)
+					underwater = true
+					current_gravity = WATER
+		if (!watertile):
+			if (underwater && has_node("sound") && get_node("sound").get_sample_library().has_sample("splash_up")):
+				get_node("sound").set_volume_db(get_node("sound").play("splash_up"), 0)
+			underwater = false
+			current_gravity = DEFAULT_GRAVITY
 
 func horizontal_input_permitted():
 	return !is_hurt
@@ -283,6 +287,9 @@ func step_horizontal(space_state):
 			new_animation = "idle"
 
 		check_hanging_disengage()
+
+		if (ignore_gravity):
+			current_gravity = DEFAULT_GRAVITY
 
 		position.x = position.x * current_gravity
 
@@ -459,7 +466,7 @@ func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, o
 		# handle standing on a ladder_top tile
 		check_ladder_top(normalTileCheck, closestTileY, desiredY)
 
-		accel = min(min(abs(desiredY), abs(closestTileY)), SPEED_LIMIT * current_gravity) * s
+		accel = min(min(abs(desiredY), abs(closestTileY)), SPEED_LIMIT * current_gravity * current_gravity) * s
 	return {"desiredY": desiredY, "slope": onSlope, "slopeTile": relevantSlopeTile, "abSlope": abSlope, "animationSpeed": animation_speed, "ladderY": ladderY}
 
 func check_falling(normalTileCheck, relevantSlopeTile, onSlope, abSlope, ladder_top, oneWayTile):

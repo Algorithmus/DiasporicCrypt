@@ -5,31 +5,30 @@
 [ext_resource path="res://scenes/common/particle.png" type="Texture" id=3]
 [ext_resource path="res://scenes/items/special/topazkey.png" type="Texture" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 16, 80 )
-
-[sub_resource type="RectangleShape2D" id=6]
-
-custom_solver_bias = 0.0
-extents = Vector2( 20, 80 )
-
-[sub_resource type="CanvasItemShader" id=4]
+[sub_resource type="CanvasItemShader" id=1]
 
 _code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
 
-[sub_resource type="CanvasItemMaterial" id=5]
+[sub_resource type="CanvasItemMaterial" id=2]
 
-shader/shader = SubResource( 4 )
+shader/shader = SubResource( 1 )
 shader/shading_mode = 0
 shader_param/aura_width = 2.0
 shader_param/aura_color = Color( 0.568627, 0, 1, 1 )
 shader_param/opacity = 1.0
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 
-resource/name = "idle"
+custom_solver_bias = 0.0
+extents = Vector2( 16, 80 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 20, 80 )
+
+[sub_resource type="Animation" id=5]
+
 length = 1.0
 loop = true
 step = 0.1
@@ -47,7 +46,7 @@ tracks/2/type = "value"
 tracks/2/path = NodePath("gate:material/material")
 tracks/2/interp = 1
 tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ SubResource( 5 ) ] }
+tracks/2/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ SubResource( 2 ) ] }
 tracks/3/type = "value"
 tracks/3/path = NodePath("gate:visibility/opacity")
 tracks/3/interp = 1
@@ -64,9 +63,8 @@ tracks/5/interp = 1
 tracks/5/imported = false
 tracks/5/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=6]
 
-resource/name = "open"
 length = 1.0
 loop = false
 step = 0.1
@@ -120,7 +118,8 @@ enabler/fixed_process_parent = false
 
 [node name="gate" type="Sprite" parent="."]
 
-visibility/opacity = 0.0
+visibility/blend_mode = 4
+material/material = SubResource( 2 )
 texture = ExtResource( 2 )
 region_rect = Rect2( -8, -2, 48, 168 )
 
@@ -161,7 +160,7 @@ texture = ExtResource( 4 )
 
 visibility/visible = false
 input/pickable = false
-shapes/0/shape = SubResource( 1 )
+shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -173,14 +172,14 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 trigger = false
 _update_shape_index = 0
 
 [node name="Area2D" type="Area2D" parent="."]
 
 input/pickable = true
-shapes/0/shape = SubResource( 6 )
+shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -190,7 +189,7 @@ angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
 
@@ -199,8 +198,8 @@ _update_shape_index = 0
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/idle = SubResource( 2 )
-anims/open = SubResource( 3 )
+anims/idle = SubResource( 5 )
+anims/open = SubResource( 6 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]

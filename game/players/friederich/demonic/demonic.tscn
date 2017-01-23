@@ -356,12 +356,12 @@ __meta__ = { "__editor_plugin_screen__":"2D" }
 
 [node name="idle" type="Sprite" parent="."]
 
+editor/display_folded = true
 visibility/opacity = 0.5
 material/material = SubResource( 2 )
 texture = ExtResource( 1 )
 offset = Vector2( -56, -19 )
 hframes = 3
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="idle"]
 
@@ -392,6 +392,7 @@ color/color = Color( 1, 0, 0, 1 )
 
 [node name="run" type="Sprite" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 material/material = SubResource( 4 )
 texture = ExtResource( 2 )
@@ -399,7 +400,6 @@ offset = Vector2( -30, -24 )
 vframes = 2
 hframes = 4
 frame = 1
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="run"]
 
@@ -431,12 +431,12 @@ color/color = Color( 1, 0, 0, 1 )
 
 [node name="jump" type="Sprite" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 material/material = SubResource( 6 )
 texture = ExtResource( 3 )
 offset = Vector2( -23, 6 )
 hframes = 3
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="jump"]
 
@@ -467,6 +467,7 @@ color/color = Color( 1, 0, 0, 1 )
 
 [node name="fall" type="Sprite" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 material/material = SubResource( 8 )
 transform/pos = Vector2( 0, -35 )
@@ -474,7 +475,6 @@ texture = ExtResource( 4 )
 offset = Vector2( -36, -84 )
 vframes = 2
 hframes = 2
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="fall"]
 
@@ -506,13 +506,13 @@ color/color = Color( 1, 0, 0, 1 )
 
 [node name="land" type="Sprite" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 material/material = SubResource( 10 )
 transform/pos = Vector2( 0, -9 )
 texture = ExtResource( 5 )
 offset = Vector2( -23, -136 )
 hframes = 3
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="land"]
 
@@ -557,13 +557,13 @@ hframes = 4
 
 [node name="crouch" type="Sprite" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 material/material = SubResource( 12 )
 texture = ExtResource( 8 )
 offset = Vector2( -58, -13 )
 hframes = 2
 frame = 1
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="crouch"]
 
@@ -594,13 +594,13 @@ color/color = Color( 1, 0, 0, 1 )
 
 [node name="hurt" type="Sprite" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 material/material = SubResource( 14 )
 texture = ExtResource( 9 )
 offset = Vector2( 64, -6 )
 hframes = 2
 frame = 1
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="hurt"]
 
@@ -631,12 +631,12 @@ color/color = Color( 1, 0, 0, 1 )
 
 [node name="charge" type="Sprite" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 material/material = SubResource( 16 )
 texture = ExtResource( 10 )
 offset = Vector2( -40, -21 )
 hframes = 4
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="charge"]
 
@@ -667,12 +667,12 @@ color/color = Color( 1, 0, 0, 1 )
 
 [node name="magic" type="Sprite" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 material/material = SubResource( 18 )
 texture = ExtResource( 11 )
 offset = Vector2( -27, -19 )
 hframes = 2
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="magic"]
 
@@ -728,8 +728,8 @@ hframes = 3
 
 [node name="attack" type="Node2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="attack"]
 
@@ -789,8 +789,8 @@ frame = 2
 
 [node name="dattack" type="Node2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="dattack"]
 
@@ -845,8 +845,8 @@ modulate = Color( 1, 0.301961, 0, 1 )
 
 [node name="aattack" type="Node2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="aattack"]
 
@@ -904,8 +904,8 @@ modulate = Color( 1, 0.30303, 0, 1 )
 
 [node name="chainattack" type="Node2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="chainattack"]
 
@@ -965,8 +965,8 @@ modulate = Color( 1, 0.30303, 0, 1 )
 
 [node name="achainattack" type="Node2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="achainattack"]
 
@@ -1026,8 +1026,8 @@ modulate = Color( 1, 0.30303, 0, 1 )
 
 [node name="chop" type="Node2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="chop"]
 
@@ -1087,8 +1087,8 @@ hframes = 3
 
 [node name="thrust" type="Node2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="thrust"]
 
@@ -1145,8 +1145,8 @@ modulate = Color( 1, 0.30303, 0, 1 )
 
 [node name="swift" type="Node2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="swift"]
 
@@ -1202,8 +1202,8 @@ modulate = Color( 1, 0.30303, 0, 1 )
 
 [node name="slice" type="Node2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="slice"]
 
@@ -1260,8 +1260,8 @@ modulate = Color( 1, 0.30303, 0, 1 )
 
 [node name="skewer" type="Node2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="skewer"]
 
@@ -1317,8 +1317,8 @@ hframes = 4
 
 [node name="stab" type="Node2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="stab"]
 
@@ -1377,8 +1377,8 @@ hframes = 5
 
 [node name="dualspin" type="Node2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="dualspin"]
 
@@ -1453,8 +1453,8 @@ modulate = Color( 1, 0.30303, 0, 1 )
 
 [node name="rush" type="Node2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
-__meta__ = { "_editor_collapsed":true }
 
 [node name="trail" type="Particles2D" parent="rush"]
 
@@ -1512,8 +1512,8 @@ modulate = Color( 1, 0.30303, 0, 1 )
 
 [node name="void" type="Node2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
-__meta__ = { "_editor_collapsed":true }
 
 [node name="attack" type="Sprite" parent="void"]
 

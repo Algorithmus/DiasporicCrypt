@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scenes/aquaduct/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=2]
+
+[node name="LVL_NOTITLE" type="Node2D"]
+
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 131078, 14, 131083, 14, 196614, 14, 196619, 14, 262150, 14, 262155, 14, 327686, 14, 327691, 14, 393222, 14, 393227, 14, 458758, 14, 458763, 14, 524294, 14, 524299, 14, 589830, 14, 589835, 14, 655366, 14, 655371, 14, 720902, 14, 720907, 14, 786438, 14, 786443, 14, 851974, 14, 851979, 14, 917510, 14, 917515, 14, 983046, 14, 983051, 14, 1048582, 14, 1048587, 14, 1114118, 14, 1114123, 14, 1179654, 14, 1179659, 14, 1245190, 14, 1245195, 14, 1310726, 14, 1310731, 14, 1376262, 14, 1376267, 14, 1441798, 14, 1441803, 14, 1507334, 14, 1507339, 14, 1572870, 14, 1572875, 14, 1638406, 14, 1638411, 14, 1703942, 14, 1703947, 14, 1769478, 14, 1769483, 14, 1835014, 14, 1835019, 14, 1900550, 14, 1900555, 14, 1966086, 14, 1966091, 14, 2031622, 14, 2031627, 14, 2097158, 14, 2097163, 14, 2162694, 14, 2162699, 14, 2228230, 14, 2228235, 14, 2293766, 14, 2293771, 14, 2359302, 14, 2359307, 14, 2424838, 14, 2424843, 14, 2490374, 14, 2490379, 14, 2555910, 14, 2555915, 14, 2621446, 14, 2621451, 14, 2686982, 14, 2686987, 14, 2752518, 14, 2752523, 14, 2818054, 14, 2818059, 14, 2883590, 14, 2883595, 14, 2949126, 14, 2949131, 14, 3014662, 14, 3014667, 14, 3080198, 14, 3080203, 1610612749, 3145734, 14, 3211270, 14, 3276806, 14, 3342342, 14, 3407878, 14, 3473414, 536870925, 3473415, 38, 3473416, 38, 3473417, 38, 3473418, 38, 3473419, 13 )
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 400, 1616 )
+target_level = "res://levels/aquaduct/2-3.tscn"
+teleport_to = Vector2( -2892, 16 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+
+transform/scale = Vector2( 1, 5 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 288, 48 )
+is_horizontal = false
+target_level = "res://levels/aquaduct/2-1.tscn"
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
+
+transform/scale = Vector2( 4, 1 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport1/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="boundaries" type="Node2D" parent="tilemap"]
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( 186, 58 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( 394, 1738 )
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="exit_screen"]
+
+
+[editable path="tilemap/TeleportGroup/Teleport"]
+[editable path="tilemap/TeleportGroup/Teleport1"]

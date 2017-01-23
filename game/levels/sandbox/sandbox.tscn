@@ -677,8 +677,6 @@ isgoal = false
 
 [node name="SwingableGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
-
 [node name="SwingBlock 2" parent="tilemap/SwingableGroup" instance=ExtResource( 39 )]
 
 transform/pos = Vector2( -176, -272 )
@@ -709,7 +707,6 @@ cycle = 2.0
 
 [node name="HangableGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
 __meta__ = { "_edit_lock_":true }
 
 [node name="HangBlock" parent="tilemap/HangableGroup" instance=ExtResource( 41 )]

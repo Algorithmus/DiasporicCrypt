@@ -187,7 +187,9 @@ func check_damage():
 
 func die():
 	if (trap != null):
-		trap.queue_free()
+		var trap_ref = weakref(trap)
+		if (trap_ref != null && trap_ref.get_ref()):
+			trap_ref.get_ref().queue_free()
 	Globals.set("current_quest_complete", true)
 	var level = Globals.get("levels")[Globals.get("current_level")]
 	level.complete = true

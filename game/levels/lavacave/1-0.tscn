@@ -55,13 +55,10 @@ region_rect = Rect2( 0, 0, 1568, 96 )
 [node name="lava" parent="tilemap/LavaGroup/LavaSurface"]
 
 transform/scale = Vector2( 49, 3 )
-linear_damp = 0.1
 
 [node name="GateGroup" type="Node2D" parent="tilemap"]
 
 [node name="FallingPlatformGroup" type="Node2D" parent="tilemap"]
-
-__meta__ = { "_editor_collapsed":true }
 
 [node name="FallingPlatform" parent="tilemap/FallingPlatformGroup" instance=ExtResource( 4 )]
 
@@ -80,7 +77,7 @@ is_climbable = false
 
 [node name="MovingPlatformGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="MovingPlatform" parent="tilemap/MovingPlatformGroup" instance=ExtResource( 5 )]
 
@@ -118,7 +115,7 @@ _update_shape_index = 0
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 7 )]
 
@@ -129,7 +126,10 @@ teleport_to = Vector2( 652, 16 )
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
 
 transform/scale = Vector2( 1, 5 )
-linear_damp = 0.1
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
 
 [node name="boundaries" type="Node2D" parent="tilemap"]
 
@@ -140,6 +140,10 @@ transform/pos = Vector2( -230, -742 )
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
 transform/pos = Vector2( 1418, 202 )
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
 
 
 [editable path="tilemap/LavaGroup/LavaSurface"]

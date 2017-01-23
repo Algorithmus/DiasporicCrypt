@@ -64,6 +64,7 @@ transform/pos = Vector2( -1328, 0 )
 target_nodes = [ "SunbeamGroup/Sunbeam" ]
 related_switches = [  ]
 enabled = false
+invert = false
 
 [node name="PotGroup" type="Node2D" parent="tilemap"]
 
