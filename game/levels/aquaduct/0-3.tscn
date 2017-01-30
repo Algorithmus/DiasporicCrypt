@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/aquaduct/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/aquaduct/climbableblock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/common/fluid/water.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/fluid/tidewater.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=5]
 
 [node name="LVL_NOTITLE" type="Node2D"]
@@ -273,44 +273,48 @@ transform/pos = Vector2( -1392, 400 )
 
 [node name="WaterGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
+[node name="TideWater2" parent="tilemap/WaterGroup" instance=ExtResource( 4 )]
 
-[node name="TestWaterSurface" parent="tilemap/WaterGroup" instance=ExtResource( 4 )]
-
-editor/display_folded = true
 transform/pos = Vector2( 160, 304 )
+speed_scale = 0.25
 
-[node name="Sprite" parent="tilemap/WaterGroup/TestWaterSurface"]
-
-transform/scale = Vector2( 16, 7 )
-
-[node name="water" parent="tilemap/WaterGroup/TestWaterSurface"]
+[node name="Sprite" parent="tilemap/WaterGroup/TideWater2/TestWaterSurface"]
 
 transform/scale = Vector2( 16, 7 )
 
-[node name="TestWaterSurface1" parent="tilemap/WaterGroup" instance=ExtResource( 4 )]
+[node name="water" parent="tilemap/WaterGroup/TideWater2/TestWaterSurface"]
+
+transform/scale = Vector2( 16, 7 )
+
+[node name="TideWater1" parent="tilemap/WaterGroup" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 transform/pos = Vector2( -736, 304 )
+speed_scale = 0.25
 
-[node name="Sprite" parent="tilemap/WaterGroup/TestWaterSurface1"]
-
-transform/scale = Vector2( 16, 7 )
-
-[node name="water" parent="tilemap/WaterGroup/TestWaterSurface1"]
+[node name="Sprite" parent="tilemap/WaterGroup/TideWater1/TestWaterSurface"]
 
 transform/scale = Vector2( 16, 7 )
 
-[node name="TestWaterSurface2" parent="tilemap/WaterGroup" instance=ExtResource( 4 )]
+[node name="water" parent="tilemap/WaterGroup/TideWater1/TestWaterSurface"]
+
+transform/scale = Vector2( 16, 7 )
+
+[node name="TideWater" parent="tilemap/WaterGroup" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 transform/pos = Vector2( -1632, 304 )
+speed_scale = 0.25
 
-[node name="Sprite" parent="tilemap/WaterGroup/TestWaterSurface2"]
+[node name="TestWaterSurface" parent="tilemap/WaterGroup/TideWater"]
+
+editor/display_folded = true
+
+[node name="Sprite" parent="tilemap/WaterGroup/TideWater/TestWaterSurface"]
 
 transform/scale = Vector2( 16, 7 )
 
-[node name="water" parent="tilemap/WaterGroup/TestWaterSurface2"]
+[node name="water" parent="tilemap/WaterGroup/TideWater/TestWaterSurface"]
 
 transform/scale = Vector2( 16, 7 )
 
@@ -368,8 +372,11 @@ transform/pos = Vector2( 650, 458 )
 [editable path="tilemap/ClimbableGroup/ClimbableBlock1"]
 [editable path="tilemap/ClimbableGroup/ClimbableBlock3"]
 [editable path="tilemap/ClimbableGroup/ClimbableBlock5"]
-[editable path="tilemap/WaterGroup/TestWaterSurface"]
-[editable path="tilemap/WaterGroup/TestWaterSurface1"]
-[editable path="tilemap/WaterGroup/TestWaterSurface2"]
+[editable path="tilemap/WaterGroup/TideWater2"]
+[editable path="tilemap/WaterGroup/TideWater2/TestWaterSurface"]
+[editable path="tilemap/WaterGroup/TideWater1"]
+[editable path="tilemap/WaterGroup/TideWater1/TestWaterSurface"]
+[editable path="tilemap/WaterGroup/TideWater"]
+[editable path="tilemap/WaterGroup/TideWater/TestWaterSurface"]
 [editable path="tilemap/TeleportGroup/Teleport"]
 [editable path="tilemap/TeleportGroup/Teleport1"]
