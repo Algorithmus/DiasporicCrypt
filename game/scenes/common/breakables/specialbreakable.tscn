@@ -1,33 +1,33 @@
 [gd_scene load_steps=7 format=1]
 
-[ext_resource path="res://scenes/common/breakables/ChainBreakable.gd" type="Script" id=1]
-[ext_resource path="res://scenes/common/breakables/breakabletile.png" type="Texture" id=2]
+[ext_resource path="res://scenes/common/breakables/SpecialBreakable.gd" type="Script" id=1]
+[ext_resource path="res://scenes/springislandcastle/BGs/edge.png" type="Texture" id=2]
 [ext_resource path="res://scenes/common/breakables/crumble.wav" type="Sample" id=3]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 18, 18 )
 
-[sub_resource type="SampleLibrary" id=4]
+[sub_resource type="SampleLibrary" id=3]
 
 samples/crumble = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
 
-[node name="ChainBreakable" type="Node2D"]
+[node name="SpecialBreakable" type="Node2D"]
 
 script/script = ExtResource( 1 )
 __meta__ = { "__editor_plugin_screen__":"Script" }
-hp = 5
+special = ""
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 
 input/pickable = false
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -48,18 +48,18 @@ enabler/fixed_process_parent = false
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]
 
 texture = ExtResource( 2 )
-modulate = Color( 0.113281, 1, 0.949808, 1 )
+modulate = Color( 0.431373, 0.294118, 0.0588235, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
 [node name="breakable" type="Area2D" parent="KinematicBody2D"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 3 )
+shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -69,14 +69,14 @@ angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/breakable"]
 
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 0
 
 [node name="sound" type="SamplePlayer" parent="."]
 
 config/polyphony = 1
-config/samples = SubResource( 4 )
+config/samples = SubResource( 3 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
 default/pan = 0.0

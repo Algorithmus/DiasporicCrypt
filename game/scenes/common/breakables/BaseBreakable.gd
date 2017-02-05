@@ -7,20 +7,40 @@ extends Node2D
 var is_crumbling
 var sound
 var crumble_cycle = 0
+var check_related_blocks = false
+var related_blocks = []
 
 func _fixed_process(delta):
 	if (!is_crumbling):
 		var tiles = get_node("KinematicBody2D/breakable").get_overlapping_areas()
+		if (!check_related_blocks):
+			for i in tiles:
+				if (i.get_name() == "breakable" && i.get_parent().get_parent().get_script() == get_script()):
+					related_blocks.append(weakref(i.get_parent().get_parent()))
+			check_related_blocks = true
+			print(related_blocks)
 		for i in tiles:
 			if (check_crumble(i)):
-				sound.set_volume_db(sound.play("crumble"), -10)
-				is_crumbling = true
-				crumble()
+				start_crumble()
 	else:
 		sprite_opacity(0.5 + fmod(crumble_cycle, 4) * 0.3)
 		crumble_cycle += 1
 		if (!sound.is_active()):
+			crumble_related()
 			queue_free()
+
+# make game more playable by destroying neighboring breakable objects of the same type
+func crumble_related():
+	print("crumble related (base)")
+	for j in related_blocks:
+		var related = j.get_ref()
+		if (related != null && !related.is_crumbling):
+			related.start_crumble()
+
+func start_crumble():
+	sound.set_volume_db(sound.play("crumble"), -10)
+	is_crumbling = true
+	crumble()
 
 func crumble():
 	pass
@@ -40,3 +60,5 @@ func enter_screen():
 
 func exit_screen():
 	set_fixed_process(false)
+	check_related_blocks = false
+	related_blocks = []
