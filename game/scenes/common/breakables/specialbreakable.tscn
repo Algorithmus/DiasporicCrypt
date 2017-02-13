@@ -48,7 +48,6 @@ enabler/fixed_process_parent = false
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]
 
 texture = ExtResource( 2 )
-modulate = Color( 0.431373, 0.294118, 0.0588235, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 

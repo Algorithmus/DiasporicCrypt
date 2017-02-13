@@ -9,6 +9,7 @@ var gatepos = Vector2()
 
 var isfighting = false
 var tilemap
+var player
 
 func _ready():
 	tilemap = get_parent().get_parent()
@@ -29,6 +30,7 @@ func _fixed_process(delta):
 		for i in collisions:
 			if (i.get_name() == "player"):
 				# block the exits
+				player = i
 				gate = gateclass.instance()
 				gate.set_global_pos(gatepos)
 				tilemap.get_node("GateGroup").add_child(gate)

@@ -18,7 +18,6 @@ func _fixed_process(delta):
 				if (i.get_name() == "breakable" && i.get_parent().get_parent().get_script() == get_script()):
 					related_blocks.append(weakref(i.get_parent().get_parent()))
 			check_related_blocks = true
-			print(related_blocks)
 		for i in tiles:
 			if (check_crumble(i)):
 				start_crumble()
@@ -31,7 +30,6 @@ func _fixed_process(delta):
 
 # make game more playable by destroying neighboring breakable objects of the same type
 func crumble_related():
-	print("crumble related (base)")
 	for j in related_blocks:
 		var related = j.get_ref()
 		if (related != null && !related.is_crumbling):

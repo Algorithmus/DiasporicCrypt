@@ -16,6 +16,8 @@ func _fixed_process(delta):
 	var tiles = teleport.get_overlapping_areas()
 	for i in tiles:
 		if (i.get_name() == "damage"):
+			var camera = i.get_parent().get_node("Camera2D")
+			camera.set_offset(Vector2(-400, -296))
 			var pos = teleport_to
 			if (is_horizontal && i.get_global_pos().y - 64 >= get_global_pos().y - teleport.get_scale().y * 32 && i.get_global_pos().y + 64 <= get_global_pos().y + teleport.get_scale().y * 32):
 				var player_delta = i.get_global_pos().y - get_global_pos().y

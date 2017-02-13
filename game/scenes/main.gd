@@ -82,6 +82,7 @@ func _ready():
 	Globals.set("reward_taken", false)
 	Globals.set("sun", false)
 	Globals.set("show_blood_counter", false)
+	Globals.set("blood_count", 0)
 	root = get_tree().get_root()
 	original_size = root.get_rect().size
 	root.connect("size_changed", self, "_on_resolution_changed")
