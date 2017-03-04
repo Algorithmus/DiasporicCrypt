@@ -27,6 +27,8 @@ func _init():
 	mausoleum.type = "quest"
 	mausoleum.position = Vector2(288, 288)
 	mausoleum.description = "LVL_MAUSOLEUM"
+	mausoleum.reward = 4000
+	mausoleum.item = "ITEM_GLYPH1"
 	mausoleum.location = locationfactory.locations["LVL_MAUSOLEUM"]
 	levels[mausoleum.title] = mausoleum
 	

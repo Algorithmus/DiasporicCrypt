@@ -682,6 +682,7 @@ func check_animations(new_animation, animation_speed, horizontal_motion, ladderY
 			animation_speed = 0
 
 	if (is_transforming):
+		animation_speed = 1
 		if (is_demonic):
 			new_animation = "transform"
 		else:

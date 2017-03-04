@@ -414,11 +414,15 @@ func _ready():
 	whipswing_obj.hide()
 	
 	weapon_type = "whip"
-	var spells = Globals.get("magic_spells")
-	for i in range(0, spells.size()):
-		if (spells[i].id == "ice"):
-			magic_spells.append(spells[i])
-	Globals.set("available_spells", magic_spells)
+	var available_spells = Globals.get("available_spells")
+	if (available_spells != null && available_spells.size() > 0):
+		magic_spells = available_spells
+	else:
+		var spells = Globals.get("magic_spells")
+		for i in range(0, spells.size()):
+			if (spells[i].id == "ice"):
+				magic_spells.append(spells[i])
+		Globals.set("available_spells", magic_spells)
 	selected_spell = 0
 	spell_icons.get_node(magic_spells[selected_spell]["id"]).show()
 	update_fusion()

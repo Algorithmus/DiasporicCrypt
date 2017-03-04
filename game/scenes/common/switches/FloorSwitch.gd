@@ -22,6 +22,9 @@ func check_activation():
 					is_echo = true
 	for j in switches:
 		j.set("is_on", is_on)
+		if (!is_on && j.get("once")):
+			j.set("activated", true)
+			j.get_node("Sprite").set_frame(0)
 	if (!active || (is_toggle && !is_on)):
 		get_node("Sprite").set_frame(1)
 		is_echo = false

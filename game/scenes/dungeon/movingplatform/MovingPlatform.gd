@@ -23,12 +23,8 @@ func _fixed_process(delta):
 	#	d = 1
 	#d = sign(sin(accum)) * d
 	
-	var xfR = Matrix32()
-	var xfL = Matrix32()
-	xfR[2]= Vector2(motion.x*d + lOffset, motion.y*d)
-	xfL[2]= Vector2(motion.x*d + rOffset, motion.y*d)
-	get_node("blockR").set_transform(xfR)
-	get_node("blockL").set_transform(xfL)
+	get_node("blockR").set_pos(Vector2(motion.x*d + rOffset, motion.y*d))
+	get_node("blockL").set_pos(Vector2(motion.x*d + lOffset, motion.y*d))
 
 func _ready():
 	lOffset = get_node("blockL").get_pos().x

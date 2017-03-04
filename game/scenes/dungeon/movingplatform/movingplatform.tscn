@@ -19,7 +19,6 @@ transform/pos = Vector2( 16, 0 )
 [node name="Sprite" parent="blockR"]
 
 texture = ExtResource( 3 )
-flip_h = false
 
 [node name="blockL" parent="." instance=ExtResource( 2 )]
 
@@ -28,6 +27,7 @@ transform/pos = Vector2( -16, 0 )
 [node name="Sprite" parent="blockL"]
 
 texture = ExtResource( 3 )
+flip_h = false
 
 
 [editable path="blockR"]

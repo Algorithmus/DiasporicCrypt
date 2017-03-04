@@ -433,6 +433,7 @@ func reset():
 	map.reset()
 	Globals.set("chain", chainlist)
 	Globals.set("mapid", "LVL_START")
+	Globals.set("available_spells", null)
 	sequences.get_node("demonic/sprite/friederich").hide()
 	sequences.get_node("demonic/sprite/adela").hide()
 	get_node("gui/CanvasLayer/chain/chaintext").hide()
