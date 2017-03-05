@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=1]
+[gd_scene load_steps=25 format=1]
 
 [ext_resource path="res://scenes/catacombs/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/torch.tscn" type="PackedScene" id=2]
@@ -14,7 +14,8 @@
 [ext_resource path="res://scenes/npcs/kaleva/Kaleva.gd" type="Script" id=12]
 [ext_resource path="res://scenes/npcs/kaleva/idle.png" type="Texture" id=13]
 [ext_resource path="res://scenes/catacombs/solids/coffin.png" type="Texture" id=14]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/savepoint/savepoint.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -257,6 +258,8 @@ transform/pos = Vector2( 368, 320 )
 
 [node name="NPCGroup" type="Node2D" parent="tilemap"]
 
+editor/display_folded = true
+
 [node name="Kaleva" parent="tilemap/NPCGroup" instance=ExtResource( 11 )]
 
 editor/display_folded = true
@@ -297,11 +300,18 @@ visibility/visible = false
 
 autoplay = ""
 
+[node name="SaveGroup" type="Node2D" parent="tilemap"]
+
+[node name="savepoint" parent="tilemap/SaveGroup" instance=ExtResource( 15 )]
+
+transform/pos = Vector2( -192, 352 )
+savelocation = "LVL_CATACOMB"
+
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 15 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( -16, -368 )
 is_horizontal = false

@@ -16,7 +16,7 @@ var choice
 var gameover = false
 var dialog
 
-var hideshop = false
+var hide_altmenu = false
 
 var map
 var map_position = preload("res://gui/maps/position.tscn")
@@ -83,6 +83,7 @@ func _ready():
 	Globals.set("sun", false)
 	Globals.set("show_blood_counter", false)
 	Globals.set("blood_count", 0)
+	Globals.set("savedir", "user://saves")
 	root = get_tree().get_root()
 	original_size = root.get_rect().size
 	root.connect("size_changed", self, "_on_resolution_changed")
@@ -148,7 +149,7 @@ func _on_resolution_changed():
 
 func _input(event):
 	var canvas = get_node("gui/CanvasLayer")
-	if (!gameover && dialog.get("dialogs") == null && !pause.has_node("shopping") && !canvas.has_node("WorldMap") && !Globals.get("eventmode")):
+	if (!gameover && dialog.get("dialogs") == null && !pause.has_node("shopping") && !pause.has_node("save") && !canvas.has_node("WorldMap") && !Globals.get("eventmode")):
 		if (event.is_action("ui_pause") && event.is_pressed() && !event.is_echo() && get_node("playercontainer").has_node("player") && !get_node("playercontainer/player").get("is_transforming")):
 			if (is_paused && pausemenu.can_unpause()):
 				pausemenu.reset()
@@ -178,16 +179,20 @@ func _input(event):
 				map.hide()
 			else:
 				map.show()
+	var altmenu = null
 	if (pause.has_node("shopping")):
+		altmenu = pause.get_node("shopping")
+	if (pause.has_node("save")):
+		altmenu = pause.get_node("save")
+	if (altmenu != null):
 		if (event.is_action_pressed("ui_cancel") && event.is_pressed() && !event.is_echo()):
-			var shopping = pause.get_node("shopping")
-			if (!shopping.block_cancel()):
+			if (!altmenu.block_cancel()):
 				pause.hide()
-				pause.remove_child(shopping)
-				shopping.queue_free()
-				hideshop = true
-	elif(hideshop):
-		hideshop = false
+				pause.remove_child(altmenu)
+				altmenu.queue_free()
+				hide_altmenu = true
+	elif(hide_altmenu):
+		hide_altmenu = false
 		get_tree().set_pause(false)
 	if (canvas.has_node("WorldMap") && !Globals.get("eventmode")):
 		if (event.is_action_pressed("ui_cancel") && event.is_pressed() && !event.is_echo()):
