@@ -10,6 +10,7 @@ var selecteditem
 var echo = false
 
 var itemcontainer
+var scrollrange
 
 var savepos
 var savelocation
@@ -20,22 +21,65 @@ var sfx
 func _ready():
 	sfx = sfxclass.instance()
 	add_child(sfx)
-	#itemfactory = Globals.get("itemfactory")
+	scrollrange = get_node("saves").get_size()
 	itemcontainer = get_node("saves/container")
 	set_process_input(true)
 	load_menu()
 
 func load_menu():
-	# check save folder for save files
-	# display data accordingly
-	# after loading saves:
+	var dir = Directory.new()
+	var file = File.new()
+	var savedir = Globals.get("savedir")
+	var regex = RegEx.new()
+	regex.compile("^save\\d+.save$")
+	if (dir.dir_exists(savedir)):
+		if(dir.open(savedir) == 0):
+			dir.list_dir_begin()
+			var filename = dir.get_next()
+			while (filename != ""):
+				if (!dir.current_is_dir() && regex.find(filename) > -1):
+					var game = {}
+					file.open(savedir + "/" + filename, File.READ)
+					while (!file.eof_reached()):
+						var string = file.get_line()
+						game.parse_json(string)
+						var save = itemclass.instance()
+						itemcontainer.add_child(save)
+						save.setState(save.SAVE)
+						save.hideSavedRecently()
+						save.set("savepos", savepos)
+						save.set("savelocation", savelocation)
+						save.set_id(str(itemcontainer.get_child_count()))
+						save.connect("focus_enter", self, "check_scroll")
+						save.displayGameData(game)
+					file.close()
+				filename = dir.get_next()
+			dir.list_dir_end()
+	create_newsave()
+	itemcontainer.get_child(0).grab_focus()
+
+func create_newsave():
 	var newsave = itemclass.instance()
 	itemcontainer.add_child(newsave)
 	newsave.setState(newsave.NEW)
 	newsave.set("savepos", savepos)
 	newsave.set("savelocation", savelocation)
 	newsave.set_id(str(itemcontainer.get_child_count()))
-	itemcontainer.get_child(0).grab_focus()
+	newsave.connect("newsave", self, "check_newsave")
+	newsave.connect("focus_enter", self, "check_scroll")
+
+func check_newsave():
+	var save = itemcontainer.get_child(itemcontainer.get_child_count() - 1)
+	if (save.get("state") != save.NEW):
+		create_newsave()
+
+func check_scroll():
+	var item = get_focus_owner()
+	var vscroll = get_node("saves").get_v_scroll()
+	var itempos = item.get_pos().y
+	var itemsize = item.get_size().y
+	if (vscroll > itempos || vscroll + scrollrange.y < itempos + itemsize):
+		get_node("saves").set_v_scroll(itempos)
 
 func clear_items():
 	for i in itemcontainer.get_children():

@@ -9,9 +9,12 @@ var state = SAVE
 var saveGroup
 var newGroup
 var optionsGroup
+var gameData
 
 var savepos
 var savelocation
+
+signal newsave
 
 func _ready():
 	sfx = sfxclass.instance()
@@ -43,12 +46,16 @@ func setState(value):
 func set_id(value):
 	id.set_text("#" + value)
 
+func hideSavedRecently():
+	saveGroup.get_node("saved").hide()
+
 func _input(event):
 	if (event.is_pressed() && !event.is_echo()):
 		var focus = get_focus_owner()
 		if (event.is_action_pressed("ui_accept")):
 			if (state == NEW):
 				save()
+				emit_signal("newsave")
 
 func save():
 	var data = {}
@@ -102,6 +109,7 @@ func save():
 	setState(SAVE)
 	
 func displayGameData(data):
+	gameData = data
 	if (data.player.character == "adela"):
 		characterBG.set_texture(preload("res://gui/save/BGs/adela.png"))
 	else:
