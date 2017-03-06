@@ -8,6 +8,7 @@ var itemfactory
 
 var selecteditem
 var echo = false
+var optionsvisible = false
 
 var itemcontainer
 var scrollrange
@@ -51,12 +52,18 @@ func load_menu():
 						save.set("savelocation", savelocation)
 						save.set_id(str(itemcontainer.get_child_count()))
 						save.connect("focus_enter", self, "check_scroll")
+						save.connect("options_visible", self, "set_optionsvisible")
+						save.connect("echo", self, "set_echo")
 						save.displayGameData(game)
+						save.set("filename", filename)
 					file.close()
 				filename = dir.get_next()
 			dir.list_dir_end()
 	create_newsave()
 	itemcontainer.get_child(0).grab_focus()
+
+func set_optionsvisible(value):
+	optionsvisible = value
 
 func create_newsave():
 	var newsave = itemclass.instance()
@@ -65,8 +72,11 @@ func create_newsave():
 	newsave.set("savepos", savepos)
 	newsave.set("savelocation", savelocation)
 	newsave.set_id(str(itemcontainer.get_child_count()))
+	newsave.set("filename", "save" + str(itemcontainer.get_child_count()) + ".save")
 	newsave.connect("newsave", self, "check_newsave")
 	newsave.connect("focus_enter", self, "check_scroll")
+	newsave.connect("options_visible", self, "set_optionsvisible")
+	newsave.connect("echo", self, "set_echo")
 
 func check_newsave():
 	var save = itemcontainer.get_child(itemcontainer.get_child_count() - 1)
@@ -177,8 +187,10 @@ func _input(event):
 				sfx.play("confirm")
 		"""
 
+func set_echo():
+	echo = true
+
 func block_cancel():
-	# transaction is already unfocused, so check echo flag instead
-	var result = echo
+	var result = optionsvisible || echo
 	echo = false
 	return result

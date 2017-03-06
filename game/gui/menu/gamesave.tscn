@@ -144,6 +144,7 @@ max_lines_visible = -1
 
 [node name="saved" type="Control" parent="."]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -312,8 +313,6 @@ max_lines_visible = -1
 
 [node name="options" type="Control" parent="."]
 
-editor/display_folded = true
-visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -357,7 +356,6 @@ centered = false
 
 [node name="options" type="VBoxContainer" parent="options"]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -371,7 +369,9 @@ alignment = 0
 
 [node name="load" parent="options/options" instance=ExtResource( 8 )]
 
+focus_neighbour/left = NodePath(".")
 focus_neighbour/top = NodePath(".")
+focus_neighbour/right = NodePath(".")
 margin/left = 0.0
 margin/right = 149.0
 margin/bottom = 27.0
@@ -381,6 +381,8 @@ align = 2
 
 [node name="save" parent="options/options" instance=ExtResource( 8 )]
 
+focus_neighbour/left = NodePath(".")
+focus_neighbour/right = NodePath(".")
 margin/left = 0.0
 margin/top = 32.0
 margin/right = 149.0
@@ -390,6 +392,8 @@ align = 2
 
 [node name="delete" parent="options/options" instance=ExtResource( 8 )]
 
+focus_neighbour/left = NodePath(".")
+focus_neighbour/right = NodePath(".")
 margin/left = 0.0
 margin/top = 64.0
 margin/right = 149.0
@@ -400,6 +404,8 @@ align = 2
 
 [node name="clone" parent="options/options" instance=ExtResource( 8 )]
 
+focus_neighbour/left = NodePath(".")
+focus_neighbour/right = NodePath(".")
 focus_neighbour/bottom = NodePath(".")
 margin/left = 0.0
 margin/top = 96.0
@@ -430,7 +436,6 @@ max_lines_visible = -1
 
 [node name="choice" type="HBoxContainer" parent="options"]
 
-editor/display_folded = true
 rect/min_size = Vector2( 246, 0 )
 focus/ignore_mouse = false
 focus/stop_mouse = false
@@ -445,7 +450,10 @@ alignment = 1
 
 [node name="yes" parent="options/choice" instance=ExtResource( 8 )]
 
+focus_neighbour/left = NodePath(".")
 focus_neighbour/top = NodePath(".")
+focus_neighbour/right = NodePath("../no")
+focus_neighbour/bottom = NodePath(".")
 margin/left = 9.0
 margin/right = 95.0
 margin/bottom = 40.0
@@ -455,7 +463,10 @@ align = 2
 
 [node name="no" parent="options/choice" instance=ExtResource( 8 )]
 
+focus_neighbour/left = NodePath("../yes")
 focus_neighbour/top = NodePath(".")
+focus_neighbour/right = NodePath(".")
+focus_neighbour/bottom = NodePath(".")
 margin/left = 159.0
 margin/right = 237.0
 margin/bottom = 40.0

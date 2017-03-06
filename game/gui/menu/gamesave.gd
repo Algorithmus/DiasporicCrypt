@@ -9,16 +9,18 @@ var state = SAVE
 var saveGroup
 var newGroup
 var optionsGroup
+var selectedOption
 var gameData
+var filename
 
 var savepos
 var savelocation
 
 signal newsave
+signal options_visible
+signal echo
 
 func _ready():
-	sfx = sfxclass.instance()
-	add_child(sfx)
 	id = get_node("id")
 	characterBG = get_node("characterBG")
 	saveGroup = get_node("saved")
@@ -34,14 +36,17 @@ func setState(value):
 		saveGroup.show()
 		optionsGroup.hide();
 		newGroup.hide()
+		emit_signal("options_visible", false)
 	elif (state == NEW):
 		characterBG.hide()
 		saveGroup.hide()
 		optionsGroup.hide()
 		newGroup.show()
+		emit_signal("options_visible", false)
 	elif (state == OPTIONS):
 		optionsGroup.show()
 		newGroup.hide()
+		emit_signal("options_visible", true)
 
 func set_id(value):
 	id.set_text("#" + value)
@@ -49,20 +54,77 @@ func set_id(value):
 func hideSavedRecently():
 	saveGroup.get_node("saved").hide()
 
+func show_optionsmenu():
+	unfocus_options()
+	optionsGroup.get_node("options/" + selectedOption).grab_focus()
+	optionsGroup.get_node("description").hide()
+	optionsGroup.get_node("choice").hide()
+	for option in optionsGroup.get_node("options").get_children():
+		option.set_opacity(1)
+
+func unfocus_options():
+	for option in optionsGroup.get_node("options").get_children():
+		option.release_focus()
+		option.get_node("icon").hide()
+
 func _input(event):
 	if (event.is_pressed() && !event.is_echo()):
 		var focus = get_focus_owner()
 		if (event.is_action_pressed("ui_accept")):
-			if (state == NEW):
-				save()
-				emit_signal("newsave")
+			if (focus == self):
+				sfx.play("confirm")
+				if (state == NEW):
+					save()
+					emit_signal("newsave")
+				elif (state == SAVE):
+					setState(OPTIONS)
+					selectedOption = "load"
+					unfocus_options()
+					optionsGroup.get_node("options/load").grab_focus()
+					optionsGroup.get_node("choice").hide()
+					optionsGroup.get_node("description").hide()
+			elif (state == OPTIONS):
+				sfx.play("confirm")
+				if (optionsGroup.get_node("choice").is_visible()):
+					if (focus.get_name() == "no"):
+						show_optionsmenu()
+					else:
+						if (selectedOption == "load"):
+							var root = get_tree().get_root().get_node("world")
+							root.load_game(gameData)
+				else:
+					unfocus_options()
+					for option in optionsGroup.get_node("options").get_children():
+						option.set_opacity(0.25)
+					if (focus.get_name() == "load"):
+						selectedOption = "load"
+						optionsGroup.get_node("options/load").set_opacity(1)
+						optionsGroup.get_node("description").set_text("KEY_CONFIRMLOAD")
+						optionsGroup.get_node("description").show()
+						optionsGroup.get_node("choice").show()
+						optionsGroup.get_node("choice/yes").grab_focus()
+		if (event.is_action_pressed("ui_cancel")):
+			if (state == OPTIONS):
+				if (optionsGroup.get_node("choice").is_visible()):
+					show_optionsmenu()
+				else:
+					setState(SAVE)
+					emit_signal("echo")
+					self.grab_focus()
 
 func save():
 	var data = {}
 	data.player = {}
 	data.player.character = Globals.get("player")
 	var player = get_tree().get_root().get_node("world/playercontainer/player")
+	var exp_obj = player.get("exp_growth_obj")
+	var ep = exp_obj.get("total_exp")
+	var required_exp = exp_obj.get("exp_required")
+	var current_exp = exp_obj.get("current_exp")
 	var stats = {}
+	stats.ep = ep
+	stats.requiredEp = required_exp
+	stats.currentEp = current_exp
 	stats.level = player.get("level")
 	stats.hp = player.get("base_hp")
 	stats.currentHp = min(player.get("current_hp"), player.get("base_hp"))
@@ -89,6 +151,27 @@ func save():
 	data.levels.rewardTaken = Globals.get("reward_taken")
 	data.levels.currentQuestComplete = Globals.get("current_quest_complete")
 	# TODO - maps
+	data.maps = {}
+	data.maps.id = Globals.get("mapid")
+	var hudmap = get_tree().get_root().get_node("world/gui/CanvasLayer/map/container")
+	data.maps.currentMap = hudmap.get("current_map")
+	hudmap.cache_map()
+	var mapindex = {}
+	var rooms = Globals.get("mapindex")
+	for mapid in rooms:
+		var map = hudmap.serialize_room(rooms[mapid])
+		mapindex[mapid] = map
+	data.maps.index = mapindex
+	var mapcache = Globals.get("mapobjects")
+	var mapobjects = {}
+	for mapid in mapcache:
+		var map = mapcache[mapid]
+		var newmap = []
+		for room in map.get_children():
+			var newroom = hudmap.serialize_room(room)
+			newmap.push_back(newroom)
+		mapobjects[mapid] = newmap
+	data.maps.objects = mapobjects
 	# TODO - shops
 	data.position = [savepos.x, savepos.y]
 	data.location = savelocation
@@ -107,7 +190,7 @@ func save():
 	saveGroup.get_node("saved").show()
 	displayGameData(data)
 	setState(SAVE)
-	
+
 func displayGameData(data):
 	gameData = data
 	if (data.player.character == "adela"):

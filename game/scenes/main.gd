@@ -435,6 +435,15 @@ func reset_level():
 func reset():
 	get_node("gui/sound").play("confirm")
 	hide_choice()
+	clear_game()
+	var level = load("res://levels/common/catacombs.tscn").instance()
+	get_node("level").add_child(level)
+	gameover = false
+	is_paused = true
+	pause.hide()
+	select.show()
+
+func clear_game():
 	map.reset()
 	Globals.set("chain", chainlist)
 	Globals.set("mapid", "LVL_START")
@@ -447,17 +456,93 @@ func reset():
 	get_node("gui/CanvasLayer/hud").reset()
 	var player = get_node("playercontainer/player")
 	get_node("gui/CanvasLayer/hud/SpellIcons/" + player.get_selected_spell_id()).hide()
+	get_node("playercontainer").remove_child(player)
 	player.queue_free()
 	get_node("gui/CanvasLayer/hud").set("player", null)
 	var old_level = get_node("level").get_child(0)
 	get_node("level").remove_child(old_level)
 	old_level.queue_free()
-	var level = load("res://levels/common/catacombs.tscn").instance()
+
+func load_game(data):
+	print("load data")
+	#print(data)
+	clear_game()
+	Globals.set("mapid", data.maps.id)
+	var mapindex = {}
+	for roomid in data.maps.index:
+		var room = data.maps.index[roomid]
+		var newroom = map.unserialize_room(room)
+		mapindex[roomid] = newroom
+	Globals.set("mapindex", mapindex)
+	var mapobjects = {}
+	for obj in map.get_node("objects").get_children():
+		map.get_node("objects").remove_child(obj)
+	for mapid in data.maps.objects:
+		var objectsnode = map.get_node("objects").duplicate()
+		var mapobj = data.maps.objects[mapid]
+		for i in range(0, mapobj.size()):
+			var room = mapobj[i]
+			var newroom = map.unserialize_room(room)
+			objectsnode.add_child(newroom)
+		mapobjects[mapid] = objectsnode
+	Globals.set("mapobjects", mapobjects)
+	var level = load(data.maps.currentMap).instance()
 	get_node("level").add_child(level)
-	gameover = false
-	is_paused = true
+	Globals.set("player", data.player.character)
+	if (data.player.character == "adela"):
+		selected_character = adela
+	else:
+		selected_character = friederich
+	var player = selected_character.instance()
+	Globals.get("inventory").set("player", player)
+	map.set("current_map", data.maps.currentMap)
+	map.set("camera", player.get_node("Camera2D"))
+	map.load_cached_map(level)
+	get_node("gui/CanvasLayer/hud").reset()
+	#get_node("gui/CanvasLayer/hud").set("player", player)
+	#teleport("res://levels/common/catacombs.tscn", Vector2(-16, 320), null)
+	#Globals.get("inventory").clear_inventory()
+	Globals.set("gold", data.inventory.gold)
+	#Globals.set("scrolls", {})
+	Globals.set("current_quest_complete", data.levels.currentQuestComplete)
+	Globals.set("reward_taken", data.levels.rewardTaken)
+	Globals.set("current_level", data.levels.currentLevel)
+	Globals.set("available_levels", data.levels.availableLevels)
+	#Globals.set("shops", {})
+	var currentlevel = Globals.get("levels")[Globals.get("current_level")]
+	var currentbgm = currentlevel.location.bgm
+	level.get_node("tilemap/SaveGroup/savepoint").check_sprite()
+	if (data.maps.currentMap == "res://levels/common/catacombs.tscn"):
+		currentbgm = preload("res://levels/common/catacombs.ogg")
+		connect_catacombs(level)
+	if (currentbgm != music.get_stream()):
+		music.set_stream(currentbgm)
+		music.play()
+	display_level_title(data.location)
+	player.set_global_pos(Vector2(data.position[0], data.position[1]))
+	get_node("playercontainer").add_child(player)
+	player.load_tilemap(level)
+	var exp_obj = player.get("exp_growth_obj")
+	exp_obj.set("total_exp", data.player.stats.ep)
+	exp_obj.set("exp_required", data.player.stats.requiredEp)
+	exp_obj.set("current_exp", data.player.stats.currentEp)
+	player.set("level", data.player.stats.level)
+	player.set("base_hp", data.player.stats.hp)
+	player.set("hp", data.player.stats.hp)
+	player.set("current_hp", data.player.stats.currentHp)
+	player.set("base_mp", data.player.stats.mp)
+	player.set("mp", data.player.stats.mp)
+	player.set("current_mp", data.player.stats.currentMp)
+	player.set("base_atk", data.player.stats.atk)
+	player.set("base_def", data.player.stats.def)
+	player.set("base_mag", data.player.stats.mag)
+	player.set("base_luck", data.player.stats.luck)
+	Globals.set("chainlist", data.player.chainlist)
+	var loadsave = pause.get_node("save")
 	pause.hide()
-	select.show()
+	pause.remove_child(loadsave)
+	loadsave.queue_free()
+	get_tree().set_pause(false)
 
 func display_level_title(title):
 	var level = get_node("gui/CanvasLayer/level")

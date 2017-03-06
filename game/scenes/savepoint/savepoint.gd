@@ -18,6 +18,8 @@ func check_sprite():
 	var player = Globals.get("player")
 	if (player == "adela"):
 		get_node("statue").set_texture(preload("res://scenes/savepoint/cat.png"))
+	else:
+		get_node("statue").set_texture(preload("res://scenes/savepoint/bat.png"))
 	if (player != null):
 		set_fixed_process(false)
 

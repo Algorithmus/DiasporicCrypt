@@ -60,8 +60,6 @@ func load_cached_map(root_node):
 	load_map(root_node)
 
 func cache_map():
-	print("cache map")
-	print(Globals.get("mapid"))
 	if (!Globals.has("mapobjects")):
 		Globals.set("mapobjects", {})
 	Globals.get("mapobjects")[Globals.get("mapid")] = objects.duplicate()
@@ -115,3 +113,44 @@ func create_map(root_node):
 	rooms[root_node.get_filename()] = unit
 	#print("save room to")
 	#print(root_node.get_filename())
+
+func serializeVector2Array(array):
+	var serialized = []
+	for i in range(0, array.size()):
+		var vector = array[i]
+		serialized.push_back([vector.x, vector.y])
+	return serialized
+
+# Convert map data to JSON compatible format for saving
+func serialize_room(map):
+	var newmap = {}
+	newmap.boundaries = serializeVector2Array(map.get_node("area").get_polygon())
+	newmap.pos = [map.get_pos().x, map.get_pos().y]
+	var gates = []
+	for gate in map.get_children():
+		if (gate.get_name() != "area" && gate.get_name() != "border"):
+			var newgate = {}
+			newgate.boundaries = serializeVector2Array(gate.get_polygon())
+			newgate.pos = [gate.get_pos().x, gate.get_pos().y]
+			gates.push_back(newgate)
+	newmap.gates = gates
+	return newmap
+
+# load room objects from JSON data
+func unserialize_room(map):
+	var unit = unit_class.instance()
+	var boundaries = [Vector2(map.boundaries[0][0], map.boundaries[0][1]), Vector2(map.boundaries[1][0], map.boundaries[1][1]), Vector2(map.boundaries[2][0], map.boundaries[2][1]), Vector2(map.boundaries[3][0], map.boundaries[3][1])]
+	unit.get_node("area").set_polygon(boundaries)
+	unit.get_node("border").set_polygon(boundaries)
+	# mark exits in room
+	var teleports = map.gates
+	for i in range(0, teleports.size()):
+		var teleport = teleports[i]
+		var gate = Polygon2D.new()
+		gate.set_color(Color(1, 0, 0))
+		var boundaries = [Vector2(teleport.boundaries[0][0], teleport.boundaries[0][1]), Vector2(teleport.boundaries[1][0], teleport.boundaries[1][1]), Vector2(teleport.boundaries[2][0], teleport.boundaries[2][1]), Vector2(teleport.boundaries[3][0], teleport.boundaries[3][1])]
+		gate.set_pos(Vector2(teleport.pos[0], teleport.pos[1]))
+		gate.set_polygon(boundaries)
+		unit.add_child(gate)
+	unit.set_pos(Vector2(map.pos[0], map.pos[1]))
+	return unit
