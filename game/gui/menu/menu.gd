@@ -71,3 +71,8 @@ func _input(event):
 		if (!panels.get_node(selectedtab).block_cancel()):
 			clear_panels()
 			focus_tab()
+
+func reset_content():
+	for panel in panels.get_children():
+		if (panel.has_method("reset_content")):
+			panel.reset_content()

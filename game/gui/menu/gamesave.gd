@@ -138,7 +138,10 @@ func save():
 	data.player.chainlist = Globals.get("chainlist")
 	data.inventory = {}
 	data.inventory.gold = Globals.get("gold")
-	data.inventory.scrolls = Globals.get("scrolls")
+	var scrolls = {}
+	for scroll in Globals.get("scrolls"):
+		scrolls[scroll] = Globals.get("scrolls")[scroll].new
+	data.inventory.scrolls = scrolls
 	data.inventory.items = Globals.get("inventory")
 	data.inventory.magic = Globals.get("available_spells")
 	data.settings = {}

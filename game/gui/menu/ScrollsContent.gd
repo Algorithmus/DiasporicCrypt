@@ -50,6 +50,11 @@ func update_container():
 	
 	show_scroll()
 
+func reset_content():
+	for scroll in scrollcontainer.get_children():
+		scrollcontainer.remove_child(scroll)
+	index = null
+
 func unfocus_all():
 	get_node("icon").release_focus()
 

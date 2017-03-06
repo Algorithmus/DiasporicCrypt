@@ -499,11 +499,15 @@ func load_game(data):
 	map.set("camera", player.get_node("Camera2D"))
 	map.load_cached_map(level)
 	get_node("gui/CanvasLayer/hud").reset()
-	#get_node("gui/CanvasLayer/hud").set("player", player)
-	#teleport("res://levels/common/catacombs.tscn", Vector2(-16, 320), null)
 	#Globals.get("inventory").clear_inventory()
 	Globals.set("gold", data.inventory.gold)
-	#Globals.set("scrolls", {})
+	var scrolls = {}
+	for scroll in data.inventory.scrolls:
+		var newscroll = Globals.get("itemfactory").items[scroll]
+		newscroll.new = data.inventory.scrolls[scroll]
+		scrolls[scroll] = newscroll
+	Globals.set("scrolls", scrolls)
+	pausemenu.reset_content()
 	Globals.set("current_quest_complete", data.levels.currentQuestComplete)
 	Globals.set("reward_taken", data.levels.rewardTaken)
 	Globals.set("current_level", data.levels.currentLevel)
