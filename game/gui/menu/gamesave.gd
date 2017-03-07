@@ -142,8 +142,22 @@ func save():
 	for scroll in Globals.get("scrolls"):
 		scrolls[scroll] = Globals.get("scrolls")[scroll].new
 	data.inventory.scrolls = scrolls
-	data.inventory.items = Globals.get("inventory")
-	data.inventory.magic = Globals.get("available_spells")
+	var inventory = {}
+	var items = Globals.get("inventory").get("inventory")
+	for id in items:
+		var newitem = {}
+		var item = items[id]
+		newitem.id = id
+		newitem.quantity = item.quantity
+		newitem.new = item.item.new
+		inventory[id] = newitem
+	data.inventory.items = inventory
+	var spells = []
+	var available_spells = Globals.get("available_spells")
+	for i in range(0, available_spells.size()):
+		var spell = available_spells[i]
+		spells.push_back(spell.id)
+	data.inventory.magic = spells
 	data.settings = {}
 	data.settings.bgmvolume = Globals.get("bgmvolume")
 	data.settings.sfxvolume = Globals.get("sfxvolume")
@@ -153,7 +167,16 @@ func save():
 	data.levels.availableLevels = Globals.get("available_levels")
 	data.levels.rewardTaken = Globals.get("reward_taken")
 	data.levels.currentQuestComplete = Globals.get("current_quest_complete")
-	# TODO - maps
+	var levels = Globals.get("levels")
+	var leveldata = {}
+	for id in levels:
+		var level = levels[id]
+		var newlevel = {}
+		newlevel.new = level.get("new")
+		newlevel.tags = level.get("tags")
+		newlevel.complete = level.get("complete")
+		leveldata[id] = newlevel
+	data.levels.data = leveldata
 	data.maps = {}
 	data.maps.id = Globals.get("mapid")
 	var hudmap = get_tree().get_root().get_node("world/gui/CanvasLayer/map/container")
@@ -175,7 +198,7 @@ func save():
 			newmap.push_back(newroom)
 		mapobjects[mapid] = newmap
 	data.maps.objects = mapobjects
-	# TODO - shops
+	data.shops = Globals.get("shops")
 	data.position = [savepos.x, savepos.y]
 	data.location = savelocation
 	

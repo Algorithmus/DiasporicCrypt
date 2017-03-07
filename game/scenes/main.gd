@@ -486,6 +486,14 @@ func load_game(data):
 			objectsnode.add_child(newroom)
 		mapobjects[mapid] = objectsnode
 	Globals.set("mapobjects", mapobjects)
+	var levels = levelfactory.new().levels
+	for id in data.levels.data:
+		var level = data.levels.data[id]
+		var newlevel = levels[id]
+		newlevel.new = level.new
+		newlevel.tags = level.tags
+		newlevel.complete = level.complete
+	Globals.set("levels", levels)
 	var level = load(data.maps.currentMap).instance()
 	get_node("level").add_child(level)
 	Globals.set("player", data.player.character)
@@ -499,7 +507,6 @@ func load_game(data):
 	map.set("camera", player.get_node("Camera2D"))
 	map.load_cached_map(level)
 	get_node("gui/CanvasLayer/hud").reset()
-	#Globals.get("inventory").clear_inventory()
 	Globals.set("gold", data.inventory.gold)
 	var scrolls = {}
 	for scroll in data.inventory.scrolls:
@@ -507,12 +514,31 @@ func load_game(data):
 		newscroll.new = data.inventory.scrolls[scroll]
 		scrolls[scroll] = newscroll
 	Globals.set("scrolls", scrolls)
+	var inventory = {}
+	for id in data.inventory.items:
+		var item = data.inventory.items[id]
+		var newitem = {}
+		newitem.item = Globals.get("itemfactory").items[id]
+		newitem.item.new = item.new
+		newitem.quantity = item.quantity
+		inventory[id] = newitem
+	Globals.get("inventory").set("inventory", inventory)
+	var spells = []
+	var magic_spells = Globals.get("magic_spells")
+	for i in range(0, data.inventory.magic.size()):
+		var id = data.inventory.magic[i]
+		for j in range(0, magic_spells.size()):
+			if (id == magic_spells[j].id):
+				spells.push_back(magic_spells[j])
+	Globals.set("available_spells", spells)
 	pausemenu.reset_content()
 	Globals.set("current_quest_complete", data.levels.currentQuestComplete)
 	Globals.set("reward_taken", data.levels.rewardTaken)
 	Globals.set("current_level", data.levels.currentLevel)
 	Globals.set("available_levels", data.levels.availableLevels)
-	#Globals.set("shops", {})
+	Globals.set("shops", data.shops)
+	Globals.set("bgmvolume", data.settings.bgmvolume)
+	Globals.set("sfxvolume", data.settings.sfxvolume)
 	var currentlevel = Globals.get("levels")[Globals.get("current_level")]
 	var currentbgm = currentlevel.location.bgm
 	level.get_node("tilemap/SaveGroup/savepoint").check_sprite()

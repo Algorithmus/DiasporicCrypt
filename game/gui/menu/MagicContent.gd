@@ -50,7 +50,11 @@ func check_scroll():
 	var itemsize = item.get_size().y
 	if (vscroll > itempos || vscroll + scrollrange.y < itempos + itemsize):
 		get_node("ScrollContainer").set_v_scroll(itempos)
-		
+
+func reset_content():
+	for item in items.get_children():
+		items.remove_child(item)
+
 func unfocus_all():
 	for item in items.get_children():
 		item.release_focus()

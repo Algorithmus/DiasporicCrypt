@@ -406,6 +406,7 @@ func _on_tags_focus_enter():
 	if (islist):
 		focus = list.get_node("filters/tagtitle")
 	focus.set("custom_colors/font_color", Color(1, 215/255.0, 0))
+	focus.set("custom_colors/font_color_hover", Color(1, 215/255.0, 0))
 	sfx.play("cursor")
 
 func _on_tags_focus_exit():
