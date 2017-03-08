@@ -1,15 +1,16 @@
-[gd_scene load_steps=20 format=1]
+[gd_scene load_steps=21 format=1]
 
 [ext_resource path="res://gui/menu/gamesave.gd" type="Script" id=1]
 [ext_resource path="res://gui/save/bgs/friederich.png" type="Texture" id=2]
 [ext_resource path="res://gui/save/frame.png" type="Texture" id=3]
 [ext_resource path="res://gui/fonts/S-13.fnt" type="BitmapFont" id=4]
-[ext_resource path="res://gui/menu/tabs/map.png" type="Texture" id=5]
-[ext_resource path="res://gui/fonts/L-24.fnt" type="BitmapFont" id=6]
-[ext_resource path="res://gui/menu/icons/gold.png" type="Texture" id=7]
-[ext_resource path="res://gui/menu/textitem.tscn" type="PackedScene" id=8]
-[ext_resource path="res://gui/fonts/M-15-options.fnt" type="BitmapFont" id=9]
-[ext_resource path="res://gui/menu/cursor.tscn" type="PackedScene" id=10]
+[ext_resource path="res://gui/save/deaths.png" type="Texture" id=5]
+[ext_resource path="res://gui/menu/tabs/map.png" type="Texture" id=6]
+[ext_resource path="res://gui/fonts/L-24.fnt" type="BitmapFont" id=7]
+[ext_resource path="res://gui/menu/icons/gold.png" type="Texture" id=8]
+[ext_resource path="res://gui/menu/textitem.tscn" type="PackedScene" id=9]
+[ext_resource path="res://gui/fonts/M-15-options.fnt" type="BitmapFont" id=10]
+[ext_resource path="res://gui/menu/cursor.tscn" type="PackedScene" id=11]
 
 [sub_resource type="StyleBoxEmpty" id=19]
 
@@ -144,7 +145,6 @@ max_lines_visible = -1
 
 [node name="saved" type="Control" parent="."]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -154,35 +154,23 @@ margin/top = 0.0
 margin/right = 88.0
 margin/bottom = 40.0
 
-[node name="progress" type="Label" parent="saved"]
+[node name="deaths" type="Sprite" parent="saved"]
+
+texture = ExtResource( 5 )
+offset = Vector2( 102, 28 )
+
+[node name="previewstats" type="Label" parent="saved"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 86.0
+margin/left = 114.0
 margin/top = 20.0
-margin/right = 126.0
+margin/right = 423.0
 margin/bottom = 38.0
 custom_fonts/font = ExtResource( 4 )
-text = "100%"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="date" type="Label" parent="saved"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 144.0
-margin/top = 20.0
-margin/right = 246.0
-margin/bottom = 38.0
-custom_fonts/font = ExtResource( 4 )
-text = "01.01.2017"
+text = "0    100%    21.01.2017"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -208,7 +196,7 @@ max_lines_visible = -1
 [node name="mapicon" type="Sprite" parent="saved"]
 
 transform/pos = Vector2( 36, 68 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="location" type="Label" parent="saved"]
 
@@ -220,7 +208,7 @@ margin/left = 52.0
 margin/top = 44.0
 margin/right = 222.0
 margin/bottom = 75.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 7 )
 text = "CATACOMBS"
 percent_visible = 1.0
 lines_skipped = 0
@@ -245,7 +233,7 @@ max_lines_visible = -1
 [node name="goldicon" type="Sprite" parent="saved"]
 
 transform/pos = Vector2( 36, 125 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="gold" type="Label" parent="saved"]
 
@@ -303,7 +291,7 @@ margin/left = 36.0
 margin/top = 44.0
 margin/right = 573.0
 margin/bottom = 112.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 7 )
 text = "KEY_SAVEGAME"
 align = 1
 valign = 1
@@ -313,6 +301,7 @@ max_lines_visible = -1
 
 [node name="options" type="Control" parent="."]
 
+visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -367,7 +356,7 @@ margin/bottom = 142.0
 custom_constants/separation = 5
 alignment = 0
 
-[node name="load" parent="options/options" instance=ExtResource( 8 )]
+[node name="load" parent="options/options" instance=ExtResource( 9 )]
 
 focus_neighbour/left = NodePath(".")
 focus_neighbour/top = NodePath(".")
@@ -375,11 +364,11 @@ focus_neighbour/right = NodePath(".")
 margin/left = 0.0
 margin/right = 149.0
 margin/bottom = 27.0
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 10 )
 text = "KEY_LOAD"
 align = 2
 
-[node name="save" parent="options/options" instance=ExtResource( 8 )]
+[node name="save" parent="options/options" instance=ExtResource( 9 )]
 
 focus_neighbour/left = NodePath(".")
 focus_neighbour/right = NodePath(".")
@@ -387,10 +376,10 @@ margin/left = 0.0
 margin/top = 32.0
 margin/right = 149.0
 margin/bottom = 59.0
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 10 )
 align = 2
 
-[node name="delete" parent="options/options" instance=ExtResource( 8 )]
+[node name="delete" parent="options/options" instance=ExtResource( 9 )]
 
 focus_neighbour/left = NodePath(".")
 focus_neighbour/right = NodePath(".")
@@ -398,11 +387,11 @@ margin/left = 0.0
 margin/top = 64.0
 margin/right = 149.0
 margin/bottom = 91.0
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 10 )
 text = "KEY_DELETE"
 align = 2
 
-[node name="clone" parent="options/options" instance=ExtResource( 8 )]
+[node name="clone" parent="options/options" instance=ExtResource( 9 )]
 
 focus_neighbour/left = NodePath(".")
 focus_neighbour/right = NodePath(".")
@@ -411,7 +400,7 @@ margin/left = 0.0
 margin/top = 96.0
 margin/right = 149.0
 margin/bottom = 123.0
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 10 )
 text = "KEY_CLONE"
 align = 2
 
@@ -425,7 +414,7 @@ margin/left = 36.0
 margin/top = 18.0
 margin/right = 364.0
 margin/bottom = 93.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 7 )
 text = "Uberschreiben Sie dieses Spiel\?"
 align = 1
 valign = 1
@@ -448,7 +437,7 @@ margin/bottom = 139.0
 custom_constants/separation = 64
 alignment = 1
 
-[node name="yes" parent="options/choice" instance=ExtResource( 8 )]
+[node name="yes" parent="options/choice" instance=ExtResource( 9 )]
 
 focus_neighbour/left = NodePath(".")
 focus_neighbour/top = NodePath(".")
@@ -457,11 +446,11 @@ focus_neighbour/bottom = NodePath(".")
 margin/left = 9.0
 margin/right = 95.0
 margin/bottom = 40.0
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 10 )
 text = "KEY_YES"
 align = 2
 
-[node name="no" parent="options/choice" instance=ExtResource( 8 )]
+[node name="no" parent="options/choice" instance=ExtResource( 9 )]
 
 focus_neighbour/left = NodePath("../yes")
 focus_neighbour/top = NodePath(".")
@@ -470,11 +459,11 @@ focus_neighbour/bottom = NodePath(".")
 margin/left = 159.0
 margin/right = 237.0
 margin/bottom = 40.0
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 10 )
 text = "KEY_NO"
 align = 2
 
-[node name="icon" parent="." instance=ExtResource( 10 )]
+[node name="icon" parent="." instance=ExtResource( 11 )]
 
 margin/left = 12.0
 margin/top = 65.0

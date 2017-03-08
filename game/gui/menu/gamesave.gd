@@ -161,7 +161,8 @@ func save():
 	data.settings = {}
 	data.settings.bgmvolume = Globals.get("bgmvolume")
 	data.settings.sfxvolume = Globals.get("sfxvolume")
-	# TODO - add controls to settings
+	data.settings.bgmmute = Globals.get("bgmmute")
+	data.settings.sfxmute = Globals.get("sfxmute")
 	data.settings.controls = Globals.get("controls")
 	data.levels = {}
 	data.levels.currentLevel = Globals.get("current_level")
@@ -200,8 +201,13 @@ func save():
 		mapobjects[mapid] = newmap
 	data.maps.objects = mapobjects
 	data.shops = Globals.get("shops")
+	data.deaths = Globals.get("deaths")
 	data.position = [savepos.x, savepos.y]
 	data.location = savelocation
+	var date = OS.get_date()
+	data.date = [date.day, date.month, date.year]
+
+	Globals.set("lastsavepoint", {"id": hudmap.get("current_map"), "location": savelocation, "position": savepos})
 	
 	var savedir = Globals.get("savedir")
 	var dir = Directory.new()
@@ -227,6 +233,7 @@ func displayGameData(data):
 	saveGroup.get_node("location").set_text(data.location)
 	saveGroup.get_node("gold").set_text(str(data.inventory.gold) + "G")
 	saveGroup.get_node("stats").set_text("LV" + str(data.player.stats.level) + " " + str(data.player.stats.currentHp) + "/" + str(data.player.stats.hp) + "HP " + str(data.player.stats.currentMp) + "/" + str(data.player.stats.mp) + "MP")
+	saveGroup.get_node("previewstats").set_text(str(data.deaths) + "    100%    " + str(data.date[0]).pad_zeros(2) + "." + str(data.date[1]).pad_zeros(2) + "." + str(data.date[2]))
 
 func _on_choice_focus_exit():
 	._on_choice_focus_exit()
