@@ -162,6 +162,7 @@ func save():
 	data.settings.bgmvolume = Globals.get("bgmvolume")
 	data.settings.sfxvolume = Globals.get("sfxvolume")
 	# TODO - add controls to settings
+	data.settings.controls = Globals.get("controls")
 	data.levels = {}
 	data.levels.currentLevel = Globals.get("current_level")
 	data.levels.availableLevels = Globals.get("available_levels")

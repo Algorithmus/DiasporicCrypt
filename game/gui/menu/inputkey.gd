@@ -50,9 +50,11 @@ func _input(event):
 				i.set("currentinput", currentinput)
 				i.set_key(currentinput.scancode)
 				i.get_node("key").set("custom_colors/font_color", Color(1, 1, 0))
+				Globals.get("newcontrols")[i.get("actionid")] = currentinput.scancode
 		if (currentinput.scancode != event.scancode):
 			key.set("custom_colors/font_color", Color(1, 1, 0))
 		currentinput = event
+		Globals.get("newcontrols")[actionid] = currentinput.scancode
 		set_key(currentinput.scancode)
 		iscapture = false
 	elif(!iscapture):
@@ -74,16 +76,23 @@ func set_input():
 	# ui_cancel maps to ui_jump
 	if (old_event != null):
 		var mapped_action
+		var shared_actions
+		var newcontrols = Globals.get("newcontrols")
 		if (actionid == "ui_blood" || actionid == "ui_attack" || actionid == "ui_magic"):
 			mapped_action = "ui_accept"
+			shared_actions = [newcontrols["ui_blood"], newcontrols["ui_attack"], newcontrols["ui_magic"]]
 		elif (actionid == "ui_jump"):
 			mapped_action = "ui_cancel"
+			shared_actions = []
 		if (mapped_action != null):
 			for e in InputMap.get_action_list(mapped_action):
-				if (e.type == InputEvent.KEY && e.scancode == old_event.scancode):
+				# Can't tell from here if previous inputs for this mapped action are already included by another action with the same mapping
+				# and happens to have the same scancode as this input
+				# so save inputs globally and check those as well
+				if (e.type == InputEvent.KEY && e.scancode == old_event.scancode && shared_actions.find(e.scancode) < 0):
 					InputMap.action_erase_event(mapped_action, e)
-			InputMap.action_add_event(mapped_action, currentinput)
-		
+			if (!InputMap.action_has_event(mapped_action, currentinput)):
+				InputMap.action_add_event(mapped_action, currentinput)
 
 func _on_key_pressed():
 	iscapture = true

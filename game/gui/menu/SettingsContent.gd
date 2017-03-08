@@ -59,6 +59,9 @@ func unfocus_all():
 	if (get_focus_owner() != null):
 		get_focus_owner().release_focus()
 
+func reset_content():
+	reset()
+
 func reset():
 	sfxMute = Globals.get("sfxmute")
 	bgmMute = Globals.get("bgmmute")
@@ -75,6 +78,7 @@ func reset():
 	bgmslider.set_val(bgmValue)
 	for key in get_node("inputs").get_children():
 		key.update_key()
+	Globals.set("newcontrols", Globals.get("controls"))
 
 func update_mute_controls():
 	if (sfxMute):
@@ -97,6 +101,7 @@ func save():
 	Globals.set("bgmvolume", bgmValue)
 	Globals.set("sfxmute", sfxMute)
 	Globals.set("bgmmute", bgmMute)
+	Globals.set("controls", Globals.get("newcontrols"))
 	for key in get_node("inputs").get_children():
 		key.set_input()
 		key.get_node("key").set("custom_colors/font_color", null)

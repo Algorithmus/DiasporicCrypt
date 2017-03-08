@@ -84,6 +84,14 @@ func _ready():
 	Globals.set("show_blood_counter", false)
 	Globals.set("blood_count", 0)
 	Globals.set("savedir", "user://saves")
+	var controls = {}
+	for actionid in InputMap.get_actions():
+		if (actionid != "ui_accept" && actionid != "ui_cancel"):
+			for event in InputMap.get_action_list(actionid):
+				if (event.type == InputEvent.KEY):
+					controls[actionid] = event.scancode
+	Globals.set("controls", controls)
+	Globals.set("newcontrols", controls)
 	root = get_tree().get_root()
 	original_size = root.get_rect().size
 	root.connect("size_changed", self, "_on_resolution_changed")
@@ -463,6 +471,12 @@ func clear_game():
 	get_node("level").remove_child(old_level)
 	old_level.queue_free()
 
+func clearInputs(actionid):
+	var mappedlist = InputMap.get_action_list(actionid)
+	for e in mappedlist:
+		if (e.type == InputEvent.KEY):
+			InputMap.action_erase_event(actionid, e)
+
 func load_game(data):
 	print("load data")
 	#print(data)
@@ -531,7 +545,6 @@ func load_game(data):
 			if (id == magic_spells[j].id):
 				spells.push_back(magic_spells[j])
 	Globals.set("available_spells", spells)
-	pausemenu.reset_content()
 	Globals.set("current_quest_complete", data.levels.currentQuestComplete)
 	Globals.set("reward_taken", data.levels.rewardTaken)
 	Globals.set("current_level", data.levels.currentLevel)
@@ -539,6 +552,29 @@ func load_game(data):
 	Globals.set("shops", data.shops)
 	Globals.set("bgmvolume", data.settings.bgmvolume)
 	Globals.set("sfxvolume", data.settings.sfxvolume)
+	Globals.set("controls", data.settings.controls)
+	Globals.set("newcontrols", data.settings.controls)
+	var shared_actions = []
+	var jumpevent
+	for actionid in data.settings.controls:
+		var list = InputMap.get_action_list(actionid)
+		for e in list:
+			if (e.type == InputEvent.KEY):
+				InputMap.action_erase_event(actionid, e)
+				var event = InputEvent()
+				event.type = InputEvent.KEY
+				event.scancode = data.settings.controls[actionid]
+				InputMap.action_add_event(actionid, event)
+				if (actionid == "ui_blood" || actionid == "ui_attack" || actionid == "ui_magic"):
+					shared_actions.push_back(event)
+				elif (actionid == "ui_jump"):
+					jumpevent = event
+	clearInputs("ui_accept")
+	for e in shared_actions:
+		InputMap.action_add_event("ui_accept", e)
+	clearInputs("ui_cancel")
+	InputMap.action_add_event("ui_cancel", jumpevent)
+	pausemenu.reset_content()
 	var currentlevel = Globals.get("levels")[Globals.get("current_level")]
 	var currentbgm = currentlevel.location.bgm
 	level.get_node("tilemap/SaveGroup/savepoint").check_sprite()
