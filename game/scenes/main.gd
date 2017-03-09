@@ -396,7 +396,7 @@ func start(player):
 	connect_catacombs(level)
 	level.get_node("tilemap/SaveGroup/savepoint").check_sprite()
 	get_node("gui/sound").play("confirm")
-	player.set_global_pos(Vector2(-16, 320))
+	player.set_global_pos(Vector2(-16, 322))
 	get_node("playercontainer").add_child(player)
 	player.load_tilemap(level)
 	select.hide()
@@ -582,6 +582,9 @@ func load_game(data):
 	Globals.set("sfxmute", data.settings.sfxmute)
 	Globals.set("controls", data.settings.controls)
 	Globals.set("newcontrols", data.settings.controls)
+	var gameclock = get_node("gameclock")
+	gameclock.set("elapsed", int(data.playtime))
+	gameclock.resume()
 	var shared_actions = []
 	var jumpevent
 	for actionid in data.settings.controls:

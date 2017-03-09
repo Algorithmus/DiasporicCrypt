@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=1]
+[gd_scene load_steps=77 format=1]
 
 [ext_resource path="res://scenes/main.gd" type="Script" id=1]
 [ext_resource path="res://levels/common/catacombs.tscn" type="PackedScene" id=2]
@@ -46,6 +46,7 @@
 [ext_resource path="res://gui/cursor.wav" type="Sample" id=44]
 [ext_resource path="res://gui/sequences/demonic.wav" type="Sample" id=45]
 [ext_resource path="res://levels/common/catacombs.ogg" type="AudioStream" id=46]
+[ext_resource path="res://scenes/GameClock.gd" type="Script" id=47]
 
 [sub_resource type="CanvasItemShader" id=1]
 
@@ -795,7 +796,6 @@ autoplay = ""
 
 [node name="pause" type="Control" parent="gui/CanvasLayer"]
 
-editor/display_folded = true
 visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
@@ -1195,7 +1195,6 @@ autoplay = ""
 
 [node name="loading" type="Control" parent="gui/CanvasLayer"]
 
-editor/display_folded = true
 visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -1256,6 +1255,56 @@ transform/pos = Vector2( 400, 256 )
 transform/scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 42 )
 
+[node name="nofocus" type="Control" parent="gui/CanvasLayer"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+
+[node name="shield" type="TextureFrame" parent="gui/CanvasLayer/nofocus"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 800.0
+margin/bottom = 592.0
+texture = SubResource( 16 )
+modulate = Color( 1, 1, 1, 0.590791 )
+stretch_mode = 0
+
+[node name="text" type="Label" parent="gui/CanvasLayer/nofocus"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 800.0
+margin/bottom = 592.0
+custom_fonts/font = ExtResource( 24 )
+text = "- PAUSED -"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="logo" type="Sprite" parent="gui/CanvasLayer/nofocus"]
+
+transform/pos = Vector2( 400, 448 )
+transform/scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 42 )
+
 [node name="sound" type="SamplePlayer" parent="gui"]
 
 config/polyphony = 1
@@ -1296,6 +1345,10 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
+
+[node name="gameclock" type="Node2D" parent="."]
+
+script/script = ExtResource( 47 )
 
 [connection signal="focus_enter" from="gui/CanvasLayer/choice/yes/button" to="gui/CanvasLayer/choice/yes" method="_on_button_focus_enter"]
 

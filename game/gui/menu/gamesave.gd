@@ -12,6 +12,7 @@ var optionsGroup
 var selectedOption
 var gameData
 var filename
+var gameclock
 
 var savepos
 var savelocation
@@ -21,6 +22,7 @@ signal options_visible
 signal echo
 
 func _ready():
+	gameclock = get_tree().get_root().get_node("world/gameclock")
 	id = get_node("id")
 	characterBG = get_node("characterBG")
 	saveGroup = get_node("saved")
@@ -206,6 +208,7 @@ func save():
 	data.location = savelocation
 	var date = OS.get_date()
 	data.date = [date.day, date.month, date.year]
+	data.playtime = gameclock.get("elapsed")
 
 	Globals.set("lastsavepoint", {"id": hudmap.get("current_map"), "location": savelocation, "position": savepos})
 	
@@ -234,6 +237,7 @@ func displayGameData(data):
 	saveGroup.get_node("gold").set_text(str(data.inventory.gold) + "G")
 	saveGroup.get_node("stats").set_text("LV" + str(data.player.stats.level) + " " + str(data.player.stats.currentHp) + "/" + str(data.player.stats.hp) + "HP " + str(data.player.stats.currentMp) + "/" + str(data.player.stats.mp) + "MP")
 	saveGroup.get_node("previewstats").set_text(str(data.deaths) + "    100%    " + str(data.date[0]).pad_zeros(2) + "." + str(data.date[1]).pad_zeros(2) + "." + str(data.date[2]))
+	saveGroup.get_node("playtime").set_text(gameclock.display_time(int(data.playtime)))
 
 func _on_choice_focus_exit():
 	._on_choice_focus_exit()
