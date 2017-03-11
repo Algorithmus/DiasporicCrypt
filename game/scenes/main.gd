@@ -636,7 +636,7 @@ func load_game(data):
 	player.set("base_def", data.player.stats.def)
 	player.set("base_mag", data.player.stats.mag)
 	player.set("base_luck", data.player.stats.luck)
-	Globals.set("chainlist", data.player.chainlist)
+	Globals.set("chain", data.player.chainlist)
 	var loadsave = pause.get_node("save")
 	pause.hide()
 	pause.remove_child(loadsave)

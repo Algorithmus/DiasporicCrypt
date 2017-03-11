@@ -161,7 +161,7 @@ func save():
 	stats.mag = player.get("base_mag")
 	stats.luck = player.get("base_luck")
 	data.player.stats = stats
-	data.player.chainlist = Globals.get("chainlist")
+	data.player.chainlist = Globals.get("chain")
 	data.inventory = {}
 	data.inventory.gold = Globals.get("gold")
 	var scrolls = {}

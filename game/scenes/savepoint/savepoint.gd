@@ -6,7 +6,7 @@ export var savelocation = "LVL_CATACOMB"
 
 func _ready():
 	var player = Globals.get("player")
-	savepos = Vector2(get_global_pos().x, get_global_pos().y - 32)
+	savepos = Vector2(get_global_pos().x, get_global_pos().y - 30)
 	if (player == null):
 		set_fixed_process(true)
 	check_sprite()
