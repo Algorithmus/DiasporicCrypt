@@ -20,20 +20,19 @@ transform/pos = Vector2( 16, 0 )
 [node name="Sprite" parent="blockR"]
 
 texture = ExtResource( 3 )
-flip_h = false
 
 [node name="SpikeTile" parent="blockR" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 0, -32 )
+transform/pos = Vector2( -32, -32 )
 
 [node name="SpikeTile1" parent="blockR" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 32, -32 )
+transform/pos = Vector2( 0, -32 )
 
 [node name="SpikeTile2" parent="blockR" instance=ExtResource( 4 )]
 
 editor/display_folded = true
-transform/pos = Vector2( 64, 0 )
+transform/pos = Vector2( 32, 0 )
 
 [node name="Sprite" parent="blockR/SpikeTile2"]
 
@@ -42,7 +41,7 @@ transform/rot = -90.0
 [node name="SpikeTile3" parent="blockR" instance=ExtResource( 4 )]
 
 editor/display_folded = true
-transform/pos = Vector2( -32, 0 )
+transform/pos = Vector2( -64, 0 )
 
 [node name="Sprite" parent="blockR/SpikeTile3"]
 
@@ -51,7 +50,7 @@ transform/rot = 90.0
 [node name="SpikeTile4" parent="blockR" instance=ExtResource( 4 )]
 
 editor/display_folded = true
-transform/pos = Vector2( 0, 32 )
+transform/pos = Vector2( -32, 32 )
 
 [node name="Sprite" parent="blockR/SpikeTile4"]
 
@@ -60,7 +59,7 @@ flip_v = true
 [node name="SpikeTile5" parent="blockR" instance=ExtResource( 4 )]
 
 editor/display_folded = true
-transform/pos = Vector2( 32, 32 )
+transform/pos = Vector2( 0, 32 )
 
 [node name="Sprite" parent="blockR/SpikeTile5"]
 
@@ -73,6 +72,7 @@ transform/pos = Vector2( -16, 0 )
 [node name="Sprite" parent="blockL"]
 
 texture = ExtResource( 3 )
+flip_h = false
 
 
 [editable path="blockR"]
