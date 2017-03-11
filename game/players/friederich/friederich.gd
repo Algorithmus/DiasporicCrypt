@@ -454,7 +454,8 @@ func step_player(delta):
 		calculate_fall_height()
 		
 		move(position)
-	
+
+		step_camera()
 		if (is_hurt || on_ladder || current_chain_delay >= chain_delay || chain_counter > MAX_CHAIN):
 			reset_chain()
 			is_chain_special = false

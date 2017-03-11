@@ -354,6 +354,8 @@ func step_player(delta):
 	
 		if (!is_swinging && !whip_hanging):
 			move(position)
+
+		step_camera()
 	else:
 		new_animation = "gameover"
 		animation_speed = 1

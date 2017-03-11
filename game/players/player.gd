@@ -50,6 +50,7 @@ var current_mines = []
 var max_mines = 3
 var void_direction = 1
 var camera_offset
+var default_camera_smoothing
 
 var is_demonic = false
 var default_sprite
@@ -356,6 +357,16 @@ func check_climb_platform_horizontal(space_state):
 		else: 
 			climbing_platform = false
 	return climb_vertically
+
+func step_camera():
+	if (prevPos != null):
+		var deltaX = prevPos.x - get_pos().x
+		var deltaY = prevPos.y - get_pos().y
+		var delta = sqrt(pow(deltaX, 2) + pow(deltaY, 2))
+		if (abs(delta) > SPEED_LIMIT * 0.8):
+			get_node("Camera2D").set_follow_smoothing(15)
+		else:
+			get_node("Camera2D").set_follow_smoothing(default_camera_smoothing)
 
 func step_horizontal_damage_throwback():
 	if (is_hurt):
@@ -1130,6 +1141,7 @@ func _ready():
 	spell_icons = get_tree().get_root().get_node("world/gui/CanvasLayer/hud/SpellIcons")
 	demonic_display = get_tree().get_root().get_node("world/gui/CanvasLayer/sequences")
 	default_sprite = get_node("NormalSpriteGroup")
+	default_camera_smoothing = get_node("Camera2D").get_follow_smoothing()
 	
 	weapon_collider = weapon.instance()
 	weapon_offset = weapon_collider.get_node("weapon").get_shape().get_extents()
@@ -1190,6 +1202,9 @@ func calculate_trail(sprite):
 
 func teleport(pos, ladder):
 	set_global_pos(pos)
+	get_node("Camera2D").set_enable_follow_smoothing(false)
+	get_node("Camera2D").reset_smoothing()
+	get_node("Camera2D").set_enable_follow_smoothing(true)
 	ladder_top = null
 	on_ladder = ladder
 	if (on_ladder):
