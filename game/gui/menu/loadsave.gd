@@ -53,6 +53,8 @@ func load_menu():
 						save.set_id(str(itemcontainer.get_child_count()))
 						save.connect("focus_enter", self, "check_scroll")
 						save.connect("options_visible", self, "set_optionsvisible")
+						save.connect("delete", self, "shift_files")
+						save.connect("clone", self, "clone")
 						save.connect("echo", self, "set_echo")
 						save.displayGameData(game)
 						save.set("filename", filename)
@@ -75,6 +77,8 @@ func create_newsave():
 	newsave.set("filename", "save" + str(itemcontainer.get_child_count()) + ".save")
 	newsave.connect("newsave", self, "check_newsave")
 	newsave.connect("focus_enter", self, "check_scroll")
+	newsave.connect("delete", self, "shift_files")
+	newsave.connect("clone", self, "clone")
 	newsave.connect("options_visible", self, "set_optionsvisible")
 	newsave.connect("echo", self, "set_echo")
 
@@ -82,6 +86,30 @@ func check_newsave():
 	var save = itemcontainer.get_child(itemcontainer.get_child_count() - 1)
 	if (save.get("state") != save.NEW):
 		create_newsave()
+
+func clone(data):
+	var save = itemcontainer.get_child(itemcontainer.get_child_count() - 1)
+	save.save_from_data(data)
+	create_newsave()
+	optionsvisible = false
+	save.grab_focus()
+
+func shift_files(index, filename):
+	itemcontainer.remove_child(itemcontainer.get_child(index))
+	var savedir = Globals.get("savedir")
+	var dir = Directory.new()
+	for i in range(index, itemcontainer.get_child_count()):
+		var item = itemcontainer.get_child(i)
+		item.set_id(str(i))
+		var old_filename = item.get("filename")
+		item.set("filename", filename)
+		if (item.get("state") == item.SAVE):
+			dir.rename(savedir + "/" + old_filename, savedir + "/" + filename)
+		elif (item.get("state") == item.NEW):
+			dir.remove(savedir + "/" + filename)
+		filename = old_filename
+	optionsvisible = false
+	itemcontainer.get_child(index).grab_focus()
 
 func check_scroll():
 	var item = get_focus_owner()
