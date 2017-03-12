@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://scenes/lavacave/BGs/edge.png" type="Texture" id=1]
+[ext_resource path="res://scenes/lavacave/BGs/cornerR.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[node name="Gate" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 0, 0, 32, 96 )
+
+[node name="Sprite 2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, -64 )
+texture = ExtResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 64 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="gate" type="StaticBody2D" parent="."]
+
+transform/scale = Vector2( 1, 5 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gate"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+

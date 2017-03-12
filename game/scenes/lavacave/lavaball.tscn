@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://scenes/lavacave/lavaball.gd" type="Script" id=1]
+[ext_resource path="res://players/magic/fire/magic.png" type="Texture" id=2]
+
+[sub_resource type="ColorRamp" id=1]
+
+offsets = FloatArray( 0, 0.994152, 0.998512 )
+colors = ColorArray( 0, 0, 0, 1, 1, 0.372549, 0, 1, 1, 1, 1, 0 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[node name="Lavaball" type="Node2D"]
+
+script/script = ExtResource( 1 )
+height = 8
+cycle = 6
+
+[node name="ball" type="Node2D" parent="."]
+
+[node name="fireball" type="Particles2D" parent="ball"]
+
+visibility/blend_mode = 1
+transform/rot = -90.0
+z/z = 3
+config/amount = 64
+config/lifetime = 1.0
+config/half_extents = Vector2( 5, 5 )
+config/local_space = false
+config/texture = ExtResource( 2 )
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 80.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 0.7
+params/final_size = 0.3
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/initial_angle = 1.0
+color/color_ramp = SubResource( 1 )
+
+[node name="damagable" type="Area2D" parent="ball"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ball/damagable"]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+

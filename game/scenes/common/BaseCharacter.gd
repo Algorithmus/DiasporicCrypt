@@ -9,6 +9,7 @@ const RUN_SPEED = 7
 const JUMP_SPEED = 20
 const TILE_SIZE = 32
 const WATER = 0.25
+const LAVA = 0.75
 const DEFAULT_FALL_HEIGHT = JUMP_SPEED * (JUMP_SPEED - 1)/2
 # restrict vertical speed to prevent skipping and other weirdness
 const SPEED_LIMIT = 30
@@ -239,12 +240,15 @@ func check_underwater(areaTiles):
 		var watertile = false
 		for i in areaTiles:
 			if (i.get_name() == "water" || i.get_name() == "lava"):
+				var fluid_constant = WATER
+				if (i.get_name() == "lava"):
+					fluid_constant = LAVA
 				watertile = true
 				if (i.get_global_pos().y - TILE_SIZE * i.get_scale().y/2 <= get_pos().y - sprite_offset.y):
 					if (!underwater && has_node("sound") && get_node("sound").get_sample_library().has_sample("splash_down")):
 						get_node("sound").set_volume_db(get_node("sound").play("splash_down"), (fall_height/defaultfallheight*current_gravity - 1)*10)
 					underwater = true
-					current_gravity = WATER
+					current_gravity = fluid_constant
 		if (!watertile):
 			if (underwater && has_node("sound") && get_node("sound").get_sample_library().has_sample("splash_up")):
 				get_node("sound").set_volume_db(get_node("sound").play("splash_up"), 0)

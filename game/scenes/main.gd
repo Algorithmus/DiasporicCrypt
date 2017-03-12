@@ -92,7 +92,7 @@ func _ready():
 					controls[actionid] = event.scancode
 	Globals.set("controls", controls)
 	Globals.set("newcontrols", controls)
-	Globals.set("defaultsavepoint", {"location": "LVL_CATACOMB", "position": Vector2(-192, 320), "id": "res://levels/common/catacombs.tscn"})
+	Globals.set("defaultsavepoint", {"location": "LVL_CATACOMB", "position": Vector2(-192, 322), "id": "res://levels/common/catacombs.tscn"})
 	Globals.set("lastsavepoint", Globals.get("defaultsavepoint"))
 	Globals.set("deaths", 0)
 	root = get_tree().get_root()

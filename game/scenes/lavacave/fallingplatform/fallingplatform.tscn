@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://scenes/dungeon/fallingplatform/fallingplatform.gd" type="Script" id=1]
+[ext_resource path="res://scenes/dungeon/climbableblock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/dungeon/movingplatform/movingplatform.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 16 )
+
+[node name="FallingPlatform" type="Node2D"]
+
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"Script" }
+is_climbable = true
+
+[node name="enabler" type="VisibilityEnabler2D" parent="."]
+
+transform/pos = Vector2( 0, 128 )
+transform/scale = Vector2( 8, 20 )
+rect = Rect2( -10, -10, 20, 20 )
+enabler/pause_animations = true
+enabler/freeze_bodies = true
+enabler/pause_particles = true
+enabler/process_parent = false
+enabler/fixed_process_parent = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+visibility/visible = false
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="blockR" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 16, 0 )
+
+[node name="Sprite" parent="blockR"]
+
+texture = ExtResource( 3 )
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+
+[node name="blockL" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -16, 0 )
+
+[node name="Sprite" parent="blockL"]
+
+texture = ExtResource( 3 )
+flip_h = false
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+
+[connection signal="enter_screen" from="enabler" to="." method="enter_screen"]
+
+[connection signal="exit_screen" from="enabler" to="." method="exit_screen"]
+
+
+[editable path="blockR"]
+[editable path="blockL"]

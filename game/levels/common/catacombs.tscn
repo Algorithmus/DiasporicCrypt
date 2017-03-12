@@ -334,7 +334,7 @@ transform/pos = Vector2( -614, -358 )
 
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
-transform/pos = Vector2( 586, 474 )
+transform/pos = Vector2( 586, 554 )
 
 [node name="fg_deco" type="Node2D" parent="."]
 

@@ -1,16 +1,16 @@
 [gd_scene load_steps=5 format=1]
 
-[sub_resource type="CanvasItemShader" id=2]
+[sub_resource type="CanvasItemShader" id=1]
 
 _code = { "fragment":"uniform color modulate = vec4(0, 0, 0, 0);\nCOLOR = modulate;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
 
-[sub_resource type="CanvasItemMaterial" id=3]
+[sub_resource type="CanvasItemMaterial" id=2]
 
-shader/shader = SubResource( 2 )
+shader/shader = SubResource( 1 )
 shader/shading_mode = 0
 shader_param/modulate = Color( 1, 0.1875, 0, 0.681171 )
 
-[sub_resource type="ImageTexture" id=4]
+[sub_resource type="ImageTexture" id=3]
 
 flags = 2
 image = Image()
@@ -18,7 +18,7 @@ size = Vector2( 32, 32 )
 storage = 0
 lossy_quality = 0.7
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
@@ -29,14 +29,15 @@ __meta__ = { "__editor_plugin_screen__":"2D" }
 
 [node name="Sprite" type="Sprite" parent="."]
 
-material/material = SubResource( 3 )
+visibility/blend_mode = 1
+material/material = SubResource( 2 )
 z/z = 2
-texture = SubResource( 4 )
+texture = SubResource( 3 )
 
 [node name="lava" type="Area2D" parent="."]
 
 input/pickable = true
-shapes/0/shape = SubResource( 1 )
+shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -46,7 +47,7 @@ angular_damp = 1.0
 
 [node name="lava" type="CollisionShape2D" parent="lava"]
 
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
 

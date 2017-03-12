@@ -198,7 +198,7 @@ func step_player(delta):
 				check_falling(normalTileCheck, relevantSlopeTile, onSlope, abSlope, ladder_top, oneWayTile)
 		
 				# handle crouching now that we know if we are standing on ground blocks
-				check_crouch(normalTileCheck, abSlope, onSlope, onOneWayTile)
+				check_crouch(space_state, normalTileCheck, abSlope, onSlope, onOneWayTile)
 				
 				check_climb_platform_vertical(climb_vertically)
 		

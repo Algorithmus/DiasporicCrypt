@@ -340,14 +340,16 @@ func check_climb_platform_horizontal(space_state):
 		# character can sometimes look like they're oscillating up and down on the platform
 		# vertical motion is delayed until vertical motion checking
 		if (climbing_platform && climb_platform != null):
+			var ceilingA = space_state.intersect_ray(Vector2(get_global_pos().x - sprite_offset.x, get_global_pos().y - 64), Vector2(get_global_pos().x - sprite_offset.x, get_global_pos().y-96), [self])
+			var ceilingB = space_state.intersect_ray(Vector2(get_global_pos().x + sprite_offset.x, get_global_pos().y - 64), Vector2(get_global_pos().x + sprite_offset.x, get_global_pos().y-96), [self])
 			if (get_pos().y + sprite_offset.y <= climb_platform.get_global_pos().y - TILE_SIZE/2):
 				move(Vector2(climbspeed * direction, 0))
 				if ((direction == 1 && get_global_pos().x >= climb_platform.get_global_pos().x) || (direction == -1 && get_global_pos().x <= climb_platform.get_global_pos().x)):
 					climb_platform = null
 					climbing_platform = false
-			# don't keep climbing if the platform isn't there anymore
+			# don't keep climbing if the platform isn't there anymore or player is blocked from climbing
 			# but clamp to it horizontally if it is and we are moving up
-			elif (get_pos().y - sprite_offset.y <= climb_platform.get_global_pos().y + TILE_SIZE/2) :
+			elif (get_pos().y - sprite_offset.y <= climb_platform.get_global_pos().y + TILE_SIZE/2 && ceilingA.empty() && ceilingB.empty()) :
 				var platformDeltaX = climb_platform.get_global_pos().x - direction * TILE_SIZE/2 - get_global_pos().x - sprite_offset.x * direction
 				move(Vector2(platformDeltaX, 0))
 				
@@ -553,8 +555,11 @@ func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, o
 	crouch_requested = false
 	return .step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, onSlope, oneWayTile, relevantSlopeTile)
 
-func check_crouch(normalTileCheck, abSlope, onSlope, onOneWayTile):
-	if (crouch_requested && !is_attacking && !falling && (normalTileCheck || onSlope || abSlope != null || onOneWayTile)):
+func check_crouch(space_state, normalTileCheck, abSlope, onSlope, onOneWayTile):
+	# keep player crouched if they are blocked from returning to normal state
+	var ceiling = space_state.intersect_ray(Vector2(get_global_pos().x, get_global_pos().y), Vector2(get_global_pos().x, get_global_pos().y-64), [self])
+
+	if ((!ceiling.empty() && is_crouching) || (crouch_requested && !is_attacking && !falling && (normalTileCheck || onSlope || abSlope != null || onOneWayTile))):
 		is_crouching = true
 		get_node("CollisionShape2D").set_scale(Vector2(1, 0.5))
 		get_node("CollisionShape2D").set_pos(Vector2(0, sprite_offset.y/2.0))
@@ -788,7 +793,7 @@ func step_player(delta):
 			check_falling(normalTileCheck, relevantSlopeTile, onSlope, abSlope, ladder_top, oneWayTile)
 			
 			# handle crouching now that we know if we are standing on ground blocks
-			check_crouch(normalTileCheck, abSlope, onSlope, onOneWayTile)
+			check_crouch(space_state, normalTileCheck, abSlope, onSlope, onOneWayTile)
 			
 			check_climb_platform_vertical(climb_vertically)
 	

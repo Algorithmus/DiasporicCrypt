@@ -6,6 +6,7 @@ extends "res://scenes/common/Sensor.gd"
 var rubykeyclass = preload("res://scenes/items/special/rubykey.tscn")
 
 func _ready():
+	gateclass = preload("res://scenes/lavacave/gate.tscn")
 	gatepos = Vector2(-208, -400)
 	if (Globals.get("current_quest_complete")):
 		tilemap.get_node("BossGroup/FireDragon").queue_free()

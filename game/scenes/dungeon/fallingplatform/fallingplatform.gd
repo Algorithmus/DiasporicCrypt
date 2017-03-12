@@ -52,7 +52,11 @@ func _fixed_process(delta):
 		current_dormant_duration += 1
 		if (current_dormant_duration >= dormant_duration):
 			var tiles = get_node("Area2D").get_overlapping_areas()
-			if (tiles.empty()):
+			var blacklisted_tiles = false
+			for tile in tiles:
+				if (tile.get_name() == "lava" || tile.get_name() == "water"):
+					blacklisted_tiles = true
+			if (tiles.empty() || blacklisted_tiles):
 				current_dormant_duration = 0
 				blockL.set_layer_mask_bit(0, true)
 				blockR.set_layer_mask_bit(0, true)
