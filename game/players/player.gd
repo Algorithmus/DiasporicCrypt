@@ -1174,6 +1174,13 @@ func _on_weapon_collision(area):
 
 func load_tilemap(var tilemap_node):
 	tilemap = tilemap_node.get_node("tilemap")
+	var nw = tilemap.get_node("boundaries/NW")
+	var se = tilemap.get_node("boundaries/SE")
+	var camera = get_node("Camera2D")
+	camera.set_limit(MARGIN_LEFT, nw.get_pos().x)
+	camera.set_limit(MARGIN_TOP, nw.get_pos().y)
+	camera.set_limit(MARGIN_RIGHT, se.get_pos().x - camera_offset.x)
+	camera.set_limit(MARGIN_BOTTOM, se.get_pos().y - camera_offset.y)
 
 func play_animation(animation, speed):
 	animation_player.set_speed(speed)
