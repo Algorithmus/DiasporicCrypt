@@ -16,15 +16,18 @@ var onscreen = false
 
 func _ready():
 	tilemap = get_parent().get_parent()
-	for target in target_nodes:
-		var target_obj = tilemap.get_node(target)
-		targets.append(target_obj)
-		target_containers.append(target_obj.get_parent())
+	if (target_containers.empty()):
+		for target in target_nodes:
+			var target_obj = tilemap.get_node(target)
+			targets.append(target_obj)
+			target_containers.append(target_obj.get_parent())
 
-	for i in related_switches:
-		var switch_obj = tilemap.get_node(i)
-		switches.append(switch_obj)
-	set_fixed_process(true)
+	if (switches.empty()):
+		for i in related_switches:
+			var switch_obj = tilemap.get_node(i)
+			switches.append(switch_obj)
+	if (enabled):
+		set_fixed_process(true)
 
 func activate():
 	if ((!is_on && !invert) || (is_on && invert)):

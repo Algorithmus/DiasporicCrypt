@@ -9,6 +9,7 @@ extends Node
 export var reward = ""
 export var target_container = ""
 export var watch_class = ""
+export var invert = false
 
 var target
 var reward_obj
@@ -22,7 +23,8 @@ func _ready():
 	target = tilemap.get_node(target_container)
 	reward_obj = tilemap.get_node(reward)
 	reward_container = reward_obj.get_parent()
-	reward_container.remove_child(reward_obj)
+	if (!invert):
+		reward_container.remove_child(reward_obj)
 	set_fixed_process(true)
 	
 func _fixed_process(delta):
@@ -31,5 +33,8 @@ func _fixed_process(delta):
 		if (watch_obj extends class_obj):
 			cleared = false
 	if (cleared):
-		reward_container.add_child(reward_obj)
+		if (invert):
+			reward_container.remove_child(reward_obj)
+		else:
+			reward_container.add_child(reward_obj)
 		set_fixed_process(false)

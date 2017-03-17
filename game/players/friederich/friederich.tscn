@@ -4681,7 +4681,7 @@ tracks/30/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "upda
 [sub_resource type="RectangleShape2D" id=36]
 
 custom_solver_bias = 0.0
-extents = Vector2( 18, 66 )
+extents = Vector2( 14, 62 )
 
 [sub_resource type="SampleLibrary" id=37]
 

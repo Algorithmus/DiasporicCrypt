@@ -3706,7 +3706,7 @@ tracks/25/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "upda
 [sub_resource type="RectangleShape2D" id=33]
 
 custom_solver_bias = 0.0
-extents = Vector2( 18, 66 )
+extents = Vector2( 14, 62 )
 
 [sub_resource type="SampleLibrary" id=34]
 
@@ -4215,7 +4215,6 @@ drag_margin/bottom = 0.2
 
 [node name="damage" type="Area2D" parent="."]
 
-editor/display_folded = true
 input/pickable = true
 shapes/0/shape = SubResource( 33 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )

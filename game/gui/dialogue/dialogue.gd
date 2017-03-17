@@ -138,6 +138,7 @@ func check_dialog():
 				get_tree().set_pause(true)
 				var canvas = get_tree().get_root().get_node("world/gui/CanvasLayer")
 				canvas.add_child(map)
+				canvas.move_child(map, canvas.get_child_count() - 2)
 			elif (choice.get("action") == "restore"):
 				hide_dialog()
 				get_tree().get_root().get_node("world").restore_animation()

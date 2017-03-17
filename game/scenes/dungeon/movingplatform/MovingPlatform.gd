@@ -9,8 +9,8 @@ export var start_direction = 1
 var accum = 0.0
 var velocity = 0.0
 var direction = 1
-var lOffset = 0
-var rOffset = 0
+var lOffset = null
+var rOffset = null
 var previousPos_blockR = Vector2()
 var previousPos_blockL = Vector2()
 
@@ -37,8 +37,10 @@ func _fixed_process(delta):
 	get_node("blockL").set_pos(posL)
 
 func _ready():
-	lOffset = get_node("blockL").get_pos().x
-	rOffset = get_node("blockR").get_pos().x
+	if (lOffset == null):
+		lOffset = get_node("blockL").get_pos().x
+	if (rOffset == null):
+		rOffset = get_node("blockR").get_pos().x
 	var scalex = motion.x / 32.0
 	var scaley = motion.y / 32.0
 	accum = offset * PI / 180
