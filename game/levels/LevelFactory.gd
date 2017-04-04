@@ -22,6 +22,16 @@ func _init():
 	springislandcastle.location = locationfactory.locations["LVL_SPRINGISLANDCASTLE"]
 	levels[springislandcastle.title] = springislandcastle
 	
+	var winterislandcastle = levelclass.new()
+	winterislandcastle.title = "LVL_WINTERISLANDCASTLE"
+	winterislandcastle.type = "quest"
+	winterislandcastle.position = Vector2(195, 194)
+	winterislandcastle.description = "LVL_WINTERISLANDCASTLE_DESCRIPTION"
+	winterislandcastle.reward = 10000
+	winterislandcastle.item = "ITEM_GLYPH1"
+	winterislandcastle.location = locationfactory.locations["LVL_WINTERISLANDCASTLE"]
+	levels[winterislandcastle.title] = winterislandcastle
+	
 	var mausoleum = levelclass.new()
 	mausoleum.title = "LVL_MAUSOLEUM"
 	mausoleum.type = "quest"

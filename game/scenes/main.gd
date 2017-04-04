@@ -74,7 +74,7 @@ func _ready():
 	Globals.set("magic_spells", magic_spells)
 	Globals.set("chain", chainlist)
 	Globals.set("itemfactory", itemfactory.new())
-	Globals.set("available_levels", ["LVL_SANDBOX", "LVL_FOREST1", "LVL_FOREST2", "LVL_MANOR", "LVL_LAVACAVE", "LVL_START", "LVL_COLOSSEUM1", "LVL_COLOSSEUM2", "LVL_AQUADUCT", "LVL_HOLYRUINS", "LVL_CAPECRYPT", "LVL_BERGFORTRESS", "LVL_SPRINGISLANDCASTLE", "LVL_CAVE", "LVL_MAUSOLEUM", "LVL_DUNGEON", "LVL_ICECAVE"])
+	Globals.set("available_levels", ["LVL_SANDBOX", "LVL_FOREST1", "LVL_FOREST2", "LVL_MANOR", "LVL_LAVACAVE", "LVL_START", "LVL_COLOSSEUM1", "LVL_COLOSSEUM2", "LVL_AQUADUCT", "LVL_HOLYRUINS", "LVL_CAPECRYPT", "LVL_BERGFORTRESS", "LVL_SPRINGISLANDCASTLE", "LVL_WINTERISLANDCASTLE", "LVL_CAVE", "LVL_MAUSOLEUM", "LVL_DUNGEON", "LVL_ICECAVE"])
 	Globals.set("levels", levelfactory.new().levels)
 	Globals.set("current_level", "LVL_START")
 	Globals.set("eventmode", false)

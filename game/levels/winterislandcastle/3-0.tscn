@@ -1,0 +1,198 @@
+[gd_scene load_steps=10 format=1]
+
+[ext_resource path="res://scenes/winterislandcastle/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/winterislandcastle/climbableblock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/dungeon/onewayplatform.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/dungeon/platforms/flooredge2.png" type="Texture" id=4]
+[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/common/damagables/skeleton/skeleton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=9]
+
+[node name="LVL_NOTITLE" type="Node2D"]
+
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -1638414, 1610612737, -1638413, 1073741824, -1638412, 1073741824, -1638411, 1073741824, -1638410, 1073741824, -1638409, 1073741824, -1638408, 1073741824, -1638407, 1073741824, -1638406, 1073741825, -1638402, 1610612737, -1638401, 1073741824, -1703936, 1073741824, -1703935, 1073741824, -1703934, 1073741824, -1703933, 1073741824, -1703932, 1073741824, -1703931, 1073741825, -1572878, 2, -1638395, 2, -1507342, 2, -1572859, 2, -1441806, 2, -1507323, 2, -1376270, 2, -1441787, 2, -1310734, 2, -1376251, 2, -1245198, 2, -1310715, 2, -1179662, 2, -1245179, 2, -1114126, 2, -1179643, 2, -1048590, 2, -1114107, 2, -983054, 2, -1048571, 2, -917518, 2, -983035, 2, -851982, 2, -917499, 2, -786446, 2, -851963, 2, -720910, 2, -786427, 2, -655374, 2, -720891, 2, -589838, 2, -655355, 2, -524302, 2, -589824, 0, -589823, 0, -589822, 0, -589821, 0, -589820, 0, -589819, 1, -458766, 2, -524283, 2, -393230, 2, -458747, 2, -327694, 2, -393211, 2, -262158, 2, -327675, 2, -196622, 2, -262139, 2, -131086, 536870913, -131085, 0, -131084, 0, -131083, 0, -131082, 0, -196603, 2, -65550, 2, -131067, 2, -14, 2, -65531, 2, 65522, 2, 5, 2, 131058, 2, 65541, 2, 196594, 2, 131077, 2, 262130, 2, 196613, 2, 327666, 536870913, 327667, 0, 327668, 0, 327669, 0, 327670, 0, 327671, 0, 327672, 0, 327673, 0, 327674, 1, 327678, 536870913, 327679, 0, 262144, 0, 262145, 0, 262146, 0, 262147, 0, 262148, 0, 262149, 1, 393202, 2, 393210, 2, 393214, 2, 327685, 2, 458738, 2, 458746, 2, 458750, 2, 393221, 2, 524274, 2, 524282, 2, 524286, 2, 458757, 2, 589810, 2, 589818, 2, 589822, 2, 524293, 2, 655346, 2, 655354, 2, 655358, 2, 589829, 2, 720882, 2, 720890, 2, 720894, 2, 655365, 2 )
+
+[node name="ClimbableGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="ClimbableBlock" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -16, -272 )
+
+[node name="ClimbableBlock1" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -272, -80 )
+
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock1"]
+
+flip_h = false
+
+[node name="One-WayPlatformGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="One-WayPlatform" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -112, -432 )
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform/KinematicBody2D"]
+
+region = true
+region_rect = Rect2( 0, 0, 192, 32 )
+
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform/KinematicBody2D"]
+
+transform/scale = Vector2( 6, 1 )
+
+[node name="One-WayPlatform1" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 0, -432 )
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform1/KinematicBody2D"]
+
+texture = ExtResource( 4 )
+offset = Vector2( 3, 0 )
+
+[node name="One-WayPlatform2" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -224, -432 )
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform2/KinematicBody2D"]
+
+texture = ExtResource( 4 )
+offset = Vector2( -3, 0 )
+flip_h = true
+
+[node name="LadderGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="TestLadder1" parent="tilemap/LadderGroup" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -112, 256 )
+
+[node name="Sprite" parent="tilemap/LadderGroup/TestLadder1/KinematicBody2D"]
+
+region_rect = Rect2( 0, 0, 32, 192 )
+
+[node name="ladder" parent="tilemap/LadderGroup/TestLadder1/KinematicBody2D"]
+
+transform/scale = Vector2( 1, 6 )
+
+[node name="TestLadder 2" parent="tilemap/LadderGroup" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -112, 144 )
+
+[node name="PotGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="Pot" parent="tilemap/PotGroup" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 16, -336 )
+
+[node name="Pot2" parent="tilemap/PotGroup" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( -112, -496 )
+
+[node name="Pot1" parent="tilemap/PotGroup" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 112, -336 )
+type = "ITEM"
+reward = "res://scenes/items/gold/gold.tscn"
+value = 50
+
+[node name="EnemiesGroup" type="Node2D" parent="tilemap"]
+
+[node name="Skeleton" parent="tilemap/EnemiesGroup" instance=ExtResource( 8 )]
+
+transform/pos = Vector2( -336, -144 )
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 9 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -112, 368 )
+is_horizontal = false
+target_level = "res://levels/winterislandcastle/0-1.tscn"
+teleport_to = Vector2( 48, -1040 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+
+transform/scale = Vector2( 3, 1 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 9 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -112, -848 )
+is_horizontal = false
+target_level = "res://levels/winterislandcastle/3-1.tscn"
+teleport_to = Vector2( 112, 1536 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
+
+transform/scale = Vector2( 3, 1 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport1/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="boundaries" type="Node2D" parent="tilemap"]
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( -454, -838 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( 202, 362 )
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="exit_screen"]
+
+
+[editable path="tilemap/ClimbableGroup/ClimbableBlock1"]
+[editable path="tilemap/One-WayPlatformGroup/One-WayPlatform"]
+[editable path="tilemap/One-WayPlatformGroup/One-WayPlatform1"]
+[editable path="tilemap/One-WayPlatformGroup/One-WayPlatform2"]
+[editable path="tilemap/LadderGroup/TestLadder1"]
+[editable path="tilemap/TeleportGroup/Teleport"]
+[editable path="tilemap/TeleportGroup/Teleport1"]

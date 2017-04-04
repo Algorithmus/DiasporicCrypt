@@ -8,7 +8,9 @@ const DAMAGE_THROWBACK = 10
 const VERTICAL_DAMAGE_THROWBACK = 6
 const HURT_GRACE_PERIOD = 60
 const MP_REGEN_PERIOD = 1000
+const HANG_DELAY = 2
 
+var hang_delay = 0
 var tilemap
 var climbspeed = 6
 var ladder_top = null
@@ -318,10 +320,13 @@ func check_climb_platform_horizontal(space_state):
 		# clamp to platform if should be hanging
 		if (platform_check != null && !climbing_platform && climb_platform == null && !is_charging && !is_magic):
 			hanging = true
+			hang_delay = 0
 			var d = platform_check.get_global_pos().x - direction * TILE_SIZE/2 - get_global_pos().x - direction * sprite_offset.x
 			climb_platform = platform_check
 			move(Vector2(d, 0))
-			
+
+		if (hanging):
+			hang_delay += 1
 		# stick with moving platform
 		# more noticeable on faster horizontal platforms
 		if (movingPlatform == climb_platform && climb_platform != null && hanging):
@@ -531,7 +536,8 @@ func check_vertical_input(space_state, normalTileCheck, onOneWayTile, relevantTi
 			ladderY = check_ladder_up(space_state)
 			
 			if (!on_ladder):
-				if (hanging):
+				# Don't switch to climbing immediately without first hanging
+				if (hanging && hang_delay >= HANG_DELAY):
 					hanging = false
 					climbing_platform = true
 	

@@ -1,0 +1,306 @@
+[gd_scene load_steps=12 format=1]
+
+[ext_resource path="res://scenes/winterislandcastle/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/winterislandcastle/climbableblock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/winterislandcastle/slopes/slope31-0.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/dungeon/slopes/slopea-b.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/winterislandcastle/slopes/slope0-15.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/winterislandcastle/slopes/slope16-31.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/damagables/skeleton/skeleton.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=11]
+
+[node name="LVL_WINTERISLANDCASTLE" type="Node2D"]
+
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -2752526, 1610612737, -2752525, 1073741824, -2752524, 1073741825, -2752520, 1610612737, -2752519, 1073741824, -2752518, 1073741824, -2752517, 1073741824, -2752516, 1073741824, -2752515, 1073741824, -2752514, 1073741824, -2752513, 1073741824, -2818048, 1073741824, -2818047, 1073741824, -2818046, 1073741824, -2818045, 1073741824, -2818044, 1073741824, -2818043, 1073741825, -2686990, 2, -2752507, 2, -2621454, 2, -2686971, 2, -2555918, 2, -2621435, 2, -2490382, 2, -2555899, 2, -2424846, 2, -2490363, 2, -2359310, 2, -2424827, 2, -2293774, 536870913, -2359291, 2, -2228238, 2, -2228237, 15, -2228236, 16, -2293755, 2, -2162702, 2, -2162699, 15, -2162698, 16, -2228219, 2, -2097166, 2, -2097161, 15, -2097160, 16, -2097159, 21, -2162683, 2, -2031630, 2, -2031622, 2, -2097147, 2, -1966094, 536870913, -1966093, 0, -1966092, 0, -1966091, 0, -1966090, 0, -1966089, 0, -1966088, 0, -1966087, 0, -1966086, 1, -2031611, 1610612737, -1900558, 2, -1835022, 2, -1769486, 2, -1703950, 2, -1638414, 2, -1572878, 2, -1638400, 0, -1638399, 0, -1638398, 0, -1638397, 0, -1638396, 0, -1638395, 1, -1507342, 2, -1572859, 2, -1441806, 1073741825, -1507323, 2, -1441787, 2, -1376251, 2, -1310715, 2, -1245179, 2, -1179643, 2, -1048590, 536870913, -1048589, 0, -1048588, 0, -1048587, 0, -1048586, 0, -1048585, 0, -1114107, 2, -983054, 2, -1048571, 2, -917518, 2, -983035, 2, -851982, 2, -917499, 2, -786446, 2, -851963, 2, -720910, 2, -786427, 2, -655374, 2, -720891, 2, -589838, 2, -655355, 2, -524302, 2, -589823, 0, -589822, 0, -589821, 0, -589820, 0, -589819, 1, -458766, 2, -524283, 2, -393230, 2, -458747, 2, -327694, 2, -393211, 2, -262158, 2, -327675, 2, -196622, 2, -262139, 2, -131086, 2, -196603, 2, -65550, 2, -131067, 2, -14, 2, -65531, 2, 65522, 2, 2, 21, 3, 0, 4, 0, 5, 1, 131058, 2, 65537, 536870926, 65541, 2, 196594, 2, 131072, 536870926, 131077, 2, 262130, 2, 262143, 536870926, 196613, 2, 327666, 536870913, 327667, 0, 327668, 0, 327669, 0, 327670, 0, 327671, 1, 327675, 536870913, 327676, 0, 327677, 21, 327678, 536870926, 262149, 2, 393202, 2, 393207, 2, 393211, 2, 327685, 2, 458738, 2, 458743, 2, 458747, 2, 393221, 2, 524274, 2, 524279, 2, 524283, 2, 458757, 2, 589810, 2, 589815, 2, 589819, 2, 524293, 2, 655346, 2, 655351, 2, 655355, 2, 589829, 2, 720882, 2, 720887, 2, 720891, 2, 655365, 2 )
+
+[node name="ClimbableGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="ClimbableBlock" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 16, -272 )
+
+[node name="ClimbableBlock1" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -240, -528 )
+
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock1"]
+
+flip_h = false
+
+[node name="ClimbableBlock2" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -16, -784 )
+
+[node name="ClimbableBlock3" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -176, -1040 )
+
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock3"]
+
+flip_h = false
+
+[node name="SlopeGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="Slope31-0" parent="tilemap/SlopeGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -48, 112 )
+
+[node name="Slope31-1" parent="tilemap/SlopeGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -16, 80 )
+
+[node name="Slope31-2" parent="tilemap/SlopeGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 16, 48 )
+
+[node name="Slope31-3" parent="tilemap/SlopeGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 48, 16 )
+
+[node name="TestSlopea-b" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 80, 16 )
+
+[node name="TestSlopea-b1" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 48, 48 )
+
+[node name="TestSlopea-b2" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 16, 80 )
+
+[node name="TestSlopea-b3" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -16, 112 )
+
+[node name="TestSlopea-b4" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -48, 144 )
+
+[node name="TestSlopea-b5" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -80, 144 )
+
+[node name="TestSlopea-b6" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -208, -1040 )
+
+[node name="TestSlopea-b7" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -240, -1040 )
+
+[node name="TestSlopea-b8" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -304, -1072 )
+
+[node name="TestSlopea-b9" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -368, -1104 )
+
+[node name="Slope0-15" parent="tilemap/SlopeGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -272, -1072 )
+
+[node name="Slope0-16" parent="tilemap/SlopeGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -336, -1104 )
+
+[node name="Slope0-17" parent="tilemap/SlopeGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -400, -1136 )
+
+[node name="Slope16-31" parent="tilemap/SlopeGroup" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -240, -1072 )
+
+[node name="Slope16-32" parent="tilemap/SlopeGroup" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -304, -1104 )
+
+[node name="Slope16-33" parent="tilemap/SlopeGroup" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -368, -1136 )
+
+[node name="LadderGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="TestLadder" parent="tilemap/LadderGroup" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -304, -1328 )
+
+[node name="Sprite" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
+
+region_rect = Rect2( 0, 0, 32, 96 )
+
+[node name="ladder" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
+
+transform/scale = Vector2( 1, 3 )
+
+[node name="TestLadder1" parent="tilemap/LadderGroup" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -208, 256 )
+
+[node name="Sprite" parent="tilemap/LadderGroup/TestLadder1/KinematicBody2D"]
+
+region_rect = Rect2( 0, 0, 32, 192 )
+
+[node name="ladder" parent="tilemap/LadderGroup/TestLadder1/KinematicBody2D"]
+
+transform/scale = Vector2( 1, 6 )
+
+[node name="TestLadder 2" parent="tilemap/LadderGroup" instance=ExtResource( 8 )]
+
+transform/pos = Vector2( -208, 144 )
+
+[node name="PotGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="Pot" parent="tilemap/PotGroup" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 80, -336 )
+
+[node name="EnemiesGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="Skeleton" parent="tilemap/EnemiesGroup" instance=ExtResource( 10 )]
+
+transform/pos = Vector2( -272, -592 )
+
+[node name="Skeleton1" parent="tilemap/EnemiesGroup" instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 16, -848 )
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 11 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -208, 368 )
+is_horizontal = false
+target_level = "res://levels/common/catacombs.tscn"
+teleport_to = Vector2( -16, -272 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+
+transform/scale = Vector2( 3, 1 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 11 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -304, -1392 )
+is_horizontal = false
+target_level = "res://levels/winterislandcastle/0-1.tscn"
+teleport_to = Vector2( 48, 480 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
+
+transform/scale = Vector2( 3, 1 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport1/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="Teleport2" parent="tilemap/TeleportGroup" instance=ExtResource( 11 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 208, -880 )
+target_level = "res://levels/winterislandcastle/2-0.tscn"
+teleport_to = Vector2( -236, 80 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport2"]
+
+transform/scale = Vector2( 1, 5 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport2/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="Teleport3" parent="tilemap/TeleportGroup" instance=ExtResource( 11 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -464, -624 )
+target_level = "res://levels/winterislandcastle/1-0.tscn"
+teleport_to = Vector2( 428, 48 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport3"]
+
+transform/scale = Vector2( 1, 5 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport3/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="boundaries" type="Node2D" parent="tilemap"]
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( -454, -1382 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( 202, 362 )
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport2/teleport/enabler" to="tilemap/TeleportGroup/Teleport2" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport2/teleport/enabler" to="tilemap/TeleportGroup/Teleport2" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport3/teleport/enabler" to="tilemap/TeleportGroup/Teleport3" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport3/teleport/enabler" to="tilemap/TeleportGroup/Teleport3" method="exit_screen"]
+
+
+[editable path="tilemap/ClimbableGroup/ClimbableBlock1"]
+[editable path="tilemap/ClimbableGroup/ClimbableBlock3"]
+[editable path="tilemap/LadderGroup/TestLadder"]
+[editable path="tilemap/LadderGroup/TestLadder1"]
+[editable path="tilemap/TeleportGroup/Teleport"]
+[editable path="tilemap/TeleportGroup/Teleport1"]
+[editable path="tilemap/TeleportGroup/Teleport2"]
+[editable path="tilemap/TeleportGroup/Teleport3"]

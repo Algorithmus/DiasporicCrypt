@@ -1,0 +1,102 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://scenes/winterislandcastle/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/common/damagables/skeleton/skeleton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=4]
+
+[node name="LVL_NOTITLE" type="Node2D"]
+
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -327688, 1610612737, -327687, 1073741824, -327686, 1073741824, -327685, 1073741824, -327684, 1073741824, -327683, 1073741824, -327682, 1073741824, -327681, 1073741824, -393216, 1073741824, -393215, 1073741824, -393214, 1073741824, -393213, 1073741824, -393212, 1073741824, -393211, 1073741824, -393210, 1073741824, -393209, 1073741824, -393208, 1073741824, -393207, 1073741824, -393206, 1073741824, -393205, 1073741824, -393204, 1073741824, -393203, 1073741824, -393202, 1073741824, -393201, 1073741824, -393200, 1073741824, -393199, 1073741824, -393198, 1073741825, -262152, 2, -327662, 2, -196616, 2, -262126, 2, -131080, 2, -196590, 2, -65544, 2, -131054, 2, -8, 1073741825, -65518, 1610612737, 393208, 536870913, 393209, 0, 393210, 0, 393211, 0, 393212, 0, 393213, 0, 393214, 0, 393215, 0, 327680, 0, 327681, 0, 327682, 0, 327683, 0, 327684, 0, 327685, 0, 327686, 0, 327687, 0, 327688, 0, 327689, 0, 327690, 0, 327691, 0, 327692, 0, 327693, 0, 327694, 0, 327695, 0, 327696, 0, 327697, 0, 327698, 1, 458744, 2, 393234, 2, 524280, 2, 458770, 2, 589816, 2, 524306, 2, 655352, 2, 589842, 2 )
+
+[node name="PotGroup" type="Node2D" parent="tilemap"]
+
+[node name="Pot" parent="tilemap/PotGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 176, 112 )
+
+[node name="EnemiesGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="Skeleton" parent="tilemap/EnemiesGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -48, 112 )
+
+[node name="Skeleton1" parent="tilemap/EnemiesGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 400, 112 )
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -272, 80 )
+target_level = "res://levels/winterislandcastle/0-0.tscn"
+teleport_to = Vector2( 172, -880 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+
+transform/scale = Vector2( 1, 5 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 624, 80 )
+target_level = "res://levels/winterislandcastle/2-1.tscn"
+teleport_to = Vector2( -396, 144 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
+
+transform/scale = Vector2( 1, 5 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport1/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="boundaries" type="Node2D" parent="tilemap"]
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( -262, -198 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( 618, 330 )
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="exit_screen"]
+
+
+[editable path="tilemap/TeleportGroup/Teleport"]
+[editable path="tilemap/TeleportGroup/Teleport1"]

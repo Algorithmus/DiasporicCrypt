@@ -82,6 +82,13 @@ func _init():
 	springislandcastle.bgm = preload("res://levels/common/BGM1.ogg")
 	locations[springislandcastle.id] = springislandcastle
 	
+	var winterislandcastle = locationclass.new()
+	winterislandcastle.node = "res://levels/winterislandcastle/0-0.tscn"
+	winterislandcastle.teleportto = Vector2(-208, 256)
+	winterislandcastle.id = "LVL_WINTERISLANDCASTLE"
+	winterislandcastle.bgm = preload("res://levels/common/BGM1.ogg")
+	locations[winterislandcastle.id] = winterislandcastle
+	
 	var cave = locationclass.new()
 	cave.node = "res://levels/cave/0-0.tscn"
 	cave.teleportto = Vector2(16, 32)
