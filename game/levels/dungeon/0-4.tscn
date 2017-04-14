@@ -41,6 +41,7 @@ transform/pos = Vector2( 400, 0 )
 target_nodes = [ "SunbeamGroup/Sunbeam" ]
 related_switches = [  ]
 enabled = true
+invert = false
 is_toggle = true
 
 [node name="FloorSwitch1" parent="tilemap/SwitchGroup" instance=ExtResource( 2 )]
@@ -49,6 +50,7 @@ transform/pos = Vector2( 208, 0 )
 target_nodes = [ "SunbeamGroup/Sunbeam1" ]
 related_switches = [  ]
 enabled = true
+invert = false
 is_toggle = true
 
 [node name="FloorSwitch2" parent="tilemap/SwitchGroup" instance=ExtResource( 2 )]
@@ -57,6 +59,7 @@ transform/pos = Vector2( -176, 0 )
 target_nodes = [ "SunbeamGroup/Sunbeam2" ]
 related_switches = [  ]
 enabled = true
+invert = false
 is_toggle = true
 
 [node name="FloorSwitch3" parent="tilemap/SwitchGroup" instance=ExtResource( 2 )]
@@ -65,6 +68,7 @@ transform/pos = Vector2( -368, 0 )
 target_nodes = [ "SunbeamGroup/Sunbeam3" ]
 related_switches = [  ]
 enabled = true
+invert = false
 is_toggle = true
 
 [node name="LadderGroup" type="Node2D" parent="tilemap"]
@@ -92,6 +96,8 @@ editor/display_folded = true
 transform/pos = Vector2( 16, -272 )
 motion = Vector2( 0, 32 )
 cycle = 5.0
+linear = false
+start_direction = 1
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap"]
 
@@ -171,6 +177,7 @@ script/script = ExtResource( 7 )
 reward = "MovingPlatformGroup/MovingPlatform"
 target_container = "EnemiesGroup"
 watch_class = "res://scenes/common/damagables/BaseEnemy.gd"
+invert = false
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
 
