@@ -17,6 +17,10 @@ var sound = preload("res://gui/menu/icons/sound.png")
 var sfxclass = preload("res://gui/menu/sfx.tscn")
 var sfx
 
+var is_global = false
+
+signal saved
+
 func _ready():
 	has_content = true
 	if (!Globals.has("sfxvolume")):
@@ -105,6 +109,7 @@ func save():
 	for key in get_node("inputs").get_children():
 		key.set_input()
 		key.get_node("key").set("custom_colors/font_color", null)
+	emit_signal("saved")
 
 func _on_sfxslider_focus_exit():
 	if (get_focus_owner() != null && get_focus_owner() == get_parent().get_node("tabs/HBoxContainer/settings")):

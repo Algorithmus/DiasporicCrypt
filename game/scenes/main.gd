@@ -7,7 +7,6 @@ extends Node2D
 var original_size
 var pause
 var pausemenu
-var select
 var sequences
 var root
 var is_paused = false
@@ -25,16 +24,6 @@ var hidemap = false
 var skipevent = false
 
 var is_minimap = true
-
-var select_f_size
-var select_a_size
-var fscale
-var ascale
-var fOffset
-var aOffset
-
-var fspriteOffset
-var aspriteOffset
 
 var friederich = preload("res://players/friederich/friederich.tscn")
 var adela = preload("res://players/adela/adela.tscn")
@@ -55,13 +44,14 @@ var keymap = preload("res://gui/KeyboardCharacters.gd").new()
 var chainlist = {"chop": false, "slice": false, "skewer": false, "stab": false, "thrust": false, "swift": false, "dualspin": false, "void": false, "rush": false}
 
 var loading
-var loader
-var wait_frames
 var teleport_params = []
 var currentevent
 
+var serialization
+
 func _ready():
 	# Initialization here
+	serialization = Globals.get("serialization")
 	var magic_spells = [{"id": "thunder", "type": "thunder", "mp": 40, "auracolor": Color(1, 1, 1), "weaponcolor1": Color(1, 247/255.0, 138/255.0), "weaponcolor2": Color(0, 116/255.0, 1), "is_single": false, "charge": preload("res://players/magic/thunder/charge.tscn"), "attack": preload("res://players/magic/thunder/thunder.tscn"), "delay": true, "atk": 0.8}, 
 					{"id":"hex", "type": "dark", "mp": 40, "auracolor": Color(169/255.0, 0, 1), "weaponcolor1": Color(0, 0, 0), "weaponcolor2": Color(1, 0, 0), "is_single": false, "delay": true, "attack": preload("res://players/magic/hex/hex.tscn"), "atk": 0.8}, 
 					{"id":"shield", "mp": 60, "auracolor": Color(0, 0, 1), "weaponcolor1": Color(0, 55/255.0, 1), "weaponcolor2": Color(0, 208/255.0, 1), "is_single": false, "delay": false, "attack": preload("res://players/magic/shield/shield.tscn"), "charge": preload("res://players/magic/shield/charge.tscn")}, 
@@ -83,15 +73,6 @@ func _ready():
 	Globals.set("sun", false)
 	Globals.set("show_blood_counter", false)
 	Globals.set("blood_count", 0)
-	Globals.set("savedir", "user://saves")
-	var controls = {}
-	for actionid in InputMap.get_actions():
-		if (actionid != "ui_accept" && actionid != "ui_cancel"):
-			for event in InputMap.get_action_list(actionid):
-				if (event.type == InputEvent.KEY):
-					controls[actionid] = event.scancode
-	Globals.set("controls", controls)
-	Globals.set("newcontrols", controls)
 	Globals.set("defaultsavepoint", {"location": "LVL_CATACOMB", "position": Vector2(-192, 322), "id": "res://levels/common/catacombs.tscn"})
 	Globals.set("lastsavepoint", Globals.get("defaultsavepoint"))
 	Globals.set("deaths", 0)
@@ -114,49 +95,47 @@ func _ready():
 	get_node("gui/CanvasLayer/chain").hide()
 	dialog = get_node("gui/CanvasLayer/dialogue")
 	
+	var sfx = AudioServer.get_fx_global_volume_scale()
 	if (Globals.has("sfxvolume")):
-		AudioServer.set_fx_global_volume_scale(Globals.get("sfxvolume"))
+		sfx = Globals.get("sfxvolume")
+	if (Globals.get("sfxmute") && Globals.get("sfxmute")):
+		sfx = 0
+	var bgm = AudioServer.get_stream_global_volume_scale()
 	if (Globals.has("bgmvolume")):
-		AudioServer.set_stream_global_volume_scale(Globals.get("bgmvolume"))
+		bgm = Globals.get("bgmvolume")
+	if (Globals.has("bgmmute") && Globals.get("bgmmute")):
+		bgm = 0
+	AudioServer.set_fx_global_volume_scale(sfx)
+	AudioServer.set_stream_global_volume_scale(bgm)
 
 	for spell in get_node("gui/CanvasLayer/hud/SpellIcons").get_children():
 		spell.hide()
-	select = get_node("gui/CanvasLayer/select")
-	var selectf = select.get_node("friederich")
-	var selecta = select.get_node("adela")
-	select_f_size = selectf.get_rect().size
-	select_a_size = selecta.get_rect().size
-	fscale = selectf.get_scale()
-	ascale = selecta.get_scale()
-	fOffset = Vector2(select_f_size.x/2+selectf.get_pos().x - 0.25*original_size.x, select_f_size.y+selectf.get_pos().y - original_size.y)
-	aOffset = Vector2(select_a_size.x/2+selecta.get_pos().x - 0.75*original_size.x, select_a_size.y+selecta.get_pos().y - original_size.y)
-	select.get_node("friederich_sprite/AnimationPlayer").play("idle")
-	select.get_node("adela_sprite/AnimationPlayer").play("idle")
-	fspriteOffset = Vector2(select.get_node("friederich_sprite").get_pos().x, original_size.y - select.get_node("friederich_sprite").get_pos().y)
-	aspriteOffset = Vector2(original_size.x - select.get_node("adela_sprite").get_pos().x, original_size.y - select.get_node("adela_sprite").get_pos().y)
 	loading = get_node("gui/CanvasLayer/loading")
 	loading.hide()
-	select.show()
+	loading.connect("complete", self, "load_complete")
 	is_paused = true
 	get_tree().set_pause(is_paused)
 	set_process_input(true)
-	#enable for keyboard input
-	#selectf.grab_focus()
 	map = get_node("gui/CanvasLayer/map/container")
 	choice = get_node("gui/CanvasLayer/choice")
+	choice.hide()
+	var player
+	if (Globals.get("player") == "friederich"):
+		selected_character = friederich
+		player = friederich.instance()
+	else:
+		selected_character = adela
+		player = adela.instance()
+	start(player)
+	if (Globals.has("gamedata")):
+		load_game(Globals.get("gamedata"))
+		Globals.set("gamedata", null)
 
 func _on_resolution_changed():
 	var new_size = root.get_rect().size
 	var scaleX = new_size.x/original_size.x
 	var scaleY = new_size.y/original_size.y
 	pause.get_node("shield").set_scale(Vector2(scaleX, scaleY))
-	var charscale = min(scaleX, scaleY)
-	select.get_node("friederich").set_scale(Vector2(charscale*fscale.x, charscale*fscale.y))
-	select.get_node("adela").set_scale(Vector2(charscale*ascale.x, charscale*ascale.y))
-	select.get_node("friederich").set_pos(Vector2(new_size.x*0.25-select_f_size.x*charscale/2+fOffset.x*charscale, new_size.y-select_f_size.y*charscale+fOffset.y*charscale))
-	select.get_node("adela").set_pos(Vector2(new_size.x*0.75-select_a_size.x*charscale/2+aOffset.x*charscale, new_size.y-select_a_size.y*charscale+aOffset.y*charscale))
-	select.get_node("friederich_sprite").set_pos(Vector2(fspriteOffset.x*scaleX, new_size.y - fspriteOffset.y))
-	select.get_node("adela_sprite").set_pos(Vector2(new_size.x - aspriteOffset.x*scaleX, new_size.y - aspriteOffset.y))
 
 func _input(event):
 	var canvas = get_node("gui/CanvasLayer")
@@ -368,21 +347,7 @@ func end_warp_animation():
 	if (Globals.get("eventmode")):
 		toggle_eventmode(false)
 
-func _select_friederich():
-	selected_character = friederich
-	var player = friederich.instance()
-	Globals.set("player", "friederich")
-	start(player)
-
-func _select_adela():
-	selected_character = adela
-	var player = adela.instance()
-	Globals.set("player", "adela")
-	start(player)
-
 func start(player):
-	_friederich_exit()
-	_adela_exit()
 	var inventory = inventoryclass.new()
 	inventory.set("player", player)
 	Globals.set("inventory", inventory)
@@ -399,7 +364,6 @@ func start(player):
 	player.set_global_pos(Vector2(-16, 322))
 	get_node("playercontainer").add_child(player)
 	player.load_tilemap(level)
-	select.hide()
 	is_paused = false
 	get_tree().set_pause(is_paused)
 
@@ -409,7 +373,7 @@ func show_gameover():
 	yes.connect("pressed", self, "reset_level")
 	yes.grab_focus()
 	var no = choice.get_node("no/button")
-	no.connect("pressed", self, "reset")
+	no.connect("pressed", self, "global_menu")
 	choice.show()
 
 func hide_choice():
@@ -419,7 +383,7 @@ func hide_choice():
 	yes.disconnect("pressed", self, "reset_level")
 	var no = choice.get_node("no/button")
 	choice.get_node("no")._on_button_focus_exit()
-	no.disconnect("pressed", self, "reset")
+	no.disconnect("pressed", self, "global_menu")
 
 func reset_level():
 	get_node("gui/sound").play("confirm")
@@ -461,21 +425,9 @@ func reset_level():
 	Globals.set("reward_taken", false)
 	get_tree().set_pause(false)
 
-func reset():
+func global_menu():
 	get_node("gui/sound").play("confirm")
-	hide_choice()
-	map.clear_objects()
-	clear_game()
-	Globals.set("current_level", "LVL_START")
-	Globals.set("lastsavepoint", Globals.get("defaultsavepoint"))
-	Globals.set("deaths", 0)
-	pausemenu.reset_content()
-	var level = load("res://levels/common/catacombs.tscn").instance()
-	get_node("level").add_child(level)
-	gameover = false
-	is_paused = true
-	pause.hide()
-	select.show()
+	get_tree().change_scene("res://scenes/global.tscn")
 
 func clear_game():
 	map.reset()
@@ -508,31 +460,11 @@ func load_game(data):
 	#print(data)
 	clear_game()
 	Globals.set("mapid", data.maps.id)
-	var mapindex = {}
-	for roomid in data.maps.index:
-		var room = data.maps.index[roomid]
-		var newroom = map.unserialize_room(room)
-		mapindex[roomid] = newroom
+	var mapindex = serialization.unserialize_mapindex(map, data.maps.index)
 	Globals.set("mapindex", mapindex)
-	var mapobjects = {}
-	for obj in map.get_node("objects").get_children():
-		map.get_node("objects").remove_child(obj)
-	for mapid in data.maps.objects:
-		var objectsnode = map.get_node("objects").duplicate()
-		var mapobj = data.maps.objects[mapid]
-		for i in range(0, mapobj.size()):
-			var room = mapobj[i]
-			var newroom = map.unserialize_room(room)
-			objectsnode.add_child(newroom)
-		mapobjects[mapid] = objectsnode
+	var mapobjects = serialization.unserialize_mapobjects(map, data.maps.objects)
 	Globals.set("mapobjects", mapobjects)
-	var levels = levelfactory.new().levels
-	for id in data.levels.data:
-		var level = data.levels.data[id]
-		var newlevel = levels[id]
-		newlevel.new = level.new
-		newlevel.tags = level.tags
-		newlevel.complete = level.complete
+	var levels = serialization.unserialize_levels(data.levels.data, levelfactory.new().levels)
 	Globals.set("levels", levels)
 	var level = load(data.maps.currentMap).instance()
 	get_node("level").add_child(level)
@@ -548,28 +480,11 @@ func load_game(data):
 	map.load_cached_map(level)
 	get_node("gui/CanvasLayer/hud").reset()
 	Globals.set("gold", data.inventory.gold)
-	var scrolls = {}
-	for scroll in data.inventory.scrolls:
-		var newscroll = Globals.get("itemfactory").items[scroll]
-		newscroll.new = data.inventory.scrolls[scroll]
-		scrolls[scroll] = newscroll
+	var scrolls = serialization.unserialize_scrolls(data.inventory.scrolls)
 	Globals.set("scrolls", scrolls)
-	var inventory = {}
-	for id in data.inventory.items:
-		var item = data.inventory.items[id]
-		var newitem = {}
-		newitem.item = Globals.get("itemfactory").items[id]
-		newitem.item.new = item.new
-		newitem.quantity = item.quantity
-		inventory[id] = newitem
+	var inventory = serialization.unserialize_items(data.inventory.items)
 	Globals.get("inventory").set("inventory", inventory)
-	var spells = []
-	var magic_spells = Globals.get("magic_spells")
-	for i in range(0, data.inventory.magic.size()):
-		var id = data.inventory.magic[i]
-		for j in range(0, magic_spells.size()):
-			if (id == magic_spells[j].id):
-				spells.push_back(magic_spells[j])
+	var spells = serialization.unserialize_spells(data.inventory.magic)
 	Globals.set("available_spells", spells)
 	Globals.set("current_quest_complete", data.levels.currentQuestComplete)
 	Globals.set("reward_taken", data.levels.rewardTaken)
@@ -585,26 +500,7 @@ func load_game(data):
 	var gameclock = get_node("gameclock")
 	gameclock.set("elapsed", int(data.playtime))
 	gameclock.resume()
-	var shared_actions = []
-	var jumpevent
-	for actionid in data.settings.controls:
-		var list = InputMap.get_action_list(actionid)
-		for e in list:
-			if (e.type == InputEvent.KEY):
-				InputMap.action_erase_event(actionid, e)
-				var event = InputEvent()
-				event.type = InputEvent.KEY
-				event.scancode = data.settings.controls[actionid]
-				InputMap.action_add_event(actionid, event)
-				if (actionid == "ui_blood" || actionid == "ui_attack" || actionid == "ui_magic"):
-					shared_actions.push_back(event)
-				elif (actionid == "ui_jump"):
-					jumpevent = event
-	clearInputs("ui_accept")
-	for e in shared_actions:
-		InputMap.action_add_event("ui_accept", e)
-	clearInputs("ui_cancel")
-	InputMap.action_add_event("ui_cancel", jumpevent)
+	serialization.unserialize_controls(data.settings.controls)
 	pausemenu.reset_content()
 	var currentlevel = Globals.get("levels")[Globals.get("current_level")]
 	var currentbgm = currentlevel.location.bgm
@@ -621,26 +517,13 @@ func load_game(data):
 	player.set_global_pos(Vector2(data.position[0], data.position[1]))
 	get_node("playercontainer").add_child(player)
 	player.load_tilemap(level)
-	var exp_obj = player.get("exp_growth_obj")
-	exp_obj.set("total_exp", data.player.stats.ep)
-	exp_obj.set("exp_required", data.player.stats.requiredEp)
-	exp_obj.set("current_exp", data.player.stats.currentEp)
-	player.set("level", data.player.stats.level)
-	player.set("base_hp", data.player.stats.hp)
-	player.set("hp", data.player.stats.hp)
-	player.set("current_hp", data.player.stats.currentHp)
-	player.set("base_mp", data.player.stats.mp)
-	player.set("mp", data.player.stats.mp)
-	player.set("current_mp", data.player.stats.currentMp)
-	player.set("base_atk", data.player.stats.atk)
-	player.set("base_def", data.player.stats.def)
-	player.set("base_mag", data.player.stats.mag)
-	player.set("base_luck", data.player.stats.luck)
+	serialization.unserialize_stats(player, data.player.stats)
 	Globals.set("chain", data.player.chainlist)
-	var loadsave = pause.get_node("save")
+	if (pause.has_node("save")):
+		var loadsave = pause.get_node("save")
+		pause.remove_child(loadsave)
+		loadsave.queue_free()
 	pause.hide()
-	pause.remove_child(loadsave)
-	loadsave.queue_free()
 	get_tree().set_pause(false)
 
 func display_level_title(title):
@@ -664,31 +547,17 @@ func teleport(new_level, pos, teleport):
 	var level = get_node("level").get_child(0)
 	map.set("previous_id", level.get_filename())
 	#var new_level_obj = load(new_level).instance()
-	loader = ResourceLoader.load_interactive(new_level)
-	if (loader == null):
-		print("error loading resource: " + new_level)
-		return
-	set_process(true)
+	loading.load_resource(new_level)
+	loading.show()
 	
 	level.queue_free()
-	
-	loading.show()
-	if (Globals.get("player") == "friederich"):
-		loading.get_node("bat").show()
-		loading.get_node("cat").hide()
-	else:
-		loading.get_node("cat").show()
-		loading.get_node("bat").hide()
-	get_node("AnimationPlayer").play("loading")
-	
-	#stop player processing
-	get_tree().set_pause(true)
-	
-	wait_frames = 1
+
+func load_complete(resource):
+	loading.hide()
+	do_teleport(resource, teleport_params[0], teleport_params[1], teleport_params[2])
 
 # handle loaded level
 func do_teleport(resource, new_level, pos, teleport):
-	get_tree().set_pause(false)
 	var new_level_obj = resource.instance()
 	new_level_obj.set_filename(new_level)
 	var level_title_string = new_level_obj.get_name()
@@ -755,63 +624,11 @@ func do_teleport(resource, new_level, pos, teleport):
 				specialgroup.get_child(0).queue_free()
 	Globals.set("sun", false)
 
-# background loading
-func _process(delta):
-	if (loader == null):
-		loading.hide()
-		get_node("AnimationPlayer").stop()
-		set_process(false)
-		return
-	
-	if (wait_frames > 0):
-		wait_frames -= 1
-		return
-	
-	var t = OS.get_ticks_msec()
-	while (OS.get_ticks_msec() < t + 100 && loader != null):
-		var err = loader.poll()
-		
-		if (err == ERR_FILE_EOF):
-			var resource = loader.get_resource()
-			loader = null
-			do_teleport(resource, teleport_params[0], teleport_params[1], teleport_params[2])
-		elif (err == OK):
-			update_progress()
-		else:
-			print("error loading resource: " + teleport_params[0])
-			loader = null
-			break
-
-func update_progress():
-	var progress = float(loader.get_stage()) / loader.get_stage_count()
-	loading.get_node("text").set_text(tr("KEY_LOADING") + " " + str(int(progress * 100)) + "%")
-
 func sequence_finished():
 	sequences.get_node("demonic").hide()
 	sequences.hide()
 	pause.hide()
 	get_tree().set_pause(false)
-
-func _select_hover():
-	get_node("gui/sound").play("cursor")
-
-
-func _friederich_hover():
-	select.get_node("friederich_sprite/AnimationPlayer").play("run")
-	_select_hover()
-
-
-func _adela_hover():
-	select.get_node("adela_sprite/AnimationPlayer").play("run")
-	_select_hover()
-
-
-func _friederich_exit():
-	select.get_node("friederich_sprite/AnimationPlayer").play("idle")
-
-
-func _adela_exit():
-	select.get_node("adela_sprite/AnimationPlayer").play("idle")
 
 # Globals with preloaded assets are not cleared properly. Until this is
 # fixed, we are clearing them manually ourselves.

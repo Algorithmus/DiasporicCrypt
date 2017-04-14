@@ -5,8 +5,8 @@
 
 [sub_resource type="SampleLibrary" id=1]
 
-samples/cursor = { "db":0.0, "pitch":1.0, "sample":ExtResource( 2 ) }
 samples/confirm = { "db":0.0, "pitch":1.0, "sample":ExtResource( 1 ) }
+samples/cursor = { "db":0.0, "pitch":1.0, "sample":ExtResource( 2 ) }
 
 [node name="sfx" type="SamplePlayer"]
 

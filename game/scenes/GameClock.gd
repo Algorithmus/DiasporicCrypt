@@ -48,7 +48,7 @@ func _process(delta):
 	elapsed = time_now - time_start + elapsed_offset
 	str_elapsed = display_time(elapsed)
 
-func display_time(time):
+static func display_time(time):
 	var hours = time / 3600
 	var minutes = time % 3600 / 60
 	var seconds = time % 60

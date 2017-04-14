@@ -19,12 +19,22 @@ var savelocation
 var sfxclass = preload("res://gui/menu/sfx.tscn")
 var sfx
 
+var loadonly = false
+
+signal empty
+signal loadgame
+
 func _ready():
 	sfx = sfxclass.instance()
 	add_child(sfx)
 	scrollrange = get_node("saves").get_size()
 	itemcontainer = get_node("saves/container")
 	set_process_input(true)
+	var back = get_node("back")
+	back.get_node("input").set_text(tr("MAP_BACK"))
+	back.set_key("ui_cancel")
+	if (loadonly):
+		get_node("title").set_text(tr("KEY_LOADGAME"))
 	load_menu()
 
 func load_menu():
@@ -42,45 +52,66 @@ func load_menu():
 					var game = {}
 					file.open(savedir + "/" + filename, File.READ)
 					while (!file.eof_reached()):
+						# unfortunately, it's not safe to assume Directory returns back the
+						# list of filenames in alphabetical order (eg, 10 can show up before 2 just because of the 1)
+						# so we rely on the save number for its id and position in the list
+						var index = filename.basename().split("save")[1]
 						var string = file.get_line()
 						game.parse_json(string)
 						var save = itemclass.instance()
+						save.set("loadonly", loadonly)
 						itemcontainer.add_child(save)
 						save.setState(save.SAVE)
 						save.hideSavedRecently()
 						save.set("savepos", savepos)
 						save.set("savelocation", savelocation)
-						save.set_id(str(itemcontainer.get_child_count()))
+						save.set_id(str(index))
 						save.connect("focus_enter", self, "check_scroll")
 						save.connect("options_visible", self, "set_optionsvisible")
 						save.connect("delete", self, "shift_files")
 						save.connect("clone", self, "clone")
 						save.connect("echo", self, "set_echo")
+						if (loadonly):
+							save.connect("loadgame", self, "load_game")
 						save.displayGameData(game)
 						save.set("filename", filename)
 					file.close()
 				filename = dir.get_next()
 			dir.list_dir_end()
-	create_newsave()
+	sort_list()
+	if (!loadonly):
+		create_newsave()
 	itemcontainer.get_child(0).grab_focus()
+
+# sort list of game saves by id number
+func sort_list():
+	for item in itemcontainer.get_children():
+		itemcontainer.move_child(item, item.get("idnr") - 1)
 
 func set_optionsvisible(value):
 	optionsvisible = value
 
 func create_newsave():
 	var newsave = itemclass.instance()
+	newsave.set("loadonly", loadonly)
 	itemcontainer.add_child(newsave)
 	newsave.setState(newsave.NEW)
 	newsave.set("savepos", savepos)
 	newsave.set("savelocation", savelocation)
 	newsave.set_id(str(itemcontainer.get_child_count()))
 	newsave.set("filename", "save" + str(itemcontainer.get_child_count()) + ".save")
-	newsave.connect("newsave", self, "check_newsave")
+	if (!loadonly):
+		newsave.connect("newsave", self, "check_newsave")
 	newsave.connect("focus_enter", self, "check_scroll")
 	newsave.connect("delete", self, "shift_files")
 	newsave.connect("clone", self, "clone")
+	if (loadonly):
+		newsave.connect("loadgame", self, "load_game")
 	newsave.connect("options_visible", self, "set_optionsvisible")
 	newsave.connect("echo", self, "set_echo")
+
+func load_game():
+	emit_signal("loadgame")
 
 func check_newsave():
 	var save = itemcontainer.get_child(itemcontainer.get_child_count() - 1)
@@ -88,9 +119,20 @@ func check_newsave():
 		create_newsave()
 
 func clone(data):
+	if (loadonly):
+		create_newsave()
+		# Unfortunately, the scroll position isn't correct even though the element position is.
+		# In the regular mode, this doesn't happen because the new empty save is already there, and we just save the
+		# clone in that slot and create a new one (which doesn't need to be targeted anyways and ensures there's more than
+		# enough space to scroll there).
+		# Hopefully, this might be fixed in later versions of GodotEngine since there is a bug report about it anyways,
+		# and check_scroll() is maybe just a hack.
+		# See https://github.com/godotengine/godot/issues/5637
+		call_deferred("check_scroll")
 	var save = itemcontainer.get_child(itemcontainer.get_child_count() - 1)
 	save.save_from_data(data)
-	create_newsave()
+	if (!loadonly):
+		create_newsave()
 	optionsvisible = false
 	save.grab_focus()
 
@@ -100,7 +142,7 @@ func shift_files(index, filename):
 	var dir = Directory.new()
 	for i in range(index, itemcontainer.get_child_count()):
 		var item = itemcontainer.get_child(i)
-		item.set_id(str(i))
+		item.set_id(str(i+1))
 		var old_filename = item.get("filename")
 		item.set("filename", filename)
 		if (item.get("state") == item.SAVE):
@@ -109,7 +151,15 @@ func shift_files(index, filename):
 			dir.remove(savedir + "/" + filename)
 		filename = old_filename
 	optionsvisible = false
-	itemcontainer.get_child(index).grab_focus()
+	if (loadonly):
+		dir.remove(savedir + "/" + filename)
+	var size = itemcontainer.get_child_count()
+	if (size > 0):
+		var item = itemcontainer.get_child(min(index, size - 1))
+		item.set("echo", true)
+		item.grab_focus()
+	elif (loadonly):
+		emit_signal("empty")
 
 func check_scroll():
 	var item = get_focus_owner()
@@ -135,85 +185,6 @@ func focus_item_exit():
 func _input(event):
 	if (event.is_pressed() && !event.is_echo()):
 		var focus = get_focus_owner()
-		"""
-		if (transaction.is_hidden()):
-			var type = get_node("panel/types/" + currenttype)
-			var newtype
-			if (event.is_action_pressed("ui_left") && type.get_index() > 0):
-				newtype = get_node("panel/types").get_child(type.get_index() - 1)
-				set_type(newtype.get_name())
-				newtype.grab_focus()
-			elif (event.is_action_pressed("ui_right") && type.get_index() < get_node("panel/types").get_child_count() - 1):
-				newtype = get_node("panel/types").get_child(type.get_index() + 1)
-				set_type(newtype.get_name())
-				newtype.grab_focus()
-			elif (event.is_action_pressed("ui_accept") && focus.get_name() != "buy" && focus.get_name() != "sell"):
-				selecteditem = focus
-				if(selecteditem.get_opacity() > 0.5):
-					var item = itemfactory.items[selecteditem.get_name()]
-					currentamount = 1
-					amounttotal = int(selecteditem.get_node("quantity").get_text())
-					var totalvalue = item.cost
-					if (currenttype == "sell"):
-						amounttotal = player_inventory[selecteditem.get_name()].quantity
-						totalvalue = totalvalue * sellrate
-					update_transaction(totalvalue)
-					transaction.show()
-					transaction.get_node("amount").grab_focus()
-					info.show()
-		else:
-			var gold = Globals.get("gold")
-			var basecost = itemfactory.items[selecteditem.get_name()].cost
-			if (currenttype == "sell"):
-				basecost = basecost * sellrate
-			if (event.is_action_pressed("ui_cancel")):
-				clear_transaction()
-				echo = true
-			elif (event.is_action_pressed("ui_right")):
-				if (currentamount < amounttotal || amounttotal < 0):
-					if (!player_inventory.has(selecteditem.get_name()) || (player_inventory.has(selecteditem.get_name()) && player_inventory[selecteditem.get_name()].quantity + currentamount < 99)):
-						if (currenttype == "sell" || (currenttype == "buy" && basecost * (1+currentamount) <= gold)):
-							currentamount += 1
-							update_transaction(basecost)
-			elif (event.is_action_pressed("ui_left")):
-				if (currentamount > 1):
-					currentamount -= 1
-					update_transaction(basecost)
-			elif (event.is_action_pressed("ui_accept")):
-				var currentitem = itemfactory.items[selecteditem.get_name()]
-				if (currenttype == "sell"):
-					Globals.get("inventory").remove_item(currentitem, currentamount)
-					Globals.set("gold", gold + basecost * currentamount)
-				else:
-					var index = find_item(currentitem.title)
-					if (index >= 0):
-						if (inventory[index].type == "item"):
-							Globals.get("inventory").add_item(currentitem, currentamount)
-						elif (inventory[index].type == "scroll"):
-							Globals.get("scrolls")[currentitem.title] = currentitem
-						elif (inventory[index].type == "magic"):
-							var magic_spells = Globals.get("magic_spells")
-							var spell
-							for i in range(0, magic_spells.size()):
-								if (magic_spells[i].id == currentitem.value):
-									spell = magic_spells[i]
-							Globals.get("available_spells").append(spell)
-						if (inventory[index].quantity > 0):
-							inventory[index].quantity -= currentamount
-						if (inventory[index].quantity == 0):
-							inventory.erase(inventory[index])
-					Globals.get("shops")[shopid] = inventory
-					Globals.set("gold", gold - basecost * currentamount)
-				transaction.hide()
-				selecteditem = null
-				get_node("gold").set_text(str(Globals.get("gold")) + "G")
-				update_inventory()
-				if (currentamount - amounttotal == 0 && amounttotal > 0):
-					clear_selection(currentitem)
-				else:
-					itemcontainer.get_node(currentitem.title).grab_focus()
-				sfx.play("confirm")
-		"""
 
 func set_echo():
 	echo = true

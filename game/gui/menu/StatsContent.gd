@@ -2,9 +2,16 @@
 extends "res://gui/menu/MenuContent.gd"
 
 # display character stats and gold
+var shield
+var sfxclass = preload("res://gui/menu/sfx.tscn")
+var sfx
 
 func _ready():
-	pass
+	has_content = true
+	sfx = sfxclass.instance()
+	add_child(sfx)
+	shield = get_node("shield")
+	shield.hide()
 
 func update_container():
 	var title
@@ -62,3 +69,20 @@ func update_container():
 	
 	get_node("title").set_text(title)
 	get_node("info").set_bbcode(infostring)
+
+func _on_quit():
+	sfx.play("confirm")
+	shield.show()
+	shield.get_node("options/no").grab_focus()
+
+func block_cancel():
+	return shield.is_visible()
+
+func quitgame():
+	sfx.play("confirm")
+	get_tree().change_scene("res://scenes/global.tscn")
+
+func no_pressed():
+	sfx.play("confirm")
+	shield.hide()
+	get_node("quit").grab_focus()
