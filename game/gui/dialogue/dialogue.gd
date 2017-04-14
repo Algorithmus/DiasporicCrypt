@@ -125,7 +125,7 @@ func check_dialog():
 			elif (choice.get("action") == "shop"):
 				var shop = shopclass.instance()
 				shop.shopid = choice.get("data")
-				shop.set_pos(Vector2(32, 32))
+				shop.set_pos(Vector2(32, 20))
 				hide_dialog()
 				get_tree().set_pause(true)
 				var pause = get_tree().get_root().get_node("world/gui/CanvasLayer/pause")

@@ -17,6 +17,8 @@ func _ready():
 		tab.connect("tab_changed", self, "change_tab")
 		tab.connect("unfocus_tab", self, "unfocus_tab")
 	panels = get_node("panels")
+	get_node("back").set_key("ui_pause")
+	get_node("back/input").set_text(tr("MAP_BACK"))
 	hide_panels()
 	set_fixed_process(true)
 
@@ -71,6 +73,9 @@ func _input(event):
 		if (!panels.get_node(selectedtab).block_cancel()):
 			clear_panels()
 			focus_tab()
+
+func settings_saved():
+	get_node("back").reload_key()
 
 func reset_content():
 	for panel in panels.get_children():

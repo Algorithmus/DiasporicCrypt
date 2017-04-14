@@ -43,7 +43,7 @@ func _ready():
 	var closebuttonstring = "[right]" + tr("MAP_BACK") + " [code]" + keyboardmap.map_action("ui_cancel") + "[/code][/right]"
 	get_node("filters/key").set_bbcode(filterkeystring)
 	get_node("list/filters/key").set_bbcode(filterkeystring)
-	get_node("listinfo").set_bbcode("[right]List:  [code]" + keyboardmap.map_action(listkey) + "[/code][/right]")
+	get_node("listinfo").set_bbcode("[right]List:  [code]" + keyboardmap.map_action(listkey) + "[/code]\n" + tr("MAP_BACK") + ":  [code]" + keyboardmap.map_action("ui_cancel") + "[/code][/right]")
 	get_node("title/content/close").set_bbcode(closebuttonstring)
 	pincontainer = get_node("pins")
 	list = get_node("list")

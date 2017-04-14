@@ -25,7 +25,7 @@ func check_sprite():
 
 func start(pos):
 	var save = saveclass.instance()
-	save.set_pos(Vector2(32, 32))
+	save.set_pos(Vector2(32, 20))
 	save.set("savepos", savepos)
 	save.set("savelocation", savelocation)
 	#hide_dialog()

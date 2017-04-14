@@ -48,6 +48,8 @@ func _ready():
 	inventory = shop.shops[shopid].inventory
 	get_node("title").set_text(shopid)
 	get_node("gold").set_text(str(Globals.get("gold")) + "G")
+	get_node("back").set_key("ui_cancel")
+	get_node("back/input").set_text(tr("MAP_BACK"))
 	info.hide()
 	#Obtain saved inventory stock
 	if (Globals.get("shops").has(shopid)):
