@@ -70,7 +70,7 @@ func update_inventory():
 		list = Globals.get("inventory").generate_list("item")
 	for item in list:
 		# only display magic or scrolls if they're not already obtained
-		if (!item.has("type") || item.type == "item" || (item.type == "scroll" && !Globals.get("scrolls").has(item.id)) || (item.type == "magic" && !find_magic(itemfactory.items[item.id].value))):
+		if (!item.has("type") || item.type == "item" || (item.type == "scroll" && !Globals.get("scrolls").has(item.id)) || (item.type == "magic" && find_magic(itemfactory.items[item.id].value) == null)):
 			var data
 			var rate = 1
 			var gold = Globals.get("gold")

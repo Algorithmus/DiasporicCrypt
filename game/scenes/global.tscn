@@ -571,10 +571,16 @@ focus_neighbour/bottom = NodePath("../../language")
 
 [node name="back" parent="CanvasLayer/menu/settingsmenu" instance=ExtResource( 15 )]
 
+editor/display_folded = true
 margin/left = 503.0
 margin/top = 16.0
 margin/right = 744.0
 margin/bottom = 47.0
+
+[node name="input" parent="CanvasLayer/menu/settingsmenu/back"]
+
+margin/left = 128.0
+text = "MAP_BACK"
 
 [node name="loadmenu" type="Control" parent="CanvasLayer/menu"]
 
@@ -594,6 +600,7 @@ visibility/visible = false
 
 [node name="quit" type="Control" parent="CanvasLayer/menu"]
 
+visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -761,3 +768,4 @@ stream/buffering_ms = 500
 
 
 [editable path="CanvasLayer/menu/settingsmenu/settings"]
+[editable path="CanvasLayer/menu/settingsmenu/back"]

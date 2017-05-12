@@ -1,0 +1,535 @@
+[gd_scene load_steps=20 format=1]
+
+[ext_resource path="res://scenes/springislandcastle/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/springislandcastle/climbableblock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/springislandcastle/BGs/floor.png" type="Texture" id=3]
+[ext_resource path="res://scenes/springislandcastle/BGs/corner.png" type="Texture" id=4]
+[ext_resource path="res://scenes/common/breakables/breakable.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/springislandcastle/BGs/edge.png" type="Texture" id=6]
+[ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/common/switches/pullswitch.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/switches/floorswitch.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/common/damagables/skeleton/blackskeleton.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/common/sunbeam.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/common/fake.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/springislandcastle/BGs/marble.png" type="Texture" id=15]
+[ext_resource path="res://scenes/springislandcastle/BGs/walledge.png" type="Texture" id=16]
+[ext_resource path="res://scenes/springislandcastle/BGs/wallcorner.png" type="Texture" id=17]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=18]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 64, 16 )
+
+[node name="LVL_NOTITLE" type="Node2D"]
+
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -1966126, 1610612737, -1966125, 1073741824, -1966124, 1073741824, -1966123, 1073741824, -1966122, 1073741824, -1966121, 1073741824, -1966120, 1073741824, -1966119, 1073741824, -1966118, 1073741824, -1966117, 1073741824, -1966116, 1073741824, -1966115, 1073741824, -1966114, 1073741824, -1966113, 1073741824, -1966112, 1073741824, -1966111, 1073741824, -1966110, 1073741824, -1966109, 1073741824, -1966108, 1073741824, -1966107, 1073741824, -1966106, 1073741824, -1966105, 1073741824, -1966104, 1073741824, -1966103, 1073741824, -1966102, 1073741824, -1966101, 1073741824, -1966100, 1073741824, -1966099, 1073741824, -1966098, 1073741824, -1966097, 1073741824, -1966096, 1073741824, -1966095, 1073741824, -1966094, 1073741824, -1966093, 1073741824, -1966092, 1073741824, -1966091, 1073741824, -1966090, 1073741824, -1966089, 1073741824, -1966088, 1073741824, -1966087, 1073741824, -1966086, 1073741824, -1966085, 1073741824, -1966084, 1073741824, -1966083, 1073741824, -1966082, 1073741824, -1966081, 1073741824, -2031616, 1073741824, -2031615, 1073741824, -2031614, 1073741824, -2031613, 1073741824, -2031612, 1073741824, -2031611, 1073741824, -2031610, 1073741824, -2031609, 1073741824, -2031608, 1073741824, -2031607, 1073741824, -2031606, 1073741824, -2031605, 1073741824, -2031604, 1073741824, -2031603, 1073741824, -2031602, 1073741824, -2031601, 1073741825, -2031600, 3, -2031599, -1610612732, -2031598, -1610612732, -2031597, -1610612732, -2031596, -1610612732, -2031595, -1610612732, -2031594, -1610612732, -2031593, -1610612732, -2031592, -1610612732, -2031591, 536870915, -2031590, 2, -1900590, 2, -1900589, 11, -1900585, 11, -1900581, 11, -1900577, 11, -1900573, 11, -1900569, 11, -1900565, 11, -1900561, 11, -1900557, 11, -1900553, 11, -1900549, 11, -1900545, 11, -1966077, 11, -1966073, 11, -1966069, 11, -1966065, 2, -1966064, 4, -1966063, 5, -1966062, 5, -1966061, 5, -1966060, 5, -1966059, 5, -1966058, 5, -1966057, 5, -1966056, 5, -1966055, 4, -1966054, 2, -1835054, 2, -1900529, 2, -1900528, 4, -1900527, 5, -1900526, 5, -1900525, 5, -1900524, 5, -1900523, 5, -1900522, 5, -1900521, 5, -1900520, 5, -1900519, 4, -1900518, 2, -1769518, 2, -1834993, 2, -1834992, 4, -1834991, 5, -1834990, 5, -1834989, 5, -1834988, 5, -1834987, 5, -1834986, 5, -1834985, 5, -1834984, 5, -1834983, 4, -1834982, 2, -1703982, 2, -1703981, 6, -1703977, 12, -1703973, 6, -1703969, 12, -1703965, 6, -1703961, 12, -1703957, 6, -1703953, 12, -1703949, 6, -1703945, 12, -1703941, 6, -1703937, 12, -1769469, 6, -1769465, 12, -1769461, 6, -1769457, 2, -1769456, 1073741827, -1769455, -1610612732, -1769454, -1610612732, -1769453, -1610612732, -1769452, -1610612732, -1769451, -1610612732, -1769450, -1610612732, -1769449, -1610612732, -1769448, -1610612732, -1769447, 1610612739, -1769446, 2, -1638446, 2, -1703921, 2, -1703920, 1073741824, -1703919, 1073741824, -1703918, 1073741824, -1703917, 1073741824, -1703916, 1073741824, -1703915, 1073741824, -1703914, 1073741824, -1703913, 1073741824, -1703912, 1073741824, -1703911, 1073741824, -1703910, 1073741825, -1572910, 2, -1638385, 9, -1638384, 8, -1638383, 8, -1638382, 9, -1638381, 9, -1638380, 8, -1638379, 8, -1638378, 9, -1638377, 9, -1638376, 8, -1638375, 8, -1638374, 9, -1507374, 2, -1572849, 11, -1572845, 11, -1572841, 11, -1441838, 2, -1376302, 2, -1310766, 2, -1376241, 9, -1376240, 8, -1376239, 8, -1376238, 9, -1376237, 9, -1376236, 8, -1376235, 8, -1376234, 9, -1376233, 9, -1376232, 8, -1376231, 8, -1376230, 9, -1245230, 2, -1310705, 2, -1310704, 0, -1310703, 0, -1310702, 0, -1310701, 0, -1310700, 0, -1310699, 0, -1310698, 0, -1310697, 0, -1310696, 0, -1310695, 0, -1310694, 1, -1179694, 2, -1179693, 12, -1179689, 6, -1179685, 12, -1179681, 6, -1179677, 12, -1179673, 6, -1179669, 12, -1179665, 6, -1179661, 12, -1179657, 6, -1179653, 12, -1179649, 6, -1245181, 12, -1245177, 6, -1245173, 12, -1245169, 2, -1245168, 3, -1245167, -1610612732, -1245166, -1610612732, -1245165, -1610612732, -1245164, -1610612732, -1245163, -1610612732, -1245162, -1610612732, -1245161, -1610612732, -1245160, -1610612732, -1245159, 536870915, -1245158, 2, -1114158, 2, -1179633, 2, -1179632, 4, -1179631, 5, -1179630, 5, -1179629, 5, -1179628, 5, -1179627, 5, -1179626, 5, -1179625, 5, -1179624, 5, -1179623, 4, -1179622, 2, -1048622, 2, -1114097, 2, -1114096, 4, -1114095, 5, -1114094, 5, -1114093, 5, -1114092, 5, -1114091, 5, -1114090, 5, -1114089, 5, -1114088, 5, -1114087, 4, -1114086, 2, -983086, 2, -1048561, 2, -1048560, 4, -1048559, 5, -1048558, 5, -1048557, 5, -1048556, 5, -1048555, 5, -1048554, 5, -1048553, 5, -1048552, 5, -1048551, 4, -1048550, 2, -917550, 2, -983025, 2, -983024, 4, -983023, 5, -983022, 5, -983021, 5, -983020, 5, -983019, 5, -983018, 5, -983017, 5, -983016, 5, -983015, 4, -983014, 2, -852014, 2, -917489, 2, -917488, 4, -917487, 5, -917486, 5, -917485, 5, -917484, 5, -917483, 5, -917482, 5, -917481, 5, -917480, 5, -917479, 4, -917478, 2, -786478, 2, -851953, 2, -851952, 4, -851951, 5, -851950, 5, -851949, 5, -851948, 5, -851947, 5, -851946, 5, -851945, 5, -851944, 5, -851943, 4, -851942, 2, -720942, 2, -786417, 2, -786416, 4, -786415, 5, -786414, 5, -786413, 5, -786412, 5, -786411, 5, -786410, 5, -786409, 5, -786408, 5, -786407, 4, -786406, 2, -655406, 2, -655405, 6, -655401, 13, -655397, 6, -655393, 13, -655389, 6, -655385, 13, -655381, 6, -655377, 13, -655373, 6, -655369, 13, -655365, 6, -655361, 13, -720893, 6, -720889, 13, -720885, 6, -720881, 2, -720880, 4, -720879, 5, -720878, 5, -720877, 5, -720876, 5, -720875, 5, -720874, 5, -720873, 5, -720872, 5, -720871, 4, -720870, 2, -589870, 2, -655345, 2, -655344, 4, -655343, 5, -655342, 5, -655341, 5, -655340, 5, -655339, 5, -655338, 5, -655337, 5, -655336, 5, -655335, 4, -655334, 2, -524334, 2, -589809, 2, -589808, 4, -589807, 5, -589806, 5, -589805, 5, -589804, 5, -589803, 5, -589802, 5, -589801, 5, -589800, 5, -589799, 4, -589798, 2, -458798, 2, -524273, 2, -524272, 4, -524271, 5, -524270, 5, -524269, 5, -524268, 5, -524267, 5, -524266, 5, -524265, 5, -524264, 5, -524263, 4, -524262, 2, -393262, 2, -458737, 2, -458736, 4, -458735, 5, -458734, 5, -458733, 5, -458732, 5, -458731, 5, -458730, 5, -458729, 5, -458728, 5, -458727, 4, -458726, 2, -327726, 2, -393201, 2, -393200, 4, -393199, 5, -393198, 5, -393197, 5, -393196, 5, -393195, 5, -393194, 5, -393193, 5, -393192, 5, -393191, 4, -393190, 2, -262190, 2, -327665, 2, -327664, 4, -327663, 5, -327662, 5, -327661, 5, -327660, 5, -327659, 5, -327658, 5, -327657, 5, -327656, 5, -327655, 4, -327654, 2, -196654, 2, -262129, 2, -262128, 4, -262127, 5, -262126, 5, -262125, 5, -262124, 5, -262123, 5, -262122, 5, -262121, 5, -262120, 5, -262119, 4, -262118, 2, -131118, 536870913, -131117, 0, -131116, 0, -131115, 0, -131114, 7, -131113, 7, -131112, 7, -131111, 0, -131110, 0, -131109, 0, -131108, 0, -131107, 0, -131106, 0, -131105, 0, -131104, 0, -131103, 0, -131102, 0, -131101, 0, -131100, 0, -131099, 0, -131098, 0, -131097, 0, -131096, 0, -131095, 0, -131094, 0, -131093, 0, -131092, 0, -131091, 0, -131090, 0, -131089, 0, -131088, 0, -131087, 0, -131086, 0, -131085, 0, -131084, 0, -131083, 0, -131082, 0, -131081, 0, -131080, 0, -131079, 0, -131078, 0, -131077, 0, -131076, 0, -131075, 0, -131074, 0, -131073, 0, -196608, 0, -196607, 0, -196605, 7, -196604, 7, -196603, 7, -196601, 0, -196600, 0, -196599, 0, -196598, 0, -196597, 0, -196596, 0, -196595, 0, -196594, 0, -196593, 1, -196592, 4, -196591, 5, -196590, 5, -196589, 5, -196588, 5, -196587, 5, -196586, 5, -196585, 5, -196584, 5, -196583, 4, -196582, 2, -65582, 2, -65581, -2147483645, -65580, -1610612733, -65579, 2, -65578, 7, -65577, 7, -65576, 7, -65575, 2, -65574, -2147483645, -65573, -2147483644, -65572, -2147483644, -65571, -2147483644, -65570, -2147483644, -65569, -2147483644, -65568, -2147483644, -65567, -2147483644, -65566, -2147483644, -65565, -2147483644, -65564, -2147483644, -65563, -2147483644, -65562, -2147483644, -65561, -2147483644, -65560, -2147483644, -65559, -2147483644, -65558, -2147483644, -65557, -2147483644, -65556, -2147483644, -65555, -2147483644, -65554, -2147483644, -65553, -2147483644, -65552, -2147483644, -65551, -2147483644, -65550, -2147483644, -65549, -2147483644, -65548, -2147483644, -65547, -2147483644, -65546, -2147483644, -65545, -2147483644, -65544, -2147483644, -65543, -2147483644, -65542, -2147483644, -65541, -2147483644, -65540, -2147483644, -65539, -2147483644, -65538, -2147483644, -65537, -2147483644, -131072, -2147483644, -131071, -1610612733, -131070, 2, -131069, 7, -131068, 7, -131067, 7, -131066, 2, -131065, -2147483645, -131064, -2147483644, -131063, -2147483644, -131062, -2147483644, -131061, -2147483644, -131060, -2147483644, -131059, -2147483644, -131058, -1610612733, -131057, 2, -131056, 4, -131055, 5, -131054, 5, -131053, 5, -131052, 5, -131051, 5, -131050, 5, -131049, 5, -131048, 5, -131047, 4, -131046, 2, -46, 2, -45, 4, -44, 4, -43, 2, -42, 7, -41, 7, -40, 7, -39, 2, -38, 4, -37, -2147483643, -36, -2147483643, -35, -2147483643, -34, -2147483643, -33, -2147483643, -32, -2147483643, -31, -2147483643, -30, -2147483643, -29, -2147483643, -28, -2147483643, -27, -2147483643, -26, -2147483643, -25, -2147483643, -24, -2147483643, -23, -2147483643, -22, -2147483643, -21, -2147483643, -20, -2147483643, -19, -2147483643, -18, -2147483643, -17, -2147483643, -16, -2147483643, -15, -2147483643, -14, -2147483643, -13, -2147483643, -12, -2147483643, -11, -2147483643, -10, -2147483643, -9, -2147483643, -8, -2147483643, -7, -2147483643, -6, -2147483643, -5, -2147483643, -4, -2147483643, -3, -2147483643, -2, -2147483643, -1, -2147483643, -65536, -2147483643, -65535, 4, -65534, 2, -65533, 7, -65532, 7, -65531, 7, -65530, 2, -65529, 4, -65528, -2147483643, -65527, -2147483643, -65526, -2147483643, -65525, -2147483643, -65524, -2147483643, -65523, -2147483643, -65522, 4, -65521, 2, -65520, 4, -65519, 5, -65518, 5, -65517, 5, -65516, 5, -65515, 5, -65514, 5, -65513, 5, -65512, 5, -65511, 4, -65510, 2, 65490, 2, 65491, 4, 65492, 4, 65493, 2, 65494, 7, 65495, 7, 65496, 7, 65497, 2, 65498, 4, 65499, -2147483643, 65500, -2147483643, 65501, -2147483643, 65502, -2147483643, 65503, -2147483643, 65504, -2147483643, 65505, -2147483643, 65506, -2147483643, 65507, -2147483643, 65508, -2147483643, 65509, -2147483643, 65510, -2147483643, 65511, -2147483643, 65512, -2147483643, 65513, -2147483643, 65514, -2147483643, 65515, -2147483643, 65516, -2147483643, 65517, -2147483643, 65518, -2147483643, 65519, -2147483643, 65520, -2147483643, 65521, -2147483643, 65522, -2147483643, 65523, -2147483643, 65524, -2147483643, 65525, -2147483643, 65526, -2147483643, 65527, -2147483643, 65528, -2147483643, 65529, -2147483643, 65530, -2147483643, 65531, -2147483643, 65532, -2147483643, 65533, -2147483643, 65534, -2147483643, 65535, -2147483643, 0, -2147483643, 1, 4, 2, 2, 3, 7, 4, 7, 5, 7, 6, 2, 7, 4, 8, -2147483643, 9, -2147483643, 10, -2147483643, 11, -2147483643, 12, -2147483643, 13, -2147483643, 14, 4, 15, 2, 16, 4, 17, 5, 18, 5, 19, 5, 20, 5, 21, 5, 22, 5, 23, 5, 24, 5, 25, 4, 26, 2, 131026, 2, 131027, 4, 131028, 4, 131029, 2, 131030, 7, 131031, 7, 131032, 7, 131033, 2, 131034, 4, 131035, -2147483643, 131036, -2147483643, 131037, -2147483643, 131038, -2147483643, 131039, -2147483643, 131040, -2147483643, 131041, -2147483643, 131042, -2147483643, 131043, -2147483643, 131044, -2147483643, 131045, -2147483643, 131046, -2147483643, 131047, -2147483643, 131048, -2147483643, 131049, -2147483643, 131050, -2147483643, 131051, -2147483643, 131052, -2147483643, 131053, -2147483643, 131054, -2147483643, 131055, -2147483643, 131056, -2147483643, 131057, -2147483643, 131058, -2147483643, 131059, -2147483643, 131060, -2147483643, 131061, -2147483643, 131062, -2147483643, 131063, -2147483643, 131064, -2147483643, 131065, -2147483643, 131066, -2147483643, 131067, -2147483643, 131068, -2147483643, 131069, -2147483643, 131070, -2147483643, 131071, -2147483643, 65536, -2147483643, 65537, 4, 65538, 2, 65539, 7, 65540, 7, 65541, 7, 65542, 2, 65543, 4, 65544, -2147483643, 65545, -2147483643, 65546, -2147483643, 65547, -2147483643, 65548, -2147483643, 65549, -2147483643, 65550, 4, 65551, 2, 65552, 4, 65553, 5, 65554, 5, 65555, 5, 65556, 5, 65557, 5, 65558, 5, 65559, 5, 65560, 5, 65561, 4, 65562, 2, 196562, 2, 196563, 4, 196564, 4, 196565, 2, 196566, 7, 196567, 7, 196568, 7, 196569, 2, 196570, 4, 196571, -2147483643, 196572, -2147483643, 196573, -2147483643, 196574, -2147483643, 196575, -2147483643, 196576, -2147483643, 196577, -2147483643, 196578, -2147483643, 196579, -2147483643, 196580, -2147483643, 196581, -2147483643, 196582, -2147483643, 196583, -2147483643, 196584, -2147483643, 196585, -2147483643, 196586, -2147483643, 196587, -2147483643, 196588, -2147483643, 196589, -2147483643, 196590, -2147483643, 196591, -2147483643, 196592, -2147483643, 196593, -2147483643, 196594, -2147483643, 196595, -2147483643, 196596, -2147483643, 196597, -2147483643, 196598, -2147483643, 196599, -2147483643, 196600, -2147483643, 196601, -2147483643, 196602, -2147483643, 196603, -2147483643, 196604, -2147483643, 196605, -2147483643, 196606, -2147483643, 196607, -2147483643, 131072, -2147483643, 131073, 4, 131074, 2, 131075, 7, 131076, 7, 131077, 7, 131078, 2, 131079, 4, 131080, -2147483643, 131081, -2147483643, 131082, -2147483643, 131083, -2147483643, 131084, -2147483643, 131085, -2147483643, 131086, 4, 131087, 2, 131088, 4, 131089, 5, 131090, 5, 131091, 5, 131092, 5, 131093, 5, 131094, 5, 131095, 5, 131096, 5, 131097, 4, 131098, 2, 262098, 2, 262099, -1073741821, 262100, -536870909, 262101, 2, 262102, 7, 262103, 7, 262104, 7, 262105, 2, 262106, -1073741821, 262107, -2147483644, 262108, -2147483644, 262109, -2147483644, 262110, -2147483644, 262111, -2147483644, 262112, -2147483644, 262113, -2147483644, 262114, -2147483644, 262115, -2147483644, 262116, -2147483644, 262117, -2147483644, 262118, -2147483644, 262119, -2147483644, 262120, -2147483644, 262121, -2147483644, 262122, -2147483644, 262123, -2147483644, 262124, -2147483644, 262125, -2147483644, 262126, -2147483644, 262127, -2147483644, 262128, -2147483644, 262129, -2147483644, 262130, -2147483644, 262131, -2147483644, 262132, -2147483644, 262133, -2147483644, 262134, -2147483644, 262135, -2147483644, 262136, -2147483644, 262137, -2147483644, 262138, -2147483644, 262139, -2147483644, 262140, -2147483644, 262141, -2147483644, 262142, -2147483644, 262143, -2147483644, 196608, -2147483644, 196609, -536870909, 196610, 2, 196611, 7, 196612, 7, 196613, 7, 196614, 2, 196615, -1073741821, 196616, -2147483644, 196617, -2147483644, 196618, -2147483644, 196619, -2147483644, 196620, -2147483644, 196621, -2147483644, 196622, -536870909, 196623, 2, 196624, 1073741827, 196625, -1610612732, 196626, -1610612732, 196627, -1610612732, 196628, -1610612732, 196629, -1610612732, 196630, -1610612732, 196631, -1610612732, 196632, -1610612732, 196633, 1610612739, 196634, 2 )
+
+[node name="ClimbableGroup" type="Node2D" parent="tilemap"]
+
+[node name="ClimbableBlock" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 368, -624 )
+
+[node name="ClimbableBlock1" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 208, -80 )
+
+[node name="ClimbableBlock2" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 80, -80 )
+
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock2"]
+
+flip_h = false
+
+[node name="PlatformGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="tilemap/PlatformGroup"]
+
+editor/display_folded = true
+transform/pos = Vector2( 448, -624 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="Sprite" type="Sprite" parent="tilemap/PlatformGroup/StaticBody2D"]
+
+transform/pos = Vector2( -16, 0 )
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 0, 96, 32 )
+
+[node name="Sprite 2" type="Sprite" parent="tilemap/PlatformGroup/StaticBody2D"]
+
+transform/pos = Vector2( 48, 0 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tilemap/PlatformGroup/StaticBody2D"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="BreakableGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="TestBreakable" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -1328, -80 )
+
+[node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable/KinematicBody2D"]
+
+texture = ExtResource( 3 )
+
+[node name="TestBreakable1" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -1296, -80 )
+
+[node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable1/KinematicBody2D"]
+
+texture = ExtResource( 3 )
+
+[node name="TestBreakable2" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -1264, -80 )
+
+[node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D"]
+
+texture = ExtResource( 3 )
+
+[node name="TestBreakable3" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 496, -784 )
+
+[node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable3/KinematicBody2D"]
+
+texture = ExtResource( 6 )
+
+[node name="TestBreakable4" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 496, -752 )
+
+[node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable4/KinematicBody2D"]
+
+texture = ExtResource( 6 )
+
+[node name="TestBreakable5" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 496, -720 )
+
+[node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable5/KinematicBody2D"]
+
+texture = ExtResource( 6 )
+
+[node name="TestBreakable6" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 496, -688 )
+
+[node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable6/KinematicBody2D"]
+
+texture = ExtResource( 6 )
+
+[node name="TestBreakable7" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 496, -656 )
+
+[node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable7/KinematicBody2D"]
+
+texture = ExtResource( 6 )
+
+[node name="LadderGroup" type="Node2D" parent="tilemap"]
+
+[node name="TestLadder 2" parent="tilemap/LadderGroup" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 144, -112 )
+
+[node name="TestLadder" parent="tilemap/LadderGroup" instance=ExtResource( 8 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 144, 16 )
+
+[node name="Sprite" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
+
+region_rect = Rect2( 0, 0, 32, 224 )
+
+[node name="ladder" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
+
+transform/scale = Vector2( 1, 7 )
+
+[node name="SwitchGroup" type="Node2D" parent="tilemap"]
+
+[node name="PullSwitch" parent="tilemap/SwitchGroup" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 32, -624 )
+target_nodes = [ "PlatformGroup/StaticBody2D", "ClimbableGroup/ClimbableBlock" ]
+related_switches = [  ]
+enabled = true
+invert = false
+
+[node name="FloorSwitch" parent="tilemap/SwitchGroup" instance=ExtResource( 10 )]
+
+transform/pos = Vector2( -608, -96 )
+target_nodes = [ "SunbeamGroup/Sunbeam", "SunbeamGroup/Sunbeam1" ]
+related_switches = [  ]
+enabled = false
+invert = false
+is_toggle = true
+
+[node name="PotGroup" type="Node2D" parent="tilemap"]
+
+[node name="Pot" parent="tilemap/PotGroup" instance=ExtResource( 11 )]
+
+transform/pos = Vector2( -608, -144 )
+type = "SWITCH"
+reward = "SwitchGroup/FloorSwitch"
+
+[node name="Pot1" parent="tilemap/PotGroup" instance=ExtResource( 11 )]
+
+transform/pos = Vector2( -1200, -144 )
+
+[node name="Pot2" parent="tilemap/PotGroup" instance=ExtResource( 11 )]
+
+transform/pos = Vector2( -1392, -144 )
+
+[node name="EnemiesGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="BlackSkeleton" parent="tilemap/EnemiesGroup" instance=ExtResource( 12 )]
+
+transform/pos = Vector2( -160, -144 )
+
+[node name="BlackSkeleton1" parent="tilemap/EnemiesGroup" instance=ExtResource( 12 )]
+
+transform/pos = Vector2( -768, -144 )
+
+[node name="SunbeamGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="Sunbeam" parent="tilemap/SunbeamGroup" instance=ExtResource( 13 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -608, -544 )
+
+[node name="block" parent="tilemap/SunbeamGroup/Sunbeam"]
+
+transform/scale = Vector2( 4, 28 )
+
+[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam"]
+
+transform/scale = Vector2( 4, 28 )
+
+[node name="Sunbeam1" parent="tilemap/SunbeamGroup" instance=ExtResource( 13 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -1296, -544 )
+
+[node name="block" parent="tilemap/SunbeamGroup/Sunbeam1"]
+
+transform/scale = Vector2( 4, 28 )
+
+[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam1"]
+
+transform/scale = Vector2( 4, 28 )
+
+[node name="FakeGroup" type="Node2D" parent="tilemap"]
+
+[node name="Fake" parent="tilemap/FakeGroup" instance=ExtResource( 14 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -1296, 16 )
+overlay = "../overlay"
+
+[node name="fake" parent="tilemap/FakeGroup/Fake"]
+
+transform/scale = Vector2( 5, 7 )
+
+[node name="enabler" parent="tilemap/FakeGroup/Fake/fake"]
+
+enabler/pause_animated_sprites = true
+
+[node name="Fake1" parent="tilemap/FakeGroup" instance=ExtResource( 14 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 688, -720 )
+overlay = "../overlay2"
+
+[node name="fake" parent="tilemap/FakeGroup/Fake1"]
+
+transform/scale = Vector2( 11, 7 )
+
+[node name="enabler" parent="tilemap/FakeGroup/Fake1/fake"]
+
+enabler/pause_animated_sprites = true
+
+[node name="overlay" type="Node2D" parent="tilemap/FakeGroup"]
+
+editor/display_folded = true
+visibility/visible = false
+transform/pos = Vector2( -1296, 16 )
+z/z = 2
+
+[node name="Sprite" type="Sprite" parent="tilemap/FakeGroup/overlay"]
+
+transform/pos = Vector2( 0, 16 )
+texture = ExtResource( 15 )
+region = true
+region_rect = Rect2( 0, 0, 224, 128 )
+
+[node name="Sprite1" type="Sprite" parent="tilemap/FakeGroup/overlay"]
+
+transform/pos = Vector2( 0, -64 )
+transform/rot = 90.0
+texture = ExtResource( 16 )
+region = true
+region_rect = Rect2( 0, 0, 32, 224 )
+
+[node name="Sprite2" type="Sprite" parent="tilemap/FakeGroup/overlay"]
+
+transform/pos = Vector2( 0, 96 )
+transform/rot = 90.0
+texture = ExtResource( 16 )
+region = true
+region_rect = Rect2( 0, 0, 32, 224 )
+
+[node name="overlay2" type="Node2D" parent="tilemap/FakeGroup"]
+
+editor/display_folded = true
+visibility/visible = false
+transform/pos = Vector2( 688, -432 )
+z/z = 2
+
+[node name="Sprite1" type="Sprite" parent="tilemap/FakeGroup/overlay2"]
+
+transform/pos = Vector2( -16, 0 )
+texture = ExtResource( 15 )
+region = true
+region_rect = Rect2( 0, 0, 256, 1056 )
+
+[node name="Sprite" type="Sprite" parent="tilemap/FakeGroup/overlay2"]
+
+transform/pos = Vector2( -160, -544 )
+texture = ExtResource( 17 )
+
+[node name="Sprite2" type="Sprite" parent="tilemap/FakeGroup/overlay2"]
+
+transform/pos = Vector2( 128, -544 )
+texture = ExtResource( 17 )
+flip_h = true
+
+[node name="Sprite3" type="Sprite" parent="tilemap/FakeGroup/overlay2"]
+
+transform/pos = Vector2( 128, 544 )
+texture = ExtResource( 17 )
+flip_h = true
+flip_v = true
+
+[node name="Sprite4" type="Sprite" parent="tilemap/FakeGroup/overlay2"]
+
+transform/pos = Vector2( -160, 544 )
+texture = ExtResource( 17 )
+flip_v = true
+
+[node name="Sprite5" type="Sprite" parent="tilemap/FakeGroup/overlay2"]
+
+transform/pos = Vector2( -16, 544 )
+transform/rot = 90.0
+texture = ExtResource( 16 )
+region = true
+region_rect = Rect2( 0, 0, 32, 256 )
+
+[node name="Sprite6" type="Sprite" parent="tilemap/FakeGroup/overlay2"]
+
+transform/pos = Vector2( -16, -544 )
+transform/rot = 90.0
+texture = ExtResource( 16 )
+region = true
+region_rect = Rect2( 0, 0, 32, 256 )
+
+[node name="Sprite7" type="Sprite" parent="tilemap/FakeGroup/overlay2"]
+
+transform/pos = Vector2( -160, 0 )
+texture = ExtResource( 16 )
+region = true
+region_rect = Rect2( 0, 0, 32, 1056 )
+
+[node name="Sprite8" type="Sprite" parent="tilemap/FakeGroup/overlay2"]
+
+transform/pos = Vector2( 128, 0 )
+texture = ExtResource( 16 )
+region = true
+region_rect = Rect2( 0, 0, 32, 1056 )
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 18 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 880, -720 )
+target_level = "res://levels/springislandcastle/0-6.tscn"
+teleport_to = Vector2( -332, 16 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+
+transform/scale = Vector2( 1, 5 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 18 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 144, 144 )
+is_horizontal = false
+target_level = "res://levels/springislandcastle/0-4.tscn"
+teleport_to = Vector2( -48, -1424 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
+
+transform/scale = Vector2( 3, 1 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport1/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="Teleport2" parent="tilemap/TeleportGroup" instance=ExtResource( 18 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -1296, 144 )
+is_horizontal = false
+target_level = "res://levels/springislandcastle/3-0.tscn"
+teleport_to = Vector2( -16, -112 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport2"]
+
+transform/scale = Vector2( 3, 1 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport2/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="boundaries" type="Node2D" parent="tilemap"]
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( -1478, -998 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( 874, 138 )
+
+[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable1/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable1" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable1/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable1" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable2" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable2" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable3/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable3" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable3/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable3" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable4/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable4" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable4/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable4" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable5/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable5" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable5/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable5" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable6/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable6" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable6/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable6" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable7/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable7" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable7/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable7" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/FakeGroup/Fake/fake/enabler" to="tilemap/FakeGroup/Fake" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/FakeGroup/Fake/fake/enabler" to="tilemap/FakeGroup/Fake" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/FakeGroup/Fake1/fake/enabler" to="tilemap/FakeGroup/Fake1" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/FakeGroup/Fake1/fake/enabler" to="tilemap/FakeGroup/Fake1" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="exit_screen"]
+
+[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport2/teleport/enabler" to="tilemap/TeleportGroup/Teleport2" method="enter_screen"]
+
+[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport2/teleport/enabler" to="tilemap/TeleportGroup/Teleport2" method="exit_screen"]
+
+
+[editable path="tilemap/ClimbableGroup/ClimbableBlock2"]
+[editable path="tilemap/BreakableGroup/TestBreakable"]
+[editable path="tilemap/BreakableGroup/TestBreakable1"]
+[editable path="tilemap/BreakableGroup/TestBreakable2"]
+[editable path="tilemap/BreakableGroup/TestBreakable3"]
+[editable path="tilemap/BreakableGroup/TestBreakable4"]
+[editable path="tilemap/BreakableGroup/TestBreakable5"]
+[editable path="tilemap/BreakableGroup/TestBreakable6"]
+[editable path="tilemap/BreakableGroup/TestBreakable7"]
+[editable path="tilemap/LadderGroup/TestLadder"]
+[editable path="tilemap/SunbeamGroup/Sunbeam"]
+[editable path="tilemap/SunbeamGroup/Sunbeam1"]
+[editable path="tilemap/FakeGroup/Fake"]
+[editable path="tilemap/FakeGroup/Fake1"]
+[editable path="tilemap/TeleportGroup/Teleport"]
+[editable path="tilemap/TeleportGroup/Teleport1"]
+[editable path="tilemap/TeleportGroup/Teleport2"]

@@ -86,10 +86,6 @@ editor/display_folded = true
 
 transform/pos = Vector2( 208, 144 )
 
-[node name="enabler" parent="tilemap/BreakableGroup/TestBreakable/KinematicBody2D"]
-
-enabler/pause_animated_sprites = true
-
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable/KinematicBody2D"]
 
 texture = ExtResource( 7 )
@@ -98,10 +94,6 @@ texture = ExtResource( 7 )
 
 transform/pos = Vector2( 240, 144 )
 
-[node name="enabler" parent="tilemap/BreakableGroup/TestBreakable1/KinematicBody2D"]
-
-enabler/pause_animated_sprites = true
-
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable1/KinematicBody2D"]
 
 texture = ExtResource( 7 )
@@ -109,10 +101,6 @@ texture = ExtResource( 7 )
 [node name="TestBreakable2" parent="tilemap/BreakableGroup" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 272, 144 )
-
-[node name="enabler" parent="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D"]
-
-enabler/pause_animated_sprites = true
 
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D"]
 

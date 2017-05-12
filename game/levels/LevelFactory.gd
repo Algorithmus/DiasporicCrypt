@@ -19,6 +19,8 @@ func _init():
 	springislandcastle.type = "quest"
 	springislandcastle.position = Vector2(463, 26)
 	springislandcastle.description = "LVL_SPRINGISLANDCASTLE_DESCRIPTION"
+	springislandcastle.reward = 10000
+	springislandcastle.item = "ITEM_GLYPH1"
 	springislandcastle.location = locationfactory.locations["LVL_SPRINGISLANDCASTLE"]
 	levels[springislandcastle.title] = springislandcastle
 	

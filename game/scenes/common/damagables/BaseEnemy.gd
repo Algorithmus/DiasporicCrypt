@@ -336,9 +336,9 @@ func step_player(delta):
 	var rightX = get_global_pos().x + sprite_offset.x
 
 	# bottom left ray check
-	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+16), [self, player.get_node("player")])
+	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+31), [self, player.get_node("player")])
 	# bottom right ray check
-	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+16), [self, player.get_node("player")])
+	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+31), [self, player.get_node("player")])
 
 	# check regular blocks
 	var normalTileCheck = !relevantTileA.empty() || !relevantTileB.empty()

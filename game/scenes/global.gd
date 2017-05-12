@@ -234,7 +234,7 @@ func on_settings_saved():
 	if (state == FIRSTRUN):
 		settings.get_node("title").set_text(tr("KEY_SETTINGS"))
 		load_backkeys()
-		settings.get_node("back").show()
+		back.show()
 		show_menu()
 		focus_main()
 	else:
