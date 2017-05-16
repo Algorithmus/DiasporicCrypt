@@ -633,7 +633,7 @@ func sequence_finished():
 # Globals with preloaded assets are not cleared properly. Until this is
 # fixed, we are clearing them manually ourselves.
 func _notification(what):
-	if (what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST):
+	if (what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST || what == MainLoop.NOTIFICATION_PREDELETE):
 		Globals.set("magic_spells", null)
 		Globals.set("itemfactory", null)
 		Globals.set("levels", null)
@@ -643,4 +643,5 @@ func _notification(what):
 		Globals.set("mapobjects", null)
 		Globals.set("mapindex", null)
 		Globals.set("available_spells", null)
-		get_tree().quit()
+		if (what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST):
+			get_tree().quit()
