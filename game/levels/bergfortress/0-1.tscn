@@ -367,8 +367,6 @@ transform/pos = Vector2( 304, 432 )
 
 [node name="BreakableGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
-
 [node name="ChainBreakable" parent="tilemap/BreakableGroup" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 112, -528 )

@@ -153,8 +153,6 @@ special = "swift"
 
 [node name="GateGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
-
 [node name="GemGate" parent="tilemap/GateGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( -240, 80 )
