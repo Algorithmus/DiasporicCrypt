@@ -189,6 +189,10 @@ func step_player(delta):
 	
 	var areaTiles = damage_rect.get_overlapping_areas()
 	var new_animation = current_animation
+	var onSlope
+	var relevantSlopeTile
+	var abSlope
+	var desiredY
 	if (!gameover):
 		# check underwater
 		check_underwater(areaTiles)
@@ -206,9 +210,9 @@ func step_player(delta):
 			var horizontal = step_horizontal(space_state)
 			new_animation = horizontal["animation"]
 			horizontal_motion = horizontal["motion"]
-			var onSlope = horizontal["slope"]
+			onSlope = horizontal["slope"]
 			var slopeX = horizontal["slopeX"]
-			var relevantSlopeTile = horizontal["slopeTile"]
+			relevantSlopeTile = horizontal["slopeTile"]
 			forwardY = get_global_pos().y + sprite_offset.y
 			
 			# disengage hanging if hurt
@@ -223,9 +227,9 @@ func step_player(delta):
 			var vertical = step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, onSlope, oneWayTile, relevantSlopeTile)
 		
 			relevantSlopeTile = vertical["slopeTile"]
-			var onSlope = vertical["slope"]
-			var abSlope = vertical["abSlope"]
-			var desiredY = vertical["desiredY"]
+			onSlope = vertical["slope"]
+			abSlope = vertical["abSlope"]
+			desiredY = vertical["desiredY"]
 			animation_speed = vertical["animationSpeed"]
 			ladderY = vertical["ladderY"]
 			
@@ -298,6 +302,7 @@ func step_player(delta):
 									chaingui.get_node("AnimationPlayer").play("newattack")
 								remove_special_collider()
 								special_collider = current_chain_special["collider"].instance()
+								add_to_blacklist(special_collider)
 								if (magic_spells[selected_spell].has("type")):
 									special_collider.set("type", magic_spells[selected_spell]["type"])
 								var special_offset = 0
@@ -393,9 +398,13 @@ func step_player(delta):
 				newpos = target_enemy.get_ref().get_global_pos().y - get_global_pos().y + target_enemy_offset.y
 				is_valid_target = target_enemy.get_ref().get_name() == "damagable" && !(target_enemy.get_ref().get_parent() extends chain_target)
 			# do special attack specific actions
+			# unfortunately, some attacks require collision checks anyways especially on slopes, so we do them
 			if (current_chain_special["id"] == "thrust"):
 				if (target_exists && hit_enemy && is_valid_target):
 					target_enemy.get_ref().get_parent().set_global_pos(Vector2(target_enemy.get_ref().get_global_pos().x + direction * 5, target_enemy.get_ref().get_global_pos().y))
+				accel += falling_modifier(accel)
+				var vertical = step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, false, oneWayTile, null)
+				newpos = accel
 			elif (current_chain_special["id"] == "slice"):
 				newpos = min(newpos + 1, 0)
 				if (target_exists && hit_enemy && is_valid_target):
@@ -406,25 +415,37 @@ func step_player(delta):
 				if (target_exists && hit_enemy && is_valid_target):
 					target_enemy.get_ref().get_parent().set("floortile_check_requested", false)
 					target_enemy.get_ref().get_parent().set_global_pos(Vector2(target_enemy.get_ref().get_global_pos().x, get_global_pos().y - TILE_SIZE))
-			elif (current_chain_special["id"] == "stab"):
-				if (animation_pos <= 0.15):
-					newpos = min(position.y + 1, 0)
-				else:
-					newpos = position.y + 1
-					#if (newpos >= target_enemy_offset.y + get_global_pos().y && target_exists && hit_enemy && target_enemy.get_name() == "damagable"):
-					#	target_enemy.get_parent().set_global_pos(Vector2(target_enemy.get_global_pos().x, get_global_pos().y + target_enemy_offset.y))
+			elif (current_chain_special["id"] == "stab" || current_chain_special["id"] == "chop"):
+				accel += falling_modifier(accel)
+				var vertical = step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, false, oneWayTile, null)
+				newpos = accel
 			# prevent enemy dropping through the floor on certain attacks
 			elif (current_chain_special["id"] == "dualspin"):
 				if (target_exists && hit_enemy && is_valid_target):
 					target_enemy.get_ref().get_parent().set("floortile_check_requested", true)
+				accel += falling_modifier(accel)
+				var vertical = step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, false, oneWayTile, null)
+				newpos = accel
 			elif (current_chain_special["id"] == "swift"):
 				if (target_exists && hit_enemy && is_valid_target):
 					target_enemy.get_ref().get_parent().set("floortile_check_requested", true)
+				accel += falling_modifier(accel)
+				var vertical = step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, false, oneWayTile, null)
+				newpos = accel
 			elif (current_chain_special["id"] == "rush"):
-				move(Vector2(direction*15, 0))
+				runspeed = 15
+				var horizontal = step_horizontal(space_state)
+				onSlope = horizontal["slope"]
+				relevantSlopeTile = horizontal["slopeTile"]
+				accel += falling_modifier(accel)
+				var vertical = step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, onSlope, oneWayTile, relevantSlopeTile)
+				newpos = accel
 			elif (current_chain_special["id"] == "void"):
 				if (animation_pos >= 0.3 && animation_end > animation_pos && !has_node(special_collider.get_name())):
 					add_child(special_collider)
+				accel += falling_modifier(accel)
+				var vertical = step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, false, oneWayTile, null)
+				newpos = accel
 			position.y = newpos
 			if (hit_enemy):
 				hit_enemy = false
@@ -434,6 +455,7 @@ func step_player(delta):
 			if (animation_end <= animation_pos):
 				if (animation_player.get_current_animation_length() == animation_player.get_current_animation_pos()):
 					is_chain_special = false
+					runspeed = RUN_SPEED
 					remove_special_collider()
 					if (target_enemy == null):
 						reset_chain()
@@ -459,6 +481,7 @@ func step_player(delta):
 		if (is_hurt || on_ladder || current_chain_delay >= chain_delay || chain_counter > MAX_CHAIN):
 			reset_chain()
 			is_chain_special = false
+			runspeed = RUN_SPEED
 	else:
 		#if (!get_tree().is_paused() && get_pause_mode() == 2):
 			#get_tree().set_pause(true)
@@ -503,6 +526,7 @@ func remove_chain_collider():
 
 func remove_special_collider():
 	if (special_collider != null && has_node(special_collider.get_name())):
+		remove_from_blacklist(special_collider)
 		remove_child(special_collider)
 
 func _on_chain_collision(area):
@@ -552,6 +576,12 @@ func update_fusion():
 	update_attack_color("stab", auracolor, weaponcolor1, weaponcolor2)
 	update_attack_color("dualspin", auracolor, weaponcolor1, weaponcolor2)
 	update_attack_color("rush", auracolor, weaponcolor1, weaponcolor2)
+
+func input_left():
+	return .input_left() || (is_chain_special && current_chain_special["id"] == "rush" && direction < 0)
+
+func input_right():
+	return .input_right() || (is_chain_special && current_chain_special["id"] == "rush" && direction > 0)
 
 func _input(event):
 	if (!is_transforming):
