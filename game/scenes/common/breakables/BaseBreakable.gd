@@ -14,10 +14,12 @@ func _fixed_process(delta):
 	if (!is_crumbling):
 		var tiles = get_node("KinematicBody2D/breakable").get_overlapping_areas()
 		if (!check_related_blocks):
+			# unfortunately, get_overlapping_areas() doesn't always return back anything the first time, so we have to keep
+			# checking until we get something
 			for i in tiles:
 				if (i.get_name() == "breakable" && i.get_parent().get_parent().get_script() == get_script()):
 					related_blocks.append(weakref(i.get_parent().get_parent()))
-			check_related_blocks = true
+				check_related_blocks = true
 		for i in tiles:
 			if (check_crumble(i)):
 				start_crumble()
@@ -45,6 +47,7 @@ func crumble():
 
 func _ready():
 	# Initialization here
+	print("ready")
 	sound = get_node("sound")
 
 func sprite_opacity(alpha):

@@ -16,12 +16,19 @@ extents = Vector2( 18, 18 )
 
 [sub_resource type="SampleLibrary" id=3]
 
-samples/crumble = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
+samples/crumble = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 3 )
+}
 
 [node name="SpecialBreakable" type="Node2D"]
 
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"Script" }
+__meta__ = {
+"__editor_plugin_screen__": "Script"
+}
 special = ""
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
