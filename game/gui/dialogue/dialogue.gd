@@ -148,9 +148,7 @@ func check_dialog():
 			show_dialog()
 	else:
 		text.set_visible_characters(-1)
-		if (has_choice()):
-			add_choices()
-		else:
+		if (!has_choice()):
 			next.show()
 
 func show_dialog():
