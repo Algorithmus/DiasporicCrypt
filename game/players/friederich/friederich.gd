@@ -85,7 +85,9 @@ func _ready():
 	exp_growth_obj.setup(level)
 	
 	chaingui = get_tree().get_root().get_node("world/gui/CanvasLayer/chain")
-	
+
+	weapon_offset.y -= 64
+
 	chain_collider = weapon.instance()
 
 	chain_collider.connect("area_enter", self, "_on_chain_collision")
@@ -154,6 +156,13 @@ func check_attack_animation(new_animation):
 			modifier = "a"
 		new_animation = modifier + chain_animation + "attack"
 	return new_animation
+
+func do_attack():
+	.do_attack()
+	weapon_collider.set_scale(Vector2(1, 1))
+	if (is_crouching):
+		weapon_collider.set_scale(Vector2(0.5, 0.75))
+		weapon_collider.set_pos(Vector2(weapon_collider.get_pos().x - 42 * direction, weapon_collider.get_pos().y + 16))
 
 func check_attacking():
 	.check_attacking()
