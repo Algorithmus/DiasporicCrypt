@@ -33,6 +33,14 @@ var loadclass = preload("res://gui/menu/loadsave.tscn")
 var selfclass = preload("res://scenes/global.tscn")
 
 func _ready():
+	# Empty built in inputs are not properly removed
+	# Delete and re add the inputs to workaround this issue for now
+	if InputMap.has_action("ui_focus_next"):
+		InputMap.erase_action("ui_focus_next")
+	InputMap.add_action("ui_focus_next")
+	if InputMap.has_action("ui_focus_prev"):
+		InputMap.erase_action("ui_focus_prev")
+	InputMap.add_action("ui_focus_prev")
 	sound = get_node("sound")
 	logo = get_node("CanvasLayer/menu/logo")
 	main = get_node("CanvasLayer/menu/main")

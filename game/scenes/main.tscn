@@ -22,15 +22,15 @@
 [ext_resource path="res://gui/worldmap/icons/bonus.png" type="Texture" id=20]
 [ext_resource path="res://gui/fonts/S-12-dialog.fnt" type="BitmapFont" id=21]
 [ext_resource path="res://gui/hud/ItemDisplay.gd" type="Script" id=22]
-[ext_resource path="res://gui/maps/HudMap.gd" type="Script" id=23]
-[ext_resource path="res://gui/fonts/XL-72.fnt" type="BitmapFont" id=24]
-[ext_resource path="res://gui/dialogue/dialogue.tscn" type="PackedScene" id=25]
-[ext_resource path="res://gui/menu/menu.tscn" type="PackedScene" id=26]
-[ext_resource path="res://gui/TextButton.tscn" type="PackedScene" id=27]
-[ext_resource path="res://players/magic/wind/action.png" type="Texture" id=28]
-[ext_resource path="res://gui/sequences/demonic_f.png" type="Texture" id=29]
-[ext_resource path="res://gui/sequences/demonic_a.png" type="Texture" id=30]
-[ext_resource path="res://gui/fonts/L-24-Keyboard-outline.fnt" type="BitmapFont" id=31]
+[ext_resource path="res://gui/fonts/L-24-Keyboard-outline.fnt" type="BitmapFont" id=23]
+[ext_resource path="res://gui/maps/HudMap.gd" type="Script" id=24]
+[ext_resource path="res://gui/fonts/XL-72.fnt" type="BitmapFont" id=25]
+[ext_resource path="res://gui/dialogue/dialogue.tscn" type="PackedScene" id=26]
+[ext_resource path="res://gui/menu/menu.tscn" type="PackedScene" id=27]
+[ext_resource path="res://gui/TextButton.tscn" type="PackedScene" id=28]
+[ext_resource path="res://players/magic/wind/action.png" type="Texture" id=29]
+[ext_resource path="res://gui/sequences/demonic_f.png" type="Texture" id=30]
+[ext_resource path="res://gui/sequences/demonic_a.png" type="Texture" id=31]
 [ext_resource path="res://gui/fonts/S-13-dialog.fnt" type="BitmapFont" id=32]
 [ext_resource path="res://gui/loading/loading.tscn" type="PackedScene" id=33]
 [ext_resource path="res://gui/loading/logo.png" type="Texture" id=34]
@@ -42,7 +42,40 @@
 
 [sub_resource type="CanvasItemShader" id=1]
 
-_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+_code = {
+"fragment": "//this shader only works properly with premultiplied alpha blend mode
+uniform float aura_width=2.0;
+uniform color aura_color=vec4(0.4,0.7,0.3,1);
+uniform float opacity = 1.0;
+
+vec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);
+vec2 ps = TEXTURE_PIXEL_SIZE;
+float a;
+float maxa=col.a;
+float mina=col.a;
+a=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+col.rgb*=col.a;
+COLOR=col;//mix(col,aura_color,maxa-mina);
+float auraa=(maxa-mina);
+
+COLOR.rgb+=aura_color.rgb*(maxa-mina);",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
 
 [sub_resource type="CanvasItemMaterial" id=2]
 
@@ -54,7 +87,17 @@ shader_param/opacity = 1.0
 
 [sub_resource type="CanvasItemShader" id=3]
 
-_code = { "fragment":"uniform texture source;\n\nCOLOR.rgb = vec3(1, 0, 0);\nCOLOR.a = tex(source,vec2(UV.x+0.5, UV.y+0.5)).a*COLOR.a;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+_code = {
+"fragment": "uniform texture source;
+
+COLOR.rgb = vec3(1, 0, 0);
+COLOR.a = tex(source,vec2(UV.x+0.5, UV.y+0.5)).a*COLOR.a;",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
 
 [sub_resource type="CanvasItemMaterial" id=4]
 
@@ -72,7 +115,40 @@ lossy_quality = 1.0
 
 [sub_resource type="CanvasItemShader" id=6]
 
-_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform float opacity = 1.0;\n\nvec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+_code = {
+"fragment": "//this shader only works properly with premultiplied alpha blend mode
+uniform float aura_width=2.0;
+uniform color aura_color=vec4(0.4,0.7,0.3,1);
+uniform float opacity = 1.0;
+
+vec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);
+vec2 ps = TEXTURE_PIXEL_SIZE;
+float a;
+float maxa=col.a;
+float mina=col.a;
+a=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+col.rgb*=col.a;
+COLOR=col;//mix(col,aura_color,maxa-mina);
+float auraa=(maxa-mina);
+
+COLOR.rgb+=aura_color.rgb*(maxa-mina);",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
 
 [sub_resource type="CanvasItemMaterial" id=7]
 
@@ -84,7 +160,41 @@ shader_param/opacity = 1.0
 
 [sub_resource type="CanvasItemShader" id=8]
 
-_code = { "fragment":"//this shader only works properly with premultiplied alpha blend mode\nuniform float aura_width=2.0;\nuniform color aura_color=vec4(0.4,0.7,0.3,1);\nuniform color modulate=color(0.2,0.4,1.0,1.0);\n\nvec4 col = vec4(modulate.rgb,tex(TEXTURE,UV).a*modulate.a);\nvec2 ps = TEXTURE_PIXEL_SIZE;\nfloat a;\nfloat maxa=col.a;\nfloat mina=col.a;\na=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\na=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;\nmaxa=max(a,maxa); \nmina=min(a,mina);\ncol.rgb*=col.a;\nCOLOR=col;//mix(col,aura_color,maxa-mina);\n\nfloat auraa=(maxa-mina);\n\nCOLOR.rgb+=aura_color.rgb*(maxa-mina);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+_code = {
+"fragment": "//this shader only works properly with premultiplied alpha blend mode
+uniform float aura_width=2.0;
+uniform color aura_color=vec4(0.4,0.7,0.3,1);
+uniform color modulate=color(0.2,0.4,1.0,1.0);
+
+vec4 col = vec4(modulate.rgb,tex(TEXTURE,UV).a*modulate.a);
+vec2 ps = TEXTURE_PIXEL_SIZE;
+float a;
+float maxa=col.a;
+float mina=col.a;
+a=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+col.rgb*=col.a;
+COLOR=col;//mix(col,aura_color,maxa-mina);
+
+float auraa=(maxa-mina);
+
+COLOR.rgb+=aura_color.rgb*(maxa-mina);",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
 
 [sub_resource type="CanvasItemMaterial" id=9]
 
@@ -103,12 +213,22 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("levelup:transform/scale")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.3 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 1, 1 ) ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.3 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 1, 1 ) ]
+}
 tracks/1/type = "value"
 tracks/1/path = NodePath("levelup:visibility/visible")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0, 1.9 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ true, false ] }
+tracks/1/keys = {
+"times": FloatArray( 0, 1.9 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=11]
 
@@ -119,7 +239,12 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("chaintext:transform/scale")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 0.25, 0.25, 1 ), "update":0, "values":[ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2 ),
+"transitions": FloatArray( 0.25, 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=12]
 
@@ -130,7 +255,12 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("chaintext/counterGroup:transform/scale")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 0.25, 0.25, 1 ), "update":0, "values":[ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2 ),
+"transitions": FloatArray( 0.25, 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=13]
 
@@ -141,7 +271,12 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("newattack:transform/scale")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 0.25, 0.25, 1 ), "update":0, "values":[ Vector2( 1, 1 ), Vector2( 1.34375, 1.34375 ), Vector2( 1, 1 ) ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2 ),
+"transitions": FloatArray( 0.25, 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.34375, 1.34375 ), Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=14]
 
@@ -152,17 +287,32 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("title:visibility/opacity")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.3, 1.6, 2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ 0.0, 1.0, 1.0, 0.0 ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 0.3, 1.6, 2 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 1.0, 0.0 ]
+}
 tracks/1/type = "value"
 tracks/1/path = NodePath("title:rect/scale")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0, 0.1, 1.8, 2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ Vector2( 0.5, 0.5 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ] }
+tracks/1/keys = {
+"times": FloatArray( 0, 0.1, 1.8, 2 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
+}
 tracks/2/type = "value"
 tracks/2/path = NodePath("title:rect/pos")
 tracks/2/interp = 1
 tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0, 0.1, 1.8, 2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ Vector2( 226, 456 ), Vector2( 32, 384 ), Vector2( 32, 384 ), Vector2( 226, 456 ) ] }
+tracks/2/keys = {
+"times": FloatArray( 0, 0.1, 1.8, 2 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 226, 456 ), Vector2( 32, 384 ), Vector2( 32, 384 ), Vector2( 226, 456 ) ]
+}
 
 [sub_resource type="Animation" id=15]
 
@@ -173,17 +323,32 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("title:visibility/opacity")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.2, 1.8, 2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ 0.0, 1.0, 1.0, 0.0 ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 0.2, 1.8, 2 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 1.0, 0.0 ]
+}
 tracks/1/type = "value"
 tracks/1/path = NodePath("title:rect/pos")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( 32, 184 ) ] }
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 32, 184 ) ]
+}
 tracks/2/type = "value"
 tracks/2/path = NodePath("title:rect/scale")
 tracks/2/interp = 1
 tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( 1, 1 ) ] }
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="ImageTexture" id=16]
 
@@ -195,7 +360,18 @@ lossy_quality = 0.7
 
 [sub_resource type="CanvasItemShader" id=17]
 
-_code = { "fragment":"uniform color start=color(0.2,0.4,1.0,1.0);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, sin(UV.y*3.1415926535897932384626));\n\nCOLOR.a = tex(TEXTURE,UV).a*COLOR.a;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+_code = {
+"fragment": "uniform color start=color(0.2,0.4,1.0,1.0);
+uniform color stop=color(0.2,0.4,1.0,0);
+COLOR = mix(start, stop, sin(UV.y*3.1415926535897932384626));
+
+COLOR.a = tex(TEXTURE,UV).a*COLOR.a;",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
 
 [sub_resource type="CanvasItemMaterial" id=18]
 
@@ -221,33 +397,75 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("../sequences/demonic/sprite:transform/pos")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.8, 0.9 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ Vector2( -800, 0 ), Vector2( 0, 0 ), Vector2( 32, 0 ), Vector2( 800, 0 ) ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.8, 0.9 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -800, 0 ), Vector2( 0, 0 ), Vector2( 32, 0 ), Vector2( 800, 0 ) ]
+}
 tracks/1/type = "value"
 tracks/1/path = NodePath("../pause:visibility/visible")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 tracks/2/type = "value"
 tracks/2/path = NodePath("../choice/gameover:visibility/visible")
 tracks/2/interp = 1
 tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 tracks/3/type = "method"
 tracks/3/path = NodePath("../../..")
 tracks/3/interp = 1
 tracks/3/imported = false
-tracks/3/keys = { "times":FloatArray( 1 ), "transitions":FloatArray( 1 ), "values":[ { "args":[  ], "method":"sequence_finished" } ] }
+tracks/3/keys = {
+"times": FloatArray( 1 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "sequence_finished"
+} ]
+}
 tracks/4/type = "value"
 tracks/4/path = NodePath("../../sound:play/play")
 tracks/4/interp = 1
 tracks/4/imported = false
-tracks/4/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ "demonic" ] }
+tracks/4/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ "demonic" ]
+}
 
 [sub_resource type="SampleLibrary" id=21]
 
-samples/confirm = { "db":0.0, "pitch":1.0, "sample":ExtResource( 35 ) }
-samples/cursor = { "db":0.0, "pitch":1.0, "sample":ExtResource( 36 ) }
-samples/demonic = { "db":0.0, "pitch":1.0, "sample":ExtResource( 37 ) }
+samples/confirm = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 35 )
+}
+samples/cursor = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 36 )
+}
+samples/demonic = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 37 )
+}
 
 [sub_resource type="Animation" id=22]
 
@@ -258,12 +476,22 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("level:visibility/opacity")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 1.0, 0.0 ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
 tracks/1/type = "value"
 tracks/1/path = NodePath("playercontainer:visibility/opacity")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 1.0, 0.0 ] }
+tracks/1/keys = {
+"times": FloatArray( 0, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
 
 [sub_resource type="Animation" id=23]
 
@@ -274,23 +502,37 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("playercontainer:visibility/opacity")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 1.3, 1.8 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.0, 1.0 ] }
+tracks/0/keys = {
+"times": FloatArray( 1.3, 1.8 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
 tracks/1/type = "value"
 tracks/1/path = NodePath("level:visibility/opacity")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 1.3, 1.8 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.0, 1.0 ] }
+tracks/1/keys = {
+"times": FloatArray( 1.3, 1.8 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
 
 [node name="world" type="Node2D"]
 
 process/pause_mode = 2
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="level" type="Node2D" parent="."]
 
 process/pause_mode = 1
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="LVL_CATACOMB" parent="level" instance=ExtResource( 2 )]
 
@@ -299,7 +541,9 @@ editor/display_folded = true
 [node name="playercontainer" type="Node2D" parent="."]
 
 process/pause_mode = 1
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="gui" type="Node2D" parent="."]
 
@@ -572,15 +816,33 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 544.0
+margin/left = 512.0
 margin/top = 488.0
-margin/right = 784.0
+margin/right = 752.0
 margin/bottom = 588.0
 script/script = ExtResource( 22 )
 
 [node name="container" type="Node2D" parent="gui/CanvasLayer/items"]
 
 transform/pos = Vector2( 192, 84 )
+
+[node name="input" type="Label" parent="gui/CanvasLayer/items"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 240.0
+margin/top = 53.0
+margin/right = 280.0
+margin/bottom = 84.0
+custom_fonts/font = ExtResource( 23 )
+text = "K"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="map" type="Control" parent="gui/CanvasLayer"]
 
@@ -607,7 +869,7 @@ texture/scale = Vector2( 1, 1 )
 texture/rotation = 0.0
 invert/enable = false
 invert/border = 100.0
-script/script = ExtResource( 23 )
+script/script = ExtResource( 24 )
 
 [node name="objects" type="Node2D" parent="gui/CanvasLayer/map/container"]
 
@@ -729,7 +991,7 @@ margin/left = -12.0
 margin/top = -164.0
 margin/right = -749.0
 margin/bottom = -382.0
-custom_fonts/font = ExtResource( 24 )
+custom_fonts/font = ExtResource( 25 )
 align = 1
 valign = 1
 autowrap = true
@@ -749,7 +1011,7 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="dialogue" parent="gui/CanvasLayer" instance=ExtResource( 25 )]
+[node name="dialogue" parent="gui/CanvasLayer" instance=ExtResource( 26 )]
 
 [node name="pause" type="Control" parent="gui/CanvasLayer"]
 
@@ -763,7 +1025,9 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 24.0
 margin/bottom = 24.0
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="shield" type="Sprite" parent="gui/CanvasLayer/pause"]
 
@@ -771,7 +1035,7 @@ texture = SubResource( 16 )
 centered = false
 modulate = Color( 1, 1, 1, 0.590791 )
 
-[node name="menu" parent="gui/CanvasLayer/pause" instance=ExtResource( 26 )]
+[node name="menu" parent="gui/CanvasLayer/pause" instance=ExtResource( 27 )]
 
 visibility/visible = false
 margin/left = 32.0
@@ -806,7 +1070,7 @@ margin/left = 396.0
 margin/top = 252.0
 margin/right = -420.0
 margin/bottom = 162.0
-custom_fonts/font = ExtResource( 24 )
+custom_fonts/font = ExtResource( 25 )
 text = "KEY_GAMEOVER"
 align = 1
 valign = 1
@@ -838,7 +1102,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="yes" parent="gui/CanvasLayer/choice" instance=ExtResource( 27 )]
+[node name="yes" parent="gui/CanvasLayer/choice" instance=ExtResource( 28 )]
 
 transform/pos = Vector2( 256, 404 )
 default_focus = true
@@ -850,7 +1114,7 @@ enabled_focus_mode = 2
 shortcut = null
 text = "KEY_YES"
 
-[node name="no" parent="gui/CanvasLayer/choice" instance=ExtResource( 27 )]
+[node name="no" parent="gui/CanvasLayer/choice" instance=ExtResource( 28 )]
 
 transform/pos = Vector2( 544, 404 )
 
@@ -901,8 +1165,9 @@ transform/pos = Vector2( 400, 400 )
 config/amount = 12
 config/lifetime = 2.0
 config/time_scale = 20.0
+config/process_mode = 1
 config/half_extents = Vector2( 400, 100 )
-config/texture = ExtResource( 28 )
+config/texture = ExtResource( 29 )
 params/direction = 90.0
 params/spread = 10.0
 params/linear_velocity = 120.0
@@ -927,7 +1192,7 @@ randomness/initial_size = 1.0
 [node name="friederich" type="Sprite" parent="gui/CanvasLayer/sequences/demonic/sprite"]
 
 transform/scale = Vector2( 0.45, 0.45 )
-texture = ExtResource( 29 )
+texture = ExtResource( 30 )
 centered = false
 offset = Vector2( 0, 74 )
 
@@ -935,7 +1200,7 @@ offset = Vector2( 0, 74 )
 
 visibility/visible = false
 transform/scale = Vector2( 0.55, 0.55 )
-texture = ExtResource( 30 )
+texture = ExtResource( 31 )
 centered = false
 offset = Vector2( 0, 74 )
 
@@ -949,7 +1214,7 @@ margin/left = 512.0
 margin/top = 552.0
 margin/right = 768.0
 margin/bottom = 584.0
-custom_fonts/mono_font = ExtResource( 31 )
+custom_fonts/mono_font = ExtResource( 23 )
 custom_fonts/normal_font = ExtResource( 32 )
 bbcode/enabled = true
 bbcode/bbcode = "[right]KEY_SKIP:  [code]Z[/code][/right]"
@@ -1007,7 +1272,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 800.0
 margin/bottom = 592.0
-custom_fonts/font = ExtResource( 24 )
+custom_fonts/font = ExtResource( 25 )
 text = "- PAUSED -"
 align = 1
 valign = 1
@@ -1065,19 +1330,7 @@ autoplay = ""
 
 script/script = ExtResource( 39 )
 
-[connection signal="focus_enter" from="gui/CanvasLayer/choice/yes/button" to="gui/CanvasLayer/choice/yes" method="_on_button_focus_enter"]
-
-[connection signal="focus_exit" from="gui/CanvasLayer/choice/yes/button" to="gui/CanvasLayer/choice/yes" method="_on_button_focus_exit"]
-
-[connection signal="mouse_enter" from="gui/CanvasLayer/choice/yes/button" to="gui/CanvasLayer/choice/yes" method="_on_button_mouse_enter"]
-
 [connection signal="pressed" from="gui/CanvasLayer/choice/yes/button" to="." method="confirm_selected"]
-
-[connection signal="focus_enter" from="gui/CanvasLayer/choice/no/button" to="gui/CanvasLayer/choice/no" method="_on_button_focus_enter"]
-
-[connection signal="focus_exit" from="gui/CanvasLayer/choice/no/button" to="gui/CanvasLayer/choice/no" method="_on_button_focus_exit"]
-
-[connection signal="mouse_enter" from="gui/CanvasLayer/choice/no/button" to="gui/CanvasLayer/choice/no" method="_on_button_mouse_enter"]
 
 
 [editable path="gui/CanvasLayer/choice/yes"]

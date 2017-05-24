@@ -9,6 +9,9 @@ var goldicon = preload("res://gui/hud/gold.png")
 var exporbicon = preload("res://gui/hud/exporb.png")
 var scrollicon = preload("res://gui/hud/scroll.png")
 var magicicon = preload("res://gui/hud/magic.png")
+var keyboardmap = preload("res://gui/KeyboardCharacters.gd").new()
+
+var lastitemtype
 
 func _ready():
 	container = get_node("container")
@@ -31,6 +34,7 @@ func display_item(title, item_obj):
 	item.get_node("text").set_text(title)
 	if (item_obj.type == "scroll"):
 		icon = scrollicon
+	lastitemtype = item_obj.type
 	item.get_node("icon").set_texture(icon)
 	item.set_pos(Vector2(0, 84-container.get_pos().y))
 	container.add_child(item)
@@ -44,3 +48,9 @@ func _fixed_process(delta):
 			container.remove_child(i)
 	if (container.get_child_count() == 0):
 		container.set_pos(Vector2(container.get_pos().x, 84))
+		get_node("input").hide()
+		lastitemtype = null
+	else:
+		keyboardmap.update_keys()
+		get_node("input").set_text(keyboardmap.map_action("ui_pause"))
+		get_node("input").show()

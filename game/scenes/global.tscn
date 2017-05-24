@@ -65,7 +65,18 @@ content_margin/bottom = -1.0
 
 [sub_resource type="CanvasItemShader" id=7]
 
-_code = { "fragment":"uniform color start=color(0.2,0.4,1.0,1);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, UV.x);\n\nCOLOR.a = tex(TEXTURE,UV).a*COLOR.a;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+_code = {
+"fragment": "uniform color start=color(0.2,0.4,1.0,1);
+uniform color stop=color(0.2,0.4,1.0,0);
+COLOR = mix(start, stop, UV.x);
+
+COLOR.a = tex(TEXTURE,UV).a*COLOR.a;",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
 
 [sub_resource type="CanvasItemMaterial" id=8]
 
@@ -99,37 +110,74 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/menu/BG:transform/pos")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( 0.25, 1 ), "update":0, "values":[ Vector2( 0, -424 ), Vector2( 0, 0 ) ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -424 ), Vector2( 0, 0 ) ]
+}
 tracks/1/type = "value"
 tracks/1/path = NodePath("CanvasLayer/menu/BG/friederich:visibility/visible")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ true, false ] }
+tracks/1/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 tracks/2/type = "value"
 tracks/2/path = NodePath("CanvasLayer/menu/BG/adela:visibility/visible")
 tracks/2/interp = 1
 tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ true, false ] }
+tracks/2/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 tracks/3/type = "value"
 tracks/3/path = NodePath("CanvasLayer/menu/logo/Sprite:visibility/opacity")
 tracks/3/interp = 1
 tracks/3/imported = false
-tracks/3/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( 4, 1 ), "update":0, "values":[ 0.0, 1.0 ] }
+tracks/3/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 4, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
 tracks/4/type = "value"
 tracks/4/path = NodePath("CanvasLayer/menu/main:visibility/visible")
 tracks/4/interp = 1
 tracks/4/imported = false
-tracks/4/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ false, true ] }
+tracks/4/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 tracks/5/type = "value"
 tracks/5/path = NodePath("CanvasLayer/menu/newgame:visibility/visible")
 tracks/5/interp = 1
 tracks/5/imported = false
-tracks/5/keys = { "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ true, false ] }
+tracks/5/keys = {
+"times": FloatArray( 0, 0.1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 tracks/6/type = "method"
 tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/imported = false
-tracks/6/keys = { "times":FloatArray( 1 ), "transitions":FloatArray( 1 ), "values":[ { "args":[  ], "method":"focus_main" } ] }
+tracks/6/keys = {
+"times": FloatArray( 1 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "focus_main"
+} ]
+}
 
 [sub_resource type="Animation" id=12]
 
@@ -140,43 +188,95 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/menu/BG:transform/pos")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( 0.25, 1 ), "update":0, "values":[ Vector2( 0, 0 ), Vector2( 0, -424 ) ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -424 ) ]
+}
 tracks/1/type = "value"
 tracks/1/path = NodePath("CanvasLayer/menu/BG/friederich:visibility/visible")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ false, true ] }
+tracks/1/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 tracks/2/type = "value"
 tracks/2/path = NodePath("CanvasLayer/menu/BG/adela:visibility/visible")
 tracks/2/interp = 1
 tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ false, true ] }
+tracks/2/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 tracks/3/type = "value"
 tracks/3/path = NodePath("CanvasLayer/menu/logo/Sprite:visibility/opacity")
 tracks/3/interp = 1
 tracks/3/imported = false
-tracks/3/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( 0.105112, 1 ), "update":0, "values":[ 1.0, 0.0 ] }
+tracks/3/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 0.105112, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
 tracks/4/type = "value"
 tracks/4/path = NodePath("CanvasLayer/menu/main:visibility/visible")
 tracks/4/interp = 1
 tracks/4/imported = false
-tracks/4/keys = { "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ true, false ] }
+tracks/4/keys = {
+"times": FloatArray( 0, 0.1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 tracks/5/type = "value"
 tracks/5/path = NodePath("CanvasLayer/menu/newgame:visibility/visible")
 tracks/5/interp = 1
 tracks/5/imported = false
-tracks/5/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ false, true ] }
+tracks/5/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 tracks/6/type = "method"
 tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/imported = false
-tracks/6/keys = { "times":FloatArray( 1 ), "transitions":FloatArray( 1 ), "values":[ { "args":[  ], "method":"focus_newgame" } ] }
+tracks/6/keys = {
+"times": FloatArray( 1 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "focus_newgame"
+} ]
+}
 
 [sub_resource type="SampleLibrary" id=13]
 
-samples/confirm = { "db":0.0, "pitch":1.0, "sample":ExtResource( 17 ) }
-samples/cursor = { "db":0.0, "pitch":1.0, "sample":ExtResource( 18 ) }
-samples/demonic = { "db":0.0, "pitch":1.0, "sample":ExtResource( 19 ) }
+samples/confirm = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 17 )
+}
+samples/cursor = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 18 )
+}
+samples/demonic = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 19 )
+}
 
 [node name="Global" type="Node2D"]
 
@@ -636,7 +736,7 @@ margin/top = 177.0
 margin/right = 800.0
 margin/bottom = 304.0
 custom_fonts/font = ExtResource( 8 )
-text = "Quit game\?"
+text = "Quit game?"
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -747,20 +847,6 @@ stream/buffering_ms = 500
 [connection signal="pressed" from="CanvasLayer/menu/newgame/adela" to="." method="_on_adela_selected"]
 
 [connection signal="pressed" from="CanvasLayer/menu/settingsmenu/language" to="." method="_on_language_pressed"]
-
-[connection signal="focus_exit" from="CanvasLayer/menu/settingsmenu/settings/sfxslider" to="CanvasLayer/menu/settingsmenu/settings" method="_on_sfxslider_focus_exit"]
-
-[connection signal="input_event" from="CanvasLayer/menu/settingsmenu/settings/sfxslider" to="CanvasLayer/menu/settingsmenu/settings" method="_on_sfxslider_input_event"]
-
-[connection signal="value_changed" from="CanvasLayer/menu/settingsmenu/settings/sfxslider" to="CanvasLayer/menu/settingsmenu/settings" method="_on_sfxslider_value_changed"]
-
-[connection signal="input_event" from="CanvasLayer/menu/settingsmenu/settings/bgmslider" to="CanvasLayer/menu/settingsmenu/settings" method="_on_bgmslider_input_event"]
-
-[connection signal="value_changed" from="CanvasLayer/menu/settingsmenu/settings/bgmslider" to="CanvasLayer/menu/settingsmenu/settings" method="_on_bgmslider_value_changed"]
-
-[connection signal="pressed" from="CanvasLayer/menu/settingsmenu/settings/save" to="CanvasLayer/menu/settingsmenu/settings" method="_on_save_pressed"]
-
-[connection signal="pressed" from="CanvasLayer/menu/settingsmenu/settings/reset" to="CanvasLayer/menu/settingsmenu/settings" method="_on_reset_pressed"]
 
 [connection signal="pressed" from="CanvasLayer/menu/quit/options/yes" to="." method="quit_game"]
 
