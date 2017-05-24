@@ -8,7 +8,17 @@
 
 [sub_resource type="CanvasItemShader" id=1]
 
-_code = { "fragment":"uniform color modulate = vec4(1, 1, 0, 1);\nfloat m = (COLOR.r + COLOR.g + COLOR.b) / 3.0;\nCOLOR.rgb = vec3(m, m, m);\nCOLOR.rgb = mix(COLOR.rgb, modulate.rgb, 0.5);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+_code = {
+"fragment": "uniform color modulate = vec4(1, 1, 0, 1);
+float m = (COLOR.r + COLOR.g + COLOR.b) / 3.0;
+COLOR.rgb = vec3(m, m, m);
+COLOR.rgb = mix(COLOR.rgb, modulate.rgb, 0.5);",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
 
 [sub_resource type="CanvasItemMaterial" id=2]
 
@@ -19,16 +29,21 @@ shader_param/modulate = Color( 0.788235, 0.74902, 0.631373, 1 )
 [node name="tab" type="TextureButton"]
 
 material/material = SubResource( 2 )
-margin/left = 68.0
-margin/right = 132.0
-margin/bottom = 64.0
 rect/min_size = Vector2( 0, 36 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 68.0
+margin/top = 0.0
+margin/right = 132.0
+margin/bottom = 64.0
 toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
 textures/normal = ExtResource( 1 )
+params/resize_mode = 0
+params/stretch_mode = 0
 script/script = ExtResource( 2 )
 
 [node name="ornaments" type="Sprite" parent="."]

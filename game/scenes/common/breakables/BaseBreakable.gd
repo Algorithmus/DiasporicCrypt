@@ -47,7 +47,6 @@ func crumble():
 
 func _ready():
 	# Initialization here
-	print("ready")
 	sound = get_node("sound")
 
 func sprite_opacity(alpha):
