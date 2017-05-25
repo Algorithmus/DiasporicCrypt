@@ -301,8 +301,9 @@ func _input(event):
 			echo = true
 
 func end_level_animation():
-	listcontainer.get_node(selectedlevel.get_name()).grab_focus()
-	selectedlevel = null
+	if (selectedlevel != null):
+		listcontainer.get_node(selectedlevel.get_name()).grab_focus()
+		selectedlevel = null
 
 func end_list_animation():
 	if (islist):
