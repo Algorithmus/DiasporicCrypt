@@ -23,7 +23,9 @@ extents = Vector2( 16, 176 )
 
 [node name="LVL_NOTITLE" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -166,6 +168,8 @@ target_nodes = [ "PlatformGroup/StaticBody2D", "ClimbableGroup/ClimbableBlock5",
 related_switches = [  ]
 enabled = true
 invert = false
+show_target = false
+target_pos = Vector2( 0, 0 )
 
 [node name="PullSwitch1" parent="tilemap/SwitchGroup" instance=ExtResource( 5 )]
 
@@ -174,6 +178,8 @@ target_nodes = [ "SunbeamGroup/Sunbeam" ]
 related_switches = [  ]
 enabled = true
 invert = false
+show_target = false
+target_pos = Vector2( 0, 0 )
 
 [node name="PullSwitch2" parent="tilemap/SwitchGroup" instance=ExtResource( 5 )]
 
@@ -183,6 +189,8 @@ target_nodes = [ "EnemiesGroup/BlackSkeleton", "EnemiesGroup/BlackSkeleton1" ]
 related_switches = [  ]
 enabled = true
 invert = false
+show_target = false
+target_pos = Vector2( 0, 0 )
 
 [node name="FloorSwitch" parent="tilemap/SwitchGroup" instance=ExtResource( 6 )]
 
@@ -192,6 +200,8 @@ target_nodes = [ "PlatformGroup/StaticBody2D 2" ]
 related_switches = [  ]
 enabled = true
 invert = true
+show_target = true
+target_pos = Vector2( -326, -2054 )
 is_toggle = true
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap"]
@@ -268,14 +278,6 @@ transform/pos = Vector2( -326, -2054 )
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
 transform/pos = Vector2( 522, -310 )
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="exit_screen"]
 
 
 [editable path="tilemap/ClimbableGroup/ClimbableBlock2"]

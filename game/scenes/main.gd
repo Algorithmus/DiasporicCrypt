@@ -140,7 +140,7 @@ func _on_resolution_changed():
 func _input(event):
 	var canvas = get_node("gui/CanvasLayer")
 	if (!gameover && dialog.get("dialogs") == null && !pause.has_node("shopping") && !pause.has_node("save") && !canvas.has_node("WorldMap") && !Globals.get("eventmode")):
-		if (event.is_action("ui_pause") && event.is_pressed() && !event.is_echo() && get_node("playercontainer").has_node("player") && !get_node("playercontainer/player").get("is_transforming")):
+		if (event.is_action("ui_pause") && event.is_pressed() && !event.is_echo() && get_node("playercontainer").has_node("player") && !get_node("playercontainer/player").get("is_transforming") && !Globals.get("show_switch")):
 			if (is_paused && pausemenu.can_unpause()):
 				# return back to focused tabs properly for when menu gets opened again
 				pausemenu.focus_tab()
