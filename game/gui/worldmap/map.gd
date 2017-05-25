@@ -181,7 +181,17 @@ func set_content(id):
 	else:
 		title.get_node("new").hide()
 	content.get_node("description").set_bbcode(tr(level.description))
-	content.get_node("reward").set_text(tr("MAP_REWARD") + ": " + str(level.reward) + "G")
+	content.get_node("info/reward").set_text(tr("MAP_REWARD") + ": " + str(level.reward) + "G")
+	var target = content.get_node("info/target")
+	target.hide()
+	var bonus = content.get_node("info/bonus")
+	bonus.hide()
+	if (level.type == "quest" && level.item != null):
+		target.show()
+		target.set_text(tr("MAP_TARGET") + ": " + tr(level.item))
+	if (level.type == "bonus"):
+		bonus.show()
+		bonus.set_text("x" + str(level.mincounter))
 	for tag in level.tags:
 		var flag = title.get_node("tags/" + tag)
 		var filter = content.get_node("tags/" + tag)

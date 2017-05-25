@@ -68,6 +68,7 @@ func _init():
 	forest2.position = Vector2(669, 238)
 	forest2.description = "LVL_FOREST2_DESCRIPTION"
 	forest2.location = locationfactory.locations["LVL_SANDBOX"]
+	forest2.mincounter = 10
 	levels[forest2.title] = forest2
 	
 	var lavacave = levelclass.new()
