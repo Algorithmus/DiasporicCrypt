@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=1]
+[gd_scene load_steps=26 format=1]
 
 [ext_resource path="res://scenes/catacombs/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/torch.tscn" type="PackedScene" id=2]
@@ -8,14 +8,15 @@
 [ext_resource path="res://scenes/catacombs/solids/web.png" type="Texture" id=6]
 [ext_resource path="res://scenes/catacombs/solids/web2.png" type="Texture" id=7]
 [ext_resource path="res://scenes/catacombs/solids/web3.png" type="Texture" id=8]
-[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/common/target.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/npcs/kaleva/Kaleva.gd" type="Script" id=12]
-[ext_resource path="res://scenes/npcs/kaleva/idle.png" type="Texture" id=13]
-[ext_resource path="res://scenes/catacombs/solids/coffin.png" type="Texture" id=14]
-[ext_resource path="res://scenes/savepoint/savepoint.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/catacombs/solids/table.png" type="Texture" id=9]
+[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/common/target.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/npcs/kaleva/Kaleva.gd" type="Script" id=13]
+[ext_resource path="res://scenes/npcs/kaleva/idle.png" type="Texture" id=14]
+[ext_resource path="res://scenes/catacombs/solids/coffin.png" type="Texture" id=15]
+[ext_resource path="res://scenes/savepoint/savepoint.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -24,7 +25,16 @@ extents = Vector2( 32, 80 )
 
 [sub_resource type="CanvasItemShader" id=2]
 
-_code = { "fragment":"uniform color start=color(0.2,0.4,1.0,0.8);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, UV.x);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+_code = {
+"fragment": "uniform color start=color(0.2,0.4,1.0,0.8);
+uniform color stop=color(0.2,0.4,1.0,0);
+COLOR = mix(start, stop, UV.x);",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
 
 [sub_resource type="CanvasItemMaterial" id=3]
 
@@ -57,7 +67,16 @@ shader_param/stop = Color( 0, 0, 0, 0 )
 
 [sub_resource type="CanvasItemShader" id=7]
 
-_code = { "fragment":"uniform color start=color(0.2,0.4,1.0,0.8);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, UV.y);", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+_code = {
+"fragment": "uniform color start=color(0.2,0.4,1.0,0.8);
+uniform color stop=color(0.2,0.4,1.0,0);
+COLOR = mix(start, stop, UV.y);",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
 
 [sub_resource type="CanvasItemMaterial" id=8]
 
@@ -68,7 +87,9 @@ shader_param/stop = Color( 0, 0, 0, 0 )
 
 [node name="LVL_CATACOMB" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"Script" }
+__meta__ = {
+"__editor_plugin_screen__": "Script"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -101,8 +122,6 @@ transform/pos = Vector2( 288, 192 )
 transform/pos = Vector2( -288, 192 )
 
 [node name="DecoGroup" type="Node2D" parent="tilemap"]
-
-editor/display_folded = true
 
 [node name="Sprite1" type="Sprite" parent="tilemap/DecoGroup"]
 
@@ -232,11 +251,16 @@ transform/pos = Vector2( 272, -16 )
 texture = ExtResource( 8 )
 modulate = Color( 1, 1, 1, 0.509804 )
 
+[node name="Sprite" type="Sprite" parent="tilemap/DecoGroup"]
+
+transform/pos = Vector2( 112, 344 )
+texture = ExtResource( 9 )
+
 [node name="LadderGroup" type="Node2D" parent="tilemap"]
 
 editor/display_folded = true
 
-[node name="TestLadder" parent="tilemap/LadderGroup" instance=ExtResource( 9 )]
+[node name="TestLadder" parent="tilemap/LadderGroup" instance=ExtResource( 10 )]
 
 transform/pos = Vector2( -16, -32 )
 
@@ -252,7 +276,7 @@ transform/scale = Vector2( 1, 20 )
 
 editor/display_folded = true
 
-[node name="target" parent="tilemap/TargetGroup" instance=ExtResource( 10 )]
+[node name="target" parent="tilemap/TargetGroup" instance=ExtResource( 11 )]
 
 transform/pos = Vector2( 368, 320 )
 
@@ -260,11 +284,11 @@ transform/pos = Vector2( 368, 320 )
 
 editor/display_folded = true
 
-[node name="Kaleva" parent="tilemap/NPCGroup" instance=ExtResource( 11 )]
+[node name="Kaleva" parent="tilemap/NPCGroup" instance=ExtResource( 12 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 176, 304 )
-script/script = ExtResource( 12 )
+script/script = ExtResource( 13 )
 
 [node name="enabler" parent="tilemap/NPCGroup/Kaleva"]
 
@@ -274,13 +298,13 @@ transform/scale = Vector2( 8, 16 )
 [node name="Sprite" parent="tilemap/NPCGroup/Kaleva"]
 
 transform/scale = Vector2( -1, 1 )
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 
 [node name="CollisionShape2D" parent="tilemap/NPCGroup/Kaleva/npc"]
 
 shape = SubResource( 1 )
 
-[node name="Coffin" parent="tilemap/NPCGroup" instance=ExtResource( 11 )]
+[node name="Coffin" parent="tilemap/NPCGroup" instance=ExtResource( 12 )]
 
 transform/pos = Vector2( -416, 304 )
 dialogues = [ [ 0, null, "DIAG_RESTORE", null, [ [ "KEY_YES", "restore", null, true ], [ "KEY_NO", "end" ] ] ] ]
@@ -288,7 +312,7 @@ static_direction = true
 
 [node name="Sprite" parent="tilemap/NPCGroup/Coffin"]
 
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 offset = Vector2( 0, 0 )
 hframes = 1
 
@@ -302,7 +326,7 @@ autoplay = ""
 
 [node name="SaveGroup" type="Node2D" parent="tilemap"]
 
-[node name="savepoint" parent="tilemap/SaveGroup" instance=ExtResource( 15 )]
+[node name="savepoint" parent="tilemap/SaveGroup" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( -192, 352 )
 savelocation = "LVL_CATACOMB"
@@ -311,7 +335,7 @@ savelocation = "LVL_CATACOMB"
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 16 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 17 )]
 
 transform/pos = Vector2( -16, -368 )
 is_horizontal = false
@@ -369,18 +393,6 @@ transform/pos = Vector2( -672, -352 )
 transform/scale = Vector2( 43, 2 )
 texture = SubResource( 4 )
 centered = false
-
-[connection signal="enter_screen" from="tilemap/NPCGroup/Kaleva/enabler" to="tilemap/NPCGroup/Kaleva" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/NPCGroup/Kaleva/enabler" to="tilemap/NPCGroup/Kaleva" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/NPCGroup/Coffin/enabler" to="tilemap/NPCGroup/Coffin" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/NPCGroup/Coffin/enabler" to="tilemap/NPCGroup/Coffin" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
 
 
 [editable path="tilemap/LadderGroup/TestLadder"]
