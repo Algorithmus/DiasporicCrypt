@@ -21,7 +21,7 @@ func _init():
 	springislandcastle.description = "LVL_SPRINGISLANDCASTLE_DESCRIPTION"
 	springislandcastle.reward = 10000
 	springislandcastle.item = "ITEM_GLYPH1"
-	springislandcastle.require = ["LVL_MAUSOLEUM"]
+	springislandcastle.require = ["LVL_CAPECRYPT"]
 	springislandcastle.location = locationfactory.locations["LVL_SPRINGISLANDCASTLE"]
 	levels[springislandcastle.title] = springislandcastle
 	
@@ -40,10 +40,10 @@ func _init():
 	mausoleum.title = "LVL_MAUSOLEUM"
 	mausoleum.type = "quest"
 	mausoleum.position = Vector2(288, 288)
-	mausoleum.description = "LVL_MAUSOLEUM"
+	mausoleum.description = "LVL_MAUSOLEUM_DESCRIPTION"
 	mausoleum.reward = 4000
 	mausoleum.item = "ITEM_GLYPH1"
-	#mausoleum.require = ["LVL_HOLYRUINS", "LVL_CAPECRYPT"]
+	mausoleum.require = ["LVL_ICECAVE", "LVL_AQUADUCT"]
 	mausoleum.location = locationfactory.locations["LVL_MAUSOLEUM"]
 	levels[mausoleum.title] = mausoleum
 	
@@ -159,7 +159,7 @@ func _init():
 	capecrypt.description = "LVL_CAPECRYPT_DESCRIPTION"
 	capecrypt.location = locationfactory.locations["LVL_CAPECRYPT"]
 	capecrypt.reward = 50000
-	capecrypt.require = ["LVL_ICECAVE", "LVL_AQUADUCT"]
+	capecrypt.require = ["LVL_HOLYRUINS", "LVL_MAUSOLEUM"]
 	levels[capecrypt.title] = capecrypt
 	
 	var start = levelclass.new()
