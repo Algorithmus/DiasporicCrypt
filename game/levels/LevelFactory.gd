@@ -21,6 +21,7 @@ func _init():
 	springislandcastle.description = "LVL_SPRINGISLANDCASTLE_DESCRIPTION"
 	springislandcastle.reward = 10000
 	springislandcastle.item = "ITEM_GLYPH1"
+	springislandcastle.require = ["LVL_MAUSOLEUM"]
 	springislandcastle.location = locationfactory.locations["LVL_SPRINGISLANDCASTLE"]
 	levels[springislandcastle.title] = springislandcastle
 	
@@ -31,6 +32,7 @@ func _init():
 	winterislandcastle.description = "LVL_WINTERISLANDCASTLE_DESCRIPTION"
 	winterislandcastle.reward = 10000
 	winterislandcastle.item = "ITEM_GLYPH1"
+	winterislandcastle.require = ["LVL_LAVACAVE"]
 	winterislandcastle.location = locationfactory.locations["LVL_WINTERISLANDCASTLE"]
 	levels[winterislandcastle.title] = winterislandcastle
 	
@@ -41,6 +43,7 @@ func _init():
 	mausoleum.description = "LVL_MAUSOLEUM"
 	mausoleum.reward = 4000
 	mausoleum.item = "ITEM_GLYPH1"
+	#mausoleum.require = ["LVL_HOLYRUINS", "LVL_CAPECRYPT"]
 	mausoleum.location = locationfactory.locations["LVL_MAUSOLEUM"]
 	levels[mausoleum.title] = mausoleum
 	
@@ -49,6 +52,7 @@ func _init():
 	cave.type = "quest"
 	cave.position = Vector2(424, 73)
 	cave.description = "LVL_CAVE_DESCRIPTION"
+	#cave.require = ["LVL_DUNGEON", "LVL_BERGFORTRESS"]
 	cave.location = locationfactory.locations["LVL_CAVE"]
 	levels[cave.title] = cave
 	
@@ -60,6 +64,7 @@ func _init():
 	forest1.location = locationfactory.locations["LVL_NOCTURNFOREST"]
 	forest1.time = 6000
 	forest1.mincounter = 5
+	forest1.require = [["LVL_DUNGEON", "LVL_ICECAVE"]]
 	levels[forest1.title] = forest1
 	
 	var forest2 = levelclass.new()
@@ -77,6 +82,7 @@ func _init():
 	lavacave.position = Vector2(347, 555)
 	lavacave.description = "LVL_LAVACAVE_DESCRIPTION"
 	lavacave.reward = 10000
+	lavacave.require = ["LVL_MANOR", "LVL_CAVE"]
 	lavacave.location = locationfactory.locations["LVL_LAVACAVE"]
 	levels[lavacave.title] = lavacave
 	
@@ -86,6 +92,8 @@ func _init():
 	bergfortress.position = Vector2(259, 495)
 	bergfortress.description = "LVL_BERGFORTRESS_DESCRIPTION"
 	bergfortress.reward = 5000
+	bergfortress.require = ["LVL_START"]
+	bergfortress.character = "friederich"
 	bergfortress.location = locationfactory.locations["LVL_BERGFORTRESS"]
 	levels[bergfortress.title] = bergfortress
 	
@@ -95,6 +103,8 @@ func _init():
 	aquaduct.position = Vector2(131, 207)
 	aquaduct.description = "LVL_AQUADUCT_DESCRIPTION"
 	aquaduct.reward = 8000
+	aquaduct.require = ["LVL_START"]
+	aquaduct.character = "adela"
 	aquaduct.location = locationfactory.locations["LVL_AQUADUCT"]
 	levels[aquaduct.title] = aquaduct
 	
@@ -106,6 +116,8 @@ func _init():
 	dungeon.reward = 4000
 	dungeon.item = "ITEM_GLYPH1"
 	dungeon.location = locationfactory.locations["LVL_DUNGEON"]
+	dungeon.require = ["LVL_START"]
+	dungeon.character = "friederich"
 	levels[dungeon.title] = dungeon
 	
 	var icecave = levelclass.new()
@@ -116,6 +128,8 @@ func _init():
 	icecave.reward = 4000
 	icecave.item = "ITEM_GLYPH1"
 	icecave.location = locationfactory.locations["LVL_ICECAVE"]
+	icecave.require = ["LVL_START"]
+	icecave.character = "adela"
 	levels[icecave.title] = icecave
 	
 	var manor = levelclass.new()
@@ -125,6 +139,7 @@ func _init():
 	manor.description = "LVL_MANOR_DESCRIPTION"
 	manor.location = locationfactory.locations["LVL_MARBLECASTLE"]
 	manor.reward = 20000
+	manor.require = ["LVL_DUNGEON", "LVL_BERGFORTRESS"]
 	levels[manor.title] = manor
 	
 	var holyruins = levelclass.new()
@@ -134,6 +149,7 @@ func _init():
 	holyruins.description = "LVL_HOLYRUINS_DESCRIPTION"
 	holyruins.location = locationfactory.locations["LVL_HOLYRUINS"]
 	holyruins.reward = 20000
+	#holyruins.require = ["LVL_ICECAVE", "LVL_AQUADUCT"]
 	levels[holyruins.title] = holyruins
 	
 	var capecrypt = levelclass.new()
@@ -143,6 +159,7 @@ func _init():
 	capecrypt.description = "LVL_CAPECRYPT_DESCRIPTION"
 	capecrypt.location = locationfactory.locations["LVL_CAPECRYPT"]
 	capecrypt.reward = 50000
+	capecrypt.require = ["LVL_ICECAVE", "LVL_AQUADUCT"]
 	levels[capecrypt.title] = capecrypt
 	
 	var start = levelclass.new()
@@ -161,6 +178,7 @@ func _init():
 	colosseum1.position = Vector2(193, 360)
 	colosseum1.description = "LVL_COLOSSEUM1_DESCRIPTION"
 	colosseum1.reward = 50000
+	colosseum1.require = [["LVL_BERGFORTRESS", "LVL_AQUADUCT"]]
 	colosseum1.location = locationfactory.locations["LVL_COLOSSEUM"]
 	colosseum1.waves = [preload("res://scenes/colosseum/waves/wave0-0.tscn"), preload("res://scenes/colosseum/waves/wave0-1.tscn"), preload("res://scenes/colosseum/waves/wave0-2.tscn")]
 	levels[colosseum1.title] = colosseum1
@@ -170,6 +188,6 @@ func _init():
 	colosseum2.type = "colosseum"
 	colosseum2.position = Vector2(193, 360)
 	colosseum2.description = "LVL_COLOSSEUM2_DESCRIPTION"
-	colosseum2.location = "LVL_COLOSSEUM"
+	colosseum2.location = locationfactory.locations["LVL_COLOSSEUM"]
 	colosseum2.reward = 100000
 	levels[colosseum2.title] = colosseum2

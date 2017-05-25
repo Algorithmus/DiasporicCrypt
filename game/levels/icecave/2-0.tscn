@@ -17,7 +17,9 @@
 
 [node name="LVL_NOTITLE" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -183,6 +185,8 @@ target_nodes = [ "One-WayPlatformGroup/One-WayPlatform", "One-WayPlatformGroup/O
 related_switches = [  ]
 enabled = true
 invert = false
+show_target = false
+target_pos = Vector2( 0, 0 )
 is_toggle = true
 
 [node name="PotGroup" type="Node2D" parent="tilemap"]
@@ -196,10 +200,6 @@ transform/pos = Vector2( -384, -400 )
 type = "ITEM"
 reward = "res://scenes/items/gold/gold.tscn"
 value = 100
-
-[node name="enabler" parent="tilemap/PotGroup/Pot/KinematicBody2D"]
-
-enabler/pause_animated_sprites = true
 
 [node name="Sprite" parent="tilemap/PotGroup/Pot/KinematicBody2D"]
 
@@ -241,14 +241,6 @@ transform/pos = Vector2( -486, -630 )
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
 transform/pos = Vector2( 1066, 234 )
-
-[connection signal="enter_screen" from="tilemap/PotGroup/Pot/KinematicBody2D/enabler" to="tilemap/PotGroup/Pot" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/PotGroup/Pot/KinematicBody2D/enabler" to="tilemap/PotGroup/Pot" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
 
 
 [editable path="tilemap/ClimbableGroup/ClimbableBlock"]

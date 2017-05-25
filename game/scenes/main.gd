@@ -119,23 +119,27 @@ func _ready():
 	choice = get_node("gui/CanvasLayer/choice")
 	choice.hide()
 	var player
-	var available_levels = ["LVL_SANDBOX", "LVL_START", "LVL_FOREST1", "LVL_FOREST2", "LVL_COLOSSEUM1", "LVL_COLOSSEUM2"]
+	var available_levels = ["LVL_START"]
+	if (Globals.get("debugmode")):
+		available_levels = ["LVL_SANDBOX", "LVL_START", "LVL_FOREST1", "LVL_FOREST2", "LVL_COLOSSEUM1", "LVL_COLOSSEUM2"]
 	if (Globals.get("player") == "friederich"):
-		available_levels.append("LVL_MANOR")
-		available_levels.append("LVL_LAVACAVE")
-		available_levels.append("LVL_BERGFORTRESS")
-		available_levels.append("LVL_WINTERISLANDCASTLE")
-		available_levels.append("LVL_CAVE")
-		available_levels.append("LVL_DUNGEON")
+		if (Globals.get("debugmode")):
+			available_levels.append("LVL_MANOR")
+			available_levels.append("LVL_LAVACAVE")
+			available_levels.append("LVL_BERGFORTRESS")
+			available_levels.append("LVL_WINTERISLANDCASTLE")
+			available_levels.append("LVL_CAVE")
+			available_levels.append("LVL_DUNGEON")
 		selected_character = friederich
 		player = friederich.instance()
 	else:
-		available_levels.append("LVL_AQUADUCT")
-		available_levels.append("LVL_HOLYRUINS")
-		available_levels.append("LVL_CAPECRYPT")
-		available_levels.append("LVL_SPRINGISLANDCASTLE")
-		available_levels.append("LVL_MAUSOLEUM")
-		available_levels.append("LVL_ICECAVE")
+		if (Globals.get("debugmode")):
+			available_levels.append("LVL_AQUADUCT")
+			available_levels.append("LVL_HOLYRUINS")
+			available_levels.append("LVL_CAPECRYPT")
+			available_levels.append("LVL_SPRINGISLANDCASTLE")
+			available_levels.append("LVL_MAUSOLEUM")
+			available_levels.append("LVL_ICECAVE")
 		selected_character = adela
 		player = adela.instance()
 	Globals.set("available_levels", available_levels)
@@ -554,6 +558,7 @@ func load_game(data):
 
 func display_level_title(title):
 	var level = get_node("gui/CanvasLayer/level")
+	level.get_node("title/newlevel").hide()
 	level.get_node("title").set_text(title)
 	level.get_node("AnimationPlayer").play("show")
 
@@ -562,6 +567,47 @@ func connect_catacombs(level):
 	var map = Globals.get("levels")[Globals.get("current_level")]
 	new_teleport.target_level = map.location.node
 	new_teleport.teleport_to = map.location.teleportto
+
+func check_available_levels():
+	var available_levels = Globals.get("available_levels")
+	var levels = Globals.get("levels")
+	var new_levels_available = false
+	# look for levels with completed requirements we can add
+	for key in levels:
+		var level = levels[key]
+		if (available_levels.find(level.title) < 0):
+			var valid_character = true
+			# if the requirement is not for the current character, we don't care about it
+			if (level.character != null && level.character != Globals.get("player")):
+				valid_character = false
+			if (level.require != null && valid_character):
+				var size = level.require.size()
+				var found = false
+				# look through require list for required levels
+				for i in range(0, size):
+					var required = level.require[i]
+					# if the requirement is an array, only one of the levels is required
+					if (typeof(required) == TYPE_ARRAY):
+						found = check_related_requirements(required)
+					else:
+						found = levels[required].complete
+					if (!found):
+						break
+				if (found):
+					available_levels.append(level.title)
+					new_levels_available = true
+					get_node("gui/CanvasLayer/level/title/newlevel").show()
+	return new_levels_available
+
+# at least one requirement is required
+func check_related_requirements(required):
+	var available_levels = Globals.get("available_levels")
+	var levels = Globals.get("levels")
+	var required_size = required.size()
+	for i in range(0, required_size):
+		var required_level = required[i]
+		if (levels[required_level].complete):
+			return true
 
 # load new level
 func teleport(new_level, pos, teleport):

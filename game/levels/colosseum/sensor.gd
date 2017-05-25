@@ -36,6 +36,7 @@ func process_fighting():
 				level.complete = true
 				Globals.get("levels")[Globals.get("current_level")] = level
 				var level_display = get_tree().get_root().get_node("world/gui/CanvasLayer/level")
+				level_display.get_node("title/newlevel").hide()
 				level_display.get_node("title").set_text("KEY_VICTORY")
 				level_display.get_node("AnimationPlayer").play("quest")
 				gate.queue_free()

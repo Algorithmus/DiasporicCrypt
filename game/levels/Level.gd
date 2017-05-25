@@ -18,6 +18,8 @@ var waves # array of enemy groups that will be fighting if it's a colosseum leve
 var time # time limit for bonus levels
 var mincounter # minimum number of enemies required for bonus level
 var location # location level takes place in
+var require # levels required to be completed before this level becomes available
+var character # character the level is for
 
 func _ready():
 	# Called every time the node is added to the scene.

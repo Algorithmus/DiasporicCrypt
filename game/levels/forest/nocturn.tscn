@@ -9,7 +9,18 @@
 
 [sub_resource type="CanvasItemShader" id=1]
 
-_code = { "fragment":"uniform color start=color(0.2,0.4,1.0,0.8);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, UV.y);\n\nCOLOR.a = tex(TEXTURE,UV).a*COLOR.a;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+_code = {
+"fragment": "uniform color start=color(0.2,0.4,1.0,0.8);
+uniform color stop=color(0.2,0.4,1.0,0);
+COLOR = mix(start, stop, UV.y);
+
+COLOR.a = tex(TEXTURE,UV).a*COLOR.a;",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
 
 [sub_resource type="CanvasItemMaterial" id=2]
 
@@ -28,7 +39,9 @@ lossy_quality = 0.7
 
 [node name="LVL_NOCTURNFOREST" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -50,15 +63,11 @@ tile_data = IntArray( -2752523, 1073741862, -2752522, 1073741862, -2752521, 1073
 
 [node name="LadderGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="TestLadder" parent="tilemap/LadderGroup" instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 16, 160 )
-
-[node name="KinematicBody2D" parent="tilemap/LadderGroup/TestLadder"]
-
-collision/margin = 0.08
 
 [node name="Sprite" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
 
@@ -67,7 +76,6 @@ region_rect = Rect2( 0, 0, 32, 128 )
 [node name="ladder" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
 
 transform/scale = Vector2( 1, 4 )
-linear_damp = 0.1
 
 [node name="TestLadder 2" parent="tilemap/LadderGroup" instance=ExtResource( 3 )]
 
@@ -78,51 +86,42 @@ transform/pos = Vector2( 16, 80 )
 [node name="TestConsumable" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 608, 48 )
-collision/margin = 0.08
 
 [node name="TestConsumable1" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 880, 48 )
-collision/margin = 0.08
 
 [node name="TestConsumable2" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1136, 48 )
-collision/margin = 0.08
 
 [node name="TestConsumable3" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1392, 48 )
-collision/margin = 0.08
 
 [node name="TestConsumable4" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1664, 48 )
-collision/margin = 0.08
 
 [node name="TestConsumable5" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1920, 48 )
-collision/margin = 0.08
 
 [node name="TestConsumable6" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 2176, 48 )
-collision/margin = 0.08
 
 [node name="TestConsumable7" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 2448, 48 )
-collision/margin = 0.08
 
 [node name="TestConsumable8" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 2720, 48 )
-collision/margin = 0.08
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 5 )]
 
@@ -134,11 +133,14 @@ teleport_to = Vector2( -16, -272 )
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
 
 transform/scale = Vector2( 3, 1 )
-linear_damp = 0.1
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
 
 [node name="boundaries" type="Node2D" parent="tilemap"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="NW" type="Position2D" parent="tilemap/boundaries"]
 
@@ -164,6 +166,7 @@ scroll/ignore_camera_zoom = true
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 motion/scale = Vector2( 1, 1 )
+motion/offset = Vector2( 0, 0 )
 motion/mirroring = Vector2( 0, 0 )
 
 [node name="sky" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]

@@ -421,6 +421,7 @@ func cleanup_bloodparticles():
 			level.complete = true
 			Globals.get("levels")[Globals.get("current_level")] = level
 			var level_display = get_tree().get_root().get_node("world/gui/CanvasLayer/level")
+			level_display.get_node("title/newlevel").hide()
 			level_display.get_node("title").set_text("KEY_COMPLETE")
 			level_display.get_node("AnimationPlayer").play("quest")
 		queue_free()

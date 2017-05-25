@@ -6,7 +6,9 @@
 
 [node name="LVL_NOTITLE" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -27,8 +29,6 @@ occluder/light_mask = 1
 tile_data = IntArray( -458763, 1610612737, -458762, 1073741824, -458761, 1073741824, -458760, 1073741824, -458759, 1073741824, -458758, 1073741824, -458757, 1073741824, -458756, 1073741824, -458755, 1073741824, -458754, 1073741824, -458753, 1073741824, -524288, 1073741824, -524287, 1073741824, -524286, 1073741824, -524285, 1073741825, -393227, 2, -458749, 2, -327691, 2, -393213, 2, -262155, 1073741825, -327677, 1610612737, 131061, 536870913, 131062, 0, 131063, 0, 131064, 0, 131065, 0, 131066, 0, 131067, 0, 131068, 0, 131069, 0, 131070, 0, 131071, 0, 65536, 0, 65537, 0, 65538, 0, 65539, 1, 196597, 2, 196598, 5, 196599, 5, 196600, 5, 196601, 5, 196602, 5, 196603, 5, 196604, 5, 196605, 5, 196606, 5, 196607, 5, 131072, 5, 131073, 5, 131074, 5, 131075, 2, 262133, 2, 262134, 5, 262135, 5, 262136, 5, 262137, 5, 262138, 5, 262139, 5, 262140, 5, 262141, 5, 262142, 5, 262143, 5, 196608, 5, 196609, 5, 196610, 5, 196611, 2, 327669, 2, 327670, 5, 327671, 5, 327672, 1073741829, 327673, 5, 327674, 5, 327675, 5, 327676, 5, 327677, 5, 327678, 5, 327679, 5, 262144, 5, 262145, 5, 262146, 5, 262147, 2 )
 
 [node name="BreakableGroup" type="Node2D" parent="tilemap"]
-
-editor/display_folded = true
 
 [node name="SpecialBreakable" parent="tilemap/BreakableGroup" instance=ExtResource( 2 )]
 
@@ -111,14 +111,6 @@ transform/pos = Vector2( -358, -262 )
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
 transform/pos = Vector2( 138, 170 )
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="exit_screen"]
 
 
 [editable path="tilemap/TeleportGroup/Teleport"]

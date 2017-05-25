@@ -143,6 +143,7 @@ func check_damage():
 				Globals.set("current_quest_complete", true)
 				var level = Globals.get("levels")[Globals.get("current_level")]
 				level.complete = true
+				get_tree().get_root().get_node("world").check_available_levels()
 				Globals.get("levels")[Globals.get("current_level")] = level
 				var level_display = get_tree().get_root().get_node("world/gui/CanvasLayer/level")
 				level_display.get_node("title").set_text("KEY_VICTORY")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=1]
+[gd_scene load_steps=65 format=1]
 
 [ext_resource path="res://scenes/main.gd" type="Script" id=1]
 [ext_resource path="res://levels/common/catacombs.tscn" type="PackedScene" id=2]
@@ -25,20 +25,22 @@
 [ext_resource path="res://gui/fonts/L-24-Keyboard-outline.fnt" type="BitmapFont" id=23]
 [ext_resource path="res://gui/maps/HudMap.gd" type="Script" id=24]
 [ext_resource path="res://gui/fonts/XL-72.fnt" type="BitmapFont" id=25]
-[ext_resource path="res://gui/dialogue/dialogue.tscn" type="PackedScene" id=26]
-[ext_resource path="res://gui/menu/menu.tscn" type="PackedScene" id=27]
-[ext_resource path="res://gui/TextButton.tscn" type="PackedScene" id=28]
-[ext_resource path="res://players/magic/wind/action.png" type="Texture" id=29]
-[ext_resource path="res://gui/sequences/demonic_f.png" type="Texture" id=30]
-[ext_resource path="res://gui/sequences/demonic_a.png" type="Texture" id=31]
-[ext_resource path="res://gui/fonts/S-13-dialog.fnt" type="BitmapFont" id=32]
-[ext_resource path="res://gui/loading/loading.tscn" type="PackedScene" id=33]
-[ext_resource path="res://gui/loading/logo.png" type="Texture" id=34]
-[ext_resource path="res://gui/confirm.wav" type="Sample" id=35]
-[ext_resource path="res://gui/cursor.wav" type="Sample" id=36]
-[ext_resource path="res://gui/sequences/demonic.wav" type="Sample" id=37]
-[ext_resource path="res://levels/common/catacombs.ogg" type="AudioStream" id=38]
-[ext_resource path="res://scenes/GameClock.gd" type="Script" id=39]
+[ext_resource path="res://gui/fonts/M-15-options.fnt" type="BitmapFont" id=26]
+[ext_resource path="res://gui/menu/tabs/map.png" type="Texture" id=27]
+[ext_resource path="res://gui/dialogue/dialogue.tscn" type="PackedScene" id=28]
+[ext_resource path="res://gui/menu/menu.tscn" type="PackedScene" id=29]
+[ext_resource path="res://gui/TextButton.tscn" type="PackedScene" id=30]
+[ext_resource path="res://players/magic/wind/action.png" type="Texture" id=31]
+[ext_resource path="res://gui/sequences/demonic_f.png" type="Texture" id=32]
+[ext_resource path="res://gui/sequences/demonic_a.png" type="Texture" id=33]
+[ext_resource path="res://gui/fonts/S-13-dialog.fnt" type="BitmapFont" id=34]
+[ext_resource path="res://gui/loading/loading.tscn" type="PackedScene" id=35]
+[ext_resource path="res://gui/loading/logo.png" type="Texture" id=36]
+[ext_resource path="res://gui/confirm.wav" type="Sample" id=37]
+[ext_resource path="res://gui/cursor.wav" type="Sample" id=38]
+[ext_resource path="res://gui/sequences/demonic.wav" type="Sample" id=39]
+[ext_resource path="res://levels/common/catacombs.ogg" type="AudioStream" id=40]
+[ext_resource path="res://scenes/GameClock.gd" type="Script" id=41]
 
 [sub_resource type="CanvasItemShader" id=1]
 
@@ -452,19 +454,19 @@ samples/confirm = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 35 )
+"sample": ExtResource( 37 )
 }
 samples/cursor = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 36 )
+"sample": ExtResource( 38 )
 }
 samples/demonic = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 37 )
+"sample": ExtResource( 39 )
 }
 
 [sub_resource type="Animation" id=22]
@@ -966,7 +968,6 @@ autoplay = ""
 [node name="level" type="Control" parent="gui/CanvasLayer"]
 
 process/pause_mode = 1
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -978,7 +979,6 @@ margin/bottom = 40.0
 
 [node name="title" type="Label" parent="gui/CanvasLayer/level"]
 
-visibility/opacity = 0.0
 anchor/left = 3
 anchor/top = 3
 anchor/right = 3
@@ -988,16 +988,40 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = -12.0
-margin/top = -164.0
+margin/top = -364.0
 margin/right = -749.0
-margin/bottom = -382.0
+margin/bottom = -582.0
 custom_fonts/font = ExtResource( 25 )
+text = "COMPLETE"
 align = 1
 valign = 1
 autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="newlevel" type="Label" parent="gui/CanvasLayer/level/title"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -32.0
+margin/top = 144.0
+margin/right = 768.0
+margin/bottom = 163.0
+custom_fonts/font = ExtResource( 26 )
+text = "KEY_NEWLEVEL"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="icon" type="Sprite" parent="gui/CanvasLayer/level/title/newlevel"]
+
+transform/pos = Vector2( 400, 32 )
+texture = ExtResource( 27 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="gui/CanvasLayer/level"]
 
@@ -1011,7 +1035,7 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="dialogue" parent="gui/CanvasLayer" instance=ExtResource( 26 )]
+[node name="dialogue" parent="gui/CanvasLayer" instance=ExtResource( 28 )]
 
 [node name="pause" type="Control" parent="gui/CanvasLayer"]
 
@@ -1035,7 +1059,7 @@ texture = SubResource( 16 )
 centered = false
 modulate = Color( 1, 1, 1, 0.590791 )
 
-[node name="menu" parent="gui/CanvasLayer/pause" instance=ExtResource( 27 )]
+[node name="menu" parent="gui/CanvasLayer/pause" instance=ExtResource( 29 )]
 
 visibility/visible = false
 margin/left = 32.0
@@ -1102,7 +1126,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="yes" parent="gui/CanvasLayer/choice" instance=ExtResource( 28 )]
+[node name="yes" parent="gui/CanvasLayer/choice" instance=ExtResource( 30 )]
 
 transform/pos = Vector2( 256, 404 )
 default_focus = true
@@ -1114,7 +1138,7 @@ enabled_focus_mode = 2
 shortcut = null
 text = "KEY_YES"
 
-[node name="no" parent="gui/CanvasLayer/choice" instance=ExtResource( 28 )]
+[node name="no" parent="gui/CanvasLayer/choice" instance=ExtResource( 30 )]
 
 transform/pos = Vector2( 544, 404 )
 
@@ -1167,7 +1191,7 @@ config/lifetime = 2.0
 config/time_scale = 20.0
 config/process_mode = 1
 config/half_extents = Vector2( 400, 100 )
-config/texture = ExtResource( 29 )
+config/texture = ExtResource( 31 )
 params/direction = 90.0
 params/spread = 10.0
 params/linear_velocity = 120.0
@@ -1192,7 +1216,7 @@ randomness/initial_size = 1.0
 [node name="friederich" type="Sprite" parent="gui/CanvasLayer/sequences/demonic/sprite"]
 
 transform/scale = Vector2( 0.45, 0.45 )
-texture = ExtResource( 30 )
+texture = ExtResource( 32 )
 centered = false
 offset = Vector2( 0, 74 )
 
@@ -1200,7 +1224,7 @@ offset = Vector2( 0, 74 )
 
 visibility/visible = false
 transform/scale = Vector2( 0.55, 0.55 )
-texture = ExtResource( 31 )
+texture = ExtResource( 33 )
 centered = false
 offset = Vector2( 0, 74 )
 
@@ -1215,7 +1239,7 @@ margin/top = 552.0
 margin/right = 768.0
 margin/bottom = 584.0
 custom_fonts/mono_font = ExtResource( 23 )
-custom_fonts/normal_font = ExtResource( 32 )
+custom_fonts/normal_font = ExtResource( 34 )
 bbcode/enabled = true
 bbcode/bbcode = "[right]KEY_SKIP:  [code]Z[/code][/right]"
 visible_characters = -1
@@ -1231,7 +1255,7 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="loading" parent="gui/CanvasLayer" instance=ExtResource( 33 )]
+[node name="loading" parent="gui/CanvasLayer" instance=ExtResource( 35 )]
 
 visibility/visible = false
 
@@ -1284,7 +1308,7 @@ max_lines_visible = -1
 
 transform/pos = Vector2( 400, 448 )
 transform/scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 34 )
+texture = ExtResource( 36 )
 
 [node name="sound" type="SamplePlayer" parent="gui"]
 
@@ -1305,7 +1329,7 @@ default/chorus_send = 0.0
 
 [node name="music" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 38 )
+stream/stream = ExtResource( 40 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0
@@ -1328,7 +1352,7 @@ autoplay = ""
 
 [node name="gameclock" type="Node2D" parent="."]
 
-script/script = ExtResource( 39 )
+script/script = ExtResource( 41 )
 
 [connection signal="pressed" from="gui/CanvasLayer/choice/yes/button" to="." method="confirm_selected"]
 

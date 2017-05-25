@@ -60,6 +60,7 @@ func _ready():
 			for event in InputMap.get_action_list(actionid):
 				if (event.type == InputEvent.KEY):
 					controls[actionid] = event.scancode
+	Globals.set("debugmode", true)
 	Globals.set("controls", controls)
 	Globals.set("newcontrols", controls)
 	Globals.set("savedir", "user://saves")
