@@ -22,6 +22,7 @@ var tagsdisabled = true
 var content
 var animation
 var echo = false
+var currentline = 0
 var tagfilters = {"red": false, "green": false, "blue": false, "purple": false}
 var typefilters = {"quest": true, "boss": true, "bonus": true, "colosseum": true}
 var typeicons = {"quest": preload("res://gui/worldmap/icons/quest.png"), 
@@ -181,6 +182,8 @@ func set_content(id):
 	else:
 		title.get_node("new").hide()
 	content.get_node("description").set_bbcode(tr(level.description))
+	currentline = 0
+	content.get_node("description").scroll_to_line(currentline)
 	content.get_node("info/reward").set_text(tr("MAP_REWARD") + ": " + str(level.reward) + "G")
 	var target = content.get_node("info/target")
 	target.hide()
@@ -266,6 +269,13 @@ func _input(event):
 				select_list()
 			else:
 				select_pin()
+		if ((event.is_action_pressed("ui_up") || event.is_action_pressed("ui_down")) && leveldisplay && get_focus_owner() == content.get_node("warp")):
+			if (event.is_action_pressed("ui_up")):
+				currentline -= 1
+			if (event.is_action_pressed("ui_down")):
+				currentline += 1
+			currentline = max(0, currentline)
+			content.get_node("description").scroll_to_line(currentline)
 		if (event.is_action_pressed("ui_cancel") && leveldisplay):
 			leveldisplay = false
 			animation.play("hide")
@@ -285,12 +295,14 @@ func _input(event):
 					filters.get_node("bg").show()
 					filters.get_node("tags").grab_focus()
 			else:
-				if (islist):
-					listcontainer.get_node(selectedlevel.get_name()).grab_focus()
-				else:
+				if (!islist):
 					selectedlevel.grab_focus()
-				selectedlevel = null
+					selectedlevel = null
 			echo = true
+
+func end_level_animation():
+	listcontainer.get_node(selectedlevel.get_name()).grab_focus()
+	selectedlevel = null
 
 func end_list_animation():
 	if (islist):
