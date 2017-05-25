@@ -336,7 +336,6 @@ texture = ExtResource( 5 )
 
 [node name="main" type="Control" parent="CanvasLayer/menu"]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -429,7 +428,7 @@ margin/top = 569.0
 margin/right = 784.0
 margin/bottom = 592.0
 custom_fonts/font = ExtResource( 7 )
-text = "v0.4"
+text = "v0.5"
 align = 2
 percent_visible = 1.0
 lines_skipped = 0
