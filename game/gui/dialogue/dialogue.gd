@@ -122,6 +122,11 @@ func check_dialog():
 					current_dialog = -1
 					dialogs = choice.get("data")
 				show_dialog()
+			elif (choice.get("action") == "random"):
+				clear_choices()
+				current_dialog = -1
+				dialogs = choice.get("data")[randi() % choice.get("data").size()]
+				show_dialog()
 			elif (choice.get("action") == "shop"):
 				var shop = shopclass.instance()
 				shop.shopid = choice.get("data")
