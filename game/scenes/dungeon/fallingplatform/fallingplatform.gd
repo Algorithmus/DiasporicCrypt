@@ -7,6 +7,7 @@ var blockR
 var blockL
 var climbableL
 var climbableR
+var animationplayer
 var state = "idle"
 var platform_duration = 100
 var current_duration = 0
@@ -27,10 +28,15 @@ func _fixed_process(delta):
 			var player = collisions["collider"]
 			if (is_climbable || (!is_climbable && player.get_global_pos().y + player.get_parent().sprite_offset.y <= get_global_pos().y - 16)):
 				current_duration += 1
+				if (current_duration / float(platform_duration) >= 0.65 && animationplayer.get_current_animation() != "shake"):
+					animationplayer.play("shake")
 				if (current_duration >= platform_duration):
 					current_duration = 0
 					state = "falling"
+		else:
+			animationplayer.play("idle")
 	elif (state == "falling"):
+		animationplayer.play("idle")
 		accel += 1
 		blockL.set_global_pos(Vector2(blockL.get_global_pos().x, blockL.get_global_pos().y + accel))
 		blockR.set_global_pos(Vector2(blockR.get_global_pos().x, blockR.get_global_pos().y + accel))
@@ -76,6 +82,7 @@ func _ready():
 		blockR.get_node("climbable").set_name("CollisionShape2D")
 	lOffset = blockL.get_pos().x
 	rOffset = blockR.get_pos().x
+	animationplayer = get_node("AnimationPlayer")
 
 func enter_screen():
 	set_fixed_process(true)
