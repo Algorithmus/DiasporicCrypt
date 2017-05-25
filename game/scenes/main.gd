@@ -66,6 +66,7 @@ func _ready():
 	Globals.set("itemfactory", itemfactory.new())
 	Globals.set("levels", levelfactory.new().levels)
 	Globals.set("current_level", "LVL_START")
+	Globals.get("levels")[Globals.get("current_level")].new = false
 	Globals.set("eventmode", false)
 	Globals.set("current_quest_complete", false)
 	Globals.set("reward_taken", false)
