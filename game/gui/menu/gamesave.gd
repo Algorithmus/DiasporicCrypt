@@ -228,9 +228,9 @@ func save_from_data(data):
 func displayGameData(data):
 	gameData = data
 	if (data.player.character == "adela"):
-		characterBG.set_texture(preload("res://gui/save/BGs/adela.png"))
+		characterBG.set_texture(preload("res://gui/save/bgs/adela.png"))
 	else:
-		characterBG.set_texture(preload("res://gui/save/BGs/friederich.png"))
+		characterBG.set_texture(preload("res://gui/save/bgs/friederich.png"))
 	saveGroup.get_node("location").set_text(data.location)
 	saveGroup.get_node("gold").set_text(str(data.inventory.gold) + "G")
 	saveGroup.get_node("stats").set_text("LV" + str(data.player.stats.level) + " " + str(data.player.stats.currentHp) + "/" + str(data.player.stats.hp) + "HP " + str(data.player.stats.currentMp) + "/" + str(data.player.stats.mp) + "MP")
