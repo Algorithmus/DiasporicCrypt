@@ -141,7 +141,7 @@ func _init():
 	strengthpotion.value = 1
 	strengthpotion.image = "res://scenes/items/potion/strengthpotion.png"
 	strengthpotion.effect = "atk"
-	strengthpotion.cost = 100
+	strengthpotion.cost = 10000
 	items[strengthpotion.title] = strengthpotion
 
 	var shieldpotion = itemclass.new()
