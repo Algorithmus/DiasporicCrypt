@@ -826,13 +826,13 @@ stream/buffering_ms = 500
 
 [connection signal="pressed" from="CanvasLayer/menu/newgame/backbutton/back" to="." method="_on_newgame_back_pressed"]
 
-[connection signal="focus_enter" from="CanvasLayer/menu/newgame/friederich" to="." method="_on_friederich_focus_enter"]
-
 [connection signal="focus_enter" from="CanvasLayer/menu/newgame/friederich" to="CanvasLayer/menu/newgame/friederich" method="_on_focus_enter"]
 
-[connection signal="focus_exit" from="CanvasLayer/menu/newgame/friederich" to="." method="_on_friederich_focus_exit"]
+[connection signal="focus_enter" from="CanvasLayer/menu/newgame/friederich" to="." method="_on_friederich_focus_enter"]
 
 [connection signal="focus_exit" from="CanvasLayer/menu/newgame/friederich" to="CanvasLayer/menu/newgame/friederich" method="_on_focus_exit"]
+
+[connection signal="focus_exit" from="CanvasLayer/menu/newgame/friederich" to="." method="_on_friederich_focus_exit"]
 
 [connection signal="pressed" from="CanvasLayer/menu/newgame/friederich" to="." method="_on_friederich_selected"]
 

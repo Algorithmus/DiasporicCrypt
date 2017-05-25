@@ -64,7 +64,6 @@ func _ready():
 	Globals.set("magic_spells", magic_spells)
 	Globals.set("chain", chainlist)
 	Globals.set("itemfactory", itemfactory.new())
-	Globals.set("available_levels", ["LVL_SANDBOX", "LVL_FOREST1", "LVL_FOREST2", "LVL_MANOR", "LVL_LAVACAVE", "LVL_START", "LVL_COLOSSEUM1", "LVL_COLOSSEUM2", "LVL_AQUADUCT", "LVL_HOLYRUINS", "LVL_CAPECRYPT", "LVL_BERGFORTRESS", "LVL_SPRINGISLANDCASTLE", "LVL_WINTERISLANDCASTLE", "LVL_CAVE", "LVL_MAUSOLEUM", "LVL_DUNGEON", "LVL_ICECAVE"])
 	Globals.set("levels", levelfactory.new().levels)
 	Globals.set("current_level", "LVL_START")
 	Globals.set("eventmode", false)
@@ -120,12 +119,26 @@ func _ready():
 	choice = get_node("gui/CanvasLayer/choice")
 	choice.hide()
 	var player
+	var available_levels = ["LVL_SANDBOX", "LVL_START", "LVL_FOREST1", "LVL_FOREST2", "LVL_COLOSSEUM1", "LVL_COLOSSEUM2"]
 	if (Globals.get("player") == "friederich"):
+		available_levels.append("LVL_MANOR")
+		available_levels.append("LVL_LAVACAVE")
+		available_levels.append("LVL_BERGFORTRESS")
+		available_levels.append("LVL_WINTERISLANDCASTLE")
+		available_levels.append("LVL_CAVE")
+		available_levels.append("LVL_DUNGEON")
 		selected_character = friederich
 		player = friederich.instance()
 	else:
+		available_levels.append("LVL_AQUADUCT")
+		available_levels.append("LVL_HOLYRUINS")
+		available_levels.append("LVL_CAPECRYPT")
+		available_levels.append("LVL_SPRINGISLANDCASTLE")
+		available_levels.append("LVL_MAUSOLEUM")
+		available_levels.append("LVL_ICECAVE")
 		selected_character = adela
 		player = adela.instance()
+	Globals.set("available_levels", available_levels)
 	start(player)
 	if (Globals.has("gamedata")):
 		load_game(Globals.get("gamedata"))
