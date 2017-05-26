@@ -9,7 +9,7 @@ func _init():
 	sandbox.node = "res://levels/sandbox/sandbox.tscn"
 	sandbox.teleportto = Vector2(-112, 480)
 	sandbox.id = "LVL_SANDBOX"
-	sandbox.bgm = preload("res://levels/common/BGM1.ogg")
+	sandbox.bgm = preload("res://levels/common/BGM1.ogg") #3
 	locations[sandbox.id] = sandbox
 	
 	var forest1 = locationclass.new()
@@ -23,21 +23,21 @@ func _init():
 	start.node = "res://levels/roomoftrials/0-0.tscn"
 	start.teleportto = Vector2(336, 128)
 	start.id = "LVL_START"
-	start.bgm = preload("res://levels/common/BGM1.ogg")
+	start.bgm = preload("res://levels/common/BGM1.ogg") #2
 	locations[start.id] = start
 	
 	var colosseum1 = locationclass.new()
 	colosseum1.node = "res://levels/sandbox/colosseum-prototype0-0.tscn"
 	colosseum1.teleportto = Vector2(48, 128)
 	colosseum1.id = "LVL_COLOSSEUM"
-	colosseum1.bgm = preload("res://levels/common/BGM1.ogg")
+	colosseum1.bgm = preload("res://levels/common/BGM1.ogg") #3
 	locations[colosseum1.id] = colosseum1
 	
 	var lavacave = locationclass.new()
 	lavacave.node = "res://levels/lavacave/0-0.tscn"
 	lavacave.teleportto = Vector2(-16, 128)
 	lavacave.id = "LVL_LAVACAVE"
-	lavacave.bgm = preload("res://levels/common/BGM1.ogg")
+	lavacave.bgm = preload("res://levels/common/BGM1.ogg") #3
 	locations[lavacave.id] = lavacave
 	
 	var marblecastle = locationclass.new()
@@ -58,21 +58,21 @@ func _init():
 	aquaduct.node = "res://levels/aquaduct/0-0.tscn"
 	aquaduct.teleportto = Vector2(-16, 128)
 	aquaduct.id = "LVL_AQUADUCT"
-	aquaduct.bgm = preload("res://levels/common/BGM1.ogg")
+	aquaduct.bgm = preload("res://levels/common/BGM1.ogg") #2
 	locations[aquaduct.id] = aquaduct
 	
 	var holyruins = locationclass.new()
 	holyruins.node = "res://levels/holyruins/0-0.tscn"
 	holyruins.teleportto = Vector2(-16, 128)
 	holyruins.id = "LVL_HOLYRUINS"
-	holyruins.bgm = preload("res://levels/common/BGM1.ogg")
+	holyruins.bgm = preload("res://levels/common/BGM1.ogg") #2
 	locations[holyruins.id] = holyruins
 	
 	var crypt = locationclass.new()
 	crypt.node = "res://levels/crypt/0-0.tscn"
 	crypt.teleportto = Vector2(-16, 128)
 	crypt.id = "LVL_CAPECRYPT"
-	crypt.bgm = preload("res://levels/common/BGM1.ogg")
+	crypt.bgm = preload("res://levels/common/BGM1.ogg") #2
 	locations[crypt.id] = crypt
 	
 	var springislandcastle = locationclass.new()
@@ -93,26 +93,26 @@ func _init():
 	cave.node = "res://levels/cave/0-0.tscn"
 	cave.teleportto = Vector2(16, 32)
 	cave.id = "LVL_CAVE"
-	cave.bgm = preload("res://levels/common/BGM1.ogg")
+	cave.bgm = preload("res://levels/common/BGM1.ogg") #3
 	locations[cave.id] = cave
 	
 	var mausoleum = locationclass.new()
 	mausoleum.node = "res://levels/mausoleum/0-0.tscn"
 	mausoleum.teleportto = Vector2(336, 160)
 	mausoleum.id = "LVL_MAUSOLEUM"
-	mausoleum.bgm = preload("res://levels/common/BGM1.ogg")
+	mausoleum.bgm = preload("res://levels/common/BGM1.ogg") #2
 	locations[mausoleum.id] = mausoleum
 	
 	var dungeon = locationclass.new()
 	dungeon.node = "res://levels/dungeon/0-0.tscn"
 	dungeon.teleportto = Vector2(48, 128)
 	dungeon.id = "LVL_DUNGEON"
-	dungeon.bgm = preload("res://levels/common/BGM1.ogg")
+	dungeon.bgm = preload("res://levels/common/BGM1.ogg") #2
 	locations[dungeon.id] = dungeon
 
 	var icecave = locationclass.new()
 	icecave.node = "res://levels/icecave/0-0.tscn"
 	icecave.teleportto = Vector2(16, 64)
 	icecave.id = "LVL_ICECAVE"
-	icecave.bgm = preload("res://levels/common/BGM1.ogg")
+	icecave.bgm = preload("res://levels/common/BGM1.ogg") #3
 	locations[icecave.id] = icecave
