@@ -9,7 +9,9 @@ extents = Vector2( 32, 32 )
 
 [node name="Slope0-15" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"Script" }
+__meta__ = {
+"__editor_plugin_screen__": "Script"
+}
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 
@@ -23,6 +25,7 @@ collision/margin = 0.08
 texture = ExtResource( 1 )
 vframes = 2
 hframes = 2
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 
 [node name="slope0-15" type="Area2D" parent="KinematicBody2D"]
 

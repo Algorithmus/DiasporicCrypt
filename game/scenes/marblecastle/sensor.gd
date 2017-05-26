@@ -13,6 +13,7 @@ var camera_direction = -1
 var camera_moving = false
 
 func _ready():
+	gateclass = preload("res://scenes/marblecastle/gate.tscn")
 	gatepos = Vector2(-208, -400)
 	var head = tilemap.get_node("BossGroup/StatueHead")
 	head.set_opacity(0)

@@ -6,6 +6,7 @@ extends "res://scenes/common/Sensor.gd"
 var emeraldkeyclass = preload("res://scenes/items/special/emeraldkey.tscn")
 
 func _ready():
+	gateclass = preload("res://scenes/fallislandcastle/gate.tscn")
 	gatepos = Vector2(-208, -400)
 	var boss = tilemap.get_node("BossGroup/GiantLizard")
 	if (Globals.get("current_quest_complete")):

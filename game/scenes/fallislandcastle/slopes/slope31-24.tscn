@@ -9,7 +9,9 @@ extents = Vector2( 16, 16 )
 
 [node name="Slope31-24" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 
@@ -25,6 +27,7 @@ flip_h = true
 vframes = 2
 hframes = 4
 frame = 3
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 
 [node name="slope31-24" type="Area2D" parent="KinematicBody2D"]
 

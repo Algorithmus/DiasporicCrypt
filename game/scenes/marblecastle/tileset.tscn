@@ -6,14 +6,14 @@
 [ext_resource path="res://scenes/springislandcastle/BGs/wallcorner.png" type="Texture" id=4]
 [ext_resource path="res://scenes/springislandcastle/BGs/walledge.png" type="Texture" id=5]
 [ext_resource path="res://scenes/springislandcastle/BGs/marble.png" type="Texture" id=6]
-[ext_resource path="res://scenes/fallislandcastle/BGs/wall.png" type="Texture" id=7]
-[ext_resource path="res://scenes/fallislandcastle/BGs/wallpaper.png" type="Texture" id=8]
-[ext_resource path="res://scenes/fallislandcastle/BGs/ledge.png" type="Texture" id=9]
-[ext_resource path="res://scenes/fallislandcastle/BGs/ledge2.png" type="Texture" id=10]
-[ext_resource path="res://scenes/fallislandcastle/BGs/ceiling.png" type="Texture" id=11]
-[ext_resource path="res://scenes/fallislandcastle/BGs/walltile.png" type="Texture" id=12]
-[ext_resource path="res://scenes/fallislandcastle/BGs/mirror.png" type="Texture" id=13]
-[ext_resource path="res://scenes/fallislandcastle/BGs/window.png" type="Texture" id=14]
+[ext_resource path="res://scenes/marblecastle/BGs/wall.png" type="Texture" id=7]
+[ext_resource path="res://scenes/marblecastle/BGs/wallpaper.png" type="Texture" id=8]
+[ext_resource path="res://scenes/marblecastle/BGs/pillar-corner.png" type="Texture" id=9]
+[ext_resource path="res://scenes/marblecastle/BGs/pillar-top.png" type="Texture" id=10]
+[ext_resource path="res://scenes/marblecastle/BGs/pillar.png" type="Texture" id=11]
+[ext_resource path="res://scenes/marblecastle/BGs/pillar-bottom.png" type="Texture" id=12]
+[ext_resource path="res://scenes/marblecastle/BGs/dome.png" type="Texture" id=13]
+[ext_resource path="res://scenes/springislandcastle/BGs/window.png" type="Texture" id=14]
 [ext_resource path="res://scenes/springislandcastle/slopes/slopetile0-31.png" type="Texture" id=15]
 [ext_resource path="res://scenes/springislandcastle/slopes/slopetile0-15.png" type="Texture" id=16]
 [ext_resource path="res://scenes/springislandcastle/slopes/slopetile0-7.png" type="Texture" id=17]
@@ -29,7 +29,6 @@ extents = Vector2( 16, 16 )
 
 editor/display_folded = true
 texture = ExtResource( 1 )
-modulate = Color( 1, 0.792157, 0.54902, 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="floor"]
 
@@ -55,7 +54,6 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 32, 0 )
 texture = ExtResource( 2 )
-modulate = Color( 1, 0.792157, 0.54902, 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="floor_corner"]
 
@@ -78,9 +76,9 @@ _update_shape_index = 0
 
 [node name="wall_edge" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 64, 0 )
 texture = ExtResource( 3 )
-modulate = Color( 0.574015, 0.49379, 0.628906, 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="wall_edge"]
 
@@ -106,7 +104,6 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 96, 0 )
 texture = ExtResource( 4 )
-modulate = Color( 1, 0.792157, 0.54902, 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="wall_corner"]
 
@@ -132,7 +129,6 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 128, 0 )
 texture = ExtResource( 5 )
-modulate = Color( 1, 0.792157, 0.54902, 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="wall_line"]
 
@@ -158,7 +154,6 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 160, 0 )
 texture = ExtResource( 6 )
-modulate = Color( 1, 0.792157, 0.54902, 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="wall"]
 
@@ -179,39 +174,39 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[node name="mural" type="Sprite" parent="."]
+[node name="marblewall" type="Sprite" parent="."]
 
-transform/pos = Vector2( 48, 144 )
+transform/pos = Vector2( 0, 32 )
 texture = ExtResource( 7 )
 
 [node name="wallpaper" type="Sprite" parent="."]
 
-transform/pos = Vector2( 128, 32 )
+transform/pos = Vector2( 32, 32 )
 texture = ExtResource( 8 )
 
-[node name="ledge" type="Sprite" parent="."]
+[node name="pillar_corner" type="Sprite" parent="."]
 
-transform/pos = Vector2( 160, 32 )
+transform/pos = Vector2( 80, 48 )
 texture = ExtResource( 9 )
 
-[node name="ledge1" type="Sprite" parent="."]
+[node name="pillar_top" type="Sprite" parent="."]
 
-transform/pos = Vector2( 192, 32 )
+transform/pos = Vector2( 160, 48 )
 texture = ExtResource( 10 )
 
-[node name="ceiling" type="Sprite" parent="."]
+[node name="pillar" type="Sprite" parent="."]
 
-transform/pos = Vector2( 240, 48 )
+transform/pos = Vector2( 224, 32 )
 texture = ExtResource( 11 )
 
-[node name="ceiling1" type="Sprite" parent="."]
+[node name="pillar_bottom" type="Sprite" parent="."]
 
-transform/pos = Vector2( 368, 64 )
+transform/pos = Vector2( 224, 64 )
 texture = ExtResource( 12 )
 
-[node name="mirror" type="Sprite" parent="."]
+[node name="dome" type="Sprite" parent="."]
 
-transform/pos = Vector2( 496, 144 )
+transform/pos = Vector2( 256, 48 )
 texture = ExtResource( 13 )
 
 [node name="window" type="Sprite" parent="."]
@@ -223,7 +218,6 @@ texture = ExtResource( 14 )
 
 transform/pos = Vector2( 192, 0 )
 texture = ExtResource( 15 )
-modulate = Color( 1, 0.792157, 0.54902, 1 )
 region = true
 region_rect = Rect2( 0, 32, 32, 32 )
 
@@ -231,7 +225,6 @@ region_rect = Rect2( 0, 32, 32, 32 )
 
 transform/pos = Vector2( 224, 0 )
 texture = ExtResource( 16 )
-modulate = Color( 1, 0.792938, 0.550781, 1 )
 region = true
 region_rect = Rect2( 0, 32, 32, 32 )
 
@@ -239,7 +232,6 @@ region_rect = Rect2( 0, 32, 32, 32 )
 
 transform/pos = Vector2( 256, 0 )
 texture = ExtResource( 16 )
-modulate = Color( 1, 0.792157, 0.54902, 1 )
 region = true
 region_rect = Rect2( 32, 32, 32, 32 )
 
@@ -247,7 +239,6 @@ region_rect = Rect2( 32, 32, 32, 32 )
 
 transform/pos = Vector2( 288, 0 )
 texture = ExtResource( 17 )
-modulate = Color( 1, 0.792157, 0.54902, 1 )
 region = true
 region_rect = Rect2( 0, 32, 32, 32 )
 
@@ -255,7 +246,6 @@ region_rect = Rect2( 0, 32, 32, 32 )
 
 transform/pos = Vector2( 320, 0 )
 texture = ExtResource( 17 )
-modulate = Color( 1, 0.792157, 0.54902, 1 )
 region = true
 region_rect = Rect2( 32, 32, 32, 32 )
 
@@ -263,7 +253,6 @@ region_rect = Rect2( 32, 32, 32, 32 )
 
 transform/pos = Vector2( 352, 0 )
 texture = ExtResource( 17 )
-modulate = Color( 1, 0.792157, 0.54902, 1 )
 region = true
 region_rect = Rect2( 64, 32, 32, 32 )
 
@@ -271,7 +260,6 @@ region_rect = Rect2( 64, 32, 32, 32 )
 
 transform/pos = Vector2( 384, 0 )
 texture = ExtResource( 17 )
-modulate = Color( 1, 0.792157, 0.54902, 1 )
 region = true
 region_rect = Rect2( 96, 32, 32, 32 )
 
@@ -279,7 +267,6 @@ region_rect = Rect2( 96, 32, 32, 32 )
 
 transform/pos = Vector2( 416, 0 )
 texture = ExtResource( 1 )
-modulate = Color( 1, 0.792157, 0.54902, 1 )
 region_rect = Rect2( 96, 32, 32, 32 )
 
 
