@@ -389,7 +389,7 @@ VScrollBar/styles/scroll_focus = SubResource( 31 )
 [sub_resource type="Animation" id=33]
 
 resource/name = "hidden"
-length = 1.0
+length = 0.1
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -1035,6 +1035,7 @@ visible_characters = -1
 [node name="list" type="Control" parent="."]
 
 editor/display_folded = true
+visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
