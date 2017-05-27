@@ -15,6 +15,9 @@ func update_container():
 			icon.show()
 			if (level.type == "bonus"):
 				icon.get_node("counter").set_text(str(level.mincounter))
+			if (level.type == "quest"):
+				var image = level.item
+				icon.set_texture(load(Globals.get("itemfactory").items[image].image))
 		else:
 			icon.hide()
 	if (Globals.get("current_quest_complete")):

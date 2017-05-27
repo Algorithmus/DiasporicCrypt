@@ -5,13 +5,15 @@
 [ext_resource path="res://scenes/dungeon/movingplatform/movingplatform.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/common/damagables/orc/orc.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/items/potion/potion.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/items/special/amulet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/items/special/styxinscription.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/common/switches/floorswitch.tscn" type="PackedScene" id=8]
 
 [node name="LVL_NOTITLE" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -111,17 +113,14 @@ transform/pos = Vector2( -1088, -368 )
 
 [node name="SpecialItemGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
-
 [node name="ITEM_POTION" parent="tilemap/SpecialItemGroup" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( -624, -1072 )
 isgoal = true
 
-[node name="ITEM_GLYPH1" parent="tilemap/SpecialItemGroup" instance=ExtResource( 6 )]
+[node name="ITEM_STYXINSCRIPTION" parent="tilemap/SpecialItemGroup" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( -624, -1072 )
-title = "ITEM_GLYPH1"
 isgoal = true
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
@@ -170,6 +169,8 @@ target_nodes = [ "MovingPlatformGroup/MovingPlatform" ]
 related_switches = [  ]
 enabled = true
 invert = false
+show_target = false
+target_pos = Vector2( 0, 0 )
 is_toggle = true
 
 [node name="boundaries" type="Node2D" parent="tilemap"]
@@ -181,14 +182,6 @@ transform/pos = Vector2( -1350, -1446 )
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
 transform/pos = Vector2( 330, 266 )
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="exit_screen"]
 
 
 [editable path="tilemap/ClimbableGroup/ClimbableBlock1"]

@@ -5,12 +5,14 @@
 [ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/items/potion/potionplus.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/items/special/glyph1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/items/special/styxtome.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=7]
 
 [node name="LVL_NOTITLE" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -39,24 +41,18 @@ editor/display_folded = true
 transform/pos = Vector2( 208, 256 )
 motion = Vector2( 256, 0 )
 cycle = 16.0
-linear = false
-start_direction = 1
 
 [node name="MovingPlatform1" parent="tilemap/MovingPlatformGroup" instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 208, 496 )
 motion = Vector2( 256, 0 )
 cycle = 8.0
-linear = false
-start_direction = 1
 
 [node name="MovingPlatform2" parent="tilemap/MovingPlatformGroup" instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 208, 752 )
 motion = Vector2( 256, 0 )
 cycle = 4.0
-linear = false
-start_direction = 1
 
 [node name="LadderGroup" type="Node2D" parent="tilemap"]
 
@@ -174,14 +170,12 @@ transform/pos = Vector2( 560, 1009 )
 
 [node name="SpecialItemGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
-
-[node name="Potion+" parent="tilemap/SpecialItemGroup" instance=ExtResource( 5 )]
+[node name="ITEM_POTIONPLUS" parent="tilemap/SpecialItemGroup" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 208, 832 )
 isgoal = true
 
-[node name="Glpyh1" parent="tilemap/SpecialItemGroup" instance=ExtResource( 6 )]
+[node name="ITEM_STYXTOME" parent="tilemap/SpecialItemGroup" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 208, 832 )
 isgoal = true
@@ -215,10 +209,6 @@ transform/pos = Vector2( -198, -198 )
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
 transform/pos = Vector2( 618, 1066 )
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
 
 
 [editable path="tilemap/LadderGroup/TestLadder"]

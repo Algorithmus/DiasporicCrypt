@@ -3,13 +3,15 @@
 [ext_resource path="res://scenes/dungeon/debugtiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/dungeon/climbableblock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/items/potion/potion.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/items/special/glyph1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/items/special/styxcrest.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/common/damagables/skeleton/skeleton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=6]
 
 [node name="LVL_NOTITLE" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -53,7 +55,7 @@ flip_h = false
 transform/pos = Vector2( -176, 1296 )
 isgoal = true
 
-[node name="ITEM_GLYPH1" parent="tilemap/SpecialItemGroup" instance=ExtResource( 4 )]
+[node name="ITEM_STYXCREST" parent="tilemap/SpecialItemGroup" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -176, 1296 )
 isgoal = true
@@ -121,18 +123,6 @@ transform/pos = Vector2( -358, -198 )
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
 transform/pos = Vector2( 394, 1514 )
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport2/teleport/enabler" to="tilemap/TeleportGroup/Teleport2" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport2/teleport/enabler" to="tilemap/TeleportGroup/Teleport2" method="exit_screen"]
 
 
 [editable path="tilemap/ClimbableGroup/ClimbableBlock"]

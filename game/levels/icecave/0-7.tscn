@@ -2,12 +2,14 @@
 
 [ext_resource path="res://scenes/icecave/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/items/potion/potion.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/items/special/glyph1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/items/special/styxfigurine.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=4]
 
 [node name="LVL_NOTITLE" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -31,9 +33,10 @@ tile_data = IntArray( -131074, 1073741827, -131073, 11, -196608, 11, -196607, 11
 
 [node name="ITEM_POTION" parent="tilemap/SpecialItemGroup" instance=ExtResource( 2 )]
 
+transform/pos = Vector2( 48, 496 )
 isgoal = true
 
-[node name="ITEM_GLYPH1" parent="tilemap/SpecialItemGroup" instance=ExtResource( 3 )]
+[node name="ITEM_STYXFIGURINE" parent="tilemap/SpecialItemGroup" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 48, 496 )
 isgoal = true
@@ -100,18 +103,6 @@ transform/pos = Vector2( -1094, -102 )
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
 transform/pos = Vector2( 298, 810 )
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport2/teleport/enabler" to="tilemap/TeleportGroup/Teleport2" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport2/teleport/enabler" to="tilemap/TeleportGroup/Teleport2" method="exit_screen"]
 
 
 [editable path="tilemap/TeleportGroup/Teleport"]

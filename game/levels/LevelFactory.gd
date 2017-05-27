@@ -20,7 +20,7 @@ func _init():
 	springislandcastle.position = Vector2(463, 26)
 	springislandcastle.description = "LVL_SPRINGISLANDCASTLE_DESCRIPTION"
 	springislandcastle.reward = 10000
-	springislandcastle.item = "ITEM_GLYPH1"
+	springislandcastle.item = "ITEM_STYXMIRROR"
 	springislandcastle.require = ["LVL_CAPECRYPT"]
 	springislandcastle.location = locationfactory.locations["LVL_SPRINGISLANDCASTLE"]
 	levels[springislandcastle.title] = springislandcastle
@@ -31,7 +31,7 @@ func _init():
 	winterislandcastle.position = Vector2(195, 194)
 	winterislandcastle.description = "LVL_WINTERISLANDCASTLE_DESCRIPTION"
 	winterislandcastle.reward = 10000
-	winterislandcastle.item = "ITEM_GLYPH1"
+	winterislandcastle.item = "ITEM_STYXTOME"
 	winterislandcastle.require = ["LVL_LAVACAVE"]
 	winterislandcastle.location = locationfactory.locations["LVL_WINTERISLANDCASTLE"]
 	levels[winterislandcastle.title] = winterislandcastle
@@ -42,7 +42,7 @@ func _init():
 	mausoleum.position = Vector2(288, 288)
 	mausoleum.description = "LVL_MAUSOLEUM_DESCRIPTION"
 	mausoleum.reward = 4000
-	mausoleum.item = "ITEM_GLYPH1"
+	mausoleum.item = "ITEM_STYXINSCRIPTION"
 	mausoleum.require = ["LVL_ICECAVE", "LVL_AQUADUCT"]
 	mausoleum.location = locationfactory.locations["LVL_MAUSOLEUM"]
 	levels[mausoleum.title] = mausoleum
@@ -114,7 +114,7 @@ func _init():
 	dungeon.position = Vector2(362, 389)
 	dungeon.description = "LVL_DUNGEON_DESCRIPTION"
 	dungeon.reward = 4000
-	dungeon.item = "ITEM_GLYPH1"
+	dungeon.item = "ITEM_STYXCREST"
 	dungeon.location = locationfactory.locations["LVL_DUNGEON"]
 	dungeon.require = ["LVL_START"]
 	dungeon.character = "friederich"
@@ -126,7 +126,7 @@ func _init():
 	icecave.position = Vector2(77, 198)
 	icecave.description = "LVL_ICECAVE_DESCRIPTION"
 	icecave.reward = 4000
-	icecave.item = "ITEM_GLYPH1"
+	icecave.item = "ITEM_STYXFIGURINE"
 	icecave.location = locationfactory.locations["LVL_ICECAVE"]
 	icecave.require = ["LVL_START"]
 	icecave.character = "adela"

@@ -18,13 +18,62 @@ func _init():
 	amulet.image = "res://scenes/items/special/amulet.png"
 	items[amulet.title] = amulet
 	
-	var glyph1 = itemclass.new()
-	glyph1.title = "ITEM_GLYPH1"
-	glyph1.description = "ITEM_GLYPH1_DESCRIPTION"
-	glyph1.type = "special"
-	glyph1.image = "res://scenes/items/special/amulet.png"
-	items[glyph1.title] = glyph1
+	var styxinscription = itemclass.new()
+	styxinscription.title = "ITEM_STYXINSCRIPTION"
+	styxinscription.description = "ITEM_STYX_DESCRIPTION"
+	styxinscription.type = "special"
+	styxinscription.image = "res://scenes/items/special/styxinscription.png"
+	items[styxinscription.title] = styxinscription
 	
+	var styxchalice = itemclass.new()
+	styxchalice.title = "ITEM_STYXCHALICE"
+	styxchalice.description = "ITEM_STYX_DESCRIPTION"
+	styxchalice.type = "special"
+	styxchalice.image = "res://scenes/items/special/styxchalice.png"
+	items[styxchalice.title] = styxchalice
+	
+	var styxcoin = itemclass.new()
+	styxcoin.title = "ITEM_STYXCOIN"
+	styxcoin.description = "ITEM_STYX_DESCRIPTION"
+	styxcoin.type = "special"
+	styxcoin.image = "res://scenes/items/special/styxcoin.png"
+	items[styxcoin.title] = styxcoin
+	
+	var styxtome = itemclass.new()
+	styxtome.title = "ITEM_STYXTOME"
+	styxtome.description = "ITEM_STYX_DESCRIPTION"
+	styxtome.type = "special"
+	styxtome.image = "res://scenes/items/special/styxtome.png"
+	items[styxtome.title] = styxtome
+
+	var styxfigurine = itemclass.new()
+	styxfigurine.title = "ITEM_STYXFIGURINE"
+	styxfigurine.description = "ITEM_STYX_DESCRIPTION"
+	styxfigurine.type = "special"
+	styxfigurine.image = "res://scenes/items/special/styxfigurine.png"
+	items[styxfigurine.title] = styxfigurine
+
+	var styxbrooch = itemclass.new()
+	styxbrooch.title = "ITEM_STYXBROOCH"
+	styxbrooch.description = "ITEM_STYX_DESCRIPTION"
+	styxbrooch.type = "special"
+	styxbrooch.image = "res://scenes/items/special/styxbrooch.png"
+	items[styxbrooch.title] = styxbrooch
+
+	var styxcrest = itemclass.new()
+	styxcrest.title = "ITEM_STYXCREST"
+	styxcrest.description = "ITEM_STYX_DESCRIPTION"
+	styxcrest.type = "special"
+	styxcrest.image = "res://scenes/items/special/styxcrest.png"
+	items[styxcrest.title] = styxcrest
+
+	var styxmirror = itemclass.new()
+	styxmirror.title = "ITEM_STYXMIRROR"
+	styxmirror.description = "ITEM_STYX_DESCRIPTION"
+	styxmirror.type = "special"
+	styxmirror.image = "res://scenes/items/special/styxmirror.png"
+	items[styxmirror.title] = styxmirror
+
 	var rubykey = itemclass.new()
 	rubykey.title = "ITEM_RUBYKEY"
 	rubykey.description = "ITEM_RUBYKEY_DESCRIPTION"
