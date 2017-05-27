@@ -42,7 +42,6 @@ editor/display_folded = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="tilemap/DecoGroup"]
 
-editor/display_folded = true
 transform/pos = Vector2( 432, -80 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -60,6 +59,7 @@ bounce = 0.0
 texture = ExtResource( 2 )
 flip_h = true
 flip_v = true
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="tilemap/DecoGroup/StaticBody2D"]
 
