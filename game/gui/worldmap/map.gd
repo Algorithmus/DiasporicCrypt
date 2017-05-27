@@ -269,13 +269,6 @@ func _input(event):
 				select_list()
 			else:
 				select_pin()
-		if ((event.is_action_pressed("ui_up") || event.is_action_pressed("ui_down")) && leveldisplay && get_focus_owner() == content.get_node("warp")):
-			if (event.is_action_pressed("ui_up")):
-				currentline -= 1
-			if (event.is_action_pressed("ui_down")):
-				currentline += 1
-			currentline = max(0, currentline)
-			content.get_node("description").scroll_to_line(currentline)
 		if (event.is_action_pressed("ui_cancel") && leveldisplay):
 			leveldisplay = false
 			animation.play("hide")
@@ -299,6 +292,14 @@ func _input(event):
 					selectedlevel.grab_focus()
 					selectedlevel = null
 			echo = true
+	if ((event.is_action("ui_up") || event.is_action("ui_down")) && leveldisplay && get_focus_owner() == content.get_node("warp") && !animation.is_playing()):
+		var container = content.get_node("description")
+		if (event.is_action("ui_up")):
+			currentline -= 1
+		if (event.is_action("ui_down") && container.get_v_scroll().get_value() + container.get_size().y < container.get_v_scroll().get_max()):
+			currentline += 1
+		currentline = max(0, currentline)
+		container.scroll_to_line(currentline)
 
 func end_level_animation():
 	if (selectedlevel != null):

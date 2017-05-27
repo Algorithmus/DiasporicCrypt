@@ -5,6 +5,7 @@ extends Node
 const MAIN = "main"
 const NEWGAME = "newgame"
 const SETTINGS = "settings"
+const INFO = "info"
 const FIRSTRUN = "firstrun"
 const LOADMENU = "loadmenu"
 const QUITWARN = "quit"
@@ -21,6 +22,7 @@ var adela
 var sound
 var loading
 var settings
+var info
 var logo
 var main
 var options
@@ -31,6 +33,7 @@ var echo = false
 var serialization = preload("res://gui/save/Serialization.gd")
 var loadclass = preload("res://gui/menu/loadsave.tscn")
 var selfclass = preload("res://scenes/global.tscn")
+var currentline = 0
 
 func _ready():
 	# Empty built in inputs are not properly removed
@@ -50,6 +53,7 @@ func _ready():
 	loading = get_node("CanvasLayer/menu/loading")
 	settings = get_node("CanvasLayer/menu/settingsmenu")
 	settings.get_node("settings").set("is_global", true)
+	info = get_node("CanvasLayer/menu/info")
 	animationplayer = get_node("AnimationPlayer")
 	friederich = get_node("CanvasLayer/menu/BG/friederich")
 	adela = get_node("CanvasLayer/menu/BG/adela")
@@ -114,6 +118,7 @@ func _ready():
 	language.connect("translation_changed", self, "translate")
 	settings.get_node("settings").reset()
 	settings.get_node("settings").update_container()
+	var info_container = info.get_node("container")
 	if (!global_found):
 		# no global config file found
 		# do firstrun stuff
@@ -127,6 +132,12 @@ func _ready():
 		newgame.hide()
 		state = FIRSTRUN
 	else:
+		var circle_coordinates = []
+		for i in range(0, 180):
+			circle_coordinates.append(Vector2(sin(i * PI / 90), cos(i * PI / 90)))
+		var info_button = get_node("CanvasLayer/menu/main/info")
+		info_button.get_node("circle").set_polygon(circle_coordinates)
+		info_button.get_node("invert_circle").set_polygon(circle_coordinates)
 		load_backkeys()
 		show_menu()
 		focus_main()
@@ -154,6 +165,7 @@ func check_gamesaves():
 
 func show_menu():
 	settings.hide()
+	info.hide()
 	logo.show()
 	main.show()
 	newgame.hide()
@@ -208,6 +220,8 @@ func _input(event):
 				focus.release_focus()
 				hide_settings()
 				state = MAIN
+			if (state == INFO):
+				_on_info_back_pressed()
 			if (state == QUITWARN):
 				hide_quit()
 		if (event.is_action_pressed("ui_accept") && !echo):
@@ -219,7 +233,15 @@ func _input(event):
 					playsound = false
 			if (playsound):
 				sound.play("confirm")
-		echo = false
+			echo = false
+	if ((event.is_action("ui_down") || event.is_action("ui_up")) && state == INFO):
+		var container = info.get_node("container")
+		if (event.is_action("ui_down") && container.get_v_scroll().get_max() > container.get_v_scroll().get_value() + container.get_size().y):
+			currentline += 1
+		elif (event.is_action("ui_up")):
+			currentline -= 1
+		currentline = max(currentline, 0)
+		info.get_node("container").scroll_to_line(currentline)
 
 func on_settings_saved():
 	# save settings to global config
@@ -255,6 +277,11 @@ func on_settings_saved():
 func gamestart(resource):
 	get_tree().change_scene("res://scenes/main.tscn")
 
+func parse_info():
+	var translation = tr("KEY_INFO")
+	print(translation.replace("[break]", "\n"))
+	return translation.replace("[break]", "\n")
+
 func translate():
 	var reference = selfclass.instance()
 	var options_ref = reference.get_node("CanvasLayer/menu/main/options")
@@ -274,6 +301,9 @@ func translate():
 	settings.get_node("settings/controls").set_text(tr(settings_ref.get_node("settings/controls").get_text()))
 	var settings_input = settings.get_node("settings/inputs")
 	var settings_input_ref = settings_ref.get_node("settings/inputs")
+	var info_ref = reference.get_node("CanvasLayer/menu/info")
+	info.get_node("backbutton/back").set_text(tr(info_ref.get_node("backbutton/back").get_text()))
+	info.get_node("container").set_bbcode(parse_info() + info_ref.get_node("container").get_bbcode())
 	size = settings_input.get_child_count()
 	for i in range(0, size):
 		var input = settings_input.get_child(i)
@@ -383,3 +413,17 @@ func _notification(what):
 		Globals.set("mapindex", null)
 		Globals.set("available_spells", null)
 		get_tree().quit()
+
+func _on_info_pressed():
+	main.hide()
+	state = INFO
+	currentline = 0
+	info.get_node("container").scroll_to_line(currentline)
+	info.show()
+	info.get_node("backbutton/back").grab_focus()
+
+func _on_info_back_pressed():
+	get_node("CanvasLayer/menu/main/info").grab_focus()
+	info.hide()
+	main.show()
+	state = MAIN

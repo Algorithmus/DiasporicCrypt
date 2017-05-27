@@ -101,6 +101,11 @@ func _on_scroll_focus_exit():
 		set_process_input(false)
 
 func _input(event):
+	if (event.is_action("ui_down") && scrollcontent.get_v_scroll().get_value() + scrollcontent.get_size().y < scrollcontent.get_v_scroll().get_max()):
+		currentline += 1
+	elif (event.is_action("ui_up")):
+		currentline -= 1
+		currentline = max(0, currentline)
 	if (event.is_pressed() && !event.is_echo()):
 		# prevent focusing on tabs while scrolling unless at the top
 		var focus = focusup
@@ -109,11 +114,7 @@ func _input(event):
 		get_node("icon").set_focus_neighbour(MARGIN_TOP, focus)
 		var oldscroll = scrollcontainer.get_node(index)
 		var currentindex = oldscroll.get_index()
-		if (event.is_action_pressed("ui_down") && scrollcontent.get_v_scroll().get_val() < scrollcontent.get_v_scroll().get_max() - scrollcontent.get_size().y):
-			currentline += 1
-		elif (event.is_action_pressed("ui_up")):
-			currentline -= 1
-		elif (event.is_action_pressed("ui_right") && currentindex < scrollcontainer.get_child_count() - 1):
+		if (event.is_action_pressed("ui_right") && currentindex < scrollcontainer.get_child_count() - 1):
 			currentline = 0
 			currentindex += 1
 			oldscroll.set_opacity(0.5)
@@ -129,5 +130,5 @@ func _input(event):
 			index = scrollcontainer.get_child(currentindex).get_name()
 			show_scroll()
 			sfx.play("cursor")
-		scrollcontent.scroll_to_line(currentline)
+	scrollcontent.scroll_to_line(currentline)
 		
