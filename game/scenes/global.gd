@@ -313,9 +313,11 @@ func translate():
 	settings.get_node("settings/save").set_text(tr(settings_ref.get_node("settings/save").get_text()))
 	settings.get_node("settings/reset").set_text(tr(settings_ref.get_node("settings/reset").get_text()))
 	settings.get_node("back/input").set_text(tr("MAP_BACK"))
-	var quit = get_node("CanvasLayer/menu/quit/text")
-	var quit_ref = reference.get_node("CanvasLayer/menu/quit/text")
-	quit.set_text(tr(quit_ref.get_text()))
+	var quit = get_node("CanvasLayer/menu/quit")
+	var quit_ref = reference.get_node("CanvasLayer/menu/quit")
+	quit.get_node("text").set_text(tr(quit_ref.get_node("text").get_text()))
+	quit.get_node("options/yes").set_text(tr(quit_ref.get_node("options/yes").get_text()))
+	quit.get_node("options/no").set_text(tr(quit_ref.get_node("options/no").get_text()))
 
 # Connect to signals from player interaction with buttons
 
