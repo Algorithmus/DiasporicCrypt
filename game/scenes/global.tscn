@@ -873,8 +873,6 @@ margin/bottom = 528.0
 custom_fonts/normal_font = ExtResource( 7 )
 bbcode/enabled = true
 bbcode/bbcode = "
-Font Licenses
-
 Copyright (c) 2011 by Sorkin Type Co (www.sorkintype.com),
 with Reserved Font Name \"Metamorphous\"
 
