@@ -279,7 +279,6 @@ func gamestart(resource):
 
 func parse_info():
 	var translation = tr("KEY_INFO")
-	print(translation.replace("[break]", "\n"))
 	return translation.replace("[break]", "\n")
 
 func translate():
