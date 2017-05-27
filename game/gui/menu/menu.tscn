@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=1]
+[gd_scene load_steps=95 format=1]
 
 [ext_resource path="res://gui/theme/slidergrabber.png" type="Texture" id=1]
 [ext_resource path="res://gui/theme/slidergrabber_active.png" type="Texture" id=2]
@@ -24,34 +24,35 @@
 [ext_resource path="res://gui/menu/itemscroll.png" type="Texture" id=22]
 [ext_resource path="res://gui/fonts/S-13-scroll.fnt" type="BitmapFont" id=23]
 [ext_resource path="res://scenes/items/potion/potion.png" type="Texture" id=24]
-[ext_resource path="res://gui/menu/MagicContent.gd" type="Script" id=25]
-[ext_resource path="res://gui/menu/MapContent.gd" type="Script" id=26]
-[ext_resource path="res://gui/menu/scrollscroll.png" type="Texture" id=27]
-[ext_resource path="res://gui/menu/mask.gd" type="Script" id=28]
-[ext_resource path="res://gui/fonts/S-12-dialog.fnt" type="BitmapFont" id=29]
-[ext_resource path="res://gui/menu/footer_large.png" type="Texture" id=30]
-[ext_resource path="res://gui/fonts/XS-7.fnt" type="BitmapFont" id=31]
-[ext_resource path="res://gui/menu/target-border.png" type="Texture" id=32]
-[ext_resource path="res://gui/worldmap/icons/colosseum.png" type="Texture" id=33]
-[ext_resource path="res://scenes/items/special/amulet.png" type="Texture" id=34]
-[ext_resource path="res://gui/worldmap/icons/boss.png" type="Texture" id=35]
-[ext_resource path="res://gui/worldmap/icons/bonus.png" type="Texture" id=36]
-[ext_resource path="res://gui/menu/icons/complete.png" type="Texture" id=37]
-[ext_resource path="res://gui/menu/arrow.tscn" type="PackedScene" id=38]
-[ext_resource path="res://gui/menu/ScrollsContent.gd" type="Script" id=39]
-[ext_resource path="res://gui/theme/scrollbar_scrolls.png" type="Texture" id=40]
-[ext_resource path="res://gui/fonts/L-24-Keyboard.fnt" type="BitmapFont" id=41]
-[ext_resource path="res://gui/menu/cursor.tscn" type="PackedScene" id=42]
-[ext_resource path="res://gui/dialogue/choice.gd" type="Script" id=43]
-[ext_resource path="res://gui/menu/settings.tscn" type="PackedScene" id=44]
-[ext_resource path="res://gui/menu/frame.png" type="Texture" id=45]
-[ext_resource path="res://gui/menu/tab.tscn" type="PackedScene" id=46]
-[ext_resource path="res://gui/menu/tabs/items.png" type="Texture" id=47]
-[ext_resource path="res://gui/menu/tabs/magic.png" type="Texture" id=48]
-[ext_resource path="res://gui/menu/tabs/map.png" type="Texture" id=49]
-[ext_resource path="res://gui/menu/tabs/scroll.png" type="Texture" id=50]
-[ext_resource path="res://gui/menu/tabs/settings.png" type="Texture" id=51]
-[ext_resource path="res://gui/menu/keylabel.tscn" type="PackedScene" id=52]
+[ext_resource path="res://gui/fonts/M-15-options.fnt" type="BitmapFont" id=25]
+[ext_resource path="res://gui/menu/MagicContent.gd" type="Script" id=26]
+[ext_resource path="res://gui/menu/MapContent.gd" type="Script" id=27]
+[ext_resource path="res://gui/menu/scrollscroll.png" type="Texture" id=28]
+[ext_resource path="res://gui/menu/mask.gd" type="Script" id=29]
+[ext_resource path="res://gui/fonts/S-12-dialog.fnt" type="BitmapFont" id=30]
+[ext_resource path="res://gui/menu/footer_large.png" type="Texture" id=31]
+[ext_resource path="res://gui/fonts/XS-7.fnt" type="BitmapFont" id=32]
+[ext_resource path="res://gui/menu/target-border.png" type="Texture" id=33]
+[ext_resource path="res://gui/worldmap/icons/colosseum.png" type="Texture" id=34]
+[ext_resource path="res://scenes/items/special/amulet.png" type="Texture" id=35]
+[ext_resource path="res://gui/worldmap/icons/boss.png" type="Texture" id=36]
+[ext_resource path="res://gui/worldmap/icons/bonus.png" type="Texture" id=37]
+[ext_resource path="res://gui/menu/icons/complete.png" type="Texture" id=38]
+[ext_resource path="res://gui/menu/arrow.tscn" type="PackedScene" id=39]
+[ext_resource path="res://gui/menu/ScrollsContent.gd" type="Script" id=40]
+[ext_resource path="res://gui/theme/scrollbar_scrolls.png" type="Texture" id=41]
+[ext_resource path="res://gui/fonts/L-24-Keyboard.fnt" type="BitmapFont" id=42]
+[ext_resource path="res://gui/menu/cursor.tscn" type="PackedScene" id=43]
+[ext_resource path="res://gui/dialogue/choice.gd" type="Script" id=44]
+[ext_resource path="res://gui/menu/settings.tscn" type="PackedScene" id=45]
+[ext_resource path="res://gui/menu/frame.png" type="Texture" id=46]
+[ext_resource path="res://gui/menu/tab.tscn" type="PackedScene" id=47]
+[ext_resource path="res://gui/menu/tabs/items.png" type="Texture" id=48]
+[ext_resource path="res://gui/menu/tabs/magic.png" type="Texture" id=49]
+[ext_resource path="res://gui/menu/tabs/map.png" type="Texture" id=50]
+[ext_resource path="res://gui/menu/tabs/scroll.png" type="Texture" id=51]
+[ext_resource path="res://gui/menu/tabs/settings.png" type="Texture" id=52]
+[ext_resource path="res://gui/menu/keylabel.tscn" type="PackedScene" id=53]
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -392,7 +393,7 @@ content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
-texture = ExtResource( 40 )
+texture = ExtResource( 41 )
 margin/left = 32.0
 margin/right = 0.0
 margin/top = 32.0
@@ -962,9 +963,9 @@ size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 54.0
 margin/right = 208.0
-margin/bottom = 119.0
-custom_fonts/font = ExtResource( 14 )
-text = "STRENGTH POTION"
+margin/bottom = 110.0
+custom_fonts/font = ExtResource( 25 )
+text = "ITEM_POTION"
 align = 1
 valign = 1
 autowrap = true
@@ -974,7 +975,7 @@ max_lines_visible = -1
 
 [node name="header" type="Sprite" parent="panels/items/info"]
 
-transform/pos = Vector2( 104, 132 )
+transform/pos = Vector2( 104, 120 )
 texture = ExtResource( 16 )
 modulate = Color( 1, 0, 0, 0.431373 )
 
@@ -985,9 +986,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 9.0
-margin/top = 146.0
+margin/top = 140.0
 margin/right = 199.0
-margin/bottom = 274.0
+margin/bottom = 268.0
 custom_fonts/normal_font = ExtResource( 6 )
 bbcode/enabled = true
 bbcode/bbcode = "[fill]description description
@@ -1046,7 +1047,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 736.0
 margin/bottom = 494.0
-script/script = ExtResource( 25 )
+script/script = ExtResource( 26 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="panels/magic"]
 
@@ -1085,12 +1086,12 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 736.0
 margin/bottom = 494.0
-script/script = ExtResource( 26 )
+script/script = ExtResource( 27 )
 
 [node name="bg" type="Sprite" parent="panels/map"]
 
 transform/pos = Vector2( 32, 120 )
-texture = ExtResource( 27 )
+texture = ExtResource( 28 )
 centered = false
 
 [node name="mapcontainer" type="Control" parent="panels/map"]
@@ -1119,7 +1120,7 @@ texture/scale = Vector2( 1, 1 )
 texture/rotation = 0.0
 invert/enable = false
 invert/border = 100.0
-script/script = ExtResource( 28 )
+script/script = ExtResource( 29 )
 
 [node name="title" type="Label" parent="panels/map"]
 
@@ -1148,7 +1149,7 @@ margin/left = 32.0
 margin/top = 48.0
 margin/right = 704.0
 margin/bottom = 72.0
-custom_fonts/font = ExtResource( 29 )
+custom_fonts/font = ExtResource( 30 )
 text = "LVL_START"
 align = 1
 percent_visible = 1.0
@@ -1158,7 +1159,7 @@ max_lines_visible = -1
 [node name="ornament" type="Sprite" parent="panels/map"]
 
 transform/pos = Vector2( 368, 88 )
-texture = ExtResource( 30 )
+texture = ExtResource( 31 )
 flip_v = true
 
 [node name="fade_right" type="Sprite" parent="panels/map"]
@@ -1188,7 +1189,7 @@ margin/left = 646.0
 margin/top = 68.0
 margin/right = 710.0
 margin/bottom = 92.0
-custom_fonts/font = ExtResource( 31 )
+custom_fonts/font = ExtResource( 32 )
 text = "KEY_TARGET"
 align = 1
 percent_visible = 1.0
@@ -1198,7 +1199,7 @@ max_lines_visible = -1
 [node name="target_border" type="Sprite" parent="panels/map"]
 
 transform/pos = Vector2( 678, 40 )
-texture = ExtResource( 32 )
+texture = ExtResource( 33 )
 
 [node name="icons" type="Node2D" parent="panels/map"]
 
@@ -1207,23 +1208,23 @@ transform/pos = Vector2( 678, 40 )
 [node name="colosseum" type="Sprite" parent="panels/map/icons"]
 
 visibility/visible = false
-texture = ExtResource( 33 )
+texture = ExtResource( 34 )
 
 [node name="quest" type="Sprite" parent="panels/map/icons"]
 
 visibility/visible = false
-texture = ExtResource( 34 )
+texture = ExtResource( 35 )
 
 [node name="boss" type="Sprite" parent="panels/map/icons"]
 
 visibility/visible = false
-texture = ExtResource( 35 )
+texture = ExtResource( 36 )
 
 [node name="bonus" type="Sprite" parent="panels/map/icons"]
 
 editor/display_folded = true
 visibility/visible = false
-texture = ExtResource( 36 )
+texture = ExtResource( 37 )
 offset = Vector2( -10, 0 )
 
 [node name="counter" type="Label" parent="panels/map/icons/bonus"]
@@ -1236,7 +1237,7 @@ margin/left = 0.0
 margin/top = -10.0
 margin/right = 40.0
 margin/bottom = 13.0
-custom_fonts/font = ExtResource( 29 )
+custom_fonts/font = ExtResource( 30 )
 text = "0"
 percent_visible = 1.0
 lines_skipped = 0
@@ -1245,18 +1246,18 @@ max_lines_visible = -1
 [node name="complete" type="Sprite" parent="panels/map"]
 
 transform/pos = Vector2( 678, 40 )
-texture = ExtResource( 37 )
+texture = ExtResource( 38 )
 
-[node name="n-arrow" parent="panels/map" instance=ExtResource( 38 )]
+[node name="n-arrow" parent="panels/map" instance=ExtResource( 39 )]
 
 transform/pos = Vector2( 368, 160 )
 transform/rot = 90.0
 
-[node name="e-arrow" parent="panels/map" instance=ExtResource( 38 )]
+[node name="e-arrow" parent="panels/map" instance=ExtResource( 39 )]
 
 transform/pos = Vector2( 652, 290 )
 
-[node name="w-arrow" parent="panels/map" instance=ExtResource( 38 )]
+[node name="w-arrow" parent="panels/map" instance=ExtResource( 39 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 64, 290 )
@@ -1266,7 +1267,7 @@ transform/pos = Vector2( 64, 290 )
 transform/pos = Vector2( 3.95809, 0 )
 flip_h = true
 
-[node name="s-arrow" parent="panels/map" instance=ExtResource( 38 )]
+[node name="s-arrow" parent="panels/map" instance=ExtResource( 39 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 368, 424 )
@@ -1313,18 +1314,18 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 736.0
 margin/bottom = 494.0
-script/script = ExtResource( 39 )
+script/script = ExtResource( 40 )
 
 [node name="bg" type="Sprite" parent="panels/scrolls"]
 
 transform/pos = Vector2( 16, 72 )
-texture = ExtResource( 27 )
+texture = ExtResource( 28 )
 centered = false
 
 [node name="header" type="Sprite" parent="panels/scrolls"]
 
 transform/pos = Vector2( 368, 24 )
-texture = ExtResource( 30 )
+texture = ExtResource( 31 )
 
 [node name="title" type="Label" parent="panels/scrolls"]
 
@@ -1356,7 +1357,7 @@ margin/top = 108.0
 margin/right = 0.972826
 margin/bottom = 372.0
 custom_fonts/normal_font = ExtResource( 23 )
-custom_fonts/mono_font = ExtResource( 41 )
+custom_fonts/mono_font = ExtResource( 42 )
 custom_colors/default_color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
 bbcode/enabled = true
 bbcode/bbcode = "[color=yellow]Über diese Schriftrollen[/color]
@@ -1379,12 +1380,12 @@ visible_characters = -1
 [node name="selection_header" type="Sprite" parent="panels/scrolls"]
 
 transform/pos = Vector2( 383, 418 )
-texture = ExtResource( 30 )
+texture = ExtResource( 31 )
 
 [node name="selection_footer" type="Sprite" parent="panels/scrolls"]
 
 transform/pos = Vector2( 383, 480 )
-texture = ExtResource( 30 )
+texture = ExtResource( 31 )
 flip_v = true
 
 [node name="select_bgleft" type="Sprite" parent="panels/scrolls"]
@@ -1493,7 +1494,7 @@ margin/bottom = 48.0
 custom_constants/separation = 48
 alignment = 0
 
-[node name="icon" parent="panels/scrolls" instance=ExtResource( 42 )]
+[node name="icon" parent="panels/scrolls" instance=ExtResource( 43 )]
 
 focus_neighbour/top = NodePath("../../../tabs/HBoxContainer/scrolls")
 focus_neighbour/right = NodePath(".")
@@ -1503,9 +1504,9 @@ margin/right = 28.0
 margin/bottom = 461.0
 enabled_focus_mode = 2
 shortcut = null
-script/script = ExtResource( 43 )
+script/script = ExtResource( 44 )
 
-[node name="settings" parent="panels" instance=ExtResource( 44 )]
+[node name="settings" parent="panels" instance=ExtResource( 45 )]
 
 visibility/visible = false
 
@@ -1519,7 +1520,7 @@ margin/left = -32.0
 margin/top = -32.0
 margin/right = 768.0
 margin/bottom = 560.0
-texture = ExtResource( 45 )
+texture = ExtResource( 46 )
 stretch_mode = 0
 
 [node name="tabs" type="Panel" parent="."]
@@ -1549,20 +1550,20 @@ margin/bottom = 26.0
 custom_constants/separation = 96
 alignment = 1
 
-[node name="stats" parent="tabs/HBoxContainer" instance=ExtResource( 46 )]
+[node name="stats" parent="tabs/HBoxContainer" instance=ExtResource( 47 )]
 
 focus_neighbour/right = NodePath("../items")
 margin/right = 88.0
 margin/bottom = 36.0
 
-[node name="items" parent="tabs/HBoxContainer" instance=ExtResource( 46 )]
+[node name="items" parent="tabs/HBoxContainer" instance=ExtResource( 47 )]
 
 focus_neighbour/left = NodePath("../stats")
 focus_neighbour/right = NodePath("../magic")
 margin/left = 184.0
 margin/right = 204.0
 margin/bottom = 36.0
-textures/normal = ExtResource( 47 )
+textures/normal = ExtResource( 48 )
 
 [node name="bg" parent="tabs/HBoxContainer/items"]
 
@@ -1572,14 +1573,14 @@ offset = Vector2( 0, -8 )
 
 offset = Vector2( 0, -8 )
 
-[node name="magic" parent="tabs/HBoxContainer" instance=ExtResource( 46 )]
+[node name="magic" parent="tabs/HBoxContainer" instance=ExtResource( 47 )]
 
 focus_neighbour/left = NodePath("../items")
 focus_neighbour/right = NodePath("../map")
 margin/left = 300.0
 margin/right = 320.0
 margin/bottom = 36.0
-textures/normal = ExtResource( 48 )
+textures/normal = ExtResource( 49 )
 
 [node name="bg" parent="tabs/HBoxContainer/magic"]
 
@@ -1589,14 +1590,14 @@ offset = Vector2( 0, -16 )
 
 offset = Vector2( 0, -16 )
 
-[node name="map" parent="tabs/HBoxContainer" instance=ExtResource( 46 )]
+[node name="map" parent="tabs/HBoxContainer" instance=ExtResource( 47 )]
 
 focus_neighbour/left = NodePath("../magic")
 focus_neighbour/right = NodePath("../scrolls")
 margin/left = 416.0
 margin/right = 436.0
 margin/bottom = 36.0
-textures/normal = ExtResource( 49 )
+textures/normal = ExtResource( 50 )
 
 [node name="bg" parent="tabs/HBoxContainer/map"]
 
@@ -1606,14 +1607,14 @@ offset = Vector2( 0, -16 )
 
 offset = Vector2( 0, -16 )
 
-[node name="scrolls" parent="tabs/HBoxContainer" instance=ExtResource( 46 )]
+[node name="scrolls" parent="tabs/HBoxContainer" instance=ExtResource( 47 )]
 
 focus_neighbour/left = NodePath("../map")
 focus_neighbour/right = NodePath("../settings")
 margin/left = 532.0
 margin/right = 552.0
 margin/bottom = 36.0
-textures/normal = ExtResource( 50 )
+textures/normal = ExtResource( 51 )
 
 [node name="bg" parent="tabs/HBoxContainer/scrolls"]
 
@@ -1623,15 +1624,15 @@ offset = Vector2( 0, -8 )
 
 offset = Vector2( 0, -8 )
 
-[node name="settings" parent="tabs/HBoxContainer" instance=ExtResource( 46 )]
+[node name="settings" parent="tabs/HBoxContainer" instance=ExtResource( 47 )]
 
 focus_neighbour/left = NodePath("../scrolls")
 margin/left = 648.0
 margin/right = 668.0
 margin/bottom = 36.0
-textures/normal = ExtResource( 51 )
+textures/normal = ExtResource( 52 )
 
-[node name="back" parent="." instance=ExtResource( 52 )]
+[node name="back" parent="." instance=ExtResource( 53 )]
 
 margin/left = 455.0
 margin/top = 534.0
