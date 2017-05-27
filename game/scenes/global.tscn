@@ -1697,8 +1697,6 @@ visibility/visible = false
 
 [node name="quit" type="Control" parent="CanvasLayer/menu"]
 
-editor/display_folded = true
-visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -1723,7 +1721,7 @@ modulate = Color( 1, 1, 1, 0.53549 )
 expand = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="CanvasLayer/menu/quit"]
+[node name="text" type="Label" parent="CanvasLayer/menu/quit"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -1734,7 +1732,7 @@ margin/top = 177.0
 margin/right = 800.0
 margin/bottom = 304.0
 custom_fonts/font = ExtResource( 14 )
-text = "Quit game?"
+text = "KEY_QUITMENU_WARN"
 align = 1
 valign = 1
 percent_visible = 1.0

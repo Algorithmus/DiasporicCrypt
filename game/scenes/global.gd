@@ -64,7 +64,7 @@ func _ready():
 			for event in InputMap.get_action_list(actionid):
 				if (event.type == InputEvent.KEY):
 					controls[actionid] = event.scancode
-	Globals.set("debugmode", true)
+	Globals.set("debugmode", false)
 	Globals.set("controls", controls)
 	Globals.set("newcontrols", controls)
 	Globals.set("savedir", "user://saves")
@@ -119,6 +119,12 @@ func _ready():
 	settings.get_node("settings").reset()
 	settings.get_node("settings").update_container()
 	var info_container = info.get_node("container")
+	var circle_coordinates = []
+	for i in range(0, 180):
+		circle_coordinates.append(Vector2(sin(i * PI / 90), cos(i * PI / 90)))
+	var info_button = get_node("CanvasLayer/menu/main/info")
+	info_button.get_node("circle").set_polygon(circle_coordinates)
+	info_button.get_node("invert_circle").set_polygon(circle_coordinates)
 	if (!global_found):
 		# no global config file found
 		# do firstrun stuff
@@ -130,14 +136,9 @@ func _ready():
 		logo.hide()
 		main.hide()
 		newgame.hide()
+		info.hide()
 		state = FIRSTRUN
 	else:
-		var circle_coordinates = []
-		for i in range(0, 180):
-			circle_coordinates.append(Vector2(sin(i * PI / 90), cos(i * PI / 90)))
-		var info_button = get_node("CanvasLayer/menu/main/info")
-		info_button.get_node("circle").set_polygon(circle_coordinates)
-		info_button.get_node("invert_circle").set_polygon(circle_coordinates)
 		load_backkeys()
 		show_menu()
 		focus_main()
@@ -312,6 +313,9 @@ func translate():
 	settings.get_node("settings/save").set_text(tr(settings_ref.get_node("settings/save").get_text()))
 	settings.get_node("settings/reset").set_text(tr(settings_ref.get_node("settings/reset").get_text()))
 	settings.get_node("back/input").set_text(tr("MAP_BACK"))
+	var quit = get_node("CanvasLayer/menu/quit/text")
+	var quit_ref = reference.get_node("CanvasLayer/menu/quit/text")
+	quit.set_text(tr(quit_ref.get_text()))
 
 # Connect to signals from player interaction with buttons
 
