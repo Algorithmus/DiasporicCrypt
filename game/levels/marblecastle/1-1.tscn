@@ -106,7 +106,6 @@ transform/pos = Vector2( 432, -1008 )
 
 [node name="MovingPlatformGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
 transform/pos = Vector2( 0, -2 )
 
 [node name="MovingPlatform" parent="tilemap/MovingPlatformGroup" instance=ExtResource( 5 )]
@@ -117,8 +116,6 @@ cycle = 12.0
 
 [node name="SwitchGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
-
 [node name="FloorSwitch" parent="tilemap/SwitchGroup" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( -496, -1024 )
@@ -127,8 +124,8 @@ target_nodes = [ "MovingPlatformGroup/MovingPlatform" ]
 related_switches = [  ]
 enabled = true
 invert = false
-show_target = false
-target_pos = Vector2( 0, 0 )
+show_target = true
+target_pos = Vector2( -352, -182 )
 
 [node name="PotGroup" type="Node2D" parent="tilemap"]
 
