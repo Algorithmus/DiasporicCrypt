@@ -10,9 +10,6 @@ const FIRSTRUN = "firstrun"
 const LOADMENU = "loadmenu"
 const QUITWARN = "quit"
 
-const WHITE = Color(1, 1, 1)
-const BLUE = Color(34/255.0, 71/255.0, 134/255.0)
-
 const GLOBALSAVE = "global.save"
 
 var state = MAIN
@@ -377,20 +374,20 @@ func _on_newgame_back_pressed():
 	state = MAIN
 
 func _on_friederich_focus_enter():
-	friederich.set_modulate(WHITE)
+	friederich.set_opacity(1)
 	friederich.raise()
 	sound.play("cursor")
 
 func _on_adela_focus_enter():
-	adela.set_modulate(WHITE)
+	adela.set_opacity(1)
 	adela.raise()
 	sound.play("cursor")
 
 func _on_friederich_focus_exit():
-	friederich.set_modulate(BLUE)
+	friederich.set_opacity(0)
 
 func _on_adela_focus_exit():
-	adela.set_modulate(BLUE)
+	adela.set_opacity(0)
 
 func _on_friederich_selected():
 	Globals.set("player", "friederich")
