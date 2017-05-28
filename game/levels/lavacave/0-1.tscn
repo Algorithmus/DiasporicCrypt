@@ -13,7 +13,9 @@
 
 [node name="LVL_NOTITLE" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -103,6 +105,7 @@ texture = ExtResource( 6 )
 
 [node name="ClimbableBlock4" parent="tilemap/ClimbableGroup" instance=ExtResource( 3 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 2864, 113 )
 
 [node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock4"]
@@ -111,27 +114,25 @@ texture = ExtResource( 5 )
 
 [node name="FallingPlatformGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
-
 [node name="FallingPlatform" parent="tilemap/FallingPlatformGroup" instance=ExtResource( 7 )]
-
-transform/pos = Vector2( 672, 816 )
-
-[node name="FallingPlatform1" parent="tilemap/FallingPlatformGroup" instance=ExtResource( 7 )]
-
-transform/pos = Vector2( 928, 816 )
-
-[node name="FallingPlatform2" parent="tilemap/FallingPlatformGroup" instance=ExtResource( 7 )]
-
-transform/pos = Vector2( 1184, 816 )
-
-[node name="FallingPlatform3" parent="tilemap/FallingPlatformGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 1504, 496 )
 
 [node name="FallingPlatform4" parent="tilemap/FallingPlatformGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 2496, 496 )
+
+[node name="FallingPlatform1" parent="tilemap/FallingPlatformGroup" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 1184, 816 )
+
+[node name="FallingPlatform2" parent="tilemap/FallingPlatformGroup" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 928, 816 )
+
+[node name="FallingPlatform3" parent="tilemap/FallingPlatformGroup" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 672, 816 )
 
 [node name="LavaGroup" type="Node2D" parent="tilemap"]
 
@@ -217,18 +218,6 @@ transform/pos = Vector2( -358, -326 )
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
 transform/pos = Vector2( 3114, 1130 )
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport2/teleport/enabler" to="tilemap/TeleportGroup/Teleport2" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport2/teleport/enabler" to="tilemap/TeleportGroup/Teleport2" method="exit_screen"]
 
 
 [editable path="tilemap/ClimbableGroup/ClimbableBlock"]
