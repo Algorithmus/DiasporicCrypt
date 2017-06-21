@@ -9,7 +9,9 @@ extents = Vector2( 16, 16 )
 
 [node name="TestWaterSurface" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 

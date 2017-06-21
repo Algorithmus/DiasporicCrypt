@@ -282,6 +282,15 @@ func _init():
 	hex.cost = 50000
 	items[hex.title] = hex
 	
+	var shield = itemclass.new()
+	shield.title = "MAGIC_SHIELD"
+	shield.description = "MAGIC_SHIELD_SHORT"
+	shield.type = "magic"
+	shield.image = "res://players/magic/shield/icon.png"
+	shield.value = "shield"
+	shield.cost = 0
+	items[shield.title] = shield
+
 	var void = itemclass.new()
 	void.title = "MAGIC_VOID"
 	void.description = "MAGIC_VOID_SHORT"

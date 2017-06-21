@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://scenes/waterway/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/waterway/climbableblock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=5]
+
+[node name="LVL_NOTITLE" type="Node2D"]
+
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -262150, 1610612749, -262149, 1073741862, -262148, 1073741862, -262147, 1073741862, -262146, 1073741862, -262145, 1073741862, -327680, 1073741862, -327679, 1073741862, -327678, 1073741862, -327677, 1073741862, -327676, 1073741862, -327675, 1073741862, -327674, 1073741862, -327673, 1073741862, -327672, 1073741837, -196614, 14, -262136, 14, -131078, 14, -196600, 14, -65542, 14, -131064, 14, -6, 14, -65528, 14, 65530, 14, 8, 14, 131066, 14, 131067, 38, 131068, 38, 131069, 38, 131070, 38, 65544, 14, 196602, 14, 131080, 14, 262138, 14, 196616, 14, 327674, 14, 262152, 14, 393210, 14, 327688, 14, 458746, 14, 393224, 14, 524282, 14, 458760, 14, 589818, 14, 524296, 14, 655354, 14, 589832, 14, 720890, 14, 655368, 14, 786426, 14, 720904, 14, 851962, 14, 786440, 14, 917498, 14, 851976, 14, 983034, 536870925, 983035, 38, 983036, 38, 983037, 38, 983038, 38, 983039, 13, 917507, 536870925, 917508, 38, 917509, 38, 917510, 38, 917511, 38, 917512, 13, 1048570, 14, 1048575, 14, 983043, 14, 983048, 14, 1114106, 14, 1114111, 14, 1048579, 14, 1048584, 14, 1179642, 14, 1179647, 14, 1114115, 14, 1114120, 14, 1245178, 14, 1245183, 14, 1179651, 14, 1179656, 14, 1310714, 14, 1310719, 14, 1245187, 14, 1245192, 14 )
+
+[node name="ClimbableGroup" type="Node2D" parent="tilemap"]
+
+[node name="ClimbableBlock1" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -16, 48 )
+
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock1"]
+
+offset = Vector2( 3, 0 )
+flip_h = false
+
+[node name="LadderGroup" type="Node2D" parent="tilemap"]
+
+[node name="TestLadder" parent="tilemap/LadderGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 48, 544 )
+
+[node name="Sprite" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
+
+region_rect = Rect2( 0, 0, 32, 192 )
+
+[node name="ladder" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
+
+transform/scale = Vector2( 1, 6 )
+
+[node name="TestLadder 2" parent="tilemap/LadderGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 48, 432 )
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 48, 656 )
+is_horizontal = false
+target_level = "res://levels/waterway/0-1.tscn"
+teleport_to = Vector2( 688, -816 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+
+transform/scale = Vector2( 3, 1 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="boundaries" type="Node2D" parent="tilemap"]
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( -208, -176 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( 304, 656 )
+
+
+[editable path="tilemap/ClimbableGroup/ClimbableBlock1"]
+[editable path="tilemap/LadderGroup/TestLadder"]
+[editable path="tilemap/TeleportGroup/Teleport"]

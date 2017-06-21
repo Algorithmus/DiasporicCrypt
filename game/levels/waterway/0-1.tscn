@@ -1,0 +1,409 @@
+[gd_scene load_steps=13 format=1]
+
+[ext_resource path="res://scenes/waterway/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/waterway/climbableblock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/common/breakables/breakable.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/waterway/onewayplatform.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/dungeon/platforms/flooredge2.png" type="Texture" id=5]
+[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/common/damagables/skeleton/skeleton.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/damagables/flyingskull/flyingskull.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/common/sunbeam.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=12]
+
+[node name="LVL_NOTITLE" type="Node2D"]
+
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -1769484, 1610612749, -1769483, 1073741862, -1769482, 1073741862, -1769481, 1073741862, -1769480, 1073741862, -1769479, 1073741837, -1769475, 1610612749, -1769474, 1073741862, -1769473, 1073741862, -1835008, 1073741862, -1835007, 1073741862, -1835006, 1073741862, -1835005, 1073741862, -1835004, 1073741862, -1835003, 1073741862, -1835002, 1073741862, -1835001, 1073741862, -1835000, 1073741862, -1834999, 1073741862, -1834998, 1073741862, -1834997, 1073741862, -1834996, 1073741862, -1834995, 1073741862, -1834994, 1073741862, -1834993, 1073741862, -1834992, 1073741862, -1834991, 1073741862, -1834990, 1073741862, -1834989, 1073741837, -1834985, 1610612749, -1834984, 1073741862, -1834983, 1073741862, -1834982, 1073741862, -1834981, 1073741862, -1834980, 1073741837, -1703948, 1073741838, -1769444, 1073741838, -1638412, 1073741838, -1703908, 1073741838, -1572876, 1073741838, -1638372, 1073741838, -1507340, 1073741837, -1572836, 1610612749, -1114124, 536870925, -1114123, 38, -1114122, 38, -1179624, 38, -1179623, 38, -1179622, 38, -1179621, 38, -1179620, 13, -1048588, 1073741838, -1114084, 1073741838, -983052, 1073741838, -1048548, 1073741838, -917516, 1073741838, -983012, 1073741838, -851980, 1073741838, -917476, 1073741838, -786444, 1073741838, -851940, 1073741838, -720908, 1073741838, -786404, 1073741838, -655372, 1073741838, -720868, 1073741838, -589836, 1073741838, -655332, 1073741838, -524300, 1073741838, -589796, 1073741838, -458764, 1073741838, -524260, 1073741838, -393228, 1073741838, -458724, 1073741838, -327692, 1073741838, -393188, 1073741838, -262156, 1073741838, -327652, 1073741838, -196620, 1073741838, -262116, 1073741838, -131084, 1073741838, -196580, 1073741838, -65548, 1073741838, -131044, 1073741838, -12, 1073741838, -65534, 38, -65533, 38, -65532, 38, -65531, 38, -65530, 38, -65529, 38, -65528, 38, -65527, 38, -65526, 38, -65525, 38, -65524, 38, -65523, 38, -65522, 38, -65521, 38, -65508, 1073741838, 65524, 1073741837, 28, 1610612749, 458740, 536870925, 458741, 38, 458742, 38, 458743, 38, 458744, 38, 458745, 13, 458749, 536870925, 458750, 38, 458751, 38, 393216, 38, 393217, 38, 393218, 38, 393219, 38, 393220, 38, 393221, 38, 393222, 38, 393223, 38, 393224, 38, 393225, 38, 393226, 38, 393227, 38, 393228, 38, 393229, 38, 393230, 38, 393231, 38, 393232, 38, 393233, 38, 393234, 38, 393235, 13, 393239, 536870925, 393240, 38, 393241, 38, 393242, 38, 393243, 38, 393244, 13, 524276, 14, 524281, 14, 524285, 14, 458771, 14, 458775, 14, 458780, 14, 589812, 14, 589817, 14, 589821, 14, 524307, 14, 524311, 14, 524316, 14, 655348, 14, 655353, 14, 655357, 14, 589843, 14, 589847, 14, 589852, 14, 720884, 14, 720889, 14, 720893, 14, 655379, 14, 655383, 14, 655388, 14, 786420, 14, 786425, 14, 786429, 14, 720915, 14, 720919, 14, 720924, 14, 851956, 14, 851961, 14, 851965, 14, 786451, 14, 786455, 14, 786460, 14, 917492, 14, 917497, 14, 917501, 14, 851987, 14, 851991, 14, 851996, 14 )
+
+[node name="ClimbableGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="ClimbableBlock" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 48, -16 )
+
+[node name="ClimbableBlock1" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 528, -16 )
+
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock1"]
+
+offset = Vector2( 3, 0 )
+flip_h = false
+
+[node name="ClimbableBlock2" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 752, -560 )
+
+[node name="ClimbableBlock3" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -272, -560 )
+
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock3"]
+
+offset = Vector2( 3, 0 )
+flip_h = false
+
+[node name="BreakableGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="TestBreakable" parent="tilemap/BreakableGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -144, 176 )
+
+[node name="TestBreakable1" parent="tilemap/BreakableGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -112, 176 )
+
+[node name="TestBreakable2" parent="tilemap/BreakableGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -208, 176 )
+
+[node name="TestBreakable3" parent="tilemap/BreakableGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -176, 176 )
+
+[node name="TestBreakable4" parent="tilemap/BreakableGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -80, 176 )
+
+[node name="One-WayPlatformGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="One-WayPlatform" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 528, -192 )
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform/KinematicBody2D"]
+
+region = true
+region_rect = Rect2( 0, 0, 256, 32 )
+
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform/KinematicBody2D"]
+
+transform/scale = Vector2( 8, 1 )
+
+[node name="One-WayPlatform3" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 656, -384 )
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform3/KinematicBody2D"]
+
+region = true
+region_rect = Rect2( 0, 0, 256, 32 )
+
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform3/KinematicBody2D"]
+
+transform/scale = Vector2( 8, 1 )
+
+[node name="One-WayPlatform4" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 800, -384 )
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform4/KinematicBody2D"]
+
+texture = ExtResource( 5 )
+offset = Vector2( 3, 0 )
+
+[node name="One-WayPlatform5" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 512, -384 )
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform5/KinematicBody2D"]
+
+texture = ExtResource( 5 )
+offset = Vector2( -3, 0 )
+flip_h = true
+
+[node name="One-WayPlatform1" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 672, -192 )
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform1/KinematicBody2D"]
+
+texture = ExtResource( 5 )
+offset = Vector2( 3, 0 )
+
+[node name="One-WayPlatform2" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 384, -192 )
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform2/KinematicBody2D"]
+
+texture = ExtResource( 5 )
+offset = Vector2( -3, 0 )
+flip_h = true
+
+[node name="LadderGroup" type="Node2D" parent="tilemap"]
+
+[node name="TestLadder1" parent="tilemap/LadderGroup" instance=ExtResource( 6 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 688, 336 )
+
+[node name="Sprite" parent="tilemap/LadderGroup/TestLadder1/KinematicBody2D"]
+
+region_rect = Rect2( 0, 0, 32, 224 )
+
+[node name="ladder" parent="tilemap/LadderGroup/TestLadder1/KinematicBody2D"]
+
+transform/scale = Vector2( 1, 7 )
+
+[node name="TestLadder3" parent="tilemap/LadderGroup" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 688, 208 )
+
+[node name="PotGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="Pot" parent="tilemap/PotGroup" instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 832, -624 )
+
+[node name="EnemiesGroup" type="Node2D" parent="tilemap"]
+
+[node name="Skeleton" parent="tilemap/EnemiesGroup" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 112, 144 )
+
+[node name="Skeleton1" parent="tilemap/EnemiesGroup" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 240, 144 )
+
+[node name="Skeleton2" parent="tilemap/EnemiesGroup" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 336, 144 )
+
+[node name="Skeleton3" parent="tilemap/EnemiesGroup" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 400, 144 )
+
+[node name="Skeleton4" parent="tilemap/EnemiesGroup" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 528, 144 )
+
+[node name="Skeleton5" parent="tilemap/EnemiesGroup" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 48, 144 )
+
+[node name="FlyingSkull" parent="tilemap/EnemiesGroup" instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 544, -128 )
+
+[node name="FlyingSkull1" parent="tilemap/EnemiesGroup" instance=ExtResource( 10 )]
+
+transform/pos = Vector2( -304, -304 )
+
+[node name="FlyingSkull2" parent="tilemap/EnemiesGroup" instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 464, -720 )
+
+[node name="SunbeamGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="Sunbeam" parent="tilemap/SunbeamGroup" instance=ExtResource( 11 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 176, -464 )
+
+[node name="block" parent="tilemap/SunbeamGroup/Sunbeam"]
+
+transform/scale = Vector2( 5, 27 )
+
+[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam"]
+
+transform/scale = Vector2( 5, 27 )
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 12 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -400, 112 )
+target_level = "res://levels/waterway/0-0.tscn"
+teleport_to = Vector2( 1388, 16 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+
+transform/scale = Vector2( 1, 5 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 12 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 944, 112 )
+target_level = "res://levels/waterway/4-0.tscn"
+teleport_to = Vector2( -556, -48 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
+
+transform/scale = Vector2( 1, 5 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport1/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="Teleport2" parent="tilemap/TeleportGroup" instance=ExtResource( 12 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 944, -656 )
+target_level = "res://levels/waterway/3-0.tscn"
+teleport_to = Vector2( -1132, -16 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport2"]
+
+transform/scale = Vector2( 1, 5 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport2/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="Teleport3" parent="tilemap/TeleportGroup" instance=ExtResource( 12 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -400, -656 )
+target_level = "res://levels/waterway/6-0.tscn"
+teleport_to = Vector2( 268, -48 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport3"]
+
+transform/scale = Vector2( 1, 5 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport3/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="Teleport4" parent="tilemap/TeleportGroup" instance=ExtResource( 12 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -144, -912 )
+is_horizontal = false
+target_level = "res://levels/waterway/0-2.tscn"
+teleport_to = Vector2( -48, -32 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport4"]
+
+transform/scale = Vector2( 3, 1 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport4/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="Teleport5" parent="tilemap/TeleportGroup" instance=ExtResource( 12 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 688, -912 )
+is_horizontal = false
+target_level = "res://levels/waterway/5-0.tscn"
+teleport_to = Vector2( 48, 544 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport5"]
+
+transform/scale = Vector2( 3, 1 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport5/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="Teleport6" parent="tilemap/TeleportGroup" instance=ExtResource( 12 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -144, 464 )
+is_horizontal = false
+target_level = "res://levels/waterway/1-0.tscn"
+teleport_to = Vector2( 48, -80 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport6"]
+
+transform/scale = Vector2( 3, 1 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport6/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="Teleport7" parent="tilemap/TeleportGroup" instance=ExtResource( 12 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 688, 464 )
+is_horizontal = false
+target_level = "res://levels/waterway/2-0.tscn"
+teleport_to = Vector2( 48, -80 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport7"]
+
+transform/scale = Vector2( 3, 1 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport7/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="boundaries" type="Node2D" parent="tilemap"]
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( -400, -912 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( 944, 464 )
+
+
+[editable path="tilemap/ClimbableGroup/ClimbableBlock1"]
+[editable path="tilemap/ClimbableGroup/ClimbableBlock3"]
+[editable path="tilemap/One-WayPlatformGroup/One-WayPlatform"]
+[editable path="tilemap/One-WayPlatformGroup/One-WayPlatform3"]
+[editable path="tilemap/One-WayPlatformGroup/One-WayPlatform4"]
+[editable path="tilemap/One-WayPlatformGroup/One-WayPlatform5"]
+[editable path="tilemap/One-WayPlatformGroup/One-WayPlatform1"]
+[editable path="tilemap/One-WayPlatformGroup/One-WayPlatform2"]
+[editable path="tilemap/LadderGroup/TestLadder1"]
+[editable path="tilemap/SunbeamGroup/Sunbeam"]
+[editable path="tilemap/TeleportGroup/Teleport"]
+[editable path="tilemap/TeleportGroup/Teleport1"]
+[editable path="tilemap/TeleportGroup/Teleport2"]
+[editable path="tilemap/TeleportGroup/Teleport3"]
+[editable path="tilemap/TeleportGroup/Teleport4"]
+[editable path="tilemap/TeleportGroup/Teleport5"]
+[editable path="tilemap/TeleportGroup/Teleport6"]
+[editable path="tilemap/TeleportGroup/Teleport7"]

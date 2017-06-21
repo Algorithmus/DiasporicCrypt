@@ -15,7 +15,9 @@
 
 [node name="LVL_NOTITLE" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -169,6 +171,8 @@ target_nodes = [ "HangableGroup/HangBlock", "HangableGroup/HangBlock1", "Hangabl
 related_switches = [  ]
 enabled = false
 invert = false
+show_target = false
+target_pos = Vector2( 0, 0 )
 
 [node name="PotGroup" type="Node2D" parent="tilemap"]
 
@@ -176,10 +180,6 @@ invert = false
 
 editor/display_folded = true
 transform/pos = Vector2( -144, -48 )
-
-[node name="enabler" parent="tilemap/PotGroup/Pot/KinematicBody2D"]
-
-enabler/pause_animated_sprites = true
 
 [node name="Sprite" parent="tilemap/PotGroup/Pot/KinematicBody2D"]
 
@@ -190,10 +190,6 @@ modulate = Color( 0.751495, 0.934362, 0.976562, 1 )
 transform/pos = Vector2( 176, -48 )
 type = "SWITCH"
 reward = "SwitchGroup/FloorSwitch"
-
-[node name="enabler" parent="tilemap/PotGroup/Pot1/KinematicBody2D"]
-
-enabler/pause_animated_sprites = true
 
 [node name="Sprite" parent="tilemap/PotGroup/Pot1/KinematicBody2D"]
 
@@ -233,18 +229,6 @@ transform/pos = Vector2( -294, -870 )
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
 transform/pos = Vector2( 330, 106 )
-
-[connection signal="enter_screen" from="tilemap/PotGroup/Pot/KinematicBody2D/enabler" to="tilemap/PotGroup/Pot" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/PotGroup/Pot/KinematicBody2D/enabler" to="tilemap/PotGroup/Pot" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/PotGroup/Pot1/KinematicBody2D/enabler" to="tilemap/PotGroup/Pot1" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/PotGroup/Pot1/KinematicBody2D/enabler" to="tilemap/PotGroup/Pot1" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
 
 
 [editable path="tilemap/One-WayPlatformGroup/One-WayPlatform7"]

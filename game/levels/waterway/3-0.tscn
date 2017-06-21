@@ -1,0 +1,166 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://scenes/waterway/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/waterway/climbableblock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/common/switches/floorswitch.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/sunbeam.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=6]
+
+[node name="LVL_NOTITLE" type="Node2D"]
+
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -852004, 1610612749, -852003, 1073741862, -852002, 1073741862, -852001, 1073741862, -852000, 1073741862, -851999, 1073741862, -851998, 1073741862, -851997, 1073741862, -851996, 1073741862, -851995, 1073741862, -851994, 1073741862, -851993, 1073741862, -851992, 1073741862, -851991, 1073741862, -851990, 1073741862, -851989, 1073741862, -851988, 1073741862, -851987, 1073741862, -851986, 1073741862, -851985, 1073741862, -851984, 1073741862, -851983, 1073741862, -851982, 1073741862, -851981, 1073741862, -851980, 1073741862, -851979, 1073741862, -851978, 1073741862, -851977, 1073741862, -851976, 1073741862, -851975, 1073741862, -851974, 1073741862, -851973, 1073741862, -851972, 1073741862, -851971, 1073741862, -851970, 1073741862, -851969, 1073741862, -917504, 1073741862, -917503, 1073741862, -917502, 1073741862, -917501, 1073741862, -917500, 1073741862, -917499, 1073741862, -917498, 1073741862, -917497, 1073741862, -917496, 1073741862, -917495, 1073741862, -917494, 1073741862, -917493, 1073741862, -917492, 1073741862, -917491, 1073741862, -917490, 1073741862, -917489, 1073741862, -917488, 1073741862, -917487, 1073741862, -917486, 1073741862, -917485, 1073741862, -917484, 1073741862, -917483, 1073741862, -917482, 1073741862, -917481, 1073741862, -917480, 1073741862, -917479, 1073741862, -917478, 1073741862, -917477, 1073741862, -917476, 1073741862, -917475, 1073741862, -917474, 1073741862, -917473, 1073741837, -786468, 1073741838, -851937, 1073741838, -720932, 1073741838, -786401, 1073741838, -655396, 1073741838, -720865, 1073741838, -589860, 1073741838, -655329, 1073741838, -524324, 1073741838, -589793, 1073741838, -458788, 1073741838, -524257, 1073741838, -393252, 536870925, -393251, 38, -393250, 38, -393249, 38, -393248, 38, -458725, 38, -458724, 38, -458723, 38, -458722, 38, -458721, 13, -327716, 1073741838, -393185, 1073741838, -262180, 1073741838, -327649, 1073741838, -196644, 1073741837, -262113, 1610612749, 196572, 536870925, 196573, 38, 196574, 38, 196575, 38, 196576, 38, 196577, 38, 196578, 38, 196579, 38, 196580, 38, 196581, 38, 196582, 38, 196583, 38, 196584, 38, 196585, 38, 196586, 38, 196587, 38, 196588, 38, 196589, 38, 196590, 38, 196591, 38, 196592, 38, 196593, 38, 196594, 38, 196595, 38, 196596, 38, 196597, 38, 196598, 38, 196599, 38, 196600, 38, 196601, 38, 196602, 38, 196603, 38, 196604, 38, 196605, 38, 196606, 38, 196607, 38, 131072, 38, 131073, 38, 131074, 38, 131075, 38, 131076, 38, 131077, 38, 131078, 38, 131079, 38, 131080, 38, 131081, 38, 131082, 38, 131083, 38, 131084, 38, 131085, 38, 131086, 38, 131087, 38, 131088, 38, 131089, 38, 131090, 38, 131091, 38, 131092, 38, 131093, 38, 131094, 38, 131095, 38, 131096, 38, 131097, 38, 131098, 38, 131099, 38, 131100, 38, 131101, 38, 131102, 38, 131103, 13, 262108, 14, 196639, 14, 327644, 14, 262175, 14, 393180, 14, 327711, 14 )
+
+[node name="ClimbableGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="ClimbableBlock" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 848, -208 )
+
+[node name="ClimbableBlock1" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -976, -208 )
+
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock1"]
+
+offset = Vector2( 3, 0 )
+flip_h = false
+
+[node name="SwitchGroup" type="Node2D" parent="tilemap"]
+
+[node name="FloorSwitch" parent="tilemap/SwitchGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 912, -224 )
+is_on = true
+target_nodes = [ "SunbeamGroup/Sunbeam", "SunbeamGroup/Sunbeam1" ]
+related_switches = [  ]
+enabled = false
+invert = false
+show_target = false
+target_pos = Vector2( 0, 0 )
+
+[node name="PotGroup" type="Node2D" parent="tilemap"]
+
+[node name="Pot" parent="tilemap/PotGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -848, 16 )
+
+[node name="Pot1" parent="tilemap/PotGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -1040, -272 )
+
+[node name="Pot2" parent="tilemap/PotGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 272, 16 )
+
+[node name="Pot3" parent="tilemap/PotGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 464, 16 )
+
+[node name="Pot4" parent="tilemap/PotGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 912, -272 )
+type = "SWITCH"
+reward = "SwitchGroup/FloorSwitch"
+
+[node name="SunbeamGroup" type="Node2D" parent="tilemap"]
+
+[node name="Sunbeam" parent="tilemap/SunbeamGroup" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -464, -192 )
+
+[node name="block" parent="tilemap/SunbeamGroup/Sunbeam"]
+
+transform/scale = Vector2( 18, 16 )
+
+[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam"]
+
+transform/scale = Vector2( 18, 16 )
+
+[node name="Sunbeam1" parent="tilemap/SunbeamGroup" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 336, -192 )
+
+[node name="block" parent="tilemap/SunbeamGroup/Sunbeam1"]
+
+transform/scale = Vector2( 18, 16 )
+
+[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam1"]
+
+transform/scale = Vector2( 18, 16 )
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 6 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -1168, -16 )
+target_level = "res://levels/waterway/0-1.tscn"
+teleport_to = Vector2( 908, -656 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+
+transform/scale = Vector2( 1, 5 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 6 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 1040, -16 )
+target_level = "res://levels/waterway/3-1.tscn"
+teleport_to = Vector2( -364, 112 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
+
+transform/scale = Vector2( 1, 5 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport1/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="boundaries" type="Node2D" parent="tilemap"]
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( -1168, -464 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( 1040, 208 )
+
+
+[editable path="tilemap/ClimbableGroup/ClimbableBlock1"]
+[editable path="tilemap/SunbeamGroup/Sunbeam"]
+[editable path="tilemap/SunbeamGroup/Sunbeam1"]
+[editable path="tilemap/TeleportGroup/Teleport"]
+[editable path="tilemap/TeleportGroup/Teleport1"]

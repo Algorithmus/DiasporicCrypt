@@ -108,6 +108,17 @@ func _init():
 	aquaduct.location = locationfactory.locations["LVL_AQUADUCT"]
 	levels[aquaduct.title] = aquaduct
 	
+	var aquaduct2 = levelclass.new()
+	aquaduct2.title = "LVL_AQUADUCT2"
+	aquaduct2.type = "quest"
+	aquaduct2.position = Vector2(614, 380)
+	aquaduct2.description = "LVL_AQUADUCT2_DESCRIPTION"
+	aquaduct2.reward = 10000
+	aquaduct2.require = ["LVL_MANOR", "LVL_CAVE"]
+	aquaduct2.item = "ITEM_STYXCOIN"
+	aquaduct2.location = locationfactory.locations["LVL_AQUADUCT2"]
+	levels[aquaduct2.title] = aquaduct2
+
 	var dungeon = levelclass.new()
 	dungeon.title = "LVL_DUNGEON"
 	dungeon.type = "quest"

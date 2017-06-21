@@ -131,6 +131,7 @@ func _ready():
 			available_levels.append("LVL_WINTERISLANDCASTLE")
 			available_levels.append("LVL_CAVE")
 			available_levels.append("LVL_DUNGEON")
+			available_levels.append("LVL_AQUADUCT2")
 		selected_character = friederich
 		player = friederich.instance()
 	else:
