@@ -12,6 +12,7 @@ func _init():
 	sandbox.position = Vector2(160, 368)
 	sandbox.description = "LVL_SANDBOX_DESCRIPTION"
 	sandbox.location = locationfactory.locations["LVL_SANDBOX"]
+	sandbox.item = "ITEM_AMULET"
 	levels[sandbox.title] = sandbox
 	
 	var springislandcastle = levelclass.new()
