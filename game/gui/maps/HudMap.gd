@@ -12,6 +12,14 @@ var camera
 var offset
 var current_map
 var rooms = {}
+var grids = {}
+
+# discoverability
+const GRID_SIZE = Vector2(800 / 2, 592 / 2)
+var current_grid
+var grid_image
+const GRIDFORMAT = Image.FORMAT_RGBA
+const GRIDCOLOR = Color(79.69/255, 0, 1, 0.5)
 #256, 176
 func _ready():
 	if (!Globals.has("mapid")):
@@ -25,12 +33,93 @@ func _fixed_process(delta):
 	if (current_map != null):
 		var map = rooms[current_map]
 		objects.set_pos(Vector2(round(offset.x - map.get_pos().x - camera.get_camera_pos().x*MAP_SCALE), round(offset.y - map.get_pos().y - camera.get_camera_pos().y*MAP_SCALE)))
+		discover_tiles()
+
+func discover_tiles():
+	var pos = camera.get_camera_pos()
+	var offset = camera.get_offset() * MAP_SCALE
+	var boundaries = rooms[current_map].get_node("area").get_polygon()
+	var start = boundaries[0]
+	var end = boundaries[2]
+	var grid_range = end - start
+	pos = pos*MAP_SCALE - start
+	var startx = max(floor(float(pos.x + offset.x) / (GRID_SIZE.x * MAP_SCALE)), 0)
+	var endx = min(ceil(float(pos.x - offset.x) / (GRID_SIZE.x * MAP_SCALE)), current_grid[0].size() - 1)
+	var starty = max(floor(float(pos.y + offset.y) / (GRID_SIZE.y * MAP_SCALE)), 0)
+	var endy = min(ceil(float(pos.y - offset.y) / (GRID_SIZE.y * MAP_SCALE)), current_grid.size() - 1)
+	#print("detect tiles")
+	#print(current_grid)
+	#print(startx)
+	#print(endx)
+	#print(starty)
+	#print(endy)
+	mark_grid(Vector2(startx, endx), Vector2(starty, endy))
+
+func mark_grid(indexx, indexy):
+	var new_tiles = false
+	#print("check grid")
+	#print(indexx)
+	#print(indexy)
+	for i in range(indexy.x, indexy.y + 1):
+		var row = current_grid[i]
+		var row_size = row.size()
+		for j in range(indexx.x, indexx.y + 1):
+			var cell = row[j]
+			if (!cell):
+				current_grid[i][j] = true
+				new_tiles = true
+				draw_grid(j, i)
+				print("new tile discovered")
+	if (new_tiles):
+		var grid_texture = rooms[current_map].get_node("grid").get_texture()
+		grid_texture.set_data(grid_image)
+		print(current_grid)
+
+func render_grid():
+	print(current_grid)
+	
+	var col_size = current_grid.size()
+	var grid_texture = rooms[current_map].get_node("grid").get_texture()
+	for y in range(0, col_size):
+		var row = current_grid[y]
+		var row_size = row.size()
+		for x in range(0, row_size):
+			var cell = row[x]
+			if (cell):
+				draw_grid(x, y)
+	grid_texture.set_data(grid_image)
+
+func draw_grid(x, y):
+	var boundaries = rooms[current_map].get_node("area").get_polygon()
+	var grid_range = boundaries[2] - boundaries[0]
+	var startx = max(round(GRID_SIZE.x * MAP_SCALE * x), 0)
+	var starty = max(round(GRID_SIZE.y * MAP_SCALE * y), 0)
+	var endx = round(min(GRID_SIZE.x * MAP_SCALE * (x + 1), grid_range.x)) + 1
+	var endy = round(min(GRID_SIZE.y * MAP_SCALE * (y + 1), grid_range.y)) + 1
+	#print("draw grid")
+	#print(x)
+	#print(y)
+	#print(grid_image.get_width())
+	#print(grid_image.get_height())
+	#print(boundaries[0])
+	#print(rooms[current_map].get_node("grid").get_offset())
+	#print(grid_range)
+	#print(startx)
+	#print(endx)
+	#print(starty)
+	#print(endy)
+	for i in range(starty, endy):
+		for j in range(startx, endx):
+			grid_image.put_pixel(j, i, GRIDCOLOR)
 
 func reset():
 	rooms = {}
+	grids = {}
 	current_map = null
+	current_grid = null
 	Globals.set("mapobjects", {})
 	Globals.set("mapindex", {})
+	Globals.set("discoverygrid", {})
 
 func _draw():
 	VisualServer.canvas_item_set_clip(get_canvas_item(), true)
@@ -44,10 +133,15 @@ func load_map(root_node):
 	current_map = root_node.get_filename()
 	if (!rooms.has(root_node.get_filename())):
 		create_map(root_node)
+	current_grid = grids[current_map]
+	var unit = rooms[current_map]
+	grid_image = unit.get_node("grid").get_texture().get_data()
 
 func load_cached_map(root_node):
 	if (Globals.has("mapindex")):
 		rooms = Globals.get("mapindex")
+	if (Globals.has("discoverygrid")):
+		grids = Globals.get("discoverygrid")
 	var mapid = Globals.get("mapid")
 	if (Globals.has("mapobjects") && Globals.get("mapobjects").has(mapid)):
 		var cache = Globals.get("mapobjects")[mapid]
@@ -64,6 +158,7 @@ func cache_map():
 		Globals.set("mapobjects", {})
 	Globals.get("mapobjects")[Globals.get("mapid")] = objects.duplicate()
 	Globals.set("mapindex", rooms)
+	Globals.set("discoverygrid", grids)
 
 func create_map(root_node):
 	# create room
@@ -73,6 +168,26 @@ func create_map(root_node):
 	var boundaries = [Vector2(nw.x*MAP_SCALE, nw.y*MAP_SCALE), Vector2(se.x*MAP_SCALE, nw.y*MAP_SCALE), Vector2(se.x*MAP_SCALE, se.y*MAP_SCALE), Vector2(nw.x*MAP_SCALE, se.y*MAP_SCALE)]
 	unit.get_node("area").set_polygon(boundaries)
 	unit.get_node("border").set_polygon(boundaries)
+	var imagewidth = se.x - nw.x
+	var imageheight = se.y - nw.y
+	var gridx = ceil(float(imagewidth) / GRID_SIZE.x)
+	var gridy = ceil(float(imageheight) / GRID_SIZE.y)
+	current_grid = Array()
+	for i in range(0, gridy):
+		var row = Array()
+		for j in range(0, gridx):
+			row.append(false)
+		current_grid.append(row)
+	var grid = Sprite.new()
+	grid.set_name("grid")
+	grid.set_centered(false)
+	grid.set_offset(nw * MAP_SCALE)
+	var grid_texture = ImageTexture.new()
+	grid_texture.create(imagewidth * MAP_SCALE, imageheight * MAP_SCALE, GRIDFORMAT)
+	grid_image = Image(imagewidth * MAP_SCALE, imageheight * MAP_SCALE, false, GRIDFORMAT)
+	grid_texture.set_data(grid_image)
+	grid.set_texture(grid_texture)
+	unit.add_child(grid)
 	var previous_node
 	var current_node
 	# position room relative to previous room if there is one
@@ -111,6 +226,7 @@ func create_map(root_node):
 		unit.set_pos(Vector2(previous_node_pos.x + previous_node_teleport.x - current_node_teleport.x, previous_node_pos.y + previous_node_teleport.y - current_node_teleport.y))
 	objects.add_child(unit)
 	rooms[root_node.get_filename()] = unit
+	grids[root_node.get_filename()] = current_grid
 	#print("save room to")
 	#print(root_node.get_filename())
 
