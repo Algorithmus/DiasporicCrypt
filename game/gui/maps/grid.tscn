@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://gui/maps/grid.gd" type="Script" id=1]
+
+[node name="grid" type="Sprite"]
+
+centered = false
+script/script = ExtResource( 1 )
+
+
