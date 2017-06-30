@@ -17,7 +17,6 @@ const GRIDCOLOR = Color(79.69/255, 0, 1, 0.5)
 var texture
 var image
 var HudMap = preload("res://gui/maps/HudMap.gd")
-var grid
 
 func _ready():
 	pass
@@ -29,22 +28,11 @@ func init(pos, width, height):
 	image = Image(texture.get_width(), texture.get_height(), false, GRIDFORMAT)
 	texture.set_data(image)
 	set_texture(texture)
-	grid = Array()
-	var gridy = ceil(float(height) / (HudMap.MAP_SCALE * GRID_SIZE.y))
-	var gridx = ceil(float(width) / (HudMap.MAP_SCALE * GRID_SIZE.x))
-	for i in range(0, gridy):
-		var row = Array()
-		for j in range(0, gridx):
-			row.append(false)
-		grid.append(row)
 
 # set a specified range of tiles as discovered
 # range consists of indexes in the grid
-func mark_grid(indexx, indexy):
+func mark_grid(indexx, indexy, grid):
 	var new_tiles = false
-	#print("check grid")
-	#print(indexx)
-	#print(indexy)
 	for i in range(indexy.x, indexy.y + 1):
 		var row = grid[i]
 		var row_size = row.size()
@@ -54,15 +42,11 @@ func mark_grid(indexx, indexy):
 				grid[i][j] = true
 				new_tiles = true
 				draw_grid(j, i)
-				#print("new tile discovered")
 	if (new_tiles):
 		texture.set_data(image)
-		#print(grid)
 
 # Render all discovered tiles at once
-func render_grid():
-	print(grid)
-	
+func render_grid(grid):
 	var col_size = grid.size()
 	for y in range(0, col_size):
 		var row = grid[y]
@@ -80,18 +64,7 @@ func draw_grid(x, y):
 	var starty = max(round(GRID_SIZE.y * HudMap.MAP_SCALE * y), 0)
 	var endx = round(min(GRID_SIZE.x * HudMap.MAP_SCALE * (x + 1), image.get_width())) + 1
 	var endy = round(min(GRID_SIZE.y * HudMap.MAP_SCALE * (y + 1), image.get_height())) + 1
-	#print("draw grid")
-	#print(x)
-	#print(y)
-	#print(grid_image.get_width())
-	#print(grid_image.get_height())
-	#print(boundaries[0])
-	#print(rooms[current_map].get_node("grid").get_offset())
-	#print(grid_range)
-	#print(startx)
-	#print(endx)
-	#print(starty)
-	#print(endy)
+
 	for i in range(starty, endy):
 		for j in range(startx, endx):
 			image.put_pixel(j, i, GRIDCOLOR)

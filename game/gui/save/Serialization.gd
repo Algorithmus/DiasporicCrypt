@@ -120,6 +120,7 @@ func serialize_mapindex(hudmap, data):
 	var mapindex = {}
 	for mapid in data:
 		var map = hudmap.serialize_room(data[mapid])
+		map.grid = Globals.get("grids")[mapid]
 		mapindex[mapid] = map
 	return mapindex
 
@@ -130,17 +131,30 @@ func serialize_mapobjects(hudmap, data):
 		var newmap = []
 		for room in map.get_children():
 			var newroom = hudmap.serialize_room(room)
+			newroom.id = room.level
 			newmap.push_back(newroom)
 		mapobjects[mapid] = newmap
 	return mapobjects
 
 func unserialize_mapindex(hudmap, data):
 	var mapindex = {}
-	for roomid in data:
-		var room = data[roomid]
-		var newroom = hudmap.unserialize_room(room)
-		mapindex[roomid] = newroom
+	for mapid in data:
+		var map = data[mapid]
+		var newmap = []
+		for room in map.get_children():
+			# The map index and objects must be the same or else the correct discovery grid will not be displayed
+			# This unfortunately breaks older saves.
+			room.get_node("grid").render_grid(Globals.get("grids")[room.level])
+			mapindex[room.level] = room
 	return mapindex
+
+func unserialize_grids(data):
+	var grids = {}
+	for roomid in data:
+		var map = data[roomid]
+		if (map.has("grid") && map.grid != null && map.grid.size() > 0):
+			grids[roomid] = data[roomid].grid
+	return grids
 
 func unserialize_mapobjects(hudmap, data):
 	var mapobjects = {}
@@ -152,6 +166,7 @@ func unserialize_mapobjects(hudmap, data):
 		for i in range(0, mapobj.size()):
 			var room = mapobj[i]
 			var newroom = hudmap.unserialize_room(room)
+			newroom.level = room.id
 			objectsnode.add_child(newroom)
 		mapobjects[mapid] = objectsnode
 	return mapobjects

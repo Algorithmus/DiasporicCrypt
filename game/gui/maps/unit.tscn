@@ -1,14 +1,21 @@
-[gd_scene format=1]
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://gui/maps/unit.gd" type="Script" id=1]
 
 [node name="Unit" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"Script" }
+script/script = ExtResource( 1 )
+__meta__ = {
+"__editor_plugin_screen__": "Script"
+}
+level = ""
 
 [node name="area" type="Polygon2D" parent="."]
 
 polygon = Vector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
 uv = Vector2Array(  )
 color = Color( 0.148201, 0.121212, 0.254881, 0.742367 )
+vertex_colors = ColorArray(  )
 offset = Vector2( 0, 0 )
 texture/texture = null
 texture/offset = Vector2( 0, 0 )
@@ -22,6 +29,7 @@ invert/border = 100.0
 polygon = Vector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
 uv = Vector2Array(  )
 color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
 offset = Vector2( 0, 0 )
 texture/texture = null
 texture/offset = Vector2( 0, 0 )
