@@ -447,7 +447,10 @@ func reset_level():
 	Globals.get("inventory").set("player", player)
 	map.set("camera", player.get_node("Camera2D"))
 	get_node("gui/CanvasLayer/hud").reset()
-	teleport(Globals.get("lastsavepoint").id, Globals.get("lastsavepoint").position, null)
+	var level = Globals.get("lastsavepoint")
+	if (Globals.get("mapid") != level.location):
+		 level = Globals.get("defaultsavepoint")
+	teleport(level.id, level.position, null)
 	Globals.set("deaths", Globals.get("deaths") + 1)
 	is_paused = false
 	pause.hide()
