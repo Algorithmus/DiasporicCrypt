@@ -81,6 +81,8 @@ func load_cached_map(root_node):
 	var mapid = Globals.get("mapid")
 	if (Globals.has("mapobjects") && Globals.get("mapobjects").has(mapid)):
 		var cache = Globals.get("mapobjects")[mapid]
+		for map in cache.get_children():
+			rooms[map.level] = map
 		remove_child(objects)
 		objects.queue_free()
 		add_child(cache)

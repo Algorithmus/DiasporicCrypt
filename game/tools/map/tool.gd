@@ -55,7 +55,9 @@ var container
 
 func _ready():
 	container = get_node("statistics/container")
-	var normal_size = round(Grid.GRID_SIZE.x * Grid.GRID_SIZE.y * pow(HudMap.MAP_SCALE, 2))
+	var gridwidth = round(Grid.GRID_SIZE.x * HudMap.MAP_SCALE)
+	var gridheight = round(Grid.GRID_SIZE.y * HudMap.MAP_SCALE)
+	var normal_size = gridwidth * gridheight
 	var size = list.size()
 	for i in range(0, size):
 		var leveldir = list[i]
@@ -75,25 +77,26 @@ func _ready():
 						var boundaries = room.get_node("tilemap/boundaries")
 						var nw = boundaries.get_node("NW").get_global_pos()
 						var se = boundaries.get_node("SE").get_global_pos()
-						var total_range = (se - nw) * HudMap.MAP_SCALE
-						var total = round(total_range.x * total_range.y)
-						level_total += total
 						var imagewidth = se.x - nw.x
 						var imageheight = se.y - nw.y
 						var gridy = ceil(float(imageheight) / Grid.GRID_SIZE.y)
 						var gridx = ceil(float(imagewidth) / Grid.GRID_SIZE.x)
-						var gridx_size = floor(float(imagewidth) * HudMap.MAP_SCALE / gridx)
-						var gridy_size = floor(float(imageheight) * HudMap.MAP_SCALE / gridy)
-						var vertical_size = round((imagewidth - (Grid.GRID_SIZE.x * (gridx - 1))) * HudMap.MAP_SCALE)
-						var horizontal_size = round((imageheight - (Grid.GRID_SIZE.y * (gridy - 1))) * HudMap.MAP_SCALE)
+						var vertical_size = floor(imagewidth * HudMap.MAP_SCALE) - (gridwidth * (gridx - 1))
+						var horizontal_size = floor(imageheight * HudMap.MAP_SCALE) - (gridheight * (gridy - 1))
+						var vertical_area = vertical_size * gridheight
+						var horizontal_area = horizontal_size * gridwidth
+						var corner_area = horizontal_size * vertical_size
+						var normal_area = (gridx - 1) * gridwidth * (gridy - 1) * gridheight
+						var total = normal_area + vertical_area * (gridy - 1) + horizontal_area * (gridx - 1) + corner_area
+						level_total += total
 						var room_node = roomobj.instance()
 						room_node.get_node("title/value").set_text(filename)
 						room_node.get_node("grid/value").set_text(str(gridx) + "x" + str(gridy))
 						room_node.get_node("total/value").set_text(str(total))
 						room_node.get_node("size/value").set_text(str(normal_size))
-						room_node.get_node("horizontal/value").set_text(str(horizontal_size * round(Grid.GRID_SIZE.x * HudMap.MAP_SCALE)))
-						room_node.get_node("vertical/value").set_text(str(vertical_size * round(Grid.GRID_SIZE.y * HudMap.MAP_SCALE)))
-						room_node.get_node("corner/value").set_text(str(vertical_size * horizontal_size))
+						room_node.get_node("horizontal/value").set_text(str(horizontal_area))
+						room_node.get_node("vertical/value").set_text(str(vertical_area))
+						room_node.get_node("corner/value").set_text(str(corner_area))
 						container.add_child(room_node)
 					filename = dir.get_next()
 				dir.list_dir_end()

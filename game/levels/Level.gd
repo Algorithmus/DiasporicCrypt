@@ -3,7 +3,6 @@ extends Node
 
 var title
 var complete = false
-var map = 0 # percentage of the level player has visited
 var tags = {"red": false, "green": false, "blue": false, "purple": false}
 var type # quest, boss, bonus or colosseum
 var position = Vector2() # position on the world map
@@ -20,10 +19,14 @@ var mincounter # minimum number of enemies required for bonus level
 var location # location level takes place in
 var require # levels required to be completed before this level becomes available
 var character # character the level is for
+var tiles = 0 # total number of tiles (in pixels) discovered in this level
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	pass
 
-
+func tile_percent():
+	if (location.tiles != null && location.tiles > 0):
+		return float(round((float(tiles) / location.tiles) * 10000) / 100)
+	return 0

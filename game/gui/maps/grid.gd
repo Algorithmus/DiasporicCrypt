@@ -29,12 +29,14 @@ var image
 var HudMap = preload("res://gui/maps/HudMap.gd")
 
 func _ready():
-	pass
+	if (get_texture() != null):
+		texture = get_texture()
+		image = texture.get_data()
 
 func init(pos, width, height):
 	set_offset(pos)
 	texture = ImageTexture.new()
-	texture.create(width, height, GRIDFORMAT)
+	texture.create(floor(width), floor(height), GRIDFORMAT)
 	image = Image(texture.get_width(), texture.get_height(), false, GRIDFORMAT)
 	texture.set_data(image)
 	set_texture(texture)
@@ -70,10 +72,15 @@ func render_grid(grid):
 # Draw discovered tile at the specified position
 # Position is given in grid indexes.
 func draw_grid(x, y):
-	var startx = max(round(GRID_SIZE.x * HudMap.MAP_SCALE * x), 0)
-	var starty = max(round(GRID_SIZE.y * HudMap.MAP_SCALE * y), 0)
-	var endx = round(min(GRID_SIZE.x * HudMap.MAP_SCALE * (x + 1), image.get_width())) + 1
-	var endy = round(min(GRID_SIZE.y * HudMap.MAP_SCALE * (y + 1), image.get_height())) + 1
+	var startx = max(round(GRID_SIZE.x * HudMap.MAP_SCALE) * x, 0)
+	var starty = max(round(GRID_SIZE.y * HudMap.MAP_SCALE) * y, 0)
+	var endx = min(round(GRID_SIZE.x * HudMap.MAP_SCALE) * (x + 1), round(image.get_width())) + 1
+	var endy = min(round(GRID_SIZE.y * HudMap.MAP_SCALE) * (y + 1), round(image.get_height())) + 1
+
+	# catacombs doesn't count for map completion
+	if (get_parent().get("level") != "res://levels/common/catacombs.tscn"):
+		var area = (endx - 1 - startx) * (endy - 1 - starty)
+		Globals.get("levels")[Globals.get("current_level")].tiles += area
 
 	for i in range(starty, endy):
 		for j in range(startx, endx):

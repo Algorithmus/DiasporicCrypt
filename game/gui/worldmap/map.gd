@@ -80,7 +80,7 @@ func _ready():
 			listitem.get_node("new").show()
 		else:
 			listitem.get_node("new").hide()
-		listitem.get_node("map").set_text(str(level.map * 100) + "%")
+		listitem.get_node("map").set_text(str(level.tile_percent()) + "%")
 		pin.connect("focus_enter", self, "focus_pin")
 		listitem.connect("focus_enter", self, "focus_list")
 		for tag in level.tags:
@@ -171,7 +171,7 @@ func toggle_list(state):
 func set_content(id):
 	var level = Globals.get("levels")[id]
 	title.get_node("level").set_text(level.title)
-	title.get_node("percent").set_text(str(level.map * 100) + "%")
+	title.get_node("percent").set_text(str(level.tile_percent()) + "%")
 	title.get_node("icon").set_texture(typeicons[level.type])
 	if (level.complete):
 		title.get_node("complete").show()
