@@ -104,6 +104,7 @@ func serialize_levels(data):
 		newlevel.new = level.get("new")
 		newlevel.tags = level.get("tags")
 		newlevel.complete = level.get("complete")
+		newlevel.tiles = level.get("tiles")
 		leveldata[id] = newlevel
 	return leveldata
 
@@ -114,6 +115,7 @@ func unserialize_levels(data, levels):
 		newlevel.new = level.new
 		newlevel.tags = level.tags
 		newlevel.complete = level.complete
+		newlevel.tiles = level.tiles
 	return levels
 
 func serialize_mapindex(hudmap, data):
