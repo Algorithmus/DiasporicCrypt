@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://tools/map/stat.tscn" type="PackedScene" id=1]
+
+[node name="level" type="VBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 210.0
+margin/bottom = 104.0
+alignment = 0
+
+[node name="title" parent="." instance=ExtResource( 1 )]
+
+editor/display_folded = true
+margin/right = 210.0
+margin/bottom = 32.0
+
+[node name="key" parent="title"]
+
+margin/right = 78.0
+text = "Level: "
+
+[node name="value" parent="title"]
+
+margin/left = 82.0
+margin/right = 123.0
+
+[node name="total" parent="." instance=ExtResource( 1 )]
+
+editor/display_folded = true
+margin/top = 36.0
+margin/right = 210.0
+margin/bottom = 68.0
+
+[node name="bg" parent="total/icon"]
+
+polygon = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[node name="highlight" parent="total/icon"]
+
+polygon = Vector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[node name="key" parent="total"]
+
+margin/right = 109.0
+text = "Total Tiles: "
+
+[node name="value" parent="total"]
+
+margin/left = 113.0
+margin/right = 154.0
+
+
+[editable path="title"]
+[editable path="total"]

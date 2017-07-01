@@ -10,6 +10,16 @@ extends Sprite
 
 # It's unfortunately hard to avoid O(n^2) or worse here though...
 
+# Discoverability Tiles
+# Every room has a discoverability grid that tracks where players have and haven't been.
+# If the player touches a tile in the grid, the tile is marked as "discovered" and we update
+# and render that tile in the map.
+# For consistency, all the tiles in the grid are exactly the same size (GRID_SIZE).
+# In HudMap.gd, we check the player's position against the position in the room and determine
+# which tiles in the grid this correspond to. They're then marked as discovered, and if they
+# weren't previously discovered, we render the new discovered tiles on the map.
+# To save on performance, we only re-render the entire grid while loading the game.
+
 const GRID_SIZE = Vector2(800 / 2, 592 / 2)
 const GRIDFORMAT = Image.FORMAT_RGBA
 const GRIDCOLOR = Color(79.69/255, 0, 1, 0.5)

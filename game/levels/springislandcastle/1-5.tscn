@@ -9,8 +9,9 @@
 [ext_resource path="res://scenes/common/hangable.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/common/hangblockend.png" type="Texture" id=8]
 [ext_resource path="res://scenes/common/damagables/minotaur/minotaur.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/common/damagables/sorcerer.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/common/damagables/sorcerer/sorcerer.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=11]
+
 
 
 [node name="LVL_NOTITLE" type="Node2D"]
