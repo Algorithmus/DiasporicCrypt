@@ -133,5 +133,5 @@ func _init():
 	icecave.teleportto = Vector2(16, 64)
 	icecave.id = "LVL_ICECAVE"
 	icecave.bgm = preload("res://levels/common/BGM3.ogg")
-	icecave.tiles = 44320
+	icecave.tiles = 44320 - 300
 	locations[icecave.id] = icecave
