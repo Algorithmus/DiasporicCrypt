@@ -30,6 +30,9 @@ extends Control
 # Corner Tile Size - pixel size of the tile in the bottom right corner of the
 # discovery grid for this room
 
+# Please be aware that negative edge or corner tile sizes are possible as we have
+# chosen to use floor to calculate image sizes
+
 # List of all the levels for which statistics should be displayed
 var list = [
 "res://levels/aquaduct", 

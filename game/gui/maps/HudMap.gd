@@ -118,7 +118,7 @@ func create_map(root_node):
 			row.append(false)
 		current_grid.append(row)
 	var grid = gridobj.instance()
-	grid.init(nw * MAP_SCALE, imagewidth * MAP_SCALE, imageheight * MAP_SCALE)
+	grid.init(nw * MAP_SCALE, imagewidth * MAP_SCALE, imageheight * MAP_SCALE, current_grid)
 	unit.add_child(grid)
 	var previous_node
 	var current_node
@@ -191,7 +191,7 @@ func unserialize_room(map):
 	var grid = gridobj.instance()
 	var imagewidth = boundaries[2].x - boundaries[0].x
 	var imageheight = boundaries[2].y - boundaries[0].y
-	grid.init(boundaries[0], imagewidth, imageheight)
+	grid.init(boundaries[0], imagewidth, imageheight, Globals.get("grids")[map.id])
 	unit.add_child(grid)
 	# mark exits in room
 	var teleports = map.gates

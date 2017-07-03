@@ -6,5 +6,6 @@
 
 centered = false
 script/script = ExtResource( 1 )
+current_grid = [  ]
 
 
