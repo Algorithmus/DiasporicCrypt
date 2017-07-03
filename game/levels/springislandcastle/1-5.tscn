@@ -12,11 +12,11 @@
 [ext_resource path="res://scenes/common/damagables/sorcerer/sorcerer.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=11]
 
-
-
 [node name="LVL_NOTITLE" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -415,8 +415,6 @@ transform/pos = Vector2( 272, -800 )
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
-
 [node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 11 )]
 
 editor/display_folded = true
@@ -457,14 +455,6 @@ transform/pos = Vector2( -518, -1446 )
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
 transform/pos = Vector2( 586, 650 )
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="exit_screen"]
 
 
 [editable path="tilemap/ClimbableGroup/ClimbableBlock4"]
