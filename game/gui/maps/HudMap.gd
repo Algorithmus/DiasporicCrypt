@@ -12,6 +12,14 @@ var camera
 var offset
 var current_map
 var rooms = {}
+var grids = {}
+
+# discoverability
+# See more details for discoverability in grid.tscn
+var gridobj = preload("res://gui/maps/grid.tscn")
+var gridclass = preload("res://gui/maps/grid.gd")
+var current_grid
+
 #256, 176
 func _ready():
 	if (!Globals.has("mapid")):
@@ -25,12 +33,31 @@ func _fixed_process(delta):
 	if (current_map != null):
 		var map = rooms[current_map]
 		objects.set_pos(Vector2(round(offset.x - map.get_pos().x - camera.get_camera_pos().x*MAP_SCALE), round(offset.y - map.get_pos().y - camera.get_camera_pos().y*MAP_SCALE)))
+		discover_tiles()
+
+# check for map tiles player has already been in
+func discover_tiles():
+	var pos = camera.get_camera_pos()
+	var offset = camera.get_offset() * MAP_SCALE
+	var boundaries = rooms[current_map].get_node("area").get_polygon()
+	var grid = rooms[current_map].get_node("grid")
+	var start = boundaries[0]
+	var end = boundaries[2]
+	var grid_range = end - start
+	pos = pos*MAP_SCALE - start
+	var startx = max(floor(float(pos.x + offset.x) / (gridclass.GRID_SIZE.x * MAP_SCALE)), 0)
+	var endx = min(ceil(float(pos.x - offset.x) / (gridclass.GRID_SIZE.x * MAP_SCALE)), current_grid[0].size() - 1)
+	var starty = max(floor(float(pos.y + offset.y) / (gridclass.GRID_SIZE.y * MAP_SCALE)), 0)
+	var endy = min(ceil(float(pos.y - offset.y) / (gridclass.GRID_SIZE.y * MAP_SCALE)), current_grid.size() - 1)
+	grid.mark_grid(Vector2(startx, endx), Vector2(starty, endy), current_grid)
 
 func reset():
 	rooms = {}
+	grids = {}
 	current_map = null
 	Globals.set("mapobjects", {})
 	Globals.set("mapindex", {})
+	Globals.set("grids", {})
 
 func _draw():
 	VisualServer.canvas_item_set_clip(get_canvas_item(), true)
@@ -44,13 +71,18 @@ func load_map(root_node):
 	current_map = root_node.get_filename()
 	if (!rooms.has(root_node.get_filename())):
 		create_map(root_node)
+	current_grid = grids[current_map]
 
 func load_cached_map(root_node):
 	if (Globals.has("mapindex")):
 		rooms = Globals.get("mapindex")
+	if (Globals.has("grids")):
+		grids = Globals.get("grids")
 	var mapid = Globals.get("mapid")
 	if (Globals.has("mapobjects") && Globals.get("mapobjects").has(mapid)):
 		var cache = Globals.get("mapobjects")[mapid]
+		for map in cache.get_children():
+			rooms[map.level] = map
 		remove_child(objects)
 		objects.queue_free()
 		add_child(cache)
@@ -64,15 +96,30 @@ func cache_map():
 		Globals.set("mapobjects", {})
 	Globals.get("mapobjects")[Globals.get("mapid")] = objects.duplicate()
 	Globals.set("mapindex", rooms)
+	Globals.set("grids", grids)
 
 func create_map(root_node):
 	# create room
 	var unit = unit_class.instance()
+	unit.level = root_node.get_filename()
 	var nw = root_node.get_node("tilemap/boundaries/NW").get_global_pos()
 	var se = root_node.get_node("tilemap/boundaries/SE").get_global_pos()
 	var boundaries = [Vector2(nw.x*MAP_SCALE, nw.y*MAP_SCALE), Vector2(se.x*MAP_SCALE, nw.y*MAP_SCALE), Vector2(se.x*MAP_SCALE, se.y*MAP_SCALE), Vector2(nw.x*MAP_SCALE, se.y*MAP_SCALE)]
 	unit.get_node("area").set_polygon(boundaries)
 	unit.get_node("border").set_polygon(boundaries)
+	var imagewidth = se.x - nw.x
+	var imageheight = se.y - nw.y
+	current_grid = []
+	var gridy = ceil(float(imageheight) / gridclass.GRID_SIZE.y)
+	var gridx = ceil(float(imagewidth) / gridclass.GRID_SIZE.x)
+	for i in range(0, gridy):
+		var row = []
+		for j in range(0, gridx):
+			row.append(false)
+		current_grid.append(row)
+	var grid = gridobj.instance()
+	grid.init(nw * MAP_SCALE, imagewidth * MAP_SCALE, imageheight * MAP_SCALE, current_grid)
+	unit.add_child(grid)
 	var previous_node
 	var current_node
 	# position room relative to previous room if there is one
@@ -111,8 +158,7 @@ func create_map(root_node):
 		unit.set_pos(Vector2(previous_node_pos.x + previous_node_teleport.x - current_node_teleport.x, previous_node_pos.y + previous_node_teleport.y - current_node_teleport.y))
 	objects.add_child(unit)
 	rooms[root_node.get_filename()] = unit
-	#print("save room to")
-	#print(root_node.get_filename())
+	grids[root_node.get_filename()] = current_grid
 
 func serializeVector2Array(array):
 	var serialized = []
@@ -128,7 +174,7 @@ func serialize_room(map):
 	newmap.pos = [map.get_pos().x, map.get_pos().y]
 	var gates = []
 	for gate in map.get_children():
-		if (gate.get_name() != "area" && gate.get_name() != "border"):
+		if (gate.get_name() != "area" && gate.get_name() != "border" && gate.get_name() != "grid"):
 			var newgate = {}
 			newgate.boundaries = serializeVector2Array(gate.get_polygon())
 			newgate.pos = [gate.get_pos().x, gate.get_pos().y]
@@ -142,6 +188,11 @@ func unserialize_room(map):
 	var boundaries = [Vector2(map.boundaries[0][0], map.boundaries[0][1]), Vector2(map.boundaries[1][0], map.boundaries[1][1]), Vector2(map.boundaries[2][0], map.boundaries[2][1]), Vector2(map.boundaries[3][0], map.boundaries[3][1])]
 	unit.get_node("area").set_polygon(boundaries)
 	unit.get_node("border").set_polygon(boundaries)
+	var grid = gridobj.instance()
+	var imagewidth = boundaries[2].x - boundaries[0].x
+	var imageheight = boundaries[2].y - boundaries[0].y
+	grid.init(boundaries[0], imagewidth, imageheight, Globals.get("grids")[map.id])
+	unit.add_child(grid)
 	# mark exits in room
 	var teleports = map.gates
 	for i in range(0, teleports.size()):

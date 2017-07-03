@@ -17,7 +17,9 @@ extents = Vector2( 430.861, 16 )
 
 [node name="LVL_NOTITLE" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -294,10 +296,6 @@ transform/pos = Vector2( -390, -326 )
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
 transform/pos = Vector2( 490, 938 )
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
 
 
 [editable path="tilemap/One-WayPlatformGroup/One-WayPlatform"]

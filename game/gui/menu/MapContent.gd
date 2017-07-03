@@ -20,6 +20,8 @@ func update_container():
 				icon.set_texture(load(Globals.get("itemfactory").items[image].image))
 		else:
 			icon.hide()
+	if (level.location.tiles != null):
+		get_node("completion").set_text(str(level.tile_percent()) + "%")
 	if (Globals.get("current_quest_complete")):
 		get_node("complete").show()
 	else:

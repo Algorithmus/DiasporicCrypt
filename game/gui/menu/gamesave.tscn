@@ -12,39 +12,51 @@
 [ext_resource path="res://gui/fonts/M-15-options.fnt" type="BitmapFont" id=10]
 [ext_resource path="res://gui/menu/cursor.tscn" type="PackedScene" id=11]
 
-[sub_resource type="StyleBoxEmpty" id=19]
+[sub_resource type="StyleBoxEmpty" id=1]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
 
-[sub_resource type="StyleBoxEmpty" id=20]
+[sub_resource type="StyleBoxEmpty" id=2]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
 
-[sub_resource type="StyleBoxEmpty" id=21]
+[sub_resource type="StyleBoxEmpty" id=3]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
 
-[sub_resource type="CanvasItemShader" id=1]
+[sub_resource type="CanvasItemShader" id=4]
 
-_code = { "fragment":"uniform color start=color(0.2,0.4,1.0,1);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, UV.x);\nCOLOR = mix(start, COLOR, UV.x*1.25);\n\nCOLOR.a = tex(TEXTURE,UV).a*COLOR.a;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+_code = {
+"fragment": "uniform color start=color(0.2,0.4,1.0,1);
+uniform color stop=color(0.2,0.4,1.0,0);
+COLOR = mix(start, stop, UV.x);
+COLOR = mix(start, COLOR, UV.x*1.25);
 
-[sub_resource type="CanvasItemMaterial" id=2]
+COLOR.a = tex(TEXTURE,UV).a*COLOR.a;",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
 
-shader/shader = SubResource( 1 )
+[sub_resource type="CanvasItemMaterial" id=5]
+
+shader/shader = SubResource( 4 )
 shader/shading_mode = 0
 shader_param/start = Color( 0.309804, 0.105882, 0.105882, 0.75 )
 shader_param/stop = Color( 0.101961, 0.101961, 0.0980392, 0.75 )
 
-[sub_resource type="ImageTexture" id=3]
+[sub_resource type="ImageTexture" id=6]
 
 flags = 6
 image = Image()
@@ -52,18 +64,29 @@ size = Vector2( 1, 1 )
 storage = 0
 lossy_quality = 0.7
 
-[sub_resource type="CanvasItemShader" id=16]
+[sub_resource type="CanvasItemShader" id=7]
 
-_code = { "fragment":"uniform color start=color(0.2,0.4,1.0,1);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, UV.x);\n\nCOLOR.a = tex(TEXTURE,UV).a*COLOR.a;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+_code = {
+"fragment": "uniform color start=color(0.2,0.4,1.0,1);
+uniform color stop=color(0.2,0.4,1.0,0);
+COLOR = mix(start, stop, UV.x);
 
-[sub_resource type="CanvasItemMaterial" id=5]
+COLOR.a = tex(TEXTURE,UV).a*COLOR.a;",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
 
-shader/shader = SubResource( 16 )
+[sub_resource type="CanvasItemMaterial" id=8]
+
+shader/shader = SubResource( 7 )
 shader/shading_mode = 0
 shader_param/start = Color( 0.788235, 0.74902, 0.631373, 0 )
 shader_param/stop = Color( 0.788235, 0.74902, 0.631373, 1 )
 
-[sub_resource type="ImageTexture" id=18]
+[sub_resource type="ImageTexture" id=9]
 
 flags = 6
 image = Image()
@@ -82,9 +105,9 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 660.0
 margin/bottom = 167.0
-custom_styles/hover = SubResource( 19 )
-custom_styles/pressed = SubResource( 20 )
-custom_styles/focus = SubResource( 21 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -313,34 +336,34 @@ margin/bottom = 40.0
 
 [node name="BG" type="Sprite" parent="options"]
 
-material/material = SubResource( 2 )
+material/material = SubResource( 5 )
 transform/pos = Vector2( 18, 11 )
 transform/scale = Vector2( 573, 131 )
-texture = SubResource( 3 )
+texture = SubResource( 6 )
 centered = false
 
 [node name="line" type="Sprite" parent="options"]
 
-material/material = SubResource( 5 )
+material/material = SubResource( 8 )
 transform/pos = Vector2( 426, 43 )
 transform/scale = Vector2( 165, 1 )
-texture = SubResource( 18 )
+texture = SubResource( 9 )
 centered = false
 
 [node name="line1" type="Sprite" parent="options"]
 
-material/material = SubResource( 5 )
+material/material = SubResource( 8 )
 transform/pos = Vector2( 426, 75 )
 transform/scale = Vector2( 165, 1 )
-texture = SubResource( 18 )
+texture = SubResource( 9 )
 centered = false
 
 [node name="line2" type="Sprite" parent="options"]
 
-material/material = SubResource( 5 )
+material/material = SubResource( 8 )
 transform/pos = Vector2( 426, 107 )
 transform/scale = Vector2( 165, 1 )
-texture = SubResource( 18 )
+texture = SubResource( 9 )
 centered = false
 
 [node name="options" type="VBoxContainer" parent="options"]
@@ -415,7 +438,7 @@ margin/top = 18.0
 margin/right = 364.0
 margin/bottom = 93.0
 custom_fonts/font = ExtResource( 7 )
-text = "Uberschreiben Sie dieses Spiel\?"
+text = "Uberschreiben Sie dieses Spiel?"
 align = 1
 valign = 1
 autowrap = true

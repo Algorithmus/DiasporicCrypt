@@ -447,7 +447,10 @@ func reset_level():
 	Globals.get("inventory").set("player", player)
 	map.set("camera", player.get_node("Camera2D"))
 	get_node("gui/CanvasLayer/hud").reset()
-	teleport(Globals.get("lastsavepoint").id, Globals.get("lastsavepoint").position, null)
+	var level = Globals.get("lastsavepoint")
+	if (Globals.get("mapid") != level.location):
+		 level = Globals.get("defaultsavepoint")
+	teleport(level.id, level.position, null)
 	Globals.set("deaths", Globals.get("deaths") + 1)
 	is_paused = false
 	pause.hide()
@@ -488,14 +491,14 @@ func clearInputs(actionid):
 			InputMap.action_erase_event(actionid, e)
 
 func load_game(data):
-	print("load data")
-	#print(data)
 	clear_game()
 	Globals.set("mapid", data.maps.id)
-	var mapindex = serialization.unserialize_mapindex(map, data.maps.index)
-	Globals.set("mapindex", mapindex)
+	var grids = serialization.unserialize_grids(data.maps.index)
+	Globals.set("grids", grids)
 	var mapobjects = serialization.unserialize_mapobjects(map, data.maps.objects)
 	Globals.set("mapobjects", mapobjects)
+	var mapindex = serialization.unserialize_mapindex(map, Globals.get("mapobjects"))
+	Globals.set("mapindex", mapindex)
 	var levels = serialization.unserialize_levels(data.levels.data, levelfactory.new().levels)
 	Globals.set("levels", levels)
 	var level = load(data.maps.currentMap).instance()
