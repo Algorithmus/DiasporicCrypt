@@ -319,7 +319,7 @@ func end_list_animation():
 			toggle_filters(false)
 			filteractive = true
 			list.get_node("filters/tagtitle").grab_focus()
-		get_node("listinfo").set_bbcode("[right]" + tr("MAP_MAP") + ":  [code]" + keyboardmap.map_action("ui_pause") + "[/code][/right]")
+		get_node("listinfo").set_bbcode("[right]" + tr("MAP_MAP") + ":  [code]" + keyboardmap.map_action("ui_pause") + "[/code]\n" + tr("MAP_BACK") + ":  [code]" + keyboardmap.map_action("ui_cancel") + "[/code][/right]")
 	else:
 		if (filteractive):
 			toggle_filters(false)
@@ -329,7 +329,7 @@ func end_list_animation():
 			toggle_pins(false)
 			selectedlevel.grab_focus()
 			selectedlevel = null
-		get_node("listinfo").set_bbcode("[right]List:  [code]" + keyboardmap.map_action("ui_pause") + "[/code][/right]")
+		get_node("listinfo").set_bbcode("[right]List:  [code]" + keyboardmap.map_action("ui_pause") + "[/code]\n" + tr("MAP_BACK") + ":  [code]" + keyboardmap.map_action("ui_cancel") + "[/code][/right]")
 
 func block_cancel():
 	# info panel is already unfocused, so check echo flag instead
