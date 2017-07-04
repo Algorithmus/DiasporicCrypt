@@ -67,6 +67,7 @@ func _ready():
 	Globals.set("levels", levelfactory.new().levels)
 	Globals.set("current_level", "LVL_START")
 	Globals.get("levels")[Globals.get("current_level")].new = false
+	Globals.set("special_tiles", 0)
 	Globals.set("eventmode", false)
 	Globals.set("current_quest_complete", false)
 	Globals.set("reward_taken", false)
@@ -500,6 +501,8 @@ func load_game(data):
 	var mapindex = serialization.unserialize_mapindex(map, Globals.get("mapobjects"))
 	Globals.set("mapindex", mapindex)
 	var levels = serialization.unserialize_levels(data.levels.data, levelfactory.new().levels)
+	if (data.maps.has("special_tiles")):
+		Globals.set("special_tiles", data.maps.special_tiles)
 	Globals.set("levels", levels)
 	var level = load(data.maps.currentMap).instance()
 	get_node("level").add_child(level)

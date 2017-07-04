@@ -18,6 +18,7 @@ const DISCOVERY_ADELA = [
 "LVL_MAUSOLEUM",
 "LVL_SPRINGISLANDCASTLE"
 ]
+const DISCOVERY_SPECIAL = 2700
 # TODO - include tiles from catacombs as well
 const QUEST_TOTAL = 16
 const MAGIC_TOTAL = 7
@@ -229,6 +230,7 @@ func save():
 	var mapcache = Globals.get("mapobjects")
 	var mapobjects = serialization.serialize_mapobjects(hudmap, Globals.get("mapobjects"))
 	data.maps.objects = mapobjects
+	data.maps.special_tiles = Globals.get("special_tiles")
 	data.shops = Globals.get("shops")
 	data.deaths = Globals.get("deaths")
 	data.position = [savepos.x, savepos.y]
@@ -262,14 +264,14 @@ func save_from_data(data):
 
 func displayGameData(data):
 	gameData = data
-	var discovery_total = 0
+	var discovery_total = DISCOVERY_SPECIAL
 	var completion = 0
 	if (data.player.character == "adela"):
 		characterBG.set_texture(preload("res://gui/save/bgs/adela.png"))
-		discovery_total = adela_discovery_total
+		discovery_total += adela_discovery_total
 	else:
 		characterBG.set_texture(preload("res://gui/save/bgs/friederich.png"))
-		discovery_total = friederich_discovery_total
+		discovery_total += friederich_discovery_total
 	var discovery = 0
 	var quests = 0
 	for level in data.levels.data:
@@ -277,7 +279,9 @@ func displayGameData(data):
 		discovery += level_data.tiles
 		if (level_data.complete):
 			quests += 1
-	completion += 0.2 * discovery / discovery_total + 0.2 * quests / QUEST_TOTAL
+	if (data.maps.has("special_tiles")):
+		discovery += data.maps.special_tiles
+	completion += 0.2 * (discovery / discovery_total + quests / QUEST_TOTAL)
 	var size = data.inventory.magic.size()
 	var magic = 0
 	for i in range(0, size):
