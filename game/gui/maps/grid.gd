@@ -98,13 +98,15 @@ func count_grid(x, y):
 	var rangex = boundaries[1].x - boundaries[0].x
 	var rangey = boundaries[1].y - boundaries[0].y
 
-	# catacombs doesn't count for map completion
-	if (get_parent().get("level") != "res://levels/common/catacombs.tscn"):
-		var area = rangex * rangey
-		# Due to choosing floor for image texture sizes (it looks prettier), comparing with grid sizes
-		# can cause edges to have negative values. Don't count those.
-		if (area > 0):
-			Globals.get("levels")[Globals.get("current_level")].tiles += area
+	# Due to choosing floor for image texture sizes (it looks prettier), comparing with grid sizes
+	# can cause edges to have negative values. Don't count those.
+	var area = rangex * rangey
+	if (area > 0):
+		# count catacombs differently for map completion
+		if (get_parent().get("level") != "res://levels/common/catacombs.tscn"):
+			Globals.get("levels")[Globals.get("current_level")].location.discovered_tiles += area
+		else:
+			Globals.set("special_tiles", Globals.get("special_tiles") + area)
 
 # Draw discovered tile at the specified position
 # Position is given in grid indexes.

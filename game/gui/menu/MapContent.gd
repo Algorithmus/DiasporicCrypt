@@ -21,7 +21,7 @@ func update_container():
 		else:
 			icon.hide()
 	if (level.location.tiles != null):
-		get_node("completion").set_text(str(level.tile_percent()) + "%")
+		get_node("completion").set_text(str(level.location.tile_percent()) + "%")
 	if (Globals.get("current_quest_complete")):
 		get_node("complete").show()
 	else:

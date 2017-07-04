@@ -5,6 +5,7 @@ var teleportto # coordinates in the level the player starts in when first enteri
 var id
 var node # level the catacombs should connect to
 var bgm
+var discovered_tiles = 0 # tiles already discovered
 var tiles # total number of discovery tiles (in pixels)
 # We could calculate the total number of discovery tiles dynamically instead of
 # using a hardcoded value (and this requires loading every single room at runtime at the beginning, 
@@ -20,4 +21,7 @@ func _ready():
 	# Initialization here
 	pass
 
-
+func tile_percent():
+	if (tiles != null && tiles > 0):
+		return float(round((float(discovered_tiles) / tiles) * 10000) / 100)
+	return 0
