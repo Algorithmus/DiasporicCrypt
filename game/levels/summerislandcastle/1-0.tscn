@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://scenes/summerislandcastle/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/common/damagables/sorcerer/sorcerer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=4]
+
+[node name="LVL_NOTITLE" type="Node2D"]
+
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -1245196, 1610612737, -1245195, 1073741824, -1245194, 1073741824, -1245193, 1073741824, -1245192, 1073741824, -1245191, 1073741824, -1245190, 1073741824, -1245189, 1073741824, -1245188, 1073741824, -1245187, 1073741824, -1245186, 1073741824, -1245185, 1073741824, -1310720, 1073741824, -1310719, 1073741824, -1310718, 1073741824, -1310717, 1073741824, -1310716, 1073741824, -1310715, 1073741824, -1310714, 1073741824, -1310713, 1073741824, -1310712, 1073741824, -1310711, 1073741824, -1310710, 1073741824, -1310709, 1073741824, -1310708, 1073741824, -1310707, 1073741824, -1310706, 1073741824, -1310705, 1073741824, -1310704, 1073741824, -1310703, 1073741824, -1310702, 1073741824, -1310701, 1073741824, -1310700, 1073741824, -1310699, 1073741825, -1179660, 2, -1245163, 2, -1114124, 2, -1179627, 2, -1048588, 2, -1048587, 11, -1114091, 2, -983052, 2, -1048555, 2, -917516, 2, -983019, 2, -851980, 2, -851975, 6, -917483, 2, -786444, 2, -851947, 2, -720908, 2, -786411, 2, -655372, 2, -720875, 2, -589836, 2, -655339, 2, -524300, 2, -589803, 2, -458764, 2, -524267, 2, -393228, 2, -458731, 2, -327692, 2, -327691, 6, -327683, 6, -393211, 6, -393203, 6, -393195, 2, -262156, 2, -327659, 2, -196620, 1073741825, -262123, 2, -196587, 2, -131051, 2, -65515, 2, 21, 2, 65557, 2, 196596, 536870913, 196597, 0, 196598, 0, 196599, 0, 196600, 0, 196601, 0, 196602, 0, 196603, 0, 196604, 0, 196605, 0, 196606, 0, 196607, 0, 131072, 0, 131073, 0, 131074, 0, 131075, 0, 131076, 0, 131077, 0, 131078, 0, 131079, 0, 131080, 0, 131081, 0, 131082, 0, 131083, 0, 131084, 0, 131085, 0, 131086, 0, 131087, 0, 131088, 0, 131089, 0, 131090, 0, 131091, 0, 131092, 0, 131093, 1 )
+
+[node name="PotGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="Pot" parent="tilemap/PotGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 336, 16 )
+
+[node name="Pot1" parent="tilemap/PotGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 464, 16 )
+
+[node name="Pot2" parent="tilemap/PotGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 592, 16 )
+type = "ITEM"
+reward = "res://scenes/items/gold/gold.tscn"
+value = 50
+
+[node name="EnemiesGroup" type="Node2D" parent="tilemap"]
+
+[node name="Sorcerer" parent="tilemap/EnemiesGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 128, -48 )
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -400, -16 )
+target_level = "res://levels/summerislandcastle/0-1.tscn"
+teleport_to = Vector2( 972, 336 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+
+transform/scale = Vector2( 1, 5 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="boundaries" type="Node2D" parent="tilemap"]
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( -400, -656 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( 720, 112 )
+
+
+[editable path="tilemap/TeleportGroup/Teleport"]

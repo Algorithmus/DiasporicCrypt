@@ -1,0 +1,845 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://scenes/summerislandcastle/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/summerislandcastle/climbableblock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/summerislandcastle/slopes/slope0-31.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/dungeon/slopes/slopea-b.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/breakables/magicminebreakable.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/items/magic/magicmine.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=7]
+
+[node name="LVL_NOTITLE" type="Node2D"]
+
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -1441810, 1610612737, -1441809, 1073741824, -1441808, 1073741824, -1441807, 1073741824, -1441806, 1073741824, -1441805, 1073741824, -1441804, 1073741824, -1441803, 1073741824, -1441802, 1073741824, -1441801, 1073741824, -1441800, 1073741824, -1441799, 1073741824, -1441798, 1073741824, -1441797, 1073741824, -1441796, 1073741824, -1441795, 1073741824, -1441794, 1073741824, -1441793, 1073741824, -1507328, 1073741824, -1507327, 1073741824, -1507326, 1073741824, -1507325, 1073741824, -1507324, 1073741824, -1507323, 1073741824, -1507322, 1073741824, -1507321, 1073741824, -1507320, 1073741824, -1507319, 1073741824, -1507318, 1073741824, -1507317, 1073741824, -1507316, 1073741824, -1507315, 1073741824, -1507314, 1073741824, -1507313, 1073741824, -1507312, 1073741824, -1507311, 1073741824, -1507310, 1073741824, -1507309, 1073741825, -1376274, 2, -1441773, 2, -1310738, 2, -1376237, 2, -1245202, 2, -1310701, 2, -1179666, 2, -1245165, 2, -1114130, 2, -1114129, 6, -1114121, 6, -1114113, 6, -1179641, 6, -1179633, 6, -1179629, 2, -1048594, 2, -1114093, 2, -983058, 2, -1048557, 2, -917522, 2, -983021, 2, -851986, 2, -917485, 2, -786450, 2, -851949, 2, -720914, 2, -720904, 0, -720903, 0, -720902, 0, -720901, 0, -720900, 0, -720899, 0, -720898, 0, -720897, 21, -786413, 2, -655378, 2, -655369, 2, -720896, 14, -720877, 2, -589842, 2, -589837, 6, -589833, 2, -589825, 6, -655359, 14, -655357, 6, -655353, 6, -655349, 6, -655341, 2, -524306, 2, -524297, 2, -589822, 14, -589805, 2, -458770, 2, -458761, 2, -524285, 14, -524269, 2, -393234, 2, -393225, 2, -458748, 14, -458733, 2, -327698, 2, -327689, 2, -393211, 14, -393197, 2, -262162, 2, -262153, 2, -327674, 14, -327661, 1610612737, -196626, 2, -196617, 2, -262137, 14, -131090, 2, -131081, 2, -196600, 14, -65554, 2, -65553, 6, -65545, 2, -65537, 6, -131065, 6, -131063, 14, -131057, 6, -18, 2, -9, 2, -65526, 14, 65518, 2, 65527, 536870913, 65528, 0, 65529, 0, 65530, 0, 65531, 0, 65532, 0, 65533, 0, 65534, 0, 65535, 0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 11, 1, 131054, 2, 65550, 536870913, 65551, 0, 65552, 0, 65553, 0, 65554, 0, 65555, 1, 196590, 2, 131086, 2, 131091, 2, 262126, 2, 196622, 2, 196627, 2, 327662, 2, 262158, 2, 262163, 2, 393198, 2, 327694, 2, 327699, 2, 458734, 536870913, 458735, 0, 458736, 0, 458737, 0, 458738, 0, 458739, 0, 458740, 0, 458741, 0, 458742, 0, 458743, 0, 458744, 0, 458745, 0, 458746, 0, 458747, 0, 458748, 0, 458749, 0, 458750, 0, 458751, 0, 393216, 0, 393217, 0, 393218, 0, 393219, 0, 393220, 0, 393221, 0, 393222, 0, 393223, 0, 393224, 0, 393225, 0, 393226, 0, 393227, 0, 393228, 0, 393229, 0, 393230, 0, 393231, 0, 393232, 0, 393233, 0, 393234, 0, 393235, 1 )
+
+[node name="ClimbableGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="ClimbableBlock" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -272, -368 )
+
+[node name="SlopeGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="Slope0-31" parent="tilemap/SlopeGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 368, -16 )
+
+[node name="Slope0-32" parent="tilemap/SlopeGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 336, -48 )
+
+[node name="Slope0-33" parent="tilemap/SlopeGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 304, -80 )
+
+[node name="Slope0-34" parent="tilemap/SlopeGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 272, -112 )
+
+[node name="Slope0-35" parent="tilemap/SlopeGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 240, -144 )
+
+[node name="Slope0-36" parent="tilemap/SlopeGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 208, -176 )
+
+[node name="Slope0-37" parent="tilemap/SlopeGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 176, -208 )
+
+[node name="Slope0-38" parent="tilemap/SlopeGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 144, -240 )
+
+[node name="Slope0-39" parent="tilemap/SlopeGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 112, -272 )
+
+[node name="Slope0-40" parent="tilemap/SlopeGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 80, -304 )
+
+[node name="Slope0-41" parent="tilemap/SlopeGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 48, -336 )
+
+[node name="Slope0-42" parent="tilemap/SlopeGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 16, -368 )
+
+[node name="TestSlopea-b" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 368, 16 )
+
+[node name="TestSlopea-b1" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 336, -16 )
+
+[node name="TestSlopea-b2" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 304, -48 )
+
+[node name="TestSlopea-b3" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 272, -80 )
+
+[node name="TestSlopea-b4" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 240, -112 )
+
+[node name="TestSlopea-b5" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 208, -144 )
+
+[node name="TestSlopea-b6" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 176, -176 )
+
+[node name="TestSlopea-b7" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 144, -208 )
+
+[node name="TestSlopea-b8" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 112, -240 )
+
+[node name="TestSlopea-b9" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 80, -272 )
+
+[node name="TestSlopea-b10" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 48, -304 )
+
+[node name="TestSlopea-b11" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 16, -336 )
+
+[node name="TestSlopea-b12" parent="tilemap/SlopeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -16, -368 )
+
+[node name="BreakableGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="MagicMineBreakable" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -528, 48 )
+
+[node name="MagicMineBreakable33 6" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -528, 80 )
+
+[node name="MagicMineBreakable337" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -528, 112 )
+
+[node name="MagicMineBreakable340 6" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -528, 144 )
+
+[node name="MagicMineBreakable3407" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -528, 176 )
+
+[node name="MagicMineBreakable1" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -496, 48 )
+
+[node name="MagicMineBreakable33" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -496, 80 )
+
+[node name="MagicMineBreakable34" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -496, 112 )
+
+[node name="MagicMineBreakable35" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -496, 144 )
+
+[node name="MagicMineBreakable36" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -496, 176 )
+
+[node name="MagicMineBreakable2" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -464, 48 )
+
+[node name="MagicMineBreakable33 24" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -464, 80 )
+
+[node name="MagicMineBreakable3325" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -464, 112 )
+
+[node name="MagicMineBreakable3335 10" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -464, 144 )
+
+[node name="MagicMineBreakable333511" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -464, 176 )
+
+[node name="MagicMineBreakable3" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -432, 48 )
+
+[node name="MagicMineBreakable33 25" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -432, 80 )
+
+[node name="MagicMineBreakable3326" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -432, 112 )
+
+[node name="MagicMineBreakable3335 7" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -432, 144 )
+
+[node name="MagicMineBreakable33358" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -432, 176 )
+
+[node name="MagicMineBreakable4" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -400, 48 )
+
+[node name="MagicMineBreakable33 4" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -400, 80 )
+
+[node name="MagicMineBreakable335" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -400, 112 )
+
+[node name="MagicMineBreakable340 4" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -400, 144 )
+
+[node name="MagicMineBreakable3405" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -400, 176 )
+
+[node name="MagicMineBreakable5" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -368, 48 )
+
+[node name="MagicMineBreakable33 19" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -368, 80 )
+
+[node name="MagicMineBreakable3320" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -368, 112 )
+
+[node name="MagicMineBreakable3335 17" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -368, 144 )
+
+[node name="MagicMineBreakable333518" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -368, 176 )
+
+[node name="MagicMineBreakable6" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -336, 48 )
+
+[node name="MagicMineBreakable33 8" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -336, 80 )
+
+[node name="MagicMineBreakable339" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -336, 112 )
+
+[node name="MagicMineBreakable340" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -336, 144 )
+
+[node name="MagicMineBreakable341" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -336, 176 )
+
+[node name="MagicMineBreakable7" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -304, 48 )
+
+[node name="MagicMineBreakable33 29" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -304, 80 )
+
+[node name="MagicMineBreakable3330" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -304, 112 )
+
+[node name="MagicMineBreakable3335 12" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -304, 144 )
+
+[node name="MagicMineBreakable333513" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -304, 176 )
+
+[node name="MagicMineBreakable8" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -272, 48 )
+
+[node name="MagicMineBreakable33 7" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -272, 80 )
+
+[node name="MagicMineBreakable338" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -272, 112 )
+
+[node name="MagicMineBreakable340 7" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -272, 144 )
+
+[node name="MagicMineBreakable3408" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -272, 176 )
+
+[node name="MagicMineBreakable9" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -272, 48 )
+
+[node name="MagicMineBreakable33 10" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -272, 80 )
+
+[node name="MagicMineBreakable3311" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -272, 112 )
+
+[node name="MagicMineBreakable3335 16" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -272, 144 )
+
+[node name="MagicMineBreakable333517" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -272, 176 )
+
+[node name="MagicMineBreakable10" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -240, 48 )
+
+[node name="MagicMineBreakable33 13" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -240, 80 )
+
+[node name="MagicMineBreakable3314" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -240, 112 )
+
+[node name="MagicMineBreakable3335 4" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -240, 144 )
+
+[node name="MagicMineBreakable33355" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -240, 176 )
+
+[node name="MagicMineBreakable11" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -208, 48 )
+
+[node name="MagicMineBreakable33 12" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -208, 80 )
+
+[node name="MagicMineBreakable3313" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -208, 112 )
+
+[node name="MagicMineBreakable3335 14" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -208, 144 )
+
+[node name="MagicMineBreakable333515" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -208, 176 )
+
+[node name="MagicMineBreakable12" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -176, 48 )
+
+[node name="MagicMineBreakable33 32" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -176, 80 )
+
+[node name="MagicMineBreakable3333" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -176, 112 )
+
+[node name="MagicMineBreakable3335 6" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -176, 144 )
+
+[node name="MagicMineBreakable33357" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -176, 176 )
+
+[node name="MagicMineBreakable13" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -144, 48 )
+
+[node name="MagicMineBreakable33 31" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -144, 80 )
+
+[node name="MagicMineBreakable3332" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -144, 112 )
+
+[node name="MagicMineBreakable3335 11" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -144, 144 )
+
+[node name="MagicMineBreakable333512" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -144, 176 )
+
+[node name="MagicMineBreakable14" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -112, 48 )
+
+[node name="MagicMineBreakable33 33" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -112, 80 )
+
+[node name="MagicMineBreakable3334" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -112, 112 )
+
+[node name="MagicMineBreakable3335 13" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -112, 144 )
+
+[node name="MagicMineBreakable333514" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -112, 176 )
+
+[node name="MagicMineBreakable15" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -80, 48 )
+
+[node name="MagicMineBreakable33 14" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -80, 80 )
+
+[node name="MagicMineBreakable3315" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -80, 112 )
+
+[node name="MagicMineBreakable3335 23" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -80, 144 )
+
+[node name="MagicMineBreakable333524" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -80, 176 )
+
+[node name="MagicMineBreakable16" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -48, 48 )
+
+[node name="MagicMineBreakable33 26" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -48, 80 )
+
+[node name="MagicMineBreakable3327" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -48, 112 )
+
+[node name="MagicMineBreakable3335 25" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -48, 144 )
+
+[node name="MagicMineBreakable333526" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -48, 176 )
+
+[node name="MagicMineBreakable17" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -16, 48 )
+
+[node name="MagicMineBreakable33 16" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -16, 80 )
+
+[node name="MagicMineBreakable3317" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -16, 112 )
+
+[node name="MagicMineBreakable3335" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -16, 144 )
+
+[node name="MagicMineBreakable3336" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -16, 176 )
+
+[node name="MagicMineBreakable18" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 16, 48 )
+
+[node name="MagicMineBreakable33 21" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 16, 80 )
+
+[node name="MagicMineBreakable3322" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 16, 112 )
+
+[node name="MagicMineBreakable3335 20" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 16, 144 )
+
+[node name="MagicMineBreakable333521" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 16, 176 )
+
+[node name="MagicMineBreakable19" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 48, 48 )
+
+[node name="MagicMineBreakable33 9" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 48, 80 )
+
+[node name="MagicMineBreakable3310" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 48, 112 )
+
+[node name="MagicMineBreakable3335 15" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 48, 144 )
+
+[node name="MagicMineBreakable333516" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 48, 176 )
+
+[node name="MagicMineBreakable20" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 80, 48 )
+
+[node name="MagicMineBreakable33 5" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 80, 80 )
+
+[node name="MagicMineBreakable336" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 80, 112 )
+
+[node name="MagicMineBreakable340 5" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 80, 144 )
+
+[node name="MagicMineBreakable3406" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 80, 176 )
+
+[node name="MagicMineBreakable21" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 112, 48 )
+
+[node name="MagicMineBreakable33 18" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 112, 80 )
+
+[node name="MagicMineBreakable3319" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 112, 112 )
+
+[node name="MagicMineBreakable3335 9" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 112, 144 )
+
+[node name="MagicMineBreakable333510" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 112, 176 )
+
+[node name="MagicMineBreakable22" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 144, 48 )
+
+[node name="MagicMineBreakable33 23" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 144, 80 )
+
+[node name="MagicMineBreakable3324" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 144, 112 )
+
+[node name="MagicMineBreakable3335 21" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 144, 144 )
+
+[node name="MagicMineBreakable333522" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 144, 176 )
+
+[node name="MagicMineBreakable23" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 176, 48 )
+
+[node name="MagicMineBreakable33 2" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 176, 80 )
+
+[node name="MagicMineBreakable333" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 176, 112 )
+
+[node name="MagicMineBreakable340 2" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 176, 144 )
+
+[node name="MagicMineBreakable3403" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 176, 176 )
+
+[node name="MagicMineBreakable24" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 208, 48 )
+
+[node name="MagicMineBreakable33 22" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 208, 80 )
+
+[node name="MagicMineBreakable3323" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 208, 112 )
+
+[node name="MagicMineBreakable3335 3" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 208, 144 )
+
+[node name="MagicMineBreakable33354" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 208, 176 )
+
+[node name="MagicMineBreakable25" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 240, 48 )
+
+[node name="MagicMineBreakable33 28" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 240, 80 )
+
+[node name="MagicMineBreakable3329" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 240, 112 )
+
+[node name="MagicMineBreakable3335 22" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 240, 144 )
+
+[node name="MagicMineBreakable333523" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 240, 176 )
+
+[node name="MagicMineBreakable26" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 272, 48 )
+
+[node name="MagicMineBreakable33 27" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 272, 80 )
+
+[node name="MagicMineBreakable3328" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 272, 112 )
+
+[node name="MagicMineBreakable3335 5" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 272, 144 )
+
+[node name="MagicMineBreakable33356" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 272, 176 )
+
+[node name="MagicMineBreakable27" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 304, 48 )
+
+[node name="MagicMineBreakable33 20" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 304, 80 )
+
+[node name="MagicMineBreakable3321" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 304, 112 )
+
+[node name="MagicMineBreakable3335 24" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 304, 144 )
+
+[node name="MagicMineBreakable333525" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 304, 176 )
+
+[node name="MagicMineBreakable28" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 336, 48 )
+
+[node name="MagicMineBreakable33 3" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 336, 80 )
+
+[node name="MagicMineBreakable334" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 336, 112 )
+
+[node name="MagicMineBreakable340 3" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 336, 144 )
+
+[node name="MagicMineBreakable3404" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 336, 176 )
+
+[node name="MagicMineBreakable29" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 368, 48 )
+
+[node name="MagicMineBreakable33 15" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 368, 80 )
+
+[node name="MagicMineBreakable3316" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 368, 112 )
+
+[node name="MagicMineBreakable3335 8" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 368, 144 )
+
+[node name="MagicMineBreakable33359" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 368, 176 )
+
+[node name="MagicMineBreakable30" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 400, 48 )
+
+[node name="MagicMineBreakable33 30" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 400, 80 )
+
+[node name="MagicMineBreakable3331" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 400, 112 )
+
+[node name="MagicMineBreakable3335 19" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 400, 144 )
+
+[node name="MagicMineBreakable333520" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 400, 176 )
+
+[node name="MagicMineBreakable31" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 432, 48 )
+
+[node name="MagicMineBreakable33 11" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 432, 80 )
+
+[node name="MagicMineBreakable3312" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 432, 112 )
+
+[node name="MagicMineBreakable3335 2" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 432, 144 )
+
+[node name="MagicMineBreakable33353" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 432, 176 )
+
+[node name="MagicMineBreakable32" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 432, 48 )
+
+[node name="MagicMineBreakable33 17" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 432, 80 )
+
+[node name="MagicMineBreakable3318" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 432, 112 )
+
+[node name="MagicMineBreakable3335 18" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 432, 144 )
+
+[node name="MagicMineBreakable333519" parent="tilemap/BreakableGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 432, 176 )
+
+[node name="MagicGroup" type="Node2D" parent="tilemap"]
+
+[node name="ITEM_MAGICMINE" parent="tilemap/MagicGroup" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -416, -112 )
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 656, -48 )
+target_level = "res://levels/summerislandcastle/4-2.tscn"
+teleport_to = Vector2( -300, -1008 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+
+transform/scale = Vector2( 1, 5 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="boundaries" type="Node2D" parent="tilemap"]
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( -592, -752 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( 656, 240 )
+
+
+[editable path="tilemap/TeleportGroup/Teleport"]

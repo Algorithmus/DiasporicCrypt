@@ -1,0 +1,206 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://scenes/summerislandcastle/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/damagables/skeleton/blackskeleton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/common/switches/floorswitch.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=7]
+
+[node name="LVL_NOTITLE" type="Node2D"]
+
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -262159, 1610612737, -262158, 1073741824, -262157, 1073741824, -262156, 1073741824, -262155, 1073741824, -262154, 1073741824, -262153, 1073741824, -262152, 1073741824, -262151, 1073741824, -262150, 1073741824, -262149, 1073741824, -262148, 1073741824, -262147, 1073741824, -262146, 1073741824, -262145, 1073741824, -327680, 1073741824, -327679, 1073741824, -327678, 1073741824, -327677, 1073741824, -327676, 1073741824, -327675, 1073741824, -327674, 1073741824, -327673, 1073741824, -327672, 1073741824, -327671, 1073741824, -327670, 1073741824, -327669, 1073741824, -327668, 1073741824, -327667, 1073741824, -327666, 1073741824, -327665, 1073741824, -327664, 1073741824, -327663, 1073741824, -327662, 1073741824, -327661, 1073741824, -327660, 1073741824, -327659, 1073741824, -327658, 1073741824, -327657, 1073741824, -327656, 1073741824, -327655, 1073741824, -327654, 1073741824, -327653, 1073741824, -327652, 1073741824, -327651, 1073741824, -327650, 1073741824, -327649, 1073741824, -327648, 1073741824, -327647, 1073741824, -327646, 1073741824, -327645, 1073741824, -327644, 1073741824, -327643, 1073741824, -327642, 1073741824, -327641, 1073741824, -327640, 1073741824, -327639, 1073741824, -327638, 1073741824, -327637, 1073741824, -327636, 1073741824, -327635, 1073741824, -327634, 1073741824, -327633, 1073741824, -327632, 1073741824, -327631, 1073741824, -327630, 1073741825, -196623, 2, -262094, 2, -131087, 2, -196558, 2, -65551, 2, -131022, 2, -15, 2, -14, 6, -6, 6, -65534, 6, -65526, 6, -65518, 6, -65510, 6, -65502, 6, -65494, 6, -65486, 2, 65521, 2, 50, 2, 131057, 2, 65586, 1610612737, 196593, 2, 262129, 2, 327665, 2, 393201, 2, 458737, 2, 524273, 536870913, 524274, 0, 524275, 0, 524276, 0, 524277, 1, 524281, 536870913, 524282, 0, 524283, 0, 524284, 0, 524285, 0, 524286, 0, 524287, 0, 458752, 0, 458753, 0, 458754, 0, 458755, 0, 458756, 0, 458757, 0, 458758, 0, 458759, 0, 458760, 0, 458761, 0, 458762, 0, 458763, 0, 458764, 0, 458765, 0, 458766, 0, 458767, 0, 458768, 0, 458769, 0, 458770, 0, 458771, 0, 458772, 0, 458773, 0, 458774, 0, 458775, 0, 458776, 0, 458777, 0, 458778, 0, 458779, 0, 458780, 0, 458781, 0, 458782, 0, 458783, 0, 458784, 0, 458785, 0, 458786, 0, 458787, 0, 458788, 0, 458789, 0, 458790, 0, 458791, 0, 458792, 0, 458793, 0, 458794, 0, 458795, 0, 458796, 0, 458797, 0, 458798, 0, 458799, 0, 458800, 0, 458801, 0, 458802, 1, 589809, 2, 589813, 2, 589817, 2, 524338, 2, 655345, 2, 655349, 2, 655353, 2, 589874, 2, 720881, 2, 720885, 2, 720889, 2, 655410, 2, 786417, 2, 786421, 2, 786425, 2, 720946, 2 )
+
+[node name="LadderGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="TestLadder" parent="tilemap/LadderGroup" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -272, 304 )
+
+[node name="Sprite" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
+
+region_rect = Rect2( 0, 0, 32, 160 )
+
+[node name="ladder" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
+
+transform/scale = Vector2( 1, 5 )
+
+[node name="TestLadder 2" parent="tilemap/LadderGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -272, 208 )
+
+[node name="SpikeGroup" type="Node2D" parent="tilemap"]
+
+[node name="SpikeTile" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 464, 208 )
+
+[node name="SpikeTile1" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 496, 208 )
+
+[node name="SpikeTile2" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 528, 208 )
+
+[node name="SpikeTile3" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 560, 208 )
+
+[node name="SpikeTile4" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 592, 208 )
+
+[node name="SpikeTile5" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 624, 208 )
+
+[node name="SpikeTile6" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 656, 208 )
+
+[node name="SpikeTile7" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 688, 208 )
+
+[node name="SpikeTile8" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 720, 208 )
+
+[node name="SpikeTile9" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 752, 208 )
+
+[node name="SpikeTile10" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 784, 208 )
+
+[node name="SpikeTile11" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 816, 208 )
+
+[node name="SpikeTile12" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 848, 208 )
+
+[node name="SpikeTile13" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 880, 208 )
+
+[node name="SpikeTile14" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 912, 208 )
+
+[node name="SpikeTile15" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 944, 208 )
+
+[node name="EnemiesGroup" type="Node2D" parent="tilemap"]
+
+[node name="BlackSkeleton" parent="tilemap/EnemiesGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 128, 176 )
+
+[node name="BlackSkeleton1" parent="tilemap/EnemiesGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1280, 176 )
+
+[node name="SwitchGroup" type="Node2D" parent="tilemap"]
+
+[node name="FloorSwitch" parent="tilemap/SwitchGroup" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 256, 224 )
+is_on = true
+target_nodes = [ "SpikeGroup/SpikeTile", "SpikeGroup/SpikeTile1", "SpikeGroup/SpikeTile2", "SpikeGroup/SpikeTile3", "SpikeGroup/SpikeTile4", "SpikeGroup/SpikeTile5", "SpikeGroup/SpikeTile6", "SpikeGroup/SpikeTile7", "SpikeGroup/SpikeTile8", "SpikeGroup/SpikeTile9", "SpikeGroup/SpikeTile10", "SpikeGroup/SpikeTile11", "SpikeGroup/SpikeTile12", "SpikeGroup/SpikeTile13", "SpikeGroup/SpikeTile14", "SpikeGroup/SpikeTile15" ]
+related_switches = [ "SwitchGroup/FloorSwitch1" ]
+enabled = true
+invert = true
+show_target = false
+target_pos = Vector2( 0, 0 )
+is_toggle = true
+
+[node name="FloorSwitch1" parent="tilemap/SwitchGroup" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1152, 224 )
+is_on = true
+target_nodes = [ "SpikeGroup/SpikeTile", "SpikeGroup/SpikeTile1", "SpikeGroup/SpikeTile2", "SpikeGroup/SpikeTile3", "SpikeGroup/SpikeTile4", "SpikeGroup/SpikeTile5", "SpikeGroup/SpikeTile6", "SpikeGroup/SpikeTile7", "SpikeGroup/SpikeTile8", "SpikeGroup/SpikeTile9", "SpikeGroup/SpikeTile10", "SpikeGroup/SpikeTile11", "SpikeGroup/SpikeTile12", "SpikeGroup/SpikeTile13", "SpikeGroup/SpikeTile14", "SpikeGroup/SpikeTile15" ]
+related_switches = [ "SwitchGroup/FloorSwitch" ]
+enabled = true
+invert = true
+show_target = false
+target_pos = Vector2( 0, 0 )
+is_toggle = true
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 1648, 144 )
+target_level = "res://levels/summerislandcastle/0-8.tscn"
+teleport_to = Vector2( -300, 144 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+
+transform/scale = Vector2( 1, 5 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 7 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -272, 400 )
+is_horizontal = false
+target_level = "res://levels/summerislandcastle/0-6.tscn"
+teleport_to = Vector2( 80, -976 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
+
+transform/scale = Vector2( 3, 1 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport1/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="boundaries" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( -496, -176 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( 1648, 400 )
+
+
+[editable path="tilemap/LadderGroup/TestLadder"]
+[editable path="tilemap/TeleportGroup/Teleport"]
+[editable path="tilemap/TeleportGroup/Teleport1"]

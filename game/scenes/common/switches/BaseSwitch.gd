@@ -15,6 +15,7 @@ export var target_pos = Vector2()
 var targets = []
 var target_containers = []
 var switches = []
+var checked = false # Don't process if a related active switch has already been processed
 var tilemap
 var onscreen = false
 var default_on = is_on
@@ -68,13 +69,16 @@ func _fixed_process(delta):
 	if (targetspy.get("camera_progress") > 0):
 		targetspy.step_camera(cycle, targets)
 	elif ((once && !activated) || !once):
-		var update = check_activation()
+		var update = false
+		if (!checked):
+			update = check_activation()
 		if (update):
 			# only display the switch targets once when switch state changes
 			if (size > 0 && show_target && is_on != default_on && previous_is_on != is_on):
 				targetspy.start_spy(cycle, targets, target_pos)
 			else:
 				activate()
+	checked = false
 
 func check_activation():
 	return false

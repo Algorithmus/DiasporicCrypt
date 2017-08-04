@@ -141,6 +141,7 @@ func _ready():
 			available_levels.append("LVL_HOLYRUINS")
 			available_levels.append("LVL_CAPECRYPT")
 			available_levels.append("LVL_SPRINGISLANDCASTLE")
+			available_levels.append("LVL_SUMMERISLANDCASTLE")
 			available_levels.append("LVL_MAUSOLEUM")
 			available_levels.append("LVL_ICECAVE")
 		selected_character = adela

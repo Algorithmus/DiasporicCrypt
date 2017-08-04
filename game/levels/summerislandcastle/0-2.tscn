@@ -1,0 +1,261 @@
+[gd_scene load_steps=15 format=1]
+
+[ext_resource path="res://scenes/summerislandcastle/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/summerislandcastle/climbableblock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/springislandcastle/BGs/floor.png" type="Texture" id=3]
+[ext_resource path="res://scenes/springislandcastle/BGs/corner.png" type="Texture" id=4]
+[ext_resource path="res://scenes/summerislandcastle/slopes/slope0-31.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/dungeon/slopes/slopea-b.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/summerislandcastle/slopes/slope31-0.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/common/damagables/skeleton/blackskeleton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/common/switches/pullswitch.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/switches/floorswitch.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/common/sunbeam.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=12]
+
+[sub_resource type="ImageTexture" id=1]
+
+flags = 0
+image = Image()
+size = Vector2( 32, 32 )
+storage = 0
+lossy_quality = 0.7
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 96, 16 )
+
+[node name="LVL_NOTITLE" type="Node2D"]
+
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -1048594, 1610612737, -1048593, 1073741824, -1048592, 1073741824, -1048591, 1073741824, -1048590, 1073741824, -1048589, 1073741824, -1048588, 1073741824, -1048587, 1073741824, -1048586, 1073741824, -1048585, 1073741824, -1048584, 1073741824, -1048583, 1073741824, -1048582, 1073741824, -1048581, 1073741824, -1048580, 1073741824, -1048579, 1073741824, -1048578, 1073741824, -1048577, 1073741824, -1114112, 1073741824, -1114111, 1073741824, -1114110, 1073741824, -1114109, 1073741824, -1114108, 1073741824, -1114107, 1073741824, -1114106, 1073741824, -1114105, 1073741824, -1114104, 1073741824, -1114103, 1073741824, -1114102, 1073741824, -1114101, 1073741824, -1114100, 1073741824, -1114099, 1073741824, -1114098, 1073741824, -1114097, 1073741824, -1114096, 1073741824, -1114095, 1073741824, -1114094, 1073741824, -1114093, 1073741824, -1114092, 1073741824, -1114091, 1073741824, -1114090, 1073741824, -1114089, 1073741824, -1114088, 1073741824, -1114087, 1073741824, -1114086, 1073741824, -1114085, 1073741824, -1114084, 1073741824, -1114083, 1073741824, -1114082, 1073741824, -1114081, 1073741824, -1114080, 1073741824, -1114079, 1073741824, -1114078, 1073741824, -1114077, 1073741824, -1114076, 1073741824, -1114075, 1073741824, -1114074, 1073741824, -1114073, 1073741824, -1114072, 1073741824, -1114071, 1073741824, -1114070, 1073741824, -1114069, 1073741824, -1114068, 1073741824, -1114067, 1073741824, -1114066, 1073741824, -1114065, 1073741824, -1114064, 1073741824, -1114063, 1073741824, -1114062, 1073741824, -1114061, 1073741824, -1114060, 1073741824, -1114059, 1073741824, -1114058, 1073741824, -1114057, 1073741824, -1114056, 1073741824, -1114055, 1073741824, -1114054, 1073741824, -1114053, 1073741825, -983058, 2, -983057, 6, -1048529, 6, -1048521, 6, -1048517, 2, -917522, 2, -982981, 2, -851986, 2, -917445, 2, -786450, 2, -851909, 2, -720914, 2, -786373, 2, -655378, 2, -720837, 2, -589842, 2, -655301, 2, -524306, 2, -589765, 2, -458770, 2, -458765, 6, -524245, 6, -524237, 6, -524229, 2, -393234, 2, -458693, 2, -327698, 2, -393157, 2, -262162, 2, -327621, 2, -196626, 2, -262085, 2, -131090, 2, -196549, 2, -65554, 2, -131013, 2, -18, 2, -65477, 2, 65518, 1073741825, 65519, 6, 65527, 6, 65535, 6, 7, 6, 15, 6, 23, 6, 31, 6, 39, 6, 47, 6, 55, 6, 59, 536870913, 458734, 536870913, 458735, 0, 458736, 0, 458737, 0, 458738, 0, 458739, 0, 458740, 21, 393269, 21, 393270, 0, 393271, 0, 393272, 0, 393273, 0, 393274, 0, 393275, 1, 524277, 14, 458804, 536870926, 458811, 2, 589814, 14, 589815, 21, 589816, 0, 589817, 0, 589818, 0, 589819, 0, 589820, 0, 589821, 0, 589822, 0, 589823, 0, 524288, 0, 524289, 0, 524290, 0, 524291, 0, 524292, 0, 524293, 0, 524294, 0, 524295, 0, 524296, 0, 524297, 0, 524298, 0, 524299, 0, 524300, 0, 524301, 0, 524302, 0, 524303, 0, 524304, 0, 524305, 0, 524306, 0, 524307, 0, 524308, 0, 524309, 0, 524310, 0, 524311, 0, 524312, 0, 524313, 0, 524314, 0, 524315, 0, 524316, 0, 524317, 0, 524318, 0, 524319, 0, 524320, 0, 524321, 0, 524322, 0, 524323, 0, 524324, 0, 524325, 0, 524326, 0, 524327, 0, 524328, 0, 524329, 0, 524330, 0, 524331, 0, 524332, 0, 524333, 0, 524334, 0, 524335, 0, 524336, 0, 524337, 0, 524338, 21, 524339, 536870926, 524347, 2, 589883, 2, 655419, 2, 720955, 2 )
+
+[node name="ClimbableGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="ClimbableBlock" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 1680, -160 )
+
+[node name="PlatformGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="platform" type="Node2D" parent="tilemap/PlatformGroup"]
+
+editor/display_folded = true
+transform/pos = Vector2( 1792, -160 )
+
+[node name="Sprite 3" type="Sprite" parent="tilemap/PlatformGroup/platform"]
+
+transform/pos = Vector2( 112, 0 )
+texture = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="tilemap/PlatformGroup/platform"]
+
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 0, 192, 32 )
+
+[node name="Sprite 2" type="Sprite" parent="tilemap/PlatformGroup/platform"]
+
+texture = ExtResource( 4 )
+offset = Vector2( 112, 0 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="tilemap/PlatformGroup/platform"]
+
+editor/display_folded = true
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tilemap/PlatformGroup/platform/StaticBody2D"]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="SlopeGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="Slope0-31" parent="tilemap/SlopeGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -304, 240 )
+
+[node name="Slope0-32" parent="tilemap/SlopeGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -336, 208 )
+
+[node name="Slope0-33" parent="tilemap/SlopeGroup" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -336, 208 )
+
+[node name="TestSlopea-b" parent="tilemap/SlopeGroup" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -272, 272 )
+
+[node name="TestSlopea-b4" parent="tilemap/SlopeGroup" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1648, 272 )
+
+[node name="TestSlopea-b5" parent="tilemap/SlopeGroup" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1616, 272 )
+
+[node name="TestSlopea-b6" parent="tilemap/SlopeGroup" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1680, 240 )
+
+[node name="TestSlopea-b7" parent="tilemap/SlopeGroup" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1712, 208 )
+
+[node name="TestSlopea-b1" parent="tilemap/SlopeGroup" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -304, 272 )
+
+[node name="TestSlopea-b2" parent="tilemap/SlopeGroup" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -336, 240 )
+
+[node name="TestSlopea-b3" parent="tilemap/SlopeGroup" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -368, 208 )
+
+[node name="Slope31-0" parent="tilemap/SlopeGroup" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 1648, 240 )
+
+[node name="Slope31-1" parent="tilemap/SlopeGroup" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 1680, 208 )
+
+[node name="EnemiesGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="BlackSkeleton" parent="tilemap/EnemiesGroup" instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 416, 208 )
+
+[node name="BlackSkeleton1" parent="tilemap/EnemiesGroup" instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 928, 208 )
+
+[node name="BlackSkeleton2" parent="tilemap/EnemiesGroup" instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 672, 208 )
+
+[node name="SwitchGroup" type="Node2D" parent="tilemap"]
+
+[node name="PullSwitch" parent="tilemap/SwitchGroup" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 1776, -416 )
+target_nodes = [ "SunbeamGroup/Sunbeam" ]
+related_switches = [  ]
+enabled = true
+invert = false
+show_target = false
+target_pos = Vector2( 0, 0 )
+
+[node name="FloorSwitch" parent="tilemap/SwitchGroup" instance=ExtResource( 10 )]
+
+transform/pos = Vector2( -128, 256 )
+once = true
+target_nodes = [ "ClimbableGroup/ClimbableBlock", "PlatformGroup/platform" ]
+related_switches = [  ]
+enabled = true
+invert = false
+show_target = true
+target_pos = Vector2( 1792, -560 )
+
+[node name="SunbeamGroup" type="Node2D" parent="tilemap"]
+
+[node name="Sunbeam" parent="tilemap/SunbeamGroup" instance=ExtResource( 11 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 672, -144 )
+
+[node name="block" parent="tilemap/SunbeamGroup/Sunbeam"]
+
+transform/scale = Vector2( 40, 25 )
+
+[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam"]
+
+transform/scale = Vector2( 40, 25 )
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 12 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -592, 112 )
+target_level = "res://levels/summerislandcastle/0-1.tscn"
+teleport_to = Vector2( 972, -1264 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+
+transform/scale = Vector2( 1, 5 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 12 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 1936, 112 )
+target_level = "res://levels/summerislandcastle/0-3.tscn"
+teleport_to = Vector2( -556, 272 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
+
+transform/scale = Vector2( 1, 5 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport1/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="boundaries" type="Node2D" parent="tilemap"]
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( -592, -560 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( 1936, 400 )
+
+
+[editable path="tilemap/SunbeamGroup/Sunbeam"]
+[editable path="tilemap/TeleportGroup/Teleport"]
+[editable path="tilemap/TeleportGroup/Teleport1"]

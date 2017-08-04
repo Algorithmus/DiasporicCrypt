@@ -98,6 +98,14 @@ func _init():
 	springislandcastle.tiles = 86623
 	locations[springislandcastle.id] = springislandcastle
 	
+	var summerislandcastle = locationclass.new()
+	summerislandcastle.node = "res://levels/summerislandcastle/0-0.tscn"
+	summerislandcastle.teleportto = Vector2(-16, 320)
+	summerislandcastle.id = "LVL_SUMMERISLANDCASTLE"
+	summerislandcastle.bgm = preload("res://levels/common/BGM1.ogg")
+	summerislandcastle.tiles = 84899
+	locations[summerislandcastle.id] = summerislandcastle
+
 	var winterislandcastle = locationclass.new()
 	winterislandcastle.node = "res://levels/winterislandcastle/0-0.tscn"
 	winterislandcastle.teleportto = Vector2(-208, 256)

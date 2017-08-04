@@ -282,6 +282,15 @@ func _init():
 	hex.cost = 50000
 	items[hex.title] = hex
 	
+	var magicmine = itemclass.new()
+	magicmine.title = "MAGIC_MAGICMINE"
+	magicmine.description = "MAGIC_MAGICMINE_SHORT"
+	magicmine.type = "magic"
+	magicmine.image = "res://players/magic/magicmine/icon.png"
+	magicmine.value = "magicmine"
+	magicmine.cost = 50000
+	items[magicmine.title] = magicmine
+
 	var shield = itemclass.new()
 	shield.title = "MAGIC_SHIELD"
 	shield.description = "MAGIC_SHIELD_SHORT"

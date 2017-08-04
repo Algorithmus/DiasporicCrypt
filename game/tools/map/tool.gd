@@ -46,6 +46,7 @@ var list = [
 "res://levels/mausoleum", 
 "res://levels/roomoftrials", 
 "res://levels/springislandcastle", 
+"res://levels/summerislandcastle",
 "res://levels/waterway", 
 "res://levels/winterislandcastle"
 ]

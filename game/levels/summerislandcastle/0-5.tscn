@@ -1,0 +1,647 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://scenes/summerislandcastle/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/summerislandcastle/climbableblock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/dungeon/movingplatform/movingswingplatform.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=5]
+
+[node name="LVL_NOTITLE" type="Node2D"]
+
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -917517, 1610612737, -917516, 1073741824, -917515, 1073741824, -917514, 1073741824, -917513, 1073741824, -917512, 1073741824, -917511, 1073741824, -917510, 1073741824, -917509, 1073741824, -917508, 1073741824, -917507, 1073741824, -917506, 1073741824, -917505, 1073741824, -983040, 1073741824, -983039, 1073741824, -983038, 1073741824, -983037, 1073741824, -983036, 1073741824, -983035, 1073741824, -983034, 1073741824, -983033, 1073741824, -983032, 1073741824, -983031, 1073741824, -983030, 1073741824, -983029, 1073741824, -983028, 1073741824, -983027, 1073741824, -983026, 1073741824, -983025, 1073741824, -983024, 1073741824, -983023, 1073741824, -983022, 1073741824, -983021, 1073741824, -983020, 1073741824, -983019, 1073741824, -983018, 1073741824, -983017, 1073741824, -983016, 1073741825, -851981, 536870914, -851975, 536870923, -917480, 536870914, -786445, 536870914, -851944, 536870914, -720909, 536870914, -786408, 536870914, -655373, 536870914, -655369, 536870921, -655368, 536870921, -655367, 536870920, -655366, 536870920, -655365, 536870921, -655364, 536870921, -720872, 536870914, -589837, 536870914, -589836, 536870918, -589828, 536870918, -655340, 6, -655336, 536870914, -524301, 2, -589800, 2, -458765, 2, -524264, 2, -393229, 2, -458728, 2, -327693, 2, -393192, 2, -262157, 1073741825, -327656, 1610612737, -65544, 6, -131072, 6, -131064, 6, -131056, 6, 131059, 536870913, 131060, 0, 131061, 0, 131062, 0, 131063, 0, 131064, 0, 65555, 0, 65556, 0, 65557, 0, 65558, 0, 65559, 0, 65560, 1, 196595, 2, 131096, 2, 262131, 2, 196632, 2, 327667, 2, 262168, 2, 393203, 2, 327704, 2, 458739, 2, 458740, 6, 458748, 6, 393220, 6, 393228, 6, 393236, 6, 393240, 2, 524275, 2, 458776, 2, 589811, 2, 524312, 2, 655347, 2, 589848, 2, 720883, 2, 655384, 2, 786419, 2, 720920, 2, 851955, 2, 786456, 2, 917491, 2, 851992, 2, 983027, 536870913, 983028, 536870912, 983029, 536870912, 983030, 536870912, 983031, 536870912, 983032, 536870912, 983033, 536870912, 983034, 536870912, 983035, 536870912, 983036, 536870912, 983037, 536870912, 983038, 536870912, 983039, 536870912, 917504, 536870912, 917505, 536870912, 917506, 536870912, 917507, 536870912, 917508, 536870912, 917509, 536870912, 917510, 536870912, 917511, 536870912, 917512, 536870912, 917513, 536870912, 917514, 536870912, 917515, 536870912, 917516, 536870912, 917517, 536870912, 917518, 536870912, 917519, 536870912, 917520, 536870912, 917521, 536870912, 917522, 536870912, 917523, 536870912, 917524, 536870912, 917525, 536870912, 917526, 536870912, 917527, 536870912, 917528, 1 )
+
+[node name="ClimbableGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="ClimbableBlock" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 592, 48 )
+
+[node name="ClimbableBlock1" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -208, 48 )
+
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock1"]
+
+flip_h = false
+
+[node name="SpikeGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="SpikeTile" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -368, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile"]
+
+flip_v = true
+
+[node name="SpikeTile1" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -336, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile1"]
+
+flip_v = true
+
+[node name="SpikeTile2" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -304, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile2"]
+
+flip_v = true
+
+[node name="SpikeTile3" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -272, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile3"]
+
+flip_v = true
+
+[node name="SpikeTile4" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -240, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile4"]
+
+flip_v = true
+
+[node name="SpikeTile5" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -208, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile5"]
+
+flip_v = true
+
+[node name="SpikeTile6" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -176, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile6"]
+
+flip_v = true
+
+[node name="SpikeTile7" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -144, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile7"]
+
+flip_v = true
+
+[node name="SpikeTile8" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -112, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile8"]
+
+flip_v = true
+
+[node name="SpikeTile9" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -80, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile9"]
+
+flip_v = true
+
+[node name="SpikeTile10" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -48, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile10"]
+
+flip_v = true
+
+[node name="SpikeTile11" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -16, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile11"]
+
+flip_v = true
+
+[node name="SpikeTile12" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 16, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile12"]
+
+flip_v = true
+
+[node name="SpikeTile13" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 48, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile13"]
+
+flip_v = true
+
+[node name="SpikeTile14" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 80, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile14"]
+
+flip_v = true
+
+[node name="SpikeTile15" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 112, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile15"]
+
+flip_v = true
+
+[node name="SpikeTile16" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 144, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile16"]
+
+flip_v = true
+
+[node name="SpikeTile17" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 176, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile17"]
+
+flip_v = true
+
+[node name="SpikeTile18" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 208, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile18"]
+
+flip_v = true
+
+[node name="SpikeTile19" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 240, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile19"]
+
+flip_v = true
+
+[node name="SpikeTile20" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 272, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile20"]
+
+flip_v = true
+
+[node name="SpikeTile21" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 304, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile21"]
+
+flip_v = true
+
+[node name="SpikeTile22" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 336, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile22"]
+
+flip_v = true
+
+[node name="SpikeTile23" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 368, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile23"]
+
+flip_v = true
+
+[node name="SpikeTile24" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 400, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile24"]
+
+flip_v = true
+
+[node name="SpikeTile25" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 432, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile25"]
+
+flip_v = true
+
+[node name="SpikeTile26" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 464, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile26"]
+
+flip_v = true
+
+[node name="SpikeTile27" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 496, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile27"]
+
+flip_v = true
+
+[node name="SpikeTile28" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 528, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile28"]
+
+flip_v = true
+
+[node name="SpikeTile29" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 560, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile29"]
+
+flip_v = true
+
+[node name="SpikeTile30" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 592, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile30"]
+
+flip_v = true
+
+[node name="SpikeTile31" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 624, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile31"]
+
+flip_v = true
+
+[node name="SpikeTile32" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 656, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile32"]
+
+flip_v = true
+
+[node name="SpikeTile33" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 688, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile33"]
+
+flip_v = true
+
+[node name="SpikeTile34" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 720, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile34"]
+
+flip_v = true
+
+[node name="SpikeTile35" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 752, -432 )
+
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile35"]
+
+flip_v = true
+
+[node name="SpikeTile36" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -368, 432 )
+
+[node name="SpikeTile37" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -336, 432 )
+
+[node name="SpikeTile38" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -304, 432 )
+
+[node name="SpikeTile39" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -272, 432 )
+
+[node name="SpikeTile40" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -240, 432 )
+
+[node name="SpikeTile41" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -208, 432 )
+
+[node name="SpikeTile42" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -176, 432 )
+
+[node name="SpikeTile43" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -144, 432 )
+
+[node name="SpikeTile44" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -112, 432 )
+
+[node name="SpikeTile45" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -80, 432 )
+
+[node name="SpikeTile46" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -48, 432 )
+
+[node name="SpikeTile47" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -16, 432 )
+
+[node name="SpikeTile48" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 16, 432 )
+
+[node name="SpikeTile49" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 48, 432 )
+
+[node name="SpikeTile50" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 80, 432 )
+
+[node name="SpikeTile51" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 112, 432 )
+
+[node name="SpikeTile52" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 144, 432 )
+
+[node name="SpikeTile53" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 176, 432 )
+
+[node name="SpikeTile54" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 208, 432 )
+
+[node name="SpikeTile55" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 240, 432 )
+
+[node name="SpikeTile56" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 272, 432 )
+
+[node name="SpikeTile57" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 304, 432 )
+
+[node name="SpikeTile58" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 336, 432 )
+
+[node name="SpikeTile59" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 368, 432 )
+
+[node name="SpikeTile60" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 400, 432 )
+
+[node name="SpikeTile61" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 432, 432 )
+
+[node name="SpikeTile62" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 464, 432 )
+
+[node name="SpikeTile63" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 496, 432 )
+
+[node name="SpikeTile64" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 528, 432 )
+
+[node name="SpikeTile65" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 560, 432 )
+
+[node name="SpikeTile66" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 592, 432 )
+
+[node name="SpikeTile67" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 624, 432 )
+
+[node name="SpikeTile68" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 656, 432 )
+
+[node name="SpikeTile69" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 688, 432 )
+
+[node name="SpikeTile70" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 720, 432 )
+
+[node name="SpikeTile71" parent="tilemap/SpikeGroup" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 752, 432 )
+
+[node name="SwingableGroup" type="Node2D" parent="tilemap"]
+
+[node name="MovingSwingPlatform" parent="tilemap/SwingableGroup" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 192, -48 )
+motion = Vector2( 0, 192 )
+cycle = 8.0
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 816, -48 )
+target_level = "res://levels/summerislandcastle/0-4.tscn"
+teleport_to = Vector2( -236, 16 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+
+transform/scale = Vector2( 1, 5 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -432, -48 )
+target_level = "res://levels/summerislandcastle/0-6.tscn"
+teleport_to = Vector2( 300, -592 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
+
+transform/scale = Vector2( 1, 5 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport1/teleport"]
+
+enabler/pause_animated_sprites = true
+
+[node name="boundaries" type="Node2D" parent="tilemap"]
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( -432, -496 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+
+transform/pos = Vector2( 816, 496 )
+
+
+[editable path="tilemap/ClimbableGroup/ClimbableBlock1"]
+[editable path="tilemap/SpikeGroup/SpikeTile"]
+[editable path="tilemap/SpikeGroup/SpikeTile1"]
+[editable path="tilemap/SpikeGroup/SpikeTile2"]
+[editable path="tilemap/SpikeGroup/SpikeTile3"]
+[editable path="tilemap/SpikeGroup/SpikeTile4"]
+[editable path="tilemap/SpikeGroup/SpikeTile5"]
+[editable path="tilemap/SpikeGroup/SpikeTile6"]
+[editable path="tilemap/SpikeGroup/SpikeTile7"]
+[editable path="tilemap/SpikeGroup/SpikeTile8"]
+[editable path="tilemap/SpikeGroup/SpikeTile9"]
+[editable path="tilemap/SpikeGroup/SpikeTile10"]
+[editable path="tilemap/SpikeGroup/SpikeTile11"]
+[editable path="tilemap/SpikeGroup/SpikeTile12"]
+[editable path="tilemap/SpikeGroup/SpikeTile13"]
+[editable path="tilemap/SpikeGroup/SpikeTile14"]
+[editable path="tilemap/SpikeGroup/SpikeTile15"]
+[editable path="tilemap/SpikeGroup/SpikeTile16"]
+[editable path="tilemap/SpikeGroup/SpikeTile17"]
+[editable path="tilemap/SpikeGroup/SpikeTile18"]
+[editable path="tilemap/SpikeGroup/SpikeTile19"]
+[editable path="tilemap/SpikeGroup/SpikeTile20"]
+[editable path="tilemap/SpikeGroup/SpikeTile21"]
+[editable path="tilemap/SpikeGroup/SpikeTile22"]
+[editable path="tilemap/SpikeGroup/SpikeTile23"]
+[editable path="tilemap/SpikeGroup/SpikeTile24"]
+[editable path="tilemap/SpikeGroup/SpikeTile25"]
+[editable path="tilemap/SpikeGroup/SpikeTile26"]
+[editable path="tilemap/SpikeGroup/SpikeTile27"]
+[editable path="tilemap/SpikeGroup/SpikeTile28"]
+[editable path="tilemap/SpikeGroup/SpikeTile29"]
+[editable path="tilemap/SpikeGroup/SpikeTile30"]
+[editable path="tilemap/SpikeGroup/SpikeTile31"]
+[editable path="tilemap/SpikeGroup/SpikeTile32"]
+[editable path="tilemap/SpikeGroup/SpikeTile33"]
+[editable path="tilemap/SpikeGroup/SpikeTile34"]
+[editable path="tilemap/SpikeGroup/SpikeTile35"]
+[editable path="tilemap/TeleportGroup/Teleport"]
+[editable path="tilemap/TeleportGroup/Teleport1"]
