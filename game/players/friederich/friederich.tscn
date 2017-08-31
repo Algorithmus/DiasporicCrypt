@@ -9451,7 +9451,6 @@ frame = 5
 
 [node name="attack" type="Node2D" parent="NormalSpriteGroup"]
 
-editor/display_folded = true
 visibility/visible = false
 
 [node name="attack" type="Sprite" parent="NormalSpriteGroup/attack"]

@@ -119,6 +119,7 @@ func _init():
 	cave.teleportto = Vector2(16, 32)
 	cave.id = "LVL_CAVE"
 	cave.bgm = preload("res://levels/common/BGM3.ogg")
+	cave.tiles = 105364
 	locations[cave.id] = cave
 	
 	var mausoleum = locationclass.new()

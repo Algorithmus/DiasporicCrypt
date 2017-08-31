@@ -64,7 +64,9 @@ func _init():
 	cave.type = "quest"
 	cave.position = Vector2(424, 73)
 	cave.description = "LVL_CAVE_DESCRIPTION"
-	#cave.require = ["LVL_DUNGEON", "LVL_BERGFORTRESS"]
+	cave.reward = 4000
+	cave.item = "ITEM_STYXCHALICE"
+	cave.require = ["LVL_DUNGEON", "LVL_BERGFORTRESS"]
 	cave.location = locationfactory.locations["LVL_CAVE"]
 	levels[cave.title] = cave
 	

@@ -300,6 +300,15 @@ func _init():
 	shield.cost = 0
 	items[shield.title] = shield
 
+	var earth = itemclass.new()
+	earth.title = "MAGIC_EARTH"
+	earth.description = "MAGIC_EARTH_SHORT"
+	earth.type = "magic"
+	earth.image = "res://players/magic/earth/icon.png"
+	earth.value = "earth"
+	earth.cost = 0
+	items[earth.title] = earth
+
 	var void = itemclass.new()
 	void.title = "MAGIC_VOID"
 	void.description = "MAGIC_VOID_SHORT"

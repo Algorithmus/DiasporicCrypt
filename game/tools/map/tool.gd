@@ -37,6 +37,7 @@ extends Control
 var list = [
 "res://levels/aquaduct", 
 "res://levels/bergfortress", 
+"res://levels/cave",
 "res://levels/crypt", 
 "res://levels/dungeon", 
 "res://levels/holyruins", 
