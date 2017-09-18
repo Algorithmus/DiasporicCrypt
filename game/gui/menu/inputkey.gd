@@ -36,10 +36,12 @@ func set_key(scancode):
 	key.set_text(keymap.map_key(OS.get_scancode_string(scancode)))
 
 func _input(event):
+	# Help key in demo mode is special; don't overwrite it.
+	var helpPressed = (Globals.get("demomode") && event.is_action_pressed("ui_help"))
 	if (!iscapture && event.is_action_pressed("ui_accept") && event.is_pressed() && !event.is_echo()):
 		_on_key_pressed()
 		sfx.play("cursor")
-	elif(iscapture && event.type == InputEvent.KEY && event.is_pressed() && !event.is_echo()):
+	elif(iscapture && event.type == InputEvent.KEY && event.is_pressed() && !event.is_echo() && !helpPressed):
 		sfx.play("confirm")
 		inputinfo.hide()
 		var keylist = get_parent().get_children()

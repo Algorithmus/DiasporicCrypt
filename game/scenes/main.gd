@@ -124,6 +124,11 @@ func _ready():
 	var available_levels = ["LVL_START"]
 	if (Globals.get("debugmode")):
 		available_levels = ["LVL_SANDBOX", "LVL_START", "LVL_FOREST1", "LVL_FOREST2", "LVL_COLOSSEUM1", "LVL_COLOSSEUM2"]
+	if (Globals.get("demomode")):
+		get_node("gui/CanvasLayer/demo/RichTextLabel").set_bbcode("[center]" + tr("KEY_HELP") + " [b]" + keymap.map_key("F1") + "[/b][/center]")
+	else:
+		get_node("gui/CanvasLayer/demo").hide()
+
 	if (Globals.get("player") == "friederich"):
 		if (Globals.get("debugmode")):
 			available_levels.append("LVL_MANOR")
@@ -161,8 +166,9 @@ func _on_resolution_changed():
 func _input(event):
 	var canvas = get_node("gui/CanvasLayer")
 	if (!gameover && dialog.get("dialogs") == null && !pause.has_node("shopping") && !pause.has_node("save") && !canvas.has_node("WorldMap") && !Globals.get("eventmode")):
-		if (event.is_action("ui_pause") && event.is_pressed() && !event.is_echo() && get_node("playercontainer").has_node("player") && !get_node("playercontainer/player").get("is_transforming") && !Globals.get("show_switch")):
-			if (is_paused && pausemenu.can_unpause()):
+		var helpPressed = event.is_action("ui_help") && Globals.get("demomode")
+		if ((event.is_action("ui_pause") || helpPressed) && event.is_pressed() && !event.is_echo() && get_node("playercontainer").has_node("player") && !get_node("playercontainer/player").get("is_transforming") && !Globals.get("show_switch")):
+			if (is_paused && pausemenu.can_unpause() && !helpPressed):
 				# return back to focused tabs properly for when menu gets opened again
 				pausemenu.focus_tab()
 				pausemenu.reset()
@@ -184,17 +190,21 @@ func _input(event):
 				big_map.set_pos(Vector2(270 - map_pos_obj.get_pos().x, 107 - map_pos_obj.get_pos().y))
 				pausemenu.get_node("panels/map/mapcontainer/viewport").add_child(big_map)
 				is_paused = true
-				# switch to specific tab if certain items are picked up recently
-				var lastitemtype = canvas.get_node("items").get("lastitemtype")
-				if (lastitemtype != null):
-					var tab = "items"
-					if (lastitemtype == "gold" || lastitemtype == "exp"):
-						tab = "stats"
-					elif (lastitemtype == "magic"):
-						tab = "magic"
-					elif (lastitemtype == "scroll"):
-						tab = "scrolls"
-					pausemenu.change_tab(tab)
+				# Have a help key for showing the settings menu in demo mode
+				if (helpPressed):
+					pausemenu.change_tab("settings")
+				else:
+					# switch to specific tab if certain items are picked up recently
+					var lastitemtype = canvas.get_node("items").get("lastitemtype")
+					if (lastitemtype != null):
+						var tab = "items"
+						if (lastitemtype == "gold" || lastitemtype == "exp"):
+							tab = "stats"
+						elif (lastitemtype == "magic"):
+							tab = "magic"
+						elif (lastitemtype == "scroll"):
+							tab = "scrolls"
+						pausemenu.change_tab(tab)
 				pausemenu.focus_tab()
 				music.set_volume_db(-20)
 			get_tree().set_pause(is_paused)

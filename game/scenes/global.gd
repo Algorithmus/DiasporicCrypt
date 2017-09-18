@@ -62,6 +62,7 @@ func _ready():
 				if (event.type == InputEvent.KEY):
 					controls[actionid] = event.scancode
 	Globals.set("debugmode", false)
+	Globals.set("demomode", false)
 	Globals.set("controls", controls)
 	Globals.set("newcontrols", controls)
 	Globals.set("savedir", "user://saves")

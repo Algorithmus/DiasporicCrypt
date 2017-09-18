@@ -21,11 +21,11 @@
 [ext_resource path="res://gui/hud/bloodGauge.png" type="Texture" id=19]
 [ext_resource path="res://gui/worldmap/icons/bonus.png" type="Texture" id=20]
 [ext_resource path="res://gui/fonts/S-12-dialog.fnt" type="BitmapFont" id=21]
-[ext_resource path="res://gui/hud/ItemDisplay.gd" type="Script" id=22]
-[ext_resource path="res://gui/fonts/L-24-Keyboard-outline.fnt" type="BitmapFont" id=23]
-[ext_resource path="res://gui/maps/HudMap.gd" type="Script" id=24]
-[ext_resource path="res://gui/fonts/XL-72.fnt" type="BitmapFont" id=25]
-[ext_resource path="res://gui/fonts/M-15-options.fnt" type="BitmapFont" id=26]
+[ext_resource path="res://gui/fonts/L-24-Keyboard-outline.fnt" type="BitmapFont" id=22]
+[ext_resource path="res://gui/fonts/M-15-options.fnt" type="BitmapFont" id=23]
+[ext_resource path="res://gui/hud/ItemDisplay.gd" type="Script" id=24]
+[ext_resource path="res://gui/maps/HudMap.gd" type="Script" id=25]
+[ext_resource path="res://gui/fonts/XL-72.fnt" type="BitmapFont" id=26]
 [ext_resource path="res://gui/menu/tabs/map.png" type="Texture" id=27]
 [ext_resource path="res://gui/dialogue/dialogue.tscn" type="PackedScene" id=28]
 [ext_resource path="res://gui/menu/menu.tscn" type="PackedScene" id=29]
@@ -811,9 +811,38 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
+[node name="demo" type="Control" parent="gui/CanvasLayer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = -1.0
+margin/right = 40.0
+margin/bottom = 39.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="gui/CanvasLayer/demo"]
+
+anchor/left = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -632.0
+margin/top = 128.0
+margin/right = 800.0
+margin/bottom = 160.0
+custom_fonts/bold_font = ExtResource( 22 )
+custom_fonts/normal_font = ExtResource( 23 )
+bbcode/enabled = true
+bbcode/bbcode = "[center]KEY_HELP [b][/b][/center]"
+visible_characters = -1
+
 [node name="items" type="Control" parent="gui/CanvasLayer"]
 
 process/pause_mode = 1
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -822,7 +851,7 @@ margin/left = 512.0
 margin/top = 488.0
 margin/right = 752.0
 margin/bottom = 588.0
-script/script = ExtResource( 22 )
+script/script = ExtResource( 24 )
 
 [node name="container" type="Node2D" parent="gui/CanvasLayer/items"]
 
@@ -838,7 +867,7 @@ margin/left = 240.0
 margin/top = 53.0
 margin/right = 280.0
 margin/bottom = 84.0
-custom_fonts/font = ExtResource( 23 )
+custom_fonts/font = ExtResource( 22 )
 text = "K"
 align = 1
 valign = 1
@@ -848,6 +877,7 @@ max_lines_visible = -1
 
 [node name="map" type="Control" parent="gui/CanvasLayer"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -871,7 +901,7 @@ texture/scale = Vector2( 1, 1 )
 texture/rotation = 0.0
 invert/enable = false
 invert/border = 100.0
-script/script = ExtResource( 24 )
+script/script = ExtResource( 25 )
 
 [node name="objects" type="Node2D" parent="gui/CanvasLayer/map/container"]
 
@@ -968,6 +998,7 @@ autoplay = ""
 [node name="level" type="Control" parent="gui/CanvasLayer"]
 
 process/pause_mode = 1
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -991,7 +1022,7 @@ margin/left = -12.0
 margin/top = -364.0
 margin/right = -749.0
 margin/bottom = -582.0
-custom_fonts/font = ExtResource( 25 )
+custom_fonts/font = ExtResource( 26 )
 text = "COMPLETE"
 align = 1
 valign = 1
@@ -1010,7 +1041,7 @@ margin/left = -32.0
 margin/top = 144.0
 margin/right = 768.0
 margin/bottom = 163.0
-custom_fonts/font = ExtResource( 26 )
+custom_fonts/font = ExtResource( 23 )
 text = "KEY_NEWLEVEL"
 align = 1
 valign = 1
@@ -1039,6 +1070,7 @@ autoplay = ""
 
 [node name="pause" type="Control" parent="gui/CanvasLayer"]
 
+editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
@@ -1069,6 +1101,7 @@ margin/bottom = 560.0
 
 [node name="choice" type="Control" parent="gui/CanvasLayer"]
 
+editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
@@ -1094,7 +1127,7 @@ margin/left = 396.0
 margin/top = 252.0
 margin/right = -420.0
 margin/bottom = 162.0
-custom_fonts/font = ExtResource( 25 )
+custom_fonts/font = ExtResource( 26 )
 text = "KEY_GAMEOVER"
 align = 1
 valign = 1
@@ -1238,7 +1271,7 @@ margin/left = 512.0
 margin/top = 552.0
 margin/right = 768.0
 margin/bottom = 584.0
-custom_fonts/mono_font = ExtResource( 23 )
+custom_fonts/mono_font = ExtResource( 22 )
 custom_fonts/normal_font = ExtResource( 34 )
 bbcode/enabled = true
 bbcode/bbcode = "[right]KEY_SKIP:  [code]Z[/code][/right]"
@@ -1296,7 +1329,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 800.0
 margin/bottom = 592.0
-custom_fonts/font = ExtResource( 25 )
+custom_fonts/font = ExtResource( 26 )
 text = "- PAUSED -"
 align = 1
 valign = 1
