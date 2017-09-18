@@ -1158,6 +1158,7 @@ func _ready():
 	weapon_offset = weapon_collider.get_node("weapon").get_shape().get_extents()
 
 	weapon_collider.connect("area_enter", self, "_on_weapon_collision")
+	weapon_collider.connect("body_enter", self, "_on_weapon_body_collision")
 	
 	reset_blacklist()
 	
@@ -1173,10 +1174,16 @@ func reset_blacklist():
 func _on_weapon_collision(area):
 	var collisions = weapon_collider.get_overlapping_areas()
 	for i in collisions:
-		if (i.get_name() != "damage" && i != weapon_collider && i.get_name() != "oneway" && !i.get_name().match("slope*") && i.get_name() != "ladder" && i.get_name() != "item" && i.get_name() != "swingboulder" && i.get_name() != "sensor" && i.get_name() != "sunbeam"):
+		if (weapon_collision_check(i)):
 			weapon_collided = true
-	if(area.get_name() != "damage" && area != weapon_collider && area.get_name() != "oneway" && !area.get_name().match("slope*") && area.get_name() != "ladder" && area.get_name() != "item" && area.get_name() != "swingboulder" && area.get_name() != "sensor" && area.get_name() != "sunbeam"):
+	if(weapon_collision_check(area)):
 		weapon_collided = true
+
+func _on_weapon_body_collision(body):
+	weapon_collided = true
+
+func weapon_collision_check(area):
+	return area.get_name() != "damage" && area != weapon_collider && area.get_name() != "oneway" && !area.get_name().match("slope*") && area.get_name() != "ladder" && area.get_name() != "item" && area.get_name() != "swingboulder" && area.get_name() != "sensor" && area.get_name() != "sunbeam" && area.get_name() != "fake"
 
 func load_tilemap(var tilemap_node):
 	tilemap = tilemap_node.get_node("tilemap")

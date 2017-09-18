@@ -304,7 +304,7 @@ func step_player(delta):
 			if(!Input.is_action_pressed("ui_attack")):
 				stop_swinging()
 		elif(whip_hanging):
-			if (swing_block.get_parent().get_parent() != null):
+			if (swing_block.get_parent().get_parent() != null && swing_block.get_global_pos().y < get_global_pos().y):
 				request_spell_change = 0
 				if (weapon_collided):
 					weapon_collided = false
@@ -410,6 +410,8 @@ func _ready():
 	default_sprite = get_node("NormalSpriteGroup")
 
 	demonic_display.get_node("demonic/sprite/adela").show()
+
+	weapon_collider.disconnect("body_enter", self, "_on_weapon_body_collision")
 
 	whipswing_obj = whipswing.instance()
 	add_child(whipswing_obj)
