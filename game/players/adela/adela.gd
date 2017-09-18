@@ -49,6 +49,8 @@ func closestXTile(desired_direction, desiredX, space_state):
 		var wallcheck = closestXTile_area_check(desired_direction, desiredX, space_state)
 		if (wallcheck == 0 && current_wall_hanging_delay == 0):
 			wall_hanging = true
+			air_jump = false
+			jump_requested = false
 			current_wall_hanging_delay = 1
 			accel = 0
 			wall_direction = desired_direction
@@ -68,7 +70,7 @@ func check_falling(normalTileCheck, relevantSlopeTile, onSlope, abSlope, ladder_
 func jumping_allowed():
 	if (is_demonic):
 		var allowed = ((!air_jump || !falling || wall_hanging) && !is_attacking && jump_requested) || .jumping_allowed()
-		if (falling && jump_requested):
+		if (falling && jump_requested && current_wall_hanging_delay == 0):
 			air_jump = true
 		return allowed
 	else:
@@ -330,6 +332,8 @@ func step_player(delta):
 		
 		if (is_hurt || input_down() || !is_demonic || (wall_hanging && ((wall_direction > 0 && input_left()) || (wall_direction < 0 && input_right())))):
 			wall_hanging = false
+			if (wall_direction && wall_direction != 0):
+				falling = false
 			current_wall_hanging_delay += 1
 	
 		regenerate_mp()
