@@ -587,8 +587,15 @@ func check_climb_platform_vertical(climb_vertically):
 	# see notes in horizontal motion about animation
 	if (climb_vertically && climbing_platform):
 		#var d = climb_platform.get_global_pos().y - TILE_SIZE/2 - get_pos().y + sprite_offset.y
-		accel = -climbspeed
-		falling = false
+		# If the platform is too far away, stop trying to climb it.
+		if (abs(climb_platform.get_global_pos().x - get_pos().x) >= 33):
+			hanging = false
+			climb_platform = null
+			climb_vertically = false
+			climbing_platform = false
+		else:
+			accel = -climbspeed
+			falling = false
 
 func check_attacking():
 	# only allow attacks to hit objects once during a hit
