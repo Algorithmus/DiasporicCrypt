@@ -23,7 +23,8 @@ var whip_hanging = false
 var wall_hanging = false
 var jump_requested = false
 var wall_direction
-var air_jump = false
+var air_jump = 0
+var MAX_JUMP = 2
 
 var wall_hanging_delay = 30
 var current_wall_hanging_delay = 0
@@ -49,7 +50,7 @@ func closestXTile(desired_direction, desiredX, space_state):
 		var wallcheck = closestXTile_area_check(desired_direction, desiredX, space_state)
 		if (wallcheck == 0 && current_wall_hanging_delay == 0):
 			wall_hanging = true
-			air_jump = false
+			air_jump = 0
 			jump_requested = false
 			current_wall_hanging_delay = 1
 			accel = 0
@@ -69,9 +70,7 @@ func check_falling(normalTileCheck, relevantSlopeTile, onSlope, abSlope, ladder_
 
 func jumping_allowed():
 	if (is_demonic):
-		var allowed = ((!air_jump || !falling || wall_hanging) && !is_attacking && jump_requested) || .jumping_allowed()
-		if (falling && jump_requested && current_wall_hanging_delay == 0):
-			air_jump = true
+		var allowed = ((air_jump < MAX_JUMP || (!falling && air_jump == 0) || wall_hanging) && !is_attacking && jump_requested) || .jumping_allowed()
 		return allowed
 	else:
 		return .jumping_allowed()
@@ -79,6 +78,7 @@ func jumping_allowed():
 func check_jump():
 	.check_jump()
 	if (jumpPressed):
+		print("clear jump requested")
 		jump_requested = false
 		wall_hanging = false
 		current_wall_hanging_delay += 1
@@ -332,7 +332,7 @@ func step_player(delta):
 		
 		if (is_hurt || input_down() || !is_demonic || (wall_hanging && ((wall_direction > 0 && input_left()) || (wall_direction < 0 && input_right())))):
 			wall_hanging = false
-			if (wall_direction && wall_direction != 0):
+			if (wall_direction && wall_direction != 0 && is_demonic):
 				falling = false
 			current_wall_hanging_delay += 1
 	
@@ -354,7 +354,7 @@ func step_player(delta):
 				current_wall_hanging_delay = 0
 	
 		if (!falling):
-			air_jump = false
+			air_jump = 0
 	
 		if (!is_swinging && !whip_hanging):
 			move(position)
@@ -478,6 +478,8 @@ func update_fusion():
 func _input(event):
 	if (!is_transforming):
 		if (event.is_action_pressed("ui_jump") && event.is_pressed() && !event.is_echo()):
+			if (is_demonic && falling && !wall_hanging	):
+				air_jump += 1
 			jump_requested = true
 
 func _on_weapon_collision(area):
