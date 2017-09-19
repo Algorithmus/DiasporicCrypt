@@ -167,6 +167,17 @@ func step_player(delta):
 		var ladderY = 0
 		if (!is_swinging && !whip_hanging):
 			# step horizontal motion first
+			# still allow the possibility to change direction while charging
+			if (is_charging):
+				var old_dir = direction
+				if (input_left()):
+					direction = -1
+				elif (input_right()):
+					direction = 1
+				if (old_dir != direction && magic_spells[selected_spell]["id"] == "void"):
+					void_direction = void_direction * -1
+					var offset = 2 * get_global_pos().x - charge_obj.get_global_pos().x
+					charge_obj.set_global_pos(Vector2(offset, get_global_pos().y))
 			var horizontal = step_horizontal(space_state)
 			new_animation = horizontal["animation"]
 			horizontal_motion = horizontal["motion"]

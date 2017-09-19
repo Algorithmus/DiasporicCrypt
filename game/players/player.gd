@@ -964,6 +964,7 @@ func check_magic():
 				charge_obj.set_global_pos(get_global_pos())
 				var scale = (3 - 0.7)*charge_counter/MAX_CHARGE + 0.7
 				charge_obj.change_scale(scale)
+				charge_obj.change_direction(direction)
 			if (magic_spells[selected_spell]["id"] == "thunder"):
 				var scale = (3 - 0.7)*charge_counter/MAX_CHARGE + 0.7
 				charge_obj.change_scale(scale)
@@ -981,6 +982,7 @@ func check_magic():
 			if (magic_spells[selected_spell]["id"] == "void"):
 				# void spell is an exception and takes max mp required
 				charge_counter = MAX_CHARGE
+				charge_obj.set_scale(Vector2(direction, 1))
 				# oscillate portal position
 				var offset = charge_obj.get_global_pos().x + void_direction * 5
 				var horizontal_bound = get_global_pos().x - direction * get_node("Camera2D").get_offset().x
