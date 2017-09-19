@@ -11,7 +11,12 @@ extents = Vector2( 18, 48 )
 
 [sub_resource type="SampleLibrary" id=2]
 
-samples/crumble = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
+samples/crumble = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 3 )
+}
 
 [sub_resource type="Animation" id=3]
 
@@ -23,12 +28,22 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("KinematicBody2D/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 0, 1, 2, 3 ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
 tracks/1/type = "value"
 tracks/1/path = NodePath("KinematicBody2D/Sprite:visibility/visible")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0, 0.4 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ true, false ] }
+tracks/1/keys = {
+"times": FloatArray( 0, 0.4 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=4]
 
@@ -40,12 +55,19 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("KinematicBody2D/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 0 ] }
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
 
 [node name="Pot" type="Node2D"]
 
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"Script" }
+__meta__ = {
+"__editor_plugin_screen__": "Script"
+}
 type = "NONE"
 reward = ""
 value = 0

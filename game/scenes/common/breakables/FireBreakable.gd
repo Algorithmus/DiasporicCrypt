@@ -11,3 +11,8 @@ func check_crumble(i):
 func sprite_opacity(alpha):
 	.sprite_opacity(alpha)
 	get_node("KinematicBody2D/fire").set_opacity(alpha)
+
+func remove_visuals():
+	var fire = get_node("KinematicBody2D/fire")
+	remove_child(fire)
+	fire.queue_free()

@@ -26,5 +26,4 @@ func check_chain():
 	var chain_special = player.get_node("player").current_chain_special
 	if (chain_special != null && chain_special["id"] == special):
 		is_crumbling = true
-		crumble_related()
 

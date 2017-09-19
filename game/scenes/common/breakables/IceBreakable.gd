@@ -11,3 +11,8 @@ func check_crumble(i):
 func sprite_opacity(alpha):
 	.sprite_opacity(alpha)
 	get_node("KinematicBody2D/ice").set_opacity(alpha)
+
+func remove_visuals():
+	var ice = get_node("KinematicBody2D/ice")
+	remove_child(ice)
+	ice.queue_free()

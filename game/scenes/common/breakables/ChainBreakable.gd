@@ -19,7 +19,6 @@ func check_chain():
 		dust()
 	if (hp <= 0):
 		is_crumbling = true
-		crumble_related()
 
 func crumble_related():
 	for j in related_blocks:
@@ -27,5 +26,6 @@ func crumble_related():
 		if (related != null && related.hp > 0):
 			related.is_crumbling = true
 			related.hp = 0
+			related.set("crumble_delay", 10)
 			related.start_crumble()
 

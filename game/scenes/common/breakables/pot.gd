@@ -14,6 +14,7 @@ var animation_player
 var current_animation = "idle"
 
 func _ready():
+	crumble_delay = 100
 	tilemap = get_parent().get_parent()
 	animation_player = get_node("AnimationPlayer")
 	if (type == "ITEM"):
