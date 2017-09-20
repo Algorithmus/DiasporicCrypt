@@ -14,7 +14,7 @@ level = ""
 
 polygon = Vector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
 uv = Vector2Array(  )
-color = Color( 0.148201, 0.121212, 0.254881, 0.742367 )
+color = Color( 0.148201, 0.121212, 0.254881, 0.392157 )
 vertex_colors = ColorArray(  )
 offset = Vector2( 0, 0 )
 texture/texture = null
