@@ -436,6 +436,11 @@ func step_player(delta):
 					target_enemy.get_ref().get_parent().set("floortile_check_requested", false)
 					target_enemy.get_ref().get_parent().set_global_pos(Vector2(target_enemy.get_ref().get_global_pos().x, get_global_pos().y - TILE_SIZE))
 			elif (current_chain_special["id"] == "stab" || current_chain_special["id"] == "chop"):
+				if (target_exists && hit_enemy && is_valid_target):
+					target_enemy.get_ref().get_parent().set("floortile_check_requested", true)
+				var horizontal = step_horizontal(space_state)
+				onSlope = horizontal["slope"]
+				relevantSlopeTile = horizontal["slopeTile"]
 				accel += falling_modifier(accel)
 				var vertical = step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, false, oneWayTile, null)
 				newpos = accel
@@ -614,6 +619,9 @@ func _input(event):
 				direction_requested = "f"
 		if (event.is_action_pressed("ui_jump") && event.is_pressed() && !event.is_echo()):
 			jump_requested = true
+
+func horizontal_input_permitted():
+	return .horizontal_input_permitted() && !(is_chain_special && current_chain_special["id"] != "rush")
 
 func _init():
 	weapon = preload("res://scenes/weapons/sword.tscn")

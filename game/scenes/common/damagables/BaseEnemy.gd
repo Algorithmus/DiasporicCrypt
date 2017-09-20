@@ -254,6 +254,7 @@ func die():
 		damage_rect.set_pos(Vector2(consumable_sprite_offset.x * direction, sprite_offset.y - consumable_offset.y + consumable_sprite_offset.y))
 		add_child(damage_rect)
 	else:
+		player.get_node("player").remove_from_blacklist(get_node("damagable"))
 		queue_free()
 
 func input_left():
@@ -424,6 +425,7 @@ func cleanup_bloodparticles():
 			level_display.get_node("title/newlevel").hide()
 			level_display.get_node("title").set_text("KEY_COMPLETE")
 			level_display.get_node("AnimationPlayer").play("quest")
+		player.get_node("player").remove_from_blacklist(get_node("damagable"))
 		queue_free()
 
 func _ready():
@@ -450,6 +452,7 @@ func _ready():
 	color_increments = Color((1 - color.r)/current_consume_value, -color.g/current_consume_value, -color.b/current_consume_value)
 	consumable_offset = sprite_offset
 	set_fixed_process(false)
+	player.get_node("player").add_to_blacklist(get_node("damagable"))
 
 func enter_screen():
 	set_fixed_process(true)

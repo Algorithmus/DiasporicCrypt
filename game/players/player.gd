@@ -158,7 +158,7 @@ func input_jump():
 # to prevent interfering with regular collision detection
 func remove_from_blacklist(item):
 	.remove_from_blacklist(item)
-	if (item.has_node("magic")):
+	if (item != null && item.has_node("magic")):
 		magic_delay = false
 
 func getClimbPlatform(space_state, direction):

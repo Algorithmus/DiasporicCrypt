@@ -9,6 +9,7 @@ var sfx = "potion"
 var itemfactory = preload("res://scenes/items/ItemFactory.gd")
 var itemfactory_obj
 var item
+var player
 
 func _fixed_process(delta):
 	if (!taken):
@@ -34,6 +35,8 @@ func take_item(i):
 			level_display.get_node("title").set_text("KEY_COMPLETE")
 			level_display.get_node("AnimationPlayer").play("quest")
 		remove_child(get_node("Sprite"))
+		remove_child(get_node("item"))
+		player.remove_from_blacklist(get_node("item"))
 
 func add_to_inventory():
 	return Globals.get("inventory").add_item(item, 1)
@@ -43,6 +46,8 @@ func _ready():
 	item = itemfactory_obj.items[title]
 	
 	sound = get_node("sound")
+	player = get_tree().get_root().get_node("world/playercontainer/player")
+	player.add_to_blacklist(get_node("item"))
 
 func enter_screen():
 	set_fixed_process(true)

@@ -11,15 +11,23 @@ extents = Vector2( 16, 16 )
 
 [sub_resource type="SampleLibrary" id=2]
 
-samples/potion = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
+samples/potion = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 3 )
+}
 
 [node name="Gold" type="Node2D"]
 
 z/z = 2
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 title = "ITEM_POTION"
 isgoal = false
+value = 0
 
 [node name="enabler" type="VisibilityEnabler2D" parent="."]
 

@@ -15,42 +15,82 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("die:visibility/visible")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 tracks/1/type = "value"
 tracks/1/path = NodePath("walk:visibility/visible")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 tracks/2/type = "value"
 tracks/2/path = NodePath("walk:frame")
 tracks/2/interp = 1
 tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0, 0.5, 0.6, 0.7 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 1, 5, 6, 7 ] }
+tracks/2/keys = {
+"times": FloatArray( 0, 0.5, 0.6, 0.7 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 5, 6, 7 ]
+}
 tracks/3/type = "value"
 tracks/3/path = NodePath("hurt:visibility/visible")
 tracks/3/interp = 1
 tracks/3/imported = false
-tracks/3/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
+tracks/3/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 tracks/4/type = "value"
 tracks/4/path = NodePath("attack:visibility/visible")
 tracks/4/interp = 1
 tracks/4/imported = false
-tracks/4/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
+tracks/4/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 tracks/5/type = "value"
 tracks/5/path = NodePath("attack:frame")
 tracks/5/interp = 1
 tracks/5/imported = false
-tracks/5/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 0 ] }
+tracks/5/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
 tracks/6/type = "value"
 tracks/6/path = NodePath("eye:visibility/visible")
 tracks/6/interp = 1
 tracks/6/imported = false
-tracks/6/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
+tracks/6/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 tracks/7/type = "value"
 tracks/7/path = NodePath("explode:config/emitting")
 tracks/7/interp = 1
 tracks/7/imported = false
-tracks/7/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
+tracks/7/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=2]
 
@@ -62,47 +102,92 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("walk:visibility/visible")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 tracks/1/type = "value"
 tracks/1/path = NodePath("die:visibility/visible")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 tracks/2/type = "value"
 tracks/2/path = NodePath("die:frame")
 tracks/2/interp = 1
 tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 0 ] }
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
 tracks/3/type = "value"
 tracks/3/path = NodePath("SamplePlayer:play/play")
 tracks/3/interp = 1
 tracks/3/imported = false
-tracks/3/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ "s_die" ] }
+tracks/3/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ "s_die" ]
+}
 tracks/4/type = "value"
 tracks/4/path = NodePath("hurt:visibility/visible")
 tracks/4/interp = 1
 tracks/4/imported = false
-tracks/4/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
+tracks/4/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 tracks/5/type = "value"
 tracks/5/path = NodePath("attack:visibility/visible")
 tracks/5/interp = 1
 tracks/5/imported = false
-tracks/5/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
+tracks/5/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 tracks/6/type = "value"
 tracks/6/path = NodePath("eye:visibility/visible")
 tracks/6/interp = 1
 tracks/6/imported = false
-tracks/6/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
+tracks/6/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 tracks/7/type = "value"
 tracks/7/path = NodePath("explode:config/emitting")
 tracks/7/interp = 1
 tracks/7/imported = false
-tracks/7/keys = { "times":FloatArray( 0, 0.6 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ true, false ] }
+tracks/7/keys = {
+"times": FloatArray( 0, 0.6 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 tracks/8/type = "value"
 tracks/8/path = NodePath("die:visibility/opacity")
 tracks/8/interp = 1
 tracks/8/imported = false
-tracks/8/keys = { "times":FloatArray( 0, 0.3 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 1.0, 0.0 ] }
+tracks/8/keys = {
+"times": FloatArray( 0, 0.3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
 
 [sub_resource type="Animation" id=3]
 
@@ -114,57 +199,112 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("walk:visibility/visible")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 tracks/1/type = "value"
 tracks/1/path = NodePath("die:visibility/visible")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 tracks/2/type = "value"
 tracks/2/path = NodePath("hurt:visibility/visible")
 tracks/2/interp = 1
 tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 tracks/3/type = "value"
 tracks/3/path = NodePath("hurt:frame")
 tracks/3/interp = 1
 tracks/3/imported = false
-tracks/3/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 0 ] }
+tracks/3/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
 tracks/4/type = "value"
 tracks/4/path = NodePath("attack:visibility/visible")
 tracks/4/interp = 1
 tracks/4/imported = false
-tracks/4/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
+tracks/4/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 tracks/5/type = "value"
 tracks/5/path = NodePath("eye:visibility/visible")
 tracks/5/interp = 1
 tracks/5/imported = false
-tracks/5/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
+tracks/5/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 tracks/6/type = "value"
 tracks/6/path = NodePath("dust/dust:config/emitting")
 tracks/6/interp = 1
 tracks/6/imported = false
-tracks/6/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
+tracks/6/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 tracks/7/type = "value"
 tracks/7/path = NodePath("dust/dust1:config/emitting")
 tracks/7/interp = 1
 tracks/7/imported = false
-tracks/7/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
+tracks/7/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 tracks/8/type = "value"
 tracks/8/path = NodePath("dust/dust2:config/emitting")
 tracks/8/interp = 1
 tracks/8/imported = false
-tracks/8/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
+tracks/8/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 tracks/9/type = "value"
 tracks/9/path = NodePath("dust/dust3:config/emitting")
 tracks/9/interp = 1
 tracks/9/imported = false
-tracks/9/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
+tracks/9/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 tracks/10/type = "value"
 tracks/10/path = NodePath("dust/dust4:config/emitting")
 tracks/10/interp = 1
 tracks/10/imported = false
-tracks/10/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
+tracks/10/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=4]
 
@@ -175,37 +315,72 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("die:visibility/visible")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 tracks/1/type = "value"
 tracks/1/path = NodePath("walk:visibility/visible")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 tracks/2/type = "value"
 tracks/2/path = NodePath("walk:frame")
 tracks/2/interp = 1
 tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0, 0.5, 0.6, 0.7 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 0, 5, 6, 7 ] }
+tracks/2/keys = {
+"times": FloatArray( 0, 0.5, 0.6, 0.7 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 5, 6, 7 ]
+}
 tracks/3/type = "value"
 tracks/3/path = NodePath("hurt:visibility/visible")
 tracks/3/interp = 1
 tracks/3/imported = false
-tracks/3/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
+tracks/3/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 tracks/4/type = "value"
 tracks/4/path = NodePath("attack:visibility/visible")
 tracks/4/interp = 1
 tracks/4/imported = false
-tracks/4/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
+tracks/4/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 tracks/5/type = "value"
 tracks/5/path = NodePath("eye:visibility/visible")
 tracks/5/interp = 1
 tracks/5/imported = false
-tracks/5/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
+tracks/5/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 tracks/6/type = "value"
 tracks/6/path = NodePath("explode:config/emitting")
 tracks/6/interp = 1
 tracks/6/imported = false
-tracks/6/keys = { "times":FloatArray( 0.0110613 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
+tracks/6/keys = {
+"times": FloatArray( 0.0110613 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="RectangleShape2D" id=5]
 
@@ -214,7 +389,12 @@ extents = Vector2( 32, 96 )
 
 [sub_resource type="SampleLibrary" id=6]
 
-samples/s_die = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
+samples/s_die = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 3 )
+}
 
 [node name="Statue1" type="KinematicBody2D"]
 
@@ -224,7 +404,9 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"Script" }
+__meta__ = {
+"__editor_plugin_screen__": "Script"
+}
 
 [node name="enabler" type="VisibilityEnabler2D" parent="."]
 
@@ -270,6 +452,7 @@ modulate = Color( 0.313726, 0.360784, 0.392157, 1 )
 transform/pos = Vector2( -9, -71 )
 config/amount = 8
 config/lifetime = 1.0
+config/process_mode = 1
 config/explosiveness = 0.0
 params/direction = 0.0
 params/spread = 0.0
@@ -300,6 +483,7 @@ config/time_scale = 4.0
 config/preprocess = 0.1
 config/emit_timeout = 1.0
 config/emitting = false
+config/process_mode = 1
 params/direction = 0.0
 params/spread = 0.0
 params/linear_velocity = 32.0
@@ -333,6 +517,7 @@ config/time_scale = 4.0
 config/preprocess = 0.1
 config/emit_timeout = 1.0
 config/emitting = false
+config/process_mode = 1
 params/direction = 0.0
 params/spread = 0.0
 params/linear_velocity = 32.0
@@ -366,6 +551,7 @@ config/time_scale = 4.0
 config/preprocess = 0.1
 config/emit_timeout = 1.0
 config/emitting = false
+config/process_mode = 1
 params/direction = 0.0
 params/spread = 0.0
 params/linear_velocity = 32.0
@@ -399,6 +585,7 @@ config/time_scale = 4.0
 config/preprocess = 0.1
 config/emit_timeout = 1.0
 config/emitting = false
+config/process_mode = 1
 params/direction = 0.0
 params/spread = 0.0
 params/linear_velocity = 32.0
@@ -432,6 +619,7 @@ config/time_scale = 4.0
 config/preprocess = 0.1
 config/emit_timeout = 1.0
 config/emitting = false
+config/process_mode = 1
 params/direction = 0.0
 params/spread = 0.0
 params/linear_velocity = 32.0
@@ -464,6 +652,7 @@ config/time_scale = 6.0
 config/preprocess = 0.1
 config/emit_timeout = 2.0
 config/emitting = false
+config/process_mode = 1
 config/half_extents = Vector2( 32, 96 )
 config/local_space = false
 params/direction = 180.0
