@@ -588,7 +588,7 @@ func check_climb_platform_vertical(climb_vertically):
 	if (climb_vertically && climbing_platform):
 		#var d = climb_platform.get_global_pos().y - TILE_SIZE/2 - get_pos().y + sprite_offset.y
 		# If the platform is too far away, stop trying to climb it.
-		if (abs(climb_platform.get_global_pos().x - get_pos().x) >= 33):
+		if (abs(climb_platform.get_global_pos().x - get_pos().x) >= 36):
 			hanging = false
 			climb_platform = null
 			climb_vertically = false
@@ -688,6 +688,7 @@ func check_animations(new_animation, animation_speed, horizontal_motion, ladderY
 			new_animation = "climb"
 			if (hanging):
 				animation_speed = 0
+				animation_player.seek(0)
 		
 		if (is_hurt):
 			new_animation = "hurt"
