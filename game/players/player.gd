@@ -1014,7 +1014,8 @@ func check_magic():
 		else:
 			var scale = float(charge_counter)/MAX_CHARGE
 			var mp_consumed = max(round(magic_spells[selected_spell]["mp"] * scale), 1)
-			current_mp -= mp_consumed
+			if (!magic_spells[selected_spell]["id"] == "void"):
+				current_mp -= mp_consumed
 			var charge_power = charge_counter
 			charge_counter = 0
 			is_charging = false
@@ -1064,6 +1065,7 @@ func check_magic():
 					set_global_pos(charge_obj.get_global_pos())
 					charge_obj.set("is_set", true)
 					charge_obj.get_node("SamplePlayer").play("void")
+					current_mp -= mp_consumed
 				else:
 					charge_obj.set("fail", true)
 					# cancel the spell if the portal is not over a
