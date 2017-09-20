@@ -29,6 +29,15 @@ var MAX_JUMP = 2
 var wall_hanging_delay = 30
 var current_wall_hanging_delay = 0
 
+# Unfortunately, double jumps off of walls are hard to execute properly since some players may not notice that you have to press
+# the jump button at least slightly before the direction keys to get the extra jump (or else disengaging the wall counts as a "jump"
+# but not in an obvious way, especially if you press the jump button just after the direction keys). This also gives you less control
+# as well since you are forced to move up rather than away at first if you want the extra jump. So we give players an extra 10 frames 
+# in which to press the jump button after disengaging, and we won't count that jump as the extra jump, and players will still have an
+# extra jump they can use later.
+var wall_jump_max_period = 10
+var wall_jump_grace_period = 0
+
 var whipswing = preload("res://players/adela/actions/whipswing.tscn")
 var whipswing_obj
 
@@ -341,11 +350,14 @@ func step_player(delta):
 
 		check_demonic()
 		
-		if (is_hurt || input_down() || !is_demonic || (wall_hanging && ((wall_direction > 0 && input_left()) || (wall_direction < 0 && input_right())))):
+		var disengage_wall = wall_hanging && ((wall_direction > 0 && input_left()) || (wall_direction < 0 && input_right()))
+		if (is_hurt || input_down() || !is_demonic || disengage_wall):
 			wall_hanging = false
 			if (wall_direction && wall_direction != 0 && is_demonic):
 				falling = false
 			current_wall_hanging_delay += 1
+			if (disengage_wall && wall_jump_grace_period == 0):
+				wall_jump_grace_period = 1
 	
 		regenerate_mp()
 	
@@ -364,6 +376,11 @@ func step_player(delta):
 			if (current_wall_hanging_delay >= wall_hanging_delay):
 				current_wall_hanging_delay = 0
 	
+		if (wall_jump_grace_period > 0):
+			wall_jump_grace_period += 1
+			if (wall_jump_grace_period >= wall_jump_max_period):
+				wall_jump_grace_period = 0
+
 		if (!falling):
 			air_jump = 0
 	
@@ -489,7 +506,7 @@ func update_fusion():
 func _input(event):
 	if (!is_transforming):
 		if (event.is_action_pressed("ui_jump") && event.is_pressed() && !event.is_echo()):
-			if (is_demonic && falling && !wall_hanging	):
+			if (is_demonic && falling && !wall_hanging && wall_jump_grace_period == 0):
 				air_jump += 1
 			jump_requested = true
 
