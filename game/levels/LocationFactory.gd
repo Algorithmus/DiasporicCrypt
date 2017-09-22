@@ -111,7 +111,7 @@ func _init():
 	winterislandcastle.teleportto = Vector2(-208, 256)
 	winterislandcastle.id = "LVL_WINTERISLANDCASTLE"
 	winterislandcastle.bgm = preload("res://levels/common/BGM1.ogg")
-	winterislandcastle.tiles = 89718
+	winterislandcastle.tiles = 91904
 	locations[winterislandcastle.id] = winterislandcastle
 	
 	var cave = locationclass.new()

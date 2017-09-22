@@ -6,14 +6,14 @@
 [ext_resource path="res://scenes/springislandcastle/BGs/wallcorner.png" type="Texture" id=4]
 [ext_resource path="res://scenes/springislandcastle/BGs/walledge.png" type="Texture" id=5]
 [ext_resource path="res://scenes/springislandcastle/BGs/marble.png" type="Texture" id=6]
-[ext_resource path="res://scenes/springislandcastle/BGs/wall.png" type="Texture" id=7]
-[ext_resource path="res://scenes/springislandcastle/BGs/wallpaper.png" type="Texture" id=8]
-[ext_resource path="res://scenes/springislandcastle/BGs/ledge.png" type="Texture" id=9]
-[ext_resource path="res://scenes/springislandcastle/BGs/ledge2.png" type="Texture" id=10]
-[ext_resource path="res://scenes/springislandcastle/BGs/ceiling.png" type="Texture" id=11]
-[ext_resource path="res://scenes/springislandcastle/BGs/walltile.png" type="Texture" id=12]
-[ext_resource path="res://scenes/springislandcastle/BGs/mirror.png" type="Texture" id=13]
-[ext_resource path="res://scenes/springislandcastle/BGs/window.png" type="Texture" id=14]
+[ext_resource path="res://scenes/winterislandcastle/BGs/wall.png" type="Texture" id=7]
+[ext_resource path="res://scenes/winterislandcastle/BGs/wallpaper.png" type="Texture" id=8]
+[ext_resource path="res://scenes/winterislandcastle/BGs/ledge.png" type="Texture" id=9]
+[ext_resource path="res://scenes/winterislandcastle/BGs/ledge2.png" type="Texture" id=10]
+[ext_resource path="res://scenes/winterislandcastle/BGs/ceiling.png" type="Texture" id=11]
+[ext_resource path="res://scenes/winterislandcastle/BGs/walltile.png" type="Texture" id=12]
+[ext_resource path="res://scenes/winterislandcastle/BGs/mirror.png" type="Texture" id=13]
+[ext_resource path="res://scenes/winterislandcastle/BGs/window.png" type="Texture" id=14]
 [ext_resource path="res://scenes/springislandcastle/slopes/slopetile0-31.png" type="Texture" id=15]
 [ext_resource path="res://scenes/springislandcastle/slopes/slopetile0-15.png" type="Texture" id=16]
 [ext_resource path="res://scenes/springislandcastle/slopes/slopetile0-7.png" type="Texture" id=17]
@@ -196,12 +196,12 @@ texture = ExtResource( 10 )
 
 [node name="ceiling" type="Sprite" parent="."]
 
-transform/pos = Vector2( 240, 48 )
+transform/pos = Vector2( 240, 46 )
 texture = ExtResource( 11 )
 
 [node name="ceiling1" type="Sprite" parent="."]
 
-transform/pos = Vector2( 368, 64 )
+transform/pos = Vector2( 366, 64 )
 texture = ExtResource( 12 )
 
 [node name="mirror" type="Sprite" parent="."]
