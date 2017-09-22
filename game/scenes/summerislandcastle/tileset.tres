@@ -2,10 +2,10 @@
 
 [ext_resource path="res://scenes/springislandcastle/BGs/floor.png" type="Texture" id=1]
 [ext_resource path="res://scenes/springislandcastle/BGs/corner.png" type="Texture" id=2]
-[ext_resource path="res://scenes/springislandcastle/BGs/ceiling.png" type="Texture" id=3]
-[ext_resource path="res://scenes/springislandcastle/BGs/walltile.png" type="Texture" id=4]
-[ext_resource path="res://scenes/springislandcastle/BGs/mirror.png" type="Texture" id=5]
-[ext_resource path="res://scenes/springislandcastle/BGs/window.png" type="Texture" id=6]
+[ext_resource path="res://scenes/summerislandcastle/BGs/ceiling.png" type="Texture" id=3]
+[ext_resource path="res://scenes/summerislandcastle/BGs/walltile.png" type="Texture" id=4]
+[ext_resource path="res://scenes/summerislandcastle/BGs/mirror.png" type="Texture" id=5]
+[ext_resource path="res://scenes/summerislandcastle/BGs/window.png" type="Texture" id=6]
 [ext_resource path="res://scenes/springislandcastle/slopes/slopetile0-31.png" type="Texture" id=7]
 [ext_resource path="res://scenes/springislandcastle/slopes/slopetile0-15.png" type="Texture" id=8]
 [ext_resource path="res://scenes/springislandcastle/slopes/slopetile0-7.png" type="Texture" id=9]
@@ -13,10 +13,10 @@
 [ext_resource path="res://scenes/springislandcastle/BGs/wallcorner.png" type="Texture" id=11]
 [ext_resource path="res://scenes/springislandcastle/BGs/walledge.png" type="Texture" id=12]
 [ext_resource path="res://scenes/springislandcastle/BGs/marble.png" type="Texture" id=13]
-[ext_resource path="res://scenes/springislandcastle/BGs/wall.png" type="Texture" id=14]
-[ext_resource path="res://scenes/springislandcastle/BGs/wallpaper.png" type="Texture" id=15]
-[ext_resource path="res://scenes/springislandcastle/BGs/ledge.png" type="Texture" id=16]
-[ext_resource path="res://scenes/springislandcastle/BGs/ledge2.png" type="Texture" id=17]
+[ext_resource path="res://scenes/summerislandcastle/BGs/wall.png" type="Texture" id=14]
+[ext_resource path="res://scenes/summerislandcastle/BGs/wallpaper.png" type="Texture" id=15]
+[ext_resource path="res://scenes/summerislandcastle/BGs/ledge.png" type="Texture" id=16]
+[ext_resource path="res://scenes/summerislandcastle/BGs/ledge2.png" type="Texture" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -28,7 +28,7 @@ extents = Vector2( 16, 16 )
 0/name = "floor"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
+0/modulate = Color( 1, 0.792157, 0.54902, 1 )
 0/region = Rect2( 0, 0, 32, 32 )
 0/occluder_offset = Vector2( 16, 16 )
 0/navigation_offset = Vector2( 16, 16 )
@@ -37,7 +37,7 @@ extents = Vector2( 16, 16 )
 1/name = "floor_corner"
 1/texture = ExtResource( 2 )
 1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
+1/modulate = Color( 1, 0.792157, 0.54902, 1 )
 1/region = Rect2( 0, 0, 32, 32 )
 1/occluder_offset = Vector2( 16, 16 )
 1/navigation_offset = Vector2( 16, 16 )
@@ -46,7 +46,7 @@ extents = Vector2( 16, 16 )
 2/name = "wall_edge"
 2/texture = ExtResource( 10 )
 2/tex_offset = Vector2( 0, 0 )
-2/modulate = Color( 1, 1, 1, 1 )
+2/modulate = Color( 1, 0.792157, 0.54902, 1 )
 2/region = Rect2( 0, 0, 32, 32 )
 2/occluder_offset = Vector2( 16, 16 )
 2/navigation_offset = Vector2( 16, 16 )
@@ -55,7 +55,7 @@ extents = Vector2( 16, 16 )
 3/name = "wall_corner"
 3/texture = ExtResource( 11 )
 3/tex_offset = Vector2( 0, 0 )
-3/modulate = Color( 1, 1, 1, 1 )
+3/modulate = Color( 1, 0.792157, 0.54902, 1 )
 3/region = Rect2( 0, 0, 32, 32 )
 3/occluder_offset = Vector2( 16, 16 )
 3/navigation_offset = Vector2( 16, 16 )
@@ -64,7 +64,7 @@ extents = Vector2( 16, 16 )
 4/name = "wall_line"
 4/texture = ExtResource( 12 )
 4/tex_offset = Vector2( 0, 0 )
-4/modulate = Color( 1, 1, 1, 1 )
+4/modulate = Color( 1, 0.792157, 0.54902, 1 )
 4/region = Rect2( 0, 0, 32, 32 )
 4/occluder_offset = Vector2( 16, 16 )
 4/navigation_offset = Vector2( 16, 16 )
@@ -73,7 +73,7 @@ extents = Vector2( 16, 16 )
 5/name = "wall"
 5/texture = ExtResource( 13 )
 5/tex_offset = Vector2( 0, 0 )
-5/modulate = Color( 1, 1, 1, 1 )
+5/modulate = Color( 1, 0.792157, 0.54902, 1 )
 5/region = Rect2( 0, 0, 32, 32 )
 5/occluder_offset = Vector2( 16, 16 )
 5/navigation_offset = Vector2( 16, 16 )
@@ -154,7 +154,7 @@ extents = Vector2( 16, 16 )
 14/name = "slope0-31"
 14/texture = ExtResource( 7 )
 14/tex_offset = Vector2( 0, 0 )
-14/modulate = Color( 1, 1, 1, 1 )
+14/modulate = Color( 1, 0.792157, 0.54902, 1 )
 14/region = Rect2( 0, 32, 32, 32 )
 14/occluder_offset = Vector2( 16, 16 )
 14/navigation_offset = Vector2( 16, 16 )
@@ -163,7 +163,7 @@ extents = Vector2( 16, 16 )
 15/name = "slope0-15"
 15/texture = ExtResource( 8 )
 15/tex_offset = Vector2( 0, 0 )
-15/modulate = Color( 1, 1, 1, 1 )
+15/modulate = Color( 1, 0.792157, 0.54902, 1 )
 15/region = Rect2( 0, 32, 32, 32 )
 15/occluder_offset = Vector2( 16, 16 )
 15/navigation_offset = Vector2( 16, 16 )
@@ -172,7 +172,7 @@ extents = Vector2( 16, 16 )
 16/name = "slope16-31"
 16/texture = ExtResource( 8 )
 16/tex_offset = Vector2( 0, 0 )
-16/modulate = Color( 1, 1, 1, 1 )
+16/modulate = Color( 1, 0.792157, 0.54902, 1 )
 16/region = Rect2( 32, 32, 32, 32 )
 16/occluder_offset = Vector2( 16, 16 )
 16/navigation_offset = Vector2( 16, 16 )
@@ -181,7 +181,7 @@ extents = Vector2( 16, 16 )
 17/name = "slope0-7"
 17/texture = ExtResource( 9 )
 17/tex_offset = Vector2( 0, 0 )
-17/modulate = Color( 1, 1, 1, 1 )
+17/modulate = Color( 1, 0.792157, 0.54902, 1 )
 17/region = Rect2( 0, 32, 32, 32 )
 17/occluder_offset = Vector2( 16, 16 )
 17/navigation_offset = Vector2( 16, 16 )
@@ -190,7 +190,7 @@ extents = Vector2( 16, 16 )
 18/name = "slope8-15"
 18/texture = ExtResource( 9 )
 18/tex_offset = Vector2( 0, 0 )
-18/modulate = Color( 1, 1, 1, 1 )
+18/modulate = Color( 1, 0.792157, 0.54902, 1 )
 18/region = Rect2( 32, 32, 32, 32 )
 18/occluder_offset = Vector2( 16, 16 )
 18/navigation_offset = Vector2( 16, 16 )
@@ -199,7 +199,7 @@ extents = Vector2( 16, 16 )
 19/name = "slope16-23"
 19/texture = ExtResource( 9 )
 19/tex_offset = Vector2( 0, 0 )
-19/modulate = Color( 1, 1, 1, 1 )
+19/modulate = Color( 1, 0.792157, 0.54902, 1 )
 19/region = Rect2( 64, 32, 32, 32 )
 19/occluder_offset = Vector2( 16, 16 )
 19/navigation_offset = Vector2( 16, 16 )
@@ -208,7 +208,7 @@ extents = Vector2( 16, 16 )
 20/name = "slope24-31"
 20/texture = ExtResource( 9 )
 20/tex_offset = Vector2( 0, 0 )
-20/modulate = Color( 1, 1, 1, 1 )
+20/modulate = Color( 1, 0.792157, 0.54902, 1 )
 20/region = Rect2( 96, 32, 32, 32 )
 20/occluder_offset = Vector2( 16, 16 )
 20/navigation_offset = Vector2( 16, 16 )
@@ -217,7 +217,7 @@ extents = Vector2( 16, 16 )
 21/name = "slopea-b"
 21/texture = ExtResource( 1 )
 21/tex_offset = Vector2( 0, 0 )
-21/modulate = Color( 1, 1, 1, 1 )
+21/modulate = Color( 1, 0.792157, 0.54902, 1 )
 21/region = Rect2( 0, 0, 32, 32 )
 21/occluder_offset = Vector2( 16, 16 )
 21/navigation_offset = Vector2( 16, 16 )

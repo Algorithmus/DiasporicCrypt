@@ -6,14 +6,14 @@
 [ext_resource path="res://scenes/springislandcastle/BGs/wallcorner.png" type="Texture" id=4]
 [ext_resource path="res://scenes/springislandcastle/BGs/walledge.png" type="Texture" id=5]
 [ext_resource path="res://scenes/springislandcastle/BGs/marble.png" type="Texture" id=6]
-[ext_resource path="res://scenes/springislandcastle/BGs/wall.png" type="Texture" id=7]
-[ext_resource path="res://scenes/springislandcastle/BGs/wallpaper.png" type="Texture" id=8]
-[ext_resource path="res://scenes/springislandcastle/BGs/ledge.png" type="Texture" id=9]
-[ext_resource path="res://scenes/springislandcastle/BGs/ledge2.png" type="Texture" id=10]
-[ext_resource path="res://scenes/springislandcastle/BGs/ceiling.png" type="Texture" id=11]
-[ext_resource path="res://scenes/springislandcastle/BGs/walltile.png" type="Texture" id=12]
-[ext_resource path="res://scenes/springislandcastle/BGs/mirror.png" type="Texture" id=13]
-[ext_resource path="res://scenes/springislandcastle/BGs/window.png" type="Texture" id=14]
+[ext_resource path="res://scenes/summerislandcastle/BGs/wall.png" type="Texture" id=7]
+[ext_resource path="res://scenes/summerislandcastle/BGs/wallpaper.png" type="Texture" id=8]
+[ext_resource path="res://scenes/summerislandcastle/BGs/ledge.png" type="Texture" id=9]
+[ext_resource path="res://scenes/summerislandcastle/BGs/ledge2.png" type="Texture" id=10]
+[ext_resource path="res://scenes/summerislandcastle/BGs/ceiling.png" type="Texture" id=11]
+[ext_resource path="res://scenes/summerislandcastle/BGs/walltile.png" type="Texture" id=12]
+[ext_resource path="res://scenes/summerislandcastle/BGs/mirror.png" type="Texture" id=13]
+[ext_resource path="res://scenes/summerislandcastle/BGs/window.png" type="Texture" id=14]
 [ext_resource path="res://scenes/springislandcastle/slopes/slopetile0-31.png" type="Texture" id=15]
 [ext_resource path="res://scenes/springislandcastle/slopes/slopetile0-15.png" type="Texture" id=16]
 [ext_resource path="res://scenes/springislandcastle/slopes/slopetile0-7.png" type="Texture" id=17]
@@ -29,6 +29,7 @@ extents = Vector2( 16, 16 )
 
 editor/display_folded = true
 texture = ExtResource( 1 )
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="floor"]
 
@@ -54,6 +55,7 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 32, 0 )
 texture = ExtResource( 2 )
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="floor_corner"]
 
@@ -79,6 +81,7 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 64, 0 )
 texture = ExtResource( 3 )
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="wall_edge"]
 
@@ -104,6 +107,7 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 96, 0 )
 texture = ExtResource( 4 )
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="wall_corner"]
 
@@ -129,6 +133,7 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 128, 0 )
 texture = ExtResource( 5 )
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="wall_line"]
 
@@ -154,6 +159,7 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 160, 0 )
 texture = ExtResource( 6 )
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="wall"]
 
@@ -218,6 +224,7 @@ texture = ExtResource( 14 )
 
 transform/pos = Vector2( 192, 0 )
 texture = ExtResource( 15 )
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 region = true
 region_rect = Rect2( 0, 32, 32, 32 )
 
@@ -225,6 +232,7 @@ region_rect = Rect2( 0, 32, 32, 32 )
 
 transform/pos = Vector2( 224, 0 )
 texture = ExtResource( 16 )
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 region = true
 region_rect = Rect2( 0, 32, 32, 32 )
 
@@ -232,6 +240,7 @@ region_rect = Rect2( 0, 32, 32, 32 )
 
 transform/pos = Vector2( 256, 0 )
 texture = ExtResource( 16 )
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 region = true
 region_rect = Rect2( 32, 32, 32, 32 )
 
@@ -239,6 +248,7 @@ region_rect = Rect2( 32, 32, 32, 32 )
 
 transform/pos = Vector2( 288, 0 )
 texture = ExtResource( 17 )
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 region = true
 region_rect = Rect2( 0, 32, 32, 32 )
 
@@ -246,6 +256,7 @@ region_rect = Rect2( 0, 32, 32, 32 )
 
 transform/pos = Vector2( 320, 0 )
 texture = ExtResource( 17 )
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 region = true
 region_rect = Rect2( 32, 32, 32, 32 )
 
@@ -253,6 +264,7 @@ region_rect = Rect2( 32, 32, 32, 32 )
 
 transform/pos = Vector2( 352, 0 )
 texture = ExtResource( 17 )
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 region = true
 region_rect = Rect2( 64, 32, 32, 32 )
 
@@ -260,6 +272,7 @@ region_rect = Rect2( 64, 32, 32, 32 )
 
 transform/pos = Vector2( 384, 0 )
 texture = ExtResource( 17 )
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 region = true
 region_rect = Rect2( 96, 32, 32, 32 )
 
@@ -267,6 +280,7 @@ region_rect = Rect2( 96, 32, 32, 32 )
 
 transform/pos = Vector2( 416, 0 )
 texture = ExtResource( 1 )
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 region_rect = Rect2( 96, 32, 32, 32 )
 
 

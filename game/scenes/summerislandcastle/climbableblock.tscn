@@ -19,12 +19,15 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 0.0
 bounce = 0.0
-__meta__ = { "__editor_plugin_screen__":"Script" }
+__meta__ = {
+"__editor_plugin_screen__": "Script"
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 
 texture = ExtResource( 1 )
 flip_h = true
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 
 [node name="climbable" type="CollisionShape2D" parent="."]
 

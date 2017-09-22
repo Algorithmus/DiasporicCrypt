@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=1]
 
-[ext_resource path="res://scenes/dungeon/platforms/floor.png" type="Texture" id=1]
+[ext_resource path="res://scenes/summerislandcastle/BGs/oneway.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -9,7 +9,9 @@ extents = Vector2( 16, 16 )
 
 [node name="One-WayPlatform" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 
@@ -21,6 +23,7 @@ collision/margin = 0.08
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]
 
 texture = ExtResource( 1 )
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 
 [node name="oneway" type="Area2D" parent="KinematicBody2D"]
 
