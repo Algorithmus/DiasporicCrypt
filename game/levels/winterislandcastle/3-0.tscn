@@ -2,8 +2,8 @@
 
 [ext_resource path="res://scenes/winterislandcastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/winterislandcastle/climbableblock.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/dungeon/onewayplatform.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/dungeon/platforms/flooredge2.png" type="Texture" id=4]
+[ext_resource path="res://scenes/winterislandcastle/onewayplatform.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/summerislandcastle/BGs/oneway-edge.png" type="Texture" id=4]
 [ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=7]
@@ -55,39 +55,37 @@ flip_h = false
 
 editor/display_folded = true
 
-[node name="One-WayPlatform" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="One-WayPlatform 2" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 transform/pos = Vector2( -112, -432 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform/KinematicBody2D"]
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform 2/KinematicBody2D"]
 
 region = true
 region_rect = Rect2( 0, 0, 192, 32 )
 
-[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform/KinematicBody2D"]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform 2/KinematicBody2D"]
 
 transform/scale = Vector2( 6, 1 )
 
-[node name="One-WayPlatform1" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="One-WayPlatform3" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 0, -432 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform1/KinematicBody2D"]
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform3/KinematicBody2D"]
 
 texture = ExtResource( 4 )
-offset = Vector2( 3, 0 )
 
-[node name="One-WayPlatform2" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="One-WayPlatform4" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 transform/pos = Vector2( -224, -432 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform2/KinematicBody2D"]
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform4/KinematicBody2D"]
 
 texture = ExtResource( 4 )
-offset = Vector2( -3, 0 )
 flip_h = true
 
 [node name="LadderGroup" type="Node2D" parent="tilemap"]
@@ -180,9 +178,9 @@ transform/pos = Vector2( 272, 368 )
 
 
 [editable path="tilemap/ClimbableGroup/ClimbableBlock1"]
-[editable path="tilemap/One-WayPlatformGroup/One-WayPlatform"]
-[editable path="tilemap/One-WayPlatformGroup/One-WayPlatform1"]
-[editable path="tilemap/One-WayPlatformGroup/One-WayPlatform2"]
+[editable path="tilemap/One-WayPlatformGroup/One-WayPlatform 2"]
+[editable path="tilemap/One-WayPlatformGroup/One-WayPlatform3"]
+[editable path="tilemap/One-WayPlatformGroup/One-WayPlatform4"]
 [editable path="tilemap/LadderGroup/TestLadder1"]
 [editable path="tilemap/TeleportGroup/Teleport"]
 [editable path="tilemap/TeleportGroup/Teleport1"]

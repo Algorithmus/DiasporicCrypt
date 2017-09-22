@@ -7,8 +7,8 @@
 [ext_resource path="res://scenes/winterislandcastle/slopes/slope31-24.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/dungeon/slopes/slopea-b.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/winterislandcastle/climbableblock.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/dungeon/onewayplatform.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/dungeon/platforms/flooredge2.png" type="Texture" id=9]
+[ext_resource path="res://scenes/winterislandcastle/onewayplatform.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/summerislandcastle/BGs/oneway-edge.png" type="Texture" id=9]
 [ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/common/damagables/skeleton/bloodskeleton.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/common/damagables/statues/bust.tscn" type="PackedScene" id=12]
@@ -40,6 +40,7 @@ tile_data = IntArray( -851981, 1610612737, -851980, 1073741824, -851979, 1073741
 
 [node name="SlopeGroup" type="Node2D" parent="tilemap"]
 
+editor/display_folded = true
 transform/pos = Vector2( 0, -2 )
 
 [node name="Slope7-0" parent="tilemap/SlopeGroup" instance=ExtResource( 2 )]
@@ -88,6 +89,8 @@ transform/pos = Vector2( 272, -174 )
 
 [node name="ClimbableGroup" type="Node2D" parent="tilemap"]
 
+editor/display_folded = true
+
 [node name="ClimbableBlock" parent="tilemap/ClimbableGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 80, -144 )
@@ -103,40 +106,40 @@ flip_h = false
 
 [node name="One-WayPlatformGroup" type="Node2D" parent="tilemap"]
 
-[node name="One-WayPlatform2" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 8 )]
+editor/display_folded = true
+
+[node name="One-WayPlatform" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 8 )]
 
 editor/display_folded = true
 transform/pos = Vector2( -144, -208 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform2/KinematicBody2D"]
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform/KinematicBody2D"]
 
 region = true
 region_rect = Rect2( 0, 0, 160, 32 )
 
-[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform2/KinematicBody2D"]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform/KinematicBody2D"]
 
 transform/scale = Vector2( 5, 1 )
 
-[node name="One-WayPlatform3" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 8 )]
-
-editor/display_folded = true
-transform/pos = Vector2( -48, -208 )
-
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform3/KinematicBody2D"]
-
-texture = ExtResource( 9 )
-offset = Vector2( 3, 0 )
-
-[node name="One-WayPlatform4" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 8 )]
+[node name="One-WayPlatform1" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 8 )]
 
 editor/display_folded = true
 transform/pos = Vector2( -240, -208 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform4/KinematicBody2D"]
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform1/KinematicBody2D"]
 
 texture = ExtResource( 9 )
-offset = Vector2( -3, 0 )
 flip_h = true
+
+[node name="One-WayPlatform2" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 8 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -48, -208 )
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform2/KinematicBody2D"]
+
+texture = ExtResource( 9 )
 
 [node name="PotGroup" type="Node2D" parent="tilemap"]
 
@@ -188,7 +191,7 @@ transform/pos = Vector2( 432, 400 )
 
 
 [editable path="tilemap/ClimbableGroup/ClimbableBlock1"]
+[editable path="tilemap/One-WayPlatformGroup/One-WayPlatform"]
+[editable path="tilemap/One-WayPlatformGroup/One-WayPlatform1"]
 [editable path="tilemap/One-WayPlatformGroup/One-WayPlatform2"]
-[editable path="tilemap/One-WayPlatformGroup/One-WayPlatform3"]
-[editable path="tilemap/One-WayPlatformGroup/One-WayPlatform4"]
 [editable path="tilemap/TeleportGroup/Teleport"]
