@@ -87,7 +87,6 @@ func jumping_allowed():
 func check_jump():
 	.check_jump()
 	if (jumpPressed):
-		print("clear jump requested")
 		jump_requested = false
 		wall_hanging = false
 		current_wall_hanging_delay += 1

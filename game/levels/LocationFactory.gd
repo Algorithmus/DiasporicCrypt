@@ -80,6 +80,7 @@ func _init():
 	holyruins.teleportto = Vector2(-16, 128)
 	holyruins.id = "LVL_HOLYRUINS"
 	holyruins.bgm = preload("res://levels/common/BGM2.ogg")
+	holyruins.tiles = 121446 - 117
 	locations[holyruins.id] = holyruins
 	
 	var crypt = locationclass.new()

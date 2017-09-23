@@ -7,6 +7,7 @@ var player
 
 func check_activation():
 	var active = false
+	var check_switches = false
 	if (player == null):
 		player = get_tree().get_root().get_node("world/playercontainer/player")
 	if (is_toggle):
@@ -18,8 +19,13 @@ func check_activation():
 			is_on = !is_on
 			is_echo = true
 		active = true
+		check_switches = true
 	else:
 		is_echo = false
-	for j in switches:
-		j.set("is_on", is_on)
+	if (check_switches):
+		for j in switches:
+			j.set("checked", true)
+			j.set("is_on", is_on)
+			if (!is_on && j.get("once")):
+				j.set("activated", true)
 	return active

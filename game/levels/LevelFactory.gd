@@ -33,8 +33,7 @@ func _init():
 	summerislandcastle.description = "LVL_SUMMERISLANDCASTLE_DESCRIPTION"
 	summerislandcastle.reward = 10000
 	summerislandcastle.item = "ITEM_STYXBROOCH"
-	summerislandcastle.require = ["LVL_MAUSOLEUM"]
-	#summerislandcastle.require = ["LVL_HOLYRUINS", "LVL_MAUSOLEUM"]
+	summerislandcastle.require = ["LVL_HOLYRUINS", "LVL_MAUSOLEUM"]
 	summerislandcastle.location = locationfactory.locations["LVL_SUMMERISLANDCASTLE"]
 	levels[summerislandcastle.title] = summerislandcastle
 
@@ -175,7 +174,7 @@ func _init():
 	holyruins.description = "LVL_HOLYRUINS_DESCRIPTION"
 	holyruins.location = locationfactory.locations["LVL_HOLYRUINS"]
 	holyruins.reward = 20000
-	#holyruins.require = ["LVL_ICECAVE", "LVL_AQUADUCT"]
+	holyruins.require = ["LVL_ICECAVE", "LVL_AQUADUCT"]
 	levels[holyruins.title] = holyruins
 	
 	var capecrypt = levelclass.new()
@@ -185,8 +184,7 @@ func _init():
 	capecrypt.description = "LVL_CAPECRYPT_DESCRIPTION"
 	capecrypt.location = locationfactory.locations["LVL_CAPECRYPT"]
 	capecrypt.reward = 50000
-	#capecrypt.require = ["LVL_HOLYRUINS", "LVL_MAUSOLEUM"]
-	capecrypt.require = ["LVL_MAUSOLEUM"]
+	capecrypt.require = ["LVL_HOLYRUINS", "LVL_MAUSOLEUM"]
 	levels[capecrypt.title] = capecrypt
 	
 	var start = levelclass.new()

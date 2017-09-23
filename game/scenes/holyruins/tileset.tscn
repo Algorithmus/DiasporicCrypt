@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://scenes/holyruins/BGs/floor.png" type="Texture" id=1]
 [ext_resource path="res://scenes/holyruins/BGs/corner.png" type="Texture" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://scenes/holyruins/BGs/platform-edge.png" type="Texture" id=4]
 [ext_resource path="res://scenes/holyruins/BGs/pillar.png" type="Texture" id=5]
 [ext_resource path="res://scenes/holyruins/BGs/wall.png" type="Texture" id=6]
+[ext_resource path="res://scenes/holyruins/slopes/slopetile0-31.png" type="Texture" id=7]
+[ext_resource path="res://scenes/holyruins/slopes/slopetile0-15.png" type="Texture" id=8]
+[ext_resource path="res://scenes/holyruins/slopes/slopetile0-7.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -16,6 +19,7 @@ extents = Vector2( 16, 16 )
 
 [node name="floor" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 16, 0 )
 texture = ExtResource( 1 )
 
@@ -40,6 +44,7 @@ _update_shape_index = 0
 
 [node name="corner" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 48, 0 )
 texture = ExtResource( 2 )
 
@@ -64,6 +69,7 @@ _update_shape_index = 0
 
 [node name="platform" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 80, 0 )
 texture = ExtResource( 3 )
 
@@ -88,6 +94,7 @@ _update_shape_index = 0
 
 [node name="platform_corner" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 112, 0 )
 texture = ExtResource( 4 )
 
@@ -112,6 +119,7 @@ _update_shape_index = 0
 
 [node name="pillar" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 144, 0 )
 texture = ExtResource( 5 )
 
@@ -138,5 +146,39 @@ _update_shape_index = 0
 
 transform/pos = Vector2( 16, 32 )
 texture = ExtResource( 6 )
+
+[node name="slope0-31" type="Sprite" parent="."]
+
+transform/pos = Vector2( 176, 0 )
+texture = ExtResource( 7 )
+region = true
+region_rect = Rect2( 0, 32, 32, 32 )
+
+[node name="slope16-31" type="Sprite" parent="."]
+
+transform/pos = Vector2( 208, 0 )
+texture = ExtResource( 8 )
+region = true
+region_rect = Rect2( 32, 32, 32, 32 )
+
+[node name="slope16-23" type="Sprite" parent="."]
+
+transform/pos = Vector2( 240, 0 )
+texture = ExtResource( 9 )
+region = true
+region_rect = Rect2( 64, 32, 32, 32 )
+
+[node name="slope24-31" type="Sprite" parent="."]
+
+transform/pos = Vector2( 272, 0 )
+texture = ExtResource( 9 )
+region = true
+region_rect = Rect2( 96, 32, 32, 32 )
+
+[node name="slopea-b" type="Sprite" parent="."]
+
+transform/pos = Vector2( 304, 0 )
+texture = ExtResource( 1 )
+region_rect = Rect2( 96, 32, 32, 32 )
 
 

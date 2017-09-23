@@ -18,11 +18,12 @@ var switches = []
 var checked = false # Don't process if a related active switch has already been processed
 var tilemap
 var onscreen = false
-var default_on = is_on
+var default_on
 
 var targetspy = preload("res://scenes/common/TargetSpy.gd").new()
 
 func _ready():
+	default_on = is_on
 	tilemap = get_parent().get_parent()
 	var camera = get_tree().get_root().get_node("world/playercontainer/player/Camera2D")
 	targetspy.set("camera", camera)
