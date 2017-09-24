@@ -22,7 +22,7 @@ func _init():
 	springislandcastle.description = "LVL_SPRINGISLANDCASTLE_DESCRIPTION"
 	springislandcastle.reward = 10000
 	springislandcastle.item = "ITEM_STYXMIRROR"
-	springislandcastle.require = ["LVL_CAPECRYPT"]
+	springislandcastle.require = ["LVL_CAPECRYPT", "LVL_SUMMERISLANDCASTLE"]
 	springislandcastle.location = locationfactory.locations["LVL_SPRINGISLANDCASTLE"]
 	levels[springislandcastle.title] = springislandcastle
 	
@@ -44,7 +44,7 @@ func _init():
 	winterislandcastle.description = "LVL_WINTERISLANDCASTLE_DESCRIPTION"
 	winterislandcastle.reward = 10000
 	winterislandcastle.item = "ITEM_STYXTOME"
-	winterislandcastle.require = ["LVL_LAVACAVE"]
+	winterislandcastle.require = ["LVL_LAVACAVE", "LVL_AQUADUCT2"]
 	winterislandcastle.location = locationfactory.locations["LVL_WINTERISLANDCASTLE"]
 	levels[winterislandcastle.title] = winterislandcastle
 	
