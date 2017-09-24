@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=1]
+[gd_scene load_steps=54 format=1]
 
 [ext_resource path="res://scenes/global.gd" type="Script" id=1]
 [ext_resource path="res://gui/theme/slidergrabber.png" type="Texture" id=2]
@@ -12,20 +12,21 @@
 [ext_resource path="res://gui/global/adela-select.png" type="Texture" id=10]
 [ext_resource path="res://gui/global/logo.png" type="Texture" id=11]
 [ext_resource path="res://gui/menu/textitem.tscn" type="PackedScene" id=12]
-[ext_resource path="res://gui/fonts/S-12-dialog.fnt" type="BitmapFont" id=13]
-[ext_resource path="res://gui/fonts/L-24.fnt" type="BitmapFont" id=14]
-[ext_resource path="res://gui/fonts/L-24-Keyboard-outline.fnt" type="BitmapFont" id=15]
-[ext_resource path="res://gui/global/selectbutton.gd" type="Script" id=16]
-[ext_resource path="res://players/friederich/friederich.tscn" type="PackedScene" id=17]
-[ext_resource path="res://players/adela/adela.tscn" type="PackedScene" id=18]
-[ext_resource path="res://gui/menu/languageitem.tscn" type="PackedScene" id=19]
-[ext_resource path="res://gui/menu/settings.tscn" type="PackedScene" id=20]
-[ext_resource path="res://gui/menu/keylabel.tscn" type="PackedScene" id=21]
-[ext_resource path="res://gui/loading/loading.tscn" type="PackedScene" id=22]
-[ext_resource path="res://gui/confirm.wav" type="Sample" id=23]
-[ext_resource path="res://gui/cursor.wav" type="Sample" id=24]
-[ext_resource path="res://gui/sequences/demonic.wav" type="Sample" id=25]
-[ext_resource path="res://gui/global/global.ogg" type="AudioStream" id=26]
+[ext_resource path="res://gui/menu/icons/scroll.png" type="Texture" id=13]
+[ext_resource path="res://gui/fonts/S-12-dialog.fnt" type="BitmapFont" id=14]
+[ext_resource path="res://gui/fonts/L-24.fnt" type="BitmapFont" id=15]
+[ext_resource path="res://gui/fonts/L-24-Keyboard-outline.fnt" type="BitmapFont" id=16]
+[ext_resource path="res://gui/global/selectbutton.gd" type="Script" id=17]
+[ext_resource path="res://players/friederich/friederich.tscn" type="PackedScene" id=18]
+[ext_resource path="res://players/adela/adela.tscn" type="PackedScene" id=19]
+[ext_resource path="res://gui/menu/languageitem.tscn" type="PackedScene" id=20]
+[ext_resource path="res://gui/menu/settings.tscn" type="PackedScene" id=21]
+[ext_resource path="res://gui/menu/keylabel.tscn" type="PackedScene" id=22]
+[ext_resource path="res://gui/loading/loading.tscn" type="PackedScene" id=23]
+[ext_resource path="res://gui/confirm.wav" type="Sample" id=24]
+[ext_resource path="res://gui/cursor.wav" type="Sample" id=25]
+[ext_resource path="res://gui/sequences/demonic.wav" type="Sample" id=26]
+[ext_resource path="res://gui/global/global.ogg" type="AudioStream" id=27]
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -440,19 +441,19 @@ samples/confirm = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 23 )
+"sample": ExtResource( 24 )
 }
 samples/cursor = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 24 )
+"sample": ExtResource( 25 )
 }
 samples/demonic = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 25 )
+"sample": ExtResource( 26 )
 }
 
 [node name="Global" type="Node2D"]
@@ -514,6 +515,7 @@ texture = ExtResource( 11 )
 
 [node name="main" type="Control" parent="CanvasLayer/menu"]
 
+editor/display_folded = true
 visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -603,46 +605,12 @@ focus_neighbour/left = NodePath("../options/quitgame")
 focus_neighbour/top = NodePath("../options/quitgame")
 focus_neighbour/right = NodePath(".")
 focus_neighbour/bottom = NodePath(".")
-margin/left = 714.0
-margin/top = 566.0
-margin/right = 803.0
-margin/bottom = 598.0
-text = "i"
-
-[node name="circle" type="Polygon2D" parent="CanvasLayer/menu/main/info"]
-
-visibility/behind_parent = true
-transform/pos = Vector2( 8, 12 )
-transform/scale = Vector2( 9, 9 )
-polygon = Vector2Array(  )
-uv = Vector2Array(  )
-color = Color( 1, 1, 1, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 3.0
-
-[node name="invert_circle" type="Polygon2D" parent="CanvasLayer/menu/main/info"]
-
-visibility/behind_parent = true
-visibility/blend_mode = 2
-transform/pos = Vector2( 8, 12 )
-transform/scale = Vector2( 6, 6 )
-polygon = Vector2Array(  )
-uv = Vector2Array(  )
-color = Color( 1, 1, 1, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 3.0
+margin/left = 723.0
+margin/top = 561.0
+margin/right = 800.0
+margin/bottom = 593.0
+text = ""
+icon = ExtResource( 13 )
 
 [node name="version" type="Label" parent="CanvasLayer/menu/main"]
 
@@ -651,11 +619,11 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 720.0
-margin/top = 569.0
+margin/top = 568.0
 margin/right = 784.0
-margin/bottom = 592.0
-custom_fonts/font = ExtResource( 13 )
-text = "v0.6"
+margin/bottom = 591.0
+custom_fonts/font = ExtResource( 14 )
+text = "v0.7"
 align = 2
 percent_visible = 1.0
 lines_skipped = 0
@@ -686,7 +654,7 @@ margin/left = -200.0
 margin/top = 16.0
 margin/right = -560.0
 margin/bottom = 47.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 15 )
 text = "KEY_CHARSELECT"
 align = 1
 uppercase = true
@@ -726,7 +694,7 @@ margin/left = 97.0
 margin/top = 0.0
 margin/right = 121.0
 margin/bottom = 31.0
-custom_fonts/font = ExtResource( 15 )
+custom_fonts/font = ExtResource( 16 )
 text = "Z"
 percent_visible = 1.0
 lines_skipped = 0
@@ -753,7 +721,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 flat = false
-script/script = ExtResource( 16 )
+script/script = ExtResource( 17 )
 
 [node name="title" type="Label" parent="CanvasLayer/menu/newgame/friederich"]
 
@@ -768,7 +736,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = -444.0
 margin/bottom = -552.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 15 )
 text = "Friederich"
 align = 1
 valign = 2
@@ -776,7 +744,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="sprite" parent="CanvasLayer/menu/newgame/friederich" instance=ExtResource( 17 )]
+[node name="sprite" parent="CanvasLayer/menu/newgame/friederich" instance=ExtResource( 18 )]
 
 transform/pos = Vector2( 200, 460 )
 script/script = null
@@ -802,7 +770,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 flat = true
-script/script = ExtResource( 16 )
+script/script = ExtResource( 17 )
 
 [node name="title" type="Label" parent="CanvasLayer/menu/newgame/adela"]
 
@@ -817,7 +785,7 @@ margin/left = 6.0
 margin/top = 0.0
 margin/right = 33.4167
 margin/bottom = -552.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 15 )
 text = "Adela"
 align = 1
 valign = 2
@@ -825,7 +793,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="sprite" parent="CanvasLayer/menu/newgame/adela" instance=ExtResource( 18 )]
+[node name="sprite" parent="CanvasLayer/menu/newgame/adela" instance=ExtResource( 19 )]
 
 transform/pos = Vector2( 201, 460 )
 script/script = null
@@ -871,10 +839,10 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 97.0
-margin/top = 0.0
+margin/top = 4.0
 margin/right = 121.0
-margin/bottom = 31.0
-custom_fonts/font = ExtResource( 15 )
+margin/bottom = 28.0
+custom_fonts/font = ExtResource( 16 )
 text = "Z"
 percent_visible = 1.0
 lines_skipped = 0
@@ -1643,7 +1611,7 @@ margin/left = 56.0
 margin/top = 12.0
 margin/right = 260.0
 margin/bottom = 43.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 15 )
 text = "KEY_SETTINGS"
 percent_visible = 1.0
 lines_skipped = 0
@@ -1657,7 +1625,7 @@ transform/scale = Vector2( 458, 1 )
 texture = SubResource( 22 )
 centered = false
 
-[node name="language" parent="CanvasLayer/menu/settingsmenu" instance=ExtResource( 19 )]
+[node name="language" parent="CanvasLayer/menu/settingsmenu" instance=ExtResource( 20 )]
 
 focus_neighbour/left = NodePath(".")
 focus_neighbour/top = NodePath("../settings/save")
@@ -1666,7 +1634,7 @@ margin/top = 64.0
 margin/right = 234.0
 margin/bottom = 96.0
 
-[node name="settings" parent="CanvasLayer/menu/settingsmenu" instance=ExtResource( 20 )]
+[node name="settings" parent="CanvasLayer/menu/settingsmenu" instance=ExtResource( 21 )]
 
 editor/display_folded = true
 margin/left = 32.0
@@ -1686,7 +1654,7 @@ focus_neighbour/bottom = NodePath("../../language")
 
 focus_neighbour/bottom = NodePath("../../language")
 
-[node name="back" parent="CanvasLayer/menu/settingsmenu" instance=ExtResource( 21 )]
+[node name="back" parent="CanvasLayer/menu/settingsmenu" instance=ExtResource( 22 )]
 
 editor/display_folded = true
 margin/left = 503.0
@@ -1710,7 +1678,7 @@ margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 40.0
 
-[node name="loading" parent="CanvasLayer/menu" instance=ExtResource( 22 )]
+[node name="loading" parent="CanvasLayer/menu" instance=ExtResource( 23 )]
 
 process/pause_mode = 2
 visibility/visible = false
@@ -1753,7 +1721,7 @@ margin/left = 0.0
 margin/top = 177.0
 margin/right = 800.0
 margin/bottom = 304.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 15 )
 text = "KEY_QUITMENU_WARN"
 align = 1
 valign = 1
@@ -1825,7 +1793,7 @@ default/chorus_send = 0.0
 
 [node name="music" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 26 )
+stream/stream = ExtResource( 27 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0

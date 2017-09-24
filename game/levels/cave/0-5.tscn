@@ -6,7 +6,7 @@
 [ext_resource path="res://scenes/cave/BGs/cornerR.png" type="Texture" id=4]
 [ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/common/damagables/skeleton/skeleton.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/cave/BGs/ledgeR.png" type="Texture" id=7]
+[ext_resource path="res://scenes/cave/BGs/floor.png" type="Texture" id=7]
 [ext_resource path="res://scenes/common/BaseWatcher.gd" type="Script" id=8]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=9]
 
@@ -99,11 +99,8 @@ transform/pos = Vector2( -32, -304 )
 
 [node name="PlatformGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
-
 [node name="StaticBody2D" type="StaticBody2D" parent="tilemap/PlatformGroup"]
 
-editor/display_folded = true
 transform/pos = Vector2( 16, -224 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )

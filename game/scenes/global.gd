@@ -20,6 +20,7 @@ var sound
 var loading
 var settings
 var info
+var licenses
 var logo
 var main
 var options
@@ -51,6 +52,8 @@ func _ready():
 	settings = get_node("CanvasLayer/menu/settingsmenu")
 	settings.get_node("settings").set("is_global", true)
 	info = get_node("CanvasLayer/menu/info")
+	licenses = info.get_node("container").get_bbcode()
+	info.get_node("container").set_bbcode(parse_info() + licenses)
 	animationplayer = get_node("AnimationPlayer")
 	friederich = get_node("CanvasLayer/menu/BG/friederich")
 	adela = get_node("CanvasLayer/menu/BG/adela")
@@ -117,13 +120,8 @@ func _ready():
 	settings.get_node("settings").reset()
 	settings.get_node("settings").update_container()
 	var info_container = info.get_node("container")
-	var circle_coordinates = []
-	for i in range(0, 180):
-		circle_coordinates.append(Vector2(sin(i * PI / 90), cos(i * PI / 90)))
 	var info_button = get_node("CanvasLayer/menu/main/info")
-	info_button.get_node("circle").set_polygon(circle_coordinates)
-	info_button.get_node("invert_circle").set_polygon(circle_coordinates)
-	if (!global_found):
+	if (!global_found || Globals.get("demomode")):
 		# no global config file found
 		# do firstrun stuff
 		settings.get_node("back").hide()
@@ -301,7 +299,7 @@ func translate():
 	var settings_input_ref = settings_ref.get_node("settings/inputs")
 	var info_ref = reference.get_node("CanvasLayer/menu/info")
 	info.get_node("backbutton/back").set_text(tr(info_ref.get_node("backbutton/back").get_text()))
-	info.get_node("container").set_bbcode(parse_info() + info_ref.get_node("container").get_bbcode())
+	info.get_node("container").set_bbcode(parse_info() + licenses)
 	size = settings_input.get_child_count()
 	for i in range(0, size):
 		var input = settings_input.get_child(i)
