@@ -12,7 +12,7 @@ var listcontainer
 var pinclass = preload("res://gui/worldmap/pin.tscn")
 var listitemclass = preload("res://gui/worldmap/listitem.tscn")
 var levelfactory = preload("res://levels/LevelFactory.gd").new()
-var keyboardmap = preload("res://gui/KeyboardCharacters.gd").new()
+var keyboardmap = preload("res://gui/InputCharacters.gd").new()
 const RED = Color(146/255.0, 0, 0)
 var filteractive = false
 var leveldisplay = false

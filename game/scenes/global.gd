@@ -33,6 +33,135 @@ var loadclass = preload("res://gui/menu/loadsave.tscn")
 var selfclass = preload("res://scenes/global.tscn")
 var currentline = 0
 
+const gamepad_names = {
+"Xbox Gamepad (userspace driver)": "xbox",
+"RetroUSB.com RetroPad": "nintendo",
+"RetroUSB.com Super RetroPort": "nintendo",
+"hori": "playstation",
+"HORI CO.,LTD. FIGHTING STICK 3": "playstation",
+"HORI CO.,LTD. REAL ARCADE Pro.V3": "playstation",
+"HORI Gem Pad 3": "playstation",
+"Twin USB PS2 Adapter": "playstation",
+"NEXT Classic USB Game Controller": "nintendo",
+"Sony PS2 pad with SmartJoy adapter": "playstation",
+"GameCube {WiseGroup USB box}": "nintendo",
+"Gravis GamePad Pro USB": "nintendo",
+"GameCube {HuiJia USB box}": "nintendo",
+"Mad Catz Wired Xbox 360 Controller": "xbox",
+"PS3 Controller": "playstation",
+"Sony DualShock 4 Wireless Adaptor": "playstation",
+"Sony DualShock 4": "playstation",
+"Sony Computer Entertainment Wireless Controller": "playstation",
+"Sony DualShock 4 V2": "playstation",
+"Thrustmaster Firestorm Dual Power": "generic",
+"Thrustmaster Run N Drive  Wireless": "playstation",
+"Thrustmaster Run N Drive Wireless PS3": "playstation",
+"Thrustmaster Dual Analog 4": "generic",
+"Thrustmaster 2 in 1 DT": "playstation",
+"Thrustmaster Dual Trigger 3-in-1": "playstation",
+"X360 Wireless Controller": "xbox",
+"Microsoft X-Box pad (Japan)": "xbox",
+"Microsoft X-Box pad v2 (US)": "xbox",
+"Microsoft X-Box 360 pad": "xbox",
+"X360 Controller": "xbox",
+"SpeedLink XEOX Pro Analog Gamepad pad": "playstation",
+"Speedlink TORID Wireless Gamepad": "xbox",
+"Microsoft X-Box One pad": "xbox",
+"Microsoft X-Box One pad v2": "xbox",
+"Super Joy Box 5 Pro": "playstation",
+"Logitech WingMan Cordless RumblePad": "xbox",
+"Logitech Logitech Dual Action": "generic",
+"Logitech F310 Gamepad (DInput)": "xbox",
+"Logitech Logitech RumblePad 2 USB": "generic",
+"Logitech Cordless RumblePad 2": "generic",
+"Logitech F710 Gamepad (DInput)": "xbox",
+"Logitech F310 Gamepad (XInput)": "xbox",
+"Logitech F510 Gamepad (XInput)": "xbox",
+"Logitech F710 Gamepad (XInput)": "xbox",
+"JC-U3613M - DirectInput Mode": "xbox",
+"Logic3 Controller": "generic",
+"Generic X-Box pad": "xbox",
+"Rock Candy Gamepad for PS3": "playstation",
+"PDP Rock Candy Wireless Controller for PS3": "playstation",
+"EA Sports PS3 Controller for": "playstation",
+"Afterglow Wired Controller for Xbox One": "xbox",
+"Rock Candy Wired Controller for XBox One": "xbox",
+"DragonRise Inc. Generic USB Joystick": "generic",
+"Retrolink Classic Controller": "nintendo",
+"RetroLink Saturn Classic Controller": "nintendo",
+"iBuffalo USB 2-axis 8-button Gamepad": "nintendo",
+"Razer Onza Tournament": "xbox",
+"Razer Onza Classic Edition": "xbox",
+"GreenAsia Inc. USB Joystick": "playstation",
+"Saitek P880": "generic",
+"Saitek P2900 Wireless Pad": "generic",
+"Saitek PLC Saitek P3200 Rumble Pad": "xbox",
+"Saitek Cyborg V.1 Game Pad": "generic",
+"Hori Pad EX Turbo 2": "xbox",
+"Mad Catz XBox 360 Controller": "xbox",
+"Mad Catz Fightpad SFxT": "xbox",
+"Jess Technology USB Game Controller": "generic",
+"Tomee SNES USB Controller": "nintendo",
+"HJC Game GAMEPAD": "xbox",
+"Toodles 2008 Chimp PC/PS3": "playstation",
+"HitBox (PS3/PC) Analog Mode": "playstation",
+"Valve Streaming Gamepad": "xbox",
+"Goodbetterbest Ltd USB Controller": "generic",
+"InterAct GoPad I-73000 (Fighting Game Layout)": "nintendo",
+"3dfx InterAct HammerHead FX": "nintendo",
+"Nintendo Wiimote": "nintendo",
+"8Bitdo SFC30 GamePad": "nintendo",
+"OUYA Game Controller": "generic",
+"Mad Catz C.T.R.L.R ": "xbox",
+"GameStop Gamepad": "generic",
+"PS3 Controller (Bluetooth)": "playstation",
+"PS4 Controller (Bluetooth)": "playstation",
+"Sony DualShock 4 V2 BT": "playstation",
+"Nintendo Wii U Pro Controller": "nintendo",
+"8Bitdo Zero GamePad": "xbox",
+"VR-BOX": "generic",
+"Moga Pro": "xbox",
+"Piranha xtreme": "generic",
+"Gamestop BB-070 X360 Controller": "xbox",
+"Sega Saturn USB Gamepad": "nintendo",
+"Sega Saturn": "nintendo",
+"G-Shark GP-702": "generic",
+"Mayflash WiiU Pro Game Controller Adapter (DInput)": "nintendo",
+"Xbox Wireless Controller": "xbox",
+"Thrustmaster Dual Analog 3.2": "xbox",
+"SFC30 Joystick": "nintendo",
+"Mayflash Wii Classic Controller": "nintendo",
+"HORIPAD FPS PLUS 4": "playstation",
+"Wii U Pro Controller": "nintendo",
+"Wii Remote": "nintendo",
+"SVEN X-PAD": "playstation",
+"Gembird JPD-DualForce": "generic",
+"PowerA Pro Ex": "playstation",
+"Saitek P2500": "generic",
+"Mayflash Wiimote PC Adapter": "nintendo",
+"Acme": "generic",
+"Multilaser JS071 USB": "playstation",
+"Generic Speedlink": "playstation",
+"Mayflash GameCube Controller Adapter": "nintendo",
+"NGS Phantom": "generic",
+"Logitech RumblePad 2 USB": "generic",
+"Dual Trigger 3-in-1": "playstation",
+"NYKO AIRFLO": "generic",
+"Ipega PG-9023": "xbox",
+"OUYA Controller": "generic",
+"Afterglow PS3 Controller": "playstation",
+"EXEQ RF USB Gamepad 8206": "xbox",
+"Saitek P480 Rumble Pad": "playstation",
+"GamePad Pro USB": "nintendo",
+"PS3 DualShock": "playstation",
+"8Bitdo NES30 PRO Wireless": "nintendo",
+"PS2 USB": "playstation",
+"PS1 USB": "playstation",
+"HORIPAD 4": "playstation",
+"Hatsune Miku Sho Controller": "playstation",
+"8Bitdo NES30 Pro USB": "nintendo",
+}
+
 func _ready():
 	# Empty built in inputs are not properly removed
 	# Delete and re add the inputs to workaround this issue for now
@@ -59,14 +188,35 @@ func _ready():
 	adela = get_node("CanvasLayer/menu/BG/adela")
 	quitwarn = get_node("CanvasLayer/menu/quit")
 	var controls = {}
+	var gamepad = {}
+	var keyboard = {}
+	var joystick_supported = Input.get_connected_joysticks().size() > 0
+	if (joystick_supported):
+		var gamepad_name = Input.get_joy_name(Input.get_connected_joysticks()[0])
+		var layout = "generic"
+		if (gamepad_names.has(gamepad_name)):
+			layout = gamepad_names[gamepad_name]
+		Globals.set("current_input", layout)
+	else:
+		Globals.set("current_input", "keyboard")
+	settings.get_node("settings").set_layout_index(Globals.get("current_input"))
+	settings.get_node("settings").update_container()
 	for actionid in InputMap.get_actions():
 		if (actionid != "ui_accept" && actionid != "ui_cancel"):
 			for event in InputMap.get_action_list(actionid):
+				if (event.type == InputEvent.JOYSTICK_BUTTON):
+					if (joystick_supported):
+						controls[actionid] = event.button_index
+					gamepad[actionid] = event.button_index
 				if (event.type == InputEvent.KEY):
-					controls[actionid] = event.scancode
+					if (!joystick_supported):
+						controls[actionid] = event.scancode
+					keyboard[actionid] = event.scancode
 	Globals.set("debugmode", false)
 	Globals.set("demomode", false)
 	Globals.set("controls", controls)
+	Globals.set("keyboard_controls", keyboard)
+	Globals.set("gamepad_controls", gamepad)
 	Globals.set("newcontrols", controls)
 	Globals.set("savedir", "user://saves")
 	var globaldir = "user://"
@@ -92,9 +242,16 @@ func _ready():
 						Globals.set("sfxvolume", globalsettings.sfxvolume)
 						Globals.set("bgmmute", globalsettings.bgmmute)
 						Globals.set("sfxmute", globalsettings.sfxmute)
-						Globals.set("controls", globalsettings.controls)
-						Globals.set("newcontrols", globalsettings.controls)
-						Globals.get("serialization").unserialize_controls(globalsettings.controls)
+						Globals.set("keyboard_controls", globalsettings.keyboard)
+						Globals.set("gamepad_controls", globalsettings.gamepad)
+						# Only set the requested gamepad layout if gamepad is connected
+						if (joystick_supported):
+							Globals.set("controls", globalsettings.gamepad)
+						else:
+							Globals.set("controls", globalsettings.keyboard)
+						Globals.set("newcontrols", Globals.get("controls"))
+						Globals.get("serialization").unserialize_controls(globalsettings.keyboard, true)
+						Globals.get("serialization").unserialize_controls(globalsettings.gamepad, false)
 						if (TranslationServer.get_locale() != globalsettings.locale):
 							TranslationServer.set_locale(globalsettings.locale)
 							translate()
@@ -106,6 +263,7 @@ func _ready():
 	if (!check_gamesaves()):
 		disable_loadmenu()
 	settings.get_node("settings").connect("saved", self, "on_settings_saved")
+	settings.get_node("settings").connect("nogamepad", self, "reload_backkeys")
 	friederich.hide()
 	adela.hide()
 	loading.hide()
@@ -247,7 +405,8 @@ func on_settings_saved():
 	data.sfxvolume = Globals.get("sfxvolume")
 	data.bgmmute = Globals.get("bgmmute")
 	data.sfxmute = Globals.get("sfxmute")
-	data.controls = Globals.get("controls")
+	data.keyboard = Globals.get("keyboard_controls")
+	data.gamepad = Globals.get("gamepad_controls")
 	data.locale = TranslationServer.get_locale()
 	var globaldir = Globals.get("globaldir")
 	var dir = Directory.new()
@@ -266,10 +425,14 @@ func on_settings_saved():
 		show_menu()
 		focus_main()
 	else:
-		back.reload_key()
-		newgame.get_node("backbutton/key").set_text(back.get_node("key").get_text())
+		reload_backkeys()
 		hide_settings()
 	state = MAIN
+
+func reload_backkeys():
+	var back = settings.get_node("back")
+	back.reload_key()
+	newgame.get_node("backbutton/key").set_text(back.get_node("key").get_text())
 
 func gamestart(resource):
 	get_tree().change_scene("res://scenes/main.tscn")
@@ -308,6 +471,9 @@ func translate():
 		input.get_node("input").set_text(tr(input_ref.get_node("input").get_text()))
 	settings.get_node("settings/save").set_text(tr(settings_ref.get_node("settings/save").get_text()))
 	settings.get_node("settings/reset").set_text(tr(settings_ref.get_node("settings/reset").get_text()))
+	var layouts = settings.get_node("settings").get("layouts")
+	var index = settings.get_node("settings").get("layout_index")
+	settings.get_node("settings/layout").set_text(tr(layouts[index].name))
 	settings.get_node("back/input").set_text(tr("MAP_BACK"))
 	var quit = get_node("CanvasLayer/menu/quit")
 	var quit_ref = reference.get_node("CanvasLayer/menu/quit")

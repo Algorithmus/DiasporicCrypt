@@ -39,7 +39,7 @@ var magiccircleclass = preload("res://scenes/animations/magiccircle/magiccircle.
 var magicorbsclass = preload("res://scenes/animations/magiccircle/orbs.tscn")
 var stardustclass = preload("res://scenes/animations/stardust.tscn")
 
-var keymap = preload("res://gui/KeyboardCharacters.gd").new()
+var keymap = preload("res://gui/InputCharacters.gd").new()
 
 var chainlist = {"chop": false, "slice": false, "skewer": false, "stab": false, "thrust": false, "swift": false, "dualspin": false, "void": false, "rush": false}
 
@@ -255,6 +255,7 @@ func toggle_eventmode(value):
 	var skip = sequences.get_node("skip")
 	var canvas = get_node("gui/CanvasLayer")
 	if (Globals.get("eventmode")):
+		keymap.update_keys()
 		is_minimap = map.is_visible()
 		map.hide()
 		skip.show()
@@ -544,12 +545,24 @@ func load_game(data):
 	Globals.set("sfxvolume", data.settings.sfxvolume)
 	Globals.set("bgmmute", data.settings.bgmmute)
 	Globals.set("sfxmute", data.settings.sfxmute)
-	Globals.set("controls", data.settings.controls)
-	Globals.set("newcontrols", data.settings.controls)
+	Globals.set("keyboard_controls", data.settings.keyboard)
+	Globals.set("gamepad_controls", data.settings.gamepad)
+	var controls = data.settings.keyboard
+	var layout = data.settings.layout
+	# Only show the requested gamepad layout if gamepad is connected
+	if (Input.get_connected_joysticks().size() > 0 && layout != "keyboard"):
+		controls = data.settings.gamepad
+	else:
+		layout = "keyboard"
+	Globals.set("current_input", layout)
+	Globals.set("controls", controls)
+	Globals.set("newcontrols", controls)
 	var gameclock = get_node("gameclock")
 	gameclock.set("elapsed", int(data.playtime))
 	gameclock.resume()
-	serialization.unserialize_controls(data.settings.controls)
+	serialization.unserialize_controls(data.settings.keyboard, true)
+	serialization.unserialize_controls(data.settings.gamepad, false)
+	pausemenu.get_node("panels/settings").set_layout_index(layout)
 	pausemenu.reset_content()
 	var currentlevel = Globals.get("levels")[Globals.get("current_level")]
 	var currentbgm = currentlevel.location.bgm

@@ -117,6 +117,76 @@ var map = {	"Up":"CHAR_UP",
 			"Udiaeresis":"CHAR_Ü",
 			"NumberSign":"CHAR_#",
 			"Ssharp":"CHAR_ß"}
+
+var nintendo = {	"DPAD Up":"GAMEPAD_DUP",
+			"DPAD Down":"GAMEPAD_DDOWN",
+			"DPAD Left":"GAMEPAD_DLEFT",
+			"DPAD Right":"GAMEPAD_DRIGHT",
+			"Face Button Bottom":"GAMEPAD_B",
+			"Face Button Right":"GAMEPAD_A",
+			"Face Button Left":"GAMEPAD_Y",
+			"Face Button Top":"GAMEPAD_X",
+			"L":"GAMEPAD_L",
+			"R":"GAMEPAD_R",
+			"L2":"GAMEPAD_ZL",
+			"R2":"GAMEPAD_ZR",
+			"L3":"GAMEPAD_L3",
+			"R3":"GAMEPAD_R3",
+			"Select":"GAMEPAD_MINUS",
+			"Start":"GAMEPAD_PLUS"}
+
+var playstation = {	"DPAD Up":"GAMEPAD_DUP",
+			"DPAD Down":"GAMEPAD_DDOWN",
+			"DPAD Left":"GAMEPAD_DLEFT",
+			"DPAD Right":"GAMEPAD_DRIGHT",
+			"Face Button Bottom":"GAMEPAD_CROSS",
+			"Face Button Right":"GAMEPAD_CIRCLE",
+			"Face Button Left":"GAMEPAD_SQUARE",
+			"Face Button Top":"GAMEPAD_TRIANGLE",
+			"L":"GAMEPAD_L1",
+			"R":"GAMEPAD_R1",
+			"L2":"GAMEPAD_L2",
+			"R2":"GAMEPAD_R2",
+			"L3":"GAMEPAD_L3",
+			"R3":"GAMEPAD_R3",
+			"Select":"GAMEPAD_SELECT",
+			"Start":"GAMEPAD_START"}
+
+var xbox = {	"DPAD Up":"GAMEPAD_DUP",
+			"DPAD Down":"GAMEPAD_DDOWN",
+			"DPAD Left":"GAMEPAD_DLEFT",
+			"DPAD Right":"GAMEPAD_DRIGHT",
+			"Face Button Bottom":"GAMEPAD_A",
+			"Face Button Right":"GAMEPAD_B",
+			"Face Button Left":"GAMEPAD_X",
+			"Face Button Top":"GAMEPAD_Y",
+			"L2":"GAMEPAD_LT",
+			"R2":"GAMEPAD_RT",
+			"L":"GAMEPAD_LB",
+			"R":"GAMEPAD_RB",
+			"L3":"GAMEPAD_L3",
+			"R3":"GAMEPAD_R3",
+			"Select":"GAMEPAD_BACK",
+			"Start":"GAMEPAD_NEXT"}
+
+var generic = {	"DPAD Up":"GAMEPAD_DUP",
+			"DPAD Down":"GAMEPAD_DDOWN",
+			"DPAD Left":"GAMEPAD_DLEFT",
+			"DPAD Right":"GAMEPAD_DRIGHT",
+			"Face Button Bottom":"GAMEPAD_3",
+			"Face Button Right":"GAMEPAD_2",
+			"Face Button Left":"GAMEPAD_4",
+			"Face Button Top":"GAMEPAD_1",
+			"L":"GAMEPAD_L",
+			"R":"GAMEPAD_R",
+			"L2":"GAMEPAD_L2",
+			"R2":"GAMEPAD_R2",
+			"L3":"GAMEPAD_L3",
+			"R3":"GAMEPAD_R3",
+			"Select":"GAMEPAD_9",
+			"Start":"GAMEPAD_10"}
+var gamepads = {"nintendo": nintendo, "playstation": playstation, "xbox": xbox, "generic": generic}
+
 var inputs = ["ui_up", "ui_down", "ui_left", "ui_right", "ui_jump", "ui_attack", "ui_magic", "ui_blood", "ui_spell_prev", "ui_spell_next", "ui_pause", "ui_select", "ui_cancel"]
 var keys = {}
 
@@ -129,13 +199,24 @@ func update_keys():
 
 func update_key(key):
 	for i in InputMap.get_action_list(key):
-		if (i.type == InputEvent.KEY):
-			keys[key] = i.scancode
+		if (Globals.get("current_input") == "keyboard"):
+			if (i.type == InputEvent.KEY):
+				keys[key] = i.scancode
+		else:
+			if (i.type == InputEvent.JOYSTICK_BUTTON):
+				keys[key] = i.button_index
 
 func map_action(action):
-	return map_key(OS.get_scancode_string(keys[action]))
+	if (Globals.get("current_input") == "keyboard"):
+		return map_key(OS.get_scancode_string(keys[action]))
+	return map_key(Input.get_joy_button_string(keys[action]))
 
 func map_key(input):
-	if (map.has(input)):
-		return tr(map[input])
+	var current_input = Globals.get("current_input")
+	if (current_input == "keyboard" || current_input == null):
+		if (map.has(input)):
+			return tr(map[input])
+	else:
+		if (gamepads[current_input].has(input)):
+			return tr(gamepads[current_input][input])
 	return input

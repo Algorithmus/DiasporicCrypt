@@ -2,7 +2,7 @@ extends Control
 
 # Display correct symbol mapped to controls
 
-var keyboardmap = preload("res://gui/KeyboardCharacters.gd").new()
+var keyboardmap = preload("res://gui/InputCharacters.gd").new()
 var key
 var actionid
 

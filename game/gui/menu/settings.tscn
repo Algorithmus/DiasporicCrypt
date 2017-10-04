@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=1]
+[gd_scene load_steps=38 format=1]
 
 [ext_resource path="res://gui/theme/slidergrabber.png" type="Texture" id=1]
 [ext_resource path="res://gui/theme/slidergrabber_active.png" type="Texture" id=2]
@@ -10,12 +10,13 @@
 [ext_resource path="res://gui/fonts/L-24.fnt" type="BitmapFont" id=8]
 [ext_resource path="res://gui/menu/footer_large.png" type="Texture" id=9]
 [ext_resource path="res://gui/menu/soundslider.tscn" type="PackedScene" id=10]
-[ext_resource path="res://gui/menu/inputkey.tscn" type="PackedScene" id=11]
-[ext_resource path="res://gui/menu/titlebg.tscn" type="PackedScene" id=12]
-[ext_resource path="res://gui/menu/titleframe.png" type="Texture" id=13]
-[ext_resource path="res://gui/menu/textitem.tscn" type="PackedScene" id=14]
+[ext_resource path="res://gui/menu/localeitem.tscn" type="PackedScene" id=11]
+[ext_resource path="res://gui/menu/inputkey.tscn" type="PackedScene" id=12]
+[ext_resource path="res://gui/menu/titlebg.tscn" type="PackedScene" id=13]
+[ext_resource path="res://gui/menu/titleframe.png" type="Texture" id=14]
+[ext_resource path="res://gui/menu/textitem.tscn" type="PackedScene" id=15]
 
-[sub_resource type="ImageTexture" id=23]
+[sub_resource type="ImageTexture" id=1]
 
 flags = 4
 image = Image( 4, 16, 0, RGBA, 0, 0, 0, 0, 152, 152, 152, 121, 78, 78, 78, 49, 0, 0, 0, 0, 0, 0, 0, 0, 141, 141, 141, 121, 78, 78, 78, 49, 0, 0, 0, 0, 0, 0, 0, 0, 130, 130, 130, 121, 78, 78, 78, 49, 0, 0, 0, 0, 0, 0, 0, 0, 78, 78, 78, 49, 78, 78, 78, 28, 0, 0, 0, 0, 0, 0, 0, 0, 56, 85, 95, 0, 56, 85, 95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 140, 172, 184, 0, 56, 85, 95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 162, 173, 0, 56, 85, 95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 152, 152, 152, 121, 78, 78, 78, 49, 0, 0, 0, 0, 0, 0, 0, 0, 141, 141, 141, 121, 78, 78, 78, 49, 0, 0, 0, 0, 0, 0, 0, 0, 130, 130, 130, 121, 78, 78, 78, 49, 0, 0, 0, 0 )
@@ -23,14 +24,14 @@ size = Vector2( 4, 16 )
 storage = 0
 lossy_quality = 0.7
 
-[sub_resource type="StyleBoxEmpty" id=24]
+[sub_resource type="StyleBoxEmpty" id=2]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
 
-[sub_resource type="StyleBoxTexture" id=25]
+[sub_resource type="StyleBoxTexture" id=3]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -47,7 +48,7 @@ expand_margin/top = 0.0
 expand_margin/bottom = 0.0
 draw_center = true
 
-[sub_resource type="StyleBoxTexture" id=26]
+[sub_resource type="StyleBoxTexture" id=4]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -64,23 +65,23 @@ expand_margin/top = 0.0
 expand_margin/bottom = 0.0
 draw_center = true
 
-[sub_resource type="LargeTexture" id=27]
+[sub_resource type="LargeTexture" id=5]
 
 _data = [ Vector2( 0, 0 ) ]
 
-[sub_resource type="LargeTexture" id=28]
+[sub_resource type="LargeTexture" id=6]
 
 _data = [ Vector2( 0, 0 ) ]
 
-[sub_resource type="LargeTexture" id=29]
+[sub_resource type="LargeTexture" id=7]
 
 _data = [ Vector2( 0, 0 ) ]
 
-[sub_resource type="LargeTexture" id=30]
+[sub_resource type="LargeTexture" id=8]
 
 _data = [ Vector2( 0, 0 ) ]
 
-[sub_resource type="StyleBoxTexture" id=31]
+[sub_resource type="StyleBoxTexture" id=9]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -97,7 +98,7 @@ expand_margin/top = 0.0
 expand_margin/bottom = 0.0
 draw_center = true
 
-[sub_resource type="StyleBoxTexture" id=32]
+[sub_resource type="StyleBoxTexture" id=10]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -114,7 +115,7 @@ expand_margin/top = 0.0
 expand_margin/bottom = 0.0
 draw_center = true
 
-[sub_resource type="StyleBoxTexture" id=33]
+[sub_resource type="StyleBoxTexture" id=11]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -131,7 +132,7 @@ expand_margin/top = 0.0
 expand_margin/bottom = 0.0
 draw_center = true
 
-[sub_resource type="StyleBoxTexture" id=34]
+[sub_resource type="StyleBoxTexture" id=12]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -148,36 +149,47 @@ expand_margin/top = 0.0
 expand_margin/bottom = 0.0
 draw_center = true
 
-[sub_resource type="Theme" id=35]
+[sub_resource type="Theme" id=13]
 
 default_font = ExtResource( 6 )
 HSlider/icons/grabber = ExtResource( 1 )
 HSlider/icons/grabber_hilite = ExtResource( 2 )
-HSlider/icons/tick = SubResource( 23 )
-HSlider/styles/focus = SubResource( 24 )
-HSlider/styles/grabber_hilite = SubResource( 25 )
-HSlider/styles/slider = SubResource( 26 )
-VScrollBar/icons/decrement = SubResource( 27 )
-VScrollBar/icons/decrement_hilite = SubResource( 28 )
-VScrollBar/icons/increment = SubResource( 29 )
-VScrollBar/icons/increment_hilite = SubResource( 30 )
-VScrollBar/styles/grabber = SubResource( 31 )
-VScrollBar/styles/grabber_hilite = SubResource( 32 )
-VScrollBar/styles/scroll = SubResource( 33 )
-VScrollBar/styles/scroll_focus = SubResource( 34 )
+HSlider/icons/tick = SubResource( 1 )
+HSlider/styles/focus = SubResource( 2 )
+HSlider/styles/grabber_hilite = SubResource( 3 )
+HSlider/styles/slider = SubResource( 4 )
+VScrollBar/icons/decrement = SubResource( 5 )
+VScrollBar/icons/decrement_hilite = SubResource( 6 )
+VScrollBar/icons/increment = SubResource( 7 )
+VScrollBar/icons/increment_hilite = SubResource( 8 )
+VScrollBar/styles/grabber = SubResource( 9 )
+VScrollBar/styles/grabber_hilite = SubResource( 10 )
+VScrollBar/styles/scroll = SubResource( 11 )
+VScrollBar/styles/scroll_focus = SubResource( 12 )
 
-[sub_resource type="CanvasItemShader" id=36]
+[sub_resource type="CanvasItemShader" id=14]
 
-_code = { "fragment":"uniform color start=color(0.2,0.4,1.0,1);\nuniform color stop=color(0.2,0.4,1.0,0);\nCOLOR = mix(start, stop, UV.x);\n\nCOLOR.a = tex(TEXTURE,UV).a*COLOR.a;", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+_code = {
+"fragment": "uniform color start=color(0.2,0.4,1.0,1);
+uniform color stop=color(0.2,0.4,1.0,0);
+COLOR = mix(start, stop, UV.x);
 
-[sub_resource type="CanvasItemMaterial" id=37]
+COLOR.a = tex(TEXTURE,UV).a*COLOR.a;",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
 
-shader/shader = SubResource( 36 )
+[sub_resource type="CanvasItemMaterial" id=15]
+
+shader/shader = SubResource( 14 )
 shader/shading_mode = 0
 shader_param/start = Color( 0.788235, 0.74902, 0.631373, 1 )
 shader_param/stop = Color( 0.788235, 0.74902, 0.631373, 0 )
 
-[sub_resource type="ImageTexture" id=38]
+[sub_resource type="ImageTexture" id=16]
 
 flags = 6
 image = Image()
@@ -233,7 +245,7 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = SubResource( 35 )
+theme/theme = SubResource( 13 )
 margin/left = 0.0
 margin/top = 0.0
 margin/right = 736.0
@@ -271,10 +283,10 @@ modulate = Color( 0.953125, 0.230835, 0.230835, 0.324798 )
 
 [node name="sound_line" type="Sprite" parent="."]
 
-material/material = SubResource( 37 )
+material/material = SubResource( 15 )
 transform/pos = Vector2( 16, 52 )
 transform/scale = Vector2( 458, 1 )
-texture = SubResource( 38 )
+texture = SubResource( 16 )
 centered = false
 
 [node name="sfxslider" parent="." instance=ExtResource( 10 )]
@@ -309,10 +321,10 @@ text = "BGM"
 
 [node name="controls_line" type="Sprite" parent="."]
 
-material/material = SubResource( 37 )
+material/material = SubResource( 15 )
 transform/pos = Vector2( 16, 156 )
 transform/scale = Vector2( 458, 1 )
-texture = SubResource( 38 )
+texture = SubResource( 16 )
 centered = false
 
 [node name="controls" type="Label" parent="."]
@@ -331,6 +343,22 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="layout" parent="." instance=ExtResource( 11 )]
+
+focus_neighbour/left = NodePath(".")
+focus_neighbour/right = NodePath(".")
+margin/left = 480.0
+margin/top = 128.0
+margin/right = 663.0
+margin/bottom = 160.0
+text = "Allgemeines Gamepad"
+
+[node name="icon1" parent="layout"]
+
+margin/left = 192.0
+margin/right = 204.0
+margin/bottom = 36.0
+
 [node name="inputs" type="VBoxContainer" parent="."]
 
 focus/ignore_mouse = false
@@ -344,7 +372,7 @@ margin/bottom = 455.0
 custom_constants/separation = -7
 alignment = 0
 
-[node name="up" parent="inputs" instance=ExtResource( 11 )]
+[node name="up" parent="inputs" instance=ExtResource( 12 )]
 
 focus_neighbour/bottom = NodePath("../down")
 margin/left = 0.0
@@ -353,7 +381,7 @@ custom_styles/hover = SubResource( 17 )
 custom_styles/pressed = SubResource( 18 )
 custom_styles/focus = SubResource( 19 )
 
-[node name="down" parent="inputs" instance=ExtResource( 11 )]
+[node name="down" parent="inputs" instance=ExtResource( 12 )]
 
 focus_neighbour/top = NodePath("../up")
 focus_neighbour/bottom = NodePath("../left")
@@ -367,7 +395,7 @@ custom_styles/focus = SubResource( 19 )
 text = "KEY_DOWN"
 actionid = "ui_down"
 
-[node name="left" parent="inputs" instance=ExtResource( 11 )]
+[node name="left" parent="inputs" instance=ExtResource( 12 )]
 
 focus_neighbour/top = NodePath("../down")
 focus_neighbour/bottom = NodePath("../right")
@@ -381,7 +409,7 @@ custom_styles/focus = SubResource( 19 )
 text = "KEY_LEFT"
 actionid = "ui_left"
 
-[node name="right" parent="inputs" instance=ExtResource( 11 )]
+[node name="right" parent="inputs" instance=ExtResource( 12 )]
 
 focus_neighbour/top = NodePath("../left")
 focus_neighbour/bottom = NodePath("../attack")
@@ -395,7 +423,7 @@ custom_styles/focus = SubResource( 19 )
 text = "KEY_RIGHT"
 actionid = "ui_right"
 
-[node name="attack" parent="inputs" instance=ExtResource( 11 )]
+[node name="attack" parent="inputs" instance=ExtResource( 12 )]
 
 focus_neighbour/top = NodePath("../right")
 focus_neighbour/bottom = NodePath("../jump")
@@ -409,7 +437,7 @@ custom_styles/focus = SubResource( 19 )
 text = "KEY_ATTACK"
 actionid = "ui_attack"
 
-[node name="jump" parent="inputs" instance=ExtResource( 11 )]
+[node name="jump" parent="inputs" instance=ExtResource( 12 )]
 
 focus_neighbour/top = NodePath("../attack")
 focus_neighbour/bottom = NodePath("../magic")
@@ -423,7 +451,7 @@ custom_styles/focus = SubResource( 19 )
 text = "KEY_JUMP"
 actionid = "ui_jump"
 
-[node name="magic" parent="inputs" instance=ExtResource( 11 )]
+[node name="magic" parent="inputs" instance=ExtResource( 12 )]
 
 focus_neighbour/top = NodePath("../jump")
 focus_neighbour/bottom = NodePath("../blood")
@@ -437,7 +465,7 @@ custom_styles/focus = SubResource( 19 )
 text = "KEY_MAGIC"
 actionid = "ui_magic"
 
-[node name="blood" parent="inputs" instance=ExtResource( 11 )]
+[node name="blood" parent="inputs" instance=ExtResource( 12 )]
 
 focus_neighbour/top = NodePath("../magic")
 focus_neighbour/bottom = NodePath("../prev")
@@ -451,7 +479,7 @@ custom_styles/focus = SubResource( 19 )
 text = "KEY_BLOOD"
 actionid = "ui_blood"
 
-[node name="prev" parent="inputs" instance=ExtResource( 11 )]
+[node name="prev" parent="inputs" instance=ExtResource( 12 )]
 
 focus_neighbour/top = NodePath("../blood")
 focus_neighbour/bottom = NodePath("../next")
@@ -465,7 +493,7 @@ custom_styles/focus = SubResource( 19 )
 text = "KEY_PREVMAGIC"
 actionid = "ui_spell_prev"
 
-[node name="next" parent="inputs" instance=ExtResource( 11 )]
+[node name="next" parent="inputs" instance=ExtResource( 12 )]
 
 focus_neighbour/top = NodePath("../prev")
 focus_neighbour/bottom = NodePath("../pause")
@@ -479,7 +507,7 @@ custom_styles/focus = SubResource( 19 )
 text = "KEY_NEXTMAGIC"
 actionid = "ui_spell_next"
 
-[node name="pause" parent="inputs" instance=ExtResource( 11 )]
+[node name="pause" parent="inputs" instance=ExtResource( 12 )]
 
 focus_neighbour/top = NodePath("../next")
 focus_neighbour/bottom = NodePath("../minimap")
@@ -493,7 +521,7 @@ custom_styles/focus = SubResource( 19 )
 text = "Pause"
 actionid = "ui_pause"
 
-[node name="minimap" parent="inputs" instance=ExtResource( 11 )]
+[node name="minimap" parent="inputs" instance=ExtResource( 12 )]
 
 focus_neighbour/top = NodePath("../pause")
 margin/left = 0.0
@@ -506,7 +534,7 @@ custom_styles/focus = SubResource( 19 )
 text = "KEY_MINIMAP"
 actionid = "ui_select"
 
-[node name="save_bg" parent="." instance=ExtResource( 12 )]
+[node name="save_bg" parent="." instance=ExtResource( 13 )]
 
 margin/left = 160.0
 margin/top = 453.0
@@ -516,10 +544,10 @@ margin/bottom = 493.0
 [node name="saveornament" type="Sprite" parent="."]
 
 transform/pos = Vector2( 0, 441 )
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 centered = false
 
-[node name="save" parent="." instance=ExtResource( 14 )]
+[node name="save" parent="." instance=ExtResource( 15 )]
 
 focus_neighbour/left = NodePath(".")
 focus_neighbour/right = NodePath("../reset")
@@ -531,7 +559,7 @@ custom_styles/hover = SubResource( 20 )
 custom_styles/pressed = SubResource( 21 )
 custom_styles/focus = SubResource( 22 )
 
-[node name="reset_bg" parent="." instance=ExtResource( 12 )]
+[node name="reset_bg" parent="." instance=ExtResource( 13 )]
 
 margin/left = 630.0
 margin/top = 453.0
@@ -541,10 +569,10 @@ margin/bottom = 493.0
 [node name="resetornament" type="Sprite" parent="."]
 
 transform/pos = Vector2( 470, 441 )
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 centered = false
 
-[node name="reset" parent="." instance=ExtResource( 14 )]
+[node name="reset" parent="." instance=ExtResource( 15 )]
 
 focus_neighbour/left = NodePath("../save")
 margin/left = 590.0
@@ -566,9 +594,14 @@ text = "KEY_RESET"
 
 [connection signal="value_changed" from="bgmslider" to="." method="_on_bgmslider_value_changed"]
 
+[connection signal="focus_enter" from="layout" to="." method="_on_layout_focus_enter"]
+
+[connection signal="focus_exit" from="layout" to="." method="_on_layout_focus_exit"]
+
 [connection signal="pressed" from="save" to="." method="_on_save_pressed"]
 
 [connection signal="pressed" from="reset" to="." method="_on_reset_pressed"]
 
 
 [editable path="bgmslider"]
+[editable path="layout"]

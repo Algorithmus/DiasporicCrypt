@@ -14,6 +14,7 @@ const DISCOVERY_ADELA = [
 "LVL_START",
 "LVL_ICECAVE",
 "LVL_AQUADUCT",
+"LVL_HOLYRUINS",
 "LVL_CAPECRYPT",
 "LVL_MAUSOLEUM",
 "LVL_SPRINGISLANDCASTLE"
@@ -212,7 +213,9 @@ func save():
 	data.settings.sfxvolume = Globals.get("sfxvolume")
 	data.settings.bgmmute = Globals.get("bgmmute")
 	data.settings.sfxmute = Globals.get("sfxmute")
-	data.settings.controls = Globals.get("controls")
+	data.settings.layout = Globals.get("current_input")
+	data.settings.keyboard = Globals.get("keyboard_controls")
+	data.settings.gamepad = Globals.get("gamepad_controls")
 	data.levels = {}
 	data.levels.currentLevel = Globals.get("current_level")
 	data.levels.availableLevels = Globals.get("available_levels")

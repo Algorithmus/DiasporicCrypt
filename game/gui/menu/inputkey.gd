@@ -11,7 +11,7 @@ var isfocusable = true
 var focusup
 var focusdown
 var currentinput
-var keymapclass = preload("res://gui/KeyboardCharacters.gd")
+var keymapclass = preload("res://gui/InputCharacters.gd")
 var keymap
 
 func _ready():
@@ -25,39 +25,60 @@ func _ready():
 
 func update_key():
 	var list = InputMap.get_action_list(actionid)
+	var is_keyboard = Globals.get("current_input") == "keyboard"
 	for item in list:
-		if (item.type == InputEvent.KEY):
+		if (is_keyboard && item.type == InputEvent.KEY):
+			currentinput = item
+		elif (!is_keyboard && item.type == InputEvent.JOYSTICK_BUTTON):
 			currentinput = item
 
-	set_key(currentinput.scancode)
+	if (is_keyboard):
+		set_key(currentinput.scancode)
+	else:
+		set_key(currentinput.button_index)
 	key.set("custom_colors/font_color", null)
 
 func set_key(scancode):
-	key.set_text(keymap.map_key(OS.get_scancode_string(scancode)))
+	var string = ""
+	if (Globals.get("current_input") == "keyboard"):
+		string = OS.get_scancode_string(scancode)
+	else:
+		string = Input.get_joy_button_string(scancode)
+	key.set_text(keymap.map_key(string))
 
 func _input(event):
+	var is_keyboard = Globals.get("current_input") == "keyboard"
 	# Help key in demo mode is special; don't overwrite it.
 	var helpPressed = (Globals.get("demomode") && event.is_action_pressed("ui_help"))
 	if (!iscapture && event.is_action_pressed("ui_accept") && event.is_pressed() && !event.is_echo()):
 		_on_key_pressed()
 		sfx.play("cursor")
-	elif(iscapture && event.type == InputEvent.KEY && event.is_pressed() && !event.is_echo() && !helpPressed):
-		sfx.play("confirm")
-		inputinfo.hide()
+	elif(iscapture && event.is_pressed() && !event.is_echo() && !helpPressed):
+		var inputvalue = ""
+		if (event.type == InputEvent.KEY && is_keyboard):
+			inputvalue = "scancode"
+		elif (event.type == InputEvent.JOYSTICK_BUTTON && !is_keyboard):
+			inputvalue = "button_index"
+		else:
+			return
+
 		var keylist = get_parent().get_children()
+
 		# also check to make sure the new input isn't already in use
 		for i in keylist:
 			# if the key is already in use, swap it
-			if (i.get("currentinput").scancode == event.scancode && i != self):
+			if (i.get("currentinput")[inputvalue] == event[inputvalue] && i != self):
 				i.set("currentinput", currentinput)
-				i.set_key(currentinput.scancode)
+				i.set_key(currentinput[inputvalue])
 				i.get_node("key").set("custom_colors/font_color", Color(1, 1, 0))
-				Globals.get("newcontrols")[i.get("actionid")] = currentinput.scancode
-		if (currentinput.scancode != event.scancode):
+				Globals.get("newcontrols")[i.get("actionid")] = currentinput[inputvalue]
+		if (currentinput[inputvalue] != event[inputvalue]):
 			key.set("custom_colors/font_color", Color(1, 1, 0))
 		currentinput = event
-		Globals.get("newcontrols")[actionid] = currentinput.scancode
-		set_key(currentinput.scancode)
+		Globals.get("newcontrols")[actionid] = currentinput[inputvalue]
+		set_key(currentinput[inputvalue])
+		sfx.play("confirm")
+		inputinfo.hide()
 		iscapture = false
 	elif(!iscapture):
 		isfocusable = true
@@ -67,9 +88,10 @@ func _input(event):
 # commit inputs to InputMap
 func set_input():
 	var old_event
+	var is_keyboard = Globals.get("current_input") == "keyboard"
 	# remove any old inputs
 	for e in InputMap.get_action_list(actionid):
-		if (e.type == InputEvent.KEY):
+		if ((e.type == InputEvent.KEY && is_keyboard) || (e.type == InputEvent.JOYSTICK_BUTTON && !is_keyboard)):
 			InputMap.action_erase_event(actionid, e)
 			old_event = e
 	InputMap.action_add_event(actionid, currentinput)
@@ -91,7 +113,8 @@ func set_input():
 				# Can't tell from here if previous inputs for this mapped action are already included by another action with the same mapping
 				# and happens to have the same scancode as this input
 				# so save inputs globally and check those as well
-				if (e.type == InputEvent.KEY && e.scancode == old_event.scancode && shared_actions.find(e.scancode) < 0):
+				if ((is_keyboard && e.type == InputEvent.KEY && e.scancode == old_event.scancode && shared_actions.find(e.scancode) < 0) ||
+				(!is_keyboard && e.type == InputEvent.JOYSTICK_BUTTON && e.button_index == old_event.button_index && shared_actions.find(e.button_index) < 0)):
 					InputMap.action_erase_event(mapped_action, e)
 			if (!InputMap.action_has_event(mapped_action, currentinput)):
 				InputMap.action_add_event(mapped_action, currentinput)

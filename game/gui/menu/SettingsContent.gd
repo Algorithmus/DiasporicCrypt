@@ -19,9 +19,21 @@ var sfx
 
 var is_global = false
 
+var layouts = [{"id": "keyboard", "name": "INPUT_KEYBOARD"},
+	{"id": "nintendo", "name": "INPUT_NINTENDO"},
+	{"id": "playstation", "name": "INPUT_PLAYSTATION"},
+	{"id": "xbox", "name": "INPUT_XBOX"},
+	{"id": "generic", "name": "INPUT_GENERIC"}
+]
+var layout_index = 0
+var old_layout_index = 0
+
 signal saved
+signal nogamepad
 
 func _ready():
+	detect_gamepad()
+	set_layout_index(Globals.get("current_input"))
 	has_content = true
 	if (!Globals.has("sfxvolume")):
 		Globals.set("sfxvolume", 1)
@@ -34,7 +46,17 @@ func _ready():
 	sfx = sfxclass.instance()
 	add_child(sfx)
 
+func detect_gamepad():
+	if (Input.get_connected_joysticks().size() == 0):
+		Globals.set("current_input", "keyboard")
+		set_layout_index(Globals.get("current_input"))
+		get_node("layout").set_disabled(true)
+		emit_signal("nogamepad")
+	else:
+		get_node("layout").set_disabled(false)
+
 func update_container():
+	detect_gamepad()
 	sfxValue = Globals.get("sfxvolume")
 	bgmValue = Globals.get("bgmvolume")
 	sfxslider.set_val(sfxValue)
@@ -47,6 +69,10 @@ func update_container():
 	bgmMute = Globals.get("bgmmute")
 	sfxMute = Globals.get("sfxmute")
 	update_mute_controls()
+	get_node("layout").set_text(tr(layouts[old_layout_index].name))
+	for key in get_node("inputs").get_children():
+		key.update_key()
+	Globals.set("newcontrols", Globals.get("controls"))
 	var resetwidth = get_node("reset").get_size().x
 	get_node("reset").set_pos(Vector2(689 - resetwidth, get_node("reset").get_pos().y))
 
@@ -80,6 +106,9 @@ func reset():
 	AudioServer.set_stream_global_volume_scale(bgm)
 	sfxslider.set_val(sfxValue)
 	bgmslider.set_val(bgmValue)
+	layout_index = old_layout_index
+	get_node("layout").set_text(tr(layouts[old_layout_index].name))
+	Globals.set("current_input", layouts[old_layout_index].id)
 	for key in get_node("inputs").get_children():
 		key.update_key()
 	Globals.set("newcontrols", Globals.get("controls"))
@@ -106,9 +135,14 @@ func save():
 	Globals.set("sfxmute", sfxMute)
 	Globals.set("bgmmute", bgmMute)
 	Globals.set("controls", Globals.get("newcontrols"))
+	if (Globals.get("current_input") == "keyboard"):
+		Globals.set("keyboard_controls", Globals.get("controls"))
+	else:
+		Globals.set("gamepad_controls", Globals.get("controls"))
 	for key in get_node("inputs").get_children():
 		key.set_input()
 		key.get_node("key").set("custom_colors/font_color", null)
+	old_layout_index = layout_index
 	emit_signal("saved")
 
 func _on_sfxslider_focus_exit():
@@ -157,3 +191,35 @@ func _on_bgmslider_input_event( ev ):
 			AudioServer.set_stream_global_volume_scale(bgmValue)
 			bgmslider.set_self_opacity(1)
 			bgmslider.get_node("mute").set_texture(sound)
+
+func _input(event):
+	if (event.is_pressed() && !event.is_echo()):
+		var old_index = layout_index
+		if (event.is_action_pressed("ui_left")):
+			layout_index -= 1
+			if (layout_index < 0):
+				layout_index = layouts.size() - 1
+		elif (event.is_action_pressed("ui_right")):
+			layout_index += 1
+			if (layout_index >= layouts.size()):
+				layout_index = 0
+
+		if (old_index != layout_index):
+			get_node("layout").set_text(tr(layouts[layout_index].name))
+			Globals.set("current_input", layouts[layout_index].id)
+			for key in get_node("inputs").get_children():
+				key.update_key()
+			Globals.set("newcontrols", Globals.get("controls"))
+
+func set_layout_index(id):
+	var size = layouts.size()
+	for i in range(0, size):
+		if (layouts[i].id == id):
+			layout_index = i
+			old_layout_index = i
+
+func _on_layout_focus_enter():
+	set_process_input(true)
+
+func _on_layout_focus_exit():
+	set_process_input(false)

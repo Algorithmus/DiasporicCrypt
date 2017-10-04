@@ -173,30 +173,36 @@ func unserialize_mapobjects(hudmap, data):
 		mapobjects[mapid] = objectsnode
 	return mapobjects
 
-func clearInputs(actionid):
+func clearInputs(actionid, is_keyboard):
 	var mappedlist = InputMap.get_action_list(actionid)
 	for e in mappedlist:
-		if (e.type == InputEvent.KEY):
+		if ((e.type == InputEvent.KEY && is_keyboard) || (e.type == InputEvent.JOYSTICK_BUTTON && !is_keyboard)):
 			InputMap.action_erase_event(actionid, e)
 
-func unserialize_controls(data):
+func unserialize_controls(data, is_keyboard):
 	var shared_actions = []
 	var jumpevent
 	for actionid in data:
 		var list = InputMap.get_action_list(actionid)
 		for e in list:
-			if (e.type == InputEvent.KEY):
-				InputMap.action_erase_event(actionid, e)
-				var event = InputEvent()
-				event.type = InputEvent.KEY
-				event.scancode = data[actionid]
-				InputMap.action_add_event(actionid, event)
-				if (actionid == "ui_blood" || actionid == "ui_attack" || actionid == "ui_magic"):
-					shared_actions.push_back(event)
-				elif (actionid == "ui_jump"):
-					jumpevent = event
-	clearInputs("ui_accept")
+			var inputvalue = ""
+			if (e.type == InputEvent.KEY && is_keyboard):
+				inputvalue = "scancode"
+			elif (e.type == InputEvent.JOYSTICK_BUTTON && !is_keyboard):
+				inputvalue = "button_index"
+			else:
+				break
+			InputMap.action_erase_event(actionid, e)
+			var event = InputEvent()
+			event.type = e.type
+			event[inputvalue] = data[actionid]
+			InputMap.action_add_event(actionid, event)
+			if (actionid == "ui_blood" || actionid == "ui_attack" || actionid == "ui_magic"):
+				shared_actions.push_back(event)
+			elif (actionid == "ui_jump"):
+				jumpevent = event
+	clearInputs("ui_accept", is_keyboard)
 	for e in shared_actions:
 		InputMap.action_add_event("ui_accept", e)
-	clearInputs("ui_cancel")
+	clearInputs("ui_cancel", is_keyboard)
 	InputMap.action_add_event("ui_cancel", jumpevent)

@@ -9,7 +9,7 @@ var goldicon = preload("res://gui/hud/gold.png")
 var exporbicon = preload("res://gui/hud/exporb.png")
 var scrollicon = preload("res://gui/hud/scroll.png")
 var magicicon = preload("res://gui/hud/magic.png")
-var keyboardmap = preload("res://gui/KeyboardCharacters.gd").new()
+var keyboardmap = preload("res://gui/InputCharacters.gd").new()
 
 var lastitemtype
 
