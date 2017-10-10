@@ -431,6 +431,8 @@ func on_settings_saved():
 
 func reload_backkeys():
 	var back = settings.get_node("back")
+	if (back.get("actionid") == null):
+		load_backkeys()
 	back.reload_key()
 	newgame.get_node("backbutton/key").set_text(back.get_node("key").get_text())
 
