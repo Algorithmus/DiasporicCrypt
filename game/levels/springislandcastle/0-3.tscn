@@ -16,7 +16,9 @@ extents = Vector2( 16, 256 )
 
 [node name="LVL_NOTITLE" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -94,7 +96,6 @@ transform/pos = Vector2( -688, -176 )
 motion = Vector2( 576, 0 )
 cycle = 4.0
 linear = true
-start_direction = 1
 
 [node name="SpikeGroup" type="Node2D" parent="tilemap"]
 
@@ -154,15 +155,18 @@ target_nodes = [ "PlatformGroup/StaticBody2D" ]
 related_switches = [  ]
 enabled = true
 invert = false
+show_target = false
+target_pos = Vector2( 0, 0 )
 
 [node name="NPCGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
 transform/pos = Vector2( 0, -1 )
 
-[node name="NPC" parent="tilemap/NPCGroup" instance=ExtResource( 7 )]
+[node name="Gareth" parent="tilemap/NPCGroup" instance=ExtResource( 7 )]
 
-transform/pos = Vector2( -2272, 33 )
+editor/display_folded = true
+transform/pos = Vector2( -2144, 33 )
+dialogues = [ [ -1, "Gareth", "DIAG_GARETH0", null, null ] ]
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
 
@@ -224,18 +228,6 @@ transform/pos = Vector2( -2374, -454 )
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
 transform/pos = Vector2( 682, 234 )
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport2/teleport/enabler" to="tilemap/TeleportGroup/Teleport2" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport2/teleport/enabler" to="tilemap/TeleportGroup/Teleport2" method="exit_screen"]
 
 
 [editable path="tilemap/LadderGroup/TestLadder"]

@@ -30,10 +30,12 @@ const CHOICE_VALUE = 2
 #dialogue - another dialog array (replace current one completely) or index for current dialog array to jump to
 const CHOICE_ORIENTATION = 3
 
-var avatars = {"Friederich": preload("res://gui/dialogue/profiles/friederich.png"), 
-				"Kaleva": preload("res://gui/dialogue/profiles/kaleva.png"),
-				"Adela": preload("res://gui/dialogue/profiles/adela.png"),
-				"CHARACTER_NPC": preload("res://gui/dialogue/profiles/npc.png")}
+var avatars = {"Friederich": {"img": preload("res://gui/dialogue/profiles/friederich.png"), "offset": Vector2()},
+				"Kaleva": {"img": preload("res://gui/dialogue/profiles/kaleva.png"), "offset": Vector2()},
+				"Adela": {"img": preload("res://gui/dialogue/profiles/adela.png"), "offset": Vector2()},
+				"Lucifer": {"img": preload("res://gui/dialogue/profiles/lucifer.png"), "offset": Vector2()},
+				"Gareth": {"img": preload("res://gui/dialogue/profiles/gareth.png"), "offset": Vector2(0, -62)},
+				"CHARACTER_NPC": {"img": preload("res://gui/dialogue/profiles/npc.png"), "offset": Vector2()}}
 
 func _ready():
 	get_node("frame").hide()
@@ -172,7 +174,8 @@ func show_dialog():
 				if (dialog[DIAG_TITLE] == "player"):
 					avatar = Globals.get("player").capitalize()
 					title = avatar
-				profile.get_node("avatar").set_texture(avatars[avatar])
+				profile.get_node("avatar").set_texture(avatars[avatar].img)
+				profile.get_node("avatar").set_offset(avatars[avatar].offset)
 				textarea.set_pos(Vector2(179*(dialog[DIAG_DIRECTION] - 1)/2 + 215, textarea.get_pos().y))
 				hchoice.set_pos(Vector2(179*(dialog[DIAG_DIRECTION] - 1)/2 + 215, hchoice.get_pos().y))
 				vchoice.set_pos(Vector2(179*(dialog[DIAG_DIRECTION] - 1)/2 + 215, vchoice.get_pos().y))

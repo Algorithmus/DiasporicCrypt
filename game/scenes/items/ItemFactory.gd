@@ -309,6 +309,15 @@ func _init():
 	earth.cost = 0
 	items[earth.title] = earth
 
+	var wind = itemclass.new()
+	wind.title = "MAGIC_WIND"
+	wind.description = "MAGIC_WIND_SHORT"
+	wind.type = "magic"
+	wind.image = "res://players/magic/wind/icon.png"
+	wind.value = "wind"
+	wind.cost = 1000000
+	items[wind.title] = wind
+
 	var void = itemclass.new()
 	void.title = "MAGIC_VOID"
 	void.description = "MAGIC_VOID_SHORT"

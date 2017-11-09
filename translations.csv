@@ -195,6 +195,9 @@ DIAG_KALEVA_TIP4,"[color=white]Be sure to watch your [color=red]HP[/color] caref
 DIAG_KALEVA_TIP5,"[color=white]Every vampire has a [color=red]familiar statue[/color] that only they can see. Nobody seems to know much about them, but they may show up in various places. If you find one, be sure to [color=red]save[/color] your game there.[/color]","[color=white]Jeder Vampir hat sein eigene [color=red]Vertrauten Statue[/color], die nur er oder sie sehen kann. Niemand scheint viel über sie zu kennen, aber sie dürfen in verschiedene Örter erscheinen. Falls du eine findest, sollst du da dein Spiel [color=red]speichern[/color].[/color]"
 DIAG_RESTORE,[center][color=white]Rest?[/color][/center],[center][color=white]Ausruhen?[/color][/center]
 DIAG_BERGFORTRESS1,"[color=white]A single hit might not be enough to destroy some blocks. You may have to smash them repeatedly.[/color]","[color=white]Um manche Wände zu zerstören, reicht ein einziger Schlag nicht. Versuchen Sie solche Wände mehrmals nach einander zu schlagen.[/color]"
+DIAG_LUCIFER0,"[color=white]Huh, how did you get in here? The wall collapsed, and I couldn't go back the way I came. This place is falling apart, and you could end up trapped if you're not careful.[/color]","[color=white]Huch, wie hast du hierher gekommen? Die Mauer ist abgestürzt, und ich kann nicht mehr zurück. Dieser Ort bricht langsam auseinander, und du kannst hier fest stecken, falls du nicht vorsichtig bist.[/color]"
+DIAG_LUCIFER1,"[color=white]But I guess since you're here, why not train with me?[/color]","[color=white]Aber da du hier bist, warum nicht mit mir ausbilden?[/color]"
+DIAG_GARETH0,"[color=white]There's a lot of traps here, so take your time.[/color]","[color=white]Hier liegt viele Falle, also gehen Sie langsamer.[/color]"
 CHARACTER_NPC,NPC,NSC
 CHOICE_MAP,See the map,Karte ansehen
 CHOICE_SHOP,Shopping,Einkaufen
@@ -232,6 +235,7 @@ STATS_ALL,[hp] HP [hpbonus][break][mp] MP [mpbonus][break][break]Attack: [atk][b
 SHOP_BUY,Buy,Kaufen
 SHOP_SELL,Sell,Verkaufen
 SHOP_KALEVA,Kaleva's Shop,Kalevas Laden
+SHOP_LUCIFER,Lucifer's Shop,Lucifers Laden
 SHOP_AMOUNT,Amount,Menge
 SHOP_TOTAL,Total,Summe
 MAP_QUEST,Quest,Quest

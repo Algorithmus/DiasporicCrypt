@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://scenes/holyruins/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/holyruins/slopes/slope0-15.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/holyruins/slopes/slope16-31.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/dungeon/slopes/slopea-b.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/npcs/lucifer/idle.png" type="Texture" id=6]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=7]
 
 [node name="LVL_NOTITLE" type="Node2D"]
 
@@ -69,22 +70,21 @@ transform/pos = Vector2( 144, 368 )
 
 [node name="NPCGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
-
-[node name="NPC" parent="tilemap/NPCGroup" instance=ExtResource( 5 )]
+[node name="Lucifer" parent="tilemap/NPCGroup" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 672, 288 )
+dialogues = [ [ -1, "Lucifer", "DIAG_LUCIFER0", null, null ], [ -1, "Lucifer", "DIAG_LUCIFER1", null, [ [ "KEY_YES", "shop", "SHOP_LUCIFER", true ], [ "KEY_NO", "end" ] ] ] ]
 
-[node name="Sprite" parent="tilemap/NPCGroup/NPC"]
+[node name="Sprite" parent="tilemap/NPCGroup/Lucifer"]
 
-transform/scale = Vector2( -1, 1 )
+texture = ExtResource( 6 )
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 6 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 7 )]
 
 editor/display_folded = true
 transform/pos = Vector2( -336, 208 )
@@ -109,6 +109,10 @@ transform/pos = Vector2( -336, -240 )
 
 transform/pos = Vector2( 880, 464 )
 
+[connection signal="enter_screen" from="tilemap/NPCGroup/Lucifer/enabler" to="tilemap/NPCGroup/Lucifer" method="enter_screen"]
 
-[editable path="tilemap/NPCGroup/NPC"]
+[connection signal="exit_screen" from="tilemap/NPCGroup/Lucifer/enabler" to="tilemap/NPCGroup/Lucifer" method="exit_screen"]
+
+
+[editable path="tilemap/NPCGroup/Lucifer"]
 [editable path="tilemap/TeleportGroup/Teleport"]
