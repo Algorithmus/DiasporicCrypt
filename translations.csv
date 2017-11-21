@@ -198,7 +198,12 @@ DIAG_BERGFORTRESS1,"[color=white]A single hit might not be enough to destroy som
 DIAG_LUCIFER0,"[color=white]Huh, how did you get in here? The wall collapsed, and I couldn't go back the way I came. This place is falling apart, and you could end up trapped if you're not careful.[/color]","[color=white]Huch, wie hast du hierher gekommen? Die Mauer ist abgestürzt, und ich kann nicht mehr zurück. Dieser Ort bricht langsam auseinander, und du kannst hier fest stecken, falls du nicht vorsichtig bist.[/color]"
 DIAG_LUCIFER1,"[color=white]But I guess since you're here, why not train with me?[/color]","[color=white]Aber da du hier bist, warum nicht mit mir ausbilden?[/color]"
 DIAG_GARETH0,"[color=white]There's a lot of traps here, so take your time.[/color]","[color=white]Hier liegt viele Falle, also gehen Sie langsamer.[/color]"
+DIAG_GABRIEL0,"[color=white]I was supposed to meet with the artist of the singing statues, but he hasn't shown up yet...[/color]","[color=white]Ich soll mit der Kunstler von die singende Statuen treffen, aber er ist noch nicht aufgetaucht...[/color]"
+DIAG_GABRIEL1,"[color=white]Well, I'm not the one you're looking for. I think you came too late, and I doubt he's still here.[/color]","[color=white]Ich bin es nicht. Du kammst zu spät, und ich bezweifle mich, dass er noch da ist.[/color]"
+DIAG_GABRIEL2,"[color=white]Oh...well in that case, maybe I can just sell this to you instead.[/color]","[color=white]Oh...Na dann, vielleicht kann ich es stattdessen dir verkaufen.[/color]"
 CHARACTER_NPC,NPC,NSC
+CHOICE_SURE,Sure,Klar
+CHOICE_NAH,Nah,Nö
 CHOICE_MAP,See the map,Karte ansehen
 CHOICE_SHOP,Shopping,Einkaufen
 CHOICE_TIP,Ask for advice,Nach Rat fragen
@@ -236,6 +241,7 @@ SHOP_BUY,Buy,Kaufen
 SHOP_SELL,Sell,Verkaufen
 SHOP_KALEVA,Kaleva's Shop,Kalevas Laden
 SHOP_LUCIFER,Lucifer's Shop,Lucifers Laden
+SHOP_GABRIEL,Gabriel's Shop,Gabriels Laden
 SHOP_AMOUNT,Amount,Menge
 SHOP_TOTAL,Total,Summe
 MAP_QUEST,Quest,Quest

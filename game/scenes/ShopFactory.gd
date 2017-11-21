@@ -27,3 +27,10 @@ func _init():
 						{"type": "item", "id": "ITEM_MYSTICPOTION", "quantity": 3}]
 	lucifer.sellrate = 1
 	shops[lucifer.name] = lucifer
+
+	var gabriel = shopclass.new()
+	gabriel.name = "SHOP_GABRIEL"
+	gabriel.inventory = [{"type": "magic", "id": "MAGIC_HEX", "quantity": 1}]
+
+	gabriel.sellrate = 0.25
+	shops[gabriel.name] = gabriel

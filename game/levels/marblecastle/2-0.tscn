@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://scenes/marblecastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/springislandcastle/slopes/slope15-0.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/springislandcastle/slopes/slope31-16.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/dungeon/slopes/slopea-b.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/common/breakables/specialbreakable.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/common/gemgate.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/npcs/gabriel/idle.png" type="Texture" id=6]
+[ext_resource path="res://scenes/common/breakables/specialbreakable.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/common/gemgate.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=9]
 
 [node name="LVL_NOTITLE" type="Node2D"]
 
@@ -83,86 +84,90 @@ transform/pos = Vector2( -496, 272 )
 
 [node name="NPCGroup" type="Node2D" parent="tilemap"]
 
+[node name="Gabriel" parent="tilemap/NPCGroup" instance=ExtResource( 5 )]
+
 editor/display_folded = true
+transform/pos = Vector2( -736, 176 )
+dialogues = [ [ -1, "Gabriel", "DIAG_GABRIEL0", null, null ], [ 1, "Friederich", "DIAG_GABRIEL1", null, null ], [ -1, "Gabriel", "DIAG_GABRIEL2", null, [ [ "CHOICE_SURE", "shop", "SHOP_GABRIEL", true ], [ "CHOICE_NAH", "end" ] ] ] ]
 
-[node name="NPC" parent="tilemap/NPCGroup" instance=ExtResource( 5 )]
+[node name="Sprite" parent="tilemap/NPCGroup/Gabriel"]
 
-transform/pos = Vector2( -752, 192 )
+texture = ExtResource( 6 )
 
 [node name="BreakableGroup" type="Node2D" parent="tilemap"]
 
 editor/display_folded = true
 
-[node name="SpecialBreakable" parent="tilemap/BreakableGroup" instance=ExtResource( 6 )]
+[node name="SpecialBreakable" parent="tilemap/BreakableGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( -592, 240 )
 special = "swift"
 
-[node name="SpecialBreakable1" parent="tilemap/BreakableGroup" instance=ExtResource( 6 )]
+[node name="SpecialBreakable1" parent="tilemap/BreakableGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( -592, 208 )
 special = "swift"
 
-[node name="SpecialBreakable2" parent="tilemap/BreakableGroup" instance=ExtResource( 6 )]
+[node name="SpecialBreakable2" parent="tilemap/BreakableGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( -592, 176 )
 special = "swift"
 
-[node name="SpecialBreakable3" parent="tilemap/BreakableGroup" instance=ExtResource( 6 )]
+[node name="SpecialBreakable3" parent="tilemap/BreakableGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( -592, 144 )
 special = "swift"
 
-[node name="SpecialBreakable4" parent="tilemap/BreakableGroup" instance=ExtResource( 6 )]
+[node name="SpecialBreakable4" parent="tilemap/BreakableGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( -592, 112 )
 special = "swift"
 
-[node name="SpecialBreakable5" parent="tilemap/BreakableGroup" instance=ExtResource( 6 )]
+[node name="SpecialBreakable5" parent="tilemap/BreakableGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( -592, 80 )
 special = "swift"
 
-[node name="SpecialBreakable6" parent="tilemap/BreakableGroup" instance=ExtResource( 6 )]
+[node name="SpecialBreakable6" parent="tilemap/BreakableGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( -592, 48 )
 special = "swift"
 
-[node name="SpecialBreakable7" parent="tilemap/BreakableGroup" instance=ExtResource( 6 )]
+[node name="SpecialBreakable7" parent="tilemap/BreakableGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( -592, 16 )
 special = "swift"
 
-[node name="SpecialBreakable8" parent="tilemap/BreakableGroup" instance=ExtResource( 6 )]
+[node name="SpecialBreakable8" parent="tilemap/BreakableGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( -592, -16 )
 special = "swift"
 
-[node name="SpecialBreakable9" parent="tilemap/BreakableGroup" instance=ExtResource( 6 )]
+[node name="SpecialBreakable9" parent="tilemap/BreakableGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( -592, -48 )
 special = "swift"
 
-[node name="SpecialBreakable10" parent="tilemap/BreakableGroup" instance=ExtResource( 6 )]
+[node name="SpecialBreakable10" parent="tilemap/BreakableGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( -592, -80 )
 special = "swift"
 
-[node name="SpecialBreakable11" parent="tilemap/BreakableGroup" instance=ExtResource( 6 )]
+[node name="SpecialBreakable11" parent="tilemap/BreakableGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( -592, -112 )
 special = "swift"
 
 [node name="GateGroup" type="Node2D" parent="tilemap"]
 
-[node name="GemGate" parent="tilemap/GateGroup" instance=ExtResource( 7 )]
+[node name="GemGate" parent="tilemap/GateGroup" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( -240, 80 )
 key = "ITEM_SAPPHIREKEY"
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
 
-[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 8 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 496, 80 )
@@ -188,4 +193,5 @@ transform/pos = Vector2( -838, -262 )
 transform/pos = Vector2( 490, 394 )
 
 
+[editable path="tilemap/NPCGroup/Gabriel"]
 [editable path="tilemap/TeleportGroup/Teleport"]
