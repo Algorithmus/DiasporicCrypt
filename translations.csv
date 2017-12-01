@@ -201,6 +201,9 @@ DIAG_GARETH0,"[color=white]There's a lot of traps here, so take your time.[/colo
 DIAG_GABRIEL0,"[color=white]I was supposed to meet with the artist of the singing statues, but he hasn't shown up yet...[/color]","[color=white]Ich soll mit der Kunstler von die singende Statuen treffen, aber er ist noch nicht aufgetaucht...[/color]"
 DIAG_GABRIEL1,"[color=white]Well, I'm not the one you're looking for. I think you came too late, and I doubt he's still here.[/color]","[color=white]Ich bin es nicht. Du kammst zu spät, und ich bezweifle mich, dass er noch da ist.[/color]"
 DIAG_GABRIEL2,"[color=white]Oh...well in that case, maybe I can just sell this to you instead.[/color]","[color=white]Oh...Na dann, vielleicht kann ich es stattdessen dir verkaufen.[/color]"
+DIAG_JALO0,"[color=white]...[/color]","[color=white]...[/color]"
+DIAG_JALO1,"[color=white]What are you staring at?[/color]","[color=white]Was hast du zu suchen?[/color]"
+DIAG_JALO2,"[color=white]...*Nothing. I'm just...hungry. Sell me something.*[/color]","[color=white]...*Nichts. Ich habe nur...Hunger. Verkauf mir doch etwas.*[/color]"
 CHARACTER_NPC,NPC,NSC
 CHOICE_SURE,Sure,Klar
 CHOICE_NAH,Nah,Nö

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=1]
+[gd_scene load_steps=19 format=1]
 
 [ext_resource path="res://scenes/lavacave/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/lavacave/climbableblock.tscn" type="PackedScene" id=2]
@@ -16,11 +16,14 @@
 [ext_resource path="res://scenes/common/damagables/statues/bust.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/items/gold/gold.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=16]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/npcs/jalo/idle.png" type="Texture" id=17]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=18]
 
 [node name="LVL_NOTITLE" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -371,22 +374,20 @@ value = 50
 
 [node name="NPCGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
-
-[node name="NPC" parent="tilemap/NPCGroup" instance=ExtResource( 16 )]
+[node name="Jalo" parent="tilemap/NPCGroup" instance=ExtResource( 16 )]
 
 editor/display_folded = true
-transform/pos = Vector2( 3984, 672 )
+transform/pos = Vector2( 3984, 656 )
+dialogues = [ [ -1, "Jalo", "DIAG_JALO0", null, null ], [ 1, "Friederich", "DIAG_JALO1", null, null ], [ -1, "Jalo", "DIAG_JALO2", null, [ [ "CHOICE_SURE", "shop", "SHOP_JALO", true ], [ "CHOICE_NAH", "end" ] ] ] ]
 
-[node name="Sprite" parent="tilemap/NPCGroup/NPC"]
+[node name="Sprite" parent="tilemap/NPCGroup/Jalo"]
 
 transform/scale = Vector2( -1, 1 )
+texture = ExtResource( 17 )
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
-
-[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 17 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 18 )]
 
 editor/display_folded = true
 transform/pos = Vector2( -240, 0 )
@@ -401,7 +402,7 @@ transform/scale = Vector2( 1, 12 )
 
 enabler/pause_animated_sprites = true
 
-[node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 17 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 18 )]
 
 editor/display_folded = true
 transform/pos = Vector2( -240, 720 )
@@ -416,7 +417,7 @@ transform/scale = Vector2( 1, 31 )
 
 enabler/pause_animated_sprites = true
 
-[node name="Teleport2" parent="tilemap/TeleportGroup" instance=ExtResource( 17 )]
+[node name="Teleport2" parent="tilemap/TeleportGroup" instance=ExtResource( 18 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 1520, 1232 )
@@ -432,7 +433,7 @@ transform/scale = Vector2( 109, 1 )
 
 enabler/pause_animated_sprites = true
 
-[node name="Teleport3" parent="tilemap/TeleportGroup" instance=ExtResource( 17 )]
+[node name="Teleport3" parent="tilemap/TeleportGroup" instance=ExtResource( 18 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 3792, 1232 )
@@ -448,7 +449,7 @@ transform/scale = Vector2( 5, 1 )
 
 enabler/pause_animated_sprites = true
 
-[node name="Teleport4" parent="tilemap/TeleportGroup" instance=ExtResource( 17 )]
+[node name="Teleport4" parent="tilemap/TeleportGroup" instance=ExtResource( 18 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 4272, 112 )
@@ -473,35 +474,11 @@ transform/pos = Vector2( -230, -230 )
 
 transform/pos = Vector2( 4266, 1226 )
 
-[connection signal="enter_screen" from="tilemap/NPCGroup/NPC/enabler" to="tilemap/NPCGroup/NPC" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/NPCGroup/NPC/enabler" to="tilemap/NPCGroup/NPC" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport2/teleport/enabler" to="tilemap/TeleportGroup/Teleport2" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport2/teleport/enabler" to="tilemap/TeleportGroup/Teleport2" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport3/teleport/enabler" to="tilemap/TeleportGroup/Teleport3" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport3/teleport/enabler" to="tilemap/TeleportGroup/Teleport3" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport4/teleport/enabler" to="tilemap/TeleportGroup/Teleport4" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport4/teleport/enabler" to="tilemap/TeleportGroup/Teleport4" method="exit_screen"]
-
 
 [editable path="tilemap/ClimbableGroup/ClimbableBlock"]
 [editable path="tilemap/ClimbableGroup/ClimbableBlock4"]
 [editable path="tilemap/LadderGroup/TestLadder"]
-[editable path="tilemap/NPCGroup/NPC"]
+[editable path="tilemap/NPCGroup/Jalo"]
 [editable path="tilemap/TeleportGroup/Teleport"]
 [editable path="tilemap/TeleportGroup/Teleport1"]
 [editable path="tilemap/TeleportGroup/Teleport2"]

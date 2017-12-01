@@ -34,3 +34,10 @@ func _init():
 
 	gabriel.sellrate = 0.25
 	shops[gabriel.name] = gabriel
+
+	var jalo = shopclass.new()
+	jalo.name = "SHOP_JALO"
+	jalo.inventory = [{"type": "magic", "id": "MAGIC_VOID", "quantity": 1}]
+
+	jalo.sellrate = 0.1
+	shops[jalo.name] = jalo
