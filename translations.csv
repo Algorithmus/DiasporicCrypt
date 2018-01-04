@@ -204,6 +204,8 @@ DIAG_GABRIEL2,"[color=white]Oh...well in that case, maybe I can just sell this t
 DIAG_JALO0,"[color=white]...[/color]","[color=white]...[/color]"
 DIAG_JALO1,"[color=white]What are you staring at?[/color]","[color=white]Was hast du zu suchen?[/color]"
 DIAG_JALO2,"[color=white]...*Nothing. I'm just...hungry. Sell me something.*[/color]","[color=white]...*Nichts. Ich habe nur...Hunger. Verkauf mir doch etwas.*[/color]"
+DIAG_VANCE0,"[color=white]I train here sometimes, but don't go beyond the room with the familiar statue just yet. You gotta be prepared. I can share, but it will cost you.[/color]","[color=white]Manchmal, trainiere ich mich hier, aber geh noch nicht weiter als die Zimmer mit das Vertraute Statue. Dafür musst du vorbereitet sein. Ausrüstung kann ich aufteilen, aber sie ist nicht kostenlos.[/color]"
+DIAG_VANCE1,"[color=white]Well, you buying?[/color]","[color=white]Na, kaufst du doch etwas?[/color]"
 CHARACTER_NPC,NPC,NSC
 CHOICE_SURE,Sure,Klar
 CHOICE_NAH,Nah,Nö
@@ -245,6 +247,7 @@ SHOP_SELL,Sell,Verkaufen
 SHOP_KALEVA,Kaleva's Shop,Kalevas Laden
 SHOP_LUCIFER,Lucifer's Shop,Lucifers Laden
 SHOP_GABRIEL,Gabriel's Shop,Gabriels Laden
+SHOP_VANCE,Vance's Shop,Vances Laden
 SHOP_AMOUNT,Amount,Menge
 SHOP_TOTAL,Total,Summe
 MAP_QUEST,Quest,Quest

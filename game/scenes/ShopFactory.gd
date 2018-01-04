@@ -41,3 +41,11 @@ func _init():
 
 	jalo.sellrate = 0.1
 	shops[jalo.name] = jalo
+
+	var vance = shopclass.new()
+	vance.name = "SHOP_VANCE"
+	vance.inventory = [{"type": "item", "id": "ITEM_POTION", "quantity": -1},
+						{"type": "item", "id": "ITEM_MANAPOTION", "quantity": -1},
+						{"type": "item", "id": "ITEM_SHIELDPOTION", "quantity": 5}]
+	vance.sellrate = 0.5
+	shops[vance.name] = vance

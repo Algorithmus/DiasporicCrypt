@@ -1,19 +1,22 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://scenes/aquaduct/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/common/breakables/breakable.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/dungeon/platforms/floorblock.png" type="Texture" id=7]
-[ext_resource path="res://scenes/common/fake.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/dungeon/solids/tile.png" type="Texture" id=9]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/npcs/vance/idle.png" type="Texture" id=6]
+[ext_resource path="res://scenes/common/breakables/breakable.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/dungeon/platforms/floorblock.png" type="Texture" id=8]
+[ext_resource path="res://scenes/common/fake.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/dungeon/solids/tile.png" type="Texture" id=10]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=11]
 
 [node name="LVL_NOTITLE" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -56,8 +59,6 @@ transform/pos = Vector2( 240, 144 )
 
 [node name="PotGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
-
 [node name="Pot" parent="tilemap/PotGroup" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 144, 80 )
@@ -72,43 +73,46 @@ transform/pos = Vector2( 336, 688 )
 
 [node name="NPCGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
+[node name="Vance" parent="tilemap/NPCGroup" instance=ExtResource( 5 )]
 
-[node name="NPC" parent="tilemap/NPCGroup" instance=ExtResource( 5 )]
+transform/pos = Vector2( 144, 656 )
+dialogues = [ [ -1, "Vance", "DIAG_VANCE0", null, null ], [ -1, "Vance", "DIAG_VANCE1", null, [ [ "KEY_YES", "shop", "SHOP_VANCE", true ], [ "KEY_NO", "end" ] ] ] ]
 
-transform/pos = Vector2( 144, 672 )
+[node name="Sprite" parent="tilemap/NPCGroup/Vance"]
+
+texture = ExtResource( 6 )
 
 [node name="BreakableGroup" type="Node2D" parent="tilemap"]
 
 editor/display_folded = true
 
-[node name="TestBreakable" parent="tilemap/BreakableGroup" instance=ExtResource( 6 )]
+[node name="TestBreakable" parent="tilemap/BreakableGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 208, 144 )
 
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable/KinematicBody2D"]
 
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
-[node name="TestBreakable1" parent="tilemap/BreakableGroup" instance=ExtResource( 6 )]
+[node name="TestBreakable1" parent="tilemap/BreakableGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 240, 144 )
 
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable1/KinematicBody2D"]
 
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
-[node name="TestBreakable2" parent="tilemap/BreakableGroup" instance=ExtResource( 6 )]
+[node name="TestBreakable2" parent="tilemap/BreakableGroup" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 272, 144 )
 
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D"]
 
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="FakeGroup" type="Node2D" parent="tilemap"]
 
-[node name="Fake" parent="tilemap/FakeGroup" instance=ExtResource( 8 )]
+[node name="Fake" parent="tilemap/FakeGroup" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 240, 304 )
 overlay = "../overlay"
@@ -130,21 +134,21 @@ z/z = 2
 
 [node name="Sprite" type="Sprite" parent="tilemap/FakeGroup/overlay"]
 
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 region = true
 region_rect = Rect2( 0, 0, 96, 192 )
 
 [node name="Sprite 2" type="Sprite" parent="tilemap/FakeGroup/overlay"]
 
 transform/pos = Vector2( 0, 112 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 flip_v = true
 region = true
 region_rect = Rect2( 0, 0, 96, 32 )
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
 
-[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 10 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 688, 48 )
@@ -171,28 +175,9 @@ transform/pos = Vector2( -198, -198 )
 
 transform/pos = Vector2( 682, 778 )
 
-[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable1/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable1" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable1/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable1" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable2" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable2" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/FakeGroup/Fake/fake/enabler" to="tilemap/FakeGroup/Fake" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/FakeGroup/Fake/fake/enabler" to="tilemap/FakeGroup/Fake" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
-
 
 [editable path="tilemap/LadderGroup/TestLadder"]
+[editable path="tilemap/NPCGroup/Vance"]
 [editable path="tilemap/BreakableGroup/TestBreakable"]
 [editable path="tilemap/BreakableGroup/TestBreakable1"]
 [editable path="tilemap/BreakableGroup/TestBreakable2"]
