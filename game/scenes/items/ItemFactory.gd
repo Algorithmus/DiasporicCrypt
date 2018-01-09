@@ -264,6 +264,14 @@ func _init():
 	scrolladventure.order = 3
 	items[scrolladventure.title] = scrolladventure
 	
+	var scrollmoon3 = scrollclass.new()
+	scrollmoon3.title = "SCROLL_MOON3"
+	scrollmoon3.display = "SCROLL_MOON3_TITLE"
+	scrollmoon3.content = "SCROLL_MOON3_DESCRIPTION"
+	scrollmoon3.description = "SCROLL_MOON3_SHORT"
+	scrollmoon3.order = 6
+	items[scrollmoon3.title] = scrollmoon3
+
 	var thunder = itemclass.new()
 	thunder.title = "MAGIC_THUNDER"
 	thunder.description = "MAGIC_THUNDER_SHORT"

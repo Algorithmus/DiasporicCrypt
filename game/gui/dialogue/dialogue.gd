@@ -20,6 +20,7 @@ const DIAG_TITLE = 1
 const DIAG_TEXT = 2
 const DIAG_ITEM = 3
 const DIAG_CHOICE = 4
+const DIAG_REQUIRE = 5 #if the item required is already obtained, the dialog will not be displayed
 
 const ITEM_TITLE = 0
 const ITEM_VALUE = 1
@@ -30,6 +31,9 @@ const CHOICE_VALUE = 2
 #dialogue - another dialog array (replace current one completely) or index for current dialog array to jump to
 const CHOICE_ORIENTATION = 3
 
+const REQUIRE_TYPE = 0 #scroll, item, magic or gold
+const REQUIRE_VALUE = 1
+
 var avatars = {"Friederich": {"img": preload("res://gui/dialogue/profiles/friederich.png"), "offset": Vector2()},
 				"Kaleva": {"img": preload("res://gui/dialogue/profiles/kaleva.png"), "offset": Vector2()},
 				"Adela": {"img": preload("res://gui/dialogue/profiles/adela.png"), "offset": Vector2()},
@@ -37,6 +41,8 @@ var avatars = {"Friederich": {"img": preload("res://gui/dialogue/profiles/friede
 				"Gareth": {"img": preload("res://gui/dialogue/profiles/gareth.png"), "offset": Vector2(0, -62)},
 				"Gabriel": {"img": preload("res://gui/dialogue/profiles/gabriel.png"), "offset": Vector2(0, -120)},
 				"Jalo": {"img": preload("res://gui/dialogue/profiles/jalo.png"), "offset": Vector2()},
+				"Vance": {"img": preload("res://gui/dialogue/profiles/vance.png"), "offset": Vector2(0, -116)},
+				"Vladimir": {"img": preload("res://gui/dialogue/profiles/vladimir.png"), "offset": Vector2(0, -150)},
 				"CHARACTER_NPC": {"img": preload("res://gui/dialogue/profiles/npc.png"), "offset": Vector2()}}
 
 func _ready():
@@ -168,7 +174,15 @@ func show_dialog():
 			current_dialog += 1
 			dialog = dialogs[current_dialog]
 
-		if (current_dialog < dialogs.size()):
+		var required = true
+
+		if (dialog.size() >= DIAG_REQUIRE + 1):
+			var require = dialog[DIAG_REQUIRE]
+			#TODO - other item types
+			if (require[REQUIRE_TYPE] == "scroll" && Globals.get("scrolls").has(require[REQUIRE_VALUE])):
+				required = false
+
+		if (current_dialog < dialogs.size() && required):
 			if (dialog[DIAG_DIRECTION] != 0):
 				profile.show()
 				var avatar = dialog[DIAG_TITLE]

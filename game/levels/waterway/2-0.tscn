@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://scenes/waterway/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/waterway/climbableblock.tscn" type="PackedScene" id=2]
@@ -9,8 +9,9 @@
 [ext_resource path="res://scenes/common/damagables/mine.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/items/gold/gold.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/common/fluid/water.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/npcs/vladimir/idle.png" type="Texture" id=10]
+[ext_resource path="res://scenes/common/fluid/water.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=12]
 
 [node name="LVL_NOTITLE" type="Node2D"]
 
@@ -893,22 +894,21 @@ value = 100
 
 [node name="NPCGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
+[node name="Vladimir" parent="tilemap/NPCGroup" instance=ExtResource( 9 )]
 
-[node name="NPC" parent="tilemap/NPCGroup" instance=ExtResource( 9 )]
+transform/pos = Vector2( 144, 1584 )
+dialogues = [ [ -1, "Vladimir", "DIAG_VLADIMIR0", null, null ], [ -1, "Vladimir", "DIAG_VLADIMIR1", null, null, [ "scroll", "SCROLL_MOON3" ] ], [ -1, "Vladimir", "DIAG_VLADIMIR1", [ "SCROLL_MOON3", null, true ], null ] ]
 
-editor/display_folded = true
-transform/pos = Vector2( 144, 1600 )
-
-[node name="Sprite" parent="tilemap/NPCGroup/NPC"]
+[node name="Sprite" parent="tilemap/NPCGroup/Vladimir"]
 
 transform/scale = Vector2( -1, 1 )
+texture = ExtResource( 10 )
 
 [node name="WaterGroup" type="Node2D" parent="tilemap"]
 
 editor/display_folded = true
 
-[node name="TestWaterSurface" parent="tilemap/WaterGroup" instance=ExtResource( 10 )]
+[node name="TestWaterSurface" parent="tilemap/WaterGroup" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 48, 1072 )
@@ -925,7 +925,7 @@ transform/scale = Vector2( 13, 47 )
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 11 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 12 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 48, -176 )
@@ -1027,6 +1027,6 @@ transform/pos = Vector2( 304, 1872 )
 [editable path="tilemap/SpikeGroup/SpikeTile1163"]
 [editable path="tilemap/SpikeGroup/SpikeTile1164"]
 [editable path="tilemap/SpikeGroup/SpikeTile1165"]
-[editable path="tilemap/NPCGroup/NPC"]
+[editable path="tilemap/NPCGroup/Vladimir"]
 [editable path="tilemap/WaterGroup/TestWaterSurface"]
 [editable path="tilemap/TeleportGroup/Teleport"]
