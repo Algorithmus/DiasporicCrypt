@@ -43,6 +43,7 @@ var avatars = {"Friederich": {"img": preload("res://gui/dialogue/profiles/friede
 				"Jalo": {"img": preload("res://gui/dialogue/profiles/jalo.png"), "offset": Vector2()},
 				"Vance": {"img": preload("res://gui/dialogue/profiles/vance.png"), "offset": Vector2(0, -116)},
 				"Vladimir": {"img": preload("res://gui/dialogue/profiles/vladimir.png"), "offset": Vector2(0, -150)},
+				"Pepper": {"img": preload("res://gui/dialogue/profiles/pepper.png"), "offset": Vector2(0, -240)},
 				"CHARACTER_NPC": {"img": preload("res://gui/dialogue/profiles/npc.png"), "offset": Vector2()}}
 
 func _ready():

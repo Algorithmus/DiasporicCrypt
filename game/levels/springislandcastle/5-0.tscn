@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://scenes/springislandcastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/springislandcastle/climbableblock.tscn" type="PackedScene" id=2]
@@ -7,11 +7,15 @@
 [ext_resource path="res://scenes/common/gemgate.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/npcs/pepper/idle.png" type="Texture" id=8]
+[ext_resource path="res://scenes/npcs/carrot/carrot.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=10]
 
 [node name="LVL_NOTITLE" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -89,20 +93,24 @@ transform/pos = Vector2( 960, 48 )
 
 [node name="NPCGroup" type="Node2D" parent="tilemap"]
 
-[node name="NPC" parent="tilemap/NPCGroup" instance=ExtResource( 7 )]
+[node name="Pepper" parent="tilemap/NPCGroup" instance=ExtResource( 7 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 704, 32 )
+dialogues = [ [ -1, "Pepper", "DIAG_PEPPER0", null, null ], [ -1, "Pepper", "DIAG_PEPPER1", null, [ [ "KEY_YES", "shop", "SHOP_PEPPER", true ], [ "KEY_NO", "end" ] ] ] ]
 
-[node name="Sprite" parent="tilemap/NPCGroup/NPC"]
+[node name="Sprite" parent="tilemap/NPCGroup/Pepper"]
 
 transform/scale = Vector2( -1, 1 )
+texture = ExtResource( 8 )
+
+[node name="Carrot" parent="tilemap" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 592, 80 )
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
-
-[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 8 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 transform/pos = Vector2( -16, 368 )
@@ -128,16 +136,8 @@ transform/pos = Vector2( -198, -294 )
 
 transform/pos = Vector2( 1066, 362 )
 
-[connection signal="enter_screen" from="tilemap/NPCGroup/NPC/enabler" to="tilemap/NPCGroup/NPC" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/NPCGroup/NPC/enabler" to="tilemap/NPCGroup/NPC" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
-
 
 [editable path="tilemap/ClimbableGroup/ClimbableBlock1"]
 [editable path="tilemap/LadderGroup/TestLadder"]
-[editable path="tilemap/NPCGroup/NPC"]
+[editable path="tilemap/NPCGroup/Pepper"]
 [editable path="tilemap/TeleportGroup/Teleport"]

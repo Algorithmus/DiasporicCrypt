@@ -212,6 +212,11 @@ DIAG_VANCE0,"[color=white]I train here sometimes, but don't go beyond the room w
 DIAG_VANCE1,"[color=white]Well, you buying?[/color]","[color=white]Na, kaufst du doch etwas?[/color]"
 DIAG_VLADIMIR0,"[color=white]When you drink as much blood as I do, your demonic powers just grow on you. I no longer have need of a separate form. My demonic has merged with me.[/color]","[color=white]Trinkst du so viel Blut wie ich, wachst deine Demonic Kräfte unglaublich stark. Ich brauche kein andere Form um meine Demonic Kräfte zu behalten. Die sind mit mir gefügt.[/color]"
 DIAG_VLADIMIR1,"[color=white]Since you took all that trouble to see me, you can have this. I have no need of it.[/color]","[color=white]Weil du hast die Mühe gegeben, mich zu finden, du kannst das haben. Ich brauche es nicht mehr.[/color]"
+DIAG_PEPPER0,"[color=white]Man, this castle sure is big! But perfect for flying through on my broom. Those spike traps make this a challenge! Oh, but I still have errands from my teachers I came here for...[/color]","[color=white]Mann, dieses Schloss ist sehr groß! Doch ist das perfekt um mit mein Besen durchzufliegen. Die Spitzenfalle machen große Herausforderungen! Oh, aber ich habe immer noch Aufgaben hier von meine Lehrerinnen...[/color]"
+DIAG_PEPPER1,"[color=white]Say, you wouldn't be interested in some of my spells, would you? Can you use them?[/color]","[color=white]Sag mal, hast du Interesse an meine Zaubersprüche? Kannst du sie verwenden?[/color]"
+DIAG_CARROT0,"[color=white]That's my cat, Carrot. I don't know how he found the other cat...[/color]","[color=white]Das ist meine Katze, Carrot. Ich weiß nicht genau, wie er die andere Katze gefunden hatte...[/color]"
+DIAG_CARROT1,"[color=white]That's my familiar.[/color]","[color=white]Das ist meine Vertrauten.[/color]"
+DIAG_CARROT2,"[color=white]Oh wow, really? Neat! They seem to be getting along fine.[/color]","[color=white]Oh wow, wirklich? Cool! Sie scheinen sich befreundet zu sein.[/color]"
 CHARACTER_NPC,NPC,NSC
 CHOICE_SURE,Sure,Klar
 CHOICE_NAH,Nah,Nö
@@ -254,6 +259,7 @@ SHOP_KALEVA,Kaleva's Shop,Kalevas Laden
 SHOP_LUCIFER,Lucifer's Shop,Lucifers Laden
 SHOP_GABRIEL,Gabriel's Shop,Gabriels Laden
 SHOP_VANCE,Vance's Shop,Vances Laden
+SHOP_PEPPER,Pepper's Shop,Peppers Laden
 SHOP_AMOUNT,Amount,Menge
 SHOP_TOTAL,Total,Summe
 MAP_QUEST,Quest,Quest

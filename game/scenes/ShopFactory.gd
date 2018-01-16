@@ -49,3 +49,10 @@ func _init():
 						{"type": "item", "id": "ITEM_SHIELDPOTION", "quantity": 5}]
 	vance.sellrate = 0.5
 	shops[vance.name] = vance
+
+	var pepper = shopclass.new()
+	pepper.name = "SHOP_PEPPER"
+	pepper.inventory = [{"type": "item", "id": "MAGIC_VOID", "quantity": 1}]
+
+	pepper.sellrate = 0.5
+	shops[pepper.name] = pepper
