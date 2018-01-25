@@ -12,7 +12,7 @@ var item
 var player
 
 func _fixed_process(delta):
-	if (!taken):
+	if (!taken && get_node("item") != null):
 		var collisions = get_node("item").get_overlapping_bodies()
 		for i in collisions:
 			if (i.get_name() == "player"):
