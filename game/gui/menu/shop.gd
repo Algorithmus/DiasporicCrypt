@@ -3,6 +3,8 @@ extends Control
 
 # Displays user interface for shopping
 
+const DISABLED_ALPHA = 0.5
+
 var itemclass = preload("res://gui/menu/shoppingitem.tscn")
 var itemfactory
 
@@ -86,7 +88,7 @@ func update_inventory():
 				item_obj.get_node("cost").set_text(str(round(data.cost * rate)) + "G")
 				# disable items that are too expensive
 				if (data.cost > gold && currenttype == "buy"):
-					item_obj.set_opacity(0.5)
+					item_obj.set_opacity(DISABLED_ALPHA)
 				item_obj.get_node("quantity").set_text(str(item["quantity"]))
 				if (item["quantity"] <= 0):
 					item_obj.get_node("quantity").hide()
@@ -112,7 +114,10 @@ func update_inventory():
 					lastitem.set_focus_neighbour(MARGIN_BOTTOM, "")
 				itemcontainer.add_child(item_obj)
 			else:
-				itemcontainer.get_node(data.title + "/quantity").set_text(str(item["quantity"]))
+				var item_obj = itemcontainer.get_node(data.title)
+				item_obj.get_node("quantity").set_text(str(item["quantity"]))
+				if (data.cost > gold && currenttype == "buy"):
+					item_obj.set_opacity(DISABLED_ALPHA)
 	if (itemcontainer.get_child_count() > 0):
 		get_node("panel/noitems").hide()
 	else:
@@ -188,7 +193,7 @@ func _input(event):
 				newtype.grab_focus()
 			elif (event.is_action_pressed("ui_accept") && focus.get_name() != "buy" && focus.get_name() != "sell"):
 				selecteditem = focus
-				if(selecteditem.get_opacity() > 0.5):
+				if(selecteditem.get_opacity() > DISABLED_ALPHA):
 					var item = itemfactory.items[selecteditem.get_name()]
 					currentamount = 1
 					amounttotal = int(selecteditem.get_node("quantity").get_text())
