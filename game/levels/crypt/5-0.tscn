@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://scenes/crypt/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/common/sunbeam.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/npcs/goddess/goddess.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/common/sunbeam.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=5]
 
 [node name="LVL_NOTITLE" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -44,11 +47,18 @@ region_rect = Rect2( 0, 0, 32, 384 )
 
 transform/scale = Vector2( 1, 12 )
 
+[node name="NPCGroup" type="Node2D" parent="tilemap"]
+
+[node name="Goddess" parent="tilemap/NPCGroup" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -416, 512 )
+
 [node name="SunbeamGroup" type="Node2D" parent="tilemap"]
 
-[node name="Sunbeam" parent="tilemap/SunbeamGroup" instance=ExtResource( 3 )]
-
 editor/display_folded = true
+
+[node name="Sunbeam" parent="tilemap/SunbeamGroup" instance=ExtResource( 4 )]
+
 transform/pos = Vector2( -416, 224 )
 
 [node name="block" parent="tilemap/SunbeamGroup/Sunbeam"]
@@ -61,7 +71,7 @@ transform/scale = Vector2( 12, 22 )
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap"]
 
-[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 4 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 272, -144 )
@@ -86,10 +96,6 @@ transform/pos = Vector2( -646, -134 )
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
 transform/pos = Vector2( 522, 714 )
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
 
 
 [editable path="tilemap/LadderGroup/TestLadder"]

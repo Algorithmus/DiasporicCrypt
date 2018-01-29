@@ -305,7 +305,7 @@ func _init():
 	shield.type = "magic"
 	shield.image = "res://players/magic/shield/icon.png"
 	shield.value = "shield"
-	shield.cost = 0
+	shield.cost = 50000
 	items[shield.title] = shield
 
 	var earth = itemclass.new()

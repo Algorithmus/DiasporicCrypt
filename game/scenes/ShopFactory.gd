@@ -52,7 +52,14 @@ func _init():
 
 	var pepper = shopclass.new()
 	pepper.name = "SHOP_PEPPER"
-	pepper.inventory = [{"type": "item", "id": "MAGIC_VOID", "quantity": 1}]
+	pepper.inventory = [{"type": "magic", "id": "MAGIC_VOID", "quantity": 1}]
 
 	pepper.sellrate = 0.5
 	shops[pepper.name] = pepper
+
+	var goddess = shopclass.new()
+	goddess.name = "SHOP_GODDESS"
+	goddess.inventory = [{"type": "magic", "id": "MAGIC_SHIELD", "quantity": 1}]
+
+	goddess.sellrate = 1.5
+	shops[goddess.name] = goddess
