@@ -1,0 +1,603 @@
+[gd_scene load_steps=54 format=2]
+
+[ext_resource path="res://gui/theme/slidergrabber.png" type="Texture" id=1]
+[ext_resource path="res://gui/theme/slidergrabber_active.png" type="Texture" id=2]
+[ext_resource path="res://gui/theme/slider.png" type="Texture" id=3]
+[ext_resource path="res://gui/theme/scrollgrabber.png" type="Texture" id=4]
+[ext_resource path="res://gui/theme/scrollbar.png" type="Texture" id=5]
+[ext_resource path="res://gui/fonts/S-13-dialog.font" type="BitmapFont" id=6]
+[ext_resource path="res://gui/menu/SettingsContent.gd" type="Script" id=7]
+[ext_resource path="res://gui/fonts/L-24.font" type="BitmapFont" id=8]
+[ext_resource path="res://gui/menu/footer_large.png" type="Texture" id=9]
+[ext_resource path="res://gui/menu/soundslider.tscn" type="PackedScene" id=10]
+[ext_resource path="res://gui/menu/localeitem.tscn" type="PackedScene" id=11]
+[ext_resource path="res://gui/menu/inputkey.tscn" type="PackedScene" id=12]
+[ext_resource path="res://gui/menu/titlebg.tscn" type="PackedScene" id=13]
+[ext_resource path="res://gui/menu/titleframe.png" type="Texture" id=14]
+[ext_resource path="res://gui/menu/textitem.tscn" type="PackedScene" id=15]
+
+[sub_resource type="ImageTexture" id=1]
+
+flags = 4
+)size = Vector2( 4, 16 )
+storage = 0
+lossy_quality = 0.7
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="StyleBoxTexture" id=3]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 2 )
+margin_left = 23.0
+margin_right = 24.0
+margin_top = 13.0
+margin_bottom = 13.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=4]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 3 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 0.0
+margin_bottom = 13.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+draw_center = true
+
+[sub_resource type="LargeTexture" id=5]
+
+_data = [ Vector2( 0, 0 ) ]
+
+[sub_resource type="LargeTexture" id=6]
+
+_data = [ Vector2( 0, 0 ) ]
+
+[sub_resource type="LargeTexture" id=7]
+
+_data = [ Vector2( 0, 0 ) ]
+
+[sub_resource type="LargeTexture" id=8]
+
+_data = [ Vector2( 0, 0 ) ]
+
+[sub_resource type="StyleBoxTexture" id=9]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = 0.0
+content_margin_bottom = 30.0
+texture = ExtResource( 4 )
+margin_left = 0.0
+margin_right = 28.0
+margin_top = 30.0
+margin_bottom = 30.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=10]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = 0.0
+content_margin_bottom = 30.0
+texture = ExtResource( 4 )
+margin_left = 0.0
+margin_right = 28.0
+margin_top = 30.0
+margin_bottom = 30.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=11]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 5 )
+margin_left = 28.0
+margin_right = 0.0
+margin_top = 32.0
+margin_bottom = 32.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=12]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 5 )
+margin_left = 18.0
+margin_right = 0.0
+margin_top = 32.0
+margin_bottom = 32.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+draw_center = true
+
+[sub_resource type="Theme" id=13]
+
+default_font = ExtResource( 6 )
+HSlider/icons/grabber = ExtResource( 1 )
+HSlider/icons/grabber_hilite = ExtResource( 2 )
+HSlider/icons/tick = SubResource( 1 )
+HSlider/styles/focus = SubResource( 2 )
+HSlider/styles/grabber_hilite = SubResource( 3 )
+HSlider/styles/slider = SubResource( 4 )
+VScrollBar/icons/decrement = SubResource( 5 )
+VScrollBar/icons/decrement_hilite = SubResource( 6 )
+VScrollBar/icons/increment = SubResource( 7 )
+VScrollBar/icons/increment_hilite = SubResource( 8 )
+VScrollBar/styles/grabber = SubResource( 9 )
+VScrollBar/styles/grabber_hilite = SubResource( 10 )
+VScrollBar/styles/scroll = SubResource( 11 )
+VScrollBar/styles/scroll_focus = SubResource( 12 )
+
+[sub_resource type="Shader" id=14]
+
+_code = {
+"fragment": "uniform color start=color(0.2,0.4,1.0,1);
+uniform color stop=color(0.2,0.4,1.0,0);
+COLOR = mix(start, stop, UV.x);
+
+COLOR.a = tex(TEXTURE,UV).a*COLOR.a;",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+
+[sub_resource type="ShaderMaterial" id=15]
+
+shader/shader = SubResource( 14 )
+shader/shading_mode = 0
+shader_param/start = Color( 0.788235, 0.74902, 0.631373, 1 )
+shader_param/stop = Color( 0.788235, 0.74902, 0.631373, 0 )
+
+[sub_resource type="ImageTexture" id=16]
+
+flags = 6
+size = Vector2( 1, 1 )
+storage = 0
+lossy_quality = 1.0
+
+[sub_resource type="StyleBoxEmpty" id=17]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=18]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=19]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=20]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=21]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=22]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[node name="settings" type="Control"]
+
+focus_ignore_mouse = false
+focus_stop_mouse = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme = SubResource( 13 )
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 736.0
+margin_bottom = 494.0
+script = ExtResource( 7 )
+
+[node name="sound" type="Label" parent="."]
+
+focus_ignore_mouse = true
+focus_stop_mouse = true
+size_flags_horizontal = 2
+size_flags_vertical = 0
+margin_left = 24.0
+margin_top = 16.0
+margin_right = 728.0
+margin_bottom = 47.0
+custom_fonts/font = ExtResource( 8 )
+text = "KEY_SOUND"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="sfxornament" type="Sprite" parent="."]
+
+position = Vector2( 383, 59 )
+texture = ExtResource( 9 )
+self_modulate = Color( 0.953125, 0.230835, 0.230835, 0.324798 )
+
+[node name="bgmornament" type="Sprite" parent="."]
+
+position = Vector2( 383, 119 )
+texture = ExtResource( 9 )
+flip_v = true
+self_modulate = Color( 0.953125, 0.230835, 0.230835, 0.324798 )
+
+[node name="sound_line" type="Sprite" parent="."]
+
+material = SubResource( 15 )
+position = Vector2( 16, 52 )
+scale = Vector2( 458, 1 )
+texture = SubResource( 16 )
+centered = false
+
+[node name="sfxslider" parent="." instance=ExtResource( 10 )]
+
+focus_neighbour_top = NodePath("../../../tabs/HBoxContainer/settings")
+size_flags_vertical = 0
+margin_left = 130.0
+margin_top = 64.0
+margin_bottom = 80.0
+focus_mode = 2
+
+[node name="bgmslider" parent="." instance=ExtResource( 10 )]
+
+editor/display_folded = true
+size_flags_vertical = 0
+margin_left = 130.0
+margin_top = 96.0
+margin_bottom = 112.0
+focus_mode = 2
+
+[node name="icon" parent="bgmslider"]
+
+margin_top = 0.0
+enabled_focus_mode = 2
+shortcut = null
+
+[node name="title" parent="bgmslider"]
+
+size_flags_vertical = 0
+margin_top = 0.0
+text = "BGM"
+
+[node name="controls_line" type="Sprite" parent="."]
+
+material = SubResource( 15 )
+position = Vector2( 16, 156 )
+scale = Vector2( 458, 1 )
+texture = SubResource( 16 )
+centered = false
+
+[node name="controls" type="Label" parent="."]
+
+focus_ignore_mouse = true
+focus_stop_mouse = true
+size_flags_horizontal = 2
+size_flags_vertical = 0
+margin_left = 24.0
+margin_top = 120.0
+margin_right = 728.0
+margin_bottom = 151.0
+custom_fonts/font = ExtResource( 8 )
+text = "KEY_CONTROLS"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="layout" parent="." instance=ExtResource( 11 )]
+
+focus_neighbour_left = NodePath(".")
+focus_neighbour_right = NodePath(".")
+margin_left = 480.0
+margin_top = 128.0
+margin_right = 663.0
+margin_bottom = 160.0
+text = "Allgemeines Gamepad"
+
+[node name="icon1" parent="layout"]
+
+margin_left = 192.0
+margin_right = 204.0
+margin_bottom = 36.0
+
+[node name="inputs" type="VBoxContainer" parent="."]
+
+focus_ignore_mouse = false
+focus_stop_mouse = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+margin_left = 66.0
+margin_top = 160.0
+margin_right = 710.0
+margin_bottom = 455.0
+custom_constants/separation = -7
+alignment = 0
+
+[node name="up" parent="inputs" instance=ExtResource( 12 )]
+
+focus_neighbour_bottom = NodePath("../down")
+margin_left = 0.0
+margin_right = 644.0
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+
+[node name="down" parent="inputs" instance=ExtResource( 12 )]
+
+focus_neighbour_top = NodePath("../up")
+focus_neighbour_bottom = NodePath("../left")
+margin_left = 0.0
+margin_top = 24.0
+margin_right = 644.0
+margin_bottom = 55.0
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+text = "KEY_DOWN"
+actionid = "ui_down"
+
+[node name="left" parent="inputs" instance=ExtResource( 12 )]
+
+focus_neighbour_top = NodePath("../down")
+focus_neighbour_bottom = NodePath("../right")
+margin_left = 0.0
+margin_top = 48.0
+margin_right = 644.0
+margin_bottom = 79.0
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+text = "KEY_LEFT"
+actionid = "ui_left"
+
+[node name="right" parent="inputs" instance=ExtResource( 12 )]
+
+focus_neighbour_top = NodePath("../left")
+focus_neighbour_bottom = NodePath("../attack")
+margin_left = 0.0
+margin_top = 72.0
+margin_right = 644.0
+margin_bottom = 103.0
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+text = "KEY_RIGHT"
+actionid = "ui_right"
+
+[node name="attack" parent="inputs" instance=ExtResource( 12 )]
+
+focus_neighbour_top = NodePath("../right")
+focus_neighbour_bottom = NodePath("../jump")
+margin_left = 0.0
+margin_top = 96.0
+margin_right = 644.0
+margin_bottom = 127.0
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+text = "KEY_ATTACK"
+actionid = "ui_attack"
+
+[node name="jump" parent="inputs" instance=ExtResource( 12 )]
+
+focus_neighbour_top = NodePath("../attack")
+focus_neighbour_bottom = NodePath("../magic")
+margin_left = 0.0
+margin_top = 120.0
+margin_right = 644.0
+margin_bottom = 151.0
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+text = "KEY_JUMP"
+actionid = "ui_jump"
+
+[node name="magic" parent="inputs" instance=ExtResource( 12 )]
+
+focus_neighbour_top = NodePath("../jump")
+focus_neighbour_bottom = NodePath("../blood")
+margin_left = 0.0
+margin_top = 144.0
+margin_right = 644.0
+margin_bottom = 175.0
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+text = "KEY_MAGIC"
+actionid = "ui_magic"
+
+[node name="blood" parent="inputs" instance=ExtResource( 12 )]
+
+focus_neighbour_top = NodePath("../magic")
+focus_neighbour_bottom = NodePath("../prev")
+margin_left = 0.0
+margin_top = 168.0
+margin_right = 644.0
+margin_bottom = 199.0
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+text = "KEY_BLOOD"
+actionid = "ui_blood"
+
+[node name="prev" parent="inputs" instance=ExtResource( 12 )]
+
+focus_neighbour_top = NodePath("../blood")
+focus_neighbour_bottom = NodePath("../next")
+margin_left = 0.0
+margin_top = 192.0
+margin_right = 644.0
+margin_bottom = 223.0
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+text = "KEY_PREVMAGIC"
+actionid = "ui_spell_prev"
+
+[node name="next" parent="inputs" instance=ExtResource( 12 )]
+
+focus_neighbour_top = NodePath("../prev")
+focus_neighbour_bottom = NodePath("../pause")
+margin_left = 0.0
+margin_top = 216.0
+margin_right = 644.0
+margin_bottom = 247.0
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+text = "KEY_NEXTMAGIC"
+actionid = "ui_spell_next"
+
+[node name="pause" parent="inputs" instance=ExtResource( 12 )]
+
+focus_neighbour_top = NodePath("../next")
+focus_neighbour_bottom = NodePath("../minimap")
+margin_left = 0.0
+margin_top = 240.0
+margin_right = 644.0
+margin_bottom = 271.0
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+text = "Pause"
+actionid = "ui_pause"
+
+[node name="minimap" parent="inputs" instance=ExtResource( 12 )]
+
+focus_neighbour_top = NodePath("../pause")
+margin_left = 0.0
+margin_top = 264.0
+margin_right = 644.0
+margin_bottom = 295.0
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+text = "KEY_MINIMAP"
+actionid = "ui_select"
+
+[node name="save_bg" parent="." instance=ExtResource( 13 )]
+
+margin_left = 160.0
+margin_top = 453.0
+margin_right = 200.0
+margin_bottom = 493.0
+
+[node name="saveornament" type="Sprite" parent="."]
+
+position = Vector2( 0, 441 )
+texture = ExtResource( 14 )
+centered = false
+
+[node name="save" parent="." instance=ExtResource( 15 )]
+
+focus_neighbour_left = NodePath(".")
+focus_neighbour_right = NodePath("../reset")
+margin_left = 66.0
+margin_top = 462.0
+margin_right = 155.0
+margin_bottom = 494.0
+custom_styles/hover = SubResource( 20 )
+custom_styles/pressed = SubResource( 21 )
+custom_styles/focus = SubResource( 22 )
+
+[node name="reset_bg" parent="." instance=ExtResource( 13 )]
+
+margin_left = 630.0
+margin_top = 453.0
+margin_right = 670.0
+margin_bottom = 493.0
+
+[node name="resetornament" type="Sprite" parent="."]
+
+position = Vector2( 470, 441 )
+texture = ExtResource( 14 )
+centered = false
+
+[node name="reset" parent="." instance=ExtResource( 15 )]
+
+focus_neighbour_left = NodePath("../save")
+margin_left = 590.0
+margin_top = 462.0
+margin_right = 689.0
+margin_bottom = 494.0
+custom_styles/hover = SubResource( 20 )
+custom_styles/pressed = SubResource( 21 )
+custom_styles/focus = SubResource( 22 )
+text = "KEY_RESET"
+
+[connection signal="focus_exited"  from="sfxslider"  to="." method="_on_sfxslider_focus_exit" binds=[  ]]
+
+[connection signal="gui_input"  from="sfxslider"  to="." method="_on_sfxslider_input_event" binds=[  ]]
+
+[connection signal="value_changed"  from="sfxslider"  to="." method="_on_sfxslider_value_changed" binds=[  ]]
+
+[connection signal="gui_input"  from="bgmslider"  to="." method="_on_bgmslider_input_event" binds=[  ]]
+
+[connection signal="value_changed"  from="bgmslider"  to="." method="_on_bgmslider_value_changed" binds=[  ]]
+
+[connection signal="focus_entered"  from="layout"  to="." method="_on_layout_focus_enter" binds=[  ]]
+
+[connection signal="focus_exited"  from="layout"  to="." method="_on_layout_focus_exit" binds=[  ]]
+
+[connection signal="pressed"  from="save"  to="." method="_on_save_pressed" binds=[  ]]
+
+[connection signal="pressed"  from="reset"  to="." method="_on_reset_pressed" binds=[  ]]
+[editable path="bgmslider"]
+[editable path="layout"]

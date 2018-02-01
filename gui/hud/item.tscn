@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://gui/hud/item.gd" type="Script" id=1]
+[ext_resource path="res://gui/fonts/S-13.font" type="Font" id=2]
+
+[node name="item" type="Node2D"]
+
+script = ExtResource( 1 )
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+
+[node name="text" type="Label" parent="."]
+
+margin_left = -240.0
+margin_top = -9.0
+margin_bottom = 9.0
+focus_ignore_mouse = true
+focus_stop_mouse = true
+size_flags_horizontal = 2
+custom_fonts/font = ExtResource( 2 )
+align = 2
+valign = 1
+clip_text = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="icon" type="Sprite" parent="."]
+
+position = Vector2( 20, 0 )

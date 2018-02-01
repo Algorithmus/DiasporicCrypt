@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/catacombs.ogg-cc2d9b8ed08f60b53afea2733e84c7c7.oggstr"
+
+[deps]
+
+source_file="res://levels/common/catacombs.ogg"
+source_md5="892526496152da97541a66190ca4905d"
+
+dest_files=[ "res://.import/catacombs.ogg-cc2d9b8ed08f60b53afea2733e84c7c7.oggstr" ]
+dest_md5="732a225316dd386a3e9643d85b985480"
+
+[params]
+
+loop=true
+loop_offset=0

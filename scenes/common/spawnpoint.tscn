@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/common/SpawnPoint.gd" type="Script" id=1]
+
+[node name="SpawnPoint" type="Node2D"]
+
+script = ExtResource( 1 )
+spawn_object = "res://scenes/common/damagables/sorcerer/sorcerer.tscn"
+spawn_amount = 3
+spawn_delay = 100
+spawn_radius = 1
+
+[node name="enabler" type="VisibilityEnabler2D" parent="."]
+
+scale = Vector2( 24, 16 )
+rect = Rect2( -10, -10, 20, 20 )
+pause_animations = true
+freeze_bodies = true
+pause_particles = true
+pause_animated_sprites = true
+process_parent = false
+fixed_process_parent = false
+
+[node name="SpawnGroup" type="Node2D" parent="."]
+
+
+[connection signal="enter_screen"  from="enabler"  to="." method="enter_screen" binds=[  ]]
+
+[connection signal="exit_screen"  from="enabler"  to="." method="exit_screen" binds=[  ]]

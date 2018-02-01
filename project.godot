@@ -1,0 +1,60 @@
+[application]
+
+boot_splash = "res://gui/loading/splash.png"
+icon = "res://icon.png"
+name = "The Diasporic Crypt"
+run/main_scene = "res://scenes/global.tscn"
+
+[debug]
+
+collision/max_contacts_displayed = 10000
+print_metrics = true
+stdout/print_fps = true
+stdout/verbose_stdout = false
+
+[display]
+
+stretch/aspect = "keep"
+stretch/mode = "viewport"
+window/height = 592
+window/resizable = false
+window/width = 800
+
+[image_loader]
+
+filter = false
+gen_mipmaps = false
+
+[importer_defaults]
+
+texture = {
+"flags/filter": false,
+"flags/mipmaps": false
+}
+
+[input]
+
+ui_accept = [ InputEvent(JBUTTON,0), InputEvent(KEY,88), InputEvent(KEY,83), InputEvent(KEY,65) ]
+ui_attack = [ InputEvent(KEY,88), InputEvent(JBUTTON,0) ]
+ui_blood = [ InputEvent(KEY,65), InputEvent(JBUTTON,3) ]
+ui_cancel = [ InputEvent(JBUTTON,1), InputEvent(KEY,90) ]
+ui_help = [ InputEvent(KEY,16777244) ]
+ui_jump = [ InputEvent(KEY,90), InputEvent(JBUTTON,1) ]
+ui_magic = [ InputEvent(KEY,83), InputEvent(JBUTTON,2) ]
+ui_pause = [ InputEvent(JBUTTON,11), InputEvent(KEY,16777218) ]
+ui_select = [ InputEvent(KEY,32), InputEvent(JBUTTON,10) ]
+ui_spell_next = [ InputEvent(KEY,87), InputEvent(JBUTTON,5) ]
+ui_spell_prev = [ InputEvent(KEY,81), InputEvent(JBUTTON,4) ]
+
+[locale]
+
+translations = [ "res://translations/translations.en.xl", "res://translations/translations.de.xl" ]
+
+[render]
+
+mipmap_policy = 2
+
+[rendering]
+
+viewport/default_clear_color = Color( 0, 0, 0, 1 )
+

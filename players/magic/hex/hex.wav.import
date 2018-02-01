@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hex.wav-f58ac6263d28efdfe46aec990495ea6f.sample"
+
+[deps]
+
+source_file="res://players/magic/hex/hex.wav"
+source_md5="1ecbb768cceff3ca24d63837ad35cc70"
+
+dest_files=[ "res://.import/hex.wav-f58ac6263d28efdfe46aec990495ea6f.sample" ]
+dest_md5="e2bfe9afcfdee8044d89213a2963d8da"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

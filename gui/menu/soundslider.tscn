@@ -1,0 +1,99 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://gui/dialogue/choice.gd" type="Script" id=1]
+[ext_resource path="res://gui/menu/cursor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui/fonts/S-13-dialog.font" type="Font" id=3]
+[ext_resource path="res://gui/menu/icons/mute.png" type="Texture" id=4]
+
+[sub_resource type="Shader" id=1]
+
+_code = {
+"fragment": "//this shader only works properly with premultiplied alpha blend mode
+uniform float aura_width=2.0;
+uniform color aura_color=vec4(0.4,0.7,0.3,1);
+uniform float opacity = 1.0;
+
+vec4 col = vec4(tex(TEXTURE,UV).rgb, tex(TEXTURE,UV).a*opacity);
+vec2 ps = TEXTURE_PIXEL_SIZE;
+float a;
+float maxa=col.a;
+float mina=col.a;
+a=tex(TEXTURE,UV+vec2(0,-aura_width)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=tex(TEXTURE,UV+vec2(0,aura_width)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=tex(TEXTURE,UV+vec2(-aura_width,0)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=tex(TEXTURE,UV+vec2(aura_width,0)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+col.rgb*=col.a;
+COLOR=mix(col,aura_color,maxa-mina);
+float auraa=(maxa-mina);
+
+COLOR.rgb+=aura_color.rgb*(maxa-mina);",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+
+[sub_resource type="ShaderMaterial" id=2]
+
+shader/shader = SubResource( 1 )
+shader/shading_mode = 0
+shader_param/aura_width = 1.0
+shader_param/aura_color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
+shader_param/opacity = 1.0
+
+[node name="slider" type="HSlider"]
+
+margin_left = 114.0
+margin_right = 656.0
+margin_bottom = 26.0
+focus_ignore_mouse = false
+focus_stop_mouse = true
+size_flags_horizontal = 2
+min_value = 0.0
+max_value = 1.0
+step = 0.01
+page = 0.0
+value = 1.0
+exp_edit = false
+rounded = false
+tick_count = 0
+ticks_on_borders = true
+script = ExtResource( 1 )
+
+[node name="icon" parent="." instance=ExtResource( 2 )]
+
+margin_left = -114.0
+margin_right = -102.0
+
+[node name="title" type="Label" parent="."]
+
+margin_left = -58.0
+margin_right = -18.0
+margin_bottom = 24.0
+focus_ignore_mouse = true
+focus_stop_mouse = true
+size_flags_horizontal = 2
+custom_fonts/font = ExtResource( 3 )
+text = "SFX"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="mute" type="Sprite" parent="."]
+
+material = SubResource( 2 )
+position = Vector2( 558, 9 )
+texture = ExtResource( 4 )
+
+[connection signal="focus_entered"  from="."  to="." method="_on_choice_focus_enter" binds=[  ]]
+
+[connection signal="focus_exited"  from="."  to="." method="_on_choice_focus_exit" binds=[  ]]

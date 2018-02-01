@@ -1,0 +1,83 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+
+uniform vec4 start=vec4(0.2,0.4,1.0,1);
+uniform vec4 stop=vec4(0.2,0.4,1.0,0);
+
+void fragment() {
+
+COLOR = mix(start, stop, UV.x);
+
+COLOR.a = texture(TEXTURE,UV).a*COLOR.a;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+
+render_priority = 0
+shader = SubResource( 1 )
+shader_param/start = Plane( 0.04, 0.22, 0.21, 0 )
+shader_param/stop = Plane( 0.04, 0.22, 0.21, 0.69 )
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="ImageTexture" id=3]
+
+flags = 6
+storage = 0
+lossy_quality = 1.0
+flags = 6
+size = Vector2( 1, 1 )
+
+[node name="title_bg" type="Control" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="body" type="Polygon2D" parent="." index="0"]
+
+polygon = PoolVector2Array( 0, 0, 78, 0, 78, 42, 0, 42 )
+uv = PoolVector2Array(  )
+color = Color( 0.0352941, 0.219608, 0.207843, 0.686275 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 0, 0 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="fade" type="TextureRect" parent="." index="1"]
+
+material = SubResource( 2 )
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -136.0
+margin_top = -40.0
+margin_right = -40.0
+margin_bottom = 2.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = SubResource( 3 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Material", "Rect" ]
+
+

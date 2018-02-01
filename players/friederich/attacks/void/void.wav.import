@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/void.wav-749feb5f9a6ee58e869628470517fc3b.sample"
+
+[deps]
+
+source_file="res://players/friederich/attacks/void/void.wav"
+source_md5="05b8a3679cf358d19b9a49d51039dac3"
+
+dest_files=[ "res://.import/void.wav-749feb5f9a6ee58e869628470517fc3b.sample" ]
+dest_md5="816a54d37d6780e54772a1570deec377"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

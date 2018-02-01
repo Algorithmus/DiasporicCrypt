@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fire.wav-1cb1ce5ce6b01317f8c093c8830ba6e4.sample"
+
+[deps]
+
+source_file="res://players/magic/fire/fire.wav"
+source_md5="012bf7fc6d93b05ff5f63042f75327f1"
+
+dest_files=[ "res://.import/fire.wav-1cb1ce5ce6b01317f8c093c8830ba6e4.sample" ]
+dest_md5="0f24aaac73c196d7f37f0cac76ad88e5"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

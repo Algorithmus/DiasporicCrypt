@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/charge.wav-e097211b13e6d17bcff677017817c012.sample"
+
+[deps]
+
+source_file="res://players/magic/earth/charge.wav"
+source_md5="c0975707a945f842e9d19e56c5e170c5"
+
+dest_files=[ "res://.import/charge.wav-e097211b13e6d17bcff677017817c012.sample" ]
+dest_md5="c1eefc98a8d952595ffde7a3d316b123"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

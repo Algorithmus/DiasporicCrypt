@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fail.wav-624de9dcf488181424acfb3e437da311.sample"
+
+[deps]
+
+source_file="res://players/magic/void/fail.wav"
+source_md5="85854f11fb12962f8e6ba85d3001adb6"
+
+dest_files=[ "res://.import/fail.wav-624de9dcf488181424acfb3e437da311.sample" ]
+dest_md5="5e9b87561be3cec92a6144fb17430895"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

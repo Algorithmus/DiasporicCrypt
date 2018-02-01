@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/demonic.wav-8531775aa501c702bf22f22c8f342acb.sample"
+
+[deps]
+
+source_file="res://gui/sequences/demonic.wav"
+source_md5="83b2b5a53cbc18c5fdda4937ae2b555a"
+
+dest_files=[ "res://.import/demonic.wav-8531775aa501c702bf22f22c8f342acb.sample" ]
+dest_md5="38590fdf7bdca91c6d719fe4913dbb2e"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

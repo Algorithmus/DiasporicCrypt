@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/wind.wav-3b930e7214ff6240446b9a704eda5d3f.sample"
+
+[deps]
+
+source_file="res://players/magic/wind/wind.wav"
+source_md5="0af7ad146e215519849d8dd18da4aea4"
+
+dest_files=[ "res://.import/wind.wav-3b930e7214ff6240446b9a704eda5d3f.sample" ]
+dest_md5="bbbb65e59ab6e3c02d293bbc5932518d"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

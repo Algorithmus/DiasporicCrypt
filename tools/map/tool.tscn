@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://tools/map/tool.gd" type="Script" id=1]
+
+[node name="MapTool" type="Control"]
+
+focus_ignore_mouse = false
+focus_stop_mouse = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+
+[node name="statistics" type="ScrollContainer" parent="."]
+
+focus_ignore_mouse = false
+focus_stop_mouse = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 800.0
+margin_bottom = 592.0
+scroll_horizontal = true
+scroll_vertical = true
+
+[node name="container" type="VBoxContainer" parent="statistics"]
+
+rect_min_size = Vector2( 600, 0 )
+focus_ignore_mouse = false
+focus_stop_mouse = false
+size_flags_horizontal = 2
+size_flags_vertical = 2
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 600.0
+margin_bottom = 0.0
+alignment = 1

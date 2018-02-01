@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/splash_down.wav-501360cea3638316831823cb795a3543.sample"
+
+[deps]
+
+source_file="res://scenes/common/fluid/splash_down.wav"
+source_md5="86ffbd0986e79c7ddfa1de5539c61403"
+
+dest_files=[ "res://.import/splash_down.wav-501360cea3638316831823cb795a3543.sample" ]
+dest_md5="c28616a0a2abd7692ba9b3978d774250"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

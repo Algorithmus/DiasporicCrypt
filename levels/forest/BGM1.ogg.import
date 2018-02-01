@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/BGM1.ogg-32d7f1060719bf2e93b9ac07cec58404.oggstr"
+
+[deps]
+
+source_file="res://levels/forest/BGM1.ogg"
+source_md5="34b40d177472b3a99ee86c2e3d13e28d"
+
+dest_files=[ "res://.import/BGM1.ogg-32d7f1060719bf2e93b9ac07cec58404.oggstr" ]
+dest_md5="1c7b728f1c1be88a5247494fa841976a"
+
+[params]
+
+loop=true
+loop_offset=0
