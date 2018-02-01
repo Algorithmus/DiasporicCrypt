@@ -22,7 +22,6 @@ shader_param/modulate = Color( 1, 0.1875, 0, 0.681171 )
 [sub_resource type="ImageTexture" id=3]
 
 flags = 2
-image = Image()
 size = Vector2( 32, 32 )
 storage = 0
 lossy_quality = 0.7
