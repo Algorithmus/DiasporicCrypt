@@ -59,7 +59,6 @@ shader_param/stop = Color( 0.101961, 0.101961, 0.0980392, 0.75 )
 [sub_resource type="ImageTexture" id=6]
 
 flags = 6
-image = Image()
 size = Vector2( 1, 1 )
 storage = 0
 lossy_quality = 0.7
@@ -89,7 +88,6 @@ shader_param/stop = Color( 0.788235, 0.74902, 0.631373, 1 )
 [sub_resource type="ImageTexture" id=9]
 
 flags = 6
-image = Image()
 size = Vector2( 1, 1 )
 storage = 0
 lossy_quality = 1.0

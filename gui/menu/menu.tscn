@@ -1,4 +1,4 @@
-[gd_scene load_steps=159 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://gui/theme/slidergrabber.png" type="Texture" id=1]
 [ext_resource path="res://gui/theme/slidergrabber_active.png" type="Texture" id=2]
@@ -57,10 +57,10 @@
 [sub_resource type="ImageTexture" id=1]
 
 flags = 4
-image = Image()
-)size = Vector2( 4, 16 )
 storage = 0
 lossy_quality = 0.7
+flags = 4
+size = Vector2( 0, 0 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -76,6 +76,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 47, 26 )
 margin_left = 23.0
 margin_right = 24.0
 margin_top = 13.0
@@ -84,6 +85,7 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=4]
@@ -93,6 +95,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 8, 13 )
 margin_left = 3.0
 margin_right = 3.0
 margin_top = 0.0
@@ -101,22 +104,27 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="LargeTexture" id=5]
 
+flags = 0
 _data = [ Vector2( 0, 0 ) ]
 
 [sub_resource type="LargeTexture" id=6]
 
+flags = 0
 _data = [ Vector2( 0, 0 ) ]
 
 [sub_resource type="LargeTexture" id=7]
 
+flags = 0
 _data = [ Vector2( 0, 0 ) ]
 
 [sub_resource type="LargeTexture" id=8]
 
+flags = 0
 _data = [ Vector2( 0, 0 ) ]
 
 [sub_resource type="StyleBoxTexture" id=9]
@@ -126,6 +134,7 @@ content_margin_right = -1.0
 content_margin_top = 0.0
 content_margin_bottom = 30.0
 texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 28, 61 )
 margin_left = 0.0
 margin_right = 28.0
 margin_top = 30.0
@@ -134,6 +143,7 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=10]
@@ -143,6 +153,7 @@ content_margin_right = -1.0
 content_margin_top = 0.0
 content_margin_bottom = 30.0
 texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 28, 61 )
 margin_left = 0.0
 margin_right = 28.0
 margin_top = 30.0
@@ -151,6 +162,7 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=11]
@@ -160,6 +172,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 18, 64 )
 margin_left = 28.0
 margin_right = 0.0
 margin_top = 32.0
@@ -168,6 +181,7 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=12]
@@ -177,6 +191,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 18, 64 )
 margin_left = 18.0
 margin_right = 0.0
 margin_top = 32.0
@@ -185,6 +200,7 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="Theme" id=13]
@@ -212,6 +228,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 736, 528 )
 margin_left = 0.0
 margin_right = 0.0
 margin_top = 0.0
@@ -220,45 +237,35 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[sub_resource type="Shader" id=15]
+[sub_resource type="ShaderMaterial" id=15]
 
-_code = {
-"fragment": "uniform color start=color(0.2,0.4,1.0,1);
-uniform color stop=color(0.2,0.4,1.0,0);
-COLOR = mix(start, stop, UV.x);
+render_priority = 0
 
-COLOR.a = tex(TEXTURE,UV).a*COLOR.a;",
-"fragment_ofs": 0,
-"light": "",
-"light_ofs": 0,
-"vertex": "",
-"vertex_ofs": 0
-}
+[sub_resource type="ImageTexture" id=16]
 
-[sub_resource type="ShaderMaterial" id=16]
-
-shader/shader = SubResource( 15 )
-shader/shading_mode = 0
-shader_param/start = Color( 0.788235, 0.74902, 0.631373, 1 )
-shader_param/stop = Color( 0.788235, 0.74902, 0.631373, 0 )
+flags = 6
+storage = 0
+lossy_quality = 1.0
+flags = 6
+size = Vector2( 1, 1 )
 
 [sub_resource type="ImageTexture" id=17]
 
-flags = 6
-image = Image()
-size = Vector2( 1, 1 )
-storage = 0
-lossy_quality = 1.0
-
-[sub_resource type="ImageTexture" id=18]
-
 flags = 2
-image = Image()
-size = Vector2( 1, 1 )
 storage = 0
 lossy_quality = 0.7
+flags = 2
+size = Vector2( 1, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=18]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
 
 [sub_resource type="StyleBoxEmpty" id=19]
 
@@ -288,45 +295,38 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[sub_resource type="StyleBoxEmpty" id=23]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-
-[sub_resource type="ImageTexture" id=24]
+[sub_resource type="ImageTexture" id=23]
 
 flags = 7
-image = Image()
-)size = Vector2( 256, 256 )
 storage = 0
 lossy_quality = 0.7
+flags = 7
+size = Vector2( 0, 0 )
 
-[sub_resource type="BitmapFont" id=25]
+[sub_resource type="BitmapFont" id=24]
 
-textures = [ SubResource( 24 ) ]
-chars = PoolIntArray( 224, 0, 222, 75, 7, 10, 0, 1, 7, 192, 0, 94, 2, 9, 12, 0, -1, 8, 64, 0, 35, 2, 12, 12, 0, 2, 12, 96, 0, 109, 104, 4, 2, 0, 1, 4, 160, 0, 0, 0, 0, 0, 0, 11, 3, 32, 0, 0, 0, 0, 0, 0, 11, 3, 33, 0, 64, 107, 2, 9, 1, 2, 3, 225, 0, 233, 66, 7, 10, 0, 1, 7, 193, 0, 107, 2, 9, 12, 0, -1, 8, 65, 0, 224, 2, 9, 9, 0, 2, 8, 161, 0, 243, 93, 3, 9, 0, 4, 3, 97, 0, 244, 51, 7, 7, 0, 4, 7, 98, 0, 151, 47, 7, 10, 0, 1, 7, 226, 0, 244, 62, 7, 10, 0, 1, 7, 194, 0, 120, 2, 9, 12, 0, -1, 8, 162, 0, 200, 57, 7, 11, 0, 2, 7, 66, 0, 24, 58, 7, 9, 1, 2, 8, 34, 0, 117, 104, 4, 4, 0, 1, 4, 35, 0, 38, 45, 8, 9, 0, 2, 8, 195, 0, 28, 28, 9, 13, 0, -2, 8, 227, 0, 211, 57, 7, 11, 0, 0, 7, 67, 0, 26, 45, 8, 9, 0, 2, 8, 163, 0, 140, 17, 8, 9, 0, 2, 8, 99, 0, 24, 71, 7, 7, 0, 4, 7, 100, 0, 118, 44, 7, 10, 0, 1, 7, 228, 0, 13, 87, 7, 10, 0, 1, 7, 164, 0, 159, 2, 9, 10, 0, 2, 9, 36, 0, 162, 47, 7, 13, 0, 0, 7, 196, 0, 172, 2, 9, 12, 0, -1, 8, 68, 0, 46, 58, 7, 9, 1, 2, 9, 37, 0, 211, 15, 9, 9, 0, 2, 10, 69, 0, 112, 61, 7, 9, 1, 2, 8, 165, 0, 176, 28, 8, 9, 0, 2, 8, 197, 0, 67, 28, 9, 14, 0, -3, 8, 229, 0, 13, 71, 7, 12, 0, -1, 7, 101, 0, 35, 71, 7, 7, 0, 4, 7, 38, 0, 14, 45, 8, 9, 0, 2, 8, 70, 0, 101, 61, 7, 9, 1, 2, 8, 198, 0, 2, 2, 13, 9, -1, 2, 12, 166, 0, 9, 117, 3, 11, 0, 2, 3, 102, 0, 47, 96, 5, 10, 0, 1, 4, 230, 0, 51, 13, 11, 7, 0, 4, 11, 71, 0, 164, 18, 8, 9, 0, 2, 9, 231, 0, 24, 82, 7, 10, 0, 4, 7, 199, 0, 188, 28, 8, 12, 0, 2, 8, 167, 0, 200, 28, 8, 12, 0, 2, 8, 103, 0, 189, 57, 7, 10, 0, 4, 7, 39, 0, 46, 110, 2, 4, 0, 1, 2, 72, 0, 152, 30, 8, 9, 1, 2, 9, 232, 0, 2, 75, 7, 10, 0, 1, 7, 40, 0, 83, 105, 5, 13, 0, 1, 4, 200, 0, 79, 75, 7, 12, 1, -1, 8, 104, 0, 167, 64, 7, 10, 0, 1, 7, 168, 0, 38, 96, 5, 2, 1, 1, 6, 73, 0, 58, 107, 2, 9, 1, 2, 4, 169, 0, 66, 2, 10, 9, 0, 2, 10, 233, 0, 211, 72, 7, 10, 0, 1, 7, 41, 0, 173, 103, 4, 13, 0, 1, 4, 201, 0, 90, 74, 7, 12, 1, -1, 8, 105, 0, 16, 117, 2, 11, 1, 0, 3, 234, 0, 200, 72, 7, 10, 0, 1, 7, 106, 0, 221, 102, 4, 14, -1, 0, 3, 202, 0, 101, 74, 7, 12, 1, -1, 8, 42, 0, 123, 83, 6, 6, 0, 2, 6, 170, 0, 65, 97, 5, 5, 0, 2, 6, 74, 0, 90, 61, 7, 9, 0, 2, 7, 171, 0, 233, 80, 6, 5, 0, 5, 6, 43, 0, 74, 46, 7, 8, 0, 3, 7, 107, 0, 145, 61, 7, 10, 0, 1, 7, 203, 0, 112, 74, 7, 12, 1, -1, 8, 235, 0, 189, 71, 7, 10, 0, 1, 7, 75, 0, 152, 17, 8, 9, 1, 2, 8, 172, 0, 222, 68, 7, 3, 0, 6, 7, 44, 0, 52, 110, 2, 4, 0, 10, 3, 108, 0, 40, 102, 2, 10, 1, 1, 3, 204, 0, 213, 102, 4, 12, -1, -1, 4, 236, 0, 141, 97, 4, 10, -1, 1, 3, 76, 0, 243, 80, 6, 9, 1, 2, 7, 173, 0, 125, 98, 4, 1, 0, 7, 4, 45, 0, 125, 93, 4, 1, 0, 7, 4, 109, 0, 51, 2, 11, 7, 0, 4, 11, 205, 0, 181, 103, 4, 12, 0, -1, 4, 237, 0, 149, 94, 4, 10, 0, 1, 3, 77, 0, 80, 2, 10, 9, 1, 2, 11, 46, 0, 34, 112, 2, 2, 1, 9, 3, 110, 0, 57, 72, 7, 7, 0, 4, 7, 206, 0, 133, 97, 4, 12, 0, -1, 4, 238, 0, 157, 103, 4, 10, 0, 1, 3, 174, 0, 66, 15, 10, 9, 0, 2, 10, 78, 0, 128, 31, 8, 9, 1, 2, 9, 175, 0, 143, 87, 6, 1, 0, 2, 6, 111, 0, 68, 72, 7, 7, 0, 4, 7, 47, 0, 163, 89, 6, 10, 0, 2, 5, 207, 0, 29, 96, 5, 12, 0, -1, 4, 239, 0, 92, 104, 5, 10, -1, 1, 3, 79, 0, 198, 15, 9, 9, 0, 2, 9, 176, 0, 74, 105, 5, 4, 0, 2, 5, 112, 0, 112, 90, 7, 10, 0, 4, 7, 240, 0, 134, 72, 7, 10, 0, 1, 8, 208, 0, 185, 2, 9, 9, 0, 2, 9, 80, 0, 68, 59, 7, 9, 1, 2, 8, 48, 0, 35, 58, 7, 9, 0, 2, 7, 177, 0, 145, 75, 7, 8, 0, 3, 7, 113, 0, 101, 90, 7, 10, 0, 4, 7, 81, 0, 133, 2, 9, 11, 0, 2, 9, 241, 0, 233, 51, 7, 11, 0, 0, 7, 209, 0, 140, 30, 8, 13, 1, -2, 9, 49, 0, 189, 100, 4, 9, 1, 2, 7, 178, 0, 20, 101, 5, 6, 0, 2, 6, 114, 0, 2, 89, 5, 7, 0, 4, 4, 210, 0, 54, 28, 9, 12, 0, -1, 9, 242, 0, 173, 47, 7, 10, 0, 1, 7, 82, 0, 57, 59, 7, 9, 1, 2, 9, 50, 0, 13, 58, 7, 9, 0, 2, 7, 179, 0, 56, 97, 5, 6, 0, 2, 6, 115, 0, 123, 72, 7, 7, 0, 4, 7, 211, 0, 41, 24, 9, 12, 0, -1, 9, 243, 0, 140, 47, 7, 10, 0, 1, 7, 83, 0, 104, 31, 8, 9, 0, 2, 8, 51, 0, 2, 47, 7, 9, 0, 2, 7, 180, 0, 101, 104, 4, 2, 0, 1, 4, 116, 0, 205, 99, 4, 9, 0, 2, 5, 244, 0, 156, 64, 7, 10, 0, 1, 7, 212, 0, 2, 15, 9, 12, 0, -1, 9, 84, 0, 104, 18, 8, 9, 0, 2, 8, 52, 0, 224, 22, 8, 9, 0, 2, 7, 53, 0, 239, 38, 7, 9, 0, 2, 7, 85, 0, 92, 26, 8, 9, 0, 2, 9, 213, 0, 15, 28, 9, 13, 0, -2, 9, 117, 0, 46, 71, 7, 7, 0, 4, 7, 181, 0, 79, 91, 7, 10, 0, 4, 7, 245, 0, 2, 60, 7, 11, 0, 0, 7, 54, 0, 228, 38, 7, 9, 0, 2, 7, 86, 0, 211, 2, 9, 9, 0, 2, 8, 182, 0, 203, 86, 6, 9, 0, 2, 6, 214, 0, 237, 2, 9, 12, 0, -1, 9, 246, 0, 123, 58, 7, 10, 0, 1, 7, 118, 0, 222, 57, 7, 7, 0, 4, 7, 87, 0, 19, 15, 12, 9, 0, 2, 11, 55, 0, 217, 44, 7, 9, 0, 2, 7, 247, 0, 156, 78, 7, 7, 0, 3, 7, 119, 0, 80, 15, 10, 7, 0, 4, 10, 215, 0, 178, 72, 7, 6, 0, 4, 7, 183, 0, 22, 111, 2, 2, 1, 6, 3, 88, 0, 62, 46, 8, 9, 0, 2, 8, 248, 0, 129, 44, 7, 9, 0, 3, 7, 216, 0, 146, 2, 9, 11, 0, 1, 9, 56, 0, 206, 44, 7, 9, 0, 2, 7, 120, 0, 178, 61, 7, 7, 0, 4, 7, 184, 0, 2, 100, 3, 3, 0, 11, 3, 217, 0, 164, 31, 8, 12, 0, -1, 9, 249, 0, 90, 90, 7, 10, 0, 1, 7, 121, 0, 68, 83, 7, 10, 0, 4, 7, 57, 0, 195, 44, 7, 9, 0, 2, 7, 89, 0, 80, 26, 8, 9, 0, 2, 8, 185, 0, 236, 98, 3, 6, 0, 2, 4, 218, 0, 212, 28, 8, 12, 0, -1, 9, 250, 0, 57, 83, 7, 10, 0, 1, 7, 90, 0, 128, 18, 8, 9, 0, 2, 8, 122, 0, 167, 78, 7, 7, 0, 4, 7, 58, 0, 70, 113, 2, 7, 1, 4, 3, 186, 0, 183, 85, 6, 5, 0, 2, 6, 59, 0, 250, 93, 3, 10, 0, 4, 3, 91, 0, 197, 100, 4, 13, 0, 0, 4, 219, 0, 236, 22, 8, 12, 0, -1, 9, 123, 0, 11, 101, 5, 12, 0, 1, 4, 251, 0, 46, 82, 7, 10, 0, 1, 7, 187, 0, 233, 89, 6, 5, 0, 5, 6, 188, 0, 185, 15, 9, 9, 1, 2, 10, 92, 0, 193, 86, 6, 10, 0, 2, 5, 252, 0, 35, 82, 7, 10, 0, 1, 7, 220, 0, 2, 31, 8, 12, 0, -1, 9, 124, 0, 28, 112, 2, 11, 1, 2, 3, 60, 0, 133, 86, 6, 7, 0, 4, 7, 189, 0, 198, 2, 9, 9, 1, 2, 11, 93, 0, 229, 98, 3, 13, 0, 0, 4, 253, 0, 107, 44, 7, 13, 0, 1, 7, 221, 0, 116, 18, 8, 12, 0, -1, 8, 125, 0, 165, 103, 4, 12, 0, 1, 4, 61, 0, 184, 44, 7, 6, 0, 4, 7, 190, 0, 19, 2, 12, 9, 0, 2, 11, 222, 0, 85, 39, 7, 9, 1, 2, 8, 254, 0, 96, 44, 7, 13, 0, 1, 8, 62, 0, 134, 61, 7, 7, 0, 4, 7, 94, 0, 223, 89, 6, 5, 0, 2, 5, 126, 0, 224, 15, 9, 3, 0, 6, 9, 223, 0, 50, 44, 8, 10, 0, 1, 8, 255, 0, 79, 58, 7, 13, 0, 1, 7, 191, 0, 173, 89, 6, 10, 0, 4, 6, 63, 0, 213, 89, 6, 9, 0, 2, 6, 95, 0, 153, 89, 6, 1, 0, 11, 6 )
+textures = [ SubResource( 23 ) ]
+chars = PoolIntArray( 32, 0, 0, 0, 0, 0, 0, 11, 3, 160, 0, 0, 0, 0, 0, 0, 11, 3, 96, 0, 109, 104, 4, 2, 0, 1, 4, 64, 0, 35, 2, 12, 12, 0, 2, 12, 192, 0, 94, 2, 9, 12, 0, -1, 8, 224, 0, 222, 75, 7, 10, 0, 1, 7, 97, 0, 244, 51, 7, 7, 0, 4, 7, 161, 0, 243, 93, 3, 9, 0, 4, 3, 65, 0, 224, 2, 9, 9, 0, 2, 8, 193, 0, 107, 2, 9, 12, 0, -1, 8, 225, 0, 233, 66, 7, 10, 0, 1, 7, 33, 0, 64, 107, 2, 9, 1, 2, 3, 34, 0, 117, 104, 4, 4, 0, 1, 4, 66, 0, 24, 58, 7, 9, 1, 2, 8, 162, 0, 200, 57, 7, 11, 0, 2, 7, 194, 0, 120, 2, 9, 12, 0, -1, 8, 226, 0, 244, 62, 7, 10, 0, 1, 7, 98, 0, 151, 47, 7, 10, 0, 1, 7, 99, 0, 24, 71, 7, 7, 0, 4, 7, 163, 0, 140, 17, 8, 9, 0, 2, 8, 67, 0, 26, 45, 8, 9, 0, 2, 8, 227, 0, 211, 57, 7, 11, 0, 0, 7, 195, 0, 28, 28, 9, 13, 0, -2, 8, 35, 0, 38, 45, 8, 9, 0, 2, 8, 68, 0, 46, 58, 7, 9, 1, 2, 9, 196, 0, 172, 2, 9, 12, 0, -1, 8, 36, 0, 162, 47, 7, 13, 0, 0, 7, 164, 0, 159, 2, 9, 10, 0, 2, 9, 228, 0, 13, 87, 7, 10, 0, 1, 7, 100, 0, 118, 44, 7, 10, 0, 1, 7, 101, 0, 35, 71, 7, 7, 0, 4, 7, 229, 0, 13, 71, 7, 12, 0, -1, 7, 197, 0, 67, 28, 9, 14, 0, -3, 8, 165, 0, 176, 28, 8, 9, 0, 2, 8, 69, 0, 112, 61, 7, 9, 1, 2, 8, 37, 0, 211, 15, 9, 9, 0, 2, 10, 230, 0, 51, 13, 11, 7, 0, 4, 11, 102, 0, 47, 96, 5, 10, 0, 1, 4, 166, 0, 9, 117, 3, 11, 0, 2, 3, 198, 0, 2, 2, 13, 9, -1, 2, 12, 70, 0, 101, 61, 7, 9, 1, 2, 8, 38, 0, 14, 45, 8, 9, 0, 2, 8, 39, 0, 46, 110, 2, 4, 0, 1, 2, 103, 0, 189, 57, 7, 10, 0, 4, 7, 167, 0, 200, 28, 8, 12, 0, 2, 8, 199, 0, 188, 28, 8, 12, 0, 2, 8, 231, 0, 24, 82, 7, 10, 0, 4, 7, 71, 0, 164, 18, 8, 9, 0, 2, 9, 168, 0, 38, 96, 5, 2, 1, 1, 6, 104, 0, 167, 64, 7, 10, 0, 1, 7, 200, 0, 79, 75, 7, 12, 1, -1, 8, 40, 0, 83, 105, 5, 13, 0, 1, 4, 232, 0, 2, 75, 7, 10, 0, 1, 7, 72, 0, 152, 30, 8, 9, 1, 2, 9, 105, 0, 16, 117, 2, 11, 1, 0, 3, 201, 0, 90, 74, 7, 12, 1, -1, 8, 41, 0, 173, 103, 4, 13, 0, 1, 4, 233, 0, 211, 72, 7, 10, 0, 1, 7, 169, 0, 66, 2, 10, 9, 0, 2, 10, 73, 0, 58, 107, 2, 9, 1, 2, 4, 170, 0, 65, 97, 5, 5, 0, 2, 6, 42, 0, 123, 83, 6, 6, 0, 2, 6, 202, 0, 101, 74, 7, 12, 1, -1, 8, 106, 0, 221, 102, 4, 14, -1, 0, 3, 234, 0, 200, 72, 7, 10, 0, 1, 7, 74, 0, 90, 61, 7, 9, 0, 2, 7, 171, 0, 233, 80, 6, 5, 0, 5, 6, 43, 0, 74, 46, 7, 8, 0, 3, 7, 107, 0, 145, 61, 7, 10, 0, 1, 7, 203, 0, 112, 74, 7, 12, 1, -1, 8, 235, 0, 189, 71, 7, 10, 0, 1, 7, 75, 0, 152, 17, 8, 9, 1, 2, 8, 172, 0, 222, 68, 7, 3, 0, 6, 7, 44, 0, 52, 110, 2, 4, 0, 10, 3, 108, 0, 40, 102, 2, 10, 1, 1, 3, 204, 0, 213, 102, 4, 12, -1, -1, 4, 236, 0, 141, 97, 4, 10, -1, 1, 3, 76, 0, 243, 80, 6, 9, 1, 2, 7, 173, 0, 125, 98, 4, 1, 0, 7, 4, 45, 0, 125, 93, 4, 1, 0, 7, 4, 109, 0, 51, 2, 11, 7, 0, 4, 11, 205, 0, 181, 103, 4, 12, 0, -1, 4, 237, 0, 149, 94, 4, 10, 0, 1, 3, 77, 0, 80, 2, 10, 9, 1, 2, 11, 46, 0, 34, 112, 2, 2, 1, 9, 3, 110, 0, 57, 72, 7, 7, 0, 4, 7, 206, 0, 133, 97, 4, 12, 0, -1, 4, 238, 0, 157, 103, 4, 10, 0, 1, 3, 174, 0, 66, 15, 10, 9, 0, 2, 10, 78, 0, 128, 31, 8, 9, 1, 2, 9, 175, 0, 143, 87, 6, 1, 0, 2, 6, 111, 0, 68, 72, 7, 7, 0, 4, 7, 47, 0, 163, 89, 6, 10, 0, 2, 5, 207, 0, 29, 96, 5, 12, 0, -1, 4, 239, 0, 92, 104, 5, 10, -1, 1, 3, 79, 0, 198, 15, 9, 9, 0, 2, 9, 176, 0, 74, 105, 5, 4, 0, 2, 5, 112, 0, 112, 90, 7, 10, 0, 4, 7, 240, 0, 134, 72, 7, 10, 0, 1, 8, 208, 0, 185, 2, 9, 9, 0, 2, 9, 80, 0, 68, 59, 7, 9, 1, 2, 8, 48, 0, 35, 58, 7, 9, 0, 2, 7, 177, 0, 145, 75, 7, 8, 0, 3, 7, 113, 0, 101, 90, 7, 10, 0, 4, 7, 81, 0, 133, 2, 9, 11, 0, 2, 9, 241, 0, 233, 51, 7, 11, 0, 0, 7, 209, 0, 140, 30, 8, 13, 1, -2, 9, 49, 0, 189, 100, 4, 9, 1, 2, 7, 178, 0, 20, 101, 5, 6, 0, 2, 6, 114, 0, 2, 89, 5, 7, 0, 4, 4, 210, 0, 54, 28, 9, 12, 0, -1, 9, 242, 0, 173, 47, 7, 10, 0, 1, 7, 82, 0, 57, 59, 7, 9, 1, 2, 9, 50, 0, 13, 58, 7, 9, 0, 2, 7, 179, 0, 56, 97, 5, 6, 0, 2, 6, 115, 0, 123, 72, 7, 7, 0, 4, 7, 211, 0, 41, 24, 9, 12, 0, -1, 9, 243, 0, 140, 47, 7, 10, 0, 1, 7, 83, 0, 104, 31, 8, 9, 0, 2, 8, 51, 0, 2, 47, 7, 9, 0, 2, 7, 180, 0, 101, 104, 4, 2, 0, 1, 4, 116, 0, 205, 99, 4, 9, 0, 2, 5, 244, 0, 156, 64, 7, 10, 0, 1, 7, 212, 0, 2, 15, 9, 12, 0, -1, 9, 84, 0, 104, 18, 8, 9, 0, 2, 8, 52, 0, 224, 22, 8, 9, 0, 2, 7, 245, 0, 2, 60, 7, 11, 0, 0, 7, 181, 0, 79, 91, 7, 10, 0, 4, 7, 117, 0, 46, 71, 7, 7, 0, 4, 7, 53, 0, 239, 38, 7, 9, 0, 2, 7, 85, 0, 92, 26, 8, 9, 0, 2, 9, 213, 0, 15, 28, 9, 13, 0, -2, 9, 118, 0, 222, 57, 7, 7, 0, 4, 7, 246, 0, 123, 58, 7, 10, 0, 1, 7, 214, 0, 237, 2, 9, 12, 0, -1, 9, 182, 0, 203, 86, 6, 9, 0, 2, 6, 86, 0, 211, 2, 9, 9, 0, 2, 8, 54, 0, 228, 38, 7, 9, 0, 2, 7, 183, 0, 22, 111, 2, 2, 1, 6, 3, 215, 0, 178, 72, 7, 6, 0, 4, 7, 119, 0, 80, 15, 10, 7, 0, 4, 10, 247, 0, 156, 78, 7, 7, 0, 3, 7, 55, 0, 217, 44, 7, 9, 0, 2, 7, 87, 0, 19, 15, 12, 9, 0, 2, 11, 184, 0, 2, 100, 3, 3, 0, 11, 3, 120, 0, 178, 61, 7, 7, 0, 4, 7, 56, 0, 206, 44, 7, 9, 0, 2, 7, 216, 0, 146, 2, 9, 11, 0, 1, 9, 248, 0, 129, 44, 7, 9, 0, 3, 7, 88, 0, 62, 46, 8, 9, 0, 2, 8, 185, 0, 236, 98, 3, 6, 0, 2, 4, 89, 0, 80, 26, 8, 9, 0, 2, 8, 57, 0, 195, 44, 7, 9, 0, 2, 7, 121, 0, 68, 83, 7, 10, 0, 4, 7, 249, 0, 90, 90, 7, 10, 0, 1, 7, 217, 0, 164, 31, 8, 12, 0, -1, 9, 186, 0, 183, 85, 6, 5, 0, 2, 6, 58, 0, 70, 113, 2, 7, 1, 4, 3, 122, 0, 167, 78, 7, 7, 0, 4, 7, 90, 0, 128, 18, 8, 9, 0, 2, 8, 250, 0, 57, 83, 7, 10, 0, 1, 7, 218, 0, 212, 28, 8, 12, 0, -1, 9, 187, 0, 233, 89, 6, 5, 0, 5, 6, 251, 0, 46, 82, 7, 10, 0, 1, 7, 123, 0, 11, 101, 5, 12, 0, 1, 4, 219, 0, 236, 22, 8, 12, 0, -1, 9, 91, 0, 197, 100, 4, 13, 0, 0, 4, 59, 0, 250, 93, 3, 10, 0, 4, 3, 60, 0, 133, 86, 6, 7, 0, 4, 7, 124, 0, 28, 112, 2, 11, 1, 2, 3, 220, 0, 2, 31, 8, 12, 0, -1, 9, 252, 0, 35, 82, 7, 10, 0, 1, 7, 92, 0, 193, 86, 6, 10, 0, 2, 5, 188, 0, 185, 15, 9, 9, 1, 2, 10, 61, 0, 184, 44, 7, 6, 0, 4, 7, 125, 0, 165, 103, 4, 12, 0, 1, 4, 221, 0, 116, 18, 8, 12, 0, -1, 8, 253, 0, 107, 44, 7, 13, 0, 1, 7, 93, 0, 229, 98, 3, 13, 0, 0, 4, 189, 0, 198, 2, 9, 9, 1, 2, 11, 126, 0, 224, 15, 9, 3, 0, 6, 9, 94, 0, 223, 89, 6, 5, 0, 2, 5, 62, 0, 134, 61, 7, 7, 0, 4, 7, 254, 0, 96, 44, 7, 13, 0, 1, 8, 222, 0, 85, 39, 7, 9, 1, 2, 8, 190, 0, 19, 2, 12, 9, 0, 2, 11, 95, 0, 153, 89, 6, 1, 0, 11, 6, 63, 0, 213, 89, 6, 9, 0, 2, 6, 191, 0, 173, 89, 6, 10, 0, 4, 6, 255, 0, 79, 58, 7, 13, 0, 1, 7, 223, 0, 50, 44, 8, 10, 0, 1, 8 )
 kernings = PoolIntArray(  )
 height = 13.0
 ascent = 11.0
 distance_field = false
 
-[sub_resource type="ImageTexture" id=26]
+[sub_resource type="ImageTexture" id=25]
 
 flags = 4
-image = Image()
-)size = Vector2( 12, 12 )
 storage = 0
 lossy_quality = 0.7
+flags = 4
+size = Vector2( 0, 0 )
 
-[sub_resource type="StyleBoxTexture" id=27]
+[sub_resource type="StyleBoxTexture" id=26]
 
 content_margin_left = 4.0
 content_margin_right = 22.0
 content_margin_top = 4.0
 content_margin_bottom = 5.0
-texture = SubResource( 26 )
+texture = SubResource( 25 )
 margin_left = 5.0
 margin_right = 5.0
 margin_top = 5.0
@@ -335,23 +335,47 @@ expand_margin_left = 1.0
 expand_margin_right = 1.0
 expand_margin_top = 1.0
 expand_margin_bottom = 1.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
+
+[sub_resource type="LargeTexture" id=27]
+
+flags = 0
+_data = [ Vector2( 0, 0 ) ]
 
 [sub_resource type="LargeTexture" id=28]
 
+flags = 0
 _data = [ Vector2( 0, 0 ) ]
 
 [sub_resource type="LargeTexture" id=29]
 
+flags = 0
 _data = [ Vector2( 0, 0 ) ]
 
 [sub_resource type="LargeTexture" id=30]
 
+flags = 0
 _data = [ Vector2( 0, 0 ) ]
 
-[sub_resource type="LargeTexture" id=31]
+[sub_resource type="StyleBoxTexture" id=31]
 
-_data = [ Vector2( 0, 0 ) ]
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 28, 61 )
+margin_left = 0.0
+margin_right = 28.0
+margin_top = 30.0
+margin_bottom = 30.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=32]
 
@@ -360,6 +384,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 28, 61 )
 margin_left = 0.0
 margin_right = 28.0
 margin_top = 30.0
@@ -368,6 +393,7 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=33]
@@ -376,24 +402,8 @@ content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
-texture = ExtResource( 4 )
-margin_left = 0.0
-margin_right = 28.0
-margin_top = 30.0
-margin_bottom = 30.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-draw_center = true
-
-[sub_resource type="StyleBoxTexture" id=34]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
 texture = ExtResource( 42 )
+region_rect = Rect2( 0, 0, 64, 64 )
 margin_left = 32.0
 margin_right = 0.0
 margin_top = 32.0
@@ -402,23 +412,24 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[sub_resource type="ImageTexture" id=35]
+[sub_resource type="ImageTexture" id=34]
 
 flags = 4
-image = Image()
-)size = Vector2( 12, 12 )
 storage = 0
 lossy_quality = 0.7
+flags = 4
+size = Vector2( 0, 0 )
 
-[sub_resource type="StyleBoxTexture" id=36]
+[sub_resource type="StyleBoxTexture" id=35]
 
 content_margin_left = 0.0
 content_margin_right = 0.0
 content_margin_top = 0.0
 content_margin_bottom = 0.0
-texture = SubResource( 35 )
+texture = SubResource( 34 )
 margin_left = 5.0
 margin_right = 5.0
 margin_top = 5.0
@@ -427,9 +438,10 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[sub_resource type="Theme" id=37]
+[sub_resource type="Theme" id=36]
 
 RichTextLabel/colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 RichTextLabel/colors/font_color_selected = Color( 0.490196, 0.490196, 0.490196, 1 )
@@ -437,116 +449,111 @@ RichTextLabel/colors/selection_color = Color( 0.1, 0.1, 1, 0.8 )
 RichTextLabel/constants/line_separation = 1
 RichTextLabel/constants/table_hseparation = 3
 RichTextLabel/constants/table_vseparation = 3
-RichTextLabel/fonts/bold_font = SubResource( 25 )
-RichTextLabel/fonts/bold_italics_font = SubResource( 25 )
-RichTextLabel/fonts/italics_font = SubResource( 25 )
-RichTextLabel/fonts/mono_font = SubResource( 25 )
-RichTextLabel/fonts/normal_font = SubResource( 25 )
-RichTextLabel/styles/focus = SubResource( 27 )
-VScrollBar/icons/decrement = SubResource( 28 )
-VScrollBar/icons/decrement_hilite = SubResource( 29 )
-VScrollBar/icons/increment = SubResource( 30 )
-VScrollBar/icons/increment_hilite = SubResource( 31 )
-VScrollBar/styles/grabber = SubResource( 32 )
-VScrollBar/styles/grabber_hilite = SubResource( 33 )
-VScrollBar/styles/scroll = SubResource( 34 )
-VScrollBar/styles/scroll_focus = SubResource( 36 )
+RichTextLabel/fonts/bold_font = SubResource( 24 )
+RichTextLabel/fonts/bold_italics_font = SubResource( 24 )
+RichTextLabel/fonts/italics_font = SubResource( 24 )
+RichTextLabel/fonts/mono_font = SubResource( 24 )
+RichTextLabel/fonts/normal_font = SubResource( 24 )
+RichTextLabel/styles/focus = SubResource( 26 )
+VScrollBar/icons/decrement = SubResource( 27 )
+VScrollBar/icons/decrement_hilite = SubResource( 28 )
+VScrollBar/icons/increment = SubResource( 29 )
+VScrollBar/icons/increment_hilite = SubResource( 30 )
+VScrollBar/styles/grabber = SubResource( 31 )
+VScrollBar/styles/grabber_hilite = SubResource( 32 )
+VScrollBar/styles/scroll = SubResource( 33 )
+VScrollBar/styles/scroll_focus = SubResource( 35 )
 
-[sub_resource type="Shader" id=38]
+[sub_resource type="ShaderMaterial" id=37]
 
-_code = {
-"fragment": "uniform color start=color(0.2,0.4,1.0,1);
-uniform color stop=color(0.2,0.4,1.0,0);
-COLOR = mix(start, stop, UV.x);
+render_priority = 0
 
-COLOR.a = tex(TEXTURE,UV).a*COLOR.a;",
-"fragment_ofs": 0,
-"light": "",
-"light_ofs": 0,
-"vertex": "",
-"vertex_ofs": 0
-}
-
-[sub_resource type="ShaderMaterial" id=39]
-
-shader/shader = SubResource( 38 )
-shader/shading_mode = 0
-shader_param/start = Color( 0.0352941, 0.219608, 0.207843, 0 )
-shader_param/stop = Color( 0.0352941, 0.219608, 0.207843, 0.533333 )
-
-[sub_resource type="ImageTexture" id=40]
+[sub_resource type="ImageTexture" id=38]
 
 flags = 6
-image = Image()
-size = Vector2( 1, 1 )
 storage = 0
 lossy_quality = 1.0
+flags = 6
+size = Vector2( 1, 1 )
 
-[sub_resource type="StyleBoxEmpty" id=41]
+[sub_resource type="StyleBoxEmpty" id=39]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[node name="menu" type="Control"]
+[node name="menu" type="Control" index="0"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 736.0
+margin_bottom = 528.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme = SubResource( 13 )
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 736.0
-margin_bottom = 528.0
 script = ExtResource( 7 )
 
-[node name="BG" type="Panel" parent="."]
+[node name="BG" type="Panel" parent="." index="0"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
-margin_left = 0.0
-margin_top = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 736.0
 margin_bottom = 528.0
-custom_styles/panel = SubResource( 14 )
-
-[node name="panels" type="Control" parent="."]
-
-focus_ignore_mouse = false
-focus_stop_mouse = true
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-margin_left = 0.0
+custom_styles/panel = SubResource( 14 )
+
+[node name="panels" type="Control" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 32.0
 margin_right = 736.0
 margin_bottom = 526.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 
-[node name="stats" type="Control" parent="panels"]
+[node name="stats" type="Control" parent="panels" index="0"]
 
 editor/display_folded = true
 visible = false
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
-margin_left = 0.0
-margin_top = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 736.0
 margin_bottom = 494.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 script = ExtResource( 9 )
 
-[node name="title_bg" parent="panels/stats" instance=ExtResource( 10 )]
+[node name="title_bg" parent="panels/stats" index="0" instance=ExtResource( 10 )]
 
 margin_left = 256.0
 margin_top = 20.0
 margin_right = 296.0
 margin_bottom = 60.0
 
-[node name="underline" type="Polygon2D" parent="panels/stats"]
+[node name="underline" type="Polygon2D" parent="panels/stats" index="1"]
 
 position = Vector2( 24, 62 )
 polygon = PoolVector2Array( 0, 0, 332, 0, 332, 1, 0, 1 )
@@ -554,28 +561,29 @@ uv = PoolVector2Array(  )
 color = Color( 0.788235, 0.74902, 0.631373, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
-texture_rotation = 0.0
+texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="fade" type="Sprite" parent="panels/stats"]
+[node name="fade" type="Sprite" parent="panels/stats" index="2"]
 
-material = SubResource( 16 )
+material = SubResource( 15 )
 position = Vector2( 356, 62 )
 scale = Vector2( 256, 1 )
-texture = SubResource( 17 )
+texture = SubResource( 16 )
 centered = false
 
-[node name="title_ornament" type="Sprite" parent="panels/stats"]
+[node name="title_ornament" type="Sprite" parent="panels/stats" index="3"]
 
 position = Vector2( 96, 8 )
 texture = ExtResource( 11 )
 centered = false
 
-[node name="profile_f" type="Sprite" parent="panels/stats"]
+[node name="profile_f" type="Sprite" parent="panels/stats" index="4"]
 
 position = Vector2( 575, 221 )
 scale = Vector2( 0.5, 0.5 )
@@ -583,7 +591,7 @@ texture = ExtResource( 12 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 649, 1100 )
 
-[node name="profile_a" type="Sprite" parent="panels/stats"]
+[node name="profile_a" type="Sprite" parent="panels/stats" index="5"]
 
 visible = false
 position = Vector2( 526, 236 )
@@ -592,32 +600,43 @@ texture = ExtResource( 13 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 649, 800 )
 
-[node name="title" type="Label" parent="panels/stats"]
+[node name="title" type="Label" parent="panels/stats" index="6"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 32.0
 margin_top = 28.0
 margin_right = 262.0
 margin_bottom = 59.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 14 )
 text = "Friederich Level 1"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="info" type="RichTextLabel" parent="panels/stats"]
+[node name="info" type="RichTextLabel" parent="panels/stats" index="7"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 32.0
 margin_top = 76.0
 margin_right = 288.0
 margin_bottom = 423.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 custom_fonts/mono_font = ExtResource( 15 )
 custom_fonts/normal_font = ExtResource( 6 )
 bbcode_enabled = true
@@ -636,78 +655,113 @@ Required: 99999999
 
 [code]monospace[/code]"
 visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "HP 9999/9999
+MP 999/999
 
-[node name="footer" type="Sprite" parent="panels/stats"]
+Attack: 500 + 20%
+Defense: 128 + 20%
+Magic: 128 + 20%
+Luck: 30 + 80%
 
+EXP: 99999999999
+Required: 99999999
+
+99999999999G
+
+monospace"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+
+[node name="footer" type="Sprite" parent="panels/stats" index="8"]
+
+self_modulate = Color( 1, 0, 0, 0.431373 )
 position = Vector2( 80, 391 )
 texture = ExtResource( 16 )
 centered = false
-self_modulate = Color( 1, 0, 0, 0.431373 )
 
-[node name="gameclock" type="Node2D" parent="panels/stats"]
+[node name="gameclock" type="Node2D" parent="panels/stats" index="9"]
 
 editor/display_folded = true
 position = Vector2( 32, 436 )
 script = ExtResource( 17 )
 
-[node name="title" type="Label" parent="panels/stats/gameclock"]
+[node name="title" type="Label" parent="panels/stats/gameclock" index="0"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
-margin_left = 0.0
-margin_top = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 230.0
 margin_bottom = 18.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 6 )
 text = "KEY_PLAYTIME"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="display" type="Label" parent="panels/stats/gameclock"]
+[node name="display" type="Label" parent="panels/stats/gameclock" index="1"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
-margin_left = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 20.0
 margin_right = 230.0
 margin_bottom = 38.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 6 )
 text = "00:00:00"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="shield" type="TextureRect" parent="panels/stats"]
+[node name="shield" type="TextureRect" parent="panels/stats" index="10"]
 
 visible = false
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
-margin_left = 0.0
+self_modulate = Color( 1, 1, 1, 0.573765 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = -1.0
 margin_right = 736.0
 margin_bottom = 495.0
-texture = SubResource( 18 )
-self_modulate = Color( 1, 1, 1, 0.573765 )
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = SubResource( 17 )
 expand = true
 stretch_mode = 0
 
-[node name="warn" type="Label" parent="panels/stats/shield"]
+[node name="warn" type="Label" parent="panels/stats/shield" index="0"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
-margin_left = 0.0
-margin_top = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 736.0
 margin_bottom = 304.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 14 )
 text = "Quit to menu? All unsaved progress will be lost."
 align = 1
@@ -716,96 +770,130 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="options" type="HBoxContainer" parent="panels/stats/shield"]
+[node name="options" type="HBoxContainer" parent="panels/stats/shield" index="1"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = false
-size_flags_horizontal = 2
-size_flags_vertical = 2
-margin_left = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 376.0
 margin_right = 736.0
 margin_bottom = 408.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 custom_constants/separation = 184
 alignment = 1
 
-[node name="yes" parent="panels/stats/shield/options" instance=ExtResource( 18 )]
+[node name="yes" parent="panels/stats/shield/options" index="0" instance=ExtResource( 18 )]
 
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 200.0
+margin_right = 279.0
+rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath("../no")
 focus_neighbour_bottom = NodePath(".")
-margin_left = 200.0
-margin_right = 279.0
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+group = null
 text = "KEY_YES"
 
-[node name="no" parent="panels/stats/shield/options" instance=ExtResource( 18 )]
+[node name="no" parent="panels/stats/shield/options" index="1" instance=ExtResource( 18 )]
 
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 463.0
+margin_right = 535.0
+rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath("../yes")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath(".")
 focus_neighbour_bottom = NodePath(".")
-margin_left = 463.0
-margin_right = 535.0
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+group = null
 text = "KEY_NO"
 
-[node name="title_bg 2" parent="panels/stats" instance=ExtResource( 10 )]
+[node name="title_bg 2" parent="panels/stats" index="11" instance=ExtResource( 10 )]
 
-rect_scale = Vector2( -1, 1 )
 margin_left = 594.0
 margin_top = 454.0
 margin_right = 634.0
 margin_bottom = 494.0
+rect_scale = Vector2( -1, 1 )
 
-[node name="quitornament" type="Sprite" parent="panels/stats"]
+[node name="quitornament" type="Sprite" parent="panels/stats" index="12"]
 
 position = Vector2( 498, 442 )
 texture = ExtResource( 11 )
 centered = false
 flip_h = true
 
-[node name="quit" parent="panels/stats" instance=ExtResource( 18 )]
+[node name="quit" parent="panels/stats" index="13" instance=ExtResource( 18 )]
 
-focus_neighbour_left = NodePath(".")
-focus_neighbour_top = NodePath("../../../tabs/HBoxContainer/stats")
-focus_neighbour_right = NodePath(".")
-focus_neighbour_bottom = NodePath(".")
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 522.0
 margin_top = 466.0
 margin_right = 727.0
 margin_bottom = 498.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../../../tabs/HBoxContainer/stats")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+group = null
 text = "KEY_QUITMENU"
 align = 1
 
-[node name="items" type="Control" parent="panels"]
+[node name="items" type="Control" parent="panels" index="1"]
 
 editor/display_folded = true
 visible = false
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
-margin_left = 0.0
-margin_top = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 736.0
 margin_bottom = 494.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 script = ExtResource( 19 )
 
-[node name="items_bg" parent="panels/items" instance=ExtResource( 10 )]
+[node name="items_bg" parent="panels/items" index="0" instance=ExtResource( 10 )]
 
 margin_left = 224.0
 margin_top = 30.0
 margin_right = 264.0
 margin_bottom = 70.0
 
-[node name="special_bg" parent="panels/items" instance=ExtResource( 10 )]
+[node name="special_bg" parent="panels/items" index="1" instance=ExtResource( 10 )]
 
 margin_left = 592.0
 margin_top = 30.0
 margin_right = 632.0
 margin_bottom = 70.0
 
-[node name="underline" type="Polygon2D" parent="panels/items"]
+[node name="underline" type="Polygon2D" parent="panels/items" index="2"]
 
 position = Vector2( 0, 72 )
 polygon = PoolVector2Array( 0, 0, 736, 0, 736, 1, 0, 1 )
@@ -813,98 +901,127 @@ uv = PoolVector2Array(  )
 color = Color( 0.788235, 0.74902, 0.631373, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
-texture_rotation = 0.0
+texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="items_ornament" type="Sprite" parent="panels/items"]
+[node name="items_ornament" type="Sprite" parent="panels/items" index="3"]
 
 position = Vector2( 64, 18 )
 texture = ExtResource( 11 )
 centered = false
 
-[node name="special_ornament" type="Sprite" parent="panels/items"]
+[node name="special_ornament" type="Sprite" parent="panels/items" index="4"]
 
 position = Vector2( 432, 18 )
 texture = ExtResource( 11 )
 centered = false
 
-[node name="types" type="Control" parent="panels/items"]
+[node name="types" type="Control" parent="panels/items" index="5"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = false
-size_flags_horizontal = 2
-size_flags_vertical = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 80.0
 margin_top = 32.0
 margin_right = 734.0
 margin_bottom = 72.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 
-[node name="item" parent="panels/items/types" instance=ExtResource( 18 )]
+[node name="item" parent="panels/items/types" index="0" instance=ExtResource( 18 )]
 
-focus_neighbour_left = NodePath(".")
-focus_neighbour_top = NodePath("../../../../tabs/HBoxContainer/items")
-focus_neighbour_right = NodePath("../special")
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 0.0
 margin_right = 168.0
 margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../../../../tabs/HBoxContainer/items")
+focus_neighbour_right = NodePath("../special")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 custom_fonts/font = ExtResource( 14 )
+group = null
 text = "KEY_ITEMS"
 
-[node name="icon" parent="panels/items/types/item"]
+[node name="icon" parent="panels/items/types/item" index="0"]
 
 margin_left = -64.0
 margin_top = 10.0
 margin_right = -52.0
 margin_bottom = 42.0
 
-[node name="Sprite" type="Sprite" parent="panels/items/types/item"]
+[node name="Sprite" type="Sprite" parent="panels/items/types/item" index="1"]
 
 position = Vector2( -10, 20 )
 texture = ExtResource( 20 )
 
-[node name="special" parent="panels/items/types" instance=ExtResource( 18 )]
+[node name="special" parent="panels/items/types" index="1" instance=ExtResource( 18 )]
 
-focus_neighbour_left = NodePath("../item")
-focus_neighbour_top = NodePath("../../../../tabs/HBoxContainer/items")
-focus_neighbour_right = NodePath(".")
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 376.0
 margin_right = 656.0
 margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_left = NodePath("../item")
+focus_neighbour_top = NodePath("../../../../tabs/HBoxContainer/items")
+focus_neighbour_right = NodePath(".")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 custom_fonts/font = ExtResource( 14 )
+group = null
 text = "KEY_SPECIALITEMS"
 
-[node name="icon" parent="panels/items/types/special"]
+[node name="icon" parent="panels/items/types/special" index="0"]
 
 margin_left = -64.0
 margin_top = 10.0
 margin_right = -52.0
 margin_bottom = 42.0
 
-[node name="Sprite" type="Sprite" parent="panels/items/types/special"]
+[node name="Sprite" type="Sprite" parent="panels/items/types/special" index="1"]
 
 position = Vector2( -10, 20 )
 texture = ExtResource( 21 )
 
-[node name="bg" type="Sprite" parent="panels/items"]
+[node name="bg" type="Sprite" parent="panels/items" index="6"]
 
 position = Vector2( 0, 80 )
 texture = ExtResource( 22 )
 centered = false
 
-[node name="noitems" type="Label" parent="panels/items"]
+[node name="noitems" type="Label" parent="panels/items" index="7"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 16.0
 margin_top = 64.0
 margin_right = 496.0
 margin_bottom = 464.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "ITEM_NONE"
@@ -914,58 +1031,77 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="itemcontainer" type="ScrollContainer" parent="panels/items"]
+[node name="itemcontainer" type="ScrollContainer" parent="panels/items" index="8"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 16.0
 margin_top = 108.0
 margin_right = 512.0
 margin_bottom = 438.0
-scroll_horizontal = false
-scroll_vertical = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="panels/items/itemcontainer"]
-
-rect_min_size = Vector2( 430, 0 )
-focus_ignore_mouse = false
-focus_stop_mouse = false
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-margin_left = 0.0
-margin_top = 0.0
+scroll_horizontal_enabled = true
+scroll_horizontal = 0
+scroll_vertical_enabled = true
+scroll_vertical = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="panels/items/itemcontainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 430.0
-margin_bottom = 0.0
+rect_min_size = Vector2( 430, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 alignment = 0
 
-[node name="info" type="Control" parent="panels/items"]
+[node name="info" type="Control" parent="panels/items" index="9"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = false
-size_flags_horizontal = 2
-size_flags_vertical = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 516.0
 margin_top = 96.0
 margin_right = 724.0
 margin_bottom = 496.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 
-[node name="image" type="Sprite" parent="panels/items/info"]
+[node name="image" type="Sprite" parent="panels/items/info" index="0"]
 
 position = Vector2( 96, 24 )
 texture = ExtResource( 24 )
 
-[node name="title" type="Label" parent="panels/items/info"]
+[node name="title" type="Label" parent="panels/items/info" index="1"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
-margin_left = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 54.0
 margin_right = 208.0
 margin_bottom = 110.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 25 )
 text = "ITEM_POTION"
 align = 1
@@ -975,22 +1111,28 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="header" type="Sprite" parent="panels/items/info"]
+[node name="header" type="Sprite" parent="panels/items/info" index="2"]
 
+self_modulate = Color( 1, 0, 0, 0.431373 )
 position = Vector2( 104, 120 )
 texture = ExtResource( 16 )
-self_modulate = Color( 1, 0, 0, 0.431373 )
 
-[node name="description" type="RichTextLabel" parent="panels/items/info"]
+[node name="description" type="RichTextLabel" parent="panels/items/info" index="3"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 9.0
 margin_top = 140.0
 margin_right = 199.0
 margin_bottom = 268.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 custom_fonts/normal_font = ExtResource( 6 )
 bbcode_enabled = true
 bbcode_text = "[fill]description description
@@ -999,116 +1141,162 @@ TEST
 TEST
 blah[/fill]"
 visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "description description
 
-[node name="footer" type="Sprite" parent="panels/items/info"]
+TEST
+TEST
+blah"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
 
+[node name="footer" type="Sprite" parent="panels/items/info" index="4"]
+
+self_modulate = Color( 1, 0, 0, 0.431373 )
 position = Vector2( 104, 290 )
 texture = ExtResource( 16 )
-self_modulate = Color( 1, 0, 0, 0.431373 )
 
-[node name="use" parent="panels/items/info" instance=ExtResource( 18 )]
+[node name="use" parent="panels/items/info" index="5" instance=ExtResource( 18 )]
 
-focus_neighbour_left = NodePath(".")
-focus_neighbour_top = NodePath(".")
-focus_neighbour_bottom = NodePath("../drop")
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 306.0
 margin_right = 212.0
 margin_bottom = 345.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_bottom = NodePath("../drop")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 custom_fonts/font = ExtResource( 14 )
+group = null
 text = "KEY_USE"
 
-[node name="icon" parent="panels/items/info/use"]
+[node name="icon" parent="panels/items/info/use" index="0"]
 
 margin_top = 10.0
 margin_bottom = 31.0
 
-[node name="drop" parent="panels/items/info" instance=ExtResource( 18 )]
+[node name="drop" parent="panels/items/info" index="6" instance=ExtResource( 18 )]
 
-focus_neighbour_left = NodePath(".")
-focus_neighbour_top = NodePath("../use")
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 348.0
 margin_right = 212.0
 margin_bottom = 387.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../use")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 custom_fonts/font = ExtResource( 14 )
+group = null
 text = "KEY_DROP"
 
-[node name="icon" parent="panels/items/info/drop"]
+[node name="icon" parent="panels/items/info/drop" index="0"]
 
 margin_top = 10.0
 margin_bottom = 31.0
 
-[node name="magic" type="Control" parent="panels"]
+[node name="magic" type="Control" parent="panels" index="2"]
 
 editor/display_folded = true
 visible = false
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
-margin_left = 0.0
-margin_top = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 736.0
 margin_bottom = 494.0
-script = ExtResource( 26 )
-
-[node name="ScrollContainer" type="ScrollContainer" parent="panels/magic"]
-
-focus_ignore_mouse = false
-focus_stop_mouse = true
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
+script = ExtResource( 26 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="panels/magic" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 696.0
 margin_bottom = 478.0
-scroll_horizontal = true
-scroll_vertical = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="panels/magic/ScrollContainer"]
-
-focus_ignore_mouse = false
-focus_stop_mouse = true
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 0.0
-margin_bottom = 0.0
+scroll_horizontal_enabled = true
+scroll_horizontal = 1
+scroll_vertical_enabled = true
+scroll_vertical = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="panels/magic/ScrollContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 alignment = 0
 
-[node name="map" type="Control" parent="panels"]
+[node name="map" type="Control" parent="panels" index="3"]
 
 editor/display_folded = true
 visible = false
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
-margin_left = 0.0
-margin_top = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 736.0
 margin_bottom = 494.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 script = ExtResource( 27 )
 
-[node name="bg" type="Sprite" parent="panels/map"]
+[node name="bg" type="Sprite" parent="panels/map" index="0"]
 
 position = Vector2( 32, 120 )
 texture = ExtResource( 28 )
 centered = false
 
-[node name="mapcontainer" type="Control" parent="panels/map"]
+[node name="mapcontainer" type="Control" parent="panels/map" index="1"]
 
 editor/display_folded = true
-focus_ignore_mouse = false
-focus_stop_mouse = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 0.0
-margin_bottom = 0.0
 
-[node name="viewport" type="Polygon2D" parent="panels/map/mapcontainer"]
+[node name="viewport" type="Polygon2D" parent="panels/map/mapcontainer" index="0"]
 
 position = Vector2( 96, 176 )
 polygon = PoolVector2Array( 0, 0, 540, 0, 540, 218, 0, 218 )
@@ -1116,24 +1304,30 @@ uv = PoolVector2Array(  )
 color = Color( 1, 1, 1, 0 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
-texture_rotation = 0.0
+texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
 script = ExtResource( 29 )
 
-[node name="title" type="Label" parent="panels/map"]
+[node name="title" type="Label" parent="panels/map" index="2"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 32.0
 margin_top = 16.0
 margin_right = 704.0
 margin_bottom = 47.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 14 )
 text = "LVL_START"
 align = 1
@@ -1141,16 +1335,21 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="level" type="Label" parent="panels/map"]
+[node name="level" type="Label" parent="panels/map" index="3"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 32.0
 margin_top = 48.0
 margin_right = 704.0
 margin_bottom = 72.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 30 )
 text = "LVL_START"
 align = 1
@@ -1158,60 +1357,70 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="ornament" type="Sprite" parent="panels/map"]
+[node name="ornament" type="Sprite" parent="panels/map" index="4"]
 
 position = Vector2( 368, 88 )
 texture = ExtResource( 31 )
 flip_v = true
 
-[node name="fade_right" type="Sprite" parent="panels/map"]
+[node name="fade_right" type="Sprite" parent="panels/map" index="5"]
 
-material = SubResource( 16 )
+material = SubResource( 15 )
 position = Vector2( 368, 72 )
 scale = Vector2( 256, 1 )
-texture = SubResource( 17 )
+texture = SubResource( 16 )
 centered = false
 
-[node name="fade_left" type="Sprite" parent="panels/map"]
+[node name="fade_left" type="Sprite" parent="panels/map" index="6"]
 
-material = SubResource( 16 )
+material = SubResource( 15 )
 position = Vector2( 112, 72 )
 scale = Vector2( 256, 1 )
-texture = SubResource( 17 )
+texture = SubResource( 16 )
 centered = false
 flip_h = true
 
-[node name="completion" type="Label" parent="panels/map"]
+[node name="completion" type="Label" parent="panels/map" index="7"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 64.0
 margin_top = 108.0
 margin_right = 124.0
 margin_bottom = 132.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 text = "0%"
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="map_icon" type="Sprite" parent="panels/map"]
+[node name="map_icon" type="Sprite" parent="panels/map" index="8"]
 
 position = Vector2( 52, 124 )
 texture = ExtResource( 32 )
 
-[node name="target" type="Label" parent="panels/map"]
+[node name="target" type="Label" parent="panels/map" index="9"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 646.0
 margin_top = 68.0
 margin_right = 710.0
 margin_bottom = 92.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 33 )
 text = "KEY_TARGET"
 align = 1
@@ -1219,148 +1428,164 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="target_border" type="Sprite" parent="panels/map"]
+[node name="target_border" type="Sprite" parent="panels/map" index="10"]
 
 position = Vector2( 678, 40 )
 texture = ExtResource( 34 )
 
-[node name="icons" type="Node2D" parent="panels/map"]
+[node name="icons" type="Node2D" parent="panels/map" index="11"]
 
 editor/display_folded = true
 position = Vector2( 678, 40 )
 
-[node name="colosseum" type="Sprite" parent="panels/map/icons"]
+[node name="colosseum" type="Sprite" parent="panels/map/icons" index="0"]
 
 visible = false
 texture = ExtResource( 35 )
 
-[node name="quest" type="Sprite" parent="panels/map/icons"]
+[node name="quest" type="Sprite" parent="panels/map/icons" index="1"]
 
 visible = false
 texture = ExtResource( 36 )
 
-[node name="boss" type="Sprite" parent="panels/map/icons"]
+[node name="boss" type="Sprite" parent="panels/map/icons" index="2"]
 
 visible = false
 texture = ExtResource( 37 )
 
-[node name="bonus" type="Sprite" parent="panels/map/icons"]
+[node name="bonus" type="Sprite" parent="panels/map/icons" index="3"]
 
 editor/display_folded = true
 visible = false
 texture = ExtResource( 38 )
 offset = Vector2( -10, 0 )
 
-[node name="counter" type="Label" parent="panels/map/icons/bonus"]
+[node name="counter" type="Label" parent="panels/map/icons/bonus" index="0"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
-margin_left = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = -10.0
 margin_right = 40.0
 margin_bottom = 13.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 30 )
 text = "0"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="complete" type="Sprite" parent="panels/map"]
+[node name="complete" type="Sprite" parent="panels/map" index="12"]
 
 position = Vector2( 678, 40 )
 texture = ExtResource( 39 )
 
-[node name="n-arrow" parent="panels/map" instance=ExtResource( 40 )]
+[node name="n-arrow" parent="panels/map" index="13" instance=ExtResource( 40 )]
 
 position = Vector2( 368, 160 )
-rotation_deg = -90.0
 
-[node name="e-arrow" parent="panels/map" instance=ExtResource( 40 )]
+[node name="e-arrow" parent="panels/map" index="14" instance=ExtResource( 40 )]
 
 position = Vector2( 652, 290 )
 
-[node name="w-arrow" parent="panels/map" instance=ExtResource( 40 )]
+[node name="w-arrow" parent="panels/map" index="15" instance=ExtResource( 40 )]
 
 editor/display_folded = true
 position = Vector2( 64, 290 )
 
-[node name="icon" parent="panels/map/w-arrow"]
+[node name="icon" parent="panels/map/w-arrow" index="0"]
 
 position = Vector2( 3.95809, 0 )
 flip_h = true
 
-[node name="s-arrow" parent="panels/map" instance=ExtResource( 40 )]
+[node name="s-arrow" parent="panels/map" index="16" instance=ExtResource( 40 )]
 
 editor/display_folded = true
 position = Vector2( 368, 424 )
-rotation_deg = -90.0
 
-[node name="icon" parent="panels/map/s-arrow"]
+[node name="icon" parent="panels/map/s-arrow" index="0"]
 
 position = Vector2( 3.42651, 0 )
 flip_h = true
 
-[node name="focus" type="Button" parent="panels/map"]
+[node name="focus" type="Button" parent="panels/map" index="17"]
 
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 12.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath(".")
 focus_neighbour_bottom = NodePath(".")
-focus_ignore_mouse = false
-focus_stop_mouse = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 12.0
-margin_bottom = 30.0
-custom_styles/hover = SubResource( 19 )
-custom_styles/pressed = SubResource( 20 )
-custom_styles/focus = SubResource( 21 )
-custom_styles/disabled = SubResource( 22 )
-custom_styles/normal = SubResource( 23 )
+custom_styles/hover = SubResource( 18 )
+custom_styles/pressed = SubResource( 19 )
+custom_styles/focus = SubResource( 20 )
+custom_styles/disabled = SubResource( 21 )
+custom_styles/normal = SubResource( 22 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
+group = null
 flat = false
+align = 1
 
-[node name="scrolls" type="Control" parent="panels"]
+[node name="scrolls" type="Control" parent="panels" index="4"]
 
 editor/display_folded = true
 visible = false
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
-margin_left = 0.0
-margin_top = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 736.0
 margin_bottom = 494.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 script = ExtResource( 41 )
 
-[node name="bg" type="Sprite" parent="panels/scrolls"]
+[node name="bg" type="Sprite" parent="panels/scrolls" index="0"]
 
 position = Vector2( 16, 72 )
 texture = ExtResource( 28 )
 centered = false
 
-[node name="header" type="Sprite" parent="panels/scrolls"]
+[node name="header" type="Sprite" parent="panels/scrolls" index="1"]
 
 position = Vector2( 368, 24 )
 texture = ExtResource( 31 )
 
-[node name="title" type="Label" parent="panels/scrolls"]
+[node name="title" type="Label" parent="panels/scrolls" index="2"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 16.0
 margin_top = 40.0
 margin_right = 720.0
 margin_bottom = 71.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 14 )
 text = "SCROLL_START_TITLE"
 align = 1
@@ -1368,18 +1593,23 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="content" type="RichTextLabel" parent="panels/scrolls"]
+[node name="content" type="RichTextLabel" parent="panels/scrolls" index="3"]
 
-anchor_right = 2
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
-theme = SubResource( 37 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
 margin_left = 52.0
 margin_top = 108.0
 margin_right = 0.972826
 margin_bottom = 372.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme = SubResource( 36 )
 custom_fonts/normal_font = ExtResource( 23 )
 custom_fonts/mono_font = ExtResource( 43 )
 custom_colors/default_color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
@@ -1400,79 +1630,106 @@ Sie durfen viele Gegner durch Ihre Abenteuer treffen. Wenn die Gegner besiegt ge
 [color=yellow]Gold[/color]
 Das Geld in dieses Spiel ist [color=yellow]Gold[/color]. Sie können [color=yellow]Gold[/color] von Besiegen von Gegner, manche Charaktere, Gegenstände verkaufen oder Ebene vollenden bekommen. Speichern Sie genug [color=yellow]Gold[/color], durfen Sie benutzvolle Gegenstände bei verschiedene Händler durch den Spiel kaufen. Sie können sehen, wie viele [color=yellow]Gold[/color] Sie gesammelt haben indem Sie die Standteil der Menü anschauen."
 visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "Über diese Schriftrollen
+Sie durfen solche Schriftrolle wie dieses überall in diesem Spiel oder auch von manche Charakteren. Sind Sie ein Anfanger, es ist empfehlt, daß man so viele Schriftrollen wie möglich sammeln, da sie wertvolle Infos, Tipps und anderer Rat enthalten. Sie werden alle Schriftrollen, die Sie bereits gesammelt haben hier finden. Benutzen Sie die Pfeilentaste um zwischen Schriftrollen zu wechseln, oder scrollen um sie weiter zu lesen. Druck Q
 
-[node name="selection_header" type="Sprite" parent="panels/scrolls"]
+Durch den Spiel Bewegen
+Bewegen ist einfach. Nur die Richtungstaste benutzen, um zu gehen wo Sie verlangen. Sie durfen springen und auf Plattforme klettern, indem Sie [jump] drücken.
+Wenn Sie sind in der Nähe von einem Klippe sind, werden Sie automatisch darauf hangen. Drücken Sie [up] um darauf zu klettern, oder [jump] oder die Taste für die Gegenrichtung drücken, um nach unten zu fallen. Falls Sie auf den Boden stehen, durfen Sie auch mit  [down] kauern, um Angriffe zu vermeiden oder kürzere Gegner zu treffen.
+
+Mit Charaktere Sprechen
+Sie durfen manchmal Charaktere treffen, die mit Ihr sprechen können. Einfach zu ihr gehen und die [blood] Taste drücken. Sie können wissen, ob ein Charakter hat etwas zu sagen indem Sie zu ihm gehen und eine Sprechblase erscheint. Drücken Sie [attack], [magic] oder [blood] um durch der Dialog zu lesen.
+
+Finsterkugeln und Stufe Erhöhen
+Sie durfen viele Gegner durch Ihre Abenteuer treffen. Wenn die Gegner besiegt geworden sind, wird Finsterkugeln erscheinen. Diese Finsterkugeln enthalten Erfahrungspunkte (EP), die man sammeln soll, um höhere Stufe zu erreichen. Ihrer Stand wird sich erhöht als Sie höhere Stufe erreichen, also ist es empfehlt Finsterkugeln zu sammeln. Sie können sehen, wie viele EP Sie soweit bekommt haben indem Sie die Standteil in Menü ansehen.
+
+Gold
+Das Geld in dieses Spiel ist Gold. Sie können Gold von Besiegen von Gegner, manche Charaktere, Gegenstände verkaufen oder Ebene vollenden bekommen. Speichern Sie genug Gold, durfen Sie benutzvolle Gegenstände bei verschiedene Händler durch den Spiel kaufen. Sie können sehen, wie viele Gold Sie gesammelt haben indem Sie die Standteil der Menü anschauen."
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+
+[node name="selection_header" type="Sprite" parent="panels/scrolls" index="4"]
 
 position = Vector2( 383, 418 )
 texture = ExtResource( 31 )
 
-[node name="selection_footer" type="Sprite" parent="panels/scrolls"]
+[node name="selection_footer" type="Sprite" parent="panels/scrolls" index="5"]
 
 position = Vector2( 383, 480 )
 texture = ExtResource( 31 )
 flip_v = true
 
-[node name="select_bgleft" type="Sprite" parent="panels/scrolls"]
+[node name="select_bgleft" type="Sprite" parent="panels/scrolls" index="6"]
 
-material = SubResource( 39 )
+material = SubResource( 37 )
 position = Vector2( 127, 434 )
 scale = Vector2( 256, 30 )
-texture = SubResource( 40 )
+texture = SubResource( 38 )
 centered = false
 
-[node name="select_bgright" type="Sprite" parent="panels/scrolls"]
+[node name="select_bgright" type="Sprite" parent="panels/scrolls" index="7"]
 
-material = SubResource( 39 )
+material = SubResource( 37 )
 position = Vector2( 383, 434 )
 scale = Vector2( 256, 30 )
-texture = SubResource( 40 )
+texture = SubResource( 38 )
 centered = false
 flip_h = true
 
-[node name="fade_topleft" type="Sprite" parent="panels/scrolls"]
+[node name="fade_topleft" type="Sprite" parent="panels/scrolls" index="8"]
 
-material = SubResource( 16 )
+material = SubResource( 15 )
 position = Vector2( 127, 434 )
 scale = Vector2( 256, 1 )
-texture = SubResource( 17 )
+texture = SubResource( 16 )
 centered = false
 flip_h = true
 
-[node name="fade_topright" type="Sprite" parent="panels/scrolls"]
+[node name="fade_topright" type="Sprite" parent="panels/scrolls" index="9"]
 
-material = SubResource( 16 )
+material = SubResource( 15 )
 position = Vector2( 383, 434 )
 scale = Vector2( 256, 1 )
-texture = SubResource( 17 )
+texture = SubResource( 16 )
 centered = false
 
-[node name="fade_bottomleft" type="Sprite" parent="panels/scrolls"]
+[node name="fade_bottomleft" type="Sprite" parent="panels/scrolls" index="10"]
 
-material = SubResource( 16 )
+material = SubResource( 15 )
 position = Vector2( 127, 464 )
 scale = Vector2( 256, 1 )
-texture = SubResource( 17 )
+texture = SubResource( 16 )
 centered = false
 flip_h = true
 
-[node name="fade_bottomright" type="Sprite" parent="panels/scrolls"]
+[node name="fade_bottomright" type="Sprite" parent="panels/scrolls" index="11"]
 
-material = SubResource( 16 )
+material = SubResource( 15 )
 position = Vector2( 383, 464 )
 scale = Vector2( 256, 1 )
-texture = SubResource( 17 )
+texture = SubResource( 16 )
 centered = false
 
-[node name="empty" type="Label" parent="panels/scrolls"]
+[node name="empty" type="Label" parent="panels/scrolls" index="12"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 66.0
 margin_top = 440.0
 margin_right = 710.0
 margin_bottom = 464.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "SCROLL_EMPTY"
@@ -1481,206 +1738,301 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="scrollselection" type="ScrollContainer" parent="panels/scrolls"]
+[node name="scrollselection" type="ScrollContainer" parent="panels/scrolls" index="13"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 66.0
 margin_top = 428.0
 margin_right = 710.0
 margin_bottom = 476.0
-scroll_horizontal = true
-scroll_vertical = true
-
-[node name="Control" type="Control" parent="panels/scrolls/scrollselection"]
-
-focus_ignore_mouse = false
-focus_stop_mouse = true
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 0.0
-margin_bottom = 0.0
+scroll_horizontal_enabled = true
+scroll_horizontal = 1
+scroll_vertical_enabled = true
+scroll_vertical = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="panels/scrolls/scrollselection/Control"]
+[node name="Control" type="Control" parent="panels/scrolls/scrollselection" index="0"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="panels/scrolls/scrollselection/Control" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 24.0
-margin_top = 0.0
 margin_right = 728.0
 margin_bottom = 48.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 custom_constants/separation = 48
 alignment = 0
 
-[node name="icon" parent="panels/scrolls" instance=ExtResource( 44 )]
+[node name="icon" parent="panels/scrolls" index="14" instance=ExtResource( 44 )]
 
-focus_neighbour_top = NodePath("../../../tabs/HBoxContainer/scrolls")
-focus_neighbour_right = NodePath(".")
 margin_left = 16.0
 margin_top = 440.0
 margin_right = 28.0
 margin_bottom = 461.0
-enabled_focus_mode = 2
-shortcut = null
+focus_neighbour_top = NodePath("../../../tabs/HBoxContainer/scrolls")
+focus_neighbour_right = NodePath(".")
 script = ExtResource( 45 )
 
-[node name="settings" parent="panels" instance=ExtResource( 46 )]
+[node name="settings" parent="panels" index="5" instance=ExtResource( 46 )]
 
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 
-[node name="frame" type="TextureRect" parent="."]
+[node name="frame" type="TextureRect" parent="." index="2"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = -32.0
 margin_top = -32.0
 margin_right = 768.0
 margin_bottom = 560.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 texture = ExtResource( 47 )
 stretch_mode = 0
 
-[node name="tabs" type="Panel" parent="."]
+[node name="tabs" type="Panel" parent="." index="3"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
-margin_left = 0.0
-margin_top = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 736.0
 margin_bottom = 32.0
-custom_styles/panel = SubResource( 41 )
-
-[node name="HBoxContainer" type="HBoxContainer" parent="tabs"]
-
-anchor_left = 2
-anchor_right = 2
-focus_ignore_mouse = false
-focus_stop_mouse = false
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-margin_left = 368.0
+custom_styles/panel = SubResource( 39 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="tabs" index="0"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -668.0
 margin_top = -10.0
-margin_right = -368.0
+margin_right = -68.0
 margin_bottom = 26.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 custom_constants/separation = 96
 alignment = 1
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "custom_constants" ]
 
-[node name="stats" parent="tabs/HBoxContainer" instance=ExtResource( 48 )]
+[node name="stats" parent="tabs/HBoxContainer" index="0" instance=ExtResource( 48 )]
 
-focus_neighbour_right = NodePath("../items")
-margin_right = 88.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_right = 20.0
 margin_bottom = 36.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_right = NodePath("../items")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+group = null
 
-[node name="items" parent="tabs/HBoxContainer" instance=ExtResource( 48 )]
+[node name="items" parent="tabs/HBoxContainer" index="1" instance=ExtResource( 48 )]
 
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 116.0
+margin_right = 136.0
+margin_bottom = 36.0
+rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath("../stats")
 focus_neighbour_right = NodePath("../magic")
-margin_left = 184.0
-margin_right = 204.0
-margin_bottom = 36.0
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+group = null
 texture_normal = ExtResource( 49 )
 
-[node name="bg" parent="tabs/HBoxContainer/items"]
+[node name="bg" parent="tabs/HBoxContainer/items" index="1"]
 
 offset = Vector2( 0, -8 )
 
-[node name="fg" parent="tabs/HBoxContainer/items"]
+[node name="fg" parent="tabs/HBoxContainer/items" index="2"]
 
 offset = Vector2( 0, -8 )
 
-[node name="magic" parent="tabs/HBoxContainer" instance=ExtResource( 48 )]
+[node name="magic" parent="tabs/HBoxContainer" index="2" instance=ExtResource( 48 )]
 
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 232.0
+margin_right = 252.0
+margin_bottom = 36.0
+rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath("../items")
 focus_neighbour_right = NodePath("../map")
-margin_left = 300.0
-margin_right = 320.0
-margin_bottom = 36.0
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+group = null
 texture_normal = ExtResource( 50 )
 
-[node name="bg" parent="tabs/HBoxContainer/magic"]
+[node name="bg" parent="tabs/HBoxContainer/magic" index="1"]
 
 offset = Vector2( 0, -16 )
 
-[node name="fg" parent="tabs/HBoxContainer/magic"]
+[node name="fg" parent="tabs/HBoxContainer/magic" index="2"]
 
 offset = Vector2( 0, -16 )
 
-[node name="map" parent="tabs/HBoxContainer" instance=ExtResource( 48 )]
+[node name="map" parent="tabs/HBoxContainer" index="3" instance=ExtResource( 48 )]
 
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 348.0
+margin_right = 368.0
+margin_bottom = 36.0
+rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath("../magic")
 focus_neighbour_right = NodePath("../scrolls")
-margin_left = 416.0
-margin_right = 436.0
-margin_bottom = 36.0
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+group = null
 texture_normal = ExtResource( 32 )
 
-[node name="bg" parent="tabs/HBoxContainer/map"]
+[node name="bg" parent="tabs/HBoxContainer/map" index="1"]
 
 offset = Vector2( 0, -16 )
 
-[node name="fg" parent="tabs/HBoxContainer/map"]
+[node name="fg" parent="tabs/HBoxContainer/map" index="2"]
 
 offset = Vector2( 0, -16 )
 
-[node name="scrolls" parent="tabs/HBoxContainer" instance=ExtResource( 48 )]
+[node name="scrolls" parent="tabs/HBoxContainer" index="4" instance=ExtResource( 48 )]
 
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 464.0
+margin_right = 484.0
+margin_bottom = 36.0
+rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath("../map")
 focus_neighbour_right = NodePath("../settings")
-margin_left = 532.0
-margin_right = 552.0
-margin_bottom = 36.0
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+group = null
 texture_normal = ExtResource( 51 )
 
-[node name="bg" parent="tabs/HBoxContainer/scrolls"]
+[node name="bg" parent="tabs/HBoxContainer/scrolls" index="1"]
 
 offset = Vector2( 0, -8 )
 
-[node name="fg" parent="tabs/HBoxContainer/scrolls"]
+[node name="fg" parent="tabs/HBoxContainer/scrolls" index="2"]
 
 offset = Vector2( 0, -8 )
 
-[node name="settings" parent="tabs/HBoxContainer" instance=ExtResource( 48 )]
+[node name="settings" parent="tabs/HBoxContainer" index="5" instance=ExtResource( 48 )]
 
-focus_neighbour_left = NodePath("../scrolls")
-margin_left = 648.0
-margin_right = 668.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 580.0
+margin_right = 600.0
 margin_bottom = 36.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_left = NodePath("../scrolls")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+group = null
 texture_normal = ExtResource( 52 )
 
-[node name="back" parent="." instance=ExtResource( 53 )]
+[node name="back" parent="." index="4" instance=ExtResource( 53 )]
 
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 455.0
 margin_top = 534.0
 margin_right = 696.0
 margin_bottom = 565.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
 
-[connection signal="pressed"  from="panels/stats/shield/options/yes"  to="panels/stats" method="quitgame" binds=[  ]]
+[connection signal="pressed" from="panels/stats/shield/options/yes" to="panels/stats" method="quitgame"]
 
-[connection signal="pressed"  from="panels/stats/shield/options/no"  to="panels/stats" method="no_pressed" binds=[  ]]
+[connection signal="pressed" from="panels/stats/shield/options/no" to="panels/stats" method="no_pressed"]
 
-[connection signal="pressed"  from="panels/stats/quit"  to="panels/stats" method="_on_quit" binds=[  ]]
+[connection signal="pressed" from="panels/stats/quit" to="panels/stats" method="_on_quit"]
 
-[connection signal="focus_entered"  from="panels/items/types/item"  to="panels/items" method="change_type" binds=[  ]]
+[connection signal="focus_entered" from="panels/items/types/item" to="panels/items" method="change_type"]
 
-[connection signal="focus_entered"  from="panels/items/types/special"  to="panels/items" method="change_type" binds=[  ]]
+[connection signal="focus_entered" from="panels/items/types/special" to="panels/items" method="change_type"]
 
-[connection signal="focus_entered"  from="panels/map/focus"  to="panels/map" method="_on_map_focus_enter" binds=[  ]]
+[connection signal="focus_entered" from="panels/map/focus" to="panels/map" method="_on_map_focus_enter"]
 
-[connection signal="focus_exited"  from="panels/map/focus"  to="panels/map" method="_on_map_focus_exit" binds=[  ]]
+[connection signal="focus_exited" from="panels/map/focus" to="panels/map" method="_on_map_focus_exit"]
 
-[connection signal="focus_entered"  from="panels/scrolls/icon"  to="panels/scrolls" method="_on_scroll_focus_enter" binds=[  ]]
+[connection signal="focus_entered" from="panels/scrolls/icon" to="panels/scrolls" method="_on_scroll_focus_enter"]
 
-[connection signal="focus_exited"  from="panels/scrolls/icon"  to="panels/scrolls" method="_on_scroll_focus_exit" binds=[  ]]
+[connection signal="focus_exited" from="panels/scrolls/icon" to="panels/scrolls" method="_on_scroll_focus_exit"]
 
-[connection signal="saved"  from="panels/settings"  to="." method="settings_saved" binds=[  ]]
+[connection signal="saved" from="panels/settings" to="." method="settings_saved"]
+
+
 [editable path="panels/items/types/item"]
 [editable path="panels/items/types/special"]
 [editable path="panels/items/info/use"]

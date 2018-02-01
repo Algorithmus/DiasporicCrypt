@@ -59,7 +59,6 @@ content_margin_bottom = -1.0
 [sub_resource type="ImageTexture" id=4]
 
 flags = 4
-image = Image()
 )size = Vector2( 4, 16 )
 storage = 0
 lossy_quality = 0.7
@@ -232,7 +231,6 @@ shader_param/stop = Color( 0.0352941, 0.219608, 0.207843, 0.686275 )
 [sub_resource type="ImageTexture" id=19]
 
 flags = 7
-image = Image()
 )size = Vector2( 256, 256 )
 storage = 0
 lossy_quality = 0.7
@@ -249,7 +247,6 @@ distance_field = false
 [sub_resource type="ImageTexture" id=21]
 
 flags = 4
-image = Image()
 )size = Vector2( 12, 12 )
 storage = 0
 lossy_quality = 0.7
@@ -341,7 +338,6 @@ draw_center = true
 [sub_resource type="ImageTexture" id=30]
 
 flags = 4
-image = Image()
 )size = Vector2( 12, 12 )
 storage = 0
 lossy_quality = 0.7

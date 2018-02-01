@@ -26,7 +26,6 @@
 [sub_resource type="ImageTexture" id=1]
 
 flags = 4
-image = Image()
 )size = Vector2( 4, 16 )
 storage = 0
 lossy_quality = 0.7

@@ -1,111 +1,166 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
+[sub_resource type="Shader" id=10]
 
-[sub_resource type="Shader" id=8]
+code = "shader_type canvas_item;
+render_mode blend_add;
 
-_code = {
-"fragment": "uniform color start=color(0.2,0.4,1.0,0.8);
-uniform color stop=color(0.2,0.4,1.0,0);
+uniform vec4 start=vec4(0.2,0.4,1.0,0.8);
+uniform vec4 stop=vec4(0.2,0.4,1.0,0);
+
+void fragment() {
+
 COLOR = mix(start, stop, UV.y);
 
-COLOR.a = tex(TEXTURE,UV).a*COLOR.a;",
-"fragment_ofs": 0,
-"light": "",
-"light_ofs": 0,
-"vertex": "",
-"vertex_ofs": 0
-}
+COLOR.a = texture(TEXTURE,UV).a*COLOR.a;
+}"
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=11]
 
-shader/shader = SubResource( 8 )
-shader/shading_mode = 0
-shader_param/start = Color( 0.352941, 0.196078, 1, 0 )
-shader_param/stop = Color( 0.355621, 0.199219, 1, 0.7503 )
+render_priority = 0
+shader = SubResource( 10 )
+shader_param/start = Plane( 0.35, 0.2, 1, 0 )
+shader_param/stop = Plane( 0.35, 0.2, 1, 0.75 )
+_sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="ImageTexture" id=4]
+[sub_resource type="ImageTexture" id=12]
 
 flags = 6
-image = Image()
-size = Vector2( 32, 32 )
 storage = 0
 lossy_quality = 1.0
+flags = 6
+size = Vector2( 32, 32 )
 
-[sub_resource type="Gradient" id=1]
+[sub_resource type="Gradient" id=13]
 
-offsets = PoolRealArray( 0, 0.75, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.883929, 1, 1, 1, 0 )
+offsets = PoolRealArray( 0, 0.384615, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.883922, 1, 1, 1, 0 )
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="GradientTexture" id=14]
 
-resource_name = "charge"
+flags = 4
+gradient = SubResource( 13 )
+width = 2048
+
+[sub_resource type="Curve" id=8]
+
+min_value = 0.0
+max_value = 1.0
+bake_resolution = 100
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.99724, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+
+flags = 4
+width = 2048
+curve = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=15]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 2
+emission_box_extents = Vector3( 32, 0, 1 )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 0.0
+flatness = 0.0
+gravity = Vector3( 0, -80, 0 )
+initial_velocity = 20.0
+initial_velocity_random = 1.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 20.0
+linear_accel_random = 0.0
+radial_accel = -90.0
+radial_accel_random = 1.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 180.0
+angle_random = 0.0
+scale = 2.0
+scale_random = 1.0
+scale_curve = SubResource( 9 )
+color_ramp = SubResource( 14 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 1.0
+anim_speed_random = 1.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Damping", "Emission Shape", "Flags", "Gravity", "Hue Variation", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Radial Accel", "Scale", "Spread", "Tangential Accel", "Trail" ]
+
+[sub_resource type="Animation" id=16]
+
 length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"cont": true,
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
+"update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 2, 2 ) ]
 }
 
-[node name="charge" type="Node2D"]
+[node name="charge" type="Node2D" index="0"]
 
 scale = Vector2( 2, 2 )
 __meta__ = {
 "__editor_plugin_screen__": "Script"
 }
 
-[node name="halo" type="Sprite" parent="."]
+[node name="halo" type="Sprite" parent="." index="0"]
 
-visibility/blend_mode = 1
-material = SubResource( 3 )
+material = SubResource( 11 )
 position = Vector2( 0, -32 )
-z = 3
-texture = SubResource( 4 )
+texture = SubResource( 12 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 64, 64 )
+_sections_unfolded = [ "Material" ]
 
-[node name="swirl" type="Particles2D" parent="."]
+[node name="swirl" type="Particles2D" parent="." index="1"]
 
-visibility/opacity = 0.5
-z = 3
-config/amount = 32
-config/lifetime = 2.0
-config/time_scale = 2.0
-config/half_extents = Vector2( 32, 0 )
-params/direction = 90.0
-params/spread = 0.0
-params/linear_velocity = 20.0
-params/spin_velocity = 0.0
-params/orbit_velocity = 0.0
-params/gravity_direction = 180.0
-params/gravity_strength = 80.0
-params/radial_accel = -90.0
-params/tangential_accel = 0.0
-params/damping = 0.0
-params/initial_angle = 180.0
-params/initial_size = 1.0
-params/final_size = 1.0
-params/hue_variation = 0.0
-params/anim_speed_scale = 1.0
-params/anim_initial_pos = 0.0
-randomness/direction = 1.0
-randomness/radial_accel = 1.0
-randomness/initial_size = 1.0
-randomness/final_size = 1.0
-color/color_ramp = SubResource( 1 )
+modulate = Color( 1, 1, 1, 0.5 )
+emitting = true
+amount = 32
+lifetime = 2.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 2.0
+explosiveness = 0.0
+randomness = 1.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -32, -128, 64, 128 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 15 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Transform", "Visibility", "Z Index" ]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 
+root_node = NodePath("..")
+autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-root_node = NodePath("..")
-anims/charge = SubResource( 9 )
-playback/active = true
-playback/speed = 1.0
+playback_speed = 1.0
+anims/charge = SubResource( 16 )
 blend_times = [  ]
-autoplay = ""
+
+
