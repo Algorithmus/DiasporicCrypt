@@ -78,11 +78,15 @@ func update_container():
 
 func _on_sfxslider_value_changed( value ):
 	if (!sfxMute):
-		AudioServer.set_fx_global_volume_scale(value)
+		#TODO - play sounds correctly
+		#AudioServer.set_fx_global_volume_scale(value)
+		pass
 
 func _on_bgmslider_value_changed( value ):
 	if (!bgmMute):
-		AudioServer.set_stream_global_volume_scale(value)
+		#TODO - play sounds correctly
+		#AudioServer.set_stream_global_volume_scale(value)
+		pass
 
 func unfocus_all():
 	reset()
@@ -129,8 +133,8 @@ func update_mute_controls():
 		bgmslider.get_node("mute").set_texture(sound)
 
 func save():
-	sfxValue = sfxslider.get_val()
-	bgmValue = bgmslider.get_val()
+	sfxValue = sfxslider.value
+	bgmValue = bgmslider.value
 	ProjectSettings.set("sfxvolume", sfxValue)
 	ProjectSettings.set("bgmvolume", bgmValue)
 	ProjectSettings.set("sfxmute", sfxMute)

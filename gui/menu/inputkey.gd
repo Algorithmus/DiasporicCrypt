@@ -52,7 +52,8 @@ func _input(event):
 	var helpPressed = (ProjectSettings.get("demomode") && event.is_action_pressed("ui_help"))
 	if (!iscapture && event.is_action_pressed("ui_accept") && event.is_pressed() && !event.is_echo()):
 		_on_key_pressed()
-		sfx.play("cursor")
+		#TODO - play sound properly
+		#sfx.play("cursor")
 	elif(iscapture && event.is_pressed() && !event.is_echo() && !helpPressed):
 		var inputvalue = ""
 		if (event is InputEventKey && is_keyboard):
@@ -77,7 +78,8 @@ func _input(event):
 		currentinput = event
 		ProjectSettings.get("newcontrols")[actionid] = currentinput[inputvalue]
 		set_key(currentinput[inputvalue])
-		sfx.play("confirm")
+		#TODO - play sound properly
+		#sfx.play("confirm")
 		inputinfo.hide()
 		iscapture = false
 	elif(!iscapture):
