@@ -140,19 +140,19 @@ func get_exp_orb(value):
 		get_tree().get_root().get_node("world/gui/CanvasLayer/hud").play_levelup()
 
 func input_left():
-	return Input.is_action_pressed("ui_left") && !is_transforming && !Globals.get("eventmode")
+	return Input.is_action_pressed("ui_left") && !is_transforming && !ProjectSettings.get("eventmode")
 
 func input_right():
-	return Input.is_action_pressed("ui_right") && !is_transforming && !Globals.get("eventmode")
+	return Input.is_action_pressed("ui_right") && !is_transforming && !ProjectSettings.get("eventmode")
 
 func input_up():
-	return Input.is_action_pressed("ui_up") && !is_transforming && !Globals.get("eventmode")
+	return Input.is_action_pressed("ui_up") && !is_transforming && !ProjectSettings.get("eventmode")
 
 func input_down():
-	return Input.is_action_pressed("ui_down") && !is_transforming && !Globals.get("eventmode")
+	return Input.is_action_pressed("ui_down") && !is_transforming && !ProjectSettings.get("eventmode")
 
 func input_jump():
-	return Input.is_action_pressed("ui_jump") && !is_transforming && !Globals.get("eventmode")
+	return Input.is_action_pressed("ui_jump") && !is_transforming && !ProjectSettings.get("eventmode")
 
 # add and remove magic spell and other special effect collisions
 # to prevent interfering with regular collision detection
@@ -242,7 +242,7 @@ func check_damage(damageTiles):
 				check_gameover()
 			if (i.get_name() == "npc"):
 				npc = i.get_parent()
-		if (Globals.get("sun") && !is_hurt_check):
+		if (ProjectSettings.get("sun") && !is_hurt_check):
 			var damage = max(get_def_adjusted_damage(hp * 0.1), 0)
 			current_hp = max(current_hp - damage, 0)
 			var hp_obj = hpclass.instance()
@@ -252,7 +252,7 @@ func check_damage(damageTiles):
 			
 			is_hurt_check = true
 		
-		if (npc != null && !Globals.get("eventmode")):
+		if (npc != null && !ProjectSettings.get("eventmode")):
 			get_node("talk").show()
 		else:
 			get_node("talk").hide()
@@ -731,9 +731,9 @@ func check_animations(new_animation, animation_speed, horizontal_motion, ladderY
 func set_sprite_opacity(value):
 	if (is_demonic && get_node("NormalSpriteGroup/"+current_animation).get_material() != null):
 		get_node("NormalSpriteGroup/"+current_animation).get_material().set_shader_param("opacity", value)
-.modulate.a = 1
+		get_node("NormalSpriteGroup").modulate.a = 1
 	else:
-.modulate.a = value
+		get_node("NormalSpriteGroup").modulate.a = value
 
 func calculate_fall_height():
 	if (falling):
@@ -794,7 +794,7 @@ func step_player(delta):
 		var vertical = step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, onSlope, oneWayTile, relevantSlopeTile)
 	
 		relevantSlopeTile = vertical["slopeTile"]
-		var onSlope = vertical["slope"]
+		onSlope = vertical["slope"]
 		var abSlope = vertical["abSlope"]
 		var desiredY = vertical["desiredY"]
 		animation_speed = vertical["animationSpeed"]
@@ -867,11 +867,11 @@ func get_selected_spell_id():
 
 func check_magic_allowed():
 	if ((!magic_spells[selected_spell]["is_single"] && current_mp > 0) || (magic_spells[selected_spell]["id"] == "magicmine" && current_mines.size() < max_mines && magic_spells[selected_spell]["mp"] < current_mp)):
-.modulate.a = 1
+		spell_icons.get_node(magic_spells[selected_spell]["id"]).modulate.a = 1
 	else:
-.modulate.a = 0.5
+		spell_icons.get_node(magic_spells[selected_spell]["id"]).modulate.a = 0.5
 	if ((magic_spells[selected_spell]["id"] == "void" && magic_spells[selected_spell]["mp"] > current_mp) || magic_delay || (shield != null && magic_spells[selected_spell]["id"] == "shield")):
-.modulate.a = 0.5
+		spell_icons.get_node(magic_spells[selected_spell]["id"]).modulate.a = 0.5
 
 func check_magic():
 	# switch magic
@@ -894,7 +894,7 @@ func check_magic():
 			
 			update_fusion()
 	# detect magic requested
-	var magic_allowed = !Globals.get("eventmode") && !is_hurt && !is_attacking && !is_crouching && !hanging && !is_charging && !is_magic && !magic_delay && !is_transforming && current_mp > 0
+	var magic_allowed = !ProjectSettings.get("eventmode") && !is_hurt && !is_attacking && !is_crouching && !hanging && !is_charging && !is_magic && !magic_delay && !is_transforming && current_mp > 0
 	var void_check = true
 	if (magic_spells[selected_spell]["id"] == "void" && current_mp < magic_spells[selected_spell]["mp"]):
 		void_check = false
@@ -1141,7 +1141,7 @@ func clear_mine(mine):
 			current_mines.remove(i)
 
 func _input(event):
-	if (!is_transforming && !Globals.get("eventmode")):
+	if (!is_transforming && !ProjectSettings.get("eventmode")):
 		if (event.is_action_pressed("ui_attack") && event.is_pressed() && !event.is_echo()):
 			attack_requested = true
 		if (event.is_action_pressed("ui_blood") && event.is_pressed() && !event.is_echo()):

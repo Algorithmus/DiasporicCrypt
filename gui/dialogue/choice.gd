@@ -13,7 +13,8 @@ func _ready():
 
 func _on_choice_focus_enter():
 	get_node("icon").show()
-	sfx.play("cursor")
+	#TODO - play sounds properly
+	#sfx.play("cursor")
 
 func _on_choice_focus_exit():
 	get_node("icon").hide()

@@ -52,7 +52,7 @@ func serialize_scrolls(data):
 func unserialize_scrolls(data):
 	var scrolls = {}
 	for scroll in data:
-		var newscroll = Globals.get("itemfactory").items[scroll]
+		var newscroll = ProjectSettings.get("itemfactory").items[scroll]
 		newscroll.new = data[scroll]
 		scrolls[scroll] = newscroll
 	return scrolls
@@ -73,7 +73,7 @@ func unserialize_items(data):
 	for id in data:
 		var item = data[id]
 		var newitem = {}
-		newitem.item = Globals.get("itemfactory").items[id]
+		newitem.item = ProjectSettings.get("itemfactory").items[id]
 		newitem.item.new = item.new
 		newitem.quantity = item.quantity
 		inventory[id] = newitem
@@ -88,7 +88,7 @@ func serialize_spells(data):
 
 func unserialize_spells(data):
 	var spells = []
-	var magic_spells = Globals.get("magic_spells")
+	var magic_spells = ProjectSettings.get("magic_spells")
 	for i in range(0, data.size()):
 		var id = data[i]
 		for j in range(0, magic_spells.size()):
@@ -122,7 +122,7 @@ func serialize_mapindex(hudmap, data):
 	var mapindex = {}
 	for mapid in data:
 		var map = hudmap.serialize_room(data[mapid])
-		map.grid = Globals.get("grids")[mapid]
+		map.grid = ProjectSettings.get("grids")[mapid]
 		mapindex[mapid] = map
 	return mapindex
 
@@ -146,7 +146,7 @@ func unserialize_mapindex(hudmap, data):
 		for room in map.get_children():
 			# The map index and objects must be the same or else the correct discovery grid will not be displayed
 			# This unfortunately breaks older saves.
-			room.get_node("grid").render_grid(Globals.get("grids")[room.level])
+			room.get_node("grid").render_grid(ProjectSettings.get("grids")[room.level])
 			mapindex[room.level] = room
 	return mapindex
 

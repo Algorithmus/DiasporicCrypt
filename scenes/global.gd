@@ -190,16 +190,16 @@ func _ready():
 	var controls = {}
 	var gamepad = {}
 	var keyboard = {}
-	var joystick_supported = Input.get_connected_joysticks().size() > 0
+	var joystick_supported = Input.get_connected_joypads().size() > 0
 	if (joystick_supported):
-		var gamepad_name = Input.get_joy_name(Input.get_connected_joysticks()[0])
+		var gamepad_name = Input.get_joy_name(Input.get_connected_joypads()[0])
 		var layout = "generic"
 		if (gamepad_names.has(gamepad_name)):
 			layout = gamepad_names[gamepad_name]
-		Globals.set("current_input", layout)
+		ProjectSettings.set("current_input", layout)
 	else:
-		Globals.set("current_input", "keyboard")
-	settings.get_node("settings").set_layout_index(Globals.get("current_input"))
+		ProjectSettings.set("current_input", "keyboard")
+	settings.get_node("settings").set_layout_index(ProjectSettings.get("current_input"))
 	settings.get_node("settings").update_container()
 	for actionid in InputMap.get_actions():
 		if (actionid != "ui_accept" && actionid != "ui_cancel"):
@@ -212,16 +212,16 @@ func _ready():
 					if (!joystick_supported):
 						controls[actionid] = event.scancode
 					keyboard[actionid] = event.scancode
-	Globals.set("debugmode", true)
-	Globals.set("demomode", false)
-	Globals.set("controls", controls)
-	Globals.set("keyboard_controls", keyboard)
-	Globals.set("gamepad_controls", gamepad)
-	Globals.set("newcontrols", controls)
-	Globals.set("savedir", "user://saves")
+	ProjectSettings.set("debugmode", true)
+	ProjectSettings.set("demomode", false)
+	ProjectSettings.set("controls", controls)
+	ProjectSettings.set("keyboard_controls", keyboard)
+	ProjectSettings.set("gamepad_controls", gamepad)
+	ProjectSettings.set("newcontrols", controls)
+	ProjectSettings.set("savedir", "user://saves")
 	var globaldir = "user://"
-	Globals.set("globaldir", globaldir)
-	Globals.set("serialization", serialization.new())
+	ProjectSettings.set("globaldir", globaldir)
+	ProjectSettings.set("serialization", serialization.new())
 	
 	# Try to look for and load configuration from global config file
 	var dir = Directory.new()
@@ -238,20 +238,20 @@ func _ready():
 					while (!file.eof_reached()):
 						var string = file.get_line()
 						globalsettings.parse_json(string)
-						Globals.set("bgmvolume", globalsettings.bgmvolume)
-						Globals.set("sfxvolume", globalsettings.sfxvolume)
-						Globals.set("bgmmute", globalsettings.bgmmute)
-						Globals.set("sfxmute", globalsettings.sfxmute)
-						Globals.set("keyboard_controls", globalsettings.keyboard)
-						Globals.set("gamepad_controls", globalsettings.gamepad)
+						ProjectSettings.set("bgmvolume", globalsettings.bgmvolume)
+						ProjectSettings.set("sfxvolume", globalsettings.sfxvolume)
+						ProjectSettings.set("bgmmute", globalsettings.bgmmute)
+						ProjectSettings.set("sfxmute", globalsettings.sfxmute)
+						ProjectSettings.set("keyboard_controls", globalsettings.keyboard)
+						ProjectSettings.set("gamepad_controls", globalsettings.gamepad)
 						# Only set the requested gamepad layout if gamepad is connected
 						if (joystick_supported):
-							Globals.set("controls", globalsettings.gamepad)
+							ProjectSettings.set("controls", globalsettings.gamepad)
 						else:
-							Globals.set("controls", globalsettings.keyboard)
-						Globals.set("newcontrols", Globals.get("controls"))
-						Globals.get("serialization").unserialize_controls(globalsettings.keyboard, true)
-						Globals.get("serialization").unserialize_controls(globalsettings.gamepad, false)
+							ProjectSettings.set("controls", globalsettings.keyboard)
+						ProjectSettings.set("newcontrols", ProjectSettings.get("controls"))
+						ProjectSettings.get("serialization").unserialize_controls(globalsettings.keyboard, true)
+						ProjectSettings.get("serialization").unserialize_controls(globalsettings.gamepad, false)
 						if (TranslationServer.get_locale() != globalsettings.locale):
 							TranslationServer.set_locale(globalsettings.locale)
 							translate()
@@ -270,7 +270,7 @@ func _ready():
 	loading.connect("complete", self, "gamestart")
 	quitwarn.hide()
 	get_node("CanvasLayer/menu/BG").set_position(Vector2(0, 0))
-.modulate.a = 1
+	logo.get_node("Sprite").modulate.a = 1
 	set_process_input(true)
 	var language = settings.get_node("language")
 	language.connect("language_selected", self, "on_language_selected")
@@ -279,7 +279,7 @@ func _ready():
 	settings.get_node("settings").update_container()
 	var info_container = info.get_node("container")
 	var info_button = get_node("CanvasLayer/menu/main/info")
-	if (!global_found || Globals.get("demomode")):
+	if (!global_found || ProjectSettings.get("demomode")):
 		# no global config file found
 		# do firstrun stuff
 		settings.get_node("back").hide()
@@ -304,7 +304,7 @@ func load_backkeys():
 func check_gamesaves():
 	var dir = Directory.new()
 	var file = File.new()
-	var savedir = Globals.get("savedir")
+	var savedir = ProjectSettings.get("savedir")
 	var regex = RegEx.new()
 	regex.compile("^save\\d+.save$")
 	if (dir.dir_exists(savedir)):
@@ -401,14 +401,14 @@ func _input(event):
 func on_settings_saved():
 	# save settings to global config
 	var data = {}
-	data.bgmvolume = Globals.get("bgmvolume")
-	data.sfxvolume = Globals.get("sfxvolume")
-	data.bgmmute = Globals.get("bgmmute")
-	data.sfxmute = Globals.get("sfxmute")
-	data.keyboard = Globals.get("keyboard_controls")
-	data.gamepad = Globals.get("gamepad_controls")
+	data.bgmvolume = ProjectSettings.get("bgmvolume")
+	data.sfxvolume = ProjectSettings.get("sfxvolume")
+	data.bgmmute = ProjectSettings.get("bgmmute")
+	data.sfxmute = ProjectSettings.get("sfxmute")
+	data.keyboard = ProjectSettings.get("keyboard_controls")
+	data.gamepad = ProjectSettings.get("gamepad_controls")
 	data.locale = TranslationServer.get_locale()
-	var globaldir = Globals.get("globaldir")
+	var globaldir = ProjectSettings.get("globaldir")
 	var dir = Directory.new()
 	if (!dir.dir_exists(globaldir)):
 		dir.make_dir(globaldir)
@@ -557,30 +557,30 @@ func _on_adela_focus_exit():
 	adela.modulate.a = 0
 
 func _on_friederich_selected():
-	Globals.set("player", "friederich")
+	ProjectSettings.set("player", "friederich")
 	start_newgame()
 
 func _on_adela_selected():
-	Globals.set("player", "adela")
+	ProjectSettings.set("player", "adela")
 	start_newgame()
 
 func start_newgame():
 	newgame.hide()
 	load_game()
 
-# Globals with preloaded assets are not cleared properly. Until this is
+# ProjectSettings with preloaded assets are not cleared properly. Until this is
 # fixed, we are clearing them manually ourselves.
 func _notification(what):
 	if (what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST):
-		Globals.set("magic_spells", null)
-		Globals.set("itemfactory", null)
-		Globals.set("levels", null)
-		Globals.set("inventory", null)
-		Globals.set("scrolls", null)
-		Globals.set("shops", null)
-		Globals.set("mapobjects", null)
-		Globals.set("mapindex", null)
-		Globals.set("available_spells", null)
+		ProjectSettings.set("magic_spells", null)
+		ProjectSettings.set("itemfactory", null)
+		ProjectSettings.set("levels", null)
+		ProjectSettings.set("inventory", null)
+		ProjectSettings.set("scrolls", null)
+		ProjectSettings.set("shops", null)
+		ProjectSettings.set("mapobjects", null)
+		ProjectSettings.set("mapindex", null)
+		ProjectSettings.set("available_spells", null)
 		get_tree().quit()
 
 func _on_info_pressed():

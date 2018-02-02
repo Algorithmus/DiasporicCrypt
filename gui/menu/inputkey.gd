@@ -25,7 +25,7 @@ func _ready():
 
 func update_key():
 	var list = InputMap.get_action_list(actionid)
-	var is_keyboard = Globals.get("current_input") == "keyboard"
+	var is_keyboard = ProjectSettings.get("current_input") == "keyboard"
 	for item in list:
 		if (is_keyboard && item is InputEventKey):
 			currentinput = item
@@ -40,16 +40,16 @@ func update_key():
 
 func set_key(scancode):
 	var string = ""
-	if (Globals.get("current_input") == "keyboard"):
+	if (ProjectSettings.get("current_input") == "keyboard"):
 		string = OS.get_scancode_string(scancode)
 	else:
 		string = Input.get_joy_button_string(scancode)
 	key.set_text(keymap.map_key(string))
 
 func _input(event):
-	var is_keyboard = Globals.get("current_input") == "keyboard"
+	var is_keyboard = ProjectSettings.get("current_input") == "keyboard"
 	# Help key in demo mode is special; don't overwrite it.
-	var helpPressed = (Globals.get("demomode") && event.is_action_pressed("ui_help"))
+	var helpPressed = (ProjectSettings.get("demomode") && event.is_action_pressed("ui_help"))
 	if (!iscapture && event.is_action_pressed("ui_accept") && event.is_pressed() && !event.is_echo()):
 		_on_key_pressed()
 		sfx.play("cursor")
@@ -71,11 +71,11 @@ func _input(event):
 				i.set("currentinput", currentinput)
 				i.set_key(currentinput[inputvalue])
 				i.get_node("key").set("custom_colors/font_color", Color(1, 1, 0))
-				Globals.get("newcontrols")[i.get("actionid")] = currentinput[inputvalue]
+				ProjectSettings.get("newcontrols")[i.get("actionid")] = currentinput[inputvalue]
 		if (currentinput[inputvalue] != event[inputvalue]):
 			key.set("custom_colors/font_color", Color(1, 1, 0))
 		currentinput = event
-		Globals.get("newcontrols")[actionid] = currentinput[inputvalue]
+		ProjectSettings.get("newcontrols")[actionid] = currentinput[inputvalue]
 		set_key(currentinput[inputvalue])
 		sfx.play("confirm")
 		inputinfo.hide()
@@ -88,7 +88,7 @@ func _input(event):
 # commit inputs to InputMap
 func set_input():
 	var old_event
-	var is_keyboard = Globals.get("current_input") == "keyboard"
+	var is_keyboard = ProjectSettings.get("current_input") == "keyboard"
 	# remove any old inputs
 	for e in InputMap.get_action_list(actionid):
 		if ((e is InputEventKey && is_keyboard) || (e is InputEventJoypadButton && !is_keyboard)):
@@ -101,7 +101,7 @@ func set_input():
 	if (old_event != null):
 		var mapped_action
 		var shared_actions
-		var newcontrols = Globals.get("newcontrols")
+		var newcontrols = ProjectSettings.get("newcontrols")
 		if (actionid == "ui_blood" || actionid == "ui_attack" || actionid == "ui_magic"):
 			mapped_action = "ui_accept"
 			shared_actions = [newcontrols["ui_blood"], newcontrols["ui_attack"], newcontrols["ui_magic"]]

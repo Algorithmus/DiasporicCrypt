@@ -100,15 +100,15 @@ func _ready():
 	demonic_display.get_node("demonic/sprite/friederich").show()
 	
 	weapon_type = "sword"
-	var available_spells = Globals.get("available_spells")
+	var available_spells = ProjectSettings.get("available_spells")
 	if (available_spells != null && available_spells.size() > 0):
 		magic_spells = available_spells
 	else:
-		var spells = Globals.get("magic_spells")
+		var spells = ProjectSettings.get("magic_spells")
 		for i in range(0, spells.size()):
 			if (spells[i].id == "fire"):
 				magic_spells.append(spells[i])
-		Globals.set("available_spells", magic_spells)
+		ProjectSettings.set("available_spells", magic_spells)
 	selected_spell = 0
 	spell_icons.get_node(magic_spells[selected_spell]["id"]).show()
 	update_fusion()
@@ -124,7 +124,7 @@ func check_jump():
 func falling_modifier(desiredY):
 	var modifier = .falling_modifier(desiredY)
 	if (is_demonic && desiredY > 0):
-		var modifier = modifier * 0.1
+		modifier = modifier * 0.1
 		if (desiredY + modifier > 10 || is_attacking || is_charging || is_magic):
 			return 0
 		return modifier
@@ -316,8 +316,8 @@ func step_player(delta):
 								is_chain_special = true
 								current_chain_special = combo
 								current_chain_delay = 0
-								if (!Globals.get("chain")[combo["id"]]):
-									Globals.get("chain")[combo["id"]] = true
+								if (!ProjectSettings.get("chain")[combo["id"]]):
+									ProjectSettings.get("chain")[combo["id"]] = true
 									chaingui.get_node("newattack").show()
 									chaingui.get_node("AnimationPlayer").play("newattack")
 								remove_special_collider()
@@ -416,7 +416,7 @@ func step_player(delta):
 			if (target_enemy != null && target_enemy.get_ref() && target_enemy.get_ref().get_parent() != null):
 				target_exists = true
 				newpos = target_enemy.get_ref().get_global_position().y - get_global_position().y + target_enemy_offset.y
-				is_valid_target = target_enemy.get_ref().get_name() == "damagable" && !(target_enemy.get_ref().get_parent() extends chain_target)
+				is_valid_target = target_enemy.get_ref().get_name() == "damagable" && !(target_enemy.get_ref().get_parent() is chain_target)
 			# do special attack specific actions
 			# unfortunately, some attacks require collision checks anyways especially on slopes, so we do them
 			if (current_chain_special["id"] == "thrust"):
@@ -572,11 +572,11 @@ func _on_special_collision(area):
 	for i in collisions:
 		if (i.get_name() != "damage" && i != special_collider && i.get_name() != "oneway" && !i.get_name().match("slope*") && i.get_name() != "ladder"):
 			target_enemy = weakref(i)
-			if (i.get_parent() != null && (i.get_parent() extends static_enemy || i.get_parent() extends nontarget)):
+			if (i.get_parent() != null && (i.get_parent() is static_enemy || i.get_parent() is nontarget)):
 				target_enemy = null
 	if(area.get_name() != "damage" && area != special_collider && area.get_name() != "oneway" && !area.get_name().match("slope*") && area.get_name() != "ladder"):
 		target_enemy = weakref(area)
-		if (area.get_parent() != null && (area.get_parent() extends static_enemy || area.get_parent() extends nontarget)):
+		if (area.get_parent() != null && (area.get_parent() is static_enemy || area.get_parent() is nontarget)):
 			target_enemy = null
 	if (target_enemy != null && target_enemy.get_ref() && target_enemy.get_ref().get_parent() != null):
 		target_enemy_offset = Vector2(get_global_position().x - target_enemy.get_ref().get_global_position().x, get_global_position().y - target_enemy.get_ref().get_global_position().y)

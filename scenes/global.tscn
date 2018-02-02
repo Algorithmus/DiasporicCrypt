@@ -2536,7 +2536,6 @@ group = null
 
 [node name="settings" parent="CanvasLayer/menu/settingsmenu" index="3" instance=ExtResource( 21 )]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -2570,6 +2569,7 @@ focus_neighbour_top = NodePath("../../language")
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 editable = true
+_sections_unfolded = [ "Visibility" ]
 
 [node name="bgmslider" parent="CanvasLayer/menu/settingsmenu/settings" index="5"]
 

@@ -33,23 +33,23 @@ signal nogamepad
 
 func _ready():
 	detect_gamepad()
-	set_layout_index(Globals.get("current_input"))
+	set_layout_index(ProjectSettings.get("current_input"))
 	has_content = true
-	if (!Globals.has("sfxvolume")):
-		Globals.set("sfxvolume", 1)
-	if (!Globals.has("bgmvolume")):
-		Globals.set("bgmvolume", 1)
-	sfxValue = Globals.get("sfxvolume")
-	bgmValue = Globals.get("bgmvolume")
+	if (!ProjectSettings.has_setting("sfxvolume")):
+		ProjectSettings.set("sfxvolume", 1)
+	if (!ProjectSettings.has_setting("bgmvolume")):
+		ProjectSettings.set("bgmvolume", 1)
+	sfxValue = ProjectSettings.get("sfxvolume")
+	bgmValue = ProjectSettings.get("bgmvolume")
 	sfxslider = get_node("sfxslider")
 	bgmslider = get_node("bgmslider")
 	sfx = sfxclass.instance()
 	add_child(sfx)
 
 func detect_gamepad():
-	if (Input.get_connected_joysticks().size() == 0):
-		Globals.set("current_input", "keyboard")
-		set_layout_index(Globals.get("current_input"))
+	if (Input.get_connected_joypads().size() == 0):
+		ProjectSettings.set("current_input", "keyboard")
+		set_layout_index(ProjectSettings.get("current_input"))
 		get_node("layout").set_disabled(true)
 		emit_signal("nogamepad")
 	else:
@@ -57,22 +57,22 @@ func detect_gamepad():
 
 func update_container():
 	detect_gamepad()
-	sfxValue = Globals.get("sfxvolume")
-	bgmValue = Globals.get("bgmvolume")
-	sfxslider.set_val(sfxValue)
-	bgmslider.set_val(bgmValue)
-	if (!Globals.has("sfxmute")):
-		Globals.set("sfxmute", false)
-	sfxMute = Globals.get("sfxmute")
-	if (!Globals.has("bgmmute")):
-		Globals.set("bgmmute", false)
-	bgmMute = Globals.get("bgmmute")
-	sfxMute = Globals.get("sfxmute")
+	sfxValue = ProjectSettings.get("sfxvolume")
+	bgmValue = ProjectSettings.get("bgmvolume")
+	sfxslider.value = sfxValue
+	bgmslider.value = bgmValue
+	if (!ProjectSettings.has_setting("sfxmute")):
+		ProjectSettings.set("sfxmute", false)
+	sfxMute = ProjectSettings.get("sfxmute")
+	if (!ProjectSettings.has_setting("bgmmute")):
+		ProjectSettings.set("bgmmute", false)
+	bgmMute = ProjectSettings.get("bgmmute")
+	sfxMute = ProjectSettings.get("sfxmute")
 	update_mute_controls()
 	get_node("layout").set_text(tr(layouts[old_layout_index].name))
 	for key in get_node("inputs").get_children():
 		key.update_key()
-	Globals.set("newcontrols", Globals.get("controls"))
+	ProjectSettings.set("newcontrols", ProjectSettings.get("controls"))
 	var resetwidth = get_node("reset").get_size().x
 	get_node("reset").set_position(Vector2(689 - resetwidth, get_node("reset").get_position().y))
 
@@ -93,8 +93,8 @@ func reset_content():
 	reset()
 
 func reset():
-	sfxMute = Globals.get("sfxmute")
-	bgmMute = Globals.get("bgmmute")
+	sfxMute = ProjectSettings.get("sfxmute")
+	bgmMute = ProjectSettings.get("bgmmute")
 	var sfx = sfxValue
 	if (sfxMute):
 		sfx = 0
@@ -102,43 +102,44 @@ func reset():
 	if (bgmMute):
 		bgm = 0
 	update_mute_controls()
-	AudioServer.set_fx_global_volume_scale(sfx)
-	AudioServer.set_stream_global_volume_scale(bgm)
-	sfxslider.set_val(sfxValue)
-	bgmslider.set_val(bgmValue)
+	#TODO - Set up sound system properly
+	#AudioServer.set_fx_global_volume_scale(sfx)
+	#AudioServer.set_stream_global_volume_scale(bgm)
+	sfxslider.value = sfxValue
+	bgmslider.value = bgmValue
 	layout_index = old_layout_index
 	get_node("layout").set_text(tr(layouts[old_layout_index].name))
-	Globals.set("current_input", layouts[old_layout_index].id)
+	ProjectSettings.set("current_input", layouts[old_layout_index].id)
 	for key in get_node("inputs").get_children():
 		key.update_key()
-	Globals.set("newcontrols", Globals.get("controls"))
+	ProjectSettings.set("newcontrols", ProjectSettings.get("controls"))
 
 func update_mute_controls():
 	if (sfxMute):
-		sfxslider.set_self_opacity(0.5)
+		sfxslider.self_modulate.a = 0.5
 		sfxslider.get_node("mute").set_texture(mute)
 	else:
-		sfxslider.set_self_opacity(1)
+		sfxslider.self_modulate.a = 1
 		sfxslider.get_node("mute").set_texture(sound)
 	if (bgmMute):
-		bgmslider.set_self_opacity(0.5)
+		bgmslider.self_modulate.a = 0.5
 		bgmslider.get_node("mute").set_texture(mute)
 	else:
-		bgmslider.set_self_opacity(1)
+		bgmslider.self_modulate.a = 1
 		bgmslider.get_node("mute").set_texture(sound)
 
 func save():
 	sfxValue = sfxslider.get_val()
 	bgmValue = bgmslider.get_val()
-	Globals.set("sfxvolume", sfxValue)
-	Globals.set("bgmvolume", bgmValue)
-	Globals.set("sfxmute", sfxMute)
-	Globals.set("bgmmute", bgmMute)
-	Globals.set("controls", Globals.get("newcontrols"))
-	if (Globals.get("current_input") == "keyboard"):
-		Globals.set("keyboard_controls", Globals.get("controls"))
+	ProjectSettings.set("sfxvolume", sfxValue)
+	ProjectSettings.set("bgmvolume", bgmValue)
+	ProjectSettings.set("sfxmute", sfxMute)
+	ProjectSettings.set("bgmmute", bgmMute)
+	ProjectSettings.set("controls", ProjectSettings.get("newcontrols"))
+	if (ProjectSettings.get("current_input") == "keyboard"):
+		ProjectSettings.set("keyboard_controls", ProjectSettings.get("controls"))
 	else:
-		Globals.set("gamepad_controls", Globals.get("controls"))
+		ProjectSettings.set("gamepad_controls", ProjectSettings.get("controls"))
 	for key in get_node("inputs").get_children():
 		key.set_input()
 		key.get_node("key").set("custom_colors/font_color", null)
@@ -206,10 +207,10 @@ func _input(event):
 
 		if (old_index != layout_index):
 			get_node("layout").set_text(tr(layouts[layout_index].name))
-			Globals.set("current_input", layouts[layout_index].id)
+			ProjectSettings.set("current_input", layouts[layout_index].id)
 			for key in get_node("inputs").get_children():
 				key.update_key()
-			Globals.set("newcontrols", Globals.get("controls"))
+			ProjectSettings.set("newcontrols", ProjectSettings.get("controls"))
 
 func set_layout_index(id):
 	var size = layouts.size()

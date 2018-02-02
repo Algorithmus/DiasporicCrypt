@@ -20,7 +20,7 @@ func load_resource(resource):
 	resource_id = resource
 	set_process(true)
 	
-	if (Globals.get("player") == "friederich"):
+	if (ProjectSettings.get("player") == "friederich"):
 		get_node("bat").show()
 		get_node("cat").hide()
 	else:

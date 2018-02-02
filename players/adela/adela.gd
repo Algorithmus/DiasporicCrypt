@@ -206,7 +206,7 @@ func step_player(delta):
 			var vertical = step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, onSlope, oneWayTile, relevantSlopeTile)
 		
 			relevantSlopeTile = vertical["slopeTile"]
-			var onSlope = vertical["slope"]
+			onSlope = vertical["slope"]
 			var abSlope = vertical["abSlope"]
 			var desiredY = vertical["desiredY"]
 			animation_speed = vertical["animationSpeed"]
@@ -449,15 +449,15 @@ func _ready():
 	whipswing_obj.hide()
 	
 	weapon_type = "whip"
-	var available_spells = Globals.get("available_spells")
+	var available_spells = ProjectSettings.get("available_spells")
 	if (available_spells != null && available_spells.size() > 0):
 		magic_spells = available_spells
 	else:
-		var spells = Globals.get("magic_spells")
+		var spells = ProjectSettings.get("magic_spells")
 		for i in range(0, spells.size()):
 			if (spells[i].id == "ice"):
 				magic_spells.append(spells[i])
-		Globals.set("available_spells", magic_spells)
+		ProjectSettings.set("available_spells", magic_spells)
 	selected_spell = 0
 	spell_icons.get_node(magic_spells[selected_spell]["id"]).show()
 	update_fusion()
