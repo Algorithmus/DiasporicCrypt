@@ -12,9 +12,10 @@ config_version=3
 
 config/name="The Diasporic Crypt"
 run/main_scene="res://scenes/global.tscn"
-boot_splash="res://gui/loading/splash.png"
+boot_splash/image="res://gui/loading/splash.png"
 icon="res://icon.png"
 name="The Diasporic Crypt"
+Boot Splash="res://gui/loading/splash.png"
 
 [debug]
 
@@ -25,6 +26,8 @@ stdout/verbose_stdout=false
 
 [display]
 
+window/size/width=800
+window/size/height=592
 stretch/aspect="keep"
 stretch/mode="viewport"
 window/height=592
