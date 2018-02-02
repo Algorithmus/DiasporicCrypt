@@ -162,7 +162,8 @@ func _on_reset_pressed():
 
 func _on_save_pressed():
 	save()
-	sfx.play("confirm")
+	#TODO - play sounds properly
+	#sfx.play("confirm")
 
 func block_cancel():
 	# block focusing on tabs while capturing input

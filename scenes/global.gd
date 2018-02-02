@@ -237,7 +237,7 @@ func _ready():
 					file.open(globaldir + "/" + filename, File.READ)
 					while (!file.eof_reached()):
 						var string = file.get_line()
-						globalsettings.parse_json(string)
+						globalsettings = parse_json(string)
 						ProjectSettings.set("bgmvolume", globalsettings.bgmvolume)
 						ProjectSettings.set("sfxvolume", globalsettings.sfxvolume)
 						ProjectSettings.set("bgmmute", globalsettings.bgmmute)
@@ -416,7 +416,8 @@ func on_settings_saved():
 		dir.make_dir(globaldir)
 	var file = File.new()
 	file.open(globaldir + "/" + GLOBALSAVE, File.WRITE)
-	file.store_string(data.to_json())
+	var test = to_json(data)
+	file.store_string(to_json(data))
 	file.close()
 	var back = settings.get_node("back")
 	get_node("CanvasLayer/menu").get_focus_owner().release_focus()
