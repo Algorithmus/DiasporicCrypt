@@ -22,6 +22,7 @@ func _ready():
 	focusup = get_focus_neighbour(MARGIN_TOP)
 	focusdown = get_focus_neighbour(MARGIN_BOTTOM)
 	update_key()
+	set_process_input(false)
 
 func update_key():
 	var list = InputMap.get_action_list(actionid)

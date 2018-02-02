@@ -462,7 +462,7 @@ tracks/8/keys = {
 "values": [ 0.0 ]
 }
 
-[node name="Global" type="Node2D" index="0"]
+[node name="Global" type="Node2D"]
 
 pause_mode = 2
 script = ExtResource( 1 )
@@ -2775,13 +2775,13 @@ bus = "Master"
 
 [connection signal="pressed" from="CanvasLayer/menu/newgame/friederich" to="." method="_on_friederich_selected"]
 
-[connection signal="focus_entered" from="CanvasLayer/menu/newgame/adela" to="CanvasLayer/menu/newgame/adela" method="_on_focus_enter"]
-
 [connection signal="focus_entered" from="CanvasLayer/menu/newgame/adela" to="." method="_on_adela_focus_enter"]
 
-[connection signal="focus_exited" from="CanvasLayer/menu/newgame/adela" to="CanvasLayer/menu/newgame/adela" method="_on_focus_exit"]
+[connection signal="focus_entered" from="CanvasLayer/menu/newgame/adela" to="CanvasLayer/menu/newgame/adela" method="_on_focus_enter"]
 
 [connection signal="focus_exited" from="CanvasLayer/menu/newgame/adela" to="." method="_on_adela_focus_exit"]
+
+[connection signal="focus_exited" from="CanvasLayer/menu/newgame/adela" to="CanvasLayer/menu/newgame/adela" method="_on_focus_exit"]
 
 [connection signal="pressed" from="CanvasLayer/menu/newgame/adela" to="." method="_on_adela_selected"]
 

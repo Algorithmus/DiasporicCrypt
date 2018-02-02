@@ -24,6 +24,7 @@ func _ready():
 	itemcontainer = get_node("itemcontainer/VBoxContainer")
 	sfx = sfxclass.instance()
 	add_child(sfx)
+	set_process_input(false)
 
 func update_container():
 	var list = Globals.get("inventory").generate_list(currenttype)

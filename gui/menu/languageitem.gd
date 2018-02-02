@@ -16,6 +16,7 @@ func _ready():
 		if (list[i] == defaultLocale):
 			index = i
 			break
+	set_process_input(false)
 			
 func translate():
 	set_text(tr("KEY_LANGUAGE") + ":")

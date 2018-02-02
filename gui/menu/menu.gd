@@ -21,6 +21,7 @@ func _ready():
 	get_node("back/input").set_text(tr("MAP_BACK"))
 	hide_panels()
 	set_physics_process(true)
+	set_process_input(false)
 
 func _draw():
 	#VisualServer.canvas_item_set_clip(get_canvas_item(), true)

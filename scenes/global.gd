@@ -387,7 +387,9 @@ func _input(event):
 				if (focus.get_name() != "language"):
 					playsound = false
 			if (playsound):
-				sound.play("confirm")
+				#TODO - play sounds properly
+				#sound.play("confirm")
+				pass
 			echo = false
 	if ((event.is_action("ui_down") || event.is_action("ui_up")) && state == INFO):
 		var container = info.get_node("container")

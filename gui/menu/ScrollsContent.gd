@@ -24,6 +24,7 @@ func _ready():
 	has_content = true
 	sfx = sfxclass.instance()
 	add_child(sfx)
+	set_process_input(false)
 
 func update_container():
 	var scrolls = Globals.get("scrolls")

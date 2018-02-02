@@ -237,7 +237,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[node name="settings" type="Control" index="0"]
+[node name="settings" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0

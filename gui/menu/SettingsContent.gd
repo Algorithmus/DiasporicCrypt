@@ -45,6 +45,7 @@ func _ready():
 	bgmslider = get_node("bgmslider")
 	sfx = sfxclass.instance()
 	add_child(sfx)
+	set_process_input(false)
 
 func detect_gamepad():
 	if (Input.get_connected_joypads().size() == 0):
@@ -156,7 +157,8 @@ func _on_sfxslider_focus_exit():
 
 func _on_reset_pressed():
 	reset()
-	sfx.play("confirm")
+	#TODO - play sounds properly
+	#sfx.play("confirm")
 
 func _on_save_pressed():
 	save()
@@ -177,12 +179,14 @@ func _on_sfxslider_input_event( ev ):
 	if (ev.is_action_pressed("ui_accept") && ev.is_pressed() && !ev.is_echo()):
 		sfxMute = !sfxMute
 		if (sfxMute):
-			AudioServer.set_fx_global_volume_scale(0)
-			sfxslider.set_self_opacity(0.5)
+			#TODO - play sounds properly
+			#AudioServer.set_fx_global_volume_scale(0)
+			sfxslider.self_modulate.a = 0.5
 			sfxslider.get_node("mute").set_texture(mute)
 		else:
-			AudioServer.set_fx_global_volume_scale(sfxValue)
-			sfxslider.set_self_opacity(1)
+			#TODO - play sounds properly
+			#AudioServer.set_fx_global_volume_scale(sfxValue)
+			sfxslider.self_modulate.a = 1
 			sfxslider.get_node("mute").set_texture(sound)
 
 func _on_bgmslider_input_event( ev ):
