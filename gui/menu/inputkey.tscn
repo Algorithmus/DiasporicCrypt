@@ -27,7 +27,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[node name="key" type="ToolButton" index="0"]
+[node name="key" type="ToolButton"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -60,22 +60,10 @@ actionid = "ui_up"
 
 [node name="icon" parent="." index="0" instance=ExtResource( 3 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = -50.0
 margin_top = 4.0
 margin_right = -38.0
 margin_bottom = 25.0
-rect_pivot_offset = Vector2( 0, 0 )
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-enabled_focus_mode = 2
-shortcut = null
-group = null
-align = 1
 
 [node name="key" type="Label" parent="." index="1"]
 
@@ -122,12 +110,12 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Margin", "Theme", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 
-[connection signal="focus_entered" from="." to="." method="_on_key_focus_enter"]
-
 [connection signal="focus_entered" from="." to="." method="_on_choice_focus_enter"]
 
-[connection signal="focus_exited" from="." to="." method="_on_key_focus_exit"]
+[connection signal="focus_entered" from="." to="." method="_on_key_focus_enter"]
 
 [connection signal="focus_exited" from="." to="." method="_on_choice_focus_exit"]
+
+[connection signal="focus_exited" from="." to="." method="_on_key_focus_exit"]
 
 
