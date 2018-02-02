@@ -12,7 +12,7 @@ func _ready():
 	gatepos = Vector2(-432, -48)
 
 func trigger_fighting():
-	var level = Globals.get("levels")[Globals.get("current_level")]
+	var level = ProjectSettings.get("levels")[ProjectSettings.get("current_level")]
 	waves = level.waves
 	var wave = waves[currentwave].instance()
 	tilemap.add_child(wave)
@@ -23,7 +23,7 @@ func process_fighting():
 		# transfer any enemy drops on to next wave when it happens
 		var nonenemy_objects = []
 		for entity in tilemap.get_node("EnemiesGroup").get_children():
-			if (entity extends enemyclass):
+			if (entity is enemyclass):
 				enemies_defeated = false
 			else:
 				nonenemy_objects.append(entity)
@@ -31,10 +31,10 @@ func process_fighting():
 			currentwave += 1
 			# no more waves left
 			if (currentwave >= waves.size()):
-				Globals.set("current_quest_complete", true)
-				var level = Globals.get("levels")[Globals.get("current_level")]
+				ProjectSettings.set("current_quest_complete", true)
+				var level = ProjectSettings.get("levels")[ProjectSettings.get("current_level")]
 				level.complete = true
-				Globals.get("levels")[Globals.get("current_level")] = level
+				ProjectSettings.get("levels")[ProjectSettings.get("current_level")] = level
 				var level_display = get_tree().get_root().get_node("world/gui/CanvasLayer/level")
 				level_display.get_node("title/newlevel").hide()
 				level_display.get_node("title").set_text("KEY_VICTORY")

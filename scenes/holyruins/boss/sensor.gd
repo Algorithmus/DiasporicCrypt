@@ -17,10 +17,10 @@ func _ready():
 	gatepos = Vector2(-368, 176)
 	access = tilemap.get_node("AccessGroup")
 	var eyeball = tilemap.get_node("BossGroup/GiantEyeball")
-	if (Globals.get("current_quest_complete")):
+	if (ProjectSettings.get("current_quest_complete")):
 		eyeball.queue_free()
 		# clear gate
-		if (!Globals.get("inventory").inventory.has("ITEM_TOPAZKEY")):
+		if (!ProjectSettings.get("inventory").inventory.has("ITEM_TOPAZKEY")):
 			var item = topazkeyclass.instance()
 			item.set_global_position(Vector2(48, 496))
 			tilemap.get_node("BossGroup").add_child(item)

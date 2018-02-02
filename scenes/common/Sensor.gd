@@ -13,7 +13,7 @@ var player
 
 func _ready():
 	tilemap = get_parent().get_parent()
-	if (!Globals.get("current_quest_complete")):
+	if (!ProjectSettings.get("current_quest_complete")):
 		set_physics_process(true)
 
 # called when sensor is triggered and to start the fight

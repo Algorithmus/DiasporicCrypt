@@ -5,7 +5,7 @@ var savepos
 export var savelocation = "LVL_CATACOMB"
 
 func _ready():
-	var player = Globals.get("player")
+	var player = ProjectSettings.get("player")
 	savepos = Vector2(get_global_position().x, get_global_position().y - 30)
 	if (player == null):
 		set_physics_process(true)
@@ -15,7 +15,7 @@ func _physics_process(delta):
 	check_sprite()
 
 func check_sprite():
-	var player = Globals.get("player")
+	var player = ProjectSettings.get("player")
 	if (player == "adela"):
 		get_node("statue").set_texture(preload("res://scenes/savepoint/cat.png"))
 	else:

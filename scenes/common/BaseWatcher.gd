@@ -49,7 +49,7 @@ func activate():
 func _physics_process(delta):
 	var cleared = true
 	for watch_obj in target.get_children():
-		if (watch_obj extends class_obj):
+		if (watch_obj is class_obj):
 			cleared = false
 	var cycle = delta*(1.0/4)*PI*2.0
 	if (cleared && !show_target):

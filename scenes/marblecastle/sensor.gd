@@ -17,14 +17,14 @@ func _ready():
 	gatepos = Vector2(-208, -400)
 	var head = tilemap.get_node("BossGroup/StatueHead")
 	head.modulate.a = 0
-	if (Globals.get("current_quest_complete")):
+	if (ProjectSettings.get("current_quest_complete")):
 		head.queue_free()
 		for statue in tilemap.get_node("StatueGroup").get_children():
 			statue.hide_collision()
 			statue.get_node("AnimationPlayer").stop()
 			statue.get_node("rubble").show()
 			statue.get_node("Sprite").hide()
-		if (!Globals.get("inventory").inventory.has("ITEM_SAPPHIREKEY")):
+		if (!ProjectSettings.get("inventory").inventory.has("ITEM_SAPPHIREKEY")):
 			var item = sapphirekeyclass.instance()
 			item.set_global_position(Vector2(-608, -368))
 			tilemap.get_node("BossGroup").add_child(item)

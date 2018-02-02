@@ -37,7 +37,7 @@ func check_attack():
 			current_attack_delay += 1
 
 func do_animation_check(new_animation, animation_speed, horizontal_motion, ladderY):
-	var new_animation = .do_animation_check(new_animation, animation_speed, horizontal_motion, ladderY)
+	new_animation = .do_animation_check(new_animation, animation_speed, horizontal_motion, ladderY)
 	if (is_attacking && !is_dying && ((is_consumable && !consumable) || !is_consumable)):
 		new_animation = "attack"
 	return new_animation
@@ -97,7 +97,7 @@ func step_player(delta):
 	var vertical = step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, onSlope, oneWayTile, relevantSlopeTile)
 
 	relevantSlopeTile = vertical["slopeTile"]
-	var onSlope = vertical["slope"]
+	onSlope = vertical["slope"]
 	var abSlope = vertical["abSlope"]
 	var desiredY = vertical["desiredY"]
 	animation_speed = vertical["animationSpeed"]

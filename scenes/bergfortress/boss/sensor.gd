@@ -9,9 +9,9 @@ func _ready():
 	gateclass = preload("res://scenes/fallislandcastle/gate.tscn")
 	gatepos = Vector2(-208, -400)
 	var boss = tilemap.get_node("BossGroup/GiantLizard")
-	if (Globals.get("current_quest_complete")):
+	if (ProjectSettings.get("current_quest_complete")):
 		boss.queue_free()
-		if (!Globals.get("inventory").inventory.has("ITEM_EMERALDKEY")):
+		if (!ProjectSettings.get("inventory").inventory.has("ITEM_EMERALDKEY")):
 			var item = emeraldkeyclass.instance()
 			item.set_global_position(Vector2(-608, -448))
 			tilemap.get_node("BossGroup").add_child(item)

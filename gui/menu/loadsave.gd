@@ -40,7 +40,7 @@ func _ready():
 func load_menu():
 	var dir = Directory.new()
 	var file = File.new()
-	var savedir = Globals.get("savedir")
+	var savedir = ProjectSettings.get("savedir")
 	var regex = RegEx.new()
 	regex.compile("^save\\d+.save$")
 	if (dir.dir_exists(savedir)):
@@ -138,7 +138,7 @@ func clone(data):
 
 func shift_files(index, filename):
 	itemcontainer.remove_child(itemcontainer.get_child(index))
-	var savedir = Globals.get("savedir")
+	var savedir = ProjectSettings.get("savedir")
 	var dir = Directory.new()
 	for i in range(index, itemcontainer.get_child_count()):
 		var item = itemcontainer.get_child(i)

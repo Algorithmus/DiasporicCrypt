@@ -143,7 +143,7 @@ func _physics_process(delta):
 			cycle = "die"
 	else:
 		var item = peridotkeyclass.instance()
-		if (Globals.get("inventory").inventory.has("ITEM_PERIDOTKEY")):
+		if (ProjectSettings.get("inventory").inventory.has("ITEM_PERIDOTKEY")):
 			item = potionplusclass.instance()
 		var exporb = expclass.instance()
 		exporb.set_value(ep)
@@ -190,11 +190,11 @@ func die():
 		var trap_ref = weakref(trap)
 		if (trap_ref != null && trap_ref.get_ref()):
 			trap_ref.get_ref().queue_free()
-	Globals.set("current_quest_complete", true)
-	var level = Globals.get("levels")[Globals.get("current_level")]
+	ProjectSettings.set("current_quest_complete", true)
+	var level = ProjectSettings.get("levels")[ProjectSettings.get("current_level")]
 	level.complete = true
 	get_tree().get_root().get_node("world").check_available_levels()
-	Globals.get("levels")[Globals.get("current_level")] = level
+	ProjectSettings.get("levels")[ProjectSettings.get("current_level")] = level
 	var level_display = get_tree().get_root().get_node("world/gui/CanvasLayer/level")
 	level_display.get_node("title").set_text("KEY_VICTORY")
 	level_display.get_node("AnimationPlayer").play("quest")

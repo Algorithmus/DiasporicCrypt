@@ -66,7 +66,7 @@ func _ready():
 	sound = get_node("sound")
 
 func sprite_opacity(alpha):
-.modulate.a = alpha
+	get_node("KinematicBody2D/Sprite").modulate.a = alpha
 
 func check_crumble(i):
 	return i.has_node("weapon")

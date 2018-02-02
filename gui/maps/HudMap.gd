@@ -9,7 +9,7 @@ var objects
 var current_teleport
 var previous_id
 var camera
-var offset
+var map_offset
 var current_map
 var rooms = {}
 var grids = {}
@@ -22,46 +22,46 @@ var current_grid
 
 #256, 176
 func _ready():
-	if (!Globals.has("mapid")):
-		Globals.set("mapid", "LVL_START")
+	if (!ProjectSettings.has("mapid")):
+		ProjectSettings.set("mapid", "LVL_START")
 	objects = get_node("objects")
 	set_physics_process(true)
-	offset = Vector2(get_polygon()[1].x/2.0, get_polygon()[2].y/2.0)
+	map_offset = Vector2(get_polygon()[1].x/2.0, get_polygon()[2].y/2.0)
 
 func _physics_process(delta):
 	# update map position when player moves
 	if (current_map != null):
 		var map = rooms[current_map]
-		objects.set_position(Vector2(round(offset.x - map.get_position().x - camera.get_camera_position().x*MAP_SCALE), round(offset.y - map.get_position().y - camera.get_camera_position().y*MAP_SCALE)))
+		objects.set_position(Vector2(round(map_offset.x - map.get_position().x - camera.get_camera_position().x*MAP_SCALE), round(map_offset.y - map.get_position().y - camera.get_camera_position().y*MAP_SCALE)))
 		discover_tiles()
 
 # check for map tiles player has already been in
 func discover_tiles():
 	var pos = camera.get_camera_position()
-	var offset = camera.get_offset() * MAP_SCALE
+	var map_offset = camera.get_offset() * MAP_SCALE
 	var boundaries = rooms[current_map].get_node("area").get_polygon()
 	var grid = rooms[current_map].get_node("grid")
 	var start = boundaries[0]
 	var end = boundaries[2]
 	var grid_range = end - start
 	pos = pos*MAP_SCALE - start
-	var startx = max(floor(float(pos.x + offset.x) / (gridclass.GRID_SIZE.x * MAP_SCALE)), 0)
-	var endx = min(ceil(float(pos.x - offset.x) / (gridclass.GRID_SIZE.x * MAP_SCALE)), current_grid[0].size() - 1)
-	var starty = max(floor(float(pos.y + offset.y) / (gridclass.GRID_SIZE.y * MAP_SCALE)), 0)
-	var endy = min(ceil(float(pos.y - offset.y) / (gridclass.GRID_SIZE.y * MAP_SCALE)), current_grid.size() - 1)
+	var startx = max(floor(float(pos.x + map_offset.x) / (gridclass.GRID_SIZE.x * MAP_SCALE)), 0)
+	var endx = min(ceil(float(pos.x - map_offset.x) / (gridclass.GRID_SIZE.x * MAP_SCALE)), current_grid[0].size() - 1)
+	var starty = max(floor(float(pos.y + map_offset.y) / (gridclass.GRID_SIZE.y * MAP_SCALE)), 0)
+	var endy = min(ceil(float(pos.y - map_offset.y) / (gridclass.GRID_SIZE.y * MAP_SCALE)), current_grid.size() - 1)
 	grid.mark_grid(Vector2(startx, endx), Vector2(starty, endy), current_grid)
 
 func reset():
 	rooms = {}
 	grids = {}
 	current_map = null
-	Globals.set("mapobjects", {})
-	Globals.set("mapindex", {})
-	Globals.set("grids", {})
+	ProjectSettings.set("mapobjects", {})
+	ProjectSettings.set("mapindex", {})
+	ProjectSettings.set("grids", {})
 
 func _draw():
 	VisualServer.canvas_item_set_clip(get_canvas_item(), true)
-	draw_circle(offset, 2, Color(1, 0, 0))
+	draw_circle(map_offset, 2, Color(1, 0, 0))
 
 func clear_objects():
 	for i in objects.get_children():
@@ -74,13 +74,13 @@ func load_map(root_node):
 	current_grid = grids[current_map]
 
 func load_cached_map(root_node):
-	if (Globals.has("mapindex")):
-		rooms = Globals.get("mapindex")
-	if (Globals.has("grids")):
-		grids = Globals.get("grids")
-	var mapid = Globals.get("mapid")
-	if (Globals.has("mapobjects") && Globals.get("mapobjects").has(mapid)):
-		var cache = Globals.get("mapobjects")[mapid]
+	if (ProjectSettings.has("mapindex")):
+		rooms = ProjectSettings.get("mapindex")
+	if (ProjectSettings.has("grids")):
+		grids = ProjectSettings.get("grids")
+	var mapid = ProjectSettings.get("mapid")
+	if (ProjectSettings.has("mapobjects") && ProjectSettings.get("mapobjects").has(mapid)):
+		var cache = ProjectSettings.get("mapobjects")[mapid]
 		for map in cache.get_children():
 			rooms[map.level] = map
 		remove_child(objects)
@@ -92,11 +92,11 @@ func load_cached_map(root_node):
 	load_map(root_node)
 
 func cache_map():
-	if (!Globals.has("mapobjects")):
-		Globals.set("mapobjects", {})
-	Globals.get("mapobjects")[Globals.get("mapid")] = objects.duplicate()
-	Globals.set("mapindex", rooms)
-	Globals.set("grids", grids)
+	if (!ProjectSettings.has("mapobjects")):
+		ProjectSettings.set("mapobjects", {})
+	ProjectSettings.get("mapobjects")[ProjectSettings.get("mapid")] = objects.duplicate()
+	ProjectSettings.set("mapindex", rooms)
+	ProjectSettings.set("grids", grids)
 
 func create_map(root_node):
 	# create room
@@ -142,14 +142,14 @@ func create_map(root_node):
 		var gate = Polygon2D.new()
 		gate.set_color(Color(1, 0, 0))
 		var scale = teleport.get_node("teleport").get_scale()
-		var boundaries = []
+		var teleport_boundaries = []
 		if (teleport.get("is_horizontal")):
-			boundaries = [Vector2(0, -scale.y*16*MAP_SCALE), Vector2(1, -scale.y*16*MAP_SCALE), Vector2(1, scale.y*16*MAP_SCALE), Vector2(0, scale.y*16*MAP_SCALE)]
+			teleport_boundaries = [Vector2(0, -scale.y*16*MAP_SCALE), Vector2(1, -scale.y*16*MAP_SCALE), Vector2(1, scale.y*16*MAP_SCALE), Vector2(0, scale.y*16*MAP_SCALE)]
 			gate.set_position(teleport.get_global_position()*MAP_SCALE)
 		else:
-			boundaries = [Vector2(-scale.x*16*MAP_SCALE, 0), Vector2(scale.x*16*MAP_SCALE, 0), Vector2(scale.x*16*MAP_SCALE, 1), Vector2(-scale.x*16*MAP_SCALE, 1)]
+			teleport_boundaries = [Vector2(-scale.x*16*MAP_SCALE, 0), Vector2(scale.x*16*MAP_SCALE, 0), Vector2(scale.x*16*MAP_SCALE, 1), Vector2(-scale.x*16*MAP_SCALE, 1)]
 			gate.set_position(Vector2(teleport.get_global_position().x*MAP_SCALE, teleport.get_global_position().y*MAP_SCALE - 1))
-		gate.set_polygon(boundaries)
+		gate.set_polygon(teleport_boundaries)
 		unit.add_child(gate)
 	if (previous_node != null && rooms.has(previous_node) && current_node != null):
 		var previous_node_pos = rooms[previous_node].get_position()
@@ -191,7 +191,7 @@ func unserialize_room(map):
 	var grid = gridobj.instance()
 	var imagewidth = boundaries[2].x - boundaries[0].x
 	var imageheight = boundaries[2].y - boundaries[0].y
-	grid.init(boundaries[0], imagewidth, imageheight, Globals.get("grids")[map.id])
+	grid.init(boundaries[0], imagewidth, imageheight, ProjectSettings.get("grids")[map.id])
 	unit.add_child(grid)
 	# mark exits in room
 	var teleports = map.gates
@@ -199,9 +199,9 @@ func unserialize_room(map):
 		var teleport = teleports[i]
 		var gate = Polygon2D.new()
 		gate.set_color(Color(1, 0, 0))
-		var boundaries = [Vector2(teleport.boundaries[0][0], teleport.boundaries[0][1]), Vector2(teleport.boundaries[1][0], teleport.boundaries[1][1]), Vector2(teleport.boundaries[2][0], teleport.boundaries[2][1]), Vector2(teleport.boundaries[3][0], teleport.boundaries[3][1])]
+		var teleport_boundaries = [Vector2(teleport.boundaries[0][0], teleport.boundaries[0][1]), Vector2(teleport.boundaries[1][0], teleport.boundaries[1][1]), Vector2(teleport.boundaries[2][0], teleport.boundaries[2][1]), Vector2(teleport.boundaries[3][0], teleport.boundaries[3][1])]
 		gate.set_position(Vector2(teleport.pos[0], teleport.pos[1]))
-		gate.set_polygon(boundaries)
+		gate.set_polygon(teleport_boundaries)
 		unit.add_child(gate)
 	unit.set_position(Vector2(map.pos[0], map.pos[1]))
 	return unit

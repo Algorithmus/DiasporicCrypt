@@ -40,7 +40,7 @@ func _physics_process(delta):
 			# respawn enemies when there are none left
 			var objects = get_parent().get_parent().get_children()
 			for object in objects:
-				if (object extends spawnclass.instance().get_script()):
+				if (object is spawnclass.instance().get_script()):
 					spawncount += 1
 			if (spawncount == 0):
 				for pos in respawnpos:
@@ -67,17 +67,17 @@ func _physics_process(delta):
 			new_animation = "die"
 			if (animation_player.get_current_animation_position() == animation_player.get_current_animation_length()):
 				cycle = "die"
-				Globals.set("current_quest_complete", true)
-				var level = Globals.get("levels")[Globals.get("current_level")]
+				ProjectSettings.set("current_quest_complete", true)
+				var level = ProjectSettings.get("levels")[ProjectSettings.get("current_level")]
 				level.complete = true
 				get_tree().get_root().get_node("world").check_available_levels()
-				Globals.get("levels")[Globals.get("current_level")] = level
+				ProjectSettings.get("levels")[ProjectSettings.get("current_level")] = level
 				var level_display = get_tree().get_root().get_node("world/gui/CanvasLayer/level")
 				level_display.get_node("title").set_text("KEY_VICTORY")
 				level_display.get_node("AnimationPlayer").play("quest")
 		else:
 			var item = topazkeyclass.instance()
-			if (Globals.get("inventory").inventory.has("ITEM_TOPAZKEY")):
+			if (ProjectSettings.get("inventory").inventory.has("ITEM_TOPAZKEY")):
 				item = manapotionplusclass.instance()
 			var exporb = expclass.instance()
 			exporb.set_value(ep)

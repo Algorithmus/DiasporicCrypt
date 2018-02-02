@@ -80,18 +80,18 @@ func step_target():
 	elif (cycle == "dying"):
 		new_animation = "die"
 		if (animation_player.get_current_animation_position() == animation_player.get_current_animation_length() && current_animation == "die"):
-			Globals.set("current_quest_complete", true)
-			var level = Globals.get("levels")[Globals.get("current_level")]
+			ProjectSettings.set("current_quest_complete", true)
+			var level = ProjectSettings.get("levels")[ProjectSettings.get("current_level")]
 			level.complete = true
 			get_tree().get_root().get_node("world").check_available_levels()
-			Globals.get("levels")[Globals.get("current_level")] = level
+			ProjectSettings.get("levels")[ProjectSettings.get("current_level")] = level
 			var level_display = get_tree().get_root().get_node("world/gui/CanvasLayer/level")
 			level_display.get_node("title").set_text("KEY_VICTORY")
 			level_display.get_node("AnimationPlayer").play("quest")
 			cycle = "die"
 	else:
 		var item = emeraldkeyclass.instance()
-		if (Globals.get("inventory").inventory.has("ITEM_EMERALDKEY")):
+		if (ProjectSettings.get("inventory").inventory.has("ITEM_EMERALDKEY")):
 			item = potionplusclass.instance()
 		var exporb = expclass.instance()
 		exporb.set_value(ep)

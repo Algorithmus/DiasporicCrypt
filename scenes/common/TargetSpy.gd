@@ -26,7 +26,7 @@ func start_spy(cycle, targets, target_pos):
 	camera_pos = camera.get_offset()
 	final_camera_pos = target_pos - camera.get_parent().get_position()
 	camera_progress = cycle
-	Globals.set("show_switch", true)
+	ProjectSettings.set("show_switch", true)
 
 func step_camera(cycle, targets):
 	# pause to display the effects of activating the switch/clearing all objects
@@ -53,6 +53,6 @@ func step_camera(cycle, targets):
 			else:
 				targets.set_pause_mode(PAUSE_MODE_INHERIT)
 			target.get_tree().set_pause(false)
-			Globals.set("show_switch", false)
+			ProjectSettings.set("show_switch", false)
 			return false
 	return true

@@ -10,7 +10,7 @@ func check_crumble(i):
 
 func sprite_opacity(alpha):
 	.sprite_opacity(alpha)
-.modulate.a = alpha
+	get_node("KinematicBody2D/ice").modulate.a = alpha
 
 func remove_visuals():
 	var ice = get_node("KinematicBody2D/ice")

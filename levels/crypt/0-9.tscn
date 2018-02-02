@@ -17,7 +17,6 @@ extents = Vector2( 16, 16 )
 [sub_resource type="ImageTexture" id=2]
 
 flags = 7
-image = Image()
 size = Vector2( 32, 32 )
 storage = 0
 lossy_quality = 0.7
@@ -25,7 +24,6 @@ lossy_quality = 0.7
 [sub_resource type="ImageTexture" id=3]
 
 flags = 2
-image = Image()
 size = Vector2( 32, 32 )
 storage = 0
 lossy_quality = 0.7

@@ -119,7 +119,7 @@ func _physics_process(delta):
 				new_animation = "beam"
 			else:
 				for i in range(0, 6):
-					var x = cos(i * PI/3) * 32
+					x = cos(i * PI/3) * 32
 					var r = pow(32, 2) - pow(x, 2)
 					var s = 1
 					if (fmod(currentx, 2*PI) > PI):
@@ -191,11 +191,11 @@ func _physics_process(delta):
 		# show death animation
 		new_animation = "die"
 		if (animation_player.get_current_animation_position() == animation_player.get_current_animation_length() && current_animation == "die"):
-			Globals.set("current_quest_complete", true)
-			var level = Globals.get("levels")[Globals.get("current_level")]
+			ProjectSettings.set("current_quest_complete", true)
+			var level = ProjectSettings.get("levels")[ProjectSettings.get("current_level")]
 			level.complete = true
 			get_tree().get_root().get_node("world").check_available_levels()
-			Globals.get("levels")[Globals.get("current_level")] = level
+			ProjectSettings.get("levels")[ProjectSettings.get("current_level")] = level
 			var level_display = get_tree().get_root().get_node("world/gui/CanvasLayer/level")
 			level_display.get_node("title").set_text("KEY_VICTORY")
 			level_display.get_node("AnimationPlayer").play("quest")
@@ -203,7 +203,7 @@ func _physics_process(delta):
 	else:
 		# drop items
 		var item = sapphirekeyclass.instance()
-		if (Globals.get("inventory").inventory.has("ITEM_SAPPHIREKEY")):
+		if (ProjectSettings.get("inventory").inventory.has("ITEM_SAPPHIREKEY")):
 			item = potionplusclass.instance()
 		var exporb = expclass.instance()
 		exporb.set_value(ep)

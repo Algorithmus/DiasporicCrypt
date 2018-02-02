@@ -8,9 +8,9 @@ var rubykeyclass = preload("res://scenes/items/special/rubykey.tscn")
 func _ready():
 	gateclass = preload("res://scenes/lavacave/gate.tscn")
 	gatepos = Vector2(-208, -400)
-	if (Globals.get("current_quest_complete")):
+	if (ProjectSettings.get("current_quest_complete")):
 		tilemap.get_node("BossGroup/FireDragon").queue_free()
-		if (!Globals.get("inventory").inventory.has("ITEM_RUBYKEY")):
+		if (!ProjectSettings.get("inventory").inventory.has("ITEM_RUBYKEY")):
 			var item = rubykeyclass.instance()
 			item.set_global_position(Vector2(272, -304))
 			tilemap.get_node("BossGroup").add_child(item)

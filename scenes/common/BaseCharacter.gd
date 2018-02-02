@@ -16,7 +16,7 @@ const SPEED_LIMIT = 30
 
 var is_delay = false
 var hud
-var position = Vector2()
+var pos = Vector2()
 var current_animation = "idle"
 var direction = 1
 var falling = false
@@ -196,7 +196,7 @@ func check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space
 			movingPlatform_check = relevantTileA["collider"]
 		else:
 			movingPlatform_check = relevantTileB["collider"]
-		if((movingPlatform_check.get_name() == "blockR" || movingPlatform_check.get_name() == "blockL") && movingPlatform_check.get_parent() extends MovingPlatform):
+		if((movingPlatform_check.get_name() == "blockR" || movingPlatform_check.get_name() == "blockL") && movingPlatform_check.get_parent() is MovingPlatform):
 			onMovingPlatform = true
 			if (movingPlatform_check.get_global_position().y - TILE_SIZE/2 >= int(get_position().y + sprite_offset.y)):
 				movingPlatform = movingPlatform_check
@@ -214,7 +214,7 @@ func check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space
 	if (climb_platform != null):
 		var climb_platform_ref = weakref(climb_platform)
 		if (climb_platform_ref != null && climb_platform_ref.get_ref()):
-			if ((climb_platform_ref.get_ref().get_name() == "blockR" || climb_platform_ref.get_ref().get_name() == "blockL") && climb_platform_ref.get_ref().get_parent() extends MovingPlatform):
+			if ((climb_platform_ref.get_ref().get_name() == "blockR" || climb_platform_ref.get_ref().get_name() == "blockL") && climb_platform_ref.get_ref().get_parent() is MovingPlatform):
 				movingPlatform = climb_platform_ref.get_ref()
 				onMovingPlatform = true
 			else:
@@ -259,7 +259,7 @@ func horizontal_input_permitted():
 	return !is_hurt
 
 func step_horizontal(space_state):
-	position.y = 0
+	pos.y = 0
 	var new_animation = current_animation
 	var horizontal_motion = false
 	var forwardY = get_position().y + sprite_offset.y
@@ -268,26 +268,26 @@ func step_horizontal(space_state):
 	var relevantSlopeTile = null
 	if (horizontal_input_permitted()):
 		if (input_left()):
-			position.x = closestXTile(-1, -runspeed, space_state)
+			pos.x = closestXTile(-1, -runspeed, space_state)
 			# can't tell right now if we are on a slope tile and can ignore
 			# the a-b slope tile
 			# so delay horizontal motion until slope check
 			if (checkABSlope()):
-				slopeX = position.x
-				position.x = 0
+				slopeX = pos.x
+				pos.x = 0
 			new_animation = "run"
 			direction = -1
 			horizontal_motion = true
 		elif (input_right()):
-			position.x = closestXTile(1, runspeed, space_state)
+			pos.x = closestXTile(1, runspeed, space_state)
 			if (checkABSlope()):
-				slopeX = position.x
-				position.x = 0
+				slopeX = pos.x
+				pos.x = 0
 			new_animation = "run"
 			direction = 1
 			horizontal_motion = true
 		else:
-			position.x = 0
+			pos.x = 0
 			new_animation = "idle"
 
 		check_hanging_disengage()
@@ -295,11 +295,11 @@ func step_horizontal(space_state):
 		if (ignore_gravity):
 			current_gravity = DEFAULT_GRAVITY
 
-		position.x = position.x * current_gravity
+		pos.x = pos.x * current_gravity
 
-		move(position)
+		move(pos)
 
-		position.x = 0
+		pos.x = 0
 
 		# check ladder after horizontal movement
 		check_ladder_horizontal(space_state)
@@ -332,8 +332,8 @@ func step_horizontal(space_state):
 					# unfortunately, the extra height from the default jump speed isn't enough to clear
 					# neighboring slopes. Playing with the values yields 5 as sufficient to do so
 					if ((forwardY > slopeAdjustedTileY - (jumpspeed - 5)*current_gravity) || !jumpPressed):
-						position.y = slopeAdjustedTileY - forwardY
-						move(position)
+						pos.y = slopeAdjustedTileY - forwardY
+						move(pos)
 	return {"animation": new_animation, "slope": onSlope, "slopeTile": relevantSlopeTile, "slopeX": slopeX, "motion": horizontal_motion}
 
 func check_climb_platform_horizontal(space_state):
@@ -486,7 +486,7 @@ func check_animations(new_animation, animation_speed, horizontal_motion, ladderY
 
 func calculate_fall_height():
 	if (falling):
-		fall_height += max(0, position.y)
+		fall_height += max(0, pos.y)
 	else:
 		fall_height = 0
 
@@ -535,7 +535,7 @@ func step_player(delta):
 	var vertical = step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, onSlope, oneWayTile, relevantSlopeTile)
 
 	relevantSlopeTile = vertical["slopeTile"]
-	var onSlope = vertical["slope"]
+	onSlope = vertical["slope"]
 	var abSlope = vertical["abSlope"]
 	var desiredY = vertical["desiredY"]
 	animation_speed = vertical["animationSpeed"]
@@ -548,7 +548,7 @@ func step_player(delta):
 		# don't fall while standing on moving platforms moving up
 		check_on_moving_platform(desiredY)
 
-		position.y = accel
+		pos.y = accel
 
 	# check animations
 	var animations = check_animations(new_animation, animation_speed, horizontal_motion, ladderY)
@@ -557,7 +557,7 @@ func step_player(delta):
 
 	calculate_fall_height()
 
-	move(position)
+	move(pos)
 	play_animation(new_animation, animation_speed)
 
 func _ready():

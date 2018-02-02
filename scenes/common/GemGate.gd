@@ -24,7 +24,7 @@ func _ready():
 	detection = get_node("Area2D")
 	aura = get_node("gate").get_material()
 	var sprite = Image()
-	sprite.load(Globals.get("itemfactory").items[key].image)
+	sprite.load(ProjectSettings.get("itemfactory").items[key].image)
 	keysprite.get_texture().set_data(sprite)
 	#print("setup gem gate")
 	#print(aura)
@@ -35,7 +35,7 @@ func _physics_process(delta):
 	if (collision.get_parent() != null):
 		var collisions = detection.get_overlapping_bodies()
 		for i in collisions:
-			if (i.get_name() == "player" && Globals.get("inventory").inventory.has(key)):
+			if (i.get_name() == "player" && ProjectSettings.get("inventory").inventory.has(key)):
 				get_node("AnimationPlayer").play("open")
 				remove_child(collision)
 

@@ -23,26 +23,26 @@ extends Sprite
 # weren't previously discovered, we render the new discovered tiles on the map.
 
 const GRID_SIZE = Vector2(800 / 2, 592 / 2)
-const GRIDFORMAT = Image.FORMAT_RGBA
+const GRIDFORMAT = Image.FORMAT_RGBA8
 const GRIDCOLOR = Color(79.69/255, 0, 1, 0.5)
 
-var texture
+var grid_texture
 var image
 var HudMap = preload("res://gui/maps/HudMap.gd")
 export var current_grid = []
 
 func _ready():
 	if (get_texture() != null):
-		texture = get_texture()
-		image = texture.get_data()
+		grid_texture = get_texture()
+		image = grid_texture.get_data()
 
 func init(pos, width, height, grid):
 	set_offset(pos)
-	texture = ImageTexture.new()
-	texture.create(floor(width), floor(height), GRIDFORMAT)
-	image = Image(texture.get_width(), texture.get_height(), false, GRIDFORMAT)
-	texture.set_data(image)
-	set_texture(texture)
+	grid_texture = ImageTexture.new()
+	grid_texture.create(floor(width), floor(height), GRIDFORMAT)
+	image = Image(grid_texture.get_width(), grid_texture.get_height(), false, GRIDFORMAT)
+	grid_texture.set_data(image)
+	set_texture(grid_texture)
 	current_grid = grid
 
 # set a specified range of tiles as discovered
@@ -61,7 +61,7 @@ func mark_grid(indexx, indexy, grid):
 				count_grid(j, i)
 	if (new_tiles):
 		update()
-		texture.set_data(image)
+		grid_texture.set_data(image)
 
 func _draw():
 	update_grid()
@@ -80,7 +80,7 @@ func render_grid(grid):
 			var cell = row[x]
 			if (cell):
 				draw_grid(x, y)
-	texture.set_data(image)
+	grid_texture.set_data(image)
 
 # Helper method to get affected regions
 # Position is given in grid indexes.
@@ -104,9 +104,9 @@ func count_grid(x, y):
 	if (area > 0):
 		# count catacombs differently for map completion
 		if (get_parent().get("level") != "res://levels/common/catacombs.tscn"):
-			Globals.get("levels")[Globals.get("current_level")].location.discovered_tiles += area
+			ProjectSettings.get("levels")[ProjectSettings.get("current_level")].location.discovered_tiles += area
 		else:
-			Globals.set("special_tiles", Globals.get("special_tiles") + area)
+			ProjectSettings.set("special_tiles", ProjectSettings.get("special_tiles") + area)
 
 # Draw discovered tile at the specified position
 # Position is given in grid indexes.

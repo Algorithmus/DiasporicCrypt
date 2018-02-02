@@ -7,9 +7,9 @@ var amethystkeyclass = preload("res://scenes/items/special/amethystkey.tscn")
 
 func _ready():
 	gatepos = Vector2(-208, -400)
-	if (Globals.get("current_quest_complete")):
+	if (ProjectSettings.get("current_quest_complete")):
 		tilemap.get_node("BossGroup/Lich").queue_free()
-		if (!Globals.get("inventory").inventory.has("ITEM_AMETHYSTKEY")):
+		if (!ProjectSettings.get("inventory").inventory.has("ITEM_AMETHYSTKEY")):
 			var item = amethystkeyclass.instance()
 			item.set_global_position(Vector2(512, -624))
 			tilemap.get_node("BossGroup").add_child(item)

@@ -10,6 +10,6 @@ func _ready():
 
 func add_to_inventory():
 	if (isreward):
-		Globals.set("reward_taken", true)
-	Globals.set("gold", Globals.get("gold") + value)
+		ProjectSettings.set("reward_taken", true)
+	ProjectSettings.set("gold", ProjectSettings.get("gold") + value)
 	return true

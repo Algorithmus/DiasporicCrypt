@@ -41,7 +41,7 @@ var newGroup
 var optionsGroup
 var selectedOption
 var gameData
-var filename
+var save_filename
 var gameclock
 var gameclock_class = preload("res://scenes/GameClock.gd")
 var loadonly = false
@@ -68,7 +68,7 @@ func _ready():
 	adela_discovery_total = 0
 	for i in range(0, size):
 		adela_discovery_total += locationfactory.locations[DISCOVERY_ADELA[i]].tiles
-	serialization = Globals.get("serialization")
+	serialization = ProjectSettings.get("serialization")
 	optionsGroup = get_node("options")
 	if (loadonly):
 		optionsGroup.get_node("options/save").hide()
@@ -148,8 +148,8 @@ func _input(event):
 					else:
 						if (selectedOption == "load"):
 							if (loadonly):
-								Globals.set("gamedata", gameData)
-								Globals.set("player", gameData.player.character)
+								ProjectSettings.set("gamedata", gameData)
+								ProjectSettings.set("player", gameData.player.character)
 								emit_signal("loadgame")
 							else:
 								var root = get_tree().get_root().get_node("world")
@@ -160,7 +160,7 @@ func _input(event):
 							self.grab_focus()
 							reset_options()
 						elif (selectedOption == "delete"):
-							emit_signal("delete", get_index(), filename)
+							emit_signal("delete", get_index(), save_filename)
 				else:
 					unfocus_options()
 					if (focus.get_name() == "load"):
@@ -195,65 +195,65 @@ func _input(event):
 func save():
 	var data = {}
 	data.player = {}
-	data.player.character = Globals.get("player")
+	data.player.character = ProjectSettings.get("player")
 	var player = get_tree().get_root().get_node("world/playercontainer/player")
 	var stats = serialization.serialize_stats(player)
 	data.player.stats = stats
-	data.player.chainlist = Globals.get("chain")
+	data.player.chainlist = ProjectSettings.get("chain")
 	data.inventory = {}
-	data.inventory.gold = Globals.get("gold")
-	var scrolls = serialization.serialize_scrolls(Globals.get("scrolls"))
+	data.inventory.gold = ProjectSettings.get("gold")
+	var scrolls = serialization.serialize_scrolls(ProjectSettings.get("scrolls"))
 	data.inventory.scrolls = scrolls
-	var inventory = serialization.serialize_items(Globals.get("inventory").get("inventory"))
+	var inventory = serialization.serialize_items(ProjectSettings.get("inventory").get("inventory"))
 	data.inventory.items = inventory
-	var spells = serialization.serialize_spells(Globals.get("available_spells"))
+	var spells = serialization.serialize_spells(ProjectSettings.get("available_spells"))
 	data.inventory.magic = spells
 	data.settings = {}
-	data.settings.bgmvolume = Globals.get("bgmvolume")
-	data.settings.sfxvolume = Globals.get("sfxvolume")
-	data.settings.bgmmute = Globals.get("bgmmute")
-	data.settings.sfxmute = Globals.get("sfxmute")
-	data.settings.layout = Globals.get("current_input")
-	data.settings.keyboard = Globals.get("keyboard_controls")
-	data.settings.gamepad = Globals.get("gamepad_controls")
+	data.settings.bgmvolume = ProjectSettings.get("bgmvolume")
+	data.settings.sfxvolume = ProjectSettings.get("sfxvolume")
+	data.settings.bgmmute = ProjectSettings.get("bgmmute")
+	data.settings.sfxmute = ProjectSettings.get("sfxmute")
+	data.settings.layout = ProjectSettings.get("current_input")
+	data.settings.keyboard = ProjectSettings.get("keyboard_controls")
+	data.settings.gamepad = ProjectSettings.get("gamepad_controls")
 	data.levels = {}
-	data.levels.currentLevel = Globals.get("current_level")
-	data.levels.availableLevels = Globals.get("available_levels")
-	data.levels.rewardTaken = Globals.get("reward_taken")
-	data.levels.currentQuestComplete = Globals.get("current_quest_complete")
-	var leveldata = serialization.serialize_levels(Globals.get("levels"))
+	data.levels.currentLevel = ProjectSettings.get("current_level")
+	data.levels.availableLevels = ProjectSettings.get("available_levels")
+	data.levels.rewardTaken = ProjectSettings.get("reward_taken")
+	data.levels.currentQuestComplete = ProjectSettings.get("current_quest_complete")
+	var leveldata = serialization.serialize_levels(ProjectSettings.get("levels"))
 	data.levels.data = leveldata
 	data.maps = {}
-	data.maps.id = Globals.get("mapid")
+	data.maps.id = ProjectSettings.get("mapid")
 	var hudmap = get_tree().get_root().get_node("world/gui/CanvasLayer/map/container")
 	data.maps.currentMap = hudmap.get("current_map")
 	hudmap.cache_map()
-	var mapindex = serialization.serialize_mapindex(hudmap, Globals.get("mapindex"))
+	var mapindex = serialization.serialize_mapindex(hudmap, ProjectSettings.get("mapindex"))
 	data.maps.index = mapindex
-	var mapcache = Globals.get("mapobjects")
-	var mapobjects = serialization.serialize_mapobjects(hudmap, Globals.get("mapobjects"))
+	var mapcache = ProjectSettings.get("mapobjects")
+	var mapobjects = serialization.serialize_mapobjects(hudmap, ProjectSettings.get("mapobjects"))
 	data.maps.objects = mapobjects
-	data.maps.special_tiles = Globals.get("special_tiles")
-	data.shops = Globals.get("shops")
-	data.deaths = Globals.get("deaths")
+	data.maps.special_tiles = ProjectSettings.get("special_tiles")
+	data.shops = ProjectSettings.get("shops")
+	data.deaths = ProjectSettings.get("deaths")
 	data.position = [savepos.x, savepos.y]
 	data.location = savelocation
 	var date = OS.get_date()
 	data.date = [date.day, date.month, date.year]
 	data.playtime = gameclock.get("elapsed")
 
-	Globals.set("lastsavepoint", {"id": hudmap.get("current_map"), "location": savelocation, "position": savepos})
+	ProjectSettings.set("lastsavepoint", {"id": hudmap.get("current_map"), "location": savelocation, "position": savepos})
 	save_to_file(data)
 
 func save_to_file(data):
-	var savedir = Globals.get("savedir")
+	var savedir = ProjectSettings.get("savedir")
 	var dir = Directory.new()
 	if (!dir.dir_exists(savedir)):
 		dir.make_dir(savedir)
 	var file = File.new()
-	if (filename == null):
-		filename = "save" + str(idnr) + ".save"
-	file.open(savedir + "/" + filename, File.WRITE)
+	if (save_filename == null):
+		save_filename = "save" + str(idnr) + ".save"
+	file.open(savedir + "/" + save_filename, File.WRITE)
 	file.store_string(data.to_json())
 	file.close()
 	

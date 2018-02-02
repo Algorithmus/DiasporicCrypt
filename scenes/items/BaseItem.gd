@@ -26,11 +26,11 @@ func take_item(i):
 		taken = true
 		get_tree().get_root().get_node("world/gui/CanvasLayer/items").display_item(title, item)
 		if (isgoal):
-			Globals.set("current_quest_complete", true)
-			var level = Globals.get("levels")[Globals.get("current_level")]
+			ProjectSettings.set("current_quest_complete", true)
+			var level = ProjectSettings.get("levels")[ProjectSettings.get("current_level")]
 			level.complete = true
 			get_tree().get_root().get_node("world").check_available_levels()
-			Globals.get("levels")[Globals.get("current_level")] = level
+			ProjectSettings.get("levels")[ProjectSettings.get("current_level")] = level
 			var level_display = get_tree().get_root().get_node("world/gui/CanvasLayer/level")
 			level_display.get_node("title").set_text("KEY_COMPLETE")
 			level_display.get_node("AnimationPlayer").play("quest")
@@ -39,7 +39,7 @@ func take_item(i):
 		player.remove_from_blacklist(get_node("item"))
 
 func add_to_inventory():
-	return Globals.get("inventory").add_item(item, 1)
+	return ProjectSettings.get("inventory").add_item(item, 1)
 
 func _ready():
 	itemfactory_obj = itemfactory.new()

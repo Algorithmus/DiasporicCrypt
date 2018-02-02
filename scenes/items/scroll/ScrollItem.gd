@@ -28,7 +28,7 @@ static func sort_scrolls(a, b):
 func parse_content():
 	var translation = do_parse(content)
 	if (title == "SCROLL_WARRIOR"):
-		var chains = Globals.get("chain")
+		var chains = ProjectSettings.get("chain")
 		for chain in chains:
 			var used = chains[chain]
 			var combostring = ""
