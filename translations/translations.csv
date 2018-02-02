@@ -1,0 +1,419 @@
+,en,de
+KEY_LOCALE,English,Deutsch
+KEY_NEWGAME,New Game,Neues Spiel
+KEY_LOADGAME,Load Game,Spiel Laden
+KEY_LANGUAGE,Language,Sprache
+KEY_SETTINGS,Settings,Einstellungen
+KEY_INFO,"This game is still a work in progress. Some licenses or assets may be missing. Please contact me at beelzy@bitmessage.ch if I have missed including some licenses.[break][break]Made with GodotEngine and Krita.[break][break]Licenses[break][break]This game is licensed under the GPL3+.[break]All graphical assets are licensed under CC-BY-SA (4.0).[break]Sound files have no licenses yet. They will be replaced eventually. I am still looking for someone to do music/sound design, so if you are interested in composing polyphonic organ tunes along the lines of music in Castlevania, feel free to contact me at beelzy@bitmessage.ch.[break][break]Character Credits[break][break]Pepper and Carrot ([url]https://peppercarrot.com[/url]) - David Revoy, CC-By[break]Goddess ([url]https://github.com/WinterLicht/Chaos-Projectile[/url]) - Anna Dorokhova[break][break]Attributions[break][break]Derivative (crop) by beelzy of [url]https://raw.githubusercontent.com/WinterLicht/Chaos-Projectile/master/src/data/char.png[/url] by Anna Dorokhova, CC-By[break][break]Font Licenses","Dieses Spiel ist noch in Entwickelung. Manche Lizenzen oder Ressourcen darf fehlen. Bitte mich bei beelzy@bitmessage.ch kontaktieren, falls solche Lizenzen fehlt.[break][break]Mit GodotEngine und Krita gemacht.[break][break]Lizenzen[break][break]Dieses Spiel ist unter die GPL3+ Lizenz.[break]Alle graphische Ressourcen sind unter CC-BY-SA (4.0).[break]Audiodateien haben noch keine Lizenzen. Sie werden irgendwann mal ersetzt geworden. Ich suche immer noch nach jemand, um die Musik/Audiodesign zu machen, also haben Sie Interesse, an polyphonische Orgel Melodien ähnlich wie das Musik in Castlevania, bitte mich bei beelzy@bitmessage.ch kontaktieren.[break][break]Charakter Credite[break][break]Pepper and Carrot ([url]https://peppercarrot.com[/url]) - David Revoy[break]Goddess ([url]https://github.com/WinterLicht/Chaos-Projectile[/url]) - Anna Dorokhova[break][break]Namensnennung[break][break]Derivativ (crop) von beelzy aus [url]https://raw.githubusercontent.com/WinterLicht/Chaos-Projectile/master/src/data/char.png[/url] von Anna Dorokhova, CC-By[break][break]Satzschrift Lizenzen"
+KEY_FIRSTRUN,First Run Configuration,Erste Start Konfigurieren
+KEY_CREDITS,Credits,Mitwirkende
+KEY_QUITGAME,Quit Game,Spiel Beenden
+KEY_QUITMENU,Quit,Beenden
+KEY_QUITWARN,Quit to menu? All unsaved progress will be lost.,Zurück zum Menü? Alle ungespeicherte Fortschritte werden verloren gegangen.
+KEY_QUITMENU_WARN,Quit game?,Spiel beenden?
+KEY_CHARSELECT,Select a character,Wähle einen Charakter
+KEY_NEWATTACK,Learned a new attack!,Neue Technik erlernt!
+KEY_SPELL,spell,zauber
+KEY_GAMEOVER,-Game Over-,-Spiel Vorbei-
+KEY_CONTINUE,Continue?,Weiterspielen?
+KEY_YES,Yes,Ja
+KEY_NO,No,Nein
+KEY_LEVELUP,Level up!,Stufe erhöht!
+KEY_NEWLEVEL,New quest(s) available!,Neue Quest(s) verfügbar!
+KEY_SOUND,Sound,Ton
+KEY_HELP,Controls,Taste
+KEY_CONTROLS,Controls,Kontrolltasten
+KEY_UP,Up,Oben
+KEY_DOWN,Down,Unten
+KEY_LEFT,Left,Links
+KEY_RIGHT,Right,Rechts
+KEY_ATTACK,Attack,Angriff
+KEY_JUMP,Jump,Springen
+KEY_MAGIC,Magic,Zauber
+KEY_BLOOD,Drink Blood/Talk,Blut saugen/Sprechen
+KEY_PREVMAGIC,Previous Spell,Vorheriger Zauberspruch
+KEY_NEXTMAGIC,Next Spell,Nächster Zauberspruch
+KEY_MINIMAP,Show/Hide Minimap,Übersichtskarte an/ausschalten
+KEY_INPUT,(Press a key),(Knopf drücken)
+KEY_SAVEMENU,Load/Save Game,Spiel Laden/Speichern
+KEY_SAVE,Save,Speichern
+KEY_LOAD,Load,Laden
+KEY_DELETE,Delete,Löschen
+KEY_CLONE,Clone,Klonen
+KEY_SAVED,SAVED!,GESPEICHERT!
+KEY_SAVEGAME,Save Game,Spiel speichern
+KEY_CONFIRMLOAD,Load this game?,Laden Sie dieses Spiel?
+KEY_CONFIRMOVERWRITE,Overwrite this game?,Überschreiben Sie dieses Spiel?
+KEY_CONFIRMDELETE,Delete this game?,Löschen Sie dieses Spiel?
+KEY_RESET,Reset,Zurücksetzen
+KEY_ITEMS,Items,Gegenstände
+KEY_SPECIALITEMS,Special,Besonders
+KEY_USE,Use,Verwenden
+KEY_DROP,Drop,Entfernen
+KEY_SKIP,Skip,Überspringen
+KEY_COMPLETE,COMPLETE,GESCHAFT
+KEY_VICTORY,VICTORY,SIEG
+KEY_LOADING,Loading...,Laden...
+KEY_TARGET,target,ziel
+KEY_PLAYTIME,Playtime,Spielzeit
+LVL_SANDBOX,Sandbox,Testbereich
+LVL_SANDBOX_DESCRIPTION,Test area only.,Nur für Testbereich.
+LVL_NOCTURNFOREST,Nocturn Forest,Nocturn Wald
+LVL_FOREST1,Forest 1,Wald 1
+LVL_FOREST1_DESCRIPTION,"I'm sending you to a very different place from the others. It's not nearly as dangerous, but I figured I could give you a bit of a break from all the underground cave, crypt and ruins exploring you've been doing. If you look around long enough, you'll find plenty of harmless beings to drink blood from. But don't stay too long; it may be a long night, but at dawn, the trees won't provide enough protection from the sun.[right]-Kaleva[/right]","Ich schicke dir zu einem ganz anderen Ort von was du jetzt erwartet hast. Es ist nicht so gefährlich, und ich schätze, du verdienst eine Pause von all diesen herumstöbern von Untergrundhöhlen, Grüfte und Ruinen die du gemacht hast. Suchst du lang genug, findest du viele harmlose Wesen von wem du Blut trinken kannst. Doch bleib nicht zu lang; es darf eine lange Nacht sein, aber am Sonnenaufgang, werden die Bäume dich kaum vor die Sonne schützen.[right]-Kaleva[/right]"
+LVL_LAVACAVE,Lava Cave,Lavahöhle
+LVL_LAVACAVE_DESCRIPTION,"I'm sending you to another cave, this time on the southern continent, the Summer Island. It's very hot and sunny there, but it gets even hotter in this cave. It's well protected from sunlight, thank goodness, but it's filled with lava from below, so you better watch your step. The legends speak of a fire breathing dragon that escaped here after being defeated by a hero, but I doubt them, really. If there is a dragon, he lives here, and most likely never comes out. He might just have been discovered by unsuspecting adventurers who have met their demise here.[right]-Kaleva[/right]","Ich schicke dir zu einem andere Höhle, dieses mal auf das sudliches Kontinent, das Sommerinsel. Es ist sehr heiß und sonnig da, aber es ist immer noch heißer in diesem Höhle. Es ist gut bedeckt von Sonnenlicht, Gott sei dank, aber es ist mit Lava von unten gefüllt, also bitte auf deine Schritte achten. Laut die Legende, gibt es eine Feuer spuckende Drache, die hier geflohen hatte, nachdem er von einem Held besiegt war, aber ich bezweifle, dass es wirklich so geschehen ist. Wenn es überhaupt ein Drache gibt, dann wohnt er einfach hier, und er kommt wahrscheinlich nie draußen. Er darf von andere Abenteuerer entdeckt geworden sind, und die kommen nicht mehr lebendig raus.[right]-Kaleva[/right]"
+LVL_SPRINGISLANDCASTLE,Spring Island Palace,Frühlingsinsel Palast
+LVL_SPRINGISLANDCASTLE_DESCRIPTION,"I have almost all the relics I need. I'm impressed that you have come this far. But there is one final relic I need, and it lies in this castle on an island with high cliffs just off the eastern Spring Island continent. This last castle is a bit of a challenge, with spike traps, pits and high platforms everywhere. But I'm confident with your acrobatic abilities, you should be able to navigate the place just fine. I'll be very astounded if you find the last artifact.[right]-Kaleva[/right]","Ich habe fast alle Artefakte, die ich brauche. Ich bin beeindruckt, dass du soweit gekommen bist. Aber es gibt noch ein letztes Artefakt, das ich brauche, und es liegt in dieses Schloss auf ein Insel mit höhe Klippen, in der Nähe von den ostliche Frühlingsinsel Kontinent. Dieses letzte Schloss ist ein bisschen herausförderlich, mit Spitzenfalle, Vertiefungen und höhe Flächen überalle. Doch ich bin sicher, mit deiner Geschicktheit, kannst du das Ort betreten, ohne wirkliche Einwand. Ich werde sehr beeindruckt, falls du das letzte Artefakt findest.[right]-Kaleva[/right]"
+LVL_SUMMERISLANDCASTLE,Summer Island Palace,Sommerinsel Palast
+LVL_SUMMERISLANDCASTLE_DESCRIPTION,"On every continent, there is a castle that contains an ancient artifact. This is the first one I'm sending you to. It is the castle on the Summer Island continent, and also the warmest. Because of it's location, you'll have to be a bit careful; the castle has been designed to let in sunlight regularly in certain areas, so try to avoid it if you can. This castle has belonged to the royal family on the Summer Island for many generations, but that was a long time ago. It's still standing, somehow, but its human inhabitants have long since fled. But I do hope you can find the relic I seek.[right]-Kaleva[/right]","Auf jedem Kontinent, liegt ein Schloss mit einem uraltes Artefakt. Die erste, zudem ich dir schicke, liegt auf dem Sommerinsel Kontinent, und ist auch die warmste. Wegen das Klima in diesem Ort, muss du vorsichtig sein; das Schloss ist so gebaut, dass bei manche Stelle, darf das Sonnenlicht regelmässig rein gelassen geworden. Also versuch ihn zu vermeiden, wenn du das kannst. Dieses Schloss gehört einmal mehrere Generationen zur Edelfamilie von das Sommerinsel, aber das war seit lange nicht mehr so. Das Schloss steht wie immer so, irgendwie, aber sein menschliche Besitzer haben bereits geflohen. Doch ich hoffe, du findest das Artefakt nachdem ich suche.[right]-Kaleva[/right]"
+LVL_WINTERISLANDCASTLE,Winter Island Palace,Winterinsel Palast
+LVL_WINTERISLANDCASTLE_DESCRIPTION,"You have found many of the relics I have been seeking, and for that, I am thankful. But there is a last relic I am sending you here to find, and it is in the castle on the Winter Island continent. Not a lot is actually known about this place, and without knowing how dangerous it could be, I couldn't send you there at first. But now that I am confident that you are strong enough, you might be able to find the relic here. The legends speak of an enchanted castle to the north with an ancient artifact guarded by magical beings, and filled with traps. I'll be impressed if you find the relic.[right]-Kaleva[/right]","Du hast viele von die Artefakte, nachdem ich suche, gefunden, und dafür bin ich dankbar. Aber es gibt ein letztes Artefakt, und ich schicke dir zu einem Schloss auf dem Winterinsel Kontinent, um es zu finden. Ich kenne nicht viel über dieses Ort, und ohne zu wissen, wie gefährlich, es sein konnte, konnte ich dich zuerst hierher nicht schicken. Aber jetzt weiß ich, dass du stark genug dafür bist, und du darfst das Artefakt hier finden. Die Legende spricht von ein verzaubertes Schloss im norden mit ein uraltes Artefakt, von magische Wesen geschutzt, und hat viele Fälle. Ich werde beeindruckt sein, wenn du das Artefakt findest.[right]-Kaleva[/right]"
+LVL_BERGFORTRESS,Berg Fortress,Bergschloss
+LVL_BERGFORTRESS_DESCRIPTION,"With that amulette you have there, you have proven your strength. I can now send you to a new area on the Western continent to a castle among the mountains. This rocky area is hard for most humans to reach and live off of, and belongs to the lizard clans. The lizard people aren't exactly known for their taste in the arts, so you may rightly wonder why it is they live in a castle full of artistic decor. Well actually, it's because there used to be a kingdom of people in that castle, and they were successful at keeping out most intruders because of the high hills it sits on. But that poses no problems for lizard people, and in their ignorance, the castle was easily overtaken. The lizard clans in this area are ruled by a giant lizard, but he's rarely ever seen in the open. He might still be living in the castle, but if that's true, it's too well guarded for anyone else to confirm.[right]-Kaleva[/right]","Mit dieses Amulett die du jetzt trägst, hast du deine Stärke bewiesen. Ich kann dich jetzt nach einem neuen Ort auf dem Westkontinent zum Schloss zwischen die Bergen. Dieser buckliger Ort ist für meiste Menschen schwer zu erreichen und drauf zu leben, und gehört zum Echseklane. Die Echsemenschen sind nicht für ihrem Geschmack von der Kunst, also darfst du dich richtig fragen, warum wohnen sie in einem Schloss voll mit künstliche Schmucke bedeckt. Naja, es ist weil da war einst einem Königreich von Menschen in diesem Schloss, und sie konnte erfolgreich Eindringlinge aushalten wegen die Hochebene worauf das Schloss sitzt. Aber das war überhaupt nichts gegen die Echsemenschen, und in seine Unwissenheit, war das Schloss einfach übergenommen. Die Echseklane in diesen Gegend sind von eine Riesenechse geführt, aber er ist selten draußen gesehen. Er darf noch im Schloss leben, aber wenn das stimmt, ist das Schloss zu gut überwacht, und niemand konnte bestätigen, ob er noch da ist.[right]-Kaleva[/right]"
+LVL_AQUADUCT,Aqueduct,Aquädukt
+LVL_AQUADUCT_DESCRIPTION,"With that amulette you have there, you have proven your strength. I can now send you to a new area on the Northern continent, where the river does not yet freeze. This is an old abandoned waterway. It has been unmaintained for so long that it no longer filters water properly. Parts of the waterway are completely submerged, but unlike the rumors, you can swim fine, and that won't pose any problems for you. But there's two things to be aware of here. The erroded stones have turned sharp in some places and the waterway isn't completely abandoned. Probably, it's the reason why the waterway was abandoned in the first place.[right]-Kaleva[/right]","Mit dieses Amulett die du jetzt trägst, hast du deine Stärke bewiesen. Ich kann dich jetzt nach einem neuen Ort auf dem Nordkontinent schicken, wo der Flüss noch nicht einfriert. Dieser Ort ist die uralte ruinierte Wasserleitung. Die ist seit so lange Zeit nicht verwaltet dass sie nicht mehr in der Lage das Wasser bereinigen zu können. Teile von der Wasserleitung steht ganz unterwasser, aber in gegenteil zu der Gerüchte, kannst du ganz ohne Probleme schwimmen. Aber da gibt zwei Sachen die du daraufachten sollst. Die von Abgrusung gebrochene Steine sind in manche Orte scharfkantig geworden, und die Wasserleitung ist nicht ganz leer. Wahrscheinlich, ist er der Grund warum sie überhaupt von Anfang an leer geworden ist.[right]-Kaleva[/right]"
+LVL_AQUADUCT2,Ancient Waterway,Antike Wasserstraße
+LVL_AQUADUCT2_DESCRIPTION,"There are two great ancient water systems in this world; one on the northern continent, and one to the south. The one I'm sending you to is to the south. Its construction was ordered by the royal family of the Summer Island, and it has served its inhabitants until they fled. It's fallen into disrepair, so it's not the glorious waterway it used to be, and there's enough damage in the roofs that the abundant sunlight on this continent leaks inside. But there's another relic here I'm looking for, so I hope the sunlight won't be too much of a problem for you.[right]-Kaleva[/right]","Es gibt zwei große uralte Aquädukte in dieser Welt; einer liegt auf dem nordlichem Kontinent, und das andere auf dem südlichem Kontinent. Ich schicke dir zur südliche Wasserstraße. Sie war für die Edelfamilie der Sommerinsel gebaut, und sie hat die Einwohner dient, bis sie geflohen haben. Sie ist nicht mehr gepflegt, also ist sie nicht mehr die schöne Wasserstraße die sie einst war, und es gibt in den Dächer genug Schaden, sodass das helle Sonnenlicht scheint drinnen. Aber da ist noch ein Artefakt wonach ich suche, also hoffe ich, das Sonnenlicht ist kein große Hindernis für dich.[right]-Kaleva[/right]"
+LVL_CAVE,Cave,Höhle
+LVL_CAVE_DESCRIPTION,"The next relic I am looking for lies far away on a completely different continent. But don't worry; as you've probably already figured out, it's easy to get there through this catacomb I've magically rigged to bring us to various places. There's a cave on this continent to the east, the Spring Island continent. It's quite old, and hasn't changed much over the centuries, but it isn't just any old cave; it's rumored to contain ancient spells, besides that relic...Well, I'm sure they'll be useful to you if you find them, but that relic is all I care about.[right]-Kaleva[/right]","Das nächste Artefakt liegt weit weg auf ein ganz anderen Kontinent. Aber keine Sorge; wie du vielleicht geraten hast, habe ich diese Gruft verzaubert, und sie bringt uns zur verschiedene Orte. Da ist eine Höhle auf diesen ostlichen Kontinent, der Frühlingsinsel Kontinent. Sie ist sehr alt, und hatte sich nicht viel ¨ber die jahrhunderts verändert, aber es ist nicht nur irgendwelche uralte Höhle; es gibt Gerüchte, dass nicht nur das Artefakt, sondern uralte Zaubersprüche liegt in diese Höhle...Naja, ich bin mir sicher, sie werden dir nutzlich sein, wenn du sie findest, aber nur das Artefakt ist mir wichtig.[right]-Kaleva[/right]"
+LVL_DUNGEON,Dungeon,Verlies
+LVL_DUNGEON_DESCRIPTION,"You have passed the test and proven your worth. I am now confident that I can send you to a new area kept far off of the mainland on an island. This place is an old dungeon that used to be filled with shady characters, left there to die and rot. But don't get too comfortable! It is still a dangerous place, and you must not stay too close to the areas where the roof has been destroyed. I hope you can find the item I am looking for.[right]-Kaleva[/right]","Du hast die Prüfung bestanden, und deine Würde bewiesen. Ich bin nun überzeugt, dass ich dich zu einem neuem Ort, entfernt von der Hauptinsel auf ein kleiner Insel schicken darf. Dieser Ort war ein alter Kerker, der einst mit verdächtige Menschen gefüllt, und hatten nichts erwartet außer den Tod und Verderben. Sei doch nicht zu bequem! Es ist immer noch ein gefährlicher Ort, und du musst von offene Stelle des zerstörtes Dach fern bleiben. Ich hoffe, du findest den Gegenstand, den ich nach suche.[right]-Kaleva[/right]"
+LVL_ICECAVE,Ice Cave,Eishöhle
+LVL_ICECAVE_DESCRIPTION,"You have passed the test and proven your worth. I am now confident that I can send you to a new area on the northern frontiers of the Winter Continent. It is an ice cave with lots of dangerous traps, but the cold should pose no problems for you. Unfortunately, it hasn't been cold enough to freeze some of the inhabitants of that cave, but I'm sure you can do something about that, can you? There's something hidden deep within this cave that I hope you will find.[right]-Kaleva[/right]","Du hast die Prüfung bestanden, und deine Würde bewiesen. Ich bin nun überzeugt, dass ich dich zu einem neuem Ort auf die Nordseite von der Winterkontinent schicken darf. Es ist eine Eishöhle mit viele gefährliche Fallen, aber die Kalte sollte dir überhaupt kein Problem sein. Leider ist es nicht kalt genug, alle Wesen in die Höhle ein zu frieren, aber ich bin mir sicher, du kummerst dich dran, oder? Da ist etwas tief in die Höhle versteckt, und ich hoffe, du findest ihn.[right]-Kaleva[/right]"
+LVL_MAUSOLEUM,Central Mausoleum,Hauptgruft
+LVL_MAUSOLEUM_DESCRIPTION,"Now I feel you are ready to explore the main crypt of the Autumn Continent. It's had a long history of serving as the graves of various people throughout the centuries; it was originally used for the members of royalty, but they fell out of favor, and it has since been used for all manner of the dead. It's also no coincidence that it happens to be near the Cathedral ruins where people used to hold services to the dead there. I'm only looking for one artifact here though. Can you find it?[right]-Kaleva[/right]","Nun denke ich, du bist fertig die Hauptgruft von der Herbstkontinent herum zu stöbern. Es hatte eine lange Geschichte als es als Grab für verschiedene Leute durch die Jahrhunderts dient. Ursprünglich, dient es die königliche Familienmitglieder, aber sie ging zum Niederlage, und es ist seit damals für alle Art von Tode verwendet. Es ist also kein Zufall, dass es sich in der Nähe von die Kathedraleruinen fand, wo die Menschen einst seine Rituale zur Gestorbene macht. Doch suche ich hier nur nach einen Artefakt. Kannst du es finden?[right]-Kaleva[/right]"
+LVL_HOLYRUINS,Cathedral Ruins,Kathedraleruinen
+LVL_HOLYRUINS_DESCRIPTION,"There used to be a cathedral here, once long ago. It used to be a lot bigger...the humans really take their worship too seriously. Although it's been destroyed, it's not devoid of activity. I've heard magical beings live here, and the place is littered with traps. Your acrobatic abilities should come in handy here. I haven't seen what those beings look like just yet, but I've heard they have the ability to emit large amounts of light with similar effects to sunlight. If that's true, you need to be very careful if you meet them.[right]-Kaleva[/right]","Da war einmal ein Kathedrale hier im Urlalte Zeiten vor. Es war früher mal auch viel größer...die Menschen behalten ihre Anbetung viel zu ernsthaft. Obwohl die bereits zerstört ist, ist sie nicht ganz leer. Ich habe gehört, magische Wesen wohnt da, und sie ist mit Fälle bedeckt. Deine Geschichtheit soll hier nutzlich sein. Ich habe leider noch keine Ahnung, wie diese Wesen aussieht, aber ich hab gehört, sie haben die Fähigkeit, ein große Menge von Licht mit Einzelheiten von Sonnenlicht zu strahlen. Wenn das stimmt, dann muss du sehr vorsichtig sein, falls du sie triffst.[right]-Kaleva[/right]"
+LVL_CAPECRYPT,Cape Crypt,Kapkrypta
+LVL_CAPECRYPT_DESCRIPTION,"There once lived a ruler on the southern summer continent. He lived many aeons ago, so we don't know very much about him, but he was apparently admired enough that they built large and extravigant buildings and gave him all kinds of riches while he was still alive. We don't know how he died, or why, but he was buried along with all of his riches and otherworldy possessions in a large underground crypt deep in the Cape Forest, and has since been forgotten. Nobody knows if any of his riches have survived, because nobody has come back to tell about it. The rumors say that this crypt is haunted by a spirit wearing riches, that appear not to have aged all those centuries...[right]-An unknown researcher[/right]","Da war einmal ein Führer, der auf die Sudliche Sommerinsel wohnt. Er lebt viele Äonen vor, also wissen wir nicht viel von ihn, aber er scheint von seine Leute bewundert genug, sodass sie ihm große und schöne Gebäude gebaut hatten, und gab ihm alle Art von Reichtum, während er noch am leben war. Wir wissen noch nicht, wie er gestorben war, oder warum, aber er war mit alle seine Reichtum und andere mystische Eigentum in eine große untergrund Krypta gegrabt mitten in den Kap Wald, und ist seit damals vergessen geworden. Niemand kennt, ob irgendeine von seinen Reichtum noch übrig war, da niemand kehrt zurück, um darüber zu berichten. Laut Gerüchte, ist diese Krypta von einem geschmückten Geist besessen. Die Edelsteine war nicht einmal veraltet geworden...[right]-Ein unbekannter Forscher[/right]"
+LVL_MARBLECASTLE,Marble Castle,Marmorfestung
+LVL_MANOR,Marble Castle,Marmorfestung
+LVL_MANOR_DESCRIPTION,"I am sure this next place I am sending you to will be a very interesting experience. This castle is completely constructed from marble. The artist who made it was very skilled, and adorned it with many beautiful sculptures. He spent his entire lifetime building it. I almost envy him for his skills. But I heard he even built four singing statues, one for each voice type. If you manage to find the singing statues, you'll have to come back and tell me more about it.[right]-Kaleva[/right]","Ich bin mir sicher, dieser nächster Ort wird für dich sehr Interessant sein. Dieses Schloss ist ganz von Marmor gebaut. Der Künstler, der es gebaut hatte war sehr geschickt, und hatte es mit viele schöne Skulpturen geschmückt. Es hatte fast sein ganzes Leben gedauert, um dieses Schloss zu bauen. Ich bin fast neidisch von seine Fähigkeiten. Aber ich habe gehört, er hatte auch noch vier singende Statuen nach die vier Stimmlagen gebaut. Falls du es schaffst, die zu finden, sollst du zurück kommen um mir mehr davon zu erzählen.[right]-Kaleva[/right]"
+LVL_START,Room of Trials,Versuchskammer
+LVL_START_DESCRIPTION,"I can't send you out there as you are right now, my friend. It's been centuries since you were last up and about, and I don't know if you have completely healed. Prove you are worthy by completing this little challenge and find the amulet in this chamber.[right]-Kaleva[/right]","So wie du jetzt bist, wage ich es nicht, dich nach draußen zu schicken, mein lieber Kumpel. Es ist jahrehundertslang, seit du aufgewacht bist, und ich weiß nicht, ob du dich ganz gesund bist. Beweise mir, du bist würdig, indem du diese kleine Herausförderung annimmst, und finde das Amulett in diesem Zimmer.[right]-Kaleva[/right]"
+LVL_FOREST2,Forest 2,Wald 2
+LVL_FOREST2_DESCRIPTION,Another good night for drinking blood.,Noch ein schönes Abend zum Blut trinken.
+LVL_COLOSSEUM,Colosseum,Kolosseum
+LVL_COLOSSEUM1,Colosseum Challenge 1,Kolosseum Herausforderung 1
+LVL_COLOSSEUM1_DESCRIPTION,"With every step you take, your strength returns. I feel I can invite you to participate in a challenge held at the colosseum every night. Defeat some enemies and win gold. But don't overdo it; let's start at the bottom and work our way up. This time, you'll be fighting against waves of enemies you've been seeing around the area.[right]-Kaleva[/right].","Mit jede Schritt der du machst, erholst du deine Stärke. Ich denke, ich kann dich zu Teilnahme von eine Kolosseum Herausforderung, die jede Nacht stattfindet, einzuladen. Besieg ein paar Gegner, und gewinn Gold. Aber übertreib es nicht; lass uns von unten anfangen, und nach oben gehen. Dieses mal, kämpfst du gegen Gegner, die du in die Gegend bereits gesehen hast in Wettkämpfen.[right]-Kaleva[/right]"
+LVL_COLOSSEUM2,Colosseum Challenge 2,Kolosseum Herausforderung 2
+LVL_COLOSSEUM2_DESCRIPTION,Kaleva invites you to a duel.,Kaleva herausfordert Sie zum Kampf.
+LVL_CATACOMB,Catacombs,Gruft
+ITEM_POTION,Potion,Getrank
+ITEM_POTION_DESCRIPTION,[color=white]Restores 100HP.[/color],[color=white]Wiederholt 100KP.[/color]
+ITEM_POTION+,Potion+,Getrank+
+ITEM_POTION+_DESCRIPTION,[color=white]Restores 500HP.[/color],[color=white]Wiederholt 500KP.[/color]
+ITEM_POTION++,Potion++,Getrank++
+ITEM_POTION++_DESCRIPTION,[color=white]Restores 2000HP.[/color],[color=white]Wiederholt 2000KP.[/color]
+ITEM_MANAPOTION,Mana Potion,Zaubertrank
+ITEM_MANAPOTION_DESCRIPTION,[color=white]Restores 20MP.[/color],[color=white]Wiederholt 20MP.[/color]
+ITEM_MANAPOTION+,Mana Potion+,Zaubertrank+
+ITEM_MANAPOTION+_DESCRIPTION,[color=white]Restores 50MP.[/color],[color=white]Wiederholt 50MP.[/color]
+ITEM_MANAPOTION++,Mana Potion++,Zaubertrank++
+ITEM_MANAPOTION++_DESCRIPTION,[color=white]Restores 250MP.[/color],[color=white]Wiederholt 250MP.[/color]
+ITEM_STRENGTHPOTION,Strength Potion,Krafttrank
+ITEM_STRENGTHPOTION_DESCRIPTION,[color=white]Increases attack by 1.[/color],[color=white]Angriff steigt um 1 Punkt.[/color]
+ITEM_SHIELDPOTION,Shield Potion,Schildtrank
+ITEM_SHIELDPOTION_DESCRIPTION,[color=white]Increases defense by 1.[/color],[color=white]Verteidigung steigt um 1 Punkt.[/color]
+ITEM_CHARMPOTION,Charm Potion,Glückstrank
+ITEM_CHARMPOTION_DESCRIPTION,[color=white]Increases luck by 1.[/color],[color=white]Glück steigt um 1 Punkt.[/color]
+ITEM_MYSTICPOTION,Mystic Potion,Mystiktrank
+ITEM_MYSTICPOTION_DESCRIPTION,[color=white]Increases magic by 1.[/color],[color=white]Zauber steigt um 1 Punkt.[/color]
+ITEM_AMULET,Amulet,Amulett
+ITEM_AMULET_DESCRIPTION,[color=white]Proof of competence.[/color],[color=white]Beweis von Fähigkeit.[/color]
+ITEM_STYXINSCRIPTION,Styx Inscription,Styx Inschrift
+ITEM_STYX_DESCRIPTION,[color=white]One of the Styx artifacts.[/color],[color=white]Einer des Styx Artefakts.[/color]
+ITEM_STYXCHALICE,Styx Chalice,Styx Kelch
+ITEM_STYXCOIN,Styx Coin,Styx Münze
+ITEM_STYXTOME,Styx Tome,Styx Wälzer
+ITEM_STYXFIGURINE,Styx Figurine,Styx Figur
+ITEM_STYXBROOCH,Styx Brooch,Styx Brosche
+ITEM_STYXCREST,Styx Crest,Styx Wappen
+ITEM_STYXMIRROR,Styx Mirror,Styx Spiegel
+ITEM_RUBYKEY,Ruby Key,Rubinschlüssel
+ITEM_RUBYKEY_DESCRIPTION,[color=white]One of the seven gem keys. Unlocks ruby gates.[/color],[color=white]Einer der sieben Edelsteinschlüssel. Öffnet Rubintore.[/color]
+ITEM_EMERALDKEY,Emerald Key,Smaragdschlüssel
+ITEM_EMERALDKEY_DESCRIPTION,[color=white]One of the seven gem keys. Unlocks emerald gates.[/color],[color=white]Einer der sieben Edelsteinschlüssel. Öffnet Smaragdtore.[/color]
+ITEM_SAPPHIREKEY,Sapphire Key,Saphirschlüssel
+ITEM_SAPPHIREKEY_DESCRIPTION,[color=white]One of the seven gem keys. Unlocks sapphire gates.[/color],[color=white]Einer der sieben Edelsteinschlüssel. Öffnet Saphirtore.[/color]
+ITEM_DIAMONDKEY,Diamond Key,Diamantschlüssel
+ITEM_DIAMONDKEY_DESCRIPTION,[color=white]One of the seven gem keys. Unlocks diamond gates.[/color],[color=white]Einer der sieben Edelsteinschlüssel. Öffnet Diamanttore.[/color]
+ITEM_TOPAZKEY,Topaz Key,Topasschlüssel
+ITEM_TOPAZKEY_DESCRIPTION,[color=white]One of the seven gem keys. Unlocks topaz gates.[/color],[color=white]Einer der sieben Edelsteinschlüssel. Öffnet Topastore.[/color]
+ITEM_PERIDOTKEY,Peridot Key,Peridotschlüssel
+ITEM_PERIDOTKEY_DESCRIPTION,[color=white]One of the seven gem keys. Unlocks peridot gates.[/color],[color=white]Einer der sieben Edelsteinschlüssel. Öffnet Peridottore.[/color]
+ITEM_AMETHYSTKEY,Amethyst Key,Amethystschlüssel
+ITEM_AMETHYSTKEY_DESCRIPTION,[color=white]One of the seven gem keys. Unlocks amethyst gates.[/color],[color=white]Einer der sieben Edelsteinschlüssel. Öffnet Amethysttore.[/color]
+ITEM_EXP,EXP,EP
+ITEM_RECEIVED,[color=white][center]Received [item]![/center][/color],[color=white][center][item] erhalten![/center][/color]
+ITEM_NEW,new,neu
+ITEM_NONE,(No Items),(Keine Gegenstände)
+SCROLL_NONE,(No scroll selected),(Keine Schriftrolle ausgewählt)
+SCROLL_EMPTY,(No scrolls available),(Keine Schriftrolle verfügbar)
+SCROLL_MAGIC,Scroll of Magic,Schriftrolle von Magie
+SCROLL_MAGIC_TITLE,Magic Spells,Zaubersprüche
+SCROLL_MAGIC_SHORT,[color=white]Contains information about magic spells.[/color],[color=white]Enthalt Lehre über Zaubersprüche.[/color]
+SCROLL_MAGIC_DESCRIPTION,"[color=red]Basics[/color][break]Magic spells can have various effects on various things. You can only use a spell if it is equipped, and you will only be able to equip one at a time. To equip a spell, you can simply cycle through all available spells with [color=red][code][ui_spell_prev][/code][/color] or [color=red][code][ui_spell_next][/code][/color]. To use a spell, press [color=red][code][ui_magic][/code][/color]. Watch your [color=red]MP[/color]! Using spells cost [color=red]MP[/color], and you will not be able to use a spell if you do not have enough [color=red]MP[/color]. You can usually restore your [color=red]MP[/color] with a [color=red]Mana Potion[/color] or just waiting around. Your [color=red]MP[/color] will regenerate itself slowly over time.[break][break][color=red]Obtaining Spells[/color][break]You start the game off with only one basic spell, but there are plenty of other spells you can obtain or learn. You can get them by [color=red]talking to certain characters[/color] or by [color=red]buying[/color] them. You can see all the spells you currently have by looking at the [color=red]magic section in the pause menu[/color].[break][break][color=red]Types of Spells[/color][break]There are two basic types of spells--[color=red]Single shot[/color] and [color=red]charge[/color] spells. [color=red]Single shot[/color] spells are less common, but are the easiest to use. Simply press the [color=red][code][ui_magic][/code][/color] button once and they will activate right away. [color=red]Charge[/color] spells comprise a large majority of the spells available and require a [color=red]charging[/color] phase before they take effect. To charge a spell, hold down the [color=red][code][ui_magic][/code][/color] button a certain amount of time. When you let go of the button, the spell will activate. The longer you charge the spell, the more damage it does or the greater its effects. However, once again, you need to watch your [color=red]MP[/color], as spells that are charged longer generally cost more [color=red]MP[/color]. When you are charging a spell, a portion of the MP gauge turns [color=red]yellow[/color] to indicate how much [color=red]MP[/color] the spell will consume when it is released.","[color=red]Grundkenntnis[/color][break]Zaubersprüche wirkt verschiedene Wirkungen auf verschiedene Objekte. Sie durfen nur einen Zauberspruch die ausgerüstet ist verwenden, und gleichzeitig nur einen Zauberspruch. Um einen Zauberspruch auszurüsten, einfach durch alle verfügbare Zaubersprüche mit [color=red][code][ui_spell_prev][/code][/color] oder [color=red][code][ui_spell_next][/code][/color] drehen. Achtet auf ihre [color=red]MP[/color]! Verwendungen von Zaubersprüche braucht [color=red]MP[/color], und Zaubersprüche haben keine Wirkung wenn Sie nicht genug [color=red]MP[/color] haben. Normalerweise, können Sie Ihre MP genesen, indem Sie ein [color=red]Zaubertrank[/color] benutzen oder einfach abwarten. Ihre MP wiederholt sich selbst durch etwas Zeit ablaufen. [break][break][color=red]Zaubersprüche bekommen[/color][break]Sie fangen das Spiel mit nur einen grundlichen Zauberspruch an, aber es gibt viele andere Zaubersprüche, die Sie später bekommen oder lernen können. Sie können sie bekommen indem Sie mit [color=red]jene Charaktere sprechen[/color], oder sie [color=red]kaufen[/color]. Sie durfen alle Zaubersprüche die Sie je gefunden haben, indem Sie zu dem [color=red]Zauberspruchteil der Pausemenü[/color] ansehen.[break][break][color=red]Arte von Zaubersprüche[/color][break]Es gibt zwei grundliche Art von Zaubersprüche--[color=red]einmalige[/color] und [color=red]aufladen[/color]. [color=red]Einmalige[/color] Zaubersprüche sind selten aber einfachste zu verwenden. Einfach die [color=red][code][ui_magic][/code][/color] einmal drücken, und der Zauberspruch wirkt sofort. [color=red]Aufladene[/color] Zaubersprüche sind die häufigste von die verfügbare Zaubersprüche, und brauchen ein [color=red]Aufladungsphase[/color] vor sie ihre volle Wirkungen nehmen. Um eine aufladene Zauberspruch aufzuladen, halten Sie das [color=red][code][ui_magic][/code][/color] für ein bestimmte Weile. Lassen Sie die Taste los, und der Zauberspruch wird sich wirken. Je langer Sie der Zauberspruch aufladen, desto mehr Schaden oder Wirkungen macht der Zauberspruch. Aber wie immer, Sie mussen noch Ihre [color=red]MP[/color] beobachten, da Zaubersprüche, die langer aufgeladen sind, brauchen auch mehr [color=red]MP[/color]. Als Sie einen Zauberspruch aufladen, wird ein Teil von das MP Rohre [color=red]gelb[/color] werden, um zu zeigen, wie viele [color=red]MP[/color] wird benutzt wenn der Zauberspruch verwendet wird.[break][break]"
+SCROLL_FIGHT,Scroll of Combat,Schriftrolle der Kampfkunst
+SCROLL_FIGHT_TITLE,Attacking,Kämpfen
+SCROLL_FIGHT_SHORT,[color=white]Contains information about attacking.[/color],[color=white]Enthalt Lehre über Kämpfen.[/color]
+SCROLL_FIGHT_DESCRIPTION,"[color=red]Weapon Morph[/color][break]A vampire's basic weapons are made from magical energy in the form of a weapon. This is called a [color=red]weapon morph[/color]. Press the [color=red][code][ui_attack][/code][/color] button to use it. It takes most vampires many years to master the ability to shape and use magical energy as a weapon. Due to the nature of this technique, most vampires usually only specialize in shaping one or two [color=red]weapon morphs[/color]. Once mastered, the [color=red]weapon morph[/color] can be used frequently without requiring too much [color=red]MP[/color] from the user.[break]The attack power of the [color=red]weapon morph[/color] depends on the [color=red]Attack[/color] stat. Occasionally, you may get lucky and do extra damage. [color=red]Critical[/color] attacks like this depend on the [color=red]Luck[/color] stat.[break][break][color=red]Elemental Fusion[/color][break]This ability allows vampires to fuse their [color=red]magic spells[/color] with their weapon morphs. It adds the currently equipped magic spell's [color=red]elemental characteristics[/color] to their weapon morph attacks, allowing these attacks to possess interesting properties. When faced against certain enemies, careful choice of the equipped spell can cause basic attacks to do more damage. For example, try having the [color=red]fire spell[/color] equipped when you attack a [color=red]skeleton[/color], or an [color=red]ice spell[/color] when you are up against a [color=red]lizardman[/color]. But be aware--not all the side effects of the elemental fusion are always beneficial. Some enemies have [color=red]resistance[/color] to certain elements, so you will want to avoid fusing certain spells while attacking those enemies!","[color=red]Waffengestalt[/color][break]Die grundwaffe von einem Vampir steht aus magische Kräfte, die die Gestalt von eine Waffe nimmt. Diese nennt man eine [color=red]Waffengestalt[/color]. Drücken Sie [color=red][code][ui_attack][/code][/color] um sie zu verwenden. Vor sie es gemeistert hatte, dauert es viele Jahre für die meiste Vampiren um diese Fähigkeit, magische Energie zu formen und als Waffe zu benutzen. Wegen die Natur von solche Technik, kann die meiste Vampiren nur eins oder zwei [color=red]Waffengestalt[/color] formen. Als sie gemeistert sind, durfen die [color=red]Waffengestalt[/color] mehrmals verwendet geworden, ohne zu viele [color=red]MP[/color] zu brauchen.[break]Die Angriffskraft von ihre [color=red]Waffengestalt[/color] hangt auf [color=red]Angriff[/color] ab. Ab und zu, durfen Sie glücklich sein, und ihre Angriffe machen zusätzliche Schaden. Solche [color=red]kritische[/color] Angriffe hängt auf [color=red]Glück[/color] ab.[break][break][color=red]Elementarische Vereinigung[/color][break]Diese Fähigkeit ermöglicht Vampiren ihre ausgerüsteter [color=red]Zauberspruch[/color] mit ihre Waffengestalt zu vereinigen. Die [color=red]elementarische Eigenschafte[/color] von der ausgerüstete Zauberspruch wird zu ihre Waffengestalt hinzugefügt, und ermöglicht, zusätzliche Wirkungen auf ihre Angriffen. Gegen manche Gegner, darf gute Auswahl von der Zauberspruch grundliche Angriffe verstärken. Zum Beispiel, versuchen Sie das [color=red]Feuerzauberspruch[/color] auszurüsten, während Sie gegen ein [color=red]Skelett[/color] kämpfen, oder ein [color=red]Eiszauberspruch[/color] gegen ein [color=red]Eidechsemann[/color]. Aber sei gewarnt--nicht alle Wirkungen von elementarische Vereinigung sind gut. Manche Gegner haben [color=red]Schutz[/color] gegen jene Elemente, und wenn Sie gegen solche Gegner kämpfen, sollen Sie die Vereinigung von bestimmte Zauberspruch vermeiden!"
+SCROLL_START,Scroll of Beginnings,Schriftrolle von Anfänge
+SCROLL_START_TITLE,The Basics,Grundkenntnis
+SCROLL_START_SHORT,[color=white]Contains information for beginners.[/color],[color=white]Enthalt Lehre für Anfänger.[/color]
+SCROLL_START_DESCRIPTION,"[color=red]About these Scrolls[/color][break]You will find [color=red]scrolls[/color] like this lying about throughout the game or from some characters. If you are new to this game, collecting them is recommended as they provide valuable information and tips and tricks for playing this game. You can find all the [color=red]scrolls[/color] you have collected in this section. Use the [color=red]arrow keys[/color] to scroll between [color=red]scrolls[/color] or scroll while reading one.[break][break][color=red]Moving Around[/color][break]Simply use the [color=red]direction keys[/color] to move around where you want to go. You can also jump and climb onto some ledges by pressing and holding [color=red][code][ui_jump][/code][/color].[break]If you are close enough to a ledge, you will automatically hang onto it. Press [color=red][code][ui_up][/code][/color] to climb on top of it or press [color=red][code][ui_jump][/code][/color] or the opposite direction to fall off of it. If you are standing on a platform, you can also crouch with [color=red][code][ui_down][/code][/color] to evade attacks or hit shorter enemies.[break][break][color=red]Talking to Characters[/color][break]You will meet some characters you can talk to. Simply walk up to them and press the [color=red][code][ui_blood][/code][/color] button to talk to them. You can tell if you can talk to a character by the [color=red]bubble[/color] that appears above your head when you walk up to them. Press [color=red][code][ui_attack][/code][/color], [color=red][code][ui_magic][/code][/color] or [color=red][code][ui_blood][/code][/color] to go through the dialogue.[break][break][color=red]Dark Orbs and Leveling Up[/color][break]You will encounter many enemies throughout your adventure. When enemies are defeated, [color=red]dark orbs[/color] will appear. These [color=red]dark orbs[/color] contain [color=red]experience points (EXP)[/color], which you should collect if you want to level up. Your stats increase when you gain levels, so collecting [color=red]dark orbs[/color] is recommended. You can see how much [color=red]EXP[/color] you have obtained so far by looking into the stats section in the menu.[break][break][color=red]Gold[/color][break]The currency in this game is [color=red]gold[/color]. You can collect [color=red]gold[/color] from defeating enemies, from certain characters, selling items or completing levels. If you save up enough [color=red]gold[/color], you can use it to buy useful items at shops offered by various characters throughout the game. The amount of [color=red]gold[/color] you have collected is also displayed in the stats section of the menu.","[color=red]Über diese Schriftrollen[/color][break]Sie durfen solche [color=red]Schriftrolle[/color] wie dieses überall in diesem Spiel oder auch von manche Charakteren finden. Sind Sie ein Anfanger, es ist empfehlt, daß man so viele [color=red]Schriftrollen[/color] wie möglich sammeln, da sie wertvolle Infos, Tipps und anderer Rat enthalten. Sie werden alle [color=red]Schriftrollen[/color], die Sie bereits gesammelt haben hier finden. Benutzen Sie die [color=red]Pfeilentaste[/color] um zwischen [color=red]Schriftrollen[/color] zu wechseln, oder scrollen um sie weiter zu lesen.[break][break][color=red]Durch den Spiel Bewegen[/color][break]Bewegen ist einfach. Nur die [color=red]Richtungstaste[/color] benutzen, um zu gehen wo Sie verlangen. Sie durfen springen und auf Plattforme klettern, indem Sie [color=red][code][ui_jump][/code][/color] drücken.[break]Wenn Sie in der Nähe von einem Klippe sind, werden Sie automatisch darauf hangen. Drücken Sie [color=red][code][ui_up][/code][/color] um darauf zu klettern, oder [color=red][code][ui_jump][/code][/color] oder die Taste für die Gegenrichtung drücken, um nach unten zu fallen. Falls Sie auf den Boden stehen, durfen Sie auch mit  [color=red][code][ui_down][/code][/color] kauern, um Angriffe zu vermeiden oder kürzere Gegner zu treffen.[break][break][color=red]Mit Charaktere Sprechen[/color][break]Sie durfen manchmal Charaktere treffen, die mit Ihr sprechen können. Einfach zu ihr gehen und die [color=red][code][ui_blood][/code][/color] Taste drücken. Sie können wissen, ob ein Charakter hat etwas zu sagen indem Sie zu ihm gehen und eine [color=red]Sprechblase[/color] erscheint. Drücken Sie [color=red][code][ui_attack][/code][/color], [color=red][code][ui_magic][/code][/color] oder [color=red][code][ui_blood][/code][/color] um durch der Dialog zu lesen.[break][break][color=red]Finsterkugeln und Stufe Erhöhen[/color][break]Sie durfen viele Gegner durch Ihre Abenteuer treffen. Wenn die Gegner besiegt geworden sind, wird [color=red]Finsterkugeln[/color] erscheinen. Diese [color=red]Finsterkugeln[/color] enthalten [color=red]Erfahrungspunkte (EP)[/color], die man sammeln soll, um höhere Stufe zu erreichen. Ihrer Stand wird sich erhöht als Sie höhere Stufe erreichen, also ist es empfehlt [color=red]Finsterkugeln[/color] zu sammeln. Sie können sehen, wie viele [color=red]EP[/color] Sie soweit bekommt haben indem Sie die Standteil in Menü ansehen.[break][break][color=red]Gold[/color][break]Das Geld in dieses Spiel ist [color=red]Gold[/color]. Sie können [color=red]Gold[/color] von Besiegen von Gegner, manche Charaktere, Gegenstände verkaufen oder Ebene vollenden bekommen. Speichern Sie genug [color=red]Gold[/color], durfen Sie benutzvolle Gegenstände bei verschiedene Händler durch den Spiel kaufen. Sie können sehen, wie viele [color=red]Gold[/color] Sie gesammelt haben indem Sie die Standteil der Menü anschauen."
+SCROLL_WARRIOR,Warrior Scroll,Schriftrolle der Krieger
+SCROLL_WARRIOR_TITLE,Chain Attacking,Kettenangriffe
+SCROLL_WARRIOR_SHORT,[color=white]Contains information about chain attacks.[/color],[color=white]Enthalt Lehre über Kettenangriffe.[/color]
+SCROLL_WARRIOR_DESCRIPTION,"[color=red]Chain Attacking[/color][break]Combining a blend of different fighting styles and bladed weapons allows you to [color=red]chain[/color] your attacks and deliver [color=red]consecutive attacks[/color] to enemies and vary your attack patterns. Learning [color=red]chain attacks[/color] is easy--once you know how to perform it. A [color=red]chain attack[/color] consists of several [color=red]rapid successive attacks[/color], which can be followed up by a [color=red]special[/color] or two. Once you have started attacking an enemy or a target, [color=red]chain[/color] will show up to indicate successful chain attacks. Once you have initiated a [color=red]chain attack[/color], you can begin using [color=red]chain specials[/color] by pressing a [color=red]specific sequence of buttons[/color] while still targeting an enemy. The exact combinations are a secret! But they are easy enough to figure out on your own, with a bit of experimentation. There is enough blank space on this scroll for you to write down any specials when you discover them.[break][break]All attacks in this list assume you are facing the right side.[break][break][CHAIN_THRUST][CHAIN_CHOP][CHAIN_SKEWER][CHAIN_DUALSPIN][CHAIN_SWIFT][CHAIN_RUSH][CHAIN_SLICE][CHAIN_STAB][CHAIN_VOID]","[color=red]Kettenangriffe[/color][break]Die Mischung von verschiedene Kampfstil und Klinge fügt neue [color=red]Kettenangriffe[/color] zu Ihre Macht hinzu und Sie können [color=red]einen Angriff nach den andere[/color] auf Ihre Gegner bringen. [color=red]Kettenangriffe[/color] zu lernen ist einfach--sobald Sie wissen, wie man es tun. Ein [color=red]Kettenangriff[/color] steht auf mehrere [color=red]erfolgreiche Angriffe, einem nach den andere[/color]. Nachdem ist es möglich ein oder zwei weitere [color=red]Besonderangriffe[/color] hinzufügen. Nach Sie einen Ziel oder Gegner angegriffen haben, [color=red]chain[/color] steht da, um zu zeigen, dass Sie erfolgreich Kettenangriffe gemacht haben. Nach einem erfolgreiche [color=red]Kettenangriff[/color], dürfen Sie ein Besonderangriff verwenden, indem sie ein [color=red]bestimmte Reihenfolge von Knöpfe[/color] drücken, während Sie das Gegner oder Ziel noch in Sicht haben. Die genaue Reihenfolgen sind Geheimnisse! Aber sie sind einfach genug um alleine sie hinzubekommen, mit ein wenig Versuchen. Hier gibt es mehr als genug leere Platz auf diese Schriftrolle worauf Sie die Reihenfolgen schreiben können, falls Sie sie entdecken.[break][break]Alle Angriffe auf die Liste nimmt an, daß Sie sich auf rechts richten.[break][break][CHAIN_THRUST][CHAIN_CHOP][CHAIN_SKEWER][CHAIN_DUALSPIN][CHAIN_SWIFT][CHAIN_RUSH][CHAIN_SLICE][CHAIN_STAB][CHAIN_VOID]"
+CHAIN_THRUST,[color=red][code][ui_attack] [ui_attack] [ui_attack][/code][/color][break]Lunge at enemies with a single point strike.[break][break],[color=red][code][ui_attack] [ui_attack] [ui_attack][/code][/color][break]Bohrt durch Gegner in die Richtung eines einzelnes Ziel.[break][break]
+CHAIN_CHOP,[color=red][code][ui_attack] [ui_attack] [ui_down][/code][/color][break]Slice downwards on enemies with a large blade.[break][break],[color=red][code][ui_attack] [ui_attack] [ui_down][/code][/color][break]Ein große Hieb nach unten mit größere Klinge.[break][break]
+CHAIN_SKEWER,[color=red][code][ui_attack] [ui_attack] [ui_up][/code][/color][break]Slice upwards on enemies with a curved blade.[break][break],[color=red][code][ui_attack] [ui_attack] [ui_up][/code][/color][break]Große Hieb nach oben mit eine gekrümmte Klinge.[break][break]
+CHAIN_DUALSPIN,[color=red][code][ui_attack] [ui_attack] [ui_right][/code][/color][break]Attack enemies on both sides with a spin attack with two blades.[break][break],[color=red][code][ui_attack] [ui_attack] [ui_right][/code][/color][break]Greift Gegner an mit zwei Klinge und Wirbelbewegung.[break][break]
+CHAIN_SWIFT,"[color=red][code][ui_attack][ui_attack][ui_attack] [ui_attack][/code][/color][break]Swift multiple point strike attack.[break][break]","[color=red][code][ui_attack][ui_attack][ui_attack] [ui_attack][/code][/color][break]Mehrere schnelle Angriffe, die durch die Gegner bohren.[break][break]"
+CHAIN_RUSH,[color=red][code][ui_attack][ui_attack][ui_attack] [ui_right][/code][/color][break]Cut through enemies at high speed.[break][break],[color=red][code][ui_attack][ui_attack][ui_attack] [ui_right][/code][/color][break]Schneidet durch Gegner auf höhe Geschwindigkeit.[break][break]
+CHAIN_SLICE,[color=red][code][ui_attack][ui_attack][ui_down] [ui_up][/code][/color][break]Uses the low vantage point from the previous attack to spring up on enemies.[break][break],[color=red][code][ui_attack][ui_attack][ui_down] [ui_up][/code][/color][break]Benutzt die niedrige Stelle von die frühere Angriff um auf Gegner nach oben zu springen.[break][break]
+CHAIN_STAB,[color=red][code][ui_attack][ui_attack][ui_up] [ui_down][/code][/color][break]Uses the height from the previous attack to perform a downwards stabbing attack.[break][break],[color=red][code][ui_attack][ui_attack][ui_up] [ui_down][/code][/color][break]Auf ein höhere Stelle von die frühere Angriff auf die Erde stoßen.[break][break]
+CHAIN_VOID,[color=red][code][ui_attack][ui_attack][ui_right] [ui_down][/code][/color][break]A hybrid magic spell and attack that involves reappearing behind the enemy for a surprise attack.[break][break],[color=red][code][ui_attack][ui_attack][ui_right] [ui_down][/code][/color][break]Mischung zwischen Zauberspruch und Angriff womit man Gegner von hinten überascht.[break][break]
+SCROLL_ADVENTURE,Adventurer's Scroll,Schriftrolle der Abenteurer
+SCROLL_ADVENTURE_TITLE,Advanced Movement,Erweiterte Bewegungen
+SCROLL_ADVENTURE_SHORT,[color=white]Contains information about advanced movement.[/color],[color=white]Enthalt Lehre über erweiterte Bewegungen.[/color]
+SCROLL_ADVENTURE_DESCRIPTION,"[color=red]Hanging[/color][break]Characters whose primary weapon is the [color=red]whip[/color] have access to advanced maneuvers that allow them to reach higher places. Hanging is easy. When you attack with the whip, and hold down the button, you can latch onto some surfaces and hang from them. Let go of the button, and you will fall. Additionally, there are some [color=red]switches[/color] you can only pull by hanging from them with the whip. Aiming for these switches and ledges is made easier by being able to whip in [color=red]eight different directions[/color]. You can adjust your hanging height by pressing [color=red][code][ui_up][/code][/color] or [color=red][code][ui_down][/code][/color].[break][break][color=red]Swinging[/color][break]Pegs in walls can be latched onto with the whip, allowing you to swing from them. Latching on is like hanging. Attack to latch on, and let go to fall. Additionally, you can swing faster or slower by pressing [color=red][code][ui_left][/code][/color] or [color=red][code][ui_right][/code][/color] at the right time.[break][break]","[color=red]Hängen[/color][break]Abenteurer, wessen Hauptwaffe eine [color=red]Peitsche[/color] ist, dürfen weiterentwickelte Techniken verwenden, die sie zum höheren Örte führen können. So einfach ist es. Angreifen Sie mit die Peitsche und die Knopf halten, dürfen Sie auf manche Gegenstände fangen und darauf hängen. Lassen Sie die Knopf los, und Sie werden fallen. Zusätzlicherweise, gibt es auch [color=red]Schalter[/color], die Sie nur mit die Peitsche ziehen können. Zielen auf die Schalter und Fläche ist vereinfacht, indem Sie durch [color=red]acht Richtungen[/color] peitschen können. Mit [color=red][code][ui_up][/code][/color] oder [color=red][code][ui_down][/code][/color] dürfen Sie Ihre Höhe verändern.[break][break][color=red]Schwingen[/color][break]Pflocke in die Wände dürfen Sie mit Peitsche fangen, und so auf sie schwingen. Sie zu fangen ist genau wie beim hängen. Angreifen Sie um einen Pflock zu fangen, und lassen Sie los um zu fallen. Sie können auch etwas Schwung bekommen oder langsamer schwingen, indem Sie [color=red][code][ui_left][/code][/color] oder [color=red][code][ui_right][/code][/color] rechtzeitig drücken.[break][break]"
+SCROLL_MOON3,"Moon Scroll III","Mondschriftrolle III"
+SCROLL_MOON3_TITLE,"Moon Scroll of Secrets III","Mondschriftrolle von Geheimnisse III"
+SCROLL_MOON3_SHORT,"[color=white]3rd volume of the moon scroll of secrets.[/color]","[color=white]3. Band von die Mondschriftrolle von Geheimnisse.[/color]"
+SCROLL_MOON3_DESCRIPTION,"[color=red]Skinny Dipping off Limits[/color][break]Have you tried exploring the lava pit areas of the lava cave? It's particularly dangerous down there with all the lava, but a little dip couldn't hurt...[break][break][color=red]The Four Continents[/color][break]There are four continents in this world, named after each of the four seasons. Their climate similarly matches the name they're given. The Winter Island Continent, far to the north is a cold region with plenty of snow and ice. The Fall Island Continent, far to the west has a moderate climate with fiery looking trees, and is the most inhabited island of all the other continents. The Spring Island Continent, far to the east also has a moderate climate with a lot of vegetation and high cliffs on the eastern side. And lastly, the Summer Island Continent, far to the south, is the hottest continent of them all.[break][break][color=red]Flash it if you have it[/color][break]The four singing statues in the Marble Castle have a strange anomaly. The head statue apparently flashes off signals in its head piece in a seemingly random pattern. But we don't think it's quite as random at all. For some reason, this anomaly causes the statue to reveal its weak spot from the signals it flashes off. Pay close attention to them; you might find out how to destroy it that way.","[color=red]Baden Verboten[/color][break]Haben Sie versucht, die Gegend um die Lavatiefe in die Lavahöhle zu untersuchen? Da ist es ganz schön gefährlich wegen die Lava, aber ein bisschen Umsehen schadet nicht...[break][break][color=red]Die Vier Kontinenten[/color][break]In dieser Welt gibt es vier Kontinenten, nach die vier Jahrezeiten genannt. Ihre Klima ist mit ihre Namen verbindet. Der Winterinsel Kontinent, weit zum Nord, liegt in einen kalten Gebiet mit viele Schnee und Eis. Der Herbstinsel Kontinent, weit zum West, hat ein mildes Klima, mit feuerig aussehende Bäume, und ist der Kontinent mit die meiste Leute bevölkerte. Der Frühlingsinsel Kontinent, weit zum Ost, hatte auch ein mildes Klima, mit viele Pflanzen und höhe Klippe auf die Ost Seite. Und letztendlich, der Sommerinsel Kontinent, weit zum Sud, ist der heißeste Kontinent von allem.[break][break][color=red]Die Lichter verratet Alles[/color][break]Die vier singende Statuen in die Marmorfestung haben ein seltsame Eigenschaft. Die Kopfstatue gibt durch ihre Kopfteilen Lichter in einem zufällige Reihenfolge aus. Aber wir sind die Meinung, dass es nicht ganz zufällig ist. Wegen irgendwelches Grund, verratet dieses komische Behaltens den Schwachpunkt der Statuen. Gibt Acht auf die Lichter; man kann so erfahren, wie die Statuen so zerstört geworden sind."
+DIAG_DEFAULT,[color=white]I am an NPC.[/color],[color=white]Ich bin ein NSC.[/color]
+DIAG_START0,[color=white]Welcome to [color=red]the Lost Catacombs[/color]. You can rest here and travel between worlds. You may also exchange [color=yellow]gold[/color] you have collected so far for items here as well. I can move these catacombs to different points around the world. Please talk to me again to see a map of all these points.[/color],"[color=white]Wilkommen zu [color=red]der verlorene Gruft[/color]. Sie können hier ausrühen und zwischen Welte reisen. Sie durfen auch Ihre [color=yellow]Gold[/color] für Gegenstände austauchen. Ich kann diese Gruft zur verschiedene Punkte um die Welt umziehen. Bitte mit mir wieder sprechen, falls Sie eine Karte von diese Punkte sehen wollen.[/color]"
+DIAG_START1,[color=white]I can take you there with my magic.[/color],[color=white]Ich kann dich mit meine Zauberkraft da mitbringen.[/color]
+DIAG_START2,[color=white]Rather empty for a catacomb.[/color],[color=white]Sieht aber leer für eine Gruft.[/color]
+DIAG_START3,"[color=white]Please excuse the emptiness, for the tileset is missing.[/color]","[color=white]Hab etwas Geduld, da die Tileset noch fehlt.[/color]"
+DIAG_START4,"[color=white]Anyways, what would you like to do?[/color]","[color=white]Trotzdem, was willst du tun?[/color]"
+DIAG_START5,[color=white][center]Overview map is not yet available.[/center][/color],[color=white][center]Übersichtkarte noch nicht Verfügbar.[/center][/color]
+DIAG_KALEVA0,[color=white]What would you like to do?[/color],[color=white]Was möchtest du?[/color]
+DIAG_KALEVA_TIP1,[color=white]Some areas have [color=red]hidden shortcuts[/color]. You're not going to find them by simply loitering around though.[/color],"[color=white]Manche Bereiche haben [color=red]geheime Abkurzungen[/color]. Aber du wurdest sie nicht finden, solange du einfach da herumlungerst und nichts tun.[/color]"
+DIAG_KALEVA_TIP2,"[color=white]I have some [color=red]tags[/color] you can use if you want to mark areas of interest on the map. Then you can come back to them later if you miss anything.[/color]","[color=white]Ich habe ein paar [color=red]Fähnchen[/color], die du verwenden kannst, um Interessante Örter auf die Karte zu markieren. Dann kannst du einfach später zurückkommen, falls du etwas bei diesen Örter vergessen hast.[/color]"
+DIAG_KALEVA_TIP3,"[color=white]The victim impaled on this pole next to me is long gone, and poses no threat at all. Feel free to use him for target practice.[/color]","[color=white]Der Opfer, gespießt auf dieser Stange neben mir ist langst hinüber, und ist überhaupt kein Gefahr. Du bist frei, ihm als Übungsziel zu verwenden.[/color]"
+DIAG_KALEVA_TIP4,"[color=white]Be sure to watch your [color=red]HP[/color] carefully. If you run out of potions and are close to losing all your [color=red]HP[/color], try to make it back here as best you can. You can sleep in your coffin to restore health.[/color]","[color=white]Beachte auf dein [color=red]KP[/color]. Wenn du keine Getränke mehr hast, und dein [color=red]KP[/color] ist fast alle, komm so gut wie du nur kannst hierher zurück. Du darfst in deinem Sarg schlafen, um dich zu heilen.[/color]"
+DIAG_KALEVA_TIP5,"[color=white]Every vampire has a [color=red]familiar statue[/color] that only they can see. Nobody seems to know much about them, but they may show up in various places. If you find one, be sure to [color=red]save[/color] your game there.[/color]","[color=white]Jeder Vampir hat sein eigene [color=red]Vertrauten Statue[/color], die nur er oder sie sehen kann. Niemand scheint viel über sie zu kennen, aber sie dürfen in verschiedene Örter erscheinen. Falls du eine findest, sollst du da dein Spiel [color=red]speichern[/color].[/color]"
+DIAG_RESTORE,[center][color=white]Rest?[/color][/center],[center][color=white]Ausruhen?[/color][/center]
+DIAG_BERGFORTRESS1,"[color=white]A single hit might not be enough to destroy some blocks. You may have to smash them repeatedly.[/color]","[color=white]Um manche Wände zu zerstören, reicht ein einziger Schlag nicht. Versuchen Sie solche Wände mehrmals nach einander zu schlagen.[/color]"
+DIAG_LUCIFER0,"[color=white]Huh, how did you get in here? The wall collapsed, and I couldn't go back the way I came. This place is falling apart, and you could end up trapped if you're not careful.[/color]","[color=white]Huch, wie hast du hierher gekommen? Die Mauer ist abgestürzt, und ich kann nicht mehr zurück. Dieser Ort bricht langsam auseinander, und du kannst hier fest stecken, falls du nicht vorsichtig bist.[/color]"
+DIAG_LUCIFER1,"[color=white]But I guess since you're here, why not train with me?[/color]","[color=white]Aber da du hier bist, warum nicht mit mir ausbilden?[/color]"
+DIAG_GARETH0,"[color=white]There's a lot of traps here, so take your time.[/color]","[color=white]Hier liegt viele Falle, also gehen Sie langsamer.[/color]"
+DIAG_GABRIEL0,"[color=white]I was supposed to meet with the artist of the singing statues, but he hasn't shown up yet...[/color]","[color=white]Ich soll mit der Kunstler von die singende Statuen treffen, aber er ist noch nicht aufgetaucht...[/color]"
+DIAG_GABRIEL1,"[color=white]Well, I'm not the one you're looking for. I think you came too late, and I doubt he's still here.[/color]","[color=white]Ich bin es nicht. Du kammst zu spät, und ich bezweifle mich, dass er noch da ist.[/color]"
+DIAG_GABRIEL2,"[color=white]Oh...well in that case, maybe I can just sell this to you instead.[/color]","[color=white]Oh...Na dann, vielleicht kann ich es stattdessen dir verkaufen.[/color]"
+DIAG_JALO0,"[color=white]...[/color]","[color=white]...[/color]"
+DIAG_JALO1,"[color=white]What are you staring at?[/color]","[color=white]Was hast du zu suchen?[/color]"
+DIAG_JALO2,"[color=white]...*Nothing. I'm just...hungry. Sell me something.*[/color]","[color=white]...*Nichts. Ich habe nur...Hunger. Verkauf mir doch etwas.*[/color]"
+DIAG_VANCE0,"[color=white]I train here sometimes, but don't go beyond the room with the familiar statue just yet. You gotta be prepared. I can share, but it will cost you.[/color]","[color=white]Manchmal, trainiere ich mich hier, aber geh noch nicht weiter als die Zimmer mit das Vertraute Statue. Dafür musst du vorbereitet sein. Ausrüstung kann ich aufteilen, aber sie ist nicht kostenlos.[/color]"
+DIAG_VANCE1,"[color=white]Well, you buying?[/color]","[color=white]Na, kaufst du doch etwas?[/color]"
+DIAG_VLADIMIR0,"[color=white]When you drink as much blood as I do, your demonic powers just grow on you. I no longer have need of a separate form. My demonic has merged with me.[/color]","[color=white]Trinkst du so viel Blut wie ich, wachst deine Demonic Kräfte unglaublich stark. Ich brauche kein andere Form um meine Demonic Kräfte zu behalten. Die sind mit mir gefügt.[/color]"
+DIAG_VLADIMIR1,"[color=white]Since you took all that trouble to see me, you can have this. I have no need of it.[/color]","[color=white]Weil du hast die Mühe gegeben, mich zu finden, du kannst das haben. Ich brauche es nicht mehr.[/color]"
+DIAG_PEPPER0,"[color=white]Man, this castle sure is big! But perfect for flying through on my broom. Those spike traps make this a challenge! Oh, but I still have errands from my teachers I came here for...[/color]","[color=white]Mann, dieses Schloss ist sehr groß! Doch ist das perfekt um mit mein Besen durchzufliegen. Die Spitzenfalle machen große Herausforderungen! Oh, aber ich habe immer noch Aufgaben hier von meine Lehrerinnen...[/color]"
+DIAG_PEPPER1,"[color=white]Say, you wouldn't be interested in some of my spells, would you? Can you use them?[/color]","[color=white]Sag mal, hast du Interesse an meine Zaubersprüche? Kannst du sie verwenden?[/color]"
+DIAG_CARROT0,"[color=white]That's my cat, Carrot. I don't know how he found the other cat...[/color]","[color=white]Das ist meine Katze, Carrot. Ich weiß nicht genau, wie er die andere Katze gefunden hatte...[/color]"
+DIAG_CARROT1,"[color=white]That's my familiar.[/color]","[color=white]Das ist meine Vertrauten.[/color]"
+DIAG_CARROT2,"[color=white]Oh wow, really? Neat! They seem to be getting along fine.[/color]","[color=white]Oh wow, wirklich? Cool! Sie scheinen sich befreundet zu sein.[/color]"
+DIAG_GODDESS0,"[color=white]What a dark creepy place. I'm so glad I found this nice patch of sunlight. Hmm...? You look kind of sick. Is it too bright?[/color]","[color=white]Was für ein unheimlicher düsterer Ort. Ich bin so froh, dieses Sonnenschein gefunden zu haben. Huch...? Du scheint nicht ganz in Ordnung zu sein. Ist es dir zu hell?[/color]"
+DIAG_GODDESS1,"[color=white]I might have something that might help you with that. Want to buy it?[/color]","[color=white]Ich habe etwas, das dir vielleicht helfen kann. Kaufst du es?[/color]"
+CHARACTER_NPC,NPC,NSC
+CHOICE_SURE,Sure,Klar
+CHOICE_NAH,Nah,Nö
+CHOICE_MAP,See the map,Karte ansehen
+CHOICE_SHOP,Shopping,Einkaufen
+CHOICE_TIP,Ask for advice,Nach Rat fragen
+CHOICE_NOTHING,Nothing,Nichts
+MAGIC_STAT,"[mp] MP[break]Strength: [atk]","[mp] MP[break]Stärke: [atk]"
+KEY_NA,N/A,n. a.
+MAGIC_FIRE,Fire,Feuer
+MAGIC_FIRE_DESCRIPTION,Creates fireball projectiles. Does more damage and creates larger fireballs when charged longer.,"Macht Feuerbälle als Projektile. Die Feuerbälle wächsen größer und machen mehr Schaden, je länger sie aufgeladen sind."
+MAGIC_ICE,Ice,Eis
+MAGIC_ICE_DESCRIPTION,Fires a cluster of ice at enemies. Enemies are temporarily frozen when hit. Does more damage and creates larger clusters when charged longer.,"Schießt Eisklumpen auf Gegner. Getroffene Gegner sind für kurze Zeit in einem Eisblock gefroren. Macht mehr Schaden und größere Eisklumpen, je länger sie aufgeladen sind."
+MAGIC_THUNDER,Thunder,Donner
+MAGIC_THUNDER_SHORT,[color=white]Vertical elemental magic.[/color],[color=white]Senkrechter elementärische Zauber.[/color]
+MAGIC_THUNDER_DESCRIPTION,Causes bolts of lightning to come downwards. The attack will be stopped by walls or platforms. Creates larger bolts when charged longer.,"Macht Blitze, die von oben nach unten kommen. Die Blitze wird von Mauer oder Plattformen aufgehört. Macht größere Blitzen, je länger sie aufgeladen sind."
+MAGIC_HEX,Hex Circle,Teufelskreis
+MAGIC_HEX_SHORT,[color=white]Vertical elemental magic.[/color],[color=white]Senkrechter elementärische Zauber.[/color]
+MAGIC_HEX_DESCRIPTION,Summons a dark aura from a hex circle drawn into the ground. The attack will be stopped by walls or platforms. Creates larger circles when charged longer.,"Bringt Finstere Kräfte aus einem Teufelskreis, die in dem Boden gezeichnet wird. Die Angriff wird von Mauer oder Plattformen aufgehört. Macht größere Kreise, je länger sie aufgeladen sind."
+MAGIC_SHIELD,Shield,Barriere
+MAGIC_SHIELD_SHORT,[color=white]Shields the caster.[/color],[color=white]Schutzt die Benutzer.[/color]
+MAGIC_SHIELD_DESCRIPTION,Creates a temporary shield around the caster. Protects against most attacks and other forms of damage. Shield lasts longer when charged longer.,"Macht ein Zeitgegrenzte Barriere um die Benutzer. Schutzt gegen die meiste Angriffe und andere Art von Schaden. Die Barriere bleibt länger wenn die Zauber länger aufgeladen ist."
+MAGIC_MAGICMINE,Magic Mine,Zaubermine
+MAGIC_MAGICMINE_SHORT,[color=white]Creates magical explosives.[/color],[color=white]Macht magische Bomben.[/color]
+MAGIC_MAGICMINE_DESCRIPTION,Sets off a magical explosive that goes off when touched by enemies or automatically after a certain amount of time. Can only be used three times at once.,"Macht ein magische Bombe, die explodiert, nachdem sie von Gegner berührt sind, oder wenn etwas Zeit läuft ab. Sie können nur dreimal nach einander benutzt geworden."
+MAGIC_VOID,Void,Nichtsraum
+MAGIC_VOID_SHORT,[color=white]Contains the power of time and space.[/color],[color=white]Enthalt die Macht von Zeit und Raum.[/color]
+MAGIC_VOID_DESCRIPTION,Teleports the caster some distance away on the same horizontal plane. Use it to pass through walls or other obstacles.,"Teleportiert die Benutzer irgendwo anders auf die gleiche Ebene. Benutzt es, um Mauer oder andere Verhindernisse zu überspringen."
+MAGIC_EARTH,Earthquake,Erdbeben
+MAGIC_EARTH_SHORT,[color=white]Earth elemental magic.[/color],[color=white]Zauber auf Erde basiert.[/color]
+MAGIC_EARTH_DESCRIPTION,Creates an earthquake which stuns all enemies on the ground. Damages enemies when charged long enough.,"Macht ein Erdbeben, das alle Gegner auf den Boden betäubt. Bei längere Aufladungszeit, schadet die Angriff auch Gegner."
+MAGIC_WIND,Gale,Bö
+MAGIC_WIND_SHORT,[color=white]Wind elemental magic.[/color],[color=white]Zauber auf Wind basiert.[/color]
+MAGIC_WIND_DESCRIPTION,Causes strong gusts of wind to appear and blow back enemies. Damages enemies when charged long enough.,"Macht größe Böen, die Gegner zurück blasen. Bei längere Aufladungzeit, schadet die Angriff auch Gegner."
+STATS_LEVEL,Level,Stufe
+STATS_ALL,[hp] HP [hpbonus][break][mp] MP [mpbonus][break][break]Attack: [atk][break]Defense: [def][break]Magic: [mag][break]Luck: [luck][break][break]EXP: [exp][break]Required: [rexp][break][break][gold]G,[hp] KP [hpbonus][break][mp] MP [mpbonus][break][break]Angriff: [atk][break]Verteidigung: [def][break]Zauber: [mag][break]Glück: [luck][break][break]EP: [exp][break]Gebraucht: [rexp][break][break][gold]G
+SHOP_BUY,Buy,Kaufen
+SHOP_SELL,Sell,Verkaufen
+SHOP_KALEVA,Kaleva's Shop,Kalevas Laden
+SHOP_LUCIFER,Lucifer's Shop,Lucifers Laden
+SHOP_GABRIEL,Gabriel's Shop,Gabriels Laden
+SHOP_VANCE,Vance's Shop,Vances Laden
+SHOP_PEPPER,Pepper's Shop,Peppers Laden
+SHOP_GODDESS,Goddess' Shop,Goddess' Laden
+SHOP_AMOUNT,Amount,Menge
+SHOP_TOTAL,Total,Summe
+MAP_QUEST,Quest,Quest
+MAP_BONUS,Bonus,Bonus
+MAP_COLOSSEUM,Colosseum,Kolosseum
+MAP_BOSS,Boss,Boss
+MAP_FILTERS,Filters,Filters
+MAP_TYPE,Type,Art
+MAP_WARP,Warp,Teleportieren
+MAP_REWARD,Reward,Belohnung
+MAP_TARGET,Target,Ziel
+MAP_BACK,Back,Zurück
+MAP_MAP,Map,Karte
+INPUT_KEYBOARD,Keyboard,Tastatur
+INPUT_NINTENDO,Nintendo Gamepad,Nintendo Gamepad
+INPUT_PLAYSTATION,Playstation Gamepad,Playstation Gamepad
+INPUT_XBOX,XBox Gamepad,Xbox Gamepad
+INPUT_GENERIC,Generic Gamepad,Allgemeines Gamepad
+CHAR_UP,Ƅ,Ƅ
+CHAR_DOWN,ƅ,ƅ
+CHAR_RIGHT,Ɔ,Ɔ
+CHAR_LEFT,ƃ,ƃ
+CHAR_SHIFT,ƀ,ƀ
+CHAR_CTRL,,
+CHAR_ALT,,
+CHAR_TAB,ſ,ſ
+CHAR_ESC,,
+CHAR_BACKSPACE,Ƃ,Ƃ
+CHAR_SPACE,Ƈ,Ƈ
+CHAR_RETURN,Ɓ,Ɓ
+CHAR_PRINT,,
+CHAR_PAUSE,,
+CHAR_INS,,
+CHAR_DEL,,
+CHAR_HOME,,
+CHAR_END,,
+CHAR_PAGEUP,,
+CHAR_PAGEDOWN,,
+CHAR_META,,
+CHAR_ENTER,,
+CHAR_CAPS,,
+CHAR_NUM,,
+CHAR_SCROLL,,
+CHAR_F1,,
+CHAR_F2,,
+CHAR_F3,,
+CHAR_F4,,
+CHAR_F5,,
+CHAR_F6,,
+CHAR_F7,,
+CHAR_F8,,
+CHAR_F9,,
+CHAR_F10,,
+CHAR_F11,,
+CHAR_F12,,
+CHAR_F13,,
+CHAR_F14,,
+CHAR_F15,,
+CHAR_F16,,
+CHAR_*,*,*
+CHAR_/,/,/
+CHAR_-,-,-
+CHAR_.,.,.
+CHAR_+,+,+
+CHAR_0,0,0
+CHAR_1,1,1
+CHAR_2,2,2
+CHAR_3,3,3
+CHAR_4,4,4
+CHAR_5,5,5
+CHAR_6,6,6
+CHAR_7,7,7
+CHAR_8,8,8
+CHAR_9,9,9
+"CHAR_,",",",","
+CHAR_;,;,;
+CHAR_<,<,<
+CHAR_=,=,=
+CHAR_',','
+CHAR_`,`,`
+CHAR_´,´,´
+CHAR_A,A,A
+CHAR_B,B,B
+CHAR_C,C,C
+CHAR_D,D,D
+CHAR_E,E,E
+CHAR_F,F,F
+CHAR_G,G,G
+CHAR_H,H,H
+CHAR_I,I,I
+CHAR_J,J,J
+CHAR_K,K,K
+CHAR_L,L,L
+CHAR_M,M,M
+CHAR_N,N,N
+CHAR_O,O,O
+CHAR_P,P,P
+CHAR_Q,Q,Q
+CHAR_R,R,R
+CHAR_S,S,S
+CHAR_T,T,T
+CHAR_U,U,U
+CHAR_V,V,V
+CHAR_W,W,W
+CHAR_X,X,X
+CHAR_Y,Y,Y
+CHAR_Z,Z,Z
+CHAR_[,[,[
+CHAR_\,\,\
+CHAR_],],]
+CHAR_^,^,^
+CHAR_Ä,Ä,Ä
+CHAR_Ö,Ö,Ö
+CHAR_Ü,Ü,Ü
+CHAR_#,#,#
+CHAR_ß,ß,ß
+GAMEPAD_A,a,a
+GAMEPAD_B,b,b
+GAMEPAD_X,x,x
+GAMEPAD_Y,y,y
+GAMEPAD_CROSS,Ɠ,Ɠ
+GAMEPAD_SQUARE,Ɣ,Ɣ
+GAMEPAD_TRIANGLE,ƕ,ƕ
+GAMEPAD_CIRCLE,Ɩ,Ɩ
+GAMEPAD_1,Ɨ,Ɨ
+GAMEPAD_2,Ƙ,Ƙ
+GAMEPAD_3,ƙ,ƙ
+GAMEPAD_4,ƚ,ƚ
+GAMEPAD_DUP,ƈ,ƈ
+GAMEPAD_DDOWN,Ɖ,Ɖ
+GAMEPAD_DRIGHT,Ɗ,Ɗ
+GAMEPAD_DLEFT,Ƌ,Ƌ
+GAMEPAD_L,Ɲ,Ɲ
+GAMEPAD_R,ƞ,ƞ
+GAMEPAD_LB,Ɵ,Ɵ
+GAMEPAD_RB,Ơ,Ơ
+GAMEPAD_L1,ơ,ơ
+GAMEPAD_R1,Ƣ,Ƣ
+GAMEPAD_ZL,ƣ,ƣ
+GAMEPAD_ZR,Ƥ,Ƥ
+GAMEPAD_LT,ƥ,ƥ
+GAMEPAD_RT,Ʀ,Ʀ
+GAMEPAD_L2,Ƨ,Ƨ
+GAMEPAD_R2,ƨ,ƨ
+GAMEPAD_L3,l,l
+GAMEPAD_R3,r,r
+GAMEPAD_BACK,ƌ,ƌ
+GAMEPAD_NEXT,ƍ,ƍ
+GAMEPAD_PLUS,Ǝ,Ǝ
+GAMEPAD_MINUS,Ə,Ə
+GAMEPAD_START,Ɛ,Ɛ
+GAMEPAD_SELECT,Ƒ,Ƒ
+GAMEPAD_9,ƛ,ƛ
+GAMEPAD_10,Ɯ,Ɯ

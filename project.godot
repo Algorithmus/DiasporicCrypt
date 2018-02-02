@@ -82,7 +82,11 @@ ui_spell_prev=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_n
 
 [locale]
 
-translations=[ "res://translations/translations.en.xl", "res://translations/translations.de.xl" ]
+translations=PoolStringArray( "res://translations/translations.en.translation", "res://translations/translations.de.translation" )
+locale_filter=[ 0, [ "de", "en" ] ]
+translation_remaps={
+
+}
 
 [render]
 
