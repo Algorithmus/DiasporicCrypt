@@ -53,17 +53,17 @@ func _ready():
 	title = get_node("title")
 	content = title.get_node("content")
 	filters = get_node("filters")
-.modulate.a = 0.5
-.modulate.a = 0.5
+	filters.get_node("tagcontainer").modulate.a = 0.5
+	list.get_node("filters/tags").modulate.a = 0.5
 	animation = get_node("AnimationPlayer")
 	animation.play("hidden")
-	var levels = Globals.get("available_levels")
-	currentlevel = Globals.get("current_level")
+	var levels = ProjectSettings.get("available_levels")
+	currentlevel = ProjectSettings.get("current_level")
 	var groups = {}
 	var groupindex
 	# add pins to map and list
 	for i in range(0, levels.size()):
-		var level = Globals.get("levels")[levels[i]]
+		var level = ProjectSettings.get("levels")[levels[i]]
 		var pin = pinclass.instance()
 		var listitem = listitemclass.instance()
 		pin.set_name(level.title)
@@ -169,7 +169,7 @@ func toggle_list(state):
 
 # update and display selected level information
 func set_content(id):
-	var level = Globals.get("levels")[id]
+	var level = ProjectSettings.get("levels")[id]
 	title.get_node("level").set_text(level.title)
 	title.get_node("percent").set_text(str(level.location.tile_percent()) + "%")
 	title.get_node("icon").set_texture(typeicons[level.type])
@@ -350,7 +350,7 @@ func set_typefilter():
 
 func update_filters():
 	var filteredlevels = {}
-	var levels = Globals.get("levels")
+	var levels = ProjectSettings.get("levels")
 	for pin in pincontainer.get_children():
 		pin.hide()
 		pin.set_disabled(true)
@@ -413,9 +413,9 @@ func update_filters():
 # toggle tag for a level
 func set_tag():
 	var tag = get_focus_owner().get_name()
-	var level = Globals.get("levels")[selectedlevel.get_name()]
+	var level = ProjectSettings.get("levels")[selectedlevel.get_name()]
 	level.tags[tag] = !level.tags[tag]
-	Globals.get("levels")[selectedlevel.get_name()] = level
+	ProjectSettings.get("levels")[selectedlevel.get_name()] = level
 	var flag = title.get_node("tags/" + tag)
 	var listflag = listcontainer.get_node(selectedlevel.get_name() + "/tags/" + tag)
 	if (level.tags[tag]):
@@ -454,12 +454,12 @@ func set_tagfilter():
 func toggle_tags():
 	tagsdisabled = !tagsdisabled
 	if (tagsdisabled):
-.modulate.a = 0.5
-.modulate.a = 0.5
+		filters.get_node("tagcontainer").modulate.a = 0.5
+		list.get_node("filters/tags").modulate.a = 0.5
 		list.get_node("filters/type/quest").set_focus_neighbour(MARGIN_LEFT, list.get_node("filters/tagtitle").get_path())
 	else:
-.modulate.a = 1
-.modulate.a = 1
+		filters.get_node("tagcontainer").modulate.a = 1
+		list.get_node("filters/tags").modulate.a = 1
 		list.get_node("filters/type/quest").set_focus_neighbour(MARGIN_LEFT, list.get_node("filters/tags/purple").get_path())
 	toggle_filters(false)
 	update_filters()
@@ -467,20 +467,20 @@ func toggle_tags():
 
 func _on_warp_pressed():
 	hudmap.cache_map()
-	var levels = Globals.get("levels")
+	var levels = ProjectSettings.get("levels")
 	var map = levels[selectedlevel.get_name()]
 	map.new = false
-	Globals.set("current_quest_complete", false)
-	Globals.set("reward_taken", false)
-	Globals.get("levels")[map.title] = map
-	Globals.set("mapid", map.location.id)
+	ProjectSettings.set("current_quest_complete", false)
+	ProjectSettings.set("reward_taken", false)
+	ProjectSettings.get("levels")[map.title] = map
+	ProjectSettings.set("mapid", map.location.id)
 	var level = get_tree().get_root().get_node("world/level").get_child(0)
 	var teleport = level.get_node("tilemap/TeleportGroup").get_child(0)
 	teleport.target_level = map.location.node
 	teleport.teleport_to = map.location.teleportto
 	hudmap.clear_objects()
 	hudmap.load_cached_map(level)
-	Globals.set("current_level", map.title)
+	ProjectSettings.set("current_level", map.title)
 	sfx.play("confirm")
 	get_tree().get_root().get_node("world").warp_animation()
 
