@@ -118,6 +118,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="explosion" type="Particles2D" parent="." index="1"]
 
 material = SubResource( 1 )
+z_index = 3
 emitting = false
 amount = 32
 lifetime = 1.0

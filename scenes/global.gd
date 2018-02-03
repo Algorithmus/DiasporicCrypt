@@ -546,12 +546,14 @@ func _on_newgame_back_pressed():
 func _on_friederich_focus_enter():
 	friederich.modulate.a = 1
 	friederich.raise()
-	sound.play("cursor")
+	#TODO - play sounds properly
+	#sound.play("cursor")
 
 func _on_adela_focus_enter():
 	adela.modulate.a = 1
 	adela.raise()
-	sound.play("cursor")
+	#TODO - play sounds properly
+	#sound.play("cursor")
 
 func _on_friederich_focus_exit():
 	friederich.modulate.a = 0

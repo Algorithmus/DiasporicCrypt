@@ -186,15 +186,17 @@ func unserialize_controls(data, is_keyboard):
 		var list = InputMap.get_action_list(actionid)
 		for e in list:
 			var inputvalue = ""
+			var event
 			if (e is InputEventKey && is_keyboard):
 				inputvalue = "scancode"
+				event = InputEventKey.new()
 			elif (e is InputEventJoypadButton && !is_keyboard):
 				inputvalue = "button_index"
+				event = InputEventJoypadButton.new()
 			else:
 				break
 			InputMap.action_erase_event(actionid, e)
-			var event = InputEvent()
-			event.type = e.type
+			#event.type = e.type
 			event[inputvalue] = data[actionid]
 			InputMap.action_add_event(actionid, event)
 			if (actionid == "ui_blood" || actionid == "ui_attack" || actionid == "ui_magic"):
