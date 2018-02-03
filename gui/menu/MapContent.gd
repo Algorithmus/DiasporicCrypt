@@ -7,7 +7,7 @@ const MAP_HEIGHT = 214
 const MAP_WIDTH = 540
 
 func update_container():
-	var level = Globals.get("levels")[Globals.get("current_level")]
+	var level = ProjectSettings.get("levels")[ProjectSettings.get("current_level")]
 	get_node("title").set_text(level.location.id)
 	get_node("level").set_text(level.title)
 	for icon in get_node("icons").get_children():
@@ -17,12 +17,12 @@ func update_container():
 				icon.get_node("counter").set_text(str(level.mincounter))
 			if (level.type == "quest"):
 				var image = level.item
-				icon.set_texture(load(Globals.get("itemfactory").items[image].image))
+				icon.set_texture(load(ProjectSettings.get("itemfactory").items[image].image))
 		else:
 			icon.hide()
 	if (level.location.tiles != null):
 		get_node("completion").set_text(str(level.location.tile_percent()) + "%")
-	if (Globals.get("current_quest_complete")):
+	if (ProjectSettings.get("current_quest_complete")):
 		get_node("complete").show()
 	else:
 		get_node("complete").hide()

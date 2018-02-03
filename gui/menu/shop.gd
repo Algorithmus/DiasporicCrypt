@@ -34,7 +34,7 @@ var sfx
 func _ready():
 	sfx = sfxclass.instance()
 	add_child(sfx)
-	itemfactory = Globals.get("itemfactory")
+	itemfactory = ProjectSettings.get("itemfactory")
 	itemcontainer = get_node("panel/itemcontainer/VBoxContainer")
 	info = get_node("panel/info")
 	transaction = info.get_node("transaction")
@@ -49,17 +49,17 @@ func _ready():
 	sellrate = shop.shops[shopid].sellrate
 	inventory = shop.shops[shopid].inventory
 	get_node("title").set_text(shopid)
-	get_node("gold").set_text(str(Globals.get("gold")) + "G")
+	get_node("gold").set_text(str(ProjectSettings.get("gold")) + "G")
 	get_node("back").set_key("ui_cancel")
 	get_node("back/input").set_text(tr("MAP_BACK"))
 	info.hide()
 	#Obtain saved inventory stock
-	if (Globals.get("shops").has(shopid)):
-		inventory = Globals.get("shops")[shopid]
+	if (ProjectSettings.get("shops").has(shopid)):
+		inventory = ProjectSettings.get("shops")[shopid]
 	update_inventory()
 
 func find_magic(key):
-	var magic = Globals.get("available_spells")
+	var magic = ProjectSettings.get("available_spells")
 	for i in range(0, magic.size()):
 		if (magic[i].id == key):
 			return magic[i]
@@ -69,13 +69,13 @@ func update_inventory():
 	set_type_colors()
 	var list = inventory
 	if (currenttype == "sell"):
-		list = Globals.get("inventory").generate_list("item")
+		list = ProjectSettings.get("inventory").generate_list("item")
 	for item in list:
 		# only display magic or scrolls if they're not already obtained
-		if (!item.has("type") || item.type == "item" || (item.type == "scroll" && !Globals.get("scrolls").has(item.id)) || (item.type == "magic" && find_magic(itemfactory.items[item.id].value) == null)):
+		if (!item.has("type") || item.type == "item" || (item.type == "scroll" && !ProjectSettings.get("scrolls").has(item.id)) || (item.type == "magic" && find_magic(itemfactory.items[item.id].value) == null)):
 			var data
 			var rate = 1
-			var gold = Globals.get("gold")
+			var gold = ProjectSettings.get("gold")
 			if (currenttype == "buy"):
 				data = itemfactory.items[item["id"]]
 			else:
@@ -92,7 +92,7 @@ func update_inventory():
 				item_obj.get_node("quantity").set_text(str(item["quantity"]))
 				if (item["quantity"] <= 0):
 					item_obj.get_node("quantity").hide()
-				var player_inventory = Globals.get("inventory").inventory
+				var player_inventory = ProjectSettings.get("inventory").inventory
 				if (player_inventory.has(data.title) && !player_inventory[data.title].item.new):
 					item_obj.get_node("new").hide()
 				if (item.has("type")):
@@ -144,7 +144,7 @@ func focus_item_enter():
 	var scrollcontainer = get_node("panel/itemcontainer")
 	var item = get_focus_owner()
 	var item_obj = itemfactory.items[item.get_name()]
-	var player_inventory = Globals.get("inventory").inventory
+	var player_inventory = ProjectSettings.get("inventory").inventory
 	var owned = 0
 	if (player_inventory.has(item.get_name())):
 		item_obj = player_inventory[item.get_name()]["item"]
@@ -178,7 +178,7 @@ func set_type_colors():
 
 func _input(event):
 	if (event.is_pressed() && !event.is_echo()):
-		var player_inventory = Globals.get("inventory").inventory
+		var player_inventory = ProjectSettings.get("inventory").inventory
 		var focus = get_focus_owner()
 		if (transaction.is_hidden()):
 			var type = get_node("panel/types/" + currenttype)
@@ -206,7 +206,7 @@ func _input(event):
 					transaction.get_node("amount").grab_focus()
 					info.show()
 		else:
-			var gold = Globals.get("gold")
+			var gold = ProjectSettings.get("gold")
 			var basecost = itemfactory.items[selecteditem.get_name()].cost
 			if (currenttype == "sell"):
 				basecost = basecost * sellrate
@@ -226,31 +226,31 @@ func _input(event):
 			elif (event.is_action_pressed("ui_accept")):
 				var currentitem = itemfactory.items[selecteditem.get_name()]
 				if (currenttype == "sell"):
-					Globals.get("inventory").remove_item(currentitem, currentamount)
-					Globals.set("gold", gold + basecost * currentamount)
+					ProjectSettings.get("inventory").remove_item(currentitem, currentamount)
+					ProjectSettings.set("gold", gold + basecost * currentamount)
 				else:
 					var index = find_item(currentitem.title)
 					if (index >= 0):
 						if (inventory[index].type == "item"):
-							Globals.get("inventory").add_item(currentitem, currentamount)
+							ProjectSettings.get("inventory").add_item(currentitem, currentamount)
 						elif (inventory[index].type == "scroll"):
-							Globals.get("scrolls")[currentitem.title] = currentitem
+							ProjectSettings.get("scrolls")[currentitem.title] = currentitem
 						elif (inventory[index].type == "magic"):
-							var magic_spells = Globals.get("magic_spells")
+							var magic_spells = ProjectSettings.get("magic_spells")
 							var spell
 							for i in range(0, magic_spells.size()):
 								if (magic_spells[i].id == currentitem.value):
 									spell = magic_spells[i]
-							Globals.get("available_spells").append(spell)
+							ProjectSettings.get("available_spells").append(spell)
 						if (inventory[index].quantity > 0):
 							inventory[index].quantity -= currentamount
 						if (inventory[index].quantity == 0):
 							inventory.erase(inventory[index])
-					Globals.get("shops")[shopid] = inventory
-					Globals.set("gold", gold - basecost * currentamount)
+					ProjectSettings.get("shops")[shopid] = inventory
+					ProjectSettings.set("gold", gold - basecost * currentamount)
 				transaction.hide()
 				selecteditem = null
-				get_node("gold").set_text(str(Globals.get("gold")) + "G")
+				get_node("gold").set_text(str(ProjectSettings.get("gold")) + "G")
 				update_inventory()
 				if (currentamount - amounttotal == 0 && amounttotal > 0):
 					clear_selection(currentitem)

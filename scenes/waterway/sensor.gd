@@ -8,10 +8,10 @@ var peridotkeyclass = preload("res://scenes/items/special/peridotkey.tscn")
 func _ready():
 	gatepos = Vector2(-208, -400)
 	var plant = tilemap.get_node("BossGroup/MonsterPlant")
-	if (Globals.get("current_quest_complete")):
+	if (ProjectSettings.get("current_quest_complete")):
 		plant.queue_free()
 		# clear gate
-		if (!Globals.get("inventory").inventory.has("ITEM_PERIDOTKEY")):
+		if (!ProjectSettings.get("inventory").inventory.has("ITEM_PERIDOTKEY")):
 			var item = peridotkeyclass.instance()
 			item.set_global_position(Vector2(-608, -368))
 			tilemap.get_node("BossGroup").add_child(item)

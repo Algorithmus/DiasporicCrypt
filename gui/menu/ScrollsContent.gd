@@ -27,7 +27,7 @@ func _ready():
 	set_process_input(false)
 
 func update_container():
-	var scrolls = Globals.get("scrolls")
+	var scrolls = ProjectSettings.get("scrolls")
 	for scroll in scrolls:
 		if (!scrollcontainer.has_node(scroll)):
 			var scroll_obj = scrolls[scroll]
@@ -67,11 +67,11 @@ func show_scroll():
 	if (scrollcontainer.get_child_count() > 0):
 		if (index == null):
 			index = scrollcontainer.get_child(0).get_name()
-		var scrolls = Globals.get("scrolls")
+		var scrolls = ProjectSettings.get("scrolls")
 		var scroll = scrolls[index]
 		scroll.new = false
 		scrolls[index] = scroll
-		Globals.set("scrolls", scrolls)
+		ProjectSettings.set("scrolls", scrolls)
 		var content = scroll.parse_content()
 		var scrollitem = scrollcontainer.get_node(index)
 		scrollitem.modulate.a = 1

@@ -15,7 +15,7 @@ func _ready():
 
 func update_container():
 	var title
-	if (Globals.get("player") == "friederich"):
+	if (ProjectSettings.get("player") == "friederich"):
 		get_node("profile_a").hide()
 		get_node("profile_f").show()
 		title = "Friederich "
@@ -65,7 +65,7 @@ func update_container():
 	infostring = infostring.replace("[luck]", luck)
 	infostring = infostring.replace("[exp]", ep)
 	infostring = infostring.replace("[rexp]", required)
-	infostring = infostring.replace("[gold]", str(Globals.get("gold")))
+	infostring = infostring.replace("[gold]", str(ProjectSettings.get("gold")))
 	
 	get_node("title").set_text(title)
 	get_node("info").set_bbcode(infostring)

@@ -38,7 +38,7 @@ func focus_tab():
 	tabs.get_node(selectedtab).grab_focus()
 	tabs.get_node(selectedtab).set("is_unfocused", false)
 	set_process_input(true)
-	if (Globals.get("player") == "friederich"):
+	if (ProjectSettings.get("player") == "friederich"):
 		tabs.get_node("stats").set_normal_texture(preload("res://gui/menu/tabs/friederich.png"))
 	else:
 		tabs.get_node("stats").set_normal_texture(preload("res://gui/menu/tabs/adela.png"))

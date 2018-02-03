@@ -27,7 +27,7 @@ func _ready():
 	set_process_input(false)
 
 func update_container():
-	var list = Globals.get("inventory").generate_list(currenttype)
+	var list = ProjectSettings.get("inventory").generate_list(currenttype)
 	set_type_colors()
 	for item in list:
 		if (!itemcontainer.has_node(item["item"].title)):
@@ -106,7 +106,7 @@ func focus_item_enter():
 	set_process_input(true)
 	var scrollcontainer = get_node("itemcontainer")
 	var item = get_focus_owner()
-	var inventory = Globals.get("inventory").inventory
+	var inventory = ProjectSettings.get("inventory").inventory
 	var item_obj = inventory[item.get_name()]["item"]
 	item_obj.new = false
 	inventory[item_obj.title]["item"] = item_obj
@@ -146,7 +146,7 @@ func _input(event):
 			set_process_input(false)
 		if (event.is_action_pressed("ui_accept") && info.is_visible() && currenttype != "special"):
 			var focus = get_focus_owner()
-			var inventory = Globals.get("inventory")
+			var inventory = ProjectSettings.get("inventory")
 			# update container and item when using or dropping them
 			# return back to item selection if no selected items left
 			if (focus.get_name() == use.get_name()):
@@ -198,7 +198,7 @@ func clear_selection(item):
 		get_node("types/" + currenttype).grab_focus()
 
 func check_item(item):
-	if (Globals.get("inventory").check_usable(item)):
+	if (ProjectSettings.get("inventory").check_usable(item)):
 		use.modulate.a = 1
 		use.grab_focus()
 		drop.set_focus_neighbour(MARGIN_TOP, use.get_path())

@@ -8,12 +8,12 @@ var timer
 var limit
 
 func _ready():
-	Globals.set("blood_count", 0)
-	Globals.set("show_blood_counter", true)
+	ProjectSettings.set("blood_count", 0)
+	ProjectSettings.set("show_blood_counter", true)
 	color = get_material()
 	color.set_shader_param("start", night[0])
 	color.set_shader_param("stop", night[1])
-	var level = Globals.get("levels")[Globals.get("current_level")]
+	var level = ProjectSettings.get("levels")[ProjectSettings.get("current_level")]
 	timer = level.time
 	limit = timer * 1.0
 	set_physics_process(true)
@@ -25,5 +25,5 @@ func _physics_process(delta):
 	color.set_shader_param("start", start)
 	color.set_shader_param("stop", stop)
 	if (timer <= 0):
-		Globals.set("sun", true)
+		ProjectSettings.set("sun", true)
 		set_physics_process(false)

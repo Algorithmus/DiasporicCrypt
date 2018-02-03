@@ -181,7 +181,7 @@ func show_dialog():
 		if (dialog.size() >= DIAG_REQUIRE + 1):
 			var require = dialog[DIAG_REQUIRE]
 			#TODO - other item types
-			if (require[REQUIRE_TYPE] == "scroll" && Globals.get("scrolls").has(require[REQUIRE_VALUE])):
+			if (require[REQUIRE_TYPE] == "scroll" && ProjectSettings.get("scrolls").has(require[REQUIRE_VALUE])):
 				required = false
 
 		if (current_dialog < dialogs.size() && required):
@@ -190,7 +190,7 @@ func show_dialog():
 				var avatar = dialog[DIAG_TITLE]
 				var title = tr(dialog[DIAG_TITLE])
 				if (dialog[DIAG_TITLE] == "player"):
-					avatar = Globals.get("player").capitalize()
+					avatar = ProjectSettings.get("player").capitalize()
 					title = avatar
 				profile.get_node("avatar").set_texture(avatars[avatar].img)
 				profile.get_node("avatar").set_offset(avatars[avatar].offset)
@@ -214,7 +214,7 @@ func show_dialog():
 				var item = dialog[DIAG_ITEM]
 				var itemid = item[ITEM_TITLE]
 				var itemtext = tr(itemid)
-				var item_obj = Globals.get("itemfactory").items[itemid]
+				var item_obj = ProjectSettings.get("itemfactory").items[itemid]
 				var itemicon = "res://gui/hud/potion.png"
 				if (item_obj["type"] == "exp"):
 					itemicon = "res://gui/hud/exporb.png"
@@ -223,12 +223,12 @@ func show_dialog():
 				elif (item_obj["type"] == "gold"):
 					itemicon = "res://gui/hud/gold.png"
 					itemtext = str(item[ITEM_VALUE]) + "G"
-					Globals.set("gold", Globals.get("gold") + item[ITEM_VALUE])
+					ProjectSettings.set("gold", ProjectSettings.get("gold") + item[ITEM_VALUE])
 				elif (item_obj["type"] == "scroll"):
 					itemicon = "res://gui/hud/scroll.png"
-					Globals.get("scrolls")[itemid] = item_obj
+					ProjectSettings.get("scrolls")[itemid] = item_obj
 				else:
-					Globals.get("inventory").add_item(item_obj, item[ITEM_VALUE])
+					ProjectSettings.get("inventory").add_item(item_obj, item[ITEM_VALUE])
 				itemtext = "[img]" + itemicon + "[/img]" + itemtext
 				basetext = basetext.replace("[item]", itemtext)
 			text.set_bbcode(basetext)

@@ -51,7 +51,7 @@ var serialization
 
 func _ready():
 	# Initialization here
-	serialization = Globals.get("serialization")
+	serialization = ProjectSettings.get("serialization")
 	var magic_spells = [{"id": "thunder", "type": "thunder", "mp": 40, "auracolor": Color(1, 1, 1), "weaponcolor1": Color(1, 247/255.0, 138/255.0), "weaponcolor2": Color(0, 116/255.0, 1), "is_single": false, "charge": preload("res://players/magic/thunder/charge.tscn"), "attack": preload("res://players/magic/thunder/thunder.tscn"), "delay": true, "atk": 0.8}, 
 					{"id":"hex", "type": "dark", "mp": 40, "auracolor": Color(169/255.0, 0, 1), "weaponcolor1": Color(0, 0, 0), "weaponcolor2": Color(1, 0, 0), "is_single": false, "delay": true, "attack": preload("res://players/magic/hex/hex.tscn"), "atk": 0.8}, 
 					{"id":"shield", "mp": 60, "auracolor": Color(0, 0, 1), "weaponcolor1": Color(0, 55/255.0, 1), "weaponcolor2": Color(0, 208/255.0, 1), "is_single": false, "delay": false, "attack": preload("res://players/magic/shield/shield.tscn"), "charge": preload("res://players/magic/shield/charge.tscn")}, 
@@ -61,22 +61,22 @@ func _ready():
 					{"id":"fire", "type": "fire", "mp": 20, "auracolor":Color(1, 77/255.0, 0), "weaponcolor1":Color(1, 1, 0), "weaponcolor2":Color(1, 0, 0), "is_single": false, "attack": preload("res://players/magic/fire/fire.tscn"), "delay": false, "atk": 0.7},
 					{"id":"wind", "type": "wind", "mp": 120, "auracolor": Color(0, 1, 149/255.0), "weaponcolor1": Color(187/255.0, 1, 231/255.0), "weaponcolor2": Color(0, 191/255.0, 92/255.0), "delay": true, "is_single": false, "charge": preload("res://players/magic/wind/charge.tscn"), "attack": preload("res://players/magic/wind/wind.tscn"), "atk": 1.2},
 					{"id":"ice", "type": "ice", "mp": 20, "auracolor": Color(0, 130/255.0, 207/255.0), "weaponcolor1": Color(0, 1, 1), "weaponcolor2": Color(0, 130/255.0, 207/255.0), "delay": false, "is_single": false, "attack": preload("res://players/magic/ice/ice.tscn"), "atk": 0.75}]
-	Globals.set("magic_spells", magic_spells)
-	Globals.set("chain", chainlist)
-	Globals.set("itemfactory", itemfactory.new())
-	Globals.set("levels", levelfactory.new().levels)
-	Globals.set("current_level", "LVL_START")
-	Globals.get("levels")[Globals.get("current_level")].new = false
-	Globals.set("special_tiles", 0)
-	Globals.set("eventmode", false)
-	Globals.set("current_quest_complete", false)
-	Globals.set("reward_taken", false)
-	Globals.set("sun", false)
-	Globals.set("show_blood_counter", false)
-	Globals.set("blood_count", 0)
-	Globals.set("defaultsavepoint", {"location": "LVL_CATACOMB", "position": Vector2(-192, 322), "id": "res://levels/common/catacombs.tscn"})
-	Globals.set("lastsavepoint", Globals.get("defaultsavepoint"))
-	Globals.set("deaths", 0)
+	ProjectSettings.set("magic_spells", magic_spells)
+	ProjectSettings.set("chain", chainlist)
+	ProjectSettings.set("itemfactory", itemfactory.new())
+	ProjectSettings.set("levels", levelfactory.new().levels)
+	ProjectSettings.set("current_level", "LVL_START")
+	ProjectSettings.get("levels")[ProjectSettings.get("current_level")].new = false
+	ProjectSettings.set("special_tiles", 0)
+	ProjectSettings.set("eventmode", false)
+	ProjectSettings.set("current_quest_complete", false)
+	ProjectSettings.set("reward_taken", false)
+	ProjectSettings.set("sun", false)
+	ProjectSettings.set("show_blood_counter", false)
+	ProjectSettings.set("blood_count", 0)
+	ProjectSettings.set("defaultsavepoint", {"location": "LVL_CATACOMB", "position": Vector2(-192, 322), "id": "res://levels/common/catacombs.tscn"})
+	ProjectSettings.set("lastsavepoint", ProjectSettings.get("defaultsavepoint"))
+	ProjectSettings.set("deaths", 0)
 	root = get_tree().get_root()
 	original_size = root.get_rect().size
 	root.connect("size_changed", self, "_on_resolution_changed")
@@ -97,14 +97,14 @@ func _ready():
 	dialog = get_node("gui/CanvasLayer/dialogue")
 	
 	var sfx = AudioServer.get_fx_global_volume_scale()
-	if (Globals.has("sfxvolume")):
-		sfx = Globals.get("sfxvolume")
-	if (Globals.get("sfxmute") && Globals.get("sfxmute")):
+	if (ProjectSettings.has("sfxvolume")):
+		sfx = ProjectSettings.get("sfxvolume")
+	if (ProjectSettings.get("sfxmute") && ProjectSettings.get("sfxmute")):
 		sfx = 0
 	var bgm = AudioServer.get_stream_global_volume_scale()
-	if (Globals.has("bgmvolume")):
-		bgm = Globals.get("bgmvolume")
-	if (Globals.has("bgmmute") && Globals.get("bgmmute")):
+	if (ProjectSettings.hasSettings("bgmvolume")):
+		bgm = ProjectSettings.get("bgmvolume")
+	if (ProjectSettings.hasSettings("bgmmute") && ProjectSettings.get("bgmmute")):
 		bgm = 0
 	AudioServer.set_fx_global_volume_scale(sfx)
 	AudioServer.set_stream_global_volume_scale(bgm)
@@ -122,15 +122,15 @@ func _ready():
 	choice.hide()
 	var player
 	var available_levels = ["LVL_START"]
-	if (Globals.get("debugmode")):
+	if (ProjectSettings.get("debugmode")):
 		available_levels = ["LVL_SANDBOX", "LVL_START", "LVL_FOREST1", "LVL_FOREST2", "LVL_COLOSSEUM1", "LVL_COLOSSEUM2"]
-	if (Globals.get("demomode")):
+	if (ProjectSettings.get("demomode")):
 		get_node("gui/CanvasLayer/demo/RichTextLabel").set_bbcode("[center]" + tr("KEY_HELP") + " [b]" + keymap.map_key("F1") + "[/b][/center]")
 	else:
 		get_node("gui/CanvasLayer/demo").hide()
 
-	if (Globals.get("player") == "friederich"):
-		if (Globals.get("debugmode")):
+	if (ProjectSettings.get("player") == "friederich"):
+		if (ProjectSettings.get("debugmode")):
 			available_levels.append("LVL_MANOR")
 			available_levels.append("LVL_LAVACAVE")
 			available_levels.append("LVL_BERGFORTRESS")
@@ -141,7 +141,7 @@ func _ready():
 		selected_character = friederich
 		player = friederich.instance()
 	else:
-		if (Globals.get("debugmode")):
+		if (ProjectSettings.get("debugmode")):
 			available_levels.append("LVL_AQUADUCT")
 			available_levels.append("LVL_HOLYRUINS")
 			available_levels.append("LVL_CAPECRYPT")
@@ -151,11 +151,11 @@ func _ready():
 			available_levels.append("LVL_ICECAVE")
 		selected_character = adela
 		player = adela.instance()
-	Globals.set("available_levels", available_levels)
+	ProjectSettings.set("available_levels", available_levels)
 	start(player)
-	if (Globals.has("gamedata")):
-		load_game(Globals.get("gamedata"))
-		Globals.set("gamedata", null)
+	if (ProjectSettings.has("gamedata")):
+		load_game(ProjectSettings.get("gamedata"))
+		ProjectSettings.set("gamedata", null)
 
 func _on_resolution_changed():
 	var new_size = root.get_rect().size
@@ -165,9 +165,9 @@ func _on_resolution_changed():
 
 func _input(event):
 	var canvas = get_node("gui/CanvasLayer")
-	if (!gameover && dialog.get("dialogs") == null && !pause.has_node("shopping") && !pause.has_node("save") && !canvas.has_node("WorldMap") && !Globals.get("eventmode")):
-		var helpPressed = event.is_action("ui_help") && Globals.get("demomode")
-		if ((event.is_action("ui_pause") || helpPressed) && event.is_pressed() && !event.is_echo() && get_node("playercontainer").has_node("player") && !get_node("playercontainer/player").get("is_transforming") && !Globals.get("show_switch")):
+	if (!gameover && dialog.get("dialogs") == null && !pause.has_node("shopping") && !pause.has_node("save") && !canvas.has_node("WorldMap") && !ProjectSettings.get("eventmode")):
+		var helpPressed = event.is_action("ui_help") && ProjectSettings.get("demomode")
+		if ((event.is_action("ui_pause") || helpPressed) && event.is_pressed() && !event.is_echo() && get_node("playercontainer").has_node("player") && !get_node("playercontainer/player").get("is_transforming") && !ProjectSettings.get("show_switch")):
 			if (is_paused && pausemenu.can_unpause() && !helpPressed):
 				# return back to focused tabs properly for when menu gets opened again
 				pausemenu.focus_tab()
@@ -228,7 +228,7 @@ func _input(event):
 	elif(hide_altmenu):
 		hide_altmenu = false
 		get_tree().set_pause(false)
-	if (canvas.has_node("WorldMap") && !Globals.get("eventmode")):
+	if (canvas.has_node("WorldMap") && !ProjectSettings.get("eventmode")):
 		if (event.is_action_pressed("ui_cancel") && event.is_pressed() && !event.is_echo()):
 			var worldmap = canvas.get_node("WorldMap")
 			if (!worldmap.block_cancel()):
@@ -241,7 +241,7 @@ func _input(event):
 	if (dialog.get("dialogs") != null):
 		if (event.is_action_pressed("ui_accept") && event.is_pressed() && !event.is_echo()):
 			dialog.check_dialog()
-	if (Globals.get("eventmode") && event.is_action_pressed("ui_cancel") && event.is_pressed() && !event.is_echo()):
+	if (ProjectSettings.get("eventmode") && event.is_action_pressed("ui_cancel") && event.is_pressed() && !event.is_echo()):
 		skipevent = true
 	elif(skipevent):
 		skipevent = false
@@ -251,10 +251,10 @@ func _input(event):
 			end_restore_animation()
 
 func toggle_eventmode(value):
-	Globals.set("eventmode", value)
+	ProjectSettings.set("eventmode", value)
 	var skip = sequences.get_node("skip")
 	var canvas = get_node("gui/CanvasLayer")
-	if (Globals.get("eventmode")):
+	if (ProjectSettings.get("eventmode")):
 		keymap.update_keys()
 		is_minimap = map.is_visible()
 		map.hide()
@@ -277,7 +277,7 @@ func restore_animation():
 	currentevent = "restore"
 	var canvas = get_node("gui/CanvasLayer")
 	get_tree().set_pause(false)
-	if (!Globals.get("eventmode")):
+	if (!ProjectSettings.get("eventmode")):
 		toggle_eventmode(true)
 	get_node("AnimationPlayer").connect("finished", self, "show_restore")
 	get_node("AnimationPlayer").play("hide")
@@ -302,7 +302,7 @@ func end_restore_animation():
 	var player = get_node("playercontainer/player")
 	player.current_hp = player.hp
 	player.current_mp = player.mp
-	if (Globals.get("eventmode")):
+	if (ProjectSettings.get("eventmode")):
 		toggle_eventmode(false)
 	sequences.hide()
 
@@ -313,7 +313,7 @@ func warp_animation():
 	canvas.remove_child(worldmap)
 	worldmap.queue_free()
 	get_tree().set_pause(false)
-	if (!Globals.get("eventmode")):
+	if (!ProjectSettings.get("eventmode")):
 		toggle_eventmode(true)
 	var circle = magiccircleclass.instance()
 	circle.set_position(Vector2(400, 274))
@@ -389,16 +389,16 @@ func end_warp_animation():
 	get_node("AnimationPlayer").stop()
 	get_node("level/LVL_CATACOMB/tilemap/NPCGroup/Kaleva").end_warp_animation()
 	sequences.hide()
-	if (Globals.get("eventmode")):
+	if (ProjectSettings.get("eventmode")):
 		toggle_eventmode(false)
 
 func start(player):
 	var inventory = inventoryclass.new()
 	inventory.set("player", player)
-	Globals.set("inventory", inventory)
-	Globals.set("scrolls", {})
-	Globals.set("gold", 0)
-	Globals.set("shops", {})
+	ProjectSettings.set("inventory", inventory)
+	ProjectSettings.set("scrolls", {})
+	ProjectSettings.set("gold", 0)
+	ProjectSettings.set("shops", {})
 	display_level_title("LVL_CATACOMB")
 	var level = get_node("level/LVL_CATACOMB")
 	map.set("camera", player.get_node("Camera2D"))
@@ -437,7 +437,7 @@ func reset_level():
 	get_node("gui/CanvasLayer/hud/SpellIcons/" + old_player.get_selected_spell_id()).hide()
 	get_node("playercontainer").remove_child(old_player)
 	var player = friederich.instance()
-	if (Globals.get("player") == "adela"):
+	if (ProjectSettings.get("player") == "adela"):
 		player = adela.instance()
 	get_node("playercontainer").add_child(player)
 	var exp_obj = player.get("exp_growth_obj")
@@ -457,20 +457,20 @@ func reset_level():
 	player.set("base_mag", old_player.get("base_mag"))
 	player.set("base_luck", old_player.get("base_luck"))
 	old_player.queue_free()
-	Globals.get("inventory").set("player", player)
+	ProjectSettings.get("inventory").set("player", player)
 	map.set("camera", player.get_node("Camera2D"))
 	get_node("gui/CanvasLayer/hud").reset()
-	var level = Globals.get("lastsavepoint")
-	if (Globals.get("mapid") != level.location):
-		 level = Globals.get("defaultsavepoint")
+	var level = ProjectSettings.get("lastsavepoint")
+	if (ProjectSettings.get("mapid") != level.location):
+		 level = ProjectSettings.get("defaultsavepoint")
 	teleport(level.id, level.position, null)
-	Globals.set("deaths", Globals.get("deaths") + 1)
+	ProjectSettings.set("deaths", ProjectSettings.get("deaths") + 1)
 	is_paused = false
 	pause.hide()
 	gameover = false
-	Globals.set("gold", Globals.get("gold") * 0.5)
-	Globals.set("current_quest_complete", false)
-	Globals.set("reward_taken", false)
+	ProjectSettings.set("gold", ProjectSettings.get("gold") * 0.5)
+	ProjectSettings.set("current_quest_complete", false)
+	ProjectSettings.set("reward_taken", false)
 	get_tree().set_pause(false)
 
 func global_menu():
@@ -479,9 +479,9 @@ func global_menu():
 
 func clear_game():
 	map.reset()
-	Globals.set("chain", chainlist)
-	Globals.set("mapid", "LVL_START")
-	Globals.set("available_spells", null)
+	ProjectSettings.set("chain", chainlist)
+	ProjectSettings.set("mapid", "LVL_START")
+	ProjectSettings.set("available_spells", null)
 	sequences.get_node("demonic/sprite/friederich").hide()
 	sequences.get_node("demonic/sprite/adela").hide()
 	get_node("gui/CanvasLayer/chain/chaintext").hide()
@@ -505,48 +505,48 @@ func clearInputs(actionid):
 
 func load_game(data):
 	clear_game()
-	Globals.set("mapid", data.maps.id)
+	ProjectSettings.set("mapid", data.maps.id)
 	var grids = serialization.unserialize_grids(data.maps.index)
-	Globals.set("grids", grids)
+	ProjectSettings.set("grids", grids)
 	var mapobjects = serialization.unserialize_mapobjects(map, data.maps.objects)
-	Globals.set("mapobjects", mapobjects)
-	var mapindex = serialization.unserialize_mapindex(map, Globals.get("mapobjects"))
-	Globals.set("mapindex", mapindex)
+	ProjectSettings.set("mapobjects", mapobjects)
+	var mapindex = serialization.unserialize_mapindex(map, ProjectSettings.get("mapobjects"))
+	ProjectSettings.set("mapindex", mapindex)
 	var levels = serialization.unserialize_levels(data.levels.data, levelfactory.new().levels)
 	if (data.maps.has("special_tiles")):
-		Globals.set("special_tiles", data.maps.special_tiles)
-	Globals.set("levels", levels)
+		ProjectSettings.set("special_tiles", data.maps.special_tiles)
+	ProjectSettings.set("levels", levels)
 	var level = load(data.maps.currentMap).instance()
 	get_node("level").add_child(level)
-	Globals.set("player", data.player.character)
+	ProjectSettings.set("player", data.player.character)
 	if (data.player.character == "adela"):
 		selected_character = adela
 	else:
 		selected_character = friederich
 	var player = selected_character.instance()
-	Globals.get("inventory").set("player", player)
+	ProjectSettings.get("inventory").set("player", player)
 	map.set("current_map", data.maps.currentMap)
 	map.set("camera", player.get_node("Camera2D"))
 	map.load_cached_map(level)
 	get_node("gui/CanvasLayer/hud").reset()
-	Globals.set("gold", data.inventory.gold)
+	ProjectSettings.set("gold", data.inventory.gold)
 	var scrolls = serialization.unserialize_scrolls(data.inventory.scrolls)
-	Globals.set("scrolls", scrolls)
+	ProjectSettings.set("scrolls", scrolls)
 	var inventory = serialization.unserialize_items(data.inventory.items)
-	Globals.get("inventory").set("inventory", inventory)
+	ProjectSettings.get("inventory").set("inventory", inventory)
 	var spells = serialization.unserialize_spells(data.inventory.magic)
-	Globals.set("available_spells", spells)
-	Globals.set("current_quest_complete", data.levels.currentQuestComplete)
-	Globals.set("reward_taken", data.levels.rewardTaken)
-	Globals.set("current_level", data.levels.currentLevel)
-	Globals.set("available_levels", data.levels.availableLevels)
-	Globals.set("shops", data.shops)
-	Globals.set("bgmvolume", data.settings.bgmvolume)
-	Globals.set("sfxvolume", data.settings.sfxvolume)
-	Globals.set("bgmmute", data.settings.bgmmute)
-	Globals.set("sfxmute", data.settings.sfxmute)
-	Globals.set("keyboard_controls", data.settings.keyboard)
-	Globals.set("gamepad_controls", data.settings.gamepad)
+	ProjectSettings.set("available_spells", spells)
+	ProjectSettings.set("current_quest_complete", data.levels.currentQuestComplete)
+	ProjectSettings.set("reward_taken", data.levels.rewardTaken)
+	ProjectSettings.set("current_level", data.levels.currentLevel)
+	ProjectSettings.set("available_levels", data.levels.availableLevels)
+	ProjectSettings.set("shops", data.shops)
+	ProjectSettings.set("bgmvolume", data.settings.bgmvolume)
+	ProjectSettings.set("sfxvolume", data.settings.sfxvolume)
+	ProjectSettings.set("bgmmute", data.settings.bgmmute)
+	ProjectSettings.set("sfxmute", data.settings.sfxmute)
+	ProjectSettings.set("keyboard_controls", data.settings.keyboard)
+	ProjectSettings.set("gamepad_controls", data.settings.gamepad)
 	var controls = data.settings.keyboard
 	var layout = data.settings.layout
 	# Only show the requested gamepad layout if gamepad is connected
@@ -554,9 +554,9 @@ func load_game(data):
 		controls = data.settings.gamepad
 	else:
 		layout = "keyboard"
-	Globals.set("current_input", layout)
-	Globals.set("controls", controls)
-	Globals.set("newcontrols", controls)
+	ProjectSettings.set("current_input", layout)
+	ProjectSettings.set("controls", controls)
+	ProjectSettings.set("newcontrols", controls)
 	var gameclock = get_node("gameclock")
 	gameclock.set("elapsed", int(data.playtime))
 	gameclock.resume()
@@ -564,11 +564,11 @@ func load_game(data):
 	serialization.unserialize_controls(data.settings.gamepad, false)
 	pausemenu.get_node("panels/settings").set_layout_index(layout)
 	pausemenu.reset_content()
-	var currentlevel = Globals.get("levels")[Globals.get("current_level")]
+	var currentlevel = ProjectSettings.get("levels")[ProjectSettings.get("current_level")]
 	var currentbgm = currentlevel.location.bgm
 	level.get_node("tilemap/SaveGroup/savepoint").check_sprite()
-	Globals.set("lastsavepoint", {"location": data.location, "id": data.maps.currentMap, "position": Vector2(data.position[0], data.position[1])})
-	Globals.set("deaths", data.deaths)
+	ProjectSettings.set("lastsavepoint", {"location": data.location, "id": data.maps.currentMap, "position": Vector2(data.position[0], data.position[1])})
+	ProjectSettings.set("deaths", data.deaths)
 	if (data.maps.currentMap == "res://levels/common/catacombs.tscn"):
 		currentbgm = preload("res://levels/common/catacombs.ogg")
 		connect_catacombs(level)
@@ -580,7 +580,7 @@ func load_game(data):
 	get_node("playercontainer").add_child(player)
 	player.load_tilemap(level)
 	serialization.unserialize_stats(player, data.player.stats)
-	Globals.set("chain", data.player.chainlist)
+	ProjectSettings.set("chain", data.player.chainlist)
 	if (pause.has_node("save")):
 		var loadsave = pause.get_node("save")
 		pause.remove_child(loadsave)
@@ -596,13 +596,13 @@ func display_level_title(title):
 
 func connect_catacombs(level):
 	var new_teleport = level.get_node("tilemap/TeleportGroup").get_child(0)
-	var map = Globals.get("levels")[Globals.get("current_level")]
+	var map = ProjectSettings.get("levels")[ProjectSettings.get("current_level")]
 	new_teleport.target_level = map.location.node
 	new_teleport.teleport_to = map.location.teleportto
 
 func check_available_levels():
-	var available_levels = Globals.get("available_levels")
-	var levels = Globals.get("levels")
+	var available_levels = ProjectSettings.get("available_levels")
+	var levels = ProjectSettings.get("levels")
 	var new_levels_available = false
 	# look for levels with completed requirements we can add
 	for key in levels:
@@ -610,7 +610,7 @@ func check_available_levels():
 		if (available_levels.find(level.title) < 0):
 			var valid_character = true
 			# if the requirement is not for the current character, we don't care about it
-			if (level.character != null && level.character != Globals.get("player")):
+			if (level.character != null && level.character != ProjectSettings.get("player")):
 				valid_character = false
 			if (level.require != null && valid_character):
 				var size = level.require.size()
@@ -633,8 +633,8 @@ func check_available_levels():
 
 # at least one requirement is required
 func check_related_requirements(required):
-	var available_levels = Globals.get("available_levels")
-	var levels = Globals.get("levels")
+	var available_levels = ProjectSettings.get("available_levels")
+	var levels = ProjectSettings.get("levels")
 	var required_size = required.size()
 	for i in range(0, required_size):
 		var required_level = required[i]
@@ -643,7 +643,7 @@ func check_related_requirements(required):
 
 # load new level
 func teleport(new_level, pos, teleport):
-	Globals.set("show_blood_counter", false)
+	ProjectSettings.set("show_blood_counter", false)
 	var teleport_copy = null
 	if (teleport != null):
 		teleport_copy = teleport.duplicate()
@@ -691,13 +691,13 @@ func do_teleport(resource, new_level, pos, teleport):
 	level_title.seek(0, true)
 	if (level_title_string != "LVL_NOTITLE"):
 		display_level_title(level_title_string)
-	var currentlevel = Globals.get("levels")[Globals.get("current_level")]
+	var currentlevel = ProjectSettings.get("levels")[ProjectSettings.get("current_level")]
 	var currentbgm = currentlevel.location.bgm
 	# make sure catacombs level connects to the correct level
 	if (new_level == "res://levels/common/catacombs.tscn"):
 		connect_catacombs(new_level_obj)
 		currentbgm = preload("res://levels/common/catacombs.ogg")
-		if (Globals.get("current_quest_complete") && !Globals.get("reward_taken") && currentlevel.reward > 0):
+		if (ProjectSettings.get("current_quest_complete") && !ProjectSettings.get("reward_taken") && currentlevel.reward > 0):
 			var gold = goldclass.instance()
 			gold.isreward = true
 			gold.value = currentlevel.reward
@@ -714,19 +714,19 @@ func do_teleport(resource, new_level, pos, teleport):
 	# check that any scrolls already collected do not appear in the level again
 	if (new_level_obj.has_node("tilemap/ScrollGroup")):
 		for i in new_level_obj.get_node("tilemap/ScrollGroup").get_children():
-			if (Globals.get("scrolls").has(i.get("title"))):
+			if (ProjectSettings.get("scrolls").has(i.get("title"))):
 				i.queue_free()
 	# check that goal item in quest levels is the correct one (or remove if already obtained)
 	if (new_level_obj.has_node("tilemap/SpecialItemGroup")):
 		var specialgroup = new_level_obj.get_node("tilemap/SpecialItemGroup")
-		if (Globals.get("current_quest_complete")):
+		if (ProjectSettings.get("current_quest_complete")):
 			specialgroup.queue_free()
 		else:
-			if (Globals.get("inventory").inventory.has(currentlevel.item)):
+			if (ProjectSettings.get("inventory").inventory.has(currentlevel.item)):
 				specialgroup.get_child(1).queue_free()
 			else:
 				specialgroup.get_child(0).queue_free()
-	Globals.set("sun", false)
+	ProjectSettings.set("sun", false)
 
 func sequence_finished():
 	sequences.get_node("demonic").hide()
@@ -734,18 +734,18 @@ func sequence_finished():
 	pause.hide()
 	get_tree().set_pause(false)
 
-# Globals with preloaded assets are not cleared properly. Until this is
+# ProjectSettings with preloaded assets are not cleared properly. Until this is
 # fixed, we are clearing them manually ourselves.
 func _notification(what):
 	if (what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST || what == MainLoop.NOTIFICATION_PREDELETE):
-		Globals.set("magic_spells", null)
-		Globals.set("itemfactory", null)
-		Globals.set("levels", null)
-		Globals.set("inventory", null)
-		Globals.set("scrolls", null)
-		Globals.set("shops", null)
-		Globals.set("mapobjects", null)
-		Globals.set("mapindex", null)
-		Globals.set("available_spells", null)
+		ProjectSettings.set("magic_spells", null)
+		ProjectSettings.set("itemfactory", null)
+		ProjectSettings.set("levels", null)
+		ProjectSettings.set("inventory", null)
+		ProjectSettings.set("scrolls", null)
+		ProjectSettings.set("shops", null)
+		ProjectSettings.set("mapobjects", null)
+		ProjectSettings.set("mapindex", null)
+		ProjectSettings.set("available_spells", null)
 		if (what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST):
 			get_tree().quit()

@@ -98,9 +98,9 @@ func _physics_process(delta):
 		polygon[1].y = blood_value
 		bloodbar.set_polygon(polygon)
 		get_node("bloodbar/display").set_use_parent_material(!player.get("is_demonic"))
-		if (Globals.get("show_blood_counter")):
+		if (ProjectSettings.get("show_blood_counter")):
 			bloodcounter.show()
-			bloodcounter.get_node("counter").set_text(str(Globals.get("blood_count")))
+			bloodcounter.get_node("counter").set_text(str(ProjectSettings.get("blood_count")))
 		else:
 			bloodcounter.hide()
 		
