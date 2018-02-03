@@ -296,8 +296,8 @@ func end_restore_animation():
 		get_node("AnimationPlayer").disconnect("finished", self, "show_restore")
 	if (get_node("AnimationPlayer").is_connected("finished", self, "end_restore_animation")):
 		get_node("AnimationPlayer").disconnect("finished", self, "end_restore_animation")
-.modulate.a = 1
-.modulate.a = 1
+	get_node("level").modulate.a = 1
+	get_node("playercontainer").modulate.a = 1
 	get_node("AnimationPlayer").stop()
 	var player = get_node("playercontainer/player")
 	player.current_hp = player.hp
@@ -383,8 +383,8 @@ func end_warp_animation():
 		var stardust = sequences.get_node("stardust")
 		sequences.remove_child(stardust)
 		stardust.queue_free()
-.modulate.a = 1
-.modulate.a = 1
+	get_node("level").modulate.a = 1
+	get_node("playercontainer").modulate.a = 1
 	get_node("AnimationPlayer").disconnect("finished", self, "end_warp_animation")
 	get_node("AnimationPlayer").stop()
 	get_node("level/LVL_CATACOMB/tilemap/NPCGroup/Kaleva").end_warp_animation()

@@ -438,7 +438,7 @@ tracks/6/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[node name="Global" type="Node2D" index="0"]
+[node name="Global" type="Node2D"]
 
 pause_mode = 2
 script = ExtResource( 1 )
