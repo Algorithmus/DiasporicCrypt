@@ -78,7 +78,7 @@ func _ready():
 	ProjectSettings.set("lastsavepoint", ProjectSettings.get("defaultsavepoint"))
 	ProjectSettings.set("deaths", 0)
 	root = get_tree().get_root()
-	original_size = root.get_rect().size
+	original_size = root.get_visible_rect().size
 	root.connect("size_changed", self, "_on_resolution_changed")
 	pause = get_node("gui/CanvasLayer/pause")
 	pausemenu = pause.get_node("menu")
@@ -96,6 +96,8 @@ func _ready():
 	get_node("gui/CanvasLayer/chain").hide()
 	dialog = get_node("gui/CanvasLayer/dialogue")
 	
+	#TODO - play sounds properly
+	"""
 	var sfx = AudioServer.get_fx_global_volume_scale()
 	if (ProjectSettings.has("sfxvolume")):
 		sfx = ProjectSettings.get("sfxvolume")
@@ -108,6 +110,7 @@ func _ready():
 		bgm = 0
 	AudioServer.set_fx_global_volume_scale(sfx)
 	AudioServer.set_stream_global_volume_scale(bgm)
+	"""
 
 	for spell in get_node("gui/CanvasLayer/hud/SpellIcons").get_children():
 		spell.hide()
@@ -153,7 +156,7 @@ func _ready():
 		player = adela.instance()
 	ProjectSettings.set("available_levels", available_levels)
 	start(player)
-	if (ProjectSettings.has("gamedata")):
+	if (ProjectSettings.has_setting("gamedata")):
 		load_game(ProjectSettings.get("gamedata"))
 		ProjectSettings.set("gamedata", null)
 
@@ -405,7 +408,8 @@ func start(player):
 	map.load_cached_map(level)
 	connect_catacombs(level)
 	level.get_node("tilemap/SaveGroup/savepoint").check_sprite()
-	get_node("gui/sound").play("confirm")
+	#TODO - play sounds properly
+	#get_node("gui/sound").play("confirm")
 	player.set_global_position(Vector2(-16, 322))
 	get_node("playercontainer").add_child(player)
 	player.load_tilemap(level)

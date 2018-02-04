@@ -2,12 +2,12 @@
 extends ToolButton
 
 var selected = false
-var icon
+var filter_icon
 var sfxclass = preload("res://gui/menu/sfx.tscn")
 var sfx
 
 func _ready():
-	icon = get_node("icon")
+	filter_icon = get_node("icon")
 	sfx = sfxclass.instance()
 	add_child(sfx)
 
@@ -22,9 +22,9 @@ func _on_mapfilter_focus_exit():
 func select(value):
 	selected = value
 	if (selected):
-		icon.modulate.a = 1
+		filter_icon.modulate.a = 1
 	else:
-		icon.modulate.a = 0.5
+		filter_icon.modulate.a = 0.5
 
 func _on_mapfilter_pressed():
 	select(!selected)

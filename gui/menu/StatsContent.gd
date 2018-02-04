@@ -71,7 +71,8 @@ func update_container():
 	get_node("info").set_bbcode(infostring)
 
 func _on_quit():
-	sfx.play("confirm")
+	#TODO - play sound properly
+	#sfx.play("confirm")
 	shield.show()
 	shield.get_node("options/no").grab_focus()
 

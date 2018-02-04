@@ -22,7 +22,7 @@ var current_grid
 
 #256, 176
 func _ready():
-	if (!ProjectSettings.has("mapid")):
+	if (!ProjectSettings.has_setting("mapid")):
 		ProjectSettings.set("mapid", "LVL_START")
 	objects = get_node("objects")
 	set_physics_process(true)
@@ -74,12 +74,12 @@ func load_map(root_node):
 	current_grid = grids[current_map]
 
 func load_cached_map(root_node):
-	if (ProjectSettings.has("mapindex")):
+	if (ProjectSettings.has_setting("mapindex")):
 		rooms = ProjectSettings.get("mapindex")
-	if (ProjectSettings.has("grids")):
+	if (ProjectSettings.has_setting("grids")):
 		grids = ProjectSettings.get("grids")
 	var mapid = ProjectSettings.get("mapid")
-	if (ProjectSettings.has("mapobjects") && ProjectSettings.get("mapobjects").has(mapid)):
+	if (ProjectSettings.has_setting("mapobjects") && ProjectSettings.get("mapobjects").has(mapid)):
 		var cache = ProjectSettings.get("mapobjects")[mapid]
 		for map in cache.get_children():
 			rooms[map.level] = map
@@ -92,7 +92,7 @@ func load_cached_map(root_node):
 	load_map(root_node)
 
 func cache_map():
-	if (!ProjectSettings.has("mapobjects")):
+	if (!ProjectSettings.has_setting("mapobjects")):
 		ProjectSettings.set("mapobjects", {})
 	ProjectSettings.get("mapobjects")[ProjectSettings.get("mapid")] = objects.duplicate()
 	ProjectSettings.set("mapindex", rooms)

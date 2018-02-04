@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://gui/theme/slidergrabber.png" type="Texture" id=1]
 [ext_resource path="res://gui/theme/slidergrabber_active.png" type="Texture" id=2]
@@ -26,9 +26,10 @@
 [sub_resource type="ImageTexture" id=1]
 
 flags = 4
-)size = Vector2( 4, 16 )
 storage = 0
 lossy_quality = 0.7
+flags = 4
+size = Vector2( 0, 0 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -44,6 +45,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 47, 26 )
 margin_left = 23.0
 margin_right = 24.0
 margin_top = 13.0
@@ -52,6 +54,7 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=4]
@@ -61,6 +64,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 8, 13 )
 margin_left = 3.0
 margin_right = 3.0
 margin_top = 0.0
@@ -69,22 +73,27 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="LargeTexture" id=5]
 
+flags = 0
 _data = [ Vector2( 0, 0 ) ]
 
 [sub_resource type="LargeTexture" id=6]
 
+flags = 0
 _data = [ Vector2( 0, 0 ) ]
 
 [sub_resource type="LargeTexture" id=7]
 
+flags = 0
 _data = [ Vector2( 0, 0 ) ]
 
 [sub_resource type="LargeTexture" id=8]
 
+flags = 0
 _data = [ Vector2( 0, 0 ) ]
 
 [sub_resource type="StyleBoxTexture" id=9]
@@ -94,6 +103,7 @@ content_margin_right = -1.0
 content_margin_top = 0.0
 content_margin_bottom = 30.0
 texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 28, 61 )
 margin_left = 0.0
 margin_right = 28.0
 margin_top = 30.0
@@ -102,6 +112,7 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=10]
@@ -111,6 +122,7 @@ content_margin_right = -1.0
 content_margin_top = 0.0
 content_margin_bottom = 30.0
 texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 28, 61 )
 margin_left = 0.0
 margin_right = 28.0
 margin_top = 30.0
@@ -119,6 +131,7 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=11]
@@ -128,6 +141,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 18, 64 )
 margin_left = 28.0
 margin_right = 0.0
 margin_top = 32.0
@@ -136,6 +150,7 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=12]
@@ -145,6 +160,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 18, 64 )
 margin_left = 18.0
 margin_right = 0.0
 margin_top = 32.0
@@ -153,6 +169,7 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="Theme" id=13]
@@ -180,6 +197,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 736, 528 )
 margin_left = 0.0
 margin_right = 0.0
 margin_top = 0.0
@@ -188,59 +206,70 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [node name="shopping" type="Control"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 736.0
+margin_bottom = 528.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme = SubResource( 13 )
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 736.0
-margin_bottom = 528.0
 script = ExtResource( 7 )
 
-[node name="BG" type="Panel" parent="."]
+[node name="BG" type="Panel" parent="." index="0"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
-margin_left = 0.0
-margin_top = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 736.0
 margin_bottom = 528.0
-custom_styles/panel = SubResource( 14 )
-
-[node name="panel" type="Control" parent="."]
-
-focus_ignore_mouse = false
-focus_stop_mouse = true
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-margin_left = 0.0
+custom_styles/panel = SubResource( 14 )
+
+[node name="panel" type="Control" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 32.0
 margin_right = 736.0
 margin_bottom = 526.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 
-[node name="buy_bg" parent="panel" instance=ExtResource( 9 )]
+[node name="buy_bg" parent="panel" index="0" instance=ExtResource( 9 )]
 
 margin_left = 224.0
 margin_top = 30.0
 margin_right = 264.0
 margin_bottom = 70.0
 
-[node name="sell_bg" parent="panel" instance=ExtResource( 9 )]
+[node name="sell_bg" parent="panel" index="1" instance=ExtResource( 9 )]
 
 margin_left = 592.0
 margin_top = 30.0
 margin_right = 632.0
 margin_bottom = 70.0
 
-[node name="underline" type="Polygon2D" parent="panel"]
+[node name="underline" type="Polygon2D" parent="panel" index="2"]
 
 position = Vector2( 0, 72 )
 polygon = PoolVector2Array( 0, 0, 736, 0, 736, 1, 0, 1 )
@@ -248,86 +277,115 @@ uv = PoolVector2Array(  )
 color = Color( 0.788235, 0.74902, 0.631373, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
-texture_rotation = 0.0
+texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="items_ornament" type="Sprite" parent="panel"]
+[node name="items_ornament" type="Sprite" parent="panel" index="3"]
 
 position = Vector2( 64, 18 )
 texture = ExtResource( 10 )
 centered = false
 
-[node name="special_ornament" type="Sprite" parent="panel"]
+[node name="special_ornament" type="Sprite" parent="panel" index="4"]
 
 position = Vector2( 432, 18 )
 texture = ExtResource( 10 )
 centered = false
 
-[node name="types" type="HBoxContainer" parent="panel"]
+[node name="types" type="HBoxContainer" parent="panel" index="5"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = false
-size_flags_horizontal = 2
-size_flags_vertical = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 80.0
 margin_top = 32.0
 margin_right = 734.0
 margin_bottom = 72.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 custom_constants/separation = 200
 alignment = 0
 
-[node name="buy" parent="panel/types" instance=ExtResource( 11 )]
+[node name="buy" parent="panel/types" index="0" instance=ExtResource( 11 )]
 
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_right = 154.0
+margin_bottom = 38.0
+rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath("../sell")
-margin_left = 0.0
-margin_right = 154.0
-margin_bottom = 40.0
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 custom_fonts/font = ExtResource( 12 )
+group = null
 text = "SHOP_BUY"
 
-[node name="Sprite" type="Sprite" parent="panel/types/buy"]
+[node name="Sprite" type="Sprite" parent="panel/types/buy" index="1"]
 
 position = Vector2( -10, 20 )
 texture = ExtResource( 13 )
 
-[node name="sell" parent="panel/types" instance=ExtResource( 11 )]
+[node name="sell" parent="panel/types" index="1" instance=ExtResource( 11 )]
 
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 427.0
+margin_right = 591.0
+margin_bottom = 38.0
+rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath("../buy")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath(".")
-margin_left = 354.0
-margin_right = 518.0
-margin_bottom = 40.0
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 custom_fonts/font = ExtResource( 12 )
+group = null
 text = "SHOP_SELL"
 
-[node name="Sprite" type="Sprite" parent="panel/types/sell"]
+[node name="Sprite" type="Sprite" parent="panel/types/sell" index="1"]
 
 position = Vector2( -10, 20 )
 texture = ExtResource( 14 )
 
-[node name="bg" type="Sprite" parent="panel"]
+[node name="bg" type="Sprite" parent="panel" index="6"]
 
 position = Vector2( 0, 80 )
 texture = ExtResource( 15 )
 centered = false
 
-[node name="noitems" type="Label" parent="panel"]
+[node name="noitems" type="Label" parent="panel" index="7"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 16.0
 margin_top = 64.0
 margin_right = 640.0
 margin_bottom = 384.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 16 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "ITEM_NONE"
@@ -337,58 +395,77 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="itemcontainer" type="ScrollContainer" parent="panel"]
+[node name="itemcontainer" type="ScrollContainer" parent="panel" index="8"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 16.0
 margin_top = 108.0
 margin_right = 706.0
 margin_bottom = 324.0
-scroll_horizontal = false
-scroll_vertical = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="panel/itemcontainer"]
-
-rect_min_size = Vector2( 624, 0 )
-focus_ignore_mouse = false
-focus_stop_mouse = false
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-margin_left = 0.0
-margin_top = 0.0
+scroll_horizontal_enabled = true
+scroll_horizontal = 0
+scroll_vertical_enabled = true
+scroll_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="panel/itemcontainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 624.0
-margin_bottom = 0.0
+rect_min_size = Vector2( 624, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 alignment = 0
 
-[node name="info" type="Control" parent="panel"]
+[node name="info" type="Control" parent="panel" index="9"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = false
-size_flags_horizontal = 2
-size_flags_vertical = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 12.0
 margin_top = 360.0
 margin_right = 716.0
 margin_bottom = 490.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 
-[node name="image" type="Sprite" parent="panel/info"]
+[node name="image" type="Sprite" parent="panel/info" index="0"]
 
 position = Vector2( 48, 48 )
 texture = ExtResource( 17 )
 
-[node name="cost" type="Label" parent="panel/info"]
+[node name="cost" type="Label" parent="panel/info" index="1"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
-margin_left = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 72.0
 margin_right = 96.0
 margin_bottom = 96.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 18 )
 text = "100G"
 align = 1
@@ -396,16 +473,20 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="amount" type="Label" parent="panel/info"]
+[node name="amount" type="Label" parent="panel/info" index="2"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
-margin_left = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 90.0
 margin_right = 96.0
 margin_bottom = 114.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 18 )
 text = "x1"
 align = 1
@@ -413,16 +494,20 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="title" type="Label" parent="panel/info"]
+[node name="title" type="Label" parent="panel/info" index="3"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 100.0
-margin_top = 0.0
 margin_right = 318.0
 margin_bottom = 42.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 12 )
 text = "ITEM_POTION"
 valign = 1
@@ -431,61 +516,92 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="divider" type="Sprite" parent="panel/info"]
+[node name="divider" type="Sprite" parent="panel/info" index="4"]
 
+self_modulate = Color( 1, 0, 0, 0.431373 )
 position = Vector2( 360, 64 )
 texture = ExtResource( 19 )
-self_modulate = Color( 1, 0, 0, 0.431373 )
 
-[node name="description" type="RichTextLabel" parent="panel/info"]
+[node name="description" type="RichTextLabel" parent="panel/info" index="5"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 100.0
 margin_top = 40.0
 margin_right = 320.0
 margin_bottom = 120.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 custom_fonts/normal_font = ExtResource( 6 )
 bbcode_enabled = true
 bbcode_text = "[fill]description descriptionTESTTEST
 blah[/fill]"
 visible_characters = -1
 percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "description descriptionTESTTEST
+blah"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
 
-[node name="transaction" type="Control" parent="panel/info"]
+[node name="transaction" type="Control" parent="panel/info" index="6"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 420.0
-margin_top = 0.0
 margin_right = 460.0
 margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 
-[node name="amount" parent="panel/info/transaction" instance=ExtResource( 11 )]
+[node name="amount" parent="panel/info/transaction" index="0" instance=ExtResource( 11 )]
 
-focus_neighbour_left = NodePath(".")
-focus_neighbour_top = NodePath(".")
-focus_neighbour_right = NodePath(".")
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = -5.0
 margin_right = 215.0
 margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 custom_fonts/font = ExtResource( 12 )
+group = null
 text = "SHOP_AMOUNT"
 
-[node name="amountvalue" type="Label" parent="panel/info/transaction"]
+[node name="amountvalue" type="Label" parent="panel/info/transaction" index="1"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
-margin_left = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 32.0
 margin_right = 264.0
 margin_bottom = 56.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 text = "1 / 1"
 align = 2
 valign = 1
@@ -493,16 +609,20 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="total" type="Label" parent="panel/info/transaction"]
+[node name="total" type="Label" parent="panel/info/transaction" index="2"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
-margin_left = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 52.0
 margin_right = 208.0
 margin_bottom = 94.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 12 )
 text = "SHOP_TOTAL"
 valign = 1
@@ -510,16 +630,20 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="totalvalue" type="Label" parent="panel/info/transaction"]
+[node name="totalvalue" type="Label" parent="panel/info/transaction" index="3"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
-margin_left = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 90.0
 margin_right = 264.0
 margin_bottom = 114.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 text = "### EXP"
 align = 2
 valign = 1
@@ -527,45 +651,60 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="frame" type="TextureRect" parent="."]
+[node name="frame" type="TextureRect" parent="." index="2"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = -32.0
 margin_top = -32.0
 margin_right = 768.0
 margin_bottom = 560.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 texture = ExtResource( 20 )
 stretch_mode = 0
 
-[node name="title" type="Label" parent="."]
+[node name="title" type="Label" parent="." index="3"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 40.0
 margin_top = 4.0
 margin_right = 500.0
 margin_bottom = 28.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 6 )
 text = "SHOP_KALEVAgqpj"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="gold" type="Label" parent="."]
+[node name="gold" type="Label" parent="." index="4"]
 
-focus_ignore_mouse = true
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 500.0
 margin_top = 4.0
 margin_right = 680.0
 margin_bottom = 28.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 6 )
 text = "100G"
 align = 2
@@ -573,18 +712,27 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="goldicon" type="Sprite" parent="."]
+[node name="goldicon" type="Sprite" parent="." index="5"]
 
 position = Vector2( 692, 11 )
 texture = ExtResource( 21 )
 
-[node name="back" parent="." instance=ExtResource( 22 )]
+[node name="back" parent="." index="6" instance=ExtResource( 22 )]
 
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 455.0
 margin_top = 542.0
 margin_right = 696.0
 margin_bottom = 573.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
 
-[connection signal="focus_entered"  from="panel/types/buy"  to="." method="change_type" binds=[  ]]
+[connection signal="focus_entered" from="panel/types/buy" to="." method="change_type"]
 
-[connection signal="focus_entered"  from="panel/types/sell"  to="." method="change_type" binds=[  ]]
+[connection signal="focus_entered" from="panel/types/sell" to="." method="change_type"]
+
+

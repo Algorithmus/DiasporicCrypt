@@ -144,9 +144,9 @@ func step_player(delta):
 	var rightX = get_global_position().x + sprite_offset.x
 	
 	# bottom left ray check
-	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+16), [self])
+	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+16), area2d_blacklist)
 	# bottom right ray check
-	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+16), [self])
+	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+16), area2d_blacklist)
 
 	# check regular blocks
 	var normalTileCheck = !relevantTileA.empty() || !relevantTileB.empty()
@@ -228,7 +228,7 @@ func step_player(delta):
 		
 				check_attacking()
 			
-				position.y = accel
+				pos.y = accel
 				
 				check_blood(areaTiles)
 				
@@ -318,7 +318,7 @@ func step_player(delta):
 			var swingX = swing_block.get_global_position().x - cos(swing_angle)*swing_radius
 			var swingY = swing_block.get_global_position().y + sin(swing_angle)*swing_radius
 			var swingPlayerY = swingY - get_global_position().y + sprite_offset.y
-			move(Vector2(swingX - get_global_position().x, swingPlayerY))
+			_collider = move_and_collide(Vector2(swingX - get_global_position().x, swingPlayerY))
 			whipswing_obj.set_global_position(swing_block.get_global_position())
 			whipswing_obj.set_rot(swing_angle - PI/2)
 			whipswing_obj.get_node("whip").set_scale(Vector2(1, swing_radius-4))
@@ -338,7 +338,7 @@ func step_player(delta):
 						swing_radius = max(MIN_SWING_RADIUS, swing_radius - SWING_RADIUS_DELTA)
 					elif (input_down()):
 						swing_radius = min(MAX_SWING_RADIUS, swing_radius + SWING_RADIUS_DELTA)
-					move(Vector2(0, swing_block.get_global_position().y + swing_radius - get_position().y + sprite_offset.y))
+					_collider = move_and_collide(Vector2(0, swing_block.get_global_position().y + swing_radius - get_position().y + sprite_offset.y))
 					whipswing_obj.set_rot(0)
 					whipswing_obj.set_position(Vector2(0, -sprite_offset.y - swing_radius))
 					whipswing_obj.get_node("whip").set_scale(Vector2(1, swing_radius-4))
@@ -368,7 +368,7 @@ func step_player(delta):
 		calculate_fall_height()
 		
 		if (wall_hanging):
-			position.y = min(position.y, 0)
+			pos.y = min(pos.y, 0)
 			
 		if (current_wall_hanging_delay > 0):
 			current_wall_hanging_delay += 1
@@ -384,7 +384,7 @@ func step_player(delta):
 			air_jump = 0
 	
 		if (!is_swinging && !whip_hanging):
-			move(position)
+			_collider = move_and_collide(position)
 
 		step_camera()
 	else:
@@ -534,7 +534,7 @@ func _on_weapon_collision(area):
 		#var new_radius = sqrt(pow(area.get_global_position().x - get_global_position().x, 2) + pow(area.get_global_position().y - get_global_position().y + sprite_offset.y, 2))
 		swing_radius = MIN_SWING_RADIUS
 		swing_block = area
-		move(Vector2(swing_block.get_global_position().x - get_global_position().x, swing_block.get_global_position().y + TILE_SIZE/2 - get_position().y + sprite_offset.y + swing_radius))
+		_collider = move_and_collide(Vector2(swing_block.get_global_position().x - get_global_position().x, swing_block.get_global_position().y + TILE_SIZE/2 - get_position().y + sprite_offset.y + swing_radius))
 		whipswing_obj.show()
 		whipswing_obj.get_node("whipring").hide()
 		whipswing_obj.get_node("sound").play("whipswing")

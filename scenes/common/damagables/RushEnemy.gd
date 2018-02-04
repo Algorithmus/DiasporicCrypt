@@ -109,7 +109,7 @@ func step_player(delta):
 	# don't fall while standing on moving platforms moving up
 	check_on_moving_platform(desiredY)
 
-	position.y = accel
+	pos.y = accel
 
 	check_attack()
 

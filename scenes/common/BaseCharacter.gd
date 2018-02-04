@@ -44,6 +44,7 @@ var on_ladder = false
 var jumpPressed = false
 var hpclass = preload("res://gui/hud/hp.tscn")
 var ignore_gravity = false
+var _collider
 
 var MovingPlatform = preload("res://scenes/dungeon/movingplatform/MovingPlatform.gd")
 
@@ -122,8 +123,11 @@ func add_to_blacklist(item):
 func isSlope(name):
 	return name.match("slope*-*")
 
+func is_colliding():
+	return _collider != null && _collider.collider != null
+
 func getSlopes(space_state):
-	var relevantSlopeTile = space_state.intersect_ray(Vector2(get_global_position().x, get_global_position().y+sprite_offset.y), Vector2(get_global_position().x, get_global_position().y+sprite_offset.y+8), area2d_blacklist, 2147483647, 16)
+	var relevantSlopeTile = space_state.intersect_ray(Vector2(get_global_position().x, get_global_position().y+sprite_offset.y), Vector2(get_global_position().x, get_global_position().y+sprite_offset.y+8), area2d_blacklist, 2147483647)
 	if (relevantSlopeTile.has("collider")):
 		var collider = relevantSlopeTile["collider"]
 		if (isSlope(collider.get_name())):
@@ -133,7 +137,7 @@ func getSlopes(space_state):
 func getOneWayTile(space_state, desiredY):
 	var leftX = get_global_position().x - sprite_offset.x
 	var rightX = get_global_position().x + sprite_offset.x
-	var oneWayTile = space_state.intersect_ray(Vector2(leftX, get_global_position().y + sprite_offset.y + desiredY), Vector2(rightX, get_global_position().y + sprite_offset.y + desiredY), area2d_blacklist, 2147483647, 16)
+	var oneWayTile = space_state.intersect_ray(Vector2(leftX, get_global_position().y + sprite_offset.y + desiredY), Vector2(rightX, get_global_position().y + sprite_offset.y + desiredY), area2d_blacklist, 2147483647)
 	if (oneWayTile.has("collider")):
 		if (oneWayTile["collider"].get_name() == "oneway"):
 			return oneWayTile["collider"]
@@ -166,7 +170,7 @@ func closestXTile(desired_direction, desiredX, space_state):
 	# 1 = check right side
 	if (has_kinematic_collision):
 		if (is_colliding()):
-			if (get_collision_position().y > int(get_position().y - sprite_offset.y) && get_collision_position().y < int(get_position().y + sprite_offset.y)):
+			if (_collider.position.y > int(get_position().y - sprite_offset.y) && _collider.position.y < int(get_position().y + sprite_offset.y)):
 				return 0
 	else:
 		desiredX = closestXTile_area_check(desired_direction, desiredX, space_state)
@@ -297,7 +301,7 @@ func step_horizontal(space_state):
 
 		pos.x = pos.x * current_gravity
 
-		move(pos)
+		_collider = move_and_collide(pos)
 
 		pos.x = 0
 
@@ -316,7 +320,7 @@ func step_horizontal(space_state):
 			b = parseSlopeType(relevantSlopeTile.get_name())
 			if (b != null):
 				if (b[0] == 0 || b[1] == 0):
-					move(Vector2(slopeX, 0))
+					_collider = move_and_collide(Vector2(slopeX, 0))
 				onSlope = true
 				b = parseSlopeType(relevantSlopeTile.get_name())
 				# ignore bottom slopes if we're not close enough to them
@@ -469,7 +473,6 @@ func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, o
 
 		# handle standing on a ladder_top tile
 		check_ladder_top(normalTileCheck, closestTileY, desiredY)
-
 		accel = min(min(abs(desiredY), abs(closestTileY)), SPEED_LIMIT * current_gravity * current_gravity) * s
 	return {"desiredY": desiredY, "slope": onSlope, "slopeTile": relevantSlopeTile, "abSlope": abSlope, "animationSpeed": animation_speed, "ladderY": ladderY}
 
@@ -491,7 +494,7 @@ func calculate_fall_height():
 		fall_height = 0
 
 func _physics_process(delta):
-	if (is_fixed_processing() && !is_delay):
+	if (is_physics_processing() && !is_delay):
 		step_player(delta)
 	elif (is_delay):
 		is_delay = false
@@ -507,9 +510,9 @@ func step_player(delta):
 	var rightX = get_global_position().x + sprite_offset.x
 
 	# bottom left ray check
-	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+16), [self])
+	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+16), [self] + area2d_blacklist)
 	# bottom right ray check
-	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+16), [self])
+	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+16), [self] + area2d_blacklist)
 
 	# check regular blocks
 	var normalTileCheck = !relevantTileA.empty() || !relevantTileB.empty()

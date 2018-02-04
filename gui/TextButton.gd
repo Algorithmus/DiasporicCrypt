@@ -8,7 +8,8 @@ func _ready():
 		get_node("button").grab_focus()
 
 func _on_button_focus_enter():
-	get_node("SamplePlayer").play("cursor")
+	#TOOD - play sounds properly
+	#get_node("SamplePlayer").play("cursor")
 	set_scale(Vector2(1.5, 1.5))
 
 func _on_button_focus_exit():

@@ -178,14 +178,14 @@ func getClimbPlatform(space_state, direction):
 
 func getLadderTile(space_state):
 	var leftX = get_global_position().x - sprite_offset.x
-	var ladderTile = space_state.intersect_ray(Vector2(leftX, get_global_position().y - sprite_offset.y), Vector2(leftX, get_global_position().y + sprite_offset.y), area2d_blacklist, 2147483647, 16)
+	var ladderTile = space_state.intersect_ray(Vector2(leftX, get_global_position().y - sprite_offset.y), Vector2(leftX, get_global_position().y + sprite_offset.y), area2d_blacklist, 2147483647)
 	if (ladderTile.has("collider")):
 		var tileName = ladderTile["collider"].get_name()
 		if (tileName == "ladder" || tileName == "ladder_top"):
 			return ladderTile["collider"]
 
 	var rightX = get_global_position().x + sprite_offset.x
-	ladderTile = space_state.intersect_ray(Vector2(rightX, get_global_position().y - sprite_offset.y), Vector2(rightX, get_global_position().y + sprite_offset.y), area2d_blacklist, 2147483647, 16)
+	ladderTile = space_state.intersect_ray(Vector2(rightX, get_global_position().y - sprite_offset.y), Vector2(rightX, get_global_position().y + sprite_offset.y), area2d_blacklist, 2147483647)
 	if (ladderTile.has("collider")):
 		var tileName = ladderTile["collider"].get_name()
 		if (tileName == "ladder" || tileName == "ladder_top"):
@@ -194,7 +194,7 @@ func getLadderTile(space_state):
 
 func snapToLadder(ladder):
 	var ladderX = ladder.get_global_position().x - get_global_position().x
-	move(Vector2(ladderX, 0))
+	_collider = move_and_collide(Vector2(ladderX, 0))
 
 func remove_weapon_collider():
 	if (has_node(weapon_collider.get_name())):
@@ -463,6 +463,8 @@ func check_jump():
 			falling = true
 			jumpPressed = true
 		elif (jumping_allowed()):
+			print("jumping allowed")
+			print(jumpspeed * current_gravity)
 			accel = -jumpspeed * current_gravity
 			falling = true
 			jumpPressed = true
@@ -661,7 +663,9 @@ func check_animations(new_animation, animation_speed, horizontal_motion, ladderY
 			if (!horizontal_motion):
 				new_animation = "land"
 			if (current_animation != "land"):
-				get_node("sound").set_volume_db(get_node("sound").play("land"), (fall_height/defaultfallheight*current_gravity - 1)*10)
+				#TODO - play sounds properly
+				#get_node("sound").set_volume_db(get_node("sound").play("land"), (fall_height/defaultfallheight*current_gravity - 1)*10)
+				pass
 		
 		if (!falling && animation_player.get_current_animation().match("*aattack")):
 			attack_frame = animation_player.get_current_animation_position()
@@ -706,7 +710,7 @@ func check_animations(new_animation, animation_speed, horizontal_motion, ladderY
 
 	if (on_ladder):
 		direction = 1
-		position.y = ladderY
+		pos.y = ladderY
 		new_animation = "ladder"
 		if (ladderY == 0):
 			animation_speed = 0
@@ -737,7 +741,7 @@ func set_sprite_opacity(value):
 
 func calculate_fall_height():
 	if (falling):
-		fall_height += max(0, position.y)
+		fall_height += max(0, pos.y)
 	else:
 		fall_height = 0
 
@@ -752,9 +756,9 @@ func step_player(delta):
 	var rightX = get_global_position().x + sprite_offset.x
 	
 	# bottom left ray check
-	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+16), [self])
+	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+16), area2d_blacklist)
 	# bottom right ray check
-	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+16), [self])
+	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+16), area2d_blacklist)
 
 	# check regular blocks
 	var normalTileCheck = !relevantTileA.empty() || !relevantTileB.empty()
@@ -816,7 +820,7 @@ func step_player(delta):
 	
 			check_attacking()
 		
-			position.y = accel
+			pos.y = accel
 			
 			check_blood(areaTiles)
 			
@@ -835,7 +839,7 @@ func step_player(delta):
 	
 		calculate_fall_height()
 		
-		move(position)
+		_collider = move_and_collide(pos)
 	else:
 		if (!get_tree().is_paused() && get_pause_mode() == 2):
 			get_tree().set_pause(true)
@@ -1174,7 +1178,8 @@ func _ready():
 	
 	reset_blacklist()
 	
-	get_node("sound").set_polyphony(10)
+	#TODO - play sounds properly
+	#get_node("sound").set_polyphony(10)
 	
 	set_process_input(true)
 	camera_offset = get_node("Camera2D").get_offset()
@@ -1208,7 +1213,7 @@ func load_tilemap(var tilemap_node):
 	camera.set_limit(MARGIN_BOTTOM, se.get_position().y - camera_offset.y)
 
 func play_animation(animation, speed):
-	animation_player.set_speed(speed)
+	animation_player.playback_speed = speed
 	if (current_animation != animation):
 		animation_player.play(animation)
 		if (animation == "crouch" && current_animation == "dattack"):

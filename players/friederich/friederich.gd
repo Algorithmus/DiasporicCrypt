@@ -185,9 +185,9 @@ func step_player(delta):
 	var rightX = get_global_position().x + sprite_offset.x
 	
 	# bottom left ray check
-	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+16), [self])
+	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+16), [Area2D])
 	# bottom right ray check
-	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+16), [self])
+	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+16), [Area2D])
 
 	# check regular blocks
 	var normalTileCheck = !relevantTileA.empty() || !relevantTileB.empty()
@@ -393,7 +393,7 @@ func step_player(delta):
 				else:
 					current_chain_delay += 1
 		
-				position.y = accel
+				pos.y = accel
 				check_blood(areaTiles)
 				
 				check_magic()
@@ -407,7 +407,7 @@ func step_player(delta):
 			horizontal_motion = false
 			ladderY = 0
 			var target_exists = false
-			var newpos = position.y
+			var newpos = pos.y
 			var animation_pos = animation_player.get_current_animation_position()
 			var animation_length = animation_player.get_current_animation_length()
 			var animation_end = animation_length - special_delay * delta
@@ -431,7 +431,7 @@ func step_player(delta):
 					target_enemy.get_ref().get_parent().set("floortile_check_requested", false)
 					target_enemy.get_ref().get_parent().set_global_position(Vector2(target_enemy.get_ref().get_global_position().x, target_enemy.get_ref().get_global_position().y + target_enemy_offset.y))
 			elif (current_chain_special["id"] == "skewer"):
-				newpos = min(position.y + 1, 0)
+				newpos = min(pos.y + 1, 0)
 				if (target_exists && hit_enemy && is_valid_target):
 					target_enemy.get_ref().get_parent().set("floortile_check_requested", false)
 					target_enemy.get_ref().get_parent().set_global_position(Vector2(target_enemy.get_ref().get_global_position().x, get_global_position().y - TILE_SIZE))
@@ -471,7 +471,7 @@ func step_player(delta):
 				accel += falling_modifier(accel)
 				var vertical = step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, false, oneWayTile, null)
 				newpos = accel
-			position.y = newpos
+			pos.y = newpos
 			if (hit_enemy):
 				hit_enemy = false
 			# remove collider by [hurt delay] before end of the special animation
@@ -497,10 +497,10 @@ func step_player(delta):
 		var animations = check_animations(new_animation, animation_speed, horizontal_motion, ladderY)
 		animation_speed = animations["animationSpeed"]
 		new_animation = animations["animation"]
-	
+
 		calculate_fall_height()
-		
-		move(position)
+
+		_collider = move_and_collide(pos)
 
 		step_camera()
 		if (is_hurt || on_ladder || current_chain_delay >= chain_delay || chain_counter > MAX_CHAIN):

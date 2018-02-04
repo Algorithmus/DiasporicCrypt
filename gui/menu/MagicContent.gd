@@ -13,7 +13,7 @@ func _ready():
 	scrollrange = get_node("ScrollContainer").get_size()
 
 func update_container():
-	if (ProjectSettings.has("available_spells")):
+	if (ProjectSettings.has_setting("available_spells")):
 		var spells = ProjectSettings.get("available_spells")
 		for spell in spells:
 			var magicitem

@@ -22,7 +22,8 @@ func _on_tab_focus_enter():
 	set_use_parent_material(true)
 	is_unfocused = false
 	emit_signal("tab_changed", get_name())
-	sfx.play("cursor")
+	#TODO - play sounds properly
+	#sfx.play("cursor")
 
 func _on_tab_focus_exit():
 	if (!is_unfocused):

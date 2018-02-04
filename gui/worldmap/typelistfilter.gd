@@ -2,7 +2,7 @@
 extends ToolButton
 
 var selected
-var icon
+var filter_icon
 var active = true
 
 const RED = Color(146/255.0, 0, 0)
@@ -13,7 +13,7 @@ var sfx
 
 func _ready():
 	selected = get_node("selected")
-	icon = get_node("icon")
+	filter_icon = get_node("icon")
 	sfx = sfxclass.instance()
 	add_child(sfx)
 
@@ -27,9 +27,9 @@ func _on_tagfilter_focus_exit():
 func select(value):
 	active = value
 	if (active):
-		icon.set_modulate(RED)
+		filter_icon.set_modulate(RED)
 	else:
-		icon.set_modulate(BLACK)
+		filter_icon.set_modulate(BLACK)
 
 func _on_tagfilter_pressed():
 	select(!active)

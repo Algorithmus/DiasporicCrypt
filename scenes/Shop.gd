@@ -1,7 +1,7 @@
 
 extends Node
 
-var name
+var title
 var inventory
 var sellrate
 

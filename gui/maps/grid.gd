@@ -40,7 +40,8 @@ func init(pos, width, height, grid):
 	set_offset(pos)
 	grid_texture = ImageTexture.new()
 	grid_texture.create(floor(width), floor(height), GRIDFORMAT)
-	image = Image(grid_texture.get_width(), grid_texture.get_height(), false, GRIDFORMAT)
+	image = Image.new()
+	image.create(grid_texture.get_width(), grid_texture.get_height(), false, GRIDFORMAT)
 	grid_texture.set_data(image)
 	set_texture(grid_texture)
 	current_grid = grid

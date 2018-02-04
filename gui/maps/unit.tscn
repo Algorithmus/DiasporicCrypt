@@ -1,39 +1,44 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://gui/maps/unit.gd" type="Script" id=1]
 
-[node name="Unit" type="Node2D"]
+[node name="Unit" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
 __meta__ = {
 "__editor_plugin_screen__": "Script"
 }
 level = ""
 
-[node name="area" type="Polygon2D" parent="."]
+[node name="area" type="Polygon2D" parent="." index="0"]
 
 polygon = PoolVector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
 uv = PoolVector2Array(  )
 color = Color( 0.148201, 0.121212, 0.254881, 0.392157 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
-texture_rotation = 0.0
+texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
 
-[node name="border" type="Polygon2D" parent="."]
+[node name="border" type="Polygon2D" parent="." index="1"]
 
 polygon = PoolVector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
 uv = PoolVector2Array(  )
 color = Color( 1, 1, 1, 1 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
+antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
-texture_rotation = 0.0
+texture_rotation_degrees = 0.0
 invert_enable = true
 invert_border = 1.0
+
+
