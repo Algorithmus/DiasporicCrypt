@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/common/target.gd" type="Script" id=1]
 [ext_resource path="res://scenes/common/damagables/pole.png" type="Texture" id=2]
@@ -18,7 +18,9 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteGroup/target:frame")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -28,7 +30,9 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/path = NodePath("SpriteGroup/pole:frame")
 tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
@@ -38,7 +42,9 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/path = NodePath("SpriteGroup/target:offset")
 tracks/2/interp = 1
+tracks/2/loop_wrap = true
 tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -54,7 +60,9 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteGroup/pole:frame")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -64,7 +72,9 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/path = NodePath("SpriteGroup/target:frame")
 tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -77,13 +87,14 @@ tracks/1/keys = {
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
-collision/margin = 0.08
+collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "collision" ]
 __meta__ = {
 "__editor_plugin_screen__": "Script"
 }
 
-[node name="enabler" type="VisibilityEnabler2D" parent="."]
+[node name="enabler" type="VisibilityEnabler2D" parent="." index="0"]
 
 scale = Vector2( 5, 12 )
 rect = Rect2( -10, -10, 20, 20 )
@@ -92,18 +103,17 @@ freeze_bodies = true
 pause_particles = true
 pause_animated_sprites = true
 process_parent = false
-fixed_process_parent = false
+physics_process_parent = false
 
-[node name="SpriteGroup" type="Node2D" parent="."]
+[node name="SpriteGroup" type="Node2D" parent="." index="1"]
 
-
-[node name="pole" type="Sprite" parent="SpriteGroup"]
+[node name="pole" type="Sprite" parent="SpriteGroup" index="0"]
 
 texture = ExtResource( 2 )
 offset = Vector2( 6, -4 )
 hframes = 4
 
-[node name="target" type="Sprite" parent="SpriteGroup"]
+[node name="target" type="Sprite" parent="SpriteGroup" index="1"]
 
 position = Vector2( -2, 7 )
 texture = ExtResource( 3 )
@@ -111,35 +121,30 @@ offset = Vector2( 6, -4 )
 hframes = 3
 region_rect = Rect2( 0, 0, 32, 96 )
 
-[node name="collision" type="Area2D" parent="."]
+[node name="collision" type="Area2D" parent="." index="2"]
 
 input_pickable = true
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="collision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision" index="0"]
 
 shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 
+root_node = NodePath("..")
+autoplay = "idle"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-root_node = NodePath("..")
+playback_speed = 1.0
 anims/hurt = SubResource( 2 )
 anims/idle = SubResource( 3 )
-playback/active = true
-playback/speed = 1.0
 blend_times = [  ]
-autoplay = "idle"
 
-[connection signal="enter_screen"  from="enabler"  to="." method="enter_screen" binds=[  ]]
 
-[connection signal="exit_screen"  from="enabler"  to="." method="exit_screen" binds=[  ]]

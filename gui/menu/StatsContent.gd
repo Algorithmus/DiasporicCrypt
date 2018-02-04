@@ -80,7 +80,8 @@ func block_cancel():
 	return shield.is_visible()
 
 func quitgame():
-	sfx.play("confirm")
+	#TODO - play sound properly
+	#sfx.play("confirm")
 	get_tree().change_scene("res://scenes/global.tscn")
 
 func no_pressed():
