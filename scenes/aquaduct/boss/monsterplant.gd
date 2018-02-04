@@ -47,6 +47,7 @@ func _ready():
 	top = mouth.get_node("top")
 	mouth.remove_child(top)
 	animation_player = get_node("AnimationPlayer")
+	set_physics_process(false)
 
 func _physics_process(delta):
 	var new_animation = current_animation

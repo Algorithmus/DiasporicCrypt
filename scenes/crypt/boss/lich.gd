@@ -38,6 +38,7 @@ func _ready():
 	hud = get_tree().get_root().get_node("world/gui/hpcontainer")
 	inversehex_count = (INVERSEHEX_RIGHT - 128 - INVERSEHEX_LEFT) / 320
 	player = get_tree().get_root().get_node("world/playercontainer/player")
+	set_physics_process(false)
 
 func _physics_process(delta):
 	var new_animation = current_animation

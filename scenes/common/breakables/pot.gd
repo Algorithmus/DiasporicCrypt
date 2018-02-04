@@ -23,6 +23,7 @@ func _ready():
 		reward_obj.set_position(Vector2(get_position().x, get_position().y + 32))
 	elif (type == "SWITCH"):
 		reward_obj = tilemap.get_node(reward)
+	set_physics_process(false)
 
 func _physics_process(delta):
 	if (is_crumbling):

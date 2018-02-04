@@ -30,6 +30,7 @@ func _ready():
 	#print(aura)
 	#print(get_node(".").get_name())
 	aura.set_shader_param("aura_color", keycolors[key])
+	set_physics_process(false)
 
 func _physics_process(delta):
 	if (collision.get_parent() != null):

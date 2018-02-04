@@ -64,6 +64,7 @@ func crumble():
 func _ready():
 	# Initialization here
 	sound = get_node("sound")
+	set_physics_process(false)
 
 func sprite_opacity(alpha):
 	get_node("KinematicBody2D/Sprite").modulate.a = alpha

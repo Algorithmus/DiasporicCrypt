@@ -20,6 +20,7 @@ func _ready():
 	sprite_offset = collision_rect.get_node("CollisionShape2D").get_shape().get_extents()
 	hud = get_tree().get_root().get_node("world/gui/hpcontainer")	
 	current_hp = hp
+	set_physics_process(false)
 
 func check_hp(damage):
 	current_hp -= damage

@@ -15,6 +15,8 @@ func _ready():
 	tilemap = get_parent().get_parent()
 	if (!ProjectSettings.get("current_quest_complete")):
 		set_physics_process(true)
+	else:
+		set_physics_process(false)
 
 # called when sensor is triggered and to start the fight
 func trigger_fighting():

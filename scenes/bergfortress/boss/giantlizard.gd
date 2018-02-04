@@ -29,6 +29,7 @@ func _ready():
 	hammer_collision = hammer.get_node("collision")
 	hammer_oneway = hammer.get_node("oneway")
 	animation_player = get_node("AnimationPlayer")
+	set_physics_process(false)
 
 func activate():
 	set_physics_process(true)

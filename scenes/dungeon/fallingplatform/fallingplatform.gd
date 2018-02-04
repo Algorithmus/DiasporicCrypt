@@ -83,6 +83,7 @@ func _ready():
 	lOffset = blockL.get_position().x
 	rOffset = blockR.get_position().x
 	animationplayer = get_node("AnimationPlayer")
+	set_physics_process(false)
 
 func enter_screen():
 	set_physics_process(true)

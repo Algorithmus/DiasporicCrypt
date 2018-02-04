@@ -48,6 +48,7 @@ func _ready():
 	sound = get_node("sound")
 	player = get_tree().get_root().get_node("world/playercontainer/player")
 	player.add_to_blacklist(get_node("item"))
+	set_physics_process(false)
 
 func enter_screen():
 	set_physics_process(true)

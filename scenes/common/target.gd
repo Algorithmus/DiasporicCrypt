@@ -29,6 +29,7 @@ func _ready():
 	player = get_tree().get_root().get_node("world/playercontainer")
 	hud = get_tree().get_root().get_node("world/gui/hpcontainer")
 	animation_player = get_node("AnimationPlayer")
+	set_physics_process(false)
 
 func bleed():
 	var blood_obj = blood.instance()

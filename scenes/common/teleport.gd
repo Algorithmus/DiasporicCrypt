@@ -11,6 +11,7 @@ var main
 func _ready():
 	teleport = get_node("teleport")
 	main = get_tree().get_root().get_node("world")
+	set_physics_process(false)
 
 func _physics_process(delta):
 	var tiles = teleport.get_overlapping_areas()

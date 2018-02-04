@@ -11,6 +11,7 @@ func _ready():
 	dust = get_node("KinematicBody2D/Dust")
 	animation_player = get_node("AnimationPlayer")
 	period = (randi() % 400) + 100
+	set_physics_process(false)
 
 func _physics_process(delta):
 	if (!animation_player.is_playing() && !is_crumbling):

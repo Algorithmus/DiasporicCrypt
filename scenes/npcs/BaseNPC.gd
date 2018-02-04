@@ -8,6 +8,7 @@ var interacting = false
 
 func _ready():
 	direction = get_node("Sprite").get_scale().x
+	set_physics_process(false)
 
 func _physics_process(delta):
 	if (interacting):

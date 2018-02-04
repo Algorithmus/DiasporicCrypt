@@ -40,6 +40,8 @@ func _ready():
 			switches.append(switch_obj)
 	if (enabled):
 		set_physics_process(true)
+	else:
+		set_physics_process(false)
 
 func activate():
 	if ((!is_on && !invert) || (is_on && invert)):

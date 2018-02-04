@@ -12,6 +12,7 @@ func _ready():
 	sprite_offset.x = sprite_offset.x * area.get_scale().x
 	sprite_offset.y = sprite_offset.y * area.get_scale().y
 	overlay_obj = get_node(overlay)
+	set_physics_process(false)
 
 func _physics_process(delta):
 	var collisions = area.get_overlapping_bodies()

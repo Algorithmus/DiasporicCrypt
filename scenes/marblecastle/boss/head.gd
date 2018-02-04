@@ -57,6 +57,7 @@ func _ready():
 	statues = get_parent().get_parent().get_node("StatueGroup").get_children()
 	heads = get_node("heads")
 	animation_player = get_node("AnimationPlayer")
+	set_physics_process(false)
 
 func _physics_process(delta):
 	var new_animation = current_animation

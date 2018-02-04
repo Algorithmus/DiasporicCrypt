@@ -9,6 +9,8 @@ func _ready():
 	savepos = Vector2(get_global_position().x, get_global_position().y - 30)
 	if (player == null):
 		set_physics_process(true)
+	else:
+		set_physics_process(false)
 	check_sprite()
 
 func _physics_process(delta):

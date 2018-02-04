@@ -13,6 +13,7 @@ func _ready():
 	chaingui = get_tree().get_root().get_node("world/gui/CanvasLayer/chain")
 	sprite = get_node("KinematicBody2D/Sprite")
 	player = get_tree().get_root().get_node("world/playercontainer")
+	set_physics_process(false)
 
 func _physics_process(delta):
 	# clean up dust particles

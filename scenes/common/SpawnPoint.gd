@@ -18,6 +18,7 @@ func _ready():
 	spawn_class = load(spawn_object)
 	spawn_group = get_parent().get_parent().get_node(spawn_container)
 	spawn_angle = PI/(spawn_amount - 1)
+	set_physics_process(false)
 
 func _physics_process(delta):
 	if (spawn_group.get_child_count() == 0):
