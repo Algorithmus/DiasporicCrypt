@@ -13,9 +13,10 @@ config_version=3
 config/name="The Diasporic Crypt"
 run/main_scene="res://scenes/global.tscn"
 boot_splash/image="res://gui/loading/splash.png"
+config/icon="res://icon.png"
 icon="res://icon.png"
 name="The Diasporic Crypt"
-Boot Splash="res://gui/loading/splash.png"
+BootSplash="res://gui/loading/splash.png"
 
 [debug]
 
@@ -97,4 +98,8 @@ mipmap_policy=2
 
 [rendering]
 
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
+quality/2d/use_pixel_snap=true
+quality/depth/hdr=false
 viewport/default_clear_color=Color( 0, 0, 0, 1 )
