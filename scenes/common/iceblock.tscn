@@ -17,7 +17,7 @@ size = Vector2( 32, 32 )
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[node name="IceBlock" type="KinematicBody2D" index="0"]
+[node name="IceBlock" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1

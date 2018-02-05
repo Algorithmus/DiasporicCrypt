@@ -9,7 +9,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[node name="Rock" type="Node2D" index="0"]
+[node name="Rock" type="Node2D"]
 
 z_index = 3
 script = ExtResource( 1 )

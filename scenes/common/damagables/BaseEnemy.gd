@@ -395,7 +395,7 @@ func step_player(delta):
 
 	calculate_fall_height()
 
-	move(position)
+	_collider = move_and_collide(position)
 	play_animation(new_animation, animation_speed)
 	
 	update_status()

@@ -568,7 +568,7 @@ func _ready():
 	set_physics_process(true)
 
 func play_animation(animation, speed):
-	animation_player.set_speed(speed)
+	animation_player.playback_speed = speed
 	if (current_animation != animation):
 		animation_player.play(animation)
 		current_animation = animation

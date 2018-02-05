@@ -450,7 +450,7 @@ func check_ladder_top(normalTileCheck, closestTileY, desiredY):
 			# we run into collisions with neighboring ladder blocks
 			# same reason we can't pass between static body tileset tiles with gaps
 			# one tile wide
-			move(Vector2(0, int(ladder_top.get_global_position().y + TILE_SIZE/2 - forwardY - 2)))
+			_collider = move_and_collide(Vector2(0, int(ladder_top.get_global_position().y + TILE_SIZE/2 - forwardY - 2)))
 			forwardY = get_position().y + sprite_offset.y
 			falling = false
 		closestTileY = min(ladder_top.get_global_position().y + TILE_SIZE/2 - forwardY, desiredY)
