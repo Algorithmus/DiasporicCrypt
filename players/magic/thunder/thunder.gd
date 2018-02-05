@@ -17,9 +17,10 @@ func _ready():
 	splash = get_node("splash")
 	splash.hide()
 	animation_player = get_node("AnimationPlayer")
-	sampleplayer = get_node("SamplePlayer")
-	var soundid = sampleplayer.play("thunder")
-	sampleplayer.set_volume_db(soundid, volume)
+	#TODO - play sounds properly
+	#sampleplayer = get_node("SamplePlayer")
+	#var soundid = sampleplayer.play("thunder")
+	#sampleplayer.set_volume_db(soundid, volume)
 	direction = -1
 
 func get_direction_check():

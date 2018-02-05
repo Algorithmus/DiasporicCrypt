@@ -27,8 +27,9 @@ func _physics_process(delta):
 		camera_offset = camera.get_offset()
 		set_scale(Vector2(-camera_offset.x/16.0, -camera_offset.y/16.0))
 		physicsChanged = true
-		var soundid = sampleplayer.play("earth")
-		sampleplayer.set_volume_db(soundid, earthquake_power * 10)
+		#TODO - play sounds properly
+		#var soundid = sampleplayer.play("earth")
+		#sampleplayer.set_volume_db(soundid, earthquake_power * 10)
 	# detect all enemies on screen (that are not in the air) and stun them
 	elif (screen != null && !physicsChanged):
 		var collisions = screen.get_overlapping_areas()

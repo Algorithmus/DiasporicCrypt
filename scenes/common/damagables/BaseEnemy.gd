@@ -114,11 +114,6 @@ func check_damage():
 						freezeblock_obj.get_node("sprite").set_scale(Vector2(sprite_offset.x * 2.0 / TILE_SIZE, freezescale))
 						freezeblock_obj.get_node("sprite").set_position(Vector2(0, sprite_offset.y - TILE_SIZE / 2))
 						freezeblock_obj.get_node("oneway").set_scale(Vector2(sprite_offset.x * 2.0 / TILE_SIZE, 1))
-						if (sprite_offset.y > TILE_SIZE / 2):
-							freezeblock_obj.get_node("block").set_position(Vector2(0, sprite_offset.y * 2 - TILE_SIZE))
-							freezeblock_obj.get_node("block").set_scale(Vector2(sprite_offset.x * 2.0 / TILE_SIZE, 1))
-						else:
-							freezeblock_obj.remove_child(freezeblock_obj.get_node("block"))
 						freezeblock_obj.set_position(Vector2(0, -sprite_offset.y + TILE_SIZE / 2))
 						add_child(freezeblock_obj)
 						if (has_node(damage_rect.get_name())):

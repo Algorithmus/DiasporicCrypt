@@ -67,7 +67,7 @@ func closestXTile(desired_direction, desiredX, space_state):
 	return xpos
 
 func closestXTile_area_check(desired_direction, desiredX, space_state):
-	var frontTile = space_state.intersect_ray(Vector2(get_global_position().x + desired_direction * sprite_offset.x + desiredX, get_global_position().y - sprite_offset.y), Vector2(get_global_position().x + desired_direction * sprite_offset.x + desiredX, get_global_position().y + sprite_offset.y - 1))
+	var frontTile = space_state.intersect_ray(Vector2(get_global_position().x + desired_direction * sprite_offset.x + desiredX, get_global_position().y - sprite_offset.y), Vector2(get_global_position().x + desired_direction * sprite_offset.x + desiredX, get_global_position().y + sprite_offset.y - 1), [self], 524288)
 	if (frontTile != null && frontTile.has("collider") && !frontTile["collider"].has_node("climbable")):
 		return 0
 	return desiredX
@@ -92,27 +92,27 @@ func check_jump():
 		current_wall_hanging_delay += 1
 
 func do_attack():
-	weapon_collider.set_rot(0)
+	weapon_collider.rotation = 0
 	.do_attack()
 	if (!is_crouching):
 		weapon_collider.set_position(Vector2(weapon_collider.get_position().x, weapon_collider.get_position().y + TILE_SIZE))
 	attack_modifier = ""
 	if (input_up() && !is_crouching):
 		if (input_left() || input_right()):
-			weapon_collider.set_rot(direction*PI/4)
+			weapon_collider.rotation = -direction*PI/4
 			weapon_collider.set_position(Vector2(direction*(weapon_offset.x/2 + TILE_SIZE), -sprite_offset.y - sqrt(pow(weapon_offset.x, 2)/2) - 2))
 			attack_modifier = "dg"
 		else:
-			weapon_collider.set_rot(PI/2)
+			weapon_collider.rotation = PI/2
 			weapon_collider.set_position(Vector2(0, -sprite_offset.y - weapon_offset.x - 2))
 			attack_modifier = "u"
 	if (input_down() && falling):
 		if (input_left() || input_right()):
-			weapon_collider.set_rot(-direction*PI/4)
+			weapon_collider.rotation = direction*PI/4
 			weapon_collider.set_position(Vector2(direction*(weapon_offset.x/2 + TILE_SIZE), sprite_offset.y + sqrt(pow(weapon_offset.x, 2)/2) + 2 - TILE_SIZE))
 			attack_modifier = "ddg"
 		else:
-			weapon_collider.set_rot(PI/2)
+			weapon_collider.rotation = PI/2
 			weapon_collider.set_position(Vector2(0, sprite_offset.y + weapon_offset.x + 2))
 			attack_modifier = "d"
 
@@ -144,9 +144,9 @@ func step_player(delta):
 	var rightX = get_global_position().x + sprite_offset.x
 	
 	# bottom left ray check
-	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+16), area2d_blacklist)
+	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+16), [self], 524288)
 	# bottom right ray check
-	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+16), area2d_blacklist)
+	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+16), [self], 524288)
 
 	# check regular blocks
 	var normalTileCheck = !relevantTileA.empty() || !relevantTileB.empty()
@@ -320,7 +320,7 @@ func step_player(delta):
 			var swingPlayerY = swingY - get_global_position().y + sprite_offset.y
 			_collider = move_and_collide(Vector2(swingX - get_global_position().x, swingPlayerY))
 			whipswing_obj.set_global_position(swing_block.get_global_position())
-			whipswing_obj.set_rot(swing_angle - PI/2)
+			whipswing_obj.rotation = swing_angle - PI/2
 			whipswing_obj.get_node("whip").set_scale(Vector2(1, swing_radius-4))
 			if(!Input.is_action_pressed("ui_attack")):
 				stop_swinging()
@@ -339,7 +339,7 @@ func step_player(delta):
 					elif (input_down()):
 						swing_radius = min(MAX_SWING_RADIUS, swing_radius + SWING_RADIUS_DELTA)
 					_collider = move_and_collide(Vector2(0, swing_block.get_global_position().y + swing_radius - get_position().y + sprite_offset.y))
-					whipswing_obj.set_rot(0)
+					whipswing_obj.rotation = 0
 					whipswing_obj.set_position(Vector2(0, -sprite_offset.y - swing_radius))
 					whipswing_obj.get_node("whip").set_scale(Vector2(1, swing_radius-4))
 				else:
@@ -384,7 +384,7 @@ func step_player(delta):
 			air_jump = 0
 	
 		if (!is_swinging && !whip_hanging):
-			_collider = move_and_collide(position)
+			_collider = move_and_collide(pos)
 
 		step_camera()
 	else:

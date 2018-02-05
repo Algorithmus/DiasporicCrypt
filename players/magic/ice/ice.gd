@@ -11,12 +11,14 @@ func _ready():
 	release_sfx = "ice"
 	collision = get_node("Area2D")
 	sampleplayer = get_node("SamplePlayer")
-	soundid = sampleplayer.play(charge_sfx)
+	#TODO - play sounds properly
+	#soundid = sampleplayer.play(charge_sfx)
 
 func change_scale(scale):
 	.change_scale(scale)
-	sampleplayer.set_volume_db(soundid, 5 * (scale - 1))
+	#TODO - play sounds properly
+	#sampleplayer.set_volume_db(soundid, 5 * (scale - 1))
 
 func change_direction(new_direction):
 	.change_direction(new_direction)
-	dust.set_emissor_offset(Vector2(direction*-16, 0))
+	dust.position.x = direction*-16

@@ -14,7 +14,8 @@ func _ready():
 
 func _on_tagfilter_focus_enter():
 	selected.show()
-	sfx.play("cursor")
+	#TODO - play sounds properly
+	#sfx.play("cursor")
 
 func _on_tagfilter_focus_exit():
 	selected.hide()

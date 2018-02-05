@@ -73,7 +73,7 @@ tracks/1/keys = {
 "values": [ 0.0, 180.0, 360.0 ]
 }
 
-[node name="Shield" type="Node2D" index="0"]
+[node name="Shield" type="Node2D"]
 
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 __meta__ = {

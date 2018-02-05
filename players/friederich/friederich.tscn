@@ -10843,15 +10843,19 @@ render_priority = 0
 [node name="player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
-collision_layer = 0
-collision_mask = 1
+collision_layer = 524288
+collision_mask = 524289
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
 __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
 
 [node name="NormalSpriteGroup" type="Node2D" parent="." index="0"]
+
+z_index = 1
+_sections_unfolded = [ "Z Index" ]
 
 [node name="idle" type="Sprite" parent="NormalSpriteGroup" index="0"]
 
@@ -10964,6 +10968,7 @@ frame = 5
 [node name="attack" type="Node2D" parent="NormalSpriteGroup" index="14"]
 
 editor/display_folded = true
+visible = false
 
 [node name="attack" type="Sprite" parent="NormalSpriteGroup/attack" index="0"]
 
@@ -10973,29 +10978,34 @@ hframes = 3
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/attack" index="1"]
 
 self_modulate = Color( 0.668561, 1, 0, 1 )
+z_index = 1
 texture = ExtResource( 17 )
 offset = Vector2( 0, -70 )
 vframes = 2
 hframes = 5
+_sections_unfolded = [ "Material", "Visibility", "Z Index" ]
 
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/attack" index="2"]
 
 material = SubResource( 3 )
+z_index = 1
 texture = ExtResource( 18 )
 offset = Vector2( 0, -70 )
 vframes = 2
 hframes = 6
+_sections_unfolded = [ "Z Index" ]
 
 [node name="dattack" type="Node2D" parent="NormalSpriteGroup" index="15"]
 
-editor/display_folded = true
 visible = false
 
 [node name="dattack" type="Sprite" parent="NormalSpriteGroup/dattack" index="0"]
 
+z_index = 1
 texture = ExtResource( 19 )
 offset = Vector2( 2, 21 )
 hframes = 3
+_sections_unfolded = [ "Z Index" ]
 
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/dattack" index="1"]
 
@@ -11007,39 +11017,42 @@ hframes = 6
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/dattack" index="2"]
 
 self_modulate = Color( 1, 0.301961, 0, 1 )
+z_index = 1
 texture = ExtResource( 21 )
 offset = Vector2( 48, 15 )
 hframes = 5
+_sections_unfolded = [ "Visibility", "Z Index" ]
 
 [node name="aattack" type="Node2D" parent="NormalSpriteGroup" index="16"]
 
-editor/display_folded = true
-visible = false
+_sections_unfolded = [ "Z Index" ]
 
 [node name="aattack" type="Sprite" parent="NormalSpriteGroup/aattack" index="0"]
 
 texture = ExtResource( 22 )
 hframes = 6
-frame = 2
+frame = 1
 
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/aattack" index="1"]
 
 material = SubResource( 3 )
+z_index = 1
 texture = ExtResource( 18 )
 offset = Vector2( 10, -60 )
 vframes = 2
 hframes = 6
-frame = 5
-_sections_unfolded = [ "Material" ]
+frame = 2
+_sections_unfolded = [ "Material", "Z Index" ]
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/aattack" index="2"]
 
-self_modulate = Color( 1, 0.30303, 0, 1 )
+z_index = 1
 texture = ExtResource( 17 )
 offset = Vector2( 10, -60 )
 vframes = 2
 hframes = 5
-frame = 4
+frame = 1
+_sections_unfolded = [ "Material", "Visibility", "Z Index" ]
 
 [node name="chainattack" type="Node2D" parent="NormalSpriteGroup" index="17"]
 
@@ -11056,20 +11069,24 @@ frame = 2
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/chainattack" index="1"]
 
 material = SubResource( 3 )
+z_index = 1
 texture = ExtResource( 18 )
 offset = Vector2( 0, -65 )
 vframes = 2
 hframes = 6
 frame = 8
+_sections_unfolded = [ "Z Index" ]
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/chainattack" index="2"]
 
 self_modulate = Color( 1, 0.30303, 0, 1 )
+z_index = 1
 texture = ExtResource( 17 )
 offset = Vector2( 0, -65 )
 vframes = 2
 hframes = 5
 frame = 6
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="achainattack" type="Node2D" parent="NormalSpriteGroup" index="18"]
 
@@ -11085,20 +11102,24 @@ frame = 5
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/achainattack" index="1"]
 
 material = SubResource( 3 )
+z_index = 1
 texture = ExtResource( 18 )
 offset = Vector2( 10, -60 )
 vframes = 2
 hframes = 6
 frame = 10
+_sections_unfolded = [ "Z Index" ]
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/achainattack" index="2"]
 
 self_modulate = Color( 1, 0.30303, 0, 1 )
+z_index = 1
 texture = ExtResource( 17 )
 offset = Vector2( 10, -60 )
 vframes = 2
 hframes = 5
 frame = 9
+_sections_unfolded = [ "Z Index" ]
 
 [node name="chop" type="Node2D" parent="NormalSpriteGroup" index="19"]
 
@@ -11115,20 +11136,24 @@ frame = 5
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/chop" index="1"]
 
 material = SubResource( 3 )
+z_index = 1
 texture = ExtResource( 25 )
 offset = Vector2( 75, -56 )
 vframes = 2
 hframes = 3
 frame = 5
+_sections_unfolded = [ "Z Index" ]
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/chop" index="2"]
 
 self_modulate = Color( 1, 0.30303, 0, 1 )
+z_index = 1
 texture = ExtResource( 26 )
 offset = Vector2( 75, -56 )
 vframes = 2
 hframes = 3
 frame = 5
+_sections_unfolded = [ "Z Index" ]
 
 [node name="thrust" type="Node2D" parent="NormalSpriteGroup" index="20"]
 
@@ -11145,17 +11170,21 @@ frame = 3
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/thrust" index="1"]
 
 material = SubResource( 3 )
+z_index = 1
 texture = ExtResource( 28 )
 offset = Vector2( 100, -34 )
 hframes = 4
 frame = 3
+_sections_unfolded = [ "Z Index" ]
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/thrust" index="2"]
 
 self_modulate = Color( 1, 0.30303, 0, 1 )
+z_index = 1
 texture = ExtResource( 29 )
 offset = Vector2( 100, -34 )
 hframes = 3
+_sections_unfolded = [ "Z Index" ]
 
 [node name="swift" type="Node2D" parent="NormalSpriteGroup" index="21"]
 
@@ -11172,18 +11201,22 @@ frame = 1
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/swift" index="1"]
 
 material = SubResource( 3 )
+z_index = 1
 texture = ExtResource( 31 )
 offset = Vector2( 100, -34 )
 hframes = 2
 frame = 1
+_sections_unfolded = [ "Z Index" ]
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/swift" index="2"]
 
 self_modulate = Color( 1, 0.30303, 0, 1 )
+z_index = 1
 texture = ExtResource( 32 )
 offset = Vector2( 100, -34 )
 hframes = 2
 frame = 1
+_sections_unfolded = [ "Z Index" ]
 
 [node name="slice" type="Node2D" parent="NormalSpriteGroup" index="22"]
 
@@ -11200,17 +11233,21 @@ frame = 2
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/slice" index="1"]
 
 material = SubResource( 3 )
+z_index = 1
 texture = ExtResource( 34 )
 offset = Vector2( 66, -90 )
 hframes = 4
 frame = 3
+_sections_unfolded = [ "Z Index" ]
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/slice" index="2"]
 
 self_modulate = Color( 1, 0.30303, 0, 1 )
+z_index = 1
 texture = ExtResource( 35 )
 offset = Vector2( 66, -90 )
 hframes = 4
+_sections_unfolded = [ "Z Index" ]
 
 [node name="skewer" type="Node2D" parent="NormalSpriteGroup" index="23"]
 
@@ -11226,17 +11263,21 @@ hframes = 4
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/skewer" index="1"]
 
 self_modulate = Color( 1, 0.30303, 0, 1 )
+z_index = 1
 texture = ExtResource( 37 )
 offset = Vector2( 76, -36 )
 vframes = 2
 hframes = 3
+_sections_unfolded = [ "Z Index" ]
 
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/skewer" index="2"]
 
 material = SubResource( 3 )
+z_index = 1
 texture = ExtResource( 38 )
 offset = Vector2( 76, -36 )
 hframes = 4
+_sections_unfolded = [ "Z Index" ]
 
 [node name="stab" type="Node2D" parent="NormalSpriteGroup" index="24"]
 
@@ -11254,19 +11295,23 @@ frame = 2
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/stab" index="1"]
 
 self_modulate = Color( 1, 0.30303, 0, 1 )
+z_index = 1
 texture = ExtResource( 40 )
 offset = Vector2( 78, 35 )
 vframes = 2
 hframes = 3
 frame = 2
+_sections_unfolded = [ "Z Index" ]
 
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/stab" index="2"]
 
 material = SubResource( 3 )
+z_index = 1
 texture = ExtResource( 41 )
 offset = Vector2( 78, 35 )
 hframes = 5
 frame = 2
+_sections_unfolded = [ "Z Index" ]
 
 [node name="dualspin" type="Node2D" parent="NormalSpriteGroup" index="25"]
 
@@ -11298,20 +11343,24 @@ frame = 2
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/dualspin" index="3"]
 
 material = SubResource( 3 )
+z_index = 1
 texture = ExtResource( 45 )
 offset = Vector2( 36, -60 )
 vframes = 2
 hframes = 3
 frame = 2
+_sections_unfolded = [ "Z Index" ]
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/dualspin" index="4"]
 
 self_modulate = Color( 1, 0.30303, 0, 1 )
+z_index = 1
 texture = ExtResource( 46 )
 offset = Vector2( 36, -60 )
 vframes = 2
 hframes = 3
 frame = 2
+_sections_unfolded = [ "Z Index" ]
 
 [node name="rush" type="Node2D" parent="NormalSpriteGroup" index="26"]
 
@@ -11328,19 +11377,23 @@ frame = 1
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/rush" index="1"]
 
 material = SubResource( 3 )
+z_index = 1
 texture = ExtResource( 48 )
 offset = Vector2( 32, -65 )
 hframes = 3
 frame = 1
+_sections_unfolded = [ "Z Index" ]
 
 [node name="aura" type="Sprite" parent="NormalSpriteGroup/rush" index="2"]
 
 self_modulate = Color( 1, 0.30303, 0, 1 )
+z_index = 1
 texture = ExtResource( 49 )
 offset = Vector2( 32, -65 )
 vframes = 2
 hframes = 3
 frame = 1
+_sections_unfolded = [ "Z Index" ]
 
 [node name="void" type="Node2D" parent="NormalSpriteGroup" index="27"]
 
@@ -11391,7 +11444,9 @@ blend_times = [  ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
+z_index = 1
 shape = SubResource( 33 )
+_sections_unfolded = [ "Z Index" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="3"]
 
@@ -11426,8 +11481,10 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_mask = 524289
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage" index="0"]
 
@@ -11438,7 +11495,9 @@ shape = SubResource( 34 )
 [node name="talk" type="Sprite" parent="." index="6"]
 
 material = SubResource( 35 )
+z_index = 2
 texture = ExtResource( 50 )
 offset = Vector2( 4, -80 )
+_sections_unfolded = [ "Z Index" ]
 
 

@@ -41,8 +41,8 @@ func step_spell():
 			var direction_bound = get_global_position().y + direction * player.get_node("Camera2D").get_offset().y * 2
 			var ray_start = Vector2(get_global_position().x, direction_check)
 			var ray_end = Vector2(get_global_position().x, direction_bound)
-			var directionTile = space_state.intersect_ray(ray_start, ray_end, [self, player])
-			var directionSpecialTile = space_state.intersect_ray(ray_start, ray_end, [collision_blacklist, player.get_node("damage")], 2147483647, 16)
+			var directionTile = space_state.intersect_ray(ray_start, ray_end, [self, player], 524288)
+			var directionSpecialTile = space_state.intersect_ray(ray_start, ray_end, [collision_blacklist, player.get_node("damage")], 2147483647)
 			var directionTileY = direction_bound
 			var directionTileSpecialY = direction_bound
 			if (!directionTile.empty()):

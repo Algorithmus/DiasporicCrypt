@@ -177,7 +177,7 @@ func closestXTile(desired_direction, desiredX, space_state):
 	return desiredX
 
 func closestXTile_area_check(desired_direction, desiredX, space_state):
-	var frontTile = space_state.intersect_ray(Vector2(get_global_position().x + desired_direction * sprite_offset.x + desiredX, get_global_position().y - sprite_offset.y), Vector2(get_global_position().x + desired_direction * sprite_offset.x + desiredX, get_global_position().y + sprite_offset.y - 1))
+	var frontTile = space_state.intersect_ray(Vector2(get_global_position().x + desired_direction * sprite_offset.x + desiredX, get_global_position().y - sprite_offset.y), Vector2(get_global_position().x + desired_direction * sprite_offset.x + desiredX, get_global_position().y + sprite_offset.y - 1), [self], 524288)
 	if (frontTile != null && frontTile.has("collider")):
 		return 0
 	return desiredX
@@ -465,7 +465,7 @@ func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, o
 		# handle one way tiles
 		if (onOneWayTile):
 			if (oneWayTile.get_global_position().y - TILE_SIZE/2 <= int(forwardY) + 1):
-				move(Vector2(0, oneWayTile.get_global_position().y - TILE_SIZE/2 - int(forwardY) - 1))
+				_collider = move_and_collide(Vector2(0, oneWayTile.get_global_position().y - TILE_SIZE/2 - int(forwardY) - 1))
 				forwardY = get_position().y + sprite_offset.y
 				falling = false
 			closestTileY = min(oneWayTile.get_global_position().y - TILE_SIZE/2 - int(forwardY) - 1, desiredY)
@@ -510,9 +510,9 @@ func step_player(delta):
 	var rightX = get_global_position().x + sprite_offset.x
 
 	# bottom left ray check
-	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+16), [self] + area2d_blacklist)
+	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+16), [self], 524288)
 	# bottom right ray check
-	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+16), [self] + area2d_blacklist)
+	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+16), [self], 524288)
 
 	# check regular blocks
 	var normalTileCheck = !relevantTileA.empty() || !relevantTileB.empty()

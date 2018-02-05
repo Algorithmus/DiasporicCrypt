@@ -13,7 +13,7 @@ var se_bound
 
 func _ready():
 	set_physics_process(true)
-	set_opacity(0.5)
+	modulate.a = 0.5
 	get_node("AnimationPlayer").play("rotate")
 	collision = get_node("collision")
 	sprite_offset = collision.get_node("sensor").get_shape().get_extents()
@@ -21,10 +21,11 @@ func _ready():
 
 func _physics_process(delta):
 	if (fail):
-		if (!sampleplayer.is_active()):
-			if (soundid == null):
-				soundid = sampleplayer.play("fail")
-			else:
+		#TODO - play sounds properly
+		#if (!sampleplayer.is_active()):
+		#	if (soundid == null):
+		#		soundid = sampleplayer.play("fail")
+		#	else:
 				queue_free()
 	else:
 		if (!is_set):
@@ -56,4 +57,4 @@ func update_appearance():
 			alpha = 0.25
 	get_node("portalBG").set_modulate(color)
 	get_node("portalFG").set_modulate(color)
-	set_opacity(alpha)
+	modulate.a = alpha

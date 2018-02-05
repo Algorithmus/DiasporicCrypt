@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://players/magic/earth/rock.gd" type="Script" id=1]
 [ext_resource path="res://players/magic/earth/rock.png" type="Texture" id=2]
@@ -9,35 +9,36 @@
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[node name="Rock" type="Node2D"]
+[node name="Rock" type="Node2D" index="0"]
 
-z = 3
+z_index = 3
 script = ExtResource( 1 )
+_sections_unfolded = [ "Z Index" ]
 __meta__ = {
 "__editor_plugin_screen__": "Script"
 }
 
-[node name="big" type="Sprite" parent="."]
+[node name="big" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 2 )
 
-[node name="small" type="Sprite" parent="."]
+[node name="small" type="Sprite" parent="." index="1"]
 
 texture = ExtResource( 3 )
+_sections_unfolded = [ "Z Index" ]
 
-[node name="collision" type="Area2D" parent="."]
+[node name="collision" type="Area2D" parent="." index="2"]
 
 input_pickable = true
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="magic" type="CollisionShape2D" parent="collision"]
+[node name="magic" type="CollisionShape2D" parent="collision" index="0"]
 
 shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
+
+

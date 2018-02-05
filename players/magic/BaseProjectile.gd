@@ -26,28 +26,33 @@ func _physics_process(delta):
 			|| hp <= 0):
 			if (has_node(collision.get_name())):
 				remove_child(collision)
-			if (!sampleplayer.is_active()):
+			#TODO - play sounds properly
+			#if (!sampleplayer.is_active()):
 				queue_free()
-	elif (!sampleplayer.is_active()):
-		soundid = sampleplayer.play(charge_sfx)
+	#TODO - play sounds properly
+	#elif (!sampleplayer.is_active()):
+	#	soundid = sampleplayer.play(charge_sfx)
 
 func change_scale(scale):
-	sprite.set_param(Particles2D.PARAM_INITIAL_SIZE, scale)
-	sprite.set_param(Particles2D.PARAM_FINAL_SIZE, scale*3/7.0)
+	sprite.process_material.scale = scale
 	set_scale(Vector2(scale, scale))
-	sampleplayer.set_volume_db(soundid, 5 * (scale - 1) - 10)
+	#TODO - play sounds properly
+	#sampleplayer.set_volume_db(soundid, 5 * (scale - 1) - 10)
 
 func change_direction(new_direction):
 	direction = new_direction
 	set_scale(Vector2(direction, 1))
 	var angle = fposmod(-direction*90, 360)
-	sprite.set_param(Particles2D.PARAM_GRAVITY_DIRECTION, angle)
-	sprite.set_param(Particles2D.PARAM_INITIAL_ANGLE, angle)
+	sprite.process_material.gravity = Vector3(sprite.process_material.gravity.x * direction, sprite.process_material.gravity.y, sprite.process_material.gravity.z)
+	sprite.process_material.angle = angle
 	
 func release():
-	var scale = sprite.get_param(Particles2D.PARAM_INITIAL_SIZE)
+	var scale = sprite.process_material.scale
 	is_released = true
+	#TODO - play sounds properly
+	"""
 	var volume = sampleplayer.get_volume_db(soundid)
 	soundid = sampleplayer.play(release_sfx)
 	sampleplayer.set_volume_db(soundid, volume)
+	"""
 	hp = hp * ceil(scale)

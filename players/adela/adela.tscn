@@ -8560,13 +8560,14 @@ extents = Vector2( 14, 62 )
 
 render_priority = 0
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
-collision_layer = 0
-collision_mask = 1
+collision_layer = 524288
+collision_mask = 524289
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "collision" ]
 __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
@@ -9027,6 +9028,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage" index="0"]
 

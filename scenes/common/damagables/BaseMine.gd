@@ -58,4 +58,5 @@ func set_explosion():
 	explosion.set_emitting(true)
 	get_node("AnimationPlayer").stop()
 	get_node("mine").hide()
-	sampleplayer.play("mine")
+	#TODO - play sounds properly
+	#sampleplayer.play("mine")

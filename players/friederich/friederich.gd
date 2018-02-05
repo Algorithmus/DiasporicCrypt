@@ -90,7 +90,7 @@ func _ready():
 
 	chain_collider = weapon.instance()
 
-	chain_collider.connect("area_enter", self, "_on_chain_collision")
+	chain_collider.connect("area_entered", self, "_on_chain_collision")
 	
 	demonic_sprite = preload("res://players/friederich/demonic/demonic.tscn")
 	demonic_sprite_obj = demonic_sprite.instance()
@@ -185,9 +185,9 @@ func step_player(delta):
 	var rightX = get_global_position().x + sprite_offset.x
 	
 	# bottom left ray check
-	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+16), [Area2D])
+	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+16), [self], 524288)
 	# bottom right ray check
-	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+16), [Area2D])
+	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+16), [self], 524288)
 
 	# check regular blocks
 	var normalTileCheck = !relevantTileA.empty() || !relevantTileB.empty()
@@ -337,27 +337,28 @@ func step_player(delta):
 										special_collider.set_position(Vector2(target_enemy.get_ref().get_global_position().x - get_global_position().x + (target_enemy.get_ref().get_node("CollisionShape2D").get_shape().get_extents().x + special_offset.x) * direction))
 									special_collider.get_node("attack").set_scale(Vector2(direction*-1, 1))
 									special_collider.get_node("AnimationPlayer").play("attack")
-									special_collider.connect("area_enter", self, "_on_special_collision")
+									special_collider.connect("area_entered", self, "_on_special_collision")
 									
 									var spell = magic_spells[selected_spell]
 									var auracolor = spell["auracolor"]
 									var weaponcolor1 = spell["weaponcolor1"]
 									var weaponcolor2 = spell["weaponcolor2"]
-									special_collider.get_node("attack/aura").set_modulate(auracolor)
+									special_collider.get_node("attack/aura").set_self_modulate(auracolor)
 									special_collider.get_node("attack/sword").get_material().set_shader_param("modulate", weaponcolor1)
 									special_collider.get_node("attack/sword").get_material().set_shader_param("aura_color", weaponcolor2)
 								else:
 									if (current_chain_special["id"] != "dualspin"):
 										special_offset = special_collider.get_node("weapon").get_shape().get_extents()
 										special_collider.set_position(Vector2(((special_offset.x + sprite_offset.x + 4) + current_chain_special["collider_offset"].x) * direction, current_chain_special["collider_offset"].y))
-										special_collider.connect("area_enter", self, "_on_special_collision")
+										special_collider.connect("area_entered", self, "_on_special_collision")
 									else:
 										special_collider.set_position(Vector2(0, -16))
-										special_collider.get_node("Dualspin Part").connect("area_enter", self, "_on_special_collision")
-										special_collider.get_node("Dualspin Part 2").connect("area_enter", self, "_on_special_collision")
+										special_collider.get_node("Dualspin Part").connect("area_entered", self, "_on_special_collision")
+										special_collider.get_node("Dualspin Part 2").connect("area_entered", self, "_on_special_collision")
 									add_child(special_collider)
 								new_animation = current_chain_special["id"]
-								get_node("sound").set_volume_db(get_node("sound").play(current_chain_special["id"]), current_chain_special["db"])
+								#TODO - play sounds properly
+								#get_node("sound").set_volume_db(get_node("sound").play(current_chain_special["id"]), current_chain_special["db"])
 								if (current_chain_special["id"] == "slice"):
 									accel = -10
 								if (current_chain_special["id"] == "skewer"):
@@ -379,8 +380,9 @@ func step_player(delta):
 						chain_collider.set_position(Vector2((weapon_offset.x + sprite_offset.x + 4) * -direction, -sprite_offset.y + weapon_offset.y))
 						add_child(chain_collider)
 						chain_collided = false
-						get_node("sound").stop_all()
-						get_node("sound").set_volume_db(get_node("sound").play("chain"), 3)
+						#TODO - play sounds properly
+						#get_node("sound").stop_all()
+						#get_node("sound").set_volume_db(get_node("sound").play("chain"), 3)
 					else:
 						chain_animation = ""
 					chain_next = !chain_next

@@ -36,7 +36,8 @@ func bleed():
 	add_child(blood_obj)
 	blood_obj.set_position(Vector2(randf()*sprite_offset.x + sprite_offset.x/2 - 16, sprite_offset.y - randf()*sprite_offset.y*2))
 	blood_obj.get_node("particles").set_emitting(true)
-	blood_obj.get_node("sound").play("blood")
+	#TODO - play sound properly
+	#blood_obj.get_node("sound").play("blood")
 	blood_particles.append(blood_obj)
 
 func calculate_atk_value(obj):
@@ -90,8 +91,6 @@ func _physics_process(delta):
 					freezeblock_obj.get_node("sprite").set_scale(Vector2(sprite_offset.x / 16, freezescale))
 					freezeblock_obj.get_node("sprite").set_position(Vector2(0, sprite_offset.y - 16))
 					freezeblock_obj.get_node("oneway").set_scale(Vector2(sprite_offset.x / 16, 1))
-					freezeblock_obj.get_node("block").set_scale(Vector2(sprite_offset.x / 16.0, freezescale))
-					freezeblock_obj.get_node("block").set_position(Vector2(0, sprite_offset.y - 16))
 					freezeblock_obj.set_position(Vector2(0, -sprite_offset.y + 16))
 					add_child(freezeblock_obj)
 					if (has_node(collision_rect.get_name())):

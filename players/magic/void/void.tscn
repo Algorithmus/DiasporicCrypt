@@ -90,7 +90,7 @@ tracks/1/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 16, 64 )
 
-[node name="VoidPortal" type="Node2D" index="0"]
+[node name="VoidPortal" type="Node2D"]
 
 script = ExtResource( 1 )
 __meta__ = {

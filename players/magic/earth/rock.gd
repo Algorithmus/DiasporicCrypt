@@ -36,5 +36,5 @@ func _physics_process(delta):
 			get_parent().remove_child(self)
 		queue_free()
 	accel += 1
-	sprite.set_rot(sprite.get_rot() + 1)
+	sprite.rotate(1)
 	set_global_position(Vector2(get_global_position().x, accel + get_global_position().y))

@@ -149,7 +149,8 @@ func select_pin():
 func do_select():
 	animation.play("show")
 	leveldisplay = true
-	sfx.play("confirm")
+	#TODO - play sounds properly
+	#sfx.play("confirm")
 
 func focus_warp():
 	if (selectedlevel.get_name() == currentlevel):
@@ -481,6 +482,7 @@ func _on_warp_pressed():
 	hudmap.clear_objects()
 	hudmap.load_cached_map(level)
 	ProjectSettings.set("current_level", map.title)
-	sfx.play("confirm")
+	#TODO - play sounds properly
+	#sfx.play("confirm")
 	get_tree().get_root().get_node("world").warp_animation()
 

@@ -463,8 +463,6 @@ func check_jump():
 			falling = true
 			jumpPressed = true
 		elif (jumping_allowed()):
-			print("jumping allowed")
-			print(jumpspeed * current_gravity)
 			accel = -jumpspeed * current_gravity
 			falling = true
 			jumpPressed = true
@@ -565,7 +563,7 @@ func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, o
 
 func check_crouch(space_state, normalTileCheck, abSlope, onSlope, onOneWayTile):
 	# keep player crouched if they are blocked from returning to normal state
-	var ceiling = space_state.intersect_ray(Vector2(get_global_position().x, get_global_position().y), Vector2(get_global_position().x, get_global_position().y-64), [self])
+	var ceiling = space_state.intersect_ray(Vector2(get_global_position().x, get_global_position().y), Vector2(get_global_position().x, get_global_position().y-64), [self], 524288)
 
 	if ((!ceiling.empty() && is_crouching) || (crouch_requested && !is_attacking && !falling && (normalTileCheck || onSlope || abSlope != null || onOneWayTile))):
 		is_crouching = true
@@ -606,7 +604,7 @@ func check_attacking():
 		weapon_collided = false
 
 	# handle attacking
-	if ((animation_player.get_current_animation().match("*attack") && animation_player.get_current_animation_length() == animation_player.get_current_animation_position()) || climbing_platform || hanging || on_ladder):
+	if ((animation_player.get_assigned_animation().match("*attack") && animation_player.get_current_animation_length() == animation_player.get_current_animation_position()) || climbing_platform || hanging || on_ladder):
 		is_attacking = false
 		remove_weapon_collider()
 	elif (!is_attacking && attack_requested && !is_hurt):
@@ -619,7 +617,8 @@ func do_attack():
 	var weapon_height = 0
 	if (is_crouching):
 		weapon_height = sprite_offset.y
-	get_node("sound").set_volume_db(get_node("sound").play("attack"), -10)
+	#TODO - play sound properly
+	#get_node("sound").set_volume_db(get_node("sound").play("attack"), -10)
 	weapon_collider.set_position(Vector2((weapon_offset.x + sprite_offset.x + 4) * direction, -sprite_offset.y + weapon_offset.y + weapon_height))
 	add_child(weapon_collider)
 	weapon_collided = false
@@ -637,7 +636,7 @@ func update_fusion():
 	update_attack_color("dattack", auracolor, weaponcolor1, weaponcolor2)
 	
 func update_attack_color(key, auracolor, weaponcolor1, weaponcolor2):
-	get_node("NormalSpriteGroup/"+key+"/aura").set_modulate(auracolor)
+	get_node("NormalSpriteGroup/"+key+"/aura").set_self_modulate(auracolor)
 	get_node("NormalSpriteGroup/"+key+"/"+weapon_type).get_material().set_shader_param("modulate", weaponcolor1)
 	get_node("NormalSpriteGroup/"+key+"/"+weapon_type).get_material().set_shader_param("aura_color", weaponcolor2)
 
@@ -756,9 +755,9 @@ func step_player(delta):
 	var rightX = get_global_position().x + sprite_offset.x
 	
 	# bottom left ray check
-	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+16), area2d_blacklist)
+	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+16), [self], 524288)
 	# bottom right ray check
-	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+16), area2d_blacklist)
+	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+16), [self], 524288)
 
 	# check regular blocks
 	var normalTileCheck = !relevantTileA.empty() || !relevantTileB.empty()
@@ -934,8 +933,9 @@ func check_magic():
 					charge_obj.set_position(Vector2(0, sprite_offset.y))
 					add_child(charge_obj)
 					var sampleplayer = charge_obj.get_node("SamplePlayer")
-					charge_volume = sampleplayer.play("charge")
-					sampleplayer.set_volume_db(charge_volume, -5)
+					#TODO - play sounds properly
+					#charge_volume = sampleplayer.play("charge")
+					#sampleplayer.set_volume_db(charge_volume, -5)
 				else:
 					is_charging = false
 					charge_counter = 0
@@ -943,7 +943,7 @@ func check_magic():
 				charge_obj = magic_spells[selected_spell]["attack"].instance()
 				charge_obj.set("nw_bound", tilemap.get_node("boundaries/NW"))
 				charge_obj.set("se_bound", tilemap.get_node("boundaries/SE"))
-				charge_obj.set_global_position(Vector2(get_global_position().x + direction * TILE_SIZE * 2, get_global_position().y))
+				charge_obj.set_global_position(Vector2(get_global_position().x + direction * TILE_SIZE * 2, get_global_position().y - 2))
 				charge_obj.set_scale(Vector2(direction, 1))
 				tilemap.add_child(charge_obj)
 				void_direction = direction
@@ -951,13 +951,15 @@ func check_magic():
 				charge_obj = magic_spells[selected_spell]["charge"].instance()
 				charge_obj.set_position(Vector2(0, sprite_offset.y))
 				add_child(charge_obj)
-				charge_volume = charge_obj.get_node("SamplePlayer").play("charge")
+				#TODO - play sounds properly
+				#charge_volume = charge_obj.get_node("SamplePlayer").play("charge")
 			if (magic_spells[selected_spell]["id"] == "wind"):
 				charge_obj = magic_spells[selected_spell]["charge"].instance()
 				charge_obj.set_position(Vector2(0, sprite_offset.y))
 				add_child(charge_obj)
-				charge_volume = charge_obj.get_node("SamplePlayer").play("charge")
-				charge_obj.get_node("SamplePlayer").set_volume_db(charge_volume, -5)
+				#TODO - play sounds properly
+				#charge_volume = charge_obj.get_node("SamplePlayer").play("charge")
+				#charge_obj.get_node("SamplePlayer").set_volume_db(charge_volume, -5)
 	# charge magic
 	elif (is_charging):
 		if (Input.is_action_pressed("ui_magic") && !is_transforming):
@@ -981,9 +983,10 @@ func check_magic():
 				var scale = charge_counter/float(MAX_CHARGE) + 1
 				charge_obj.set_scale(Vector2(scale, scale))
 				var sampleplayer = charge_obj.get_node("SamplePlayer")
-				if (!sampleplayer.is_active()):
-					charge_volume = sampleplayer.play("charge")
-				sampleplayer.set_volume_db(charge_volume, (scale - 1) * 10 - 5)
+				#TODO - play sounds properly
+				#if (!sampleplayer.is_active()):
+				#	charge_volume = sampleplayer.play("charge")
+				#sampleplayer.set_volume_db(charge_volume, (scale - 1) * 10 - 5)
 			if (magic_spells[selected_spell]["id"] == "void"):
 				# void spell is an exception and takes max mp required
 				charge_counter = MAX_CHARGE
@@ -995,27 +998,29 @@ func check_magic():
 				(offset <= get_global_position().x + direction * 2 * TILE_SIZE && direction > 0) || (offset >= get_global_position().x + direction * 2 * TILE_SIZE && direction < 0)):
 					void_direction = void_direction * -1
 					offset = charge_obj.get_global_position().x + void_direction * 10
-				charge_obj.set_global_position(Vector2(offset, get_global_position().y))
+				charge_obj.set_global_position(Vector2(offset, get_global_position().y - 2))
 			if (magic_spells[selected_spell]["id"] == "earth"):
 				var velocity = 160.0 * charge_counter / MAX_CHARGE + 40
 				var size = float(charge_counter) / MAX_CHARGE + 1
-				charge_obj.get_node("rocks").set_param(Particles2D.PARAM_LINEAR_VELOCITY, velocity)
-				charge_obj.get_node("rocks").set_param(Particles2D.PARAM_FINAL_SIZE, size)
+				charge_obj.get_node("rocks").process_material.initial_velocity = velocity
+				charge_obj.get_node("rocks").process_material.scale = size
 				var sampleplayer = charge_obj.get_node("SamplePlayer")
-				if (!sampleplayer.is_active()):
-					charge_volume = sampleplayer.play("charge")
+				#TODO - play sound properly
+				#if (!sampleplayer.is_active()):
+				#	charge_volume = sampleplayer.play("charge")
 				var volume = 10 * charge_counter / MAX_CHARGE
-				sampleplayer.set_volume_db(charge_volume, volume)
+				#sampleplayer.set_volume_db(charge_volume, volume)
 			if (magic_spells[selected_spell]["id"] == "wind"):
 				var velocity = 40.0 * charge_counter / MAX_CHARGE
 				var size = 0.67 * charge_counter / MAX_CHARGE + 0.33
-				charge_obj.get_node("cloud").set_param(Particles2D.PARAM_LINEAR_VELOCITY, velocity)
-				charge_obj.get_node("cloud").set_param(Particles2D.PARAM_FINAL_SIZE, size)
+				charge_obj.get_node("cloud").process_material.initial_velocity = velocity
+				charge_obj.get_node("cloud").process_material.scale = size
 				var sampleplayer = charge_obj.get_node("SamplePlayer")
-				if (!sampleplayer.is_active()):
-					charge_volume = sampleplayer.play("charge")
+				#TODO - play sounds properly
+				#if (!sampleplayer.is_active()):
+				#	charge_volume = sampleplayer.play("charge")
 				var volume = 10 * charge_counter / MAX_CHARGE - 5
-				sampleplayer.set_volume_db(charge_volume, volume)
+				#sampleplayer.set_volume_db(charge_volume, volume)
 		else:
 			var scale = float(charge_counter)/MAX_CHARGE
 			var mp_consumed = max(round(magic_spells[selected_spell]["mp"] * scale), 1)
@@ -1053,7 +1058,8 @@ func check_magic():
 			if (magic_spells[selected_spell]["id"] == "shield"):
 				if (has_node(charge_obj.get_name())):
 					remove_child(charge_obj)
-				charge_obj.get_node("SamplePlayer").stop_all()
+				#TODO - play sounds properly
+				#charge_obj.get_node("SamplePlayer").stop_all()
 				charge_obj = null
 				shield = magic_spells[selected_spell]["attack"].instance()
 				shield_delay = 300 * (scale + 1)
@@ -1063,13 +1069,15 @@ func check_magic():
 				shield_alpha = 0.5 * ((3 - 0.7) * scale + 0.7 - 1)/2.0
 				shieldbody.set_modulate(Color(shieldcolor.r, shieldcolor.g, shieldcolor.b, shield_alpha))
 				add_child(shield)
-				shield.get_node("SamplePlayer").play("on")
+				#TODO - play sounds properly
+				#shield.get_node("SamplePlayer").play("on")
 				shield.get_node("AnimationPlayer").play("rotate")
 			if (magic_spells[selected_spell]["id"] == "void"):
 				if (charge_obj.get("is_valid")):
 					set_global_position(charge_obj.get_global_position())
 					charge_obj.set("is_set", true)
-					charge_obj.get_node("SamplePlayer").play("void")
+					#TODO - play sound properly
+					#charge_obj.get_node("SamplePlayer").play("void")
 					current_mp -= mp_consumed
 				else:
 					charge_obj.set("fail", true)
@@ -1080,7 +1088,8 @@ func check_magic():
 			if (magic_spells[selected_spell]["id"] == "earth"):
 				if (has_node(charge_obj.get_name())):
 					remove_child(charge_obj)
-				charge_obj.get_node("SamplePlayer").stop_all()
+				#TODO - play sound properly
+				#charge_obj.get_node("SamplePlayer").stop_all()
 				charge_obj = null
 				var earthquake_obj = magic_spells[selected_spell]["attack"].instance()
 				earthquake_obj.set("player", self)
@@ -1094,7 +1103,8 @@ func check_magic():
 			if (magic_spells[selected_spell]["id"] == "wind"):
 				if (has_node(charge_obj.get_name())):
 					remove_child(charge_obj)
-				charge_obj.get_node("SamplePlayer").stop_all()
+				#TODO - play sounds properly
+				#charge_obj.get_node("SamplePlayer").stop_all()
 				charge_obj = null
 				var wind_obj = magic_spells[selected_spell]["attack"].instance()
 				wind_obj.set("camera", get_node("Camera2D"))
@@ -1129,10 +1139,12 @@ func step_shield():
 		shield_current_delay += 1
 		var alpha = (1 - float(shield_current_delay)/shield_delay) * shield_alpha
 		var shieldbody = shield.get_node("shield")
-		var shieldcolor = shieldbody.get_modulate()
-		shieldbody.set_modulate(Color(shieldcolor.r, shieldcolor.g, shieldcolor.b, alpha))
+		var shieldcolor = shieldbody.get_self_modulate()
+		shieldbody.set_self_modulate(Color(shieldcolor.r, shieldcolor.g, shieldcolor.b, alpha))
 		if (shield_current_delay == shield_delay - 39):
-			shield.get_node("SamplePlayer").play("off")
+			#TODO - play sounds properly
+			#shield.get_node("SamplePlayer").play("off")
+			pass
 		if (shield_current_delay >= shield_delay):
 			if (has_node(shield.get_name())):
 				remove_child(shield)
@@ -1173,8 +1185,8 @@ func _ready():
 	weapon_collider = weapon.instance()
 	weapon_offset = weapon_collider.get_node("weapon").get_shape().get_extents()
 
-	weapon_collider.connect("area_enter", self, "_on_weapon_collision")
-	weapon_collider.connect("body_enter", self, "_on_weapon_body_collision")
+	weapon_collider.connect("area_entered", self, "_on_weapon_collision")
+	weapon_collider.connect("body_entered", self, "_on_weapon_body_collision")
 	
 	reset_blacklist()
 	

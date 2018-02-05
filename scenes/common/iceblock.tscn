@@ -1,84 +1,50 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=4 format=2]
 
+[sub_resource type="ShaderMaterial" id=1]
 
-[sub_resource type="Shader" id=2]
+render_priority = 0
 
-_code = {
-"fragment": "//this shader only works properly with premultiplied alpha blend mode
-uniform color modulate=color(0.2,0.4,1.0,1.0);
-
-COLOR = modulate;",
-"fragment_ofs": 0,
-"light": "",
-"light_ofs": 0,
-"vertex": "",
-"vertex_ofs": 0
-}
-
-[sub_resource type="ShaderMaterial" id=3]
-
-shader/shader = SubResource( 2 )
-shader/shading_mode = 0
-shader_param/modulate = Color( 0, 0.535511, 0.713504, 0 )
-
-[sub_resource type="ImageTexture" id=4]
+[sub_resource type="ImageTexture" id=2]
 
 flags = 7
-size = Vector2( 32, 32 )
 storage = 0
 lossy_quality = 0.7
+flags = 7
+size = Vector2( 32, 32 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[node name="IceBlock" type="KinematicBody2D"]
+[node name="IceBlock" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
-collision/margin = 0.08
+collision/safe_margin = 0.08
 __meta__ = {
 "__editor_plugin_screen__": "Script"
 }
 
-[node name="sprite" type="Sprite" parent="."]
+[node name="sprite" type="Sprite" parent="." index="0"]
 
-visibility/blend_mode = 4
-material = SubResource( 3 )
-texture = SubResource( 4 )
+material = SubResource( 1 )
+texture = SubResource( 2 )
 
-[node name="oneway" type="Area2D" parent="."]
+[node name="oneway" type="Area2D" parent="." index="1"]
 
 input_pickable = true
-shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="oneway"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oneway" index="0"]
 
-shape = SubResource( 5 )
-trigger = false
-_update_shape_index = 0
+shape = SubResource( 3 )
 
-[node name="block" type="Area2D" parent="."]
 
-input_pickable = true
-shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="block"]
-
-shape = SubResource( 5 )
-trigger = false
-_update_shape_index = 0
