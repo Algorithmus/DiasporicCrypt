@@ -39,12 +39,12 @@ func step(space_state):
 			# check normal horizontal collisions
 			var is_wall = false
 			var frontX = target.get_global_position().x + net_direction * target.get("sprite_offset").x + netX
-			var frontTile = space_state.intersect_ray(Vector2(frontX, target.get_global_position().y - target.get("sprite_offset").y), Vector2(frontX, target.get_global_position().y + target.get("sprite_offset").y - 1), [target, player])
+			var frontTile = space_state.intersect_ray(Vector2(frontX, target.get_global_position().y - target.get("sprite_offset").y), Vector2(frontX, target.get_global_position().y + target.get("sprite_offset").y - 1), [target, player], 524288)
 			if (frontTile != null && frontTile.has("position") && frontTile.has("collider")):
 				change_direction = true
 				is_wall = true
 					
-			frontTile = space_state.intersect_ray(Vector2(frontX, target.get_global_position().y + target.get("sprite_offset").y), Vector2(frontX, target.get_global_position().y + target.get("sprite_offset").y + 32), [target, player])
+			frontTile = space_state.intersect_ray(Vector2(frontX, target.get_global_position().y + target.get("sprite_offset").y), Vector2(frontX, target.get_global_position().y + target.get("sprite_offset").y + 32), [target, player], 524288)
 	
 			if (frontTile == null || !frontTile.has("position") && !target.get("falling")):
 				change_direction = true

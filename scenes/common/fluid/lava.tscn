@@ -1,62 +1,61 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=5 format=2]
 
+[sub_resource type="Shader" id=4]
 
-[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_add;
 
-_code = {
-"fragment": "uniform color modulate = vec4(0, 0, 0, 0);
-COLOR = modulate;",
-"fragment_ofs": 0,
-"light": "",
-"light_ofs": 0,
-"vertex": "",
-"vertex_ofs": 0
-}
+uniform vec4 modulate:hint_color;
 
-[sub_resource type="ShaderMaterial" id=2]
+void fragment() {
+COLOR = modulate;
+}"
 
-shader/shader = SubResource( 1 )
-shader/shading_mode = 0
-shader_param/modulate = Color( 1, 0.1875, 0, 0.681171 )
+[sub_resource type="ShaderMaterial" id=5]
 
-[sub_resource type="ImageTexture" id=3]
+render_priority = 0
+shader = SubResource( 4 )
+shader_param/modulate = Color( 1, 0.1875, 0, 0.68 )
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="ImageTexture" id=2]
 
 flags = 2
-size = Vector2( 32, 32 )
 storage = 0
 lossy_quality = 0.7
+flags = 2
+size = Vector2( 32, 32 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[node name="LavaSurface" type="Node2D"]
+[node name="LavaSurface" type="Node2D" index="0"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="Sprite" parent="." index="0"]
 
-visibility/blend_mode = 1
-material = SubResource( 2 )
-z = 2
-texture = SubResource( 3 )
+material = SubResource( 5 )
+z_index = 2
+texture = SubResource( 2 )
+_sections_unfolded = [ "Material", "Z Index" ]
 
-[node name="lava" type="Area2D" parent="."]
+[node name="lava" type="Area2D" parent="." index="1"]
 
 input_pickable = true
-shapes/0/shape = SubResource( 4 )
-shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="lava" type="CollisionShape2D" parent="lava"]
+[node name="lava" type="CollisionShape2D" parent="lava" index="0"]
 
-shape = SubResource( 4 )
-trigger = false
-_update_shape_index = 0
+shape = SubResource( 3 )
+
+

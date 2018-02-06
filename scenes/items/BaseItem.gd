@@ -17,12 +17,16 @@ func _physics_process(delta):
 		for i in collisions:
 			if (i.get_name() == "player"):
 				take_item(i)
-	elif (!sound.is_active()):
-		queue_free()
+				#Remove when sounds work
+				queue_free()
+	#TODO - play sounds properly
+	#elif (!sound.is_active()):
+	#	queue_free()
 
 func take_item(i):
 	if (add_to_inventory()):
-		sound.play(sfx)
+		#TODO - play sounds properly
+		#sound.play(sfx)
 		taken = true
 		get_tree().get_root().get_node("world/gui/CanvasLayer/items").display_item(title, item)
 		if (isgoal):

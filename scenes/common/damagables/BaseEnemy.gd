@@ -162,7 +162,7 @@ func closestXTile(direction, desiredX, space_state):
 
 func closestXTile_area_check(desired_direction, desiredX, space_state):
 	var frontTile = space_state.intersect_ray(Vector2(get_global_position().x + desired_direction * sprite_offset.x + desiredX, get_global_position().y - sprite_offset.y), Vector2(get_global_position().x + desired_direction * sprite_offset.x + desiredX, get_global_position().y + sprite_offset.y - 1))
-	if (frontTile != null && frontTile.has("collider") && frontTile["collider"].get_name() != "player"):
+	if (frontTile != null && frontTile.has("collider") && frontTile["collider"].get_name() != "player" && frontTile["collider"].get_name() != "water" && frontTile["collider"].get_name() != "lava"):
 		return 0
 	return desiredX
 

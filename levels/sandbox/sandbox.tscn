@@ -111,22 +111,18 @@ position = Vector2( -256, -128 )
 [node name="TestEnemy1" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( 2512, -720 )
-collision/safe_margin = 0.08
 
 [node name="TestEnemy2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 4 )]
 
 position = Vector2( 2592, -496 )
-collision/safe_margin = 0.08
 
 [node name="TestEnemy3" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 2128, 176 )
-collision/safe_margin = 0.08
 
 [node name="Skeleton" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 4 )]
 
 position = Vector2( -1696, 464 )
-collision/safe_margin = 0.08
 
 [node name="SimpleProjectile" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 5 )]
 
@@ -875,22 +871,11 @@ editor/display_folded = true
 
 position = Vector2( -368, 192 )
 target_nodes = [ "SunbeamGroup/Sunbeam", "FallingPlatformGroup/FallingPlatform" ]
-related_switches = [  ]
-enabled = true
-invert = false
-show_target = false
-target_pos = Vector2( 0, 0 )
 
 [node name="PullSwitch" parent="tilemap/SwitchGroup" index="1" instance=ExtResource( 47 )]
 
 position = Vector2( -16, -304 )
-collision/safe_margin = 0.08
 target_nodes = [ "SwingableGroup/SwingBlock 2" ]
-related_switches = [  ]
-enabled = true
-invert = false
-show_target = false
-target_pos = Vector2( 0, 0 )
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="17"]
 

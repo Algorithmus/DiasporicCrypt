@@ -37,10 +37,13 @@ func _physics_process(delta):
 				collision.queue_free()
 			remove_visuals()
 			crumble_related()
+			#remove this after sounds work
+			queue_free()
 		if (crumble_cycle < crumble_delay):
 			sprite_opacity(0.5 + fmod(crumble_cycle, 4) * 0.3)
-		if (!sound.is_active()):
-			queue_free()
+		#TODO - play sounds properly
+		#if (!sound.is_active()):
+		#	queue_free()
 
 # make game more playable by destroying neighboring breakable objects of the same type
 func crumble_related():
@@ -51,7 +54,8 @@ func crumble_related():
 			related.start_crumble()
 
 func start_crumble():
-	sound.set_volume_db(sound.play("crumble"), -10)
+	#TODO - play sounds properly
+	#sound.set_volume_db(sound.play("crumble"), -10)
 	is_crumbling = true
 	crumble()
 
