@@ -162,7 +162,7 @@ func closestXTile(direction, desiredX, space_state):
 
 func closestXTile_area_check(desired_direction, desiredX, space_state):
 	var frontTile = space_state.intersect_ray(Vector2(get_global_position().x + desired_direction * sprite_offset.x + desiredX, get_global_position().y - sprite_offset.y), Vector2(get_global_position().x + desired_direction * sprite_offset.x + desiredX, get_global_position().y + sprite_offset.y - 1))
-	if (frontTile != null && frontTile.has("collider") && frontTile["collider"].get_name() != "player" && frontTile["collider"].get_name() != "water" && frontTile["collider"].get_name() != "lava"):
+	if (frontTile != null && frontTile.has("collider") && !"(player,water,lava,item,damagable,consumable,sensor,magic)".match("*" + frontTile["collider"].get_name() + "*") && !frontTile["collider"].has_node("magic")):
 		return 0
 	return desiredX
 
@@ -211,7 +211,8 @@ func bleed():
 	add_child(blood_obj)
 	blood_obj.set_position(Vector2(randf()*consumable_offset.x + consumable_offset.x/2 - 16, sprite_offset.y - randf()*consumable_offset.y*2))
 	blood_obj.get_node("particles").set_emitting(true)
-	blood_obj.get_node("sound").play("blood")
+	#TODO - play sounds properly
+	#blood_obj.get_node("sound").play("blood")
 	blood_particles.append(blood_obj)
 
 	if (consumable):

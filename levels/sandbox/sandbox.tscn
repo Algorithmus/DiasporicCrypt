@@ -127,42 +127,34 @@ position = Vector2( -1696, 464 )
 [node name="SimpleProjectile" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 5 )]
 
 position = Vector2( -1760, 464 )
-collision/safe_margin = 0.08
 
 [node name="EnchantedArmor" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 6 )]
 
 position = Vector2( -1600, 464 )
-collision/safe_margin = 0.08
 
 [node name="FlyingSkull" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 7 )]
 
 position = Vector2( -512, -64 )
-collision/safe_margin = 0.08
 
 [node name="Ghost" parent="tilemap/EnemiesGroup" index="7" instance=ExtResource( 8 )]
 
 position = Vector2( -1616, 208 )
-collision/safe_margin = 0.08
 
 [node name="Werewolf" parent="tilemap/EnemiesGroup" index="8" instance=ExtResource( 9 )]
 
 position = Vector2( -1472, 464 )
-collision/safe_margin = 0.08
 
 [node name="Statue1" parent="tilemap/EnemiesGroup" index="9" instance=ExtResource( 10 )]
 
 position = Vector2( 384, 0 )
-collision/safe_margin = 0.08
 
 [node name="Zombie" parent="tilemap/EnemiesGroup" index="10" instance=ExtResource( 11 )]
 
 position = Vector2( 1008, -64 )
-collision/safe_margin = 0.08
 
 [node name="Minotaur" parent="tilemap/EnemiesGroup" index="11" instance=ExtResource( 12 )]
 
 position = Vector2( -1552, 464 )
-collision/safe_margin = 0.08
 
 [node name="BreakableGroup" type="Node2D" parent="tilemap" index="3"]
 
@@ -278,8 +270,6 @@ scale = Vector2( 23, 18 )
 [node name="water" parent="tilemap/WaterGroup/TestWaterSurface" index="1"]
 
 scale = Vector2( 23, 18 )
-audio_bus_override = false
-audio_bus_name = "Master"
 
 [node name="SlopeGroup" type="Node2D" parent="tilemap" index="6"]
 
@@ -684,47 +674,38 @@ editor/display_folded = true
 [node name="Potion" parent="tilemap/PotionGroup" index="0" instance=ExtResource( 37 )]
 
 position = Vector2( 2512, -880 )
-isgoal = false
 
 [node name="Potion1" parent="tilemap/PotionGroup" index="1" instance=ExtResource( 37 )]
 
 position = Vector2( 1088, -880 )
-isgoal = false
 
 [node name="Potion3" parent="tilemap/PotionGroup" index="2" instance=ExtResource( 37 )]
 
 position = Vector2( -80, -688 )
-isgoal = false
 
 [node name="Potion4" parent="tilemap/PotionGroup" index="3" instance=ExtResource( 37 )]
 
 position = Vector2( 1232, 144 )
-isgoal = false
 
 [node name="Potion5" parent="tilemap/PotionGroup" index="4" instance=ExtResource( 37 )]
 
 position = Vector2( 1520, 176 )
-isgoal = false
 
 [node name="Potion6" parent="tilemap/PotionGroup" index="5" instance=ExtResource( 37 )]
 
 position = Vector2( 1936, 144 )
-isgoal = false
 
 [node name="Potion7" parent="tilemap/PotionGroup" index="6" instance=ExtResource( 37 )]
 
 position = Vector2( 1840, -720 )
-isgoal = false
 
 [node name="Potion8" parent="tilemap/PotionGroup" index="7" instance=ExtResource( 37 )]
 
 position = Vector2( -1696, -816 )
-isgoal = false
 
 [node name="Potion+" parent="tilemap/PotionGroup" index="8" instance=ExtResource( 38 )]
 
 position = Vector2( 352, -752 )
-isgoal = false
 
 [node name="SwingableGroup" type="Node2D" parent="tilemap" index="11"]
 
