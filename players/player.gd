@@ -306,7 +306,7 @@ func check_hanging_disengage():
 func check_hanging_damage():
 	if (hanging && climb_platform != null && (is_hurt || is_transforming)):
 		hanging = false
-		move(Vector2(0, climb_platform.get_global_position().y + TILE_SIZE/2 - get_position().y + sprite_offset.y))
+		_collider = move_and_collide(Vector2(0, climb_platform.get_global_position().y + TILE_SIZE/2 - get_position().y + sprite_offset.y))
 		climb_platform = null
 
 func check_climb_platform_horizontal(space_state):
@@ -1241,6 +1241,7 @@ func play_animation(animation, speed):
 
 func demonic_animation():
 	if (get_node("NormalSpriteGroup/" + current_animation).has_node("trail")):
+		get_node("NormalSpriteGroup/" + current_animation + "/trail").material.set_shader_param("multiplier", direction)
 		calculate_trail(get_node("NormalSpriteGroup/" + current_animation))
 
 func calculate_trail(sprite):

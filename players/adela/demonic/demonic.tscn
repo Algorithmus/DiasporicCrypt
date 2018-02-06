@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://players/adela/demonic/idle.png" type="Texture" id=1]
 [ext_resource path="res://players/adela/demonic/run.png" type="Texture" id=2]
@@ -37,7 +37,7 @@
 [ext_resource path="res://players/adela/attacks/ddgawhip.png" type="Texture" id=35]
 [ext_resource path="res://players/adela/attacks/ddgaaura.png" type="Texture" id=36]
 
-[sub_resource type="Shader" id=4]
+[sub_resource type="Shader" id=5]
 
 code = "shader_type canvas_item;
 
@@ -71,16 +71,33 @@ float auraa=(maxa-mina);
 COLOR.rgb+=aura_color.rgb*(maxa-mina);
 }"
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=6]
 
 render_priority = 0
-shader = SubResource( 4 )
+shader = SubResource( 5 )
 shader_param/aura_width = 2.0
 shader_param/aura_color = Color( 1, 0, 0, 1 )
 shader_param/opacity = 1.0
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="Shader" id=3]
+
+code = "shader_type canvas_item;
+
+uniform float multiplier = 1.0;
+
+void vertex() {
+	VERTEX.x = multiplier * VERTEX.x;
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+
+render_priority = 0
+shader = SubResource( 3 )
+shader_param/multiplier = 1.0
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="ParticlesMaterial" id=7]
 
 render_priority = 0
 trail_divisor = 1
@@ -119,11 +136,11 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Damping", "Emission Shape", "Gravity", "Hue Variation", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Scale", "Spread", "Tangential Accel" ]
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=8]
 
 render_priority = 0
 
-[sub_resource type="Shader" id=7]
+[sub_resource type="Shader" id=9]
 
 code = "shader_type canvas_item;
 render_mode blend_premul_alpha;
@@ -159,10 +176,10 @@ float auraa=(maxa-mina);
 COLOR.rgb+=aura_color.rgb*(maxa-mina);
 }"
 
-[sub_resource type="ShaderMaterial" id=8]
+[sub_resource type="ShaderMaterial" id=10]
 
 render_priority = 0
-shader = SubResource( 7 )
+shader = SubResource( 9 )
 shader_param/aura_width = 2.0
 shader_param/aura_color = Color( 0, 0.74902, 0.360784, 1 )
 shader_param/modulate = Color( 0.733333, 1, 0.901961, 1 )
@@ -176,30 +193,30 @@ __meta__ = {
 
 [node name="idle" type="Sprite" parent="." index="0"]
 
-editor/display_folded = true
-material = SubResource( 5 )
+material = SubResource( 6 )
 texture = ExtResource( 1 )
 hframes = 4
 _sections_unfolded = [ "Material" ]
 
 [node name="trail" type="Particles2D" parent="idle" index="0"]
 
-visible = false
 show_behind_parent = true
+material = SubResource( 4 )
+scale = Vector2( -1, 1 )
 emitting = true
 amount = 3
-lifetime = 2.0
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 1 )
 normal_map = null
 h_frames = 4
@@ -210,7 +227,7 @@ _sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "T
 
 editor/display_folded = true
 visible = false
-material = SubResource( 5 )
+material = SubResource( 6 )
 texture = ExtResource( 2 )
 offset = Vector2( -16, 0 )
 vframes = 2
@@ -220,32 +237,34 @@ _sections_unfolded = [ "Material" ]
 [node name="trail" type="Particles2D" parent="run" index="0"]
 
 show_behind_parent = true
+material = SubResource( 4 )
 position = Vector2( -16, 0 )
+scale = Vector2( -1, 1 )
 emitting = true
-amount = 6
-lifetime = 4.0
+amount = 4
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 2 )
 normal_map = null
 h_frames = 4
 v_frames = 2
-_sections_unfolded = [ "Process Material", "Textures", "Time", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Transform" ]
 
 [node name="jump" type="Sprite" parent="." index="2"]
 
 editor/display_folded = true
 visible = false
-material = SubResource( 5 )
+material = SubResource( 6 )
 texture = ExtResource( 3 )
 hframes = 3
 frame = 2
@@ -254,31 +273,33 @@ _sections_unfolded = [ "Material" ]
 [node name="trail" type="Particles2D" parent="jump" index="0"]
 
 show_behind_parent = true
+material = SubResource( 4 )
+scale = Vector2( -1, 1 )
 emitting = true
-amount = 6
-lifetime = 4.0
+amount = 4
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 3 )
 normal_map = null
 h_frames = 3
 v_frames = 1
-_sections_unfolded = [ "Textures", "Time", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Textures", "Time", "Transform" ]
 
 [node name="fall" type="Sprite" parent="." index="3"]
 
 editor/display_folded = true
 visible = false
-material = SubResource( 5 )
+material = SubResource( 6 )
 position = Vector2( 0, -35 )
 texture = ExtResource( 4 )
 offset = Vector2( -16, 40 )
@@ -289,32 +310,34 @@ _sections_unfolded = [ "Material" ]
 [node name="trail" type="Particles2D" parent="fall" index="0"]
 
 show_behind_parent = true
+material = SubResource( 4 )
 position = Vector2( -16, 40 )
+scale = Vector2( -1, 1 )
 emitting = true
-amount = 6
-lifetime = 4.0
+amount = 4
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 4 )
 normal_map = null
 h_frames = 4
 v_frames = 1
-_sections_unfolded = [ "Textures", "Time", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Transform" ]
 
 [node name="land" type="Sprite" parent="." index="4"]
 
 editor/display_folded = true
 visible = false
-material = SubResource( 5 )
+material = SubResource( 6 )
 position = Vector2( 0, -9 )
 texture = ExtResource( 5 )
 offset = Vector2( -18, 10 )
@@ -325,32 +348,34 @@ _sections_unfolded = [ "Material" ]
 [node name="trail" type="Particles2D" parent="land" index="0"]
 
 show_behind_parent = true
+material = SubResource( 4 )
 position = Vector2( -18, 10 )
+scale = Vector2( -1, 1 )
 emitting = true
-amount = 6
-lifetime = 4.0
+amount = 4
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 5 )
 normal_map = null
 h_frames = 3
 v_frames = 1
-_sections_unfolded = [ "Textures", "Time", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Textures", "Time", "Transform" ]
 
 [node name="climb" type="Sprite" parent="." index="5"]
 
 editor/display_folded = true
 visible = false
-material = SubResource( 5 )
+material = SubResource( 6 )
 texture = ExtResource( 6 )
 offset = Vector2( -6, 16 )
 hframes = 7
@@ -359,32 +384,34 @@ _sections_unfolded = [ "Material" ]
 [node name="trail" type="Particles2D" parent="climb" index="0"]
 
 show_behind_parent = true
+material = SubResource( 4 )
 position = Vector2( -6, 16 )
+scale = Vector2( -1, 1 )
 emitting = true
 amount = 3
-lifetime = 2.0
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 6 )
 normal_map = null
 h_frames = 7
 v_frames = 1
-_sections_unfolded = [ "Textures", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Textures", "Time", "Transform" ]
 
 [node name="ladder" type="Sprite" parent="." index="6"]
 
 editor/display_folded = true
 visible = false
-material = SubResource( 5 )
+material = SubResource( 6 )
 texture = ExtResource( 7 )
 offset = Vector2( 0, -11 )
 hframes = 4
@@ -394,32 +421,34 @@ _sections_unfolded = [ "Material" ]
 [node name="trail" type="Particles2D" parent="ladder" index="0"]
 
 show_behind_parent = true
+material = SubResource( 4 )
 position = Vector2( 0, -11 )
+scale = Vector2( -1, 1 )
 emitting = true
-amount = 6
-lifetime = 4.0
+amount = 4
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 7 )
 normal_map = null
 h_frames = 4
 v_frames = 1
-_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Transform" ]
 
 [node name="crouch" type="Sprite" parent="." index="7"]
 
 editor/display_folded = true
 visible = false
-material = SubResource( 5 )
+material = SubResource( 6 )
 texture = ExtResource( 8 )
 hframes = 2
 frame = 1
@@ -428,31 +457,33 @@ _sections_unfolded = [ "Material" ]
 [node name="trail" type="Particles2D" parent="crouch" index="0"]
 
 show_behind_parent = true
+material = SubResource( 4 )
+scale = Vector2( -1, 1 )
 emitting = true
 amount = 3
-lifetime = 2.0
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 8 )
 normal_map = null
 h_frames = 2
 v_frames = 1
-_sections_unfolded = [ "Textures", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Textures", "Time", "Transform" ]
 
 [node name="hurt" type="Sprite" parent="." index="8"]
 
 editor/display_folded = true
 visible = false
-material = SubResource( 5 )
+material = SubResource( 6 )
 texture = ExtResource( 9 )
 hframes = 2
 frame = 1
@@ -461,31 +492,33 @@ _sections_unfolded = [ "Material" ]
 [node name="trail" type="Particles2D" parent="hurt" index="0"]
 
 show_behind_parent = true
+material = SubResource( 4 )
+scale = Vector2( -1, 1 )
 emitting = true
-amount = 6
-lifetime = 4.0
+amount = 4
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 9 )
 normal_map = null
 h_frames = 2
 v_frames = 1
-_sections_unfolded = [ "Textures", "Time", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Textures", "Time", "Transform" ]
 
 [node name="swing" type="Sprite" parent="." index="9"]
 
 editor/display_folded = true
 visible = false
-material = SubResource( 5 )
+material = SubResource( 6 )
 texture = ExtResource( 10 )
 offset = Vector2( -4, 0 )
 hframes = 5
@@ -495,32 +528,34 @@ _sections_unfolded = [ "Material" ]
 [node name="trail" type="Particles2D" parent="swing" index="0"]
 
 show_behind_parent = true
+material = SubResource( 4 )
 position = Vector2( -4, 0 )
+scale = Vector2( -1, 1 )
 emitting = true
-amount = 6
-lifetime = 4.0
+amount = 4
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 10 )
 normal_map = null
 h_frames = 5
 v_frames = 1
-_sections_unfolded = [ "Textures", "Time", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Textures", "Time", "Transform" ]
 
 [node name="charge" type="Sprite" parent="." index="10"]
 
 editor/display_folded = true
 visible = false
-material = SubResource( 5 )
+material = SubResource( 6 )
 position = Vector2( 0, -35 )
 texture = ExtResource( 11 )
 offset = Vector2( 0, 35 )
@@ -531,32 +566,34 @@ _sections_unfolded = [ "Material" ]
 
 visible = false
 show_behind_parent = true
+material = SubResource( 4 )
 position = Vector2( 0, 35 )
+scale = Vector2( -1, 1 )
 emitting = true
 amount = 3
-lifetime = 2.0
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 11 )
 normal_map = null
 h_frames = 2
 v_frames = 1
-_sections_unfolded = [ "Textures", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Textures", "Time", "Transform" ]
 
 [node name="magic" type="Sprite" parent="." index="11"]
 
 editor/display_folded = true
 visible = false
-material = SubResource( 5 )
+material = SubResource( 6 )
 position = Vector2( 0, -35 )
 texture = ExtResource( 11 )
 offset = Vector2( 0, 35 )
@@ -567,26 +604,28 @@ _sections_unfolded = [ "Material" ]
 [node name="trail" type="Particles2D" parent="magic" index="0"]
 
 show_behind_parent = true
+material = SubResource( 4 )
 position = Vector2( 0, 35 )
+scale = Vector2( -1, 1 )
 emitting = true
 amount = 3
-lifetime = 2.0
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 11 )
 normal_map = null
 h_frames = 2
 v_frames = 1
-_sections_unfolded = [ "Textures", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Textures", "Time", "Transform" ]
 
 [node name="transform" type="Sprite" parent="." index="12"]
 
@@ -608,7 +647,7 @@ hframes = 5
 [node name="wall" type="Sprite" parent="." index="14"]
 
 visible = false
-material = SubResource( 5 )
+material = SubResource( 6 )
 position = Vector2( 0, -35 )
 texture = ExtResource( 14 )
 offset = Vector2( -28, 32 )
@@ -617,7 +656,7 @@ _sections_unfolded = [ "Material" ]
 [node name="gameover" type="Sprite" parent="." index="15"]
 
 visible = false
-material = SubResource( 6 )
+material = SubResource( 8 )
 position = Vector2( -50, -150 )
 texture = ExtResource( 15 )
 vframes = 2
@@ -631,30 +670,32 @@ visible = false
 [node name="trail" type="Particles2D" parent="attack" index="0"]
 
 show_behind_parent = true
+material = SubResource( 4 )
 position = Vector2( 48, -29 )
+scale = Vector2( -1, 1 )
 emitting = true
-amount = 6
-lifetime = 4.0
+amount = 4
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 16 )
 normal_map = null
 h_frames = 3
 v_frames = 1
-_sections_unfolded = [ "Textures", "Time", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Textures", "Time", "Transform" ]
 
 [node name="attack" type="Sprite" parent="attack" index="1"]
 
-material = SubResource( 5 )
+material = SubResource( 6 )
 texture = ExtResource( 16 )
 offset = Vector2( 48, -29 )
 hframes = 3
@@ -671,7 +712,7 @@ frame = 2
 
 [node name="whip" type="Sprite" parent="attack" index="3"]
 
-material = SubResource( 8 )
+material = SubResource( 10 )
 texture = ExtResource( 18 )
 offset = Vector2( 48, -60 )
 hframes = 5
@@ -686,29 +727,31 @@ visible = false
 [node name="trail" type="Particles2D" parent="dattack" index="0"]
 
 show_behind_parent = true
+material = SubResource( 4 )
+scale = Vector2( -1, 1 )
 emitting = true
 amount = 3
-lifetime = 2.0
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 19 )
 normal_map = null
 h_frames = 3
 v_frames = 1
-_sections_unfolded = [ "Textures", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Textures", "Time", "Transform" ]
 
 [node name="dattack" type="Sprite" parent="dattack" index="1"]
 
-material = SubResource( 5 )
+material = SubResource( 6 )
 texture = ExtResource( 19 )
 hframes = 3
 frame = 2
@@ -716,7 +759,7 @@ _sections_unfolded = [ "Material" ]
 
 [node name="whip" type="Sprite" parent="dattack" index="2"]
 
-material = SubResource( 8 )
+material = SubResource( 10 )
 texture = ExtResource( 20 )
 offset = Vector2( 44, -60 )
 hframes = 5
@@ -739,30 +782,32 @@ visible = false
 [node name="trail" type="Particles2D" parent="aattack" index="0"]
 
 show_behind_parent = true
+material = SubResource( 4 )
 position = Vector2( 48, -36 )
+scale = Vector2( -1, 1 )
 emitting = true
-amount = 6
-lifetime = 4.0
+amount = 4
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 22 )
 normal_map = null
 h_frames = 3
 v_frames = 1
-_sections_unfolded = [ "Textures", "Time", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Textures", "Time", "Transform" ]
 
 [node name="aattack" type="Sprite" parent="aattack" index="1"]
 
-material = SubResource( 5 )
+material = SubResource( 6 )
 texture = ExtResource( 22 )
 offset = Vector2( 48, -36 )
 hframes = 3
@@ -771,7 +816,7 @@ _sections_unfolded = [ "Material" ]
 
 [node name="whip" type="Sprite" parent="aattack" index="2"]
 
-material = SubResource( 8 )
+material = SubResource( 10 )
 texture = ExtResource( 18 )
 offset = Vector2( 48, -68 )
 hframes = 5
@@ -793,30 +838,32 @@ visible = false
 [node name="trail" type="Particles2D" parent="uattack" index="0"]
 
 show_behind_parent = true
+material = SubResource( 4 )
 position = Vector2( 48, -29 )
+scale = Vector2( -1, 1 )
 emitting = true
-amount = 6
-lifetime = 4.0
+amount = 4
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 23 )
 normal_map = null
 h_frames = 3
 v_frames = 1
-_sections_unfolded = [ "Textures", "Time", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Textures", "Time", "Transform" ]
 
 [node name="attack" type="Sprite" parent="uattack" index="1"]
 
-material = SubResource( 5 )
+material = SubResource( 6 )
 texture = ExtResource( 23 )
 offset = Vector2( 48, -29 )
 hframes = 3
@@ -825,7 +872,7 @@ _sections_unfolded = [ "Material" ]
 
 [node name="whip" type="Sprite" parent="uattack" index="2"]
 
-material = SubResource( 8 )
+material = SubResource( 10 )
 texture = ExtResource( 24 )
 offset = Vector2( 0, -46 )
 hframes = 5
@@ -847,30 +894,32 @@ visible = false
 [node name="trail" type="Particles2D" parent="uaattack" index="0"]
 
 show_behind_parent = true
+material = SubResource( 4 )
 position = Vector2( 48, -36 )
+scale = Vector2( -1, 1 )
 emitting = true
-amount = 6
-lifetime = 4.0
+amount = 4
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 26 )
 normal_map = null
 h_frames = 3
 v_frames = 1
-_sections_unfolded = [ "Textures", "Time", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Textures", "Time", "Transform" ]
 
 [node name="attack" type="Sprite" parent="uaattack" index="1"]
 
-material = SubResource( 5 )
+material = SubResource( 6 )
 texture = ExtResource( 26 )
 offset = Vector2( 48, -36 )
 hframes = 3
@@ -879,7 +928,7 @@ _sections_unfolded = [ "Material" ]
 
 [node name="whip" type="Sprite" parent="uaattack" index="2"]
 
-material = SubResource( 8 )
+material = SubResource( 10 )
 texture = ExtResource( 24 )
 offset = Vector2( 0, -46 )
 hframes = 5
@@ -901,30 +950,32 @@ visible = false
 [node name="trail" type="Particles2D" parent="daattack" index="0"]
 
 show_behind_parent = true
+material = SubResource( 4 )
 position = Vector2( 48, 16 )
+scale = Vector2( -1, 1 )
 emitting = true
-amount = 6
-lifetime = 4.0
+amount = 4
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 27 )
 normal_map = null
 h_frames = 3
 v_frames = 1
-_sections_unfolded = [ "Textures", "Time", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Textures", "Time", "Transform" ]
 
 [node name="aattack" type="Sprite" parent="daattack" index="1"]
 
-material = SubResource( 5 )
+material = SubResource( 6 )
 texture = ExtResource( 27 )
 offset = Vector2( 48, 16 )
 hframes = 3
@@ -933,7 +984,7 @@ _sections_unfolded = [ "Material" ]
 
 [node name="whip" type="Sprite" parent="daattack" index="2"]
 
-material = SubResource( 8 )
+material = SubResource( 10 )
 texture = ExtResource( 28 )
 offset = Vector2( 48, 16 )
 hframes = 5
@@ -954,30 +1005,32 @@ visible = false
 [node name="trail" type="Particles2D" parent="dgattack" index="0"]
 
 show_behind_parent = true
+material = SubResource( 4 )
 position = Vector2( 48, -29 )
+scale = Vector2( -1, 1 )
 emitting = true
-amount = 6
-lifetime = 4.0
+amount = 4
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 30 )
 normal_map = null
 h_frames = 3
 v_frames = 1
-_sections_unfolded = [ "Textures", "Time", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Textures", "Time", "Transform" ]
 
 [node name="attack" type="Sprite" parent="dgattack" index="1"]
 
-material = SubResource( 5 )
+material = SubResource( 6 )
 texture = ExtResource( 30 )
 offset = Vector2( 48, -29 )
 hframes = 3
@@ -985,7 +1038,7 @@ _sections_unfolded = [ "Material" ]
 
 [node name="whip" type="Sprite" parent="dgattack" index="2"]
 
-material = SubResource( 8 )
+material = SubResource( 10 )
 texture = ExtResource( 31 )
 offset = Vector2( 48, -60 )
 hframes = 5
@@ -1005,30 +1058,32 @@ visible = false
 [node name="trail" type="Particles2D" parent="dgaattack" index="0"]
 
 show_behind_parent = true
+material = SubResource( 4 )
 position = Vector2( 48, -36 )
+scale = Vector2( -1, 1 )
 emitting = true
-amount = 6
-lifetime = 4.0
+amount = 4
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 33 )
 normal_map = null
 h_frames = 3
 v_frames = 1
-_sections_unfolded = [ "Textures", "Time", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Textures", "Time", "Transform" ]
 
 [node name="aattack" type="Sprite" parent="dgaattack" index="1"]
 
-material = SubResource( 5 )
+material = SubResource( 6 )
 texture = ExtResource( 33 )
 offset = Vector2( 48, -36 )
 hframes = 3
@@ -1037,7 +1092,7 @@ _sections_unfolded = [ "Material" ]
 
 [node name="whip" type="Sprite" parent="dgaattack" index="2"]
 
-material = SubResource( 8 )
+material = SubResource( 10 )
 texture = ExtResource( 31 )
 offset = Vector2( 48, -68 )
 hframes = 5
@@ -1059,30 +1114,32 @@ visible = false
 [node name="trail" type="Particles2D" parent="ddgaattack" index="0"]
 
 show_behind_parent = true
+material = SubResource( 4 )
 position = Vector2( 48, 16 )
+scale = Vector2( -1, 1 )
 emitting = true
-amount = 6
-lifetime = 4.0
+amount = 4
+lifetime = 1.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 2.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
+local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 texture = ExtResource( 34 )
 normal_map = null
 h_frames = 3
 v_frames = 1
-_sections_unfolded = [ "Textures", "Time", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Textures", "Time", "Transform" ]
 
 [node name="aattack" type="Sprite" parent="ddgaattack" index="1"]
 
-material = SubResource( 5 )
+material = SubResource( 6 )
 texture = ExtResource( 34 )
 offset = Vector2( 48, 16 )
 hframes = 3
@@ -1091,7 +1148,7 @@ _sections_unfolded = [ "Material" ]
 
 [node name="whip" type="Sprite" parent="ddgaattack" index="2"]
 
-material = SubResource( 8 )
+material = SubResource( 10 )
 texture = ExtResource( 35 )
 offset = Vector2( 48, 16 )
 hframes = 5
