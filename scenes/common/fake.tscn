@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/common/fake.gd" type="Script" id=1]
 
@@ -10,34 +10,35 @@ extents = Vector2( 16, 16 )
 [node name="Fake" type="Node2D"]
 
 script = ExtResource( 1 )
+overlay = ""
 
-[node name="fake" type="Area2D" parent="."]
+[node name="fake" type="Area2D" parent="." index="0"]
 
 input_pickable = true
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="enabler" type="VisibilityEnabler2D" parent="fake"]
+[node name="enabler" type="VisibilityEnabler2D" parent="fake" index="0"]
 
 scale = Vector2( 3, 3 )
 rect = Rect2( -10, -10, 20, 20 )
 pause_animations = true
 freeze_bodies = true
 pause_particles = true
+pause_animated_sprites = true
 process_parent = false
-fixed_process_parent = false
+physics_process_parent = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="fake"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fake" index="1"]
 
 shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
 
-[connection signal="enter_screen"  from="fake/enabler"  to="." method="enter_screen" binds=[  ]]
+[connection signal="screen_entered" from="fake/enabler" to="." method="enter_screen"]
 
-[connection signal="exit_screen"  from="fake/enabler"  to="." method="exit_screen" binds=[  ]]
+[connection signal="screen_exited" from="fake/enabler" to="." method="exit_screen"]
+
+

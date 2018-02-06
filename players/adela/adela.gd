@@ -446,7 +446,7 @@ func _ready():
 
 	demonic_display.get_node("demonic/sprite/adela").show()
 
-	weapon_collider.disconnect("body_enter", self, "_on_weapon_body_collision")
+	weapon_collider.disconnect("body_entered", self, "_on_weapon_body_collision")
 
 	whipswing_obj = whipswing.instance()
 	add_child(whipswing_obj)
@@ -515,6 +515,8 @@ func _input(event):
 
 func _on_weapon_collision(area):
 	._on_weapon_collision(area)
+	if (area.get_name() == "oneway"):
+		weapon_collided = false
 	# detect hitting a swinging block
 	if (area.get_name() == "swingable" && !is_swinging && !is_transforming):
 		weapon_collided = true

@@ -10,7 +10,7 @@ source_file="res://scenes/dungeon/ladder/ladder.png"
 source_md5="bb5d167143791a7c9e592d8d2289ef1a"
 
 dest_files=[ "res://.import/ladder.png-28a832ccaa2bd6ddd39c9559f87d3d0d.stex" ]
-dest_md5="ea17ff2104723e4f908015aad6c04299"
+dest_md5="9e4baa4f2508595bbf18ed4fa9fa0c09"
 
 [params]
 
@@ -18,7 +18,7 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

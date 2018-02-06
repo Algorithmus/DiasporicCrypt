@@ -10,7 +10,7 @@ source_file="res://scenes/dungeon/solids/wall.png"
 source_md5="6cbb9474161ce5f05ff590ad6098ae03"
 
 dest_files=[ "res://.import/wall.png-9562509e7a656500c76f059aef4fda35.stex" ]
-dest_md5="659e63bb133cc7f7613c72c6cfcde629"
+dest_md5="cffa749f3578a22cf576c924f67f366d"
 
 [params]
 
@@ -18,7 +18,7 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

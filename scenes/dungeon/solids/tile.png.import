@@ -10,7 +10,7 @@ source_file="res://scenes/dungeon/solids/tile.png"
 source_md5="485f0a411648e9cd4f0c21ab0ffe5fdc"
 
 dest_files=[ "res://.import/tile.png-b451d2121676082a494d0b14d25e4348.stex" ]
-dest_md5="32d5d581a6ce4ed78e859ffb8b14545a"
+dest_md5="53c4b740c7fa18617fbd780430452d0f"
 
 [params]
 
@@ -18,7 +18,7 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

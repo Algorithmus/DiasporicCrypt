@@ -82,110 +82,45 @@ editor/display_folded = true
 editor/display_folded = true
 position = Vector2( 720, 16 )
 
-[node name="KinematicBody2D" parent="tilemap/BreakableGroup/TestBreakable" index="0"]
-
-collision/safe_margin = 0.08
-
-[node name="enabler" parent="tilemap/BreakableGroup/TestBreakable/KinematicBody2D" index="0"]
-
-physics_process_parent = false
-
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable/KinematicBody2D" index="1"]
 
 texture = ExtResource( 6 )
-
-[node name="breakable" parent="tilemap/BreakableGroup/TestBreakable/KinematicBody2D" index="3"]
-
-audio_bus_override = false
-audio_bus_name = "Master"
 
 [node name="TestBreakable1" parent="tilemap/BreakableGroup" index="1" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 position = Vector2( 720, -16 )
 
-[node name="KinematicBody2D" parent="tilemap/BreakableGroup/TestBreakable1" index="0"]
-
-collision/safe_margin = 0.08
-
-[node name="enabler" parent="tilemap/BreakableGroup/TestBreakable1/KinematicBody2D" index="0"]
-
-physics_process_parent = false
-
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable1/KinematicBody2D" index="1"]
 
 texture = ExtResource( 6 )
-
-[node name="breakable" parent="tilemap/BreakableGroup/TestBreakable1/KinematicBody2D" index="3"]
-
-audio_bus_override = false
-audio_bus_name = "Master"
 
 [node name="TestBreakable2" parent="tilemap/BreakableGroup" index="2" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 position = Vector2( 720, -48 )
 
-[node name="KinematicBody2D" parent="tilemap/BreakableGroup/TestBreakable2" index="0"]
-
-collision/safe_margin = 0.08
-
-[node name="enabler" parent="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D" index="0"]
-
-physics_process_parent = false
-
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D" index="1"]
 
 texture = ExtResource( 6 )
-
-[node name="breakable" parent="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D" index="3"]
-
-audio_bus_override = false
-audio_bus_name = "Master"
 
 [node name="TestBreakable3" parent="tilemap/BreakableGroup" index="3" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 position = Vector2( 720, -80 )
 
-[node name="KinematicBody2D" parent="tilemap/BreakableGroup/TestBreakable3" index="0"]
-
-collision/safe_margin = 0.08
-
-[node name="enabler" parent="tilemap/BreakableGroup/TestBreakable3/KinematicBody2D" index="0"]
-
-physics_process_parent = false
-
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable3/KinematicBody2D" index="1"]
 
 texture = ExtResource( 6 )
-
-[node name="breakable" parent="tilemap/BreakableGroup/TestBreakable3/KinematicBody2D" index="3"]
-
-audio_bus_override = false
-audio_bus_name = "Master"
 
 [node name="TestBreakable4" parent="tilemap/BreakableGroup" index="4" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 position = Vector2( 720, -112 )
 
-[node name="KinematicBody2D" parent="tilemap/BreakableGroup/TestBreakable4" index="0"]
-
-collision/safe_margin = 0.08
-
-[node name="enabler" parent="tilemap/BreakableGroup/TestBreakable4/KinematicBody2D" index="0"]
-
-physics_process_parent = false
-
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable4/KinematicBody2D" index="1"]
 
 texture = ExtResource( 6 )
-
-[node name="breakable" parent="tilemap/BreakableGroup/TestBreakable4/KinematicBody2D" index="3"]
-
-audio_bus_override = false
-audio_bus_name = "Master"
 
 [node name="FakeGroup" type="Node2D" parent="tilemap" index="3"]
 
@@ -197,24 +132,19 @@ overlay = "../overlay"
 [node name="fake" parent="tilemap/FakeGroup/Fake" index="0"]
 
 scale = Vector2( 8, 5 )
-audio_bus_override = false
-audio_bus_name = "Master"
-
-[node name="enabler" parent="tilemap/FakeGroup/Fake/fake" index="0"]
-
-pause_animated_sprites = true
-physics_process_parent = false
 
 [node name="overlay" type="Node2D" parent="tilemap/FakeGroup" index="1"]
 
-visible = false
 position = Vector2( 848, -32 )
+z_index = 2
+_sections_unfolded = [ "Z Index" ]
 
 [node name="Sprite" type="Sprite" parent="tilemap/FakeGroup/overlay" index="0"]
 
 texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 224, 192 )
+_sections_unfolded = [ "Region" ]
 
 [node name="Sprite 2" type="Sprite" parent="tilemap/FakeGroup/overlay" index="1"]
 
@@ -222,6 +152,7 @@ position = Vector2( 128, 0 )
 texture = ExtResource( 6 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 192 )
+_sections_unfolded = [ "Region" ]
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="4"]
 

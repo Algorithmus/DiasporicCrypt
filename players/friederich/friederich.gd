@@ -171,7 +171,7 @@ func check_attacking():
 		remove_chain_collider()
 		hit_enemy = false
 	
-	if ((animation_player.get_current_animation().match("*chainattack") && animation_player.get_current_animation_length() == animation_player.get_current_animation_position()) || climbing_platform || hanging || on_ladder):
+	if ((animation_player.get_assigned_animation().match("*chainattack") && animation_player.get_current_animation_length() == animation_player.get_current_animation_position()) || climbing_platform || hanging || on_ladder):
 		remove_chain_collider()
 
 func step_player(delta):
