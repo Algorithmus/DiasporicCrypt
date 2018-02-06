@@ -187,7 +187,7 @@ func _input(event):
 				var big_map = map.get_node("objects").duplicate()
 				big_map.set_draw_behind_parent(false)
 				var map_pos_obj = map_position.instance()
-				map_pos_obj.set_position(Vector2(map.get("offset").x-map.get("objects").get_position().x, map.get("offset").y-map.get("objects").get_position().y))
+				map_pos_obj.set_position(Vector2(map.get("map_offset").x-map.get("objects").get_position().x, map.get("map_offset").y-map.get("objects").get_position().y))
 				big_map.add_child(map_pos_obj)
 				# center in viewport in menu map
 				big_map.set_position(Vector2(270 - map_pos_obj.get_position().x, 107 - map_pos_obj.get_position().y))

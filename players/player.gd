@@ -167,9 +167,9 @@ func getClimbPlatform(space_state, direction):
 	var platformY = get_global_position().y - sprite_offset.y + 16
 	var relevantTile = null
 	if (direction):
-		relevantTile = space_state.intersect_ray(Vector2(get_global_position().x - sprite_offset.x, platformY), Vector2(get_global_position().x - sprite_offset.x - 16, platformY), [self])
+		relevantTile = space_state.intersect_ray(Vector2(get_global_position().x - sprite_offset.x, platformY), Vector2(get_global_position().x - sprite_offset.x - 16, platformY), [self], 524288)
 	else:
-		relevantTile = space_state.intersect_ray(Vector2(get_global_position().x + sprite_offset.x, platformY), Vector2(get_global_position().x + sprite_offset.x + 16, platformY), [self])
+		relevantTile = space_state.intersect_ray(Vector2(get_global_position().x + sprite_offset.x, platformY), Vector2(get_global_position().x + sprite_offset.x + 16, platformY), [self], 524288)
 
 	if (relevantTile.has("collider")):
 		if(relevantTile["collider"].has_node("climbable")):
@@ -232,7 +232,7 @@ func check_damage(damageTiles):
 					var hp_obj = hpclass.instance()
 					hp_obj.get_node("hptext").set("custom_colors/font_color", Color(1, 0, 0))
 					hud.add_child(hp_obj)
-					var collider_offset = i.get_shape(0).get_extents()
+					var collider_offset = i.shape_owner_get_shape(0, 0).get_extents()
 					var hitpos = hp_obj.calculate_hitpos(i.get_global_position(), Vector2(collider_offset.x * i.get_scale().x, collider_offset.y * i.get_scale().y), get_position(), sprite_offset)
 					hp_obj.display_damage(hitpos, damage)
 					
@@ -300,7 +300,7 @@ func check_hanging_disengage():
 	if (hanging && climb_platform != null):
 		if ((direction < 0 && climb_platform.get_global_position().x > get_global_position().x) || (direction > 0 && climb_platform.get_global_position().x < get_global_position().x)):
 			hanging = false
-			move(Vector2(0, climb_platform.get_global_position().y + TILE_SIZE/2 - get_position().y + sprite_offset.y))
+			_collider = move_and_collide(Vector2(0, climb_platform.get_global_position().y + TILE_SIZE/2 - get_position().y + sprite_offset.y))
 			climb_platform = null
 
 func check_hanging_damage():
@@ -323,7 +323,7 @@ func check_climb_platform_horizontal(space_state):
 			hang_delay = 0
 			var d = platform_check.get_global_position().x - direction * TILE_SIZE/2 - get_global_position().x - direction * sprite_offset.x
 			climb_platform = platform_check
-			move(Vector2(d, 0))
+			_collider = move_and_collide(Vector2(d, 0))
 
 		if (hanging):
 			hang_delay += 1
@@ -331,7 +331,7 @@ func check_climb_platform_horizontal(space_state):
 		# more noticeable on faster horizontal platforms
 		if (movingPlatform == climb_platform && climb_platform != null && hanging):
 			var d = climb_platform.get_global_position().x - direction * TILE_SIZE/2 - get_global_position().x - direction * sprite_offset.x
-			move(Vector2(d, 0))
+			_collider = move_and_collide(Vector2(d, 0))
 		
 		if (platform_check == null && climb_platform != null && !climbing_platform):
 			climb_platform = null
@@ -348,7 +348,7 @@ func check_climb_platform_horizontal(space_state):
 			var ceilingA = space_state.intersect_ray(Vector2(get_global_position().x - sprite_offset.x, get_global_position().y - 64), Vector2(get_global_position().x - sprite_offset.x, get_global_position().y-96), [self])
 			var ceilingB = space_state.intersect_ray(Vector2(get_global_position().x + sprite_offset.x, get_global_position().y - 64), Vector2(get_global_position().x + sprite_offset.x, get_global_position().y-96), [self])
 			if (get_position().y + sprite_offset.y <= climb_platform.get_global_position().y - TILE_SIZE/2):
-				move(Vector2(climbspeed * direction, 0))
+				_collider = move_and_collide(Vector2(climbspeed * direction, 0))
 				if ((direction == 1 && get_global_position().x >= climb_platform.get_global_position().x) || (direction == -1 && get_global_position().x <= climb_platform.get_global_position().x)):
 					climb_platform = null
 					climbing_platform = false
@@ -356,7 +356,7 @@ func check_climb_platform_horizontal(space_state):
 			# but clamp to it horizontally if it is and we are moving up
 			elif (get_position().y - sprite_offset.y <= climb_platform.get_global_position().y + TILE_SIZE/2 && ceilingA.empty() && ceilingB.empty()) :
 				var platformDeltaX = climb_platform.get_global_position().x - direction * TILE_SIZE/2 - get_global_position().x - sprite_offset.x * direction
-				move(Vector2(platformDeltaX, 0))
+				_collider = move_and_collide(Vector2(platformDeltaX, 0))
 				
 				climb_vertically = true
 			else:
@@ -377,7 +377,7 @@ func step_camera():
 
 func step_horizontal_damage_throwback():
 	if (is_hurt):
-		move(Vector2(damageDelta.x, 0))
+		_collider = move_and_collide(Vector2(damageDelta.x, 0))
 
 func check_ladder_up(space_state):
 	var ladderTile = getLadderTile(space_state)
@@ -1247,12 +1247,12 @@ func calculate_trail(sprite):
 	if (prevPos != null):
 		var h = sqrt(pow(prevPos.x - get_global_position().x, 2.0) + pow(prevPos.y - get_global_position().y, 2.0))
 		var aura = sprite.get_node("trail")
-		aura.set_param(Particles2D.PARAM_LINEAR_VELOCITY, h * 4)
+		aura.process_material.initial_velocity = h * 4
 		if (h != 0):
 			var angle = asin((prevPos.y - get_global_position().y)/h)
 			if ((prevPos.x > get_global_position().x && direction > 0) || (prevPos.x < get_global_position().x && direction < 0)):
 				angle += PI
-			aura.set_param(Particles2D.PARAM_DIRECTION, rad2deg(angle) - 90)
+			#aura.set_param(Particles2D.PARAM_DIRECTION, rad2deg(angle) - 90)
 
 func teleport(pos, ladder):
 	set_global_position(pos)

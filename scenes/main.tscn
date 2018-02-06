@@ -377,7 +377,7 @@ tracks/1/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
-[node name="world" type="Node2D"]
+[node name="world" type="Node2D" index="0"]
 
 pause_mode = 2
 script = ExtResource( 1 )
@@ -787,7 +787,6 @@ max_lines_visible = -1
 
 [node name="map" type="Control" parent="gui/CanvasLayer" index="3"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -816,6 +815,7 @@ texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
 script = ExtResource( 24 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="objects" type="Node2D" parent="gui/CanvasLayer/map/container" index="0"]
 

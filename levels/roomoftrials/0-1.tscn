@@ -15,7 +15,7 @@
 [ext_resource path="res://scenes/items/scroll/scroll.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=14]
 
-[node name="LVL_NOTITLE" type="Node2D" index="0"]
+[node name="LVL_NOTITLE" type="Node2D"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -63,6 +63,8 @@ position = Vector2( -448, -112 )
 position = Vector2( -720, -112 )
 
 [node name="SlopeGroup" type="Node2D" parent="tilemap" index="1"]
+
+editor/display_folded = true
 
 [node name="TestSlope31-24" parent="tilemap/SlopeGroup" index="0" instance=ExtResource( 3 )]
 
@@ -180,8 +182,6 @@ motion = Vector2( 240, 0 )
 cycle = 3.0
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="5"]
-
-editor/display_folded = true
 
 [node name="Skeleton" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 12 )]
 

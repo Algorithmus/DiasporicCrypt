@@ -235,7 +235,7 @@ func check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space
 			var platformDeltaX = 0
 			if (get_global_position().x + movingDeltaX > newPos.x + TILE_SIZE/2 || get_global_position().x + movingDeltaX < newPos.x - TILE_SIZE/2):
 				movingDeltaX = 0
-		move(Vector2(movingDeltaX, newPos.y - movingPlatformPos.y))
+		_collider = move_and_collide(Vector2(movingDeltaX, newPos.y - movingPlatformPos.y))
 		movingPlatformPos = newPos
 	return onOneWayTile
 
@@ -337,7 +337,7 @@ func step_horizontal(space_state):
 					# neighboring slopes. Playing with the values yields 5 as sufficient to do so
 					if ((forwardY > slopeAdjustedTileY - (jumpspeed - 5)*current_gravity) || !jumpPressed):
 						pos.y = slopeAdjustedTileY - forwardY
-						move(pos)
+						_collider = move_and_collide(pos)
 	return {"animation": new_animation, "slope": onSlope, "slopeTile": relevantSlopeTile, "slopeX": slopeX, "motion": horizontal_motion}
 
 func check_climb_platform_horizontal(space_state):
@@ -417,7 +417,7 @@ func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, o
 		for i in collisionTiles:
 			if (i.get_name() == "slopea-b" && i.get_global_position().y + TILE_SIZE/2 >= int(get_position().y - sprite_offset.y) && i.get_global_position().y - TILE_SIZE/2 < int(get_position().y - sprite_offset.y)):
 				#closestTileY = max(i.get_global_position().y + TILE_SIZE/2 - get_position().y + sprite_offset.y, desiredY)
-				move(Vector2(0, i.get_global_position().y + TILE_SIZE/2 - get_position().y + sprite_offset.y))
+				_collider = move_and_collide(Vector2(0, i.get_global_position().y + TILE_SIZE/2 - get_position().y + sprite_offset.y))
 
 		# check slope tiles
 		if (relevantSlopeTile != null):
@@ -456,7 +456,7 @@ func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, o
 				# is ignorable when standing on a slope tile next to it.
 				abSlope = relevantSlopeTile
 				if (abSlope.get_global_position().y - TILE_SIZE/2 <= forwardY):
-					move(Vector2(0, abSlope.get_global_position().y - TILE_SIZE/2 - forwardY - 1))
+					_collider = move_and_collide(Vector2(0, abSlope.get_global_position().y - TILE_SIZE/2 - forwardY - 1))
 					forwardY = get_position().y + sprite_offset.y
 				closestTileY = min(abSlope.get_global_position().y - TILE_SIZE/2 - forwardY - 1, desiredY)
 				closestTileY = int(closestTileY)

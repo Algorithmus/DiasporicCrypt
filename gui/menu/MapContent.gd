@@ -6,6 +6,22 @@ extends "res://gui/menu/MenuContent.gd"
 const MAP_HEIGHT = 214
 const MAP_WIDTH = 540
 
+func _ready():
+	set_physics_process(false)
+
+#Godot 3 doesn't provide this function anymore...
+func get_item_and_children_rect(mapobjects):
+	var rect = Rect2(mapobjects.position, Vector2())
+
+	for i in range(0, mapobjects.get_child_count()):
+		var unit = mapobjects.get_child(i)
+		var shape = unit.get_node("area").polygon
+		var pos = unit.position
+		var size = Vector2(abs(shape[1].x - shape[0].x), abs(shape[2].y - shape[0].y))
+		if (size > Vector2()):
+			rect = rect.merge(Rect2(pos, size))
+	return rect
+
 func update_container():
 	var level = ProjectSettings.get("levels")[ProjectSettings.get("current_level")]
 	get_node("title").set_text(level.location.id)
@@ -59,8 +75,8 @@ func update_arrows():
 
 func update_varrows():
 	var map_objects = get_node("mapcontainer/viewport/objects")
-	var map_size = map_objects.get_item_and_children_rect().size;
-	var map_offset = map_objects.get_item_and_children_rect().pos;
+	var map_size = get_item_and_children_rect(map_objects).size;
+	var map_offset = get_item_and_children_rect(map_objects).position;
 	var n_arrow = get_node("n-arrow")
 	var s_arrow = get_node("s-arrow")
 	if (map_objects.get_position().y + map_offset.y < 0):
@@ -76,8 +92,8 @@ func update_varrows():
 
 func update_harrows():
 	var map_objects = get_node("mapcontainer/viewport/objects")
-	var map_size = map_objects.get_item_and_children_rect().size;
-	var map_offset = map_objects.get_item_and_children_rect().pos;
+	var map_size = get_item_and_children_rect(map_objects).size;
+	var map_offset = get_item_and_children_rect(map_objects).position;
 	var e_arrow = get_node("e-arrow")
 	var w_arrow = get_node("w-arrow")
 	if (map_objects.get_position().x + map_offset.x < 0):
