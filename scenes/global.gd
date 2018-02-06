@@ -312,7 +312,7 @@ func check_gamesaves():
 			dir.list_dir_begin()
 			var filename = dir.get_next()
 			while (filename != ""):
-				if (!dir.current_is_dir() && regex.find(filename) > -1):
+				if (!dir.current_is_dir() && regex.search(filename).strings.size() > 0):
 					return true
 				filename = dir.get_next()
 			dir.list_dir_end()

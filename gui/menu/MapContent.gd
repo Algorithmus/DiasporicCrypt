@@ -9,17 +9,23 @@ const MAP_WIDTH = 540
 func _ready():
 	set_physics_process(false)
 
-#Godot 3 doesn't provide this function anymore...
+#Godot 3 doesn't provide these functions anymore...
+func get_item_rect(mapobjects):
+	if (mapobjects is Polygon2D):
+		var boundaries = mapobjects.polygon
+		return Rect2(boundaries[0], Vector2(abs(boundaries[1].x - boundaries[0].x), abs(boundaries[2].y - boundaries[0].y)))
+	return Rect2(mapobjects.position, Vector2())
+
 func get_item_and_children_rect(mapobjects):
-	var rect = Rect2(mapobjects.position, Vector2())
+	var rect = get_item_rect(mapobjects)
 
 	for i in range(0, mapobjects.get_child_count()):
-		var unit = mapobjects.get_child(i)
-		var shape = unit.get_node("area").polygon
-		var pos = unit.position
-		var size = Vector2(abs(shape[1].x - shape[0].x), abs(shape[2].y - shape[0].y))
-		if (size > Vector2()):
-			rect = rect.merge(Rect2(pos, size))
+		var c = mapobjects.get_child(i)
+
+		if (c != null):
+			var sir = c.get_transform().xform(get_item_and_children_rect(c))
+			rect = rect.merge(sir)
+
 	return rect
 
 func update_container():

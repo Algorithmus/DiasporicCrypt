@@ -129,7 +129,8 @@ func _input(event):
 		var focus = get_focus_owner()
 		if (event.is_action_pressed("ui_accept") && !echo):
 			if (focus == self):
-				sfx.play("confirm")
+				#TODO - play sounds properly
+				#sfx.play("confirm")
 				if (state == NEW):
 					save()
 					emit_signal("newsave")
@@ -141,7 +142,8 @@ func _input(event):
 					optionsGroup.get_node("choice").hide()
 					optionsGroup.get_node("description").hide()
 			elif (state == OPTIONS):
-				sfx.play("confirm")
+				#TODO - play sounds properly
+				#sfx.play("confirm")
 				if (optionsGroup.get_node("choice").is_visible()):
 					if (focus.get_name() == "no"):
 						show_optionsmenu()
@@ -254,7 +256,7 @@ func save_to_file(data):
 	if (save_filename == null):
 		save_filename = "save" + str(idnr) + ".save"
 	file.open(savedir + "/" + save_filename, File.WRITE)
-	file.store_string(data.to_json())
+	file.store_string(to_json(data))
 	file.close()
 	
 	saveGroup.get_node("saved").show()

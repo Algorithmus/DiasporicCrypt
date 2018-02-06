@@ -48,16 +48,16 @@ func load_menu():
 			dir.list_dir_begin()
 			var filename = dir.get_next()
 			while (filename != ""):
-				if (!dir.current_is_dir() && regex.find(filename) > -1):
+				if (!dir.current_is_dir() && regex.search(filename).strings.size() > 0):
 					var game = {}
 					file.open(savedir + "/" + filename, File.READ)
 					while (!file.eof_reached()):
 						# unfortunately, it's not safe to assume Directory returns back the
 						# list of filenames in alphabetical order (eg, 10 can show up before 2 just because of the 1)
 						# so we rely on the save number for its id and position in the list
-						var index = filename.basename().split("save")[1]
+						var index = filename.get_basename().split("save")[1]
 						var string = file.get_line()
-						game.parse_json(string)
+						game = parse_json(string)
 						var save = itemclass.instance()
 						save.set("loadonly", loadonly)
 						itemcontainer.add_child(save)

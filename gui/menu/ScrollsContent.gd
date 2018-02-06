@@ -110,7 +110,7 @@ func _input(event):
 	if (event.is_pressed() && !event.is_echo()):
 		# prevent focusing on tabs while scrolling unless at the top
 		var focus = focusup
-		if (scrollcontent.get_v_scroll().get_val() > 0):
+		if (scrollcontent.get_v_scroll().value > 0):
 			focus = "."
 		get_node("icon").set_focus_neighbour(MARGIN_TOP, focus)
 		var oldscroll = scrollcontainer.get_node(index)
@@ -122,7 +122,8 @@ func _input(event):
 			oldscroll.set("custom_colors/font_color", null)
 			index = scrollcontainer.get_child(currentindex).get_name()
 			show_scroll()
-			sfx.play("cursor")
+			#TODO - play sounds properly
+			#sfx.play("cursor")
 		elif (event.is_action_pressed("ui_left") && currentindex > 0):
 			currentline = 0
 			currentindex -= 1
@@ -130,6 +131,7 @@ func _input(event):
 			oldscroll.set("custom_colors/font_color", null)
 			index = scrollcontainer.get_child(currentindex).get_name()
 			show_scroll()
-			sfx.play("cursor")
+			#TODO - play sounds properly
+			#sfx.play("cursor")
 	scrollcontent.scroll_to_line(currentline)
 		
