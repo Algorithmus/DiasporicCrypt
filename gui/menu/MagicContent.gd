@@ -25,7 +25,7 @@ func update_container():
 				magicitem.get_node("info/icon").set_texture(load("res://players/magic/" + spell["id"] + "/icon.png"))
 				magicitem.get_node("title").set_text(tr("MAGIC_" + spell["id"].to_upper()))
 				magicitem.get_node("description").set_bbcode(tr("MAGIC_" + spell["id"].to_upper() + "_DESCRIPTION"))
-				magicitem.connect("focus_enter", self, "check_scroll")
+				magicitem.connect("focus_entered", self, "check_scroll")
 				if (items.get_child_count() == 0):
 					magicitem.set_focus_neighbour(1, get_parent().get_parent().get_node("tabs/HBoxContainer/magic").get_path())
 				items.add_child(magicitem)
@@ -48,7 +48,7 @@ func check_scroll():
 	var vscroll = get_node("ScrollContainer").get_v_scroll()
 	var itempos = item.get_position().y
 	var itemsize = item.get_size().y
-	if (vscroll > itempos || vscroll + scrollrange.y < itempos + itemsize):
+        if (vscroll > itempos || vscroll + scrollrange.y < itempos + itemsize):
 		get_node("ScrollContainer").set_v_scroll(itempos)
 
 func reset_content():

@@ -1211,8 +1211,6 @@ margin_bottom = 31.0
 
 [node name="magic" type="Control" parent="panels" index="2"]
 
-editor/display_folded = true
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1243,9 +1241,9 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 scroll_horizontal_enabled = true
-scroll_horizontal = 1
+scroll_horizontal = 0
 scroll_vertical_enabled = true
-scroll_vertical = 1
+scroll_vertical = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="panels/magic/ScrollContainer" index="0"]
 
@@ -1262,6 +1260,7 @@ alignment = 0
 
 [node name="map" type="Control" parent="panels" index="3"]
 
+editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1548,6 +1547,8 @@ align = 1
 
 [node name="scrolls" type="Control" parent="panels" index="4"]
 
+editor/display_folded = true
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0

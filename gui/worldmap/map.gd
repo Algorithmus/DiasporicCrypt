@@ -81,8 +81,8 @@ func _ready():
 		else:
 			listitem.get_node("new").hide()
 		listitem.get_node("map").set_text(str(level.location.tile_percent()) + "%")
-		pin.connect("focus_enter", self, "focus_pin")
-		listitem.connect("focus_enter", self, "focus_list")
+		pin.connect("focus_entered", self, "focus_pin")
+		listitem.connect("focus_entered", self, "focus_list")
 		for tag in level.tags:
 			var tagitem = listitem.get_node("tags/" + tag)
 			if (level.tags[tag]):
@@ -139,7 +139,8 @@ func unfocus_pins():
 func focus_pin():
 	var pin = get_focus_owner()
 	set_content(pin.get_name())
-	sfx.play("cursor")
+	#TODO - play sounds properly
+	#sfx.play("cursor")
 
 func select_pin():
 	selectedlevel = get_focus_owner()
@@ -303,6 +304,7 @@ func _input(event):
 		container.scroll_to_line(currentline)
 
 func end_level_animation():
+	print("end level animation")
 	if (selectedlevel != null):
 		listcontainer.get_node(selectedlevel.get_name()).grab_focus()
 		selectedlevel = null
@@ -347,7 +349,8 @@ func set_typefilter():
 	else:
 		list.get_node("filters/type/" + filter).select(typefilters[filter])
 	update_filters()
-	sfx.play("confirm")
+	#TODO - play sounds properly
+	#sfx.play("confirm")
 
 func update_filters():
 	var filteredlevels = {}
@@ -432,7 +435,8 @@ func _on_tags_focus_enter():
 		focus = list.get_node("filters/tagtitle")
 	focus.set("custom_colors/font_color", Color(1, 215/255.0, 0))
 	focus.set("custom_colors/font_color_hover", Color(1, 215/255.0, 0))
-	sfx.play("cursor")
+	#TODO - play sounds properly
+	#sfx.play("cursor")
 
 func _on_tags_focus_exit():
 	var focus = filters.get_node("tags")
@@ -449,7 +453,8 @@ func set_tagfilter():
 	else:
 		list.get_node("filters/tags/" + tag + "/tag").set_invert(!tagfilters[tag])
 	update_filters()
-	sfx.play("confirm")
+	#TODO - play sounds properly
+	#sfx.play("confirm")
 
 # enable or disable tag filter
 func toggle_tags():
@@ -464,7 +469,8 @@ func toggle_tags():
 		list.get_node("filters/type/quest").set_focus_neighbour(MARGIN_LEFT, list.get_node("filters/tags/purple").get_path())
 	toggle_filters(false)
 	update_filters()
-	sfx.play("confirm")
+	#TODO - play sounds properly
+	#sfx.play("confirm")
 
 func _on_warp_pressed():
 	hudmap.cache_map()

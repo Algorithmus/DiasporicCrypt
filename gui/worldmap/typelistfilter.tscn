@@ -1,17 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://gui/worldmap/typelistfilter.gd" type="Script" id=1]
 [ext_resource path="res://gui/worldmap/icons/quest.png" type="Texture" id=2]
 [ext_resource path="res://gui/worldmap/icons/select.png" type="Texture" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=1]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-
-[sub_resource type="StyleBoxEmpty" id=3]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -25,38 +18,59 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[node name="typelistfilter" type="ToolButton"]
+[sub_resource type="StyleBoxEmpty" id=3]
 
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[node name="typelistfilter" type="ToolButton" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 24.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 24, 24 )
-focus_ignore_mouse = false
-focus_stop_mouse = true
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
 toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
 flat = true
+align = 1
 script = ExtResource( 1 )
+_sections_unfolded = [ "custom_styles" ]
 
-[node name="icon" type="Sprite" parent="."]
+[node name="icon" type="Sprite" parent="." index="0"]
 
+modulate = Color( 0.572549, 0, 0, 1 )
 position = Vector2( -2, -2 )
 texture = ExtResource( 2 )
 centered = false
-self_modulate = Color( 0.572549, 0, 0, 1 )
+_sections_unfolded = [ "Visibility" ]
 
-[node name="selected" type="Sprite" parent="."]
+[node name="selected" type="Sprite" parent="." index="1"]
 
 visible = false
 position = Vector2( -4, -4 )
 texture = ExtResource( 3 )
 centered = false
 
-[connection signal="pressed"  from="."  to="." method="_on_tagfilter_pressed" binds=[  ]]
+[connection signal="focus_entered" from="." to="." method="_on_tagfilter_focus_enter"]
 
-[connection signal="focus_entered"  from="."  to="." method="_on_tagfilter_focus_enter" binds=[  ]]
+[connection signal="focus_exited" from="." to="." method="_on_tagfilter_focus_exit"]
 
-[connection signal="focus_exited"  from="."  to="." method="_on_tagfilter_focus_exit" binds=[  ]]
+[connection signal="pressed" from="." to="." method="_on_tagfilter_pressed"]
+
+

@@ -249,13 +249,11 @@ position = Vector2( 368, 320 )
 
 [node name="NPCGroup" type="Node2D" parent="tilemap" index="4"]
 
-editor/display_folded = true
-
 [node name="Kaleva" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 12 )]
 
-editor/display_folded = true
 position = Vector2( 176, 304 )
 script = ExtResource( 13 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="enabler" parent="tilemap/NPCGroup/Kaleva" index="0"]
 
@@ -312,13 +310,6 @@ teleport_to = Vector2( -112, 480 )
 [node name="teleport" parent="tilemap/TeleportGroup/Teleport" index="0"]
 
 scale = Vector2( 3, 1 )
-audio_bus_override = false
-audio_bus_name = "Master"
-
-[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport" index="0"]
-
-pause_animated_sprites = true
-physics_process_parent = false
 
 [node name="boundaries" type="Node2D" parent="tilemap" index="7"]
 

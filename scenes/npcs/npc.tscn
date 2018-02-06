@@ -76,4 +76,8 @@ playback_speed = 1.0
 anims/idle = SubResource( 2 )
 blend_times = [  ]
 
+[connection signal="screen_entered" from="enabler" to="." method="enter_screen"]
+
+[connection signal="screen_exited" from="enabler" to="." method="exit_screen"]
+
 

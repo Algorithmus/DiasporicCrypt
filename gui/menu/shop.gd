@@ -106,8 +106,8 @@ func update_inventory():
 				item_obj.set_focus_neighbour(MARGIN_LEFT, ".")
 				item_obj.set_focus_neighbour(MARGIN_RIGHT, ".")
 				item_obj.set_focus_neighbour(MARGIN_BOTTOM, ".")
-				item_obj.connect("focus_enter", self, "focus_item_enter")
-				item_obj.connect("focus_exit", self, "focus_item_exit")
+				item_obj.connect("focus_entered", self, "focus_item_enter")
+				item_obj.connect("focus_exited", self, "focus_item_exit")
 				# previous item should focus the next item properly
 				if (itemcontainer.get_child_count() > 0):
 					var lastitem = itemcontainer.get_child(itemcontainer.get_child_count() - 1)
@@ -180,7 +180,7 @@ func _input(event):
 	if (event.is_pressed() && !event.is_echo()):
 		var player_inventory = ProjectSettings.get("inventory").inventory
 		var focus = get_focus_owner()
-		if (transaction.is_hidden()):
+		if (!transaction.visible):
 			var type = get_node("panel/types/" + currenttype)
 			var newtype
 			if (event.is_action_pressed("ui_left") && type.get_index() > 0):
@@ -256,7 +256,8 @@ func _input(event):
 					clear_selection(currentitem)
 				else:
 					itemcontainer.get_node(currentitem.title).grab_focus()
-				sfx.play("confirm")
+				#TODO - play sounds properly
+				#sfx.play("confirm")
 
 func clear_selection(item):
 	if (itemcontainer.has_node(item.title)):

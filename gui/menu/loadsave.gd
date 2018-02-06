@@ -66,7 +66,7 @@ func load_menu():
 						save.set("savepos", savepos)
 						save.set("savelocation", savelocation)
 						save.set_id(str(index))
-						save.connect("focus_enter", self, "check_scroll")
+						save.connect("focus_entered", self, "check_scroll")
 						save.connect("options_visible", self, "set_optionsvisible")
 						save.connect("delete", self, "shift_files")
 						save.connect("clone", self, "clone")
@@ -102,7 +102,7 @@ func create_newsave():
 	newsave.set("filename", "save" + str(itemcontainer.get_child_count()) + ".save")
 	if (!loadonly):
 		newsave.connect("newsave", self, "check_newsave")
-	newsave.connect("focus_enter", self, "check_scroll")
+	newsave.connect("focus_entered", self, "check_scroll")
 	newsave.connect("delete", self, "shift_files")
 	newsave.connect("clone", self, "clone")
 	if (loadonly):
