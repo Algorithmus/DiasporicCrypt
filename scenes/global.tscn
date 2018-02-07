@@ -498,7 +498,7 @@ tracks/8/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
-[node name="Global" type="Node2D" index="0"]
+[node name="Global" type="Node2D"]
 
 pause_mode = 2
 script = ExtResource( 1 )
@@ -898,6 +898,7 @@ script = null
 
 [node name="info" type="Control" parent="CanvasLayer/menu" index="4"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0

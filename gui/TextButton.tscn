@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://gui/TextButton.gd" type="Script" id=1]
-[ext_resource path="res://gui/fonts/L-24.font" type="Font" id=2]
-[ext_resource path="res://gui/cursor.wav" type="Sample" id=3]
+[ext_resource path="res://gui/fonts/L-24.font" type="BitmapFont" id=2]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -25,14 +24,6 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[sub_resource type="Resource" id=4]
-
-samples/cursor = {
-"db": 0.0,
-"pitch": 1.0,
-"sample": ExtResource( 3 )
-}
-
 [node name="textbutton" type="Node2D"]
 
 script = ExtResource( 1 )
@@ -41,18 +32,20 @@ __meta__ = {
 }
 default_focus = false
 
-[node name="button" type="ToolButton" parent="."]
+[node name="button" type="ToolButton" parent="." index="0"]
 
-anchor_left = 2
-anchor_top = 2
-anchor_right = 2
-anchor_bottom = 2
-margin_left = 160.0
-margin_top = 52.0
-margin_right = -96.0
-margin_bottom = 13.0
-focus_ignore_mouse = true
-focus_stop_mouse = true
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -64.0
+margin_right = -52.0
+margin_bottom = -26.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 custom_styles/hover = SubResource( 1 )
@@ -60,27 +53,19 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
 flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
 
-[node name="SamplePlayer" type="Node" parent="."]
+[node name="SamplePlayer" type="Node" parent="." index="1"]
 
-polyphony = 1
-samples = SubResource( 4 )
-default/volume_db = 0.0
-default/pitch_scale = 1.0
-default/pan = 0.0
-default/depth = 0.0
-default/height = 0.0
-default/filter/type = 0
-default/filter/cutoff = 5000.0
-default/filter/resonance = 1.0
-default/filter/gain = 1.0
-default/reverb_room = 2
-default/reverb_send = 0.0
-default/chorus_send = 0.0
+[connection signal="focus_entered" from="button" to="." method="_on_button_focus_enter"]
 
-[connection signal="focus_entered"  from="button"  to="." method="_on_button_focus_enter" binds=[  ]]
+[connection signal="focus_exited" from="button" to="." method="_on_button_focus_exit"]
 
-[connection signal="mouse_entered"  from="button"  to="." method="_on_button_mouse_enter" binds=[  ]]
+[connection signal="mouse_entered" from="button" to="." method="_on_button_mouse_enter"]
 
-[connection signal="focus_exited"  from="button"  to="." method="_on_button_focus_exit" binds=[  ]]
+

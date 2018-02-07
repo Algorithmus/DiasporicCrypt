@@ -435,7 +435,8 @@ func hide_choice():
 	no.disconnect("pressed", self, "global_menu")
 
 func reset_level():
-	get_node("gui/sound").play("confirm")
+	#TODO - play sounds properly
+	#get_node("gui/sound").play("confirm")
 	hide_choice()
 	var old_player = get_node("playercontainer/player")
 	get_node("gui/CanvasLayer/hud/SpellIcons/" + old_player.get_selected_spell_id()).hide()
@@ -478,7 +479,8 @@ func reset_level():
 	get_tree().set_pause(false)
 
 func global_menu():
-	get_node("gui/sound").play("confirm")
+	#TODO - play sounds properly
+	#get_node("gui/sound").play("confirm")
 	get_tree().change_scene("res://scenes/global.tscn")
 
 func clear_game():

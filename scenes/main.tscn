@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://scenes/main.gd" type="Script" id=1]
 [ext_resource path="res://levels/common/catacombs.tscn" type="PackedScene" id=2]
@@ -17,35 +17,90 @@
 [ext_resource path="res://gui/hud/HPGauge.png" type="Texture" id=15]
 [ext_resource path="res://gui/fonts/XS-10.font" type="BitmapFont" id=16]
 [ext_resource path="res://gui/fonts/L-24.font" type="BitmapFont" id=17]
-[ext_resource path="res://gui/hud/bloodGauge.png" type="Texture" id=18]
-[ext_resource path="res://gui/worldmap/icons/bonus.png" type="Texture" id=19]
-[ext_resource path="res://gui/fonts/S-12-dialog.font" type="BitmapFont" id=20]
-[ext_resource path="res://gui/fonts/L-24-Keyboard-outline.font" type="BitmapFont" id=21]
-[ext_resource path="res://gui/fonts/M-15-options.font" type="BitmapFont" id=22]
-[ext_resource path="res://gui/hud/ItemDisplay.gd" type="Script" id=23]
-[ext_resource path="res://gui/maps/HudMap.gd" type="Script" id=24]
-[ext_resource path="res://gui/fonts/XL-72.font" type="BitmapFont" id=25]
-[ext_resource path="res://gui/menu/tabs/map.png" type="Texture" id=26]
-[ext_resource path="res://gui/dialogue/dialogue.tscn" type="PackedScene" id=27]
-[ext_resource path="res://gui/menu/menu.tscn" type="PackedScene" id=28]
-[ext_resource path="res://gui/TextButton.tscn" type="PackedScene" id=29]
-[ext_resource path="res://gui/sequences/demonic_f.png" type="Texture" id=30]
-[ext_resource path="res://gui/sequences/demonic_a.png" type="Texture" id=31]
-[ext_resource path="res://gui/fonts/S-13-dialog.font" type="BitmapFont" id=32]
-[ext_resource path="res://gui/loading/loading.tscn" type="PackedScene" id=33]
-[ext_resource path="res://gui/loading/logo.png" type="Texture" id=34]
-[ext_resource path="res://levels/common/catacombs.ogg" type="AudioStream" id=35]
-[ext_resource path="res://scenes/GameClock.gd" type="Script" id=36]
+[ext_resource path="res://gui/hud/bloodgauge-mask.png" type="Texture" id=18]
+[ext_resource path="res://gui/hud/bloodGauge.png" type="Texture" id=19]
+[ext_resource path="res://gui/worldmap/icons/bonus.png" type="Texture" id=20]
+[ext_resource path="res://gui/fonts/S-12-dialog.font" type="BitmapFont" id=21]
+[ext_resource path="res://gui/fonts/L-24-Keyboard-outline.font" type="BitmapFont" id=22]
+[ext_resource path="res://gui/fonts/M-15-options.font" type="BitmapFont" id=23]
+[ext_resource path="res://gui/hud/ItemDisplay.gd" type="Script" id=24]
+[ext_resource path="res://gui/maps/HudMap.gd" type="Script" id=25]
+[ext_resource path="res://gui/fonts/XL-72.font" type="BitmapFont" id=26]
+[ext_resource path="res://gui/menu/tabs/map.png" type="Texture" id=27]
+[ext_resource path="res://gui/dialogue/dialogue.tscn" type="PackedScene" id=28]
+[ext_resource path="res://gui/menu/menu.tscn" type="PackedScene" id=29]
+[ext_resource path="res://gui/TextButton.tscn" type="PackedScene" id=30]
+[ext_resource path="res://players/magic/wind/action.png" type="Texture" id=31]
+[ext_resource path="res://gui/sequences/demonic_f.png" type="Texture" id=32]
+[ext_resource path="res://gui/sequences/demonic_a.png" type="Texture" id=33]
+[ext_resource path="res://gui/fonts/S-13-dialog.font" type="BitmapFont" id=34]
+[ext_resource path="res://gui/loading/loading.tscn" type="PackedScene" id=35]
+[ext_resource path="res://gui/loading/logo.png" type="Texture" id=36]
+[ext_resource path="res://levels/common/catacombs.ogg" type="AudioStream" id=37]
+[ext_resource path="res://scenes/GameClock.gd" type="Script" id=38]
 
-[sub_resource type="ShaderMaterial" id=1]
+[sub_resource type="Shader" id=1]
 
-render_priority = 0
+code = "shader_type canvas_item;
+render_mode blend_premul_alpha;
+
+uniform float aura_width=2.0;
+uniform vec4 aura_color:hint_color;
+uniform float opacity = 1.0;
+
+void fragment() {
+vec4 col = vec4(texture(TEXTURE,UV).rgb, texture(TEXTURE,UV).a*opacity);
+vec2 ps = TEXTURE_PIXEL_SIZE;
+float a;
+float maxa=col.a;
+float mina=col.a;
+a=texture(TEXTURE,UV+vec2(0,-aura_width)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(0,aura_width)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(-aura_width,0)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(aura_width,0)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+col.rgb*=col.a;
+COLOR=col;//mix(col,aura_color,maxa-mina);
+float auraa=(maxa-mina);
+
+COLOR.rgb+=aura_color.rgb*(maxa-mina);
+}"
 
 [sub_resource type="ShaderMaterial" id=2]
 
 render_priority = 0
+shader = SubResource( 1 )
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+_sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="ImageTexture" id=3]
+[sub_resource type="Shader" id=3]
+
+code = "shader_type canvas_item;
+
+uniform sampler2D source;
+
+void fragment() {
+COLOR.rgb = vec3(1, 0, 0);
+COLOR.a = texture(source,vec2(UV.x+0.5, UV.y+0.5)).a*COLOR.a;
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+
+render_priority = 0
+shader = SubResource( 3 )
+shader_param/source = ExtResource( 18 )
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="ImageTexture" id=5]
 
 flags = 2
 storage = 0
@@ -53,15 +108,15 @@ lossy_quality = 1.0
 flags = 2
 size = Vector2( 99, 69 )
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=6]
 
 render_priority = 0
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=7]
 
 render_priority = 0
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
 
 length = 2.0
 loop = false
@@ -91,7 +146,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 
 length = 0.2
 loop = false
@@ -109,7 +164,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=10]
 
 length = 0.2
 loop = false
@@ -122,12 +177,24 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 0.25, 0.25, 1 ),
+"transitions": PoolRealArray( 1, 0.25, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("chaintext/counterGroup:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 100, 0 ), Vector2( 100, -12 ), Vector2( 100, 0 ) ]
+}
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=11]
 
 length = 0.2
 loop = false
@@ -145,25 +212,25 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.34375, 1.34375 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=12]
 
 length = 2.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("title:visibility/opacity")
+tracks/0/path = NodePath("title:rect_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 1.6, 2 ),
+"times": PoolRealArray( 0, 0.1, 1.8, 2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 1.0, 1.0, 0.0 ]
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("title:rect_scale")
+tracks/1/path = NodePath("title:rect/pos")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -172,22 +239,22 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 1.8, 2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.5, 0.5 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
+"values": [ Vector2( 226, 456 ), Vector2( 32, 384 ), Vector2( 32, 384 ), Vector2( 226, 456 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("title:rect/pos")
+tracks/2/path = NodePath("title:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 1.8, 2 ),
+"times": PoolRealArray( 0, 0.3, 1.6, 2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 226, 456 ), Vector2( 32, 384 ), Vector2( 32, 384 ), Vector2( 226, 456 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=13]
 
 length = 2.0
 loop = false
@@ -228,8 +295,20 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("title:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
-[sub_resource type="ImageTexture" id=12]
+[sub_resource type="ImageTexture" id=14]
 
 flags = 2
 storage = 0
@@ -237,11 +316,28 @@ lossy_quality = 0.7
 flags = 2
 size = Vector2( 800, 592 )
 
-[sub_resource type="ShaderMaterial" id=13]
+[sub_resource type="Shader" id=15]
+
+code = "shader_type canvas_item;
+
+uniform vec4 start:hint_color;
+uniform vec4 stop:hint_color;
+
+void fragment() {
+COLOR = mix(start, stop, sin(UV.y*3.1415926535897932384626));
+
+COLOR.a = texture(TEXTURE,UV).a*COLOR.a;
+}"
+
+[sub_resource type="ShaderMaterial" id=16]
 
 render_priority = 0
+shader = SubResource( 15 )
+shader_param/start = Color( 0.1, 0.08, 0.2, 1 )
+shader_param/stop = Color( 0.38, 0, 0.37, 1 )
+_sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="ImageTexture" id=14]
+[sub_resource type="ImageTexture" id=17]
 
 flags = 6
 storage = 0
@@ -249,7 +345,47 @@ lossy_quality = 1.0
 flags = 6
 size = Vector2( 1, 1 )
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="ParticlesMaterial" id=18]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 2
+emission_box_extents = Vector3( 400, 100, 1 )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 10.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 120.0
+initial_velocity_random = 1.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 2.0
+scale_random = 1.0
+color = Color( 1, 1, 1, 1 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 1.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Emission Shape", "Gravity", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Radial Accel", "Scale", "Spread", "Tangential Accel" ]
+
+[sub_resource type="Animation" id=19]
 
 length = 1.0
 loop = false
@@ -317,13 +453,13 @@ tracks/4/keys = {
 "values": [ "demonic" ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=20]
 
 length = 0.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("level:visibility/opacity")
+tracks/0/path = NodePath("level:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -332,10 +468,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 1.0, 0.0 ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("playercontainer:visibility/opacity")
+tracks/1/path = NodePath("playercontainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -344,16 +480,16 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 1.0, 0.0 ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=21]
 
 length = 1.8
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("playercontainer:visibility/opacity")
+tracks/0/path = NodePath("playercontainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -362,10 +498,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 1.3, 1.8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 1.0 ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("level:visibility/opacity")
+tracks/1/path = NodePath("level:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -374,7 +510,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 1.3, 1.8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 1.0 ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="world" type="Node2D" index="0"]
@@ -389,7 +525,7 @@ __meta__ = {
 [node name="level" type="Node2D" parent="." index="0"]
 
 pause_mode = 1
-_sections_unfolded = [ "Pause" ]
+_sections_unfolded = [ "Pause", "Visibility" ]
 __meta__ = {
 "_edit_lock_": true
 }
@@ -402,7 +538,7 @@ _sections_unfolded = [ "Pause" ]
 [node name="playercontainer" type="Node2D" parent="." index="1"]
 
 pause_mode = 1
-_sections_unfolded = [ "Pause" ]
+_sections_unfolded = [ "Pause", "Visibility" ]
 __meta__ = {
 "_edit_lock_": true
 }
@@ -427,7 +563,6 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 [node name="hud" type="Control" parent="gui/CanvasLayer" index="0"]
 
 pause_mode = 1
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -515,8 +650,6 @@ max_lines_visible = -1
 
 [node name="mpbar" type="Node2D" parent="gui/CanvasLayer/hud" index="2"]
 
-editor/display_folded = true
-
 [node name="bar" type="Polygon2D" parent="gui/CanvasLayer/hud/mpbar" index="0"]
 
 position = Vector2( 40, 56 )
@@ -553,10 +686,9 @@ invert_border = 100.0
 
 texture = ExtResource( 14 )
 centered = false
+_sections_unfolded = [ "Material" ]
 
 [node name="hpbar" type="Node2D" parent="gui/CanvasLayer/hud" index="3"]
-
-editor/display_folded = true
 
 [node name="bar" type="Polygon2D" parent="gui/CanvasLayer/hud/hpbar" index="0"]
 
@@ -576,10 +708,11 @@ invert_border = 100.0
 
 [node name="display" type="Sprite" parent="gui/CanvasLayer/hud/hpbar" index="1"]
 
-material = SubResource( 1 )
+material = SubResource( 2 )
 use_parent_material = true
 texture = ExtResource( 15 )
 centered = false
+_sections_unfolded = [ "Material" ]
 
 [node name="level" type="Label" parent="gui/CanvasLayer/hud/hpbar" index="2"]
 
@@ -628,30 +761,31 @@ max_lines_visible = -1
 
 [node name="bloodbar" type="Node2D" parent="gui/CanvasLayer/hud" index="5"]
 
-editor/display_folded = true
 position = Vector2( 740, 48 )
 
 [node name="bar" type="Polygon2D" parent="gui/CanvasLayer/hud/bloodbar" index="0"]
 
-material = SubResource( 2 )
+material = SubResource( 4 )
+position = Vector2( -1, -1 )
 polygon = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
 uv = PoolVector2Array(  )
 color = Color( 1, 0, 0, 0.901961 )
 vertex_colors = PoolColorArray(  )
 offset = Vector2( 0, 0 )
 antialiased = false
-texture = SubResource( 3 )
+texture = SubResource( 5 )
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
 texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
+_sections_unfolded = [ "Material", "Texture", "Transform" ]
 
 [node name="display" type="Sprite" parent="gui/CanvasLayer/hud/bloodbar" index="1"]
 
-material = SubResource( 4 )
+material = SubResource( 6 )
 use_parent_material = true
-texture = ExtResource( 18 )
+texture = ExtResource( 19 )
 
 [node name="bloodcounter" type="Node2D" parent="gui/CanvasLayer/hud" index="6"]
 
@@ -660,8 +794,8 @@ position = Vector2( 720, 96 )
 
 [node name="icon" type="Sprite" parent="gui/CanvasLayer/hud/bloodcounter" index="0"]
 
-material = SubResource( 5 )
-texture = ExtResource( 19 )
+material = SubResource( 7 )
+texture = ExtResource( 20 )
 centered = false
 
 [node name="counter" type="Label" parent="gui/CanvasLayer/hud/bloodcounter" index="1"]
@@ -678,7 +812,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 20 )
+custom_fonts/font = ExtResource( 21 )
 text = "0"
 valign = 1
 percent_visible = 1.0
@@ -692,11 +826,12 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/levelup = SubResource( 6 )
+anims/levelup = SubResource( 8 )
 blend_times = [  ]
 
 [node name="demo" type="Control" parent="gui/CanvasLayer" index="1"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -716,9 +851,9 @@ anchor_left = 1.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 0.0
-margin_left = -632.0
+margin_left = -40.0
 margin_top = 128.0
-margin_right = 800.0
+margin_right = 760.0
 margin_bottom = 160.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
@@ -726,10 +861,10 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_fonts/bold_font = ExtResource( 21 )
-custom_fonts/normal_font = ExtResource( 22 )
+custom_fonts/bold_font = ExtResource( 22 )
+custom_fonts/normal_font = ExtResource( 23 )
 bbcode_enabled = true
-bbcode_text = "[center]KEY_HELP [b][/b][/center]"
+bbcode_text = "[right]KEY_HELP [b][/b][/right]"
 visible_characters = -1
 percent_visible = 1.0
 meta_underlined = true
@@ -739,6 +874,7 @@ scroll_active = true
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
+_sections_unfolded = [ "BBCode", "Grow Direction", "Rect", "Size Flags", "custom_constants" ]
 
 [node name="items" type="Control" parent="gui/CanvasLayer" index="2"]
 
@@ -756,7 +892,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-script = ExtResource( 23 )
+script = ExtResource( 24 )
 
 [node name="container" type="Node2D" parent="gui/CanvasLayer/items" index="0"]
 
@@ -777,7 +913,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 21 )
+custom_fonts/font = ExtResource( 22 )
 text = "K"
 align = 1
 valign = 1
@@ -814,7 +950,7 @@ texture_scale = Vector2( 1, 1 )
 texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
-script = ExtResource( 24 )
+script = ExtResource( 25 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="objects" type="Node2D" parent="gui/CanvasLayer/map/container" index="0"]
@@ -823,7 +959,6 @@ show_behind_parent = true
 
 [node name="chain" type="Control" parent="gui/CanvasLayer" index="4"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -839,6 +974,7 @@ size_flags_vertical = 2
 [node name="chaintext" type="Node2D" parent="gui/CanvasLayer/chain" index="0"]
 
 position = Vector2( 32, 211 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="chain" type="Label" parent="gui/CanvasLayer/chain/chaintext" index="0"]
 
@@ -846,9 +982,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = -15.0
 margin_right = 112.0
-margin_bottom = 16.0
+margin_bottom = 31.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 mouse_default_cursor_shape = 0
@@ -859,10 +994,12 @@ text = "chain x"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
 
 [node name="counterGroup" type="Node2D" parent="gui/CanvasLayer/chain/chaintext" index="1"]
 
 position = Vector2( 100, 0 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="counter" type="Label" parent="gui/CanvasLayer/chain/chaintext/counterGroup" index="0"]
 
@@ -870,9 +1007,9 @@ anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 0.0
 anchor_bottom = 1.0
-margin_top = 47.0
+margin_top = -64.0
 margin_right = 44.0
-margin_bottom = 16.0
+margin_bottom = -34.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 mouse_default_cursor_shape = 0
@@ -880,9 +1017,11 @@ size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 17 )
 text = "100"
+valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin", "Rect", "Size Flags" ]
 
 [node name="newattack" type="Node2D" parent="gui/CanvasLayer/chain" index="1"]
 
@@ -916,15 +1055,14 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/appear = SubResource( 7 )
-anims/counter = SubResource( 8 )
-anims/newattack = SubResource( 9 )
+anims/appear = SubResource( 9 )
+anims/counter = SubResource( 10 )
+anims/newattack = SubResource( 11 )
 blend_times = [  ]
 
 [node name="level" type="Control" parent="gui/CanvasLayer" index="5"]
 
 pause_mode = 1
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -943,16 +1081,16 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -12.0
-margin_top = -364.0
-margin_right = -749.0
-margin_bottom = -582.0
-rect_pivot_offset = Vector2( 0, 0 )
+margin_left = -40.0
+margin_top = 284.0
+margin_right = 760.0
+margin_bottom = 467.0
+rect_pivot_offset = Vector2( 400, 0 )
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 25 )
+custom_fonts/font = ExtResource( 26 )
 text = "COMPLETE"
 align = 1
 valign = 1
@@ -960,6 +1098,7 @@ autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Visibility" ]
 
 [node name="newlevel" type="Label" parent="gui/CanvasLayer/level/title" index="0"]
 
@@ -967,27 +1106,27 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -32.0
 margin_top = 144.0
-margin_right = 768.0
+margin_right = 800.0
 margin_bottom = 163.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 22 )
+custom_fonts/font = ExtResource( 23 )
 text = "KEY_NEWLEVEL"
 align = 1
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
 
 [node name="icon" type="Sprite" parent="gui/CanvasLayer/level/title/newlevel" index="0"]
 
 position = Vector2( 400, 32 )
-texture = ExtResource( 26 )
+texture = ExtResource( 27 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="gui/CanvasLayer/level" index="1"]
 
@@ -996,11 +1135,11 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/quest = SubResource( 10 )
-anims/show = SubResource( 11 )
+anims/quest = SubResource( 12 )
+anims/show = SubResource( 13 )
 blend_times = [  ]
 
-[node name="dialogue" parent="gui/CanvasLayer" index="6" instance=ExtResource( 27 )]
+[node name="dialogue" parent="gui/CanvasLayer" index="6" instance=ExtResource( 28 )]
 
 [node name="pause" type="Control" parent="gui/CanvasLayer" index="7"]
 
@@ -1022,10 +1161,10 @@ __meta__ = {
 [node name="shield" type="Sprite" parent="gui/CanvasLayer/pause" index="0"]
 
 self_modulate = Color( 1, 1, 1, 0.590791 )
-texture = SubResource( 12 )
+texture = SubResource( 14 )
 centered = false
 
-[node name="menu" parent="gui/CanvasLayer/pause" index="1" instance=ExtResource( 28 )]
+[node name="menu" parent="gui/CanvasLayer/pause" index="1" instance=ExtResource( 29 )]
 
 visible = false
 margin_left = 32.0
@@ -1035,7 +1174,6 @@ margin_bottom = 560.0
 
 [node name="choice" type="Control" parent="gui/CanvasLayer" index="8"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -1050,20 +1188,21 @@ size_flags_vertical = 2
 
 [node name="gameover" type="Label" parent="gui/CanvasLayer/choice" index="0"]
 
+visible = false
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 396.0
-margin_top = 252.0
-margin_right = -420.0
-margin_bottom = 162.0
+margin_left = -824.0
+margin_top = -340.0
+margin_right = -24.0
+margin_bottom = -250.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 25 )
+custom_fonts/font = ExtResource( 26 )
 text = "KEY_GAMEOVER"
 align = 1
 valign = 1
@@ -1071,6 +1210,7 @@ uppercase = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
 
 [node name="continue" type="Label" parent="gui/CanvasLayer/choice" index="1"]
 
@@ -1078,10 +1218,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 372.0
-margin_top = 92.0
-margin_right = -396.0
-margin_bottom = 44.0
+margin_left = -824.0
+margin_top = -500.0
+margin_right = -24.0
+margin_bottom = -470.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 mouse_default_cursor_shape = 0
@@ -1095,53 +1235,33 @@ uppercase = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
 
-[node name="yes" parent="gui/CanvasLayer/choice" index="2" instance=ExtResource( 29 )]
+[node name="yes" parent="gui/CanvasLayer/choice" index="2" instance=ExtResource( 30 )]
 
 position = Vector2( 256, 404 )
+_sections_unfolded = [ "Transform" ]
 default_focus = true
 
 [node name="button" parent="gui/CanvasLayer/choice/yes" index="0"]
 
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
+margin_right = 68.0
 focus_neighbour_right = NodePath("../../no/button")
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-enabled_focus_mode = 2
-shortcut = null
-group = null
 text = "KEY_YES"
-align = 1
 
-[node name="no" parent="gui/CanvasLayer/choice" index="3" instance=ExtResource( 29 )]
+[node name="no" parent="gui/CanvasLayer/choice" index="3" instance=ExtResource( 30 )]
 
 position = Vector2( 544, 404 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="button" parent="gui/CanvasLayer/choice/no" index="0"]
 
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
+margin_right = 56.0
 focus_neighbour_left = NodePath("../../yes/button")
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-enabled_focus_mode = 2
-shortcut = null
-group = null
 text = "KEY_NO"
-align = 1
 
 [node name="sequences" type="Control" parent="gui/CanvasLayer" index="9"]
 
-editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1157,36 +1277,35 @@ size_flags_vertical = 2
 
 [node name="demonic" type="Node2D" parent="gui/CanvasLayer/sequences" index="0"]
 
-visible = false
-
 [node name="BG" type="TextureRect" parent="gui/CanvasLayer/sequences/demonic" index="0"]
 
-material = SubResource( 13 )
+material = SubResource( 16 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 300.0
-margin_right = -736.0
-margin_bottom = -436.0
+margin_right = 736.0
+margin_bottom = 436.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-texture = SubResource( 14 )
+texture = SubResource( 17 )
 expand = true
 stretch_mode = 0
+_sections_unfolded = [ "Hint", "Material", "Rect", "Size Flags" ]
 
 [node name="Particles2D" type="Particles2D" parent="gui/CanvasLayer/sequences/demonic" index="1"]
 
 position = Vector2( 400, 400 )
 emitting = true
-amount = 8
-lifetime = 1.0
+amount = 12
+lifetime = 2.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 20.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
@@ -1194,18 +1313,21 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = null
-texture = null
+process_material = SubResource( 18 )
+texture = ExtResource( 31 )
 normal_map = null
 h_frames = 1
 v_frames = 1
+_sections_unfolded = [ "Process Material", "Textures", "Time", "Transform" ]
 
 [node name="sprite" type="Node2D" parent="gui/CanvasLayer/sequences/demonic" index="2"]
+
+position = Vector2( -800, 0 )
 
 [node name="friederich" type="Sprite" parent="gui/CanvasLayer/sequences/demonic/sprite" index="0"]
 
 scale = Vector2( 0.45, 0.45 )
-texture = ExtResource( 30 )
+texture = ExtResource( 32 )
 centered = false
 offset = Vector2( 0, 74 )
 
@@ -1213,7 +1335,7 @@ offset = Vector2( 0, 74 )
 
 visible = false
 scale = Vector2( 0.55, 0.55 )
-texture = ExtResource( 31 )
+texture = ExtResource( 33 )
 centered = false
 offset = Vector2( 0, 74 )
 
@@ -1233,8 +1355,8 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_fonts/mono_font = ExtResource( 21 )
-custom_fonts/normal_font = ExtResource( 32 )
+custom_fonts/mono_font = ExtResource( 22 )
+custom_fonts/normal_font = ExtResource( 34 )
 bbcode_enabled = true
 bbcode_text = "[right]KEY_SKIP:  [code]Z[/code][/right]"
 visible_characters = -1
@@ -1246,6 +1368,7 @@ scroll_active = true
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
+_sections_unfolded = [ "BBCode", "custom_fonts" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="gui/CanvasLayer/sequences" index="2"]
 
@@ -1254,10 +1377,10 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/demonic = SubResource( 15 )
+anims/demonic = SubResource( 19 )
 blend_times = [  ]
 
-[node name="loading" parent="gui/CanvasLayer" index="10" instance=ExtResource( 33 )]
+[node name="loading" parent="gui/CanvasLayer" index="10" instance=ExtResource( 35 )]
 
 visible = false
 anchor_left = 0.0
@@ -1298,7 +1421,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-texture = SubResource( 12 )
+texture = SubResource( 14 )
 stretch_mode = 0
 
 [node name="text" type="Label" parent="gui/CanvasLayer/nofocus" index="1"]
@@ -1314,7 +1437,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 25 )
+custom_fonts/font = ExtResource( 26 )
 text = "- PAUSED -"
 align = 1
 valign = 1
@@ -1326,13 +1449,13 @@ max_lines_visible = -1
 
 position = Vector2( 400, 448 )
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 34 )
+texture = ExtResource( 36 )
 
 [node name="sound" type="Node" parent="gui" index="2"]
 
 [node name="music" type="AudioStreamPlayer" parent="." index="3"]
 
-stream = ExtResource( 35 )
+stream = ExtResource( 37 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
@@ -1345,13 +1468,13 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/hide = SubResource( 16 )
-anims/show = SubResource( 17 )
+anims/hide = SubResource( 20 )
+anims/show = SubResource( 21 )
 blend_times = [  ]
 
 [node name="gameclock" type="Node2D" parent="." index="5"]
 
-script = ExtResource( 36 )
+script = ExtResource( 38 )
 
 [connection signal="pressed" from="gui/CanvasLayer/choice/yes/button" to="." method="confirm_selected"]
 
