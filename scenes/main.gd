@@ -554,7 +554,7 @@ func load_game(data):
 	var controls = data.settings.keyboard
 	var layout = data.settings.layout
 	# Only show the requested gamepad layout if gamepad is connected
-	if (Input.get_connected_joysticks().size() > 0 && layout != "keyboard"):
+	if (Input.get_connected_joypads().size() > 0 && layout != "keyboard"):
 		controls = data.settings.gamepad
 	else:
 		layout = "keyboard"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://scenes/global.gd" type="Script" id=1]
 [ext_resource path="res://gui/theme/slidergrabber.png" type="Texture" id=2]
@@ -234,9 +234,26 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
+[sub_resource type="Shader" id=25]
+
+code = "shader_type canvas_item;
+
+uniform vec4 start:hint_color;
+uniform vec4 stop:hint_color;
+
+void fragment() {
+COLOR = mix(start, stop, UV.x);
+
+COLOR.a = texture(TEXTURE,UV).a*COLOR.a;
+}"
+
 [sub_resource type="ShaderMaterial" id=20]
 
 render_priority = 0
+shader = SubResource( 25 )
+shader_param/start = Color( 0.788235, 0.74902, 0.627451, 1 )
+shader_param/stop = Color( 0.788235, 0.74902, 0.627451, 0 )
+_sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="ImageTexture" id=21]
 
@@ -437,8 +454,32 @@ tracks/6/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("CanvasLayer/menu/BG/adela:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("CanvasLayer/menu/BG/friederich:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
 
-[node name="Global" type="Node2D"]
+[node name="Global" type="Node2D" index="0"]
 
 pause_mode = 2
 script = ExtResource( 1 )
@@ -477,6 +518,7 @@ centered = false
 [node name="friederich" type="Sprite" parent="CanvasLayer/menu/BG" index="1"]
 
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 424 )
 texture = ExtResource( 9 )
 centered = false
@@ -485,13 +527,13 @@ _sections_unfolded = [ "Visibility" ]
 [node name="adela" type="Sprite" parent="CanvasLayer/menu/BG" index="2"]
 
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 385, 467 )
 texture = ExtResource( 10 )
 centered = false
+_sections_unfolded = [ "Visibility" ]
 
 [node name="logo" type="Node2D" parent="CanvasLayer/menu" index="1"]
-
-visible = false
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer/menu/logo" index="0"]
 
@@ -501,7 +543,6 @@ _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="main" type="Control" parent="CanvasLayer/menu" index="2"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -533,137 +574,78 @@ alignment = 1
 
 [node name="newgame" parent="CanvasLayer/menu/main/options" index="0" instance=ExtResource( 12 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 0.0
 margin_right = 130.0
 margin_bottom = 25.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath(".")
 focus_neighbour_right = NodePath(".")
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-group = null
 text = "KEY_NEWGAME"
 
 [node name="loadgame" parent="CanvasLayer/menu/main/options" index="1" instance=ExtResource( 12 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 36.0
 margin_right = 135.0
 margin_bottom = 61.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath(".")
 focus_neighbour_right = NodePath(".")
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-group = null
 text = "KEY_LOADGAME"
 
 [node name="settings" parent="CanvasLayer/menu/main/options" index="2" instance=ExtResource( 12 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 72.0
 margin_right = 125.0
 margin_bottom = 97.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath(".")
 focus_neighbour_right = NodePath(".")
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-group = null
 text = "KEY_SETTINGS"
 
 [node name="bonus" parent="CanvasLayer/menu/main/options" index="3" instance=ExtResource( 12 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 108.0
 margin_right = 58.0
 margin_bottom = 133.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath(".")
 focus_neighbour_right = NodePath(".")
-mouse_filter = 0
-mouse_default_cursor_shape = 0
+focus_mode = 0
 disabled = true
-group = null
 text = "Bonus"
 
 [node name="credits" parent="CanvasLayer/menu/main/options" index="4" instance=ExtResource( 12 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 144.0
 margin_right = 114.0
 margin_bottom = 169.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath(".")
 focus_neighbour_right = NodePath(".")
-mouse_filter = 0
-mouse_default_cursor_shape = 0
+focus_mode = 0
 disabled = true
-group = null
 text = "KEY_CREDITS"
 
 [node name="quitgame" parent="CanvasLayer/menu/main/options" index="5" instance=ExtResource( 12 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 180.0
 margin_right = 132.0
 margin_bottom = 205.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath(".")
 focus_neighbour_right = NodePath("../../info")
 focus_neighbour_bottom = NodePath("../../info")
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-group = null
 text = "KEY_QUITGAME"
 
 [node name="info" parent="CanvasLayer/menu/main" index="1" instance=ExtResource( 12 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 723.0
 margin_top = 561.0
 margin_right = 800.0
 margin_bottom = 593.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath("../options/quitgame")
 focus_neighbour_top = NodePath("../options/quitgame")
 focus_neighbour_right = NodePath(".")
 focus_neighbour_bottom = NodePath(".")
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-group = null
 text = ""
 icon = ExtResource( 13 )
 
@@ -749,22 +731,13 @@ alignment = 0
 
 [node name="back" parent="CanvasLayer/menu/newgame/backbutton" index="0" instance=ExtResource( 12 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 0.0
 margin_right = 93.0
 margin_bottom = 25.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath("../../adela")
 focus_neighbour_bottom = NodePath("../../friederich")
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-group = null
 text = "MAP_BACK"
 
 [node name="key" type="Label" parent="CanvasLayer/menu/newgame/backbutton" index="1"]
@@ -937,21 +910,12 @@ alignment = 0
 
 [node name="back" parent="CanvasLayer/menu/info/backbutton" index="0" instance=ExtResource( 12 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 0.0
 margin_right = 93.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath("../../adela")
 focus_neighbour_bottom = NodePath("../../friederich")
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-group = null
 text = "MAP_BACK"
 
 [node name="key" type="Label" parent="CanvasLayer/menu/info/backbutton" index="1"]
@@ -2458,7 +2422,7 @@ override_selected_font_color = false
 
 [node name="settingsmenu" type="Control" parent="CanvasLayer/menu" index="5"]
 
-editor/display_folded = true
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -2499,6 +2463,7 @@ position = Vector2( 48, 48 )
 scale = Vector2( 458, 1 )
 texture = SubResource( 21 )
 centered = false
+_sections_unfolded = [ "Material" ]
 
 [node name="language" parent="CanvasLayer/menu/settingsmenu" index="2" instance=ExtResource( 20 )]
 
@@ -2519,7 +2484,7 @@ margin_bottom = 592.0
 [node name="sfxslider" parent="CanvasLayer/menu/settingsmenu/settings" index="4"]
 
 focus_neighbour_top = NodePath("../../language")
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Theme", "Visibility" ]
 
 [node name="save" parent="CanvasLayer/menu/settingsmenu/settings" index="12"]
 
@@ -2539,36 +2504,10 @@ margin_left = 503.0
 margin_top = 16.0
 margin_right = 744.0
 margin_bottom = 47.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-mouse_default_cursor_shape = 0
 
 [node name="input" parent="CanvasLayer/menu/settingsmenu/back" index="0"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 0.0
-margin_right = 81.0
-margin_bottom = 17.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
 text = "MAP_BACK"
-
-[node name="key" parent="CanvasLayer/menu/settingsmenu/back" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 124.0
-margin_right = 148.0
-margin_bottom = 30.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
 
 [node name="loadmenu" type="Control" parent="CanvasLayer/menu" index="6"]
 
@@ -2598,7 +2537,6 @@ mouse_default_cursor_shape = 0
 
 [node name="quit" type="Control" parent="CanvasLayer/menu" index="8"]
 
-editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -2629,6 +2567,7 @@ size_flags_vertical = 2
 texture = SubResource( 22 )
 expand = true
 stretch_mode = 0
+_sections_unfolded = [ "Material", "Rect", "Size Flags", "Visibility" ]
 
 [node name="text" type="Label" parent="CanvasLayer/menu/quit" index="1"]
 
@@ -2671,40 +2610,24 @@ alignment = 1
 
 [node name="yes" parent="CanvasLayer/menu/quit/options" index="0" instance=ExtResource( 12 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 224.0
-margin_right = 303.0
-rect_pivot_offset = Vector2( 0, 0 )
+margin_left = 0.0
+margin_right = 79.0
+margin_bottom = 25.0
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath("../no")
 focus_neighbour_bottom = NodePath(".")
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-group = null
 text = "KEY_YES"
 
 [node name="no" parent="CanvasLayer/menu/quit/options" index="1" instance=ExtResource( 12 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 503.0
-margin_right = 575.0
-rect_pivot_offset = Vector2( 0, 0 )
+margin_left = 500.0
+margin_right = 572.0
+margin_bottom = 25.0
 focus_neighbour_left = NodePath("../yes")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath(".")
 focus_neighbour_bottom = NodePath(".")
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-group = null
 text = "KEY_NO"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]

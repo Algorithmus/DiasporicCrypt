@@ -72,6 +72,7 @@ func _ready():
 	optionsGroup = get_node("options")
 	if (loadonly):
 		optionsGroup.get_node("options/save").hide()
+		optionsGroup.get_node("options/line1").hide()
 	else:
 		gameclock = get_tree().get_root().get_node("world/gameclock")
 	id = get_node("id")
@@ -118,7 +119,8 @@ func show_optionsmenu():
 func unfocus_options():
 	for option in optionsGroup.get_node("options").get_children():
 		option.release_focus()
-		option.get_node("icon").hide()
+		if (option.has_node("icon")):
+			option.get_node("icon").hide()
 
 func reset_options():
 	for option in optionsGroup.get_node("options").get_children():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://gui/theme/slidergrabber.png" type="Texture" id=1]
 [ext_resource path="res://gui/theme/slidergrabber_active.png" type="Texture" id=2]
@@ -14,9 +14,10 @@
 [sub_resource type="ImageTexture" id=1]
 
 flags = 4
-)size = Vector2( 4, 16 )
 storage = 0
 lossy_quality = 0.7
+flags = 4
+size = Vector2( 0, 0 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -32,6 +33,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 47, 26 )
 margin_left = 23.0
 margin_right = 24.0
 margin_top = 13.0
@@ -40,6 +42,7 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=4]
@@ -49,6 +52,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 8, 13 )
 margin_left = 3.0
 margin_right = 3.0
 margin_top = 0.0
@@ -57,22 +61,27 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="LargeTexture" id=5]
 
+flags = 0
 _data = [ Vector2( 0, 0 ) ]
 
 [sub_resource type="LargeTexture" id=6]
 
+flags = 0
 _data = [ Vector2( 0, 0 ) ]
 
 [sub_resource type="LargeTexture" id=7]
 
+flags = 0
 _data = [ Vector2( 0, 0 ) ]
 
 [sub_resource type="LargeTexture" id=8]
 
+flags = 0
 _data = [ Vector2( 0, 0 ) ]
 
 [sub_resource type="StyleBoxTexture" id=9]
@@ -82,6 +91,7 @@ content_margin_right = -1.0
 content_margin_top = 0.0
 content_margin_bottom = 30.0
 texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 28, 61 )
 margin_left = 0.0
 margin_right = 28.0
 margin_top = 30.0
@@ -90,6 +100,7 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=10]
@@ -99,6 +110,7 @@ content_margin_right = -1.0
 content_margin_top = 0.0
 content_margin_bottom = 30.0
 texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 28, 61 )
 margin_left = 0.0
 margin_right = 28.0
 margin_top = 30.0
@@ -107,6 +119,7 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=11]
@@ -116,6 +129,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 18, 64 )
 margin_left = 28.0
 margin_right = 0.0
 margin_top = 32.0
@@ -124,6 +138,7 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=12]
@@ -133,6 +148,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 18, 64 )
 margin_left = 18.0
 margin_right = 0.0
 margin_top = 32.0
@@ -141,6 +157,7 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="Theme" id=13]
@@ -168,6 +185,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 736, 528 )
 margin_left = 0.0
 margin_right = 0.0
 margin_top = 0.0
@@ -176,90 +194,118 @@ expand_margin_left = 0.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [node name="save" type="Control"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme = SubResource( 13 )
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 40.0
-margin_bottom = 40.0
 script = ExtResource( 7 )
 
-[node name="BG" type="Panel" parent="."]
+[node name="BG" type="Panel" parent="." index="0"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
-margin_left = 0.0
-margin_top = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 736.0
 margin_bottom = 528.0
-custom_styles/panel = SubResource( 14 )
-
-[node name="frame" type="TextureRect" parent="."]
-
-focus_ignore_mouse = true
-focus_stop_mouse = true
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
+custom_styles/panel = SubResource( 14 )
+
+[node name="frame" type="TextureRect" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = -32.0
 margin_top = -32.0
 margin_right = 768.0
 margin_bottom = 560.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 texture = ExtResource( 9 )
 stretch_mode = 0
 
-[node name="title" type="Label" parent="."]
+[node name="title" type="Label" parent="." index="2"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 40.0
 margin_top = 4.0
 margin_right = 500.0
 margin_bottom = 28.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 custom_fonts/font = ExtResource( 6 )
 text = "KEY_SAVEMENU"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="back" parent="." instance=ExtResource( 10 )]
+[node name="back" parent="." index="3" instance=ExtResource( 10 )]
 
 margin_left = 455.0
 margin_top = 542.0
 margin_right = 696.0
 margin_bottom = 573.0
 
-[node name="saves" type="ScrollContainer" parent="."]
+[node name="saves" type="ScrollContainer" parent="." index="4"]
 
-focus_ignore_mouse = false
-focus_stop_mouse = true
-size_flags_horizontal = 2
-size_flags_vertical = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 16.0
 margin_top = 48.0
 margin_right = 696.0
 margin_bottom = 510.0
-scroll_horizontal = true
-scroll_vertical = true
-
-[node name="container" type="VBoxContainer" parent="saves"]
-
-focus_ignore_mouse = false
-focus_stop_mouse = true
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 0.0
-margin_bottom = 0.0
+scroll_horizontal_enabled = true
+scroll_horizontal = 0
+scroll_vertical_enabled = true
+scroll_vertical = 0
+
+[node name="container" type="VBoxContainer" parent="saves" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 alignment = 1
+
+
