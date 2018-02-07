@@ -5,25 +5,26 @@
 [ext_resource path="res://gui/theme/slidergrabber_active.png" type="Texture" id=3]
 [ext_resource path="res://gui/theme/slider.png" type="Texture" id=4]
 [ext_resource path="res://gui/theme/scrollgrabber.png" type="Texture" id=5]
-[ext_resource path="res://gui/theme/scrollbar.png" type="Texture" id=6]
-[ext_resource path="res://gui/fonts/S-13-dialog.font" type="BitmapFont" id=7]
-[ext_resource path="res://gui/global/bg.png" type="Texture" id=8]
-[ext_resource path="res://gui/global/friederich-select.png" type="Texture" id=9]
-[ext_resource path="res://gui/global/adela-select.png" type="Texture" id=10]
-[ext_resource path="res://gui/global/logo.png" type="Texture" id=11]
-[ext_resource path="res://gui/menu/textitem.tscn" type="PackedScene" id=12]
-[ext_resource path="res://gui/menu/icons/scroll.png" type="Texture" id=13]
-[ext_resource path="res://gui/fonts/S-12-dialog.font" type="BitmapFont" id=14]
-[ext_resource path="res://gui/fonts/L-24.font" type="BitmapFont" id=15]
-[ext_resource path="res://gui/fonts/L-24-Keyboard-outline.font" type="BitmapFont" id=16]
-[ext_resource path="res://gui/global/selectbutton.gd" type="Script" id=17]
-[ext_resource path="res://players/friederich/friederich.tscn" type="PackedScene" id=18]
-[ext_resource path="res://players/adela/adela.tscn" type="PackedScene" id=19]
-[ext_resource path="res://gui/menu/languageitem.tscn" type="PackedScene" id=20]
-[ext_resource path="res://gui/menu/settings.tscn" type="PackedScene" id=21]
-[ext_resource path="res://gui/menu/keylabel.tscn" type="PackedScene" id=22]
-[ext_resource path="res://gui/loading/loading.tscn" type="PackedScene" id=23]
-[ext_resource path="res://gui/global/global.ogg" type="AudioStream" id=24]
+[ext_resource path="res://gui/theme/scrollgrabber_active.png" type="Texture" id=6]
+[ext_resource path="res://gui/theme/scrollbar.png" type="Texture" id=7]
+[ext_resource path="res://gui/fonts/S-13-dialog.font" type="BitmapFont" id=8]
+[ext_resource path="res://gui/global/bg.png" type="Texture" id=9]
+[ext_resource path="res://gui/global/friederich-select.png" type="Texture" id=10]
+[ext_resource path="res://gui/global/adela-select.png" type="Texture" id=11]
+[ext_resource path="res://gui/global/logo.png" type="Texture" id=12]
+[ext_resource path="res://gui/menu/textitem.tscn" type="PackedScene" id=13]
+[ext_resource path="res://gui/menu/icons/scroll.png" type="Texture" id=14]
+[ext_resource path="res://gui/fonts/S-12-dialog.font" type="BitmapFont" id=15]
+[ext_resource path="res://gui/fonts/L-24.font" type="BitmapFont" id=16]
+[ext_resource path="res://gui/fonts/L-24-Keyboard-outline.font" type="BitmapFont" id=17]
+[ext_resource path="res://gui/global/selectbutton.gd" type="Script" id=18]
+[ext_resource path="res://players/friederich/friederich.tscn" type="PackedScene" id=19]
+[ext_resource path="res://players/adela/adela.tscn" type="PackedScene" id=20]
+[ext_resource path="res://gui/menu/languageitem.tscn" type="PackedScene" id=21]
+[ext_resource path="res://gui/menu/settings.tscn" type="PackedScene" id=22]
+[ext_resource path="res://gui/menu/keylabel.tscn" type="PackedScene" id=23]
+[ext_resource path="res://gui/loading/loading.tscn" type="PackedScene" id=24]
+[ext_resource path="res://gui/global/global.ogg" type="AudioStream" id=25]
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -88,15 +89,45 @@ _data = [ Vector2( 0, 0 ) ]
 flags = 0
 _data = [ Vector2( 0, 0 ) ]
 
-[sub_resource type="LargeTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=7]
 
-flags = 0
-_data = [ Vector2( 0, 0 ) ]
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 28, 61 )
+margin_left = 0.0
+margin_right = 28.0
+margin_top = 30.0
+margin_bottom = 30.0
+expand_margin_left = 8.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+_sections_unfolded = [ "Expand Margin", "Margin" ]
 
-[sub_resource type="LargeTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=8]
 
-flags = 0
-_data = [ Vector2( 0, 0 ) ]
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 28, 61 )
+margin_left = 0.0
+margin_right = 28.0
+margin_top = 30.0
+margin_bottom = 30.0
+expand_margin_left = 8.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+_sections_unfolded = [ "Expand Margin", "Margin" ]
 
 [sub_resource type="StyleBoxTexture" id=9]
 
@@ -121,20 +152,21 @@ draw_center = true
 
 content_margin_left = -1.0
 content_margin_right = -1.0
-content_margin_top = 0.0
-content_margin_bottom = 30.0
-texture = ExtResource( 5 )
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 28, 61 )
 margin_left = 0.0
 margin_right = 28.0
 margin_top = 30.0
 margin_bottom = 30.0
-expand_margin_left = 0.0
+expand_margin_left = 8.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
+_sections_unfolded = [ "Expand Margin", "Margin" ]
 
 [sub_resource type="StyleBoxTexture" id=11]
 
@@ -142,7 +174,7 @@ content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 18, 64 )
 margin_left = 28.0
 margin_right = 0.0
@@ -154,43 +186,37 @@ expand_margin_top = 0.0
 expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
+_sections_unfolded = [ "Expand Margin", "Margin" ]
 
-[sub_resource type="StyleBoxTexture" id=12]
+[sub_resource type="Theme" id=12]
 
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 18, 64 )
-margin_left = 18.0
-margin_right = 0.0
-margin_top = 32.0
-margin_bottom = 32.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-modulate_color = Color( 1, 1, 1, 1 )
-draw_center = true
-
-[sub_resource type="Theme" id=13]
-
-default_font = ExtResource( 7 )
+default_font = ExtResource( 8 )
 HSlider/icons/grabber = ExtResource( 2 )
 HSlider/icons/grabber_hilite = ExtResource( 3 )
 HSlider/icons/tick = SubResource( 1 )
 HSlider/styles/focus = SubResource( 2 )
 HSlider/styles/grabber_hilite = SubResource( 3 )
 HSlider/styles/slider = SubResource( 4 )
-VScrollBar/icons/decrement = SubResource( 5 )
-VScrollBar/icons/decrement_hilite = SubResource( 6 )
-VScrollBar/icons/increment = SubResource( 7 )
-VScrollBar/icons/increment_hilite = SubResource( 8 )
-VScrollBar/styles/grabber = SubResource( 9 )
-VScrollBar/styles/grabber_hilite = SubResource( 10 )
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/decrement_hilite = SubResource( 5 )
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/icons/increment_hilite = SubResource( 6 )
+VScrollBar/styles/grabber = SubResource( 7 )
+VScrollBar/styles/grabber_highlight = SubResource( 8 )
+VScrollBar/styles/grabber_hilite = SubResource( 9 )
+VScrollBar/styles/grabber_pressed = SubResource( 10 )
 VScrollBar/styles/scroll = SubResource( 11 )
-VScrollBar/styles/scroll_focus = SubResource( 12 )
+VScrollBar/styles/scroll_focus = null
+_sections_unfolded = [ "HSlider", "VScrollBar", "VScrollBar/icons", "VScrollBar/styles" ]
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
 
 [sub_resource type="StyleBoxEmpty" id=14]
 
@@ -227,14 +253,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[sub_resource type="StyleBoxEmpty" id=19]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-
-[sub_resource type="Shader" id=25]
+[sub_resource type="Shader" id=19]
 
 code = "shader_type canvas_item;
 
@@ -250,7 +269,7 @@ COLOR.a = texture(TEXTURE,UV).a*COLOR.a;
 [sub_resource type="ShaderMaterial" id=20]
 
 render_priority = 0
-shader = SubResource( 25 )
+shader = SubResource( 19 )
 shader_param/start = Color( 0.788235, 0.74902, 0.627451, 1 )
 shader_param/stop = Color( 0.788235, 0.74902, 0.627451, 0 )
 _sections_unfolded = [ "shader_param" ]
@@ -505,14 +524,15 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-theme = SubResource( 13 )
+theme = SubResource( 12 )
+_sections_unfolded = [ "Theme" ]
 
 [node name="BG" type="Node2D" parent="CanvasLayer/menu" index="0"]
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer/menu/BG" index="0"]
 
 self_modulate = Color( 0.135956, 0.279669, 0.527344, 1 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 centered = false
 
 [node name="friederich" type="Sprite" parent="CanvasLayer/menu/BG" index="1"]
@@ -520,7 +540,7 @@ centered = false
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 424 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 centered = false
 _sections_unfolded = [ "Visibility" ]
 
@@ -529,7 +549,7 @@ _sections_unfolded = [ "Visibility" ]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 385, 467 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 centered = false
 _sections_unfolded = [ "Visibility" ]
 
@@ -538,7 +558,7 @@ _sections_unfolded = [ "Visibility" ]
 [node name="Sprite" type="Sprite" parent="CanvasLayer/menu/logo" index="0"]
 
 position = Vector2( 400, 99 )
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="main" type="Control" parent="CanvasLayer/menu" index="2"]
@@ -572,7 +592,7 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 alignment = 1
 
-[node name="newgame" parent="CanvasLayer/menu/main/options" index="0" instance=ExtResource( 12 )]
+[node name="newgame" parent="CanvasLayer/menu/main/options" index="0" instance=ExtResource( 13 )]
 
 margin_left = 0.0
 margin_right = 130.0
@@ -581,7 +601,7 @@ focus_neighbour_left = NodePath(".")
 focus_neighbour_right = NodePath(".")
 text = "KEY_NEWGAME"
 
-[node name="loadgame" parent="CanvasLayer/menu/main/options" index="1" instance=ExtResource( 12 )]
+[node name="loadgame" parent="CanvasLayer/menu/main/options" index="1" instance=ExtResource( 13 )]
 
 margin_left = 0.0
 margin_top = 36.0
@@ -591,7 +611,7 @@ focus_neighbour_left = NodePath(".")
 focus_neighbour_right = NodePath(".")
 text = "KEY_LOADGAME"
 
-[node name="settings" parent="CanvasLayer/menu/main/options" index="2" instance=ExtResource( 12 )]
+[node name="settings" parent="CanvasLayer/menu/main/options" index="2" instance=ExtResource( 13 )]
 
 margin_left = 0.0
 margin_top = 72.0
@@ -601,7 +621,7 @@ focus_neighbour_left = NodePath(".")
 focus_neighbour_right = NodePath(".")
 text = "KEY_SETTINGS"
 
-[node name="bonus" parent="CanvasLayer/menu/main/options" index="3" instance=ExtResource( 12 )]
+[node name="bonus" parent="CanvasLayer/menu/main/options" index="3" instance=ExtResource( 13 )]
 
 margin_left = 0.0
 margin_top = 108.0
@@ -613,7 +633,7 @@ focus_mode = 0
 disabled = true
 text = "Bonus"
 
-[node name="credits" parent="CanvasLayer/menu/main/options" index="4" instance=ExtResource( 12 )]
+[node name="credits" parent="CanvasLayer/menu/main/options" index="4" instance=ExtResource( 13 )]
 
 margin_left = 0.0
 margin_top = 144.0
@@ -625,7 +645,7 @@ focus_mode = 0
 disabled = true
 text = "KEY_CREDITS"
 
-[node name="quitgame" parent="CanvasLayer/menu/main/options" index="5" instance=ExtResource( 12 )]
+[node name="quitgame" parent="CanvasLayer/menu/main/options" index="5" instance=ExtResource( 13 )]
 
 margin_left = 0.0
 margin_top = 180.0
@@ -636,7 +656,7 @@ focus_neighbour_right = NodePath("../../info")
 focus_neighbour_bottom = NodePath("../../info")
 text = "KEY_QUITGAME"
 
-[node name="info" parent="CanvasLayer/menu/main" index="1" instance=ExtResource( 12 )]
+[node name="info" parent="CanvasLayer/menu/main" index="1" instance=ExtResource( 13 )]
 
 margin_left = 723.0
 margin_top = 561.0
@@ -647,7 +667,7 @@ focus_neighbour_top = NodePath("../options/quitgame")
 focus_neighbour_right = NodePath(".")
 focus_neighbour_bottom = NodePath(".")
 text = ""
-icon = ExtResource( 13 )
+icon = ExtResource( 14 )
 
 [node name="version" type="Label" parent="CanvasLayer/menu/main" index="2"]
 
@@ -664,7 +684,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 15 )
 text = "v0.7"
 align = 2
 percent_visible = 1.0
@@ -701,7 +721,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 15 )
+custom_fonts/font = ExtResource( 16 )
 text = "KEY_CHARSELECT"
 align = 1
 valign = 2
@@ -729,7 +749,7 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 alignment = 0
 
-[node name="back" parent="CanvasLayer/menu/newgame/backbutton" index="0" instance=ExtResource( 12 )]
+[node name="back" parent="CanvasLayer/menu/newgame/backbutton" index="0" instance=ExtResource( 13 )]
 
 margin_left = 0.0
 margin_right = 93.0
@@ -754,7 +774,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 16 )
+custom_fonts/font = ExtResource( 17 )
 text = "Z"
 percent_visible = 1.0
 lines_skipped = 0
@@ -778,16 +798,16 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/hover = SubResource( 14 )
-custom_styles/pressed = SubResource( 15 )
-custom_styles/focus = SubResource( 16 )
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 15 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
 flat = false
 align = 1
-script = ExtResource( 17 )
+script = ExtResource( 18 )
 _sections_unfolded = [ "Anchor", "Margin", "Rect" ]
 
 [node name="title" type="Label" parent="CanvasLayer/menu/newgame/friederich" index="0"]
@@ -803,7 +823,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 15 )
+custom_fonts/font = ExtResource( 16 )
 text = "Friederich"
 align = 1
 valign = 2
@@ -812,7 +832,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags" ]
 
-[node name="sprite" parent="CanvasLayer/menu/newgame/friederich" index="1" instance=ExtResource( 18 )]
+[node name="sprite" parent="CanvasLayer/menu/newgame/friederich" index="1" instance=ExtResource( 19 )]
 
 position = Vector2( 200, 460 )
 script = null
@@ -836,16 +856,16 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/hover = SubResource( 17 )
-custom_styles/pressed = SubResource( 18 )
-custom_styles/focus = SubResource( 19 )
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
+custom_styles/focus = SubResource( 18 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
 flat = true
 align = 1
-script = ExtResource( 17 )
+script = ExtResource( 18 )
 _sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="title" type="Label" parent="CanvasLayer/menu/newgame/adela" index="0"]
@@ -862,7 +882,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 15 )
+custom_fonts/font = ExtResource( 16 )
 text = "Adela"
 align = 1
 valign = 2
@@ -871,14 +891,13 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Margin", "Rect", "Size Flags" ]
 
-[node name="sprite" parent="CanvasLayer/menu/newgame/adela" index="1" instance=ExtResource( 19 )]
+[node name="sprite" parent="CanvasLayer/menu/newgame/adela" index="1" instance=ExtResource( 20 )]
 
 position = Vector2( 201, 460 )
 script = null
 
 [node name="info" type="Control" parent="CanvasLayer/menu" index="4"]
 
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -908,10 +927,11 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 alignment = 0
 
-[node name="back" parent="CanvasLayer/menu/info/backbutton" index="0" instance=ExtResource( 12 )]
+[node name="back" parent="CanvasLayer/menu/info/backbutton" index="0" instance=ExtResource( 13 )]
 
 margin_left = 0.0
 margin_right = 93.0
+margin_bottom = 25.0
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath("../../adela")
@@ -925,15 +945,14 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 97.0
-margin_top = 4.0
 margin_right = 121.0
-margin_bottom = 28.0
+margin_bottom = 30.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 16 )
+custom_fonts/font = ExtResource( 17 )
 text = "Z"
 percent_visible = 1.0
 lines_skipped = 0
@@ -955,7 +974,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_fonts/normal_font = ExtResource( 7 )
+custom_fonts/normal_font = ExtResource( 8 )
 bbcode_enabled = true
 bbcode_text = "
 
@@ -2419,6 +2438,7 @@ scroll_active = true
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
+_sections_unfolded = [ "Focus", "Mouse", "Theme", "custom_styles" ]
 
 [node name="settingsmenu" type="Control" parent="CanvasLayer/menu" index="5"]
 
@@ -2450,7 +2470,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 15 )
+custom_fonts/font = ExtResource( 16 )
 text = "KEY_SETTINGS"
 percent_visible = 1.0
 lines_skipped = 0
@@ -2465,7 +2485,7 @@ texture = SubResource( 21 )
 centered = false
 _sections_unfolded = [ "Material" ]
 
-[node name="language" parent="CanvasLayer/menu/settingsmenu" index="2" instance=ExtResource( 20 )]
+[node name="language" parent="CanvasLayer/menu/settingsmenu" index="2" instance=ExtResource( 21 )]
 
 margin_left = 98.0
 margin_top = 64.0
@@ -2474,7 +2494,7 @@ margin_bottom = 96.0
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath("../settings/save")
 
-[node name="settings" parent="CanvasLayer/menu/settingsmenu" index="3" instance=ExtResource( 21 )]
+[node name="settings" parent="CanvasLayer/menu/settingsmenu" index="3" instance=ExtResource( 22 )]
 
 margin_left = 32.0
 margin_top = 98.0
@@ -2494,7 +2514,7 @@ focus_neighbour_bottom = NodePath("../../language")
 
 focus_neighbour_bottom = NodePath("../../language")
 
-[node name="back" parent="CanvasLayer/menu/settingsmenu" index="4" instance=ExtResource( 22 )]
+[node name="back" parent="CanvasLayer/menu/settingsmenu" index="4" instance=ExtResource( 23 )]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -2523,7 +2543,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
-[node name="loading" parent="CanvasLayer/menu" index="7" instance=ExtResource( 23 )]
+[node name="loading" parent="CanvasLayer/menu" index="7" instance=ExtResource( 24 )]
 
 pause_mode = 2
 visible = false
@@ -2583,7 +2603,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 15 )
+custom_fonts/font = ExtResource( 16 )
 text = "KEY_QUITMENU_WARN"
 align = 1
 valign = 1
@@ -2608,7 +2628,7 @@ size_flags_vertical = 2
 custom_constants/separation = 200
 alignment = 1
 
-[node name="yes" parent="CanvasLayer/menu/quit/options" index="0" instance=ExtResource( 12 )]
+[node name="yes" parent="CanvasLayer/menu/quit/options" index="0" instance=ExtResource( 13 )]
 
 margin_left = 0.0
 margin_right = 79.0
@@ -2619,7 +2639,7 @@ focus_neighbour_right = NodePath("../no")
 focus_neighbour_bottom = NodePath(".")
 text = "KEY_YES"
 
-[node name="no" parent="CanvasLayer/menu/quit/options" index="1" instance=ExtResource( 12 )]
+[node name="no" parent="CanvasLayer/menu/quit/options" index="1" instance=ExtResource( 13 )]
 
 margin_left = 500.0
 margin_right = 572.0
@@ -2645,7 +2665,7 @@ blend_times = [  ]
 
 [node name="music" type="AudioStreamPlayer" parent="." index="3"]
 
-stream = ExtResource( 24 )
+stream = ExtResource( 25 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
