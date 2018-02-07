@@ -27,7 +27,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[node name="key" type="ToolButton"]
+[node name="key" type="ToolButton" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -55,7 +55,7 @@ text = "KEY_UP"
 flat = true
 align = 0
 script = ExtResource( 2 )
-_sections_unfolded = [ "Material", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
+_sections_unfolded = [ "Focus", "Material", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 actionid = "ui_up"
 
 [node name="icon" parent="." index="0" instance=ExtResource( 3 )]
@@ -85,7 +85,7 @@ align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
+_sections_unfolded = [ "Margin", "custom_colors", "custom_fonts", "custom_styles" ]
 
 [node name="input" type="Label" parent="." index="2"]
 

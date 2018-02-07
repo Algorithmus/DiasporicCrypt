@@ -48,7 +48,7 @@ func check_scroll():
 	var vscroll = get_node("ScrollContainer").get_v_scroll()
 	var itempos = item.get_position().y
 	var itemsize = item.get_size().y
-        if (vscroll > itempos || vscroll + scrollrange.y < itempos + itemsize):
+	if (vscroll > itempos || vscroll + scrollrange.y < itempos + itemsize):
 		get_node("ScrollContainer").set_v_scroll(itempos)
 
 func reset_content():

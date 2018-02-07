@@ -30,7 +30,7 @@ lossy_quality = 1.0
 flags = 6
 size = Vector2( 1, 1 )
 
-[node name="title_bg" type="Control" index="0"]
+[node name="title_bg" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0

@@ -194,13 +194,16 @@ func _on_bgmslider_input_event( ev ):
 	if (ev.is_action_pressed("ui_accept") && ev.is_pressed() && !ev.is_echo()):
 		bgmMute = !bgmMute
 		if (bgmMute):
-			AudioServer.set_stream_global_volume_scale(0)
-			bgmslider.set_self_opacity(0.5)
-			bgmslider.get_node("mute").set_texture(mute)
+			#TODO - play sounds properly
+			#AudioServer.set_stream_global_volume_scale(0)
+			#bgmslider.set_self_opacity(0.5)
+			#bgmslider.get_node("mute").set_texture(mute)
+			pass
 		else:
-			AudioServer.set_stream_global_volume_scale(bgmValue)
-			bgmslider.set_self_opacity(1)
-			bgmslider.get_node("mute").set_texture(sound)
+			#AudioServer.set_stream_global_volume_scale(bgmValue)
+			#bgmslider.set_self_opacity(1)
+			#bgmslider.get_node("mute").set_texture(sound)
+			pass
 
 func _input(event):
 	if (event.is_pressed() && !event.is_echo()):

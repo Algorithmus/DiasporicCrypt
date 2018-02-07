@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=2]
+[gd_scene load_steps=95 format=2]
 
 [ext_resource path="res://gui/theme/slidergrabber.png" type="Texture" id=1]
 [ext_resource path="res://gui/theme/slidergrabber_active.png" type="Texture" id=2]
@@ -240,9 +240,26 @@ expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
+[sub_resource type="Shader" id=40]
+
+code = "shader_type canvas_item;
+
+uniform vec4 start:hint_color;
+uniform vec4 stop:hint_color;
+
+void fragment() {
+COLOR = mix(start, stop, UV.x);
+
+COLOR.a = texture(TEXTURE,UV).a*COLOR.a;
+}"
+
 [sub_resource type="ShaderMaterial" id=15]
 
 render_priority = 0
+shader = SubResource( 40 )
+shader_param/start = Color( 0.79, 0.75, 0.63, 1 )
+shader_param/stop = Color( 0.788235, 0.74902, 0.627451, 0 )
+_sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="ImageTexture" id=16]
 
@@ -306,7 +323,7 @@ size = Vector2( 0, 0 )
 [sub_resource type="BitmapFont" id=24]
 
 textures = [ SubResource( 23 ) ]
-chars = PoolIntArray( 32, 0, 0, 0, 0, 0, 0, 11, 3, 160, 0, 0, 0, 0, 0, 0, 11, 3, 96, 0, 109, 104, 4, 2, 0, 1, 4, 64, 0, 35, 2, 12, 12, 0, 2, 12, 192, 0, 94, 2, 9, 12, 0, -1, 8, 224, 0, 222, 75, 7, 10, 0, 1, 7, 97, 0, 244, 51, 7, 7, 0, 4, 7, 161, 0, 243, 93, 3, 9, 0, 4, 3, 65, 0, 224, 2, 9, 9, 0, 2, 8, 193, 0, 107, 2, 9, 12, 0, -1, 8, 225, 0, 233, 66, 7, 10, 0, 1, 7, 33, 0, 64, 107, 2, 9, 1, 2, 3, 34, 0, 117, 104, 4, 4, 0, 1, 4, 66, 0, 24, 58, 7, 9, 1, 2, 8, 162, 0, 200, 57, 7, 11, 0, 2, 7, 194, 0, 120, 2, 9, 12, 0, -1, 8, 226, 0, 244, 62, 7, 10, 0, 1, 7, 98, 0, 151, 47, 7, 10, 0, 1, 7, 99, 0, 24, 71, 7, 7, 0, 4, 7, 163, 0, 140, 17, 8, 9, 0, 2, 8, 67, 0, 26, 45, 8, 9, 0, 2, 8, 227, 0, 211, 57, 7, 11, 0, 0, 7, 195, 0, 28, 28, 9, 13, 0, -2, 8, 35, 0, 38, 45, 8, 9, 0, 2, 8, 68, 0, 46, 58, 7, 9, 1, 2, 9, 196, 0, 172, 2, 9, 12, 0, -1, 8, 36, 0, 162, 47, 7, 13, 0, 0, 7, 164, 0, 159, 2, 9, 10, 0, 2, 9, 228, 0, 13, 87, 7, 10, 0, 1, 7, 100, 0, 118, 44, 7, 10, 0, 1, 7, 101, 0, 35, 71, 7, 7, 0, 4, 7, 229, 0, 13, 71, 7, 12, 0, -1, 7, 197, 0, 67, 28, 9, 14, 0, -3, 8, 165, 0, 176, 28, 8, 9, 0, 2, 8, 69, 0, 112, 61, 7, 9, 1, 2, 8, 37, 0, 211, 15, 9, 9, 0, 2, 10, 230, 0, 51, 13, 11, 7, 0, 4, 11, 102, 0, 47, 96, 5, 10, 0, 1, 4, 166, 0, 9, 117, 3, 11, 0, 2, 3, 198, 0, 2, 2, 13, 9, -1, 2, 12, 70, 0, 101, 61, 7, 9, 1, 2, 8, 38, 0, 14, 45, 8, 9, 0, 2, 8, 39, 0, 46, 110, 2, 4, 0, 1, 2, 103, 0, 189, 57, 7, 10, 0, 4, 7, 167, 0, 200, 28, 8, 12, 0, 2, 8, 199, 0, 188, 28, 8, 12, 0, 2, 8, 231, 0, 24, 82, 7, 10, 0, 4, 7, 71, 0, 164, 18, 8, 9, 0, 2, 9, 168, 0, 38, 96, 5, 2, 1, 1, 6, 104, 0, 167, 64, 7, 10, 0, 1, 7, 200, 0, 79, 75, 7, 12, 1, -1, 8, 40, 0, 83, 105, 5, 13, 0, 1, 4, 232, 0, 2, 75, 7, 10, 0, 1, 7, 72, 0, 152, 30, 8, 9, 1, 2, 9, 105, 0, 16, 117, 2, 11, 1, 0, 3, 201, 0, 90, 74, 7, 12, 1, -1, 8, 41, 0, 173, 103, 4, 13, 0, 1, 4, 233, 0, 211, 72, 7, 10, 0, 1, 7, 169, 0, 66, 2, 10, 9, 0, 2, 10, 73, 0, 58, 107, 2, 9, 1, 2, 4, 170, 0, 65, 97, 5, 5, 0, 2, 6, 42, 0, 123, 83, 6, 6, 0, 2, 6, 202, 0, 101, 74, 7, 12, 1, -1, 8, 106, 0, 221, 102, 4, 14, -1, 0, 3, 234, 0, 200, 72, 7, 10, 0, 1, 7, 74, 0, 90, 61, 7, 9, 0, 2, 7, 171, 0, 233, 80, 6, 5, 0, 5, 6, 43, 0, 74, 46, 7, 8, 0, 3, 7, 107, 0, 145, 61, 7, 10, 0, 1, 7, 203, 0, 112, 74, 7, 12, 1, -1, 8, 235, 0, 189, 71, 7, 10, 0, 1, 7, 75, 0, 152, 17, 8, 9, 1, 2, 8, 172, 0, 222, 68, 7, 3, 0, 6, 7, 44, 0, 52, 110, 2, 4, 0, 10, 3, 108, 0, 40, 102, 2, 10, 1, 1, 3, 204, 0, 213, 102, 4, 12, -1, -1, 4, 236, 0, 141, 97, 4, 10, -1, 1, 3, 76, 0, 243, 80, 6, 9, 1, 2, 7, 173, 0, 125, 98, 4, 1, 0, 7, 4, 45, 0, 125, 93, 4, 1, 0, 7, 4, 109, 0, 51, 2, 11, 7, 0, 4, 11, 205, 0, 181, 103, 4, 12, 0, -1, 4, 237, 0, 149, 94, 4, 10, 0, 1, 3, 77, 0, 80, 2, 10, 9, 1, 2, 11, 46, 0, 34, 112, 2, 2, 1, 9, 3, 110, 0, 57, 72, 7, 7, 0, 4, 7, 206, 0, 133, 97, 4, 12, 0, -1, 4, 238, 0, 157, 103, 4, 10, 0, 1, 3, 174, 0, 66, 15, 10, 9, 0, 2, 10, 78, 0, 128, 31, 8, 9, 1, 2, 9, 175, 0, 143, 87, 6, 1, 0, 2, 6, 111, 0, 68, 72, 7, 7, 0, 4, 7, 47, 0, 163, 89, 6, 10, 0, 2, 5, 207, 0, 29, 96, 5, 12, 0, -1, 4, 239, 0, 92, 104, 5, 10, -1, 1, 3, 79, 0, 198, 15, 9, 9, 0, 2, 9, 176, 0, 74, 105, 5, 4, 0, 2, 5, 112, 0, 112, 90, 7, 10, 0, 4, 7, 240, 0, 134, 72, 7, 10, 0, 1, 8, 208, 0, 185, 2, 9, 9, 0, 2, 9, 80, 0, 68, 59, 7, 9, 1, 2, 8, 48, 0, 35, 58, 7, 9, 0, 2, 7, 177, 0, 145, 75, 7, 8, 0, 3, 7, 113, 0, 101, 90, 7, 10, 0, 4, 7, 81, 0, 133, 2, 9, 11, 0, 2, 9, 241, 0, 233, 51, 7, 11, 0, 0, 7, 209, 0, 140, 30, 8, 13, 1, -2, 9, 49, 0, 189, 100, 4, 9, 1, 2, 7, 178, 0, 20, 101, 5, 6, 0, 2, 6, 114, 0, 2, 89, 5, 7, 0, 4, 4, 210, 0, 54, 28, 9, 12, 0, -1, 9, 242, 0, 173, 47, 7, 10, 0, 1, 7, 82, 0, 57, 59, 7, 9, 1, 2, 9, 50, 0, 13, 58, 7, 9, 0, 2, 7, 179, 0, 56, 97, 5, 6, 0, 2, 6, 115, 0, 123, 72, 7, 7, 0, 4, 7, 211, 0, 41, 24, 9, 12, 0, -1, 9, 243, 0, 140, 47, 7, 10, 0, 1, 7, 83, 0, 104, 31, 8, 9, 0, 2, 8, 51, 0, 2, 47, 7, 9, 0, 2, 7, 180, 0, 101, 104, 4, 2, 0, 1, 4, 116, 0, 205, 99, 4, 9, 0, 2, 5, 244, 0, 156, 64, 7, 10, 0, 1, 7, 212, 0, 2, 15, 9, 12, 0, -1, 9, 84, 0, 104, 18, 8, 9, 0, 2, 8, 52, 0, 224, 22, 8, 9, 0, 2, 7, 117, 0, 46, 71, 7, 7, 0, 4, 7, 181, 0, 79, 91, 7, 10, 0, 4, 7, 245, 0, 2, 60, 7, 11, 0, 0, 7, 213, 0, 15, 28, 9, 13, 0, -2, 9, 85, 0, 92, 26, 8, 9, 0, 2, 9, 53, 0, 239, 38, 7, 9, 0, 2, 7, 118, 0, 222, 57, 7, 7, 0, 4, 7, 246, 0, 123, 58, 7, 10, 0, 1, 7, 214, 0, 237, 2, 9, 12, 0, -1, 9, 182, 0, 203, 86, 6, 9, 0, 2, 6, 86, 0, 211, 2, 9, 9, 0, 2, 8, 54, 0, 228, 38, 7, 9, 0, 2, 7, 183, 0, 22, 111, 2, 2, 1, 6, 3, 215, 0, 178, 72, 7, 6, 0, 4, 7, 119, 0, 80, 15, 10, 7, 0, 4, 10, 247, 0, 156, 78, 7, 7, 0, 3, 7, 55, 0, 217, 44, 7, 9, 0, 2, 7, 87, 0, 19, 15, 12, 9, 0, 2, 11, 184, 0, 2, 100, 3, 3, 0, 11, 3, 120, 0, 178, 61, 7, 7, 0, 4, 7, 56, 0, 206, 44, 7, 9, 0, 2, 7, 216, 0, 146, 2, 9, 11, 0, 1, 9, 248, 0, 129, 44, 7, 9, 0, 3, 7, 88, 0, 62, 46, 8, 9, 0, 2, 8, 185, 0, 236, 98, 3, 6, 0, 2, 4, 89, 0, 80, 26, 8, 9, 0, 2, 8, 57, 0, 195, 44, 7, 9, 0, 2, 7, 121, 0, 68, 83, 7, 10, 0, 4, 7, 249, 0, 90, 90, 7, 10, 0, 1, 7, 217, 0, 164, 31, 8, 12, 0, -1, 9, 186, 0, 183, 85, 6, 5, 0, 2, 6, 58, 0, 70, 113, 2, 7, 1, 4, 3, 122, 0, 167, 78, 7, 7, 0, 4, 7, 90, 0, 128, 18, 8, 9, 0, 2, 8, 250, 0, 57, 83, 7, 10, 0, 1, 7, 218, 0, 212, 28, 8, 12, 0, -1, 9, 187, 0, 233, 89, 6, 5, 0, 5, 6, 251, 0, 46, 82, 7, 10, 0, 1, 7, 123, 0, 11, 101, 5, 12, 0, 1, 4, 219, 0, 236, 22, 8, 12, 0, -1, 9, 91, 0, 197, 100, 4, 13, 0, 0, 4, 59, 0, 250, 93, 3, 10, 0, 4, 3, 60, 0, 133, 86, 6, 7, 0, 4, 7, 124, 0, 28, 112, 2, 11, 1, 2, 3, 220, 0, 2, 31, 8, 12, 0, -1, 9, 252, 0, 35, 82, 7, 10, 0, 1, 7, 92, 0, 193, 86, 6, 10, 0, 2, 5, 188, 0, 185, 15, 9, 9, 1, 2, 10, 61, 0, 184, 44, 7, 6, 0, 4, 7, 125, 0, 165, 103, 4, 12, 0, 1, 4, 221, 0, 116, 18, 8, 12, 0, -1, 8, 253, 0, 107, 44, 7, 13, 0, 1, 7, 93, 0, 229, 98, 3, 13, 0, 0, 4, 189, 0, 198, 2, 9, 9, 1, 2, 11, 126, 0, 224, 15, 9, 3, 0, 6, 9, 94, 0, 223, 89, 6, 5, 0, 2, 5, 62, 0, 134, 61, 7, 7, 0, 4, 7, 254, 0, 96, 44, 7, 13, 0, 1, 8, 222, 0, 85, 39, 7, 9, 1, 2, 8, 190, 0, 19, 2, 12, 9, 0, 2, 11, 95, 0, 153, 89, 6, 1, 0, 11, 6, 63, 0, 213, 89, 6, 9, 0, 2, 6, 191, 0, 173, 89, 6, 10, 0, 4, 6, 255, 0, 79, 58, 7, 13, 0, 1, 7, 223, 0, 50, 44, 8, 10, 0, 1, 8 )
+chars = PoolIntArray( 32, 0, 0, 0, 0, 0, 0, 11, 3, 160, 0, 0, 0, 0, 0, 0, 11, 3, 96, 0, 109, 104, 4, 2, 0, 1, 4, 64, 0, 35, 2, 12, 12, 0, 2, 12, 192, 0, 94, 2, 9, 12, 0, -1, 8, 224, 0, 222, 75, 7, 10, 0, 1, 7, 97, 0, 244, 51, 7, 7, 0, 4, 7, 161, 0, 243, 93, 3, 9, 0, 4, 3, 65, 0, 224, 2, 9, 9, 0, 2, 8, 193, 0, 107, 2, 9, 12, 0, -1, 8, 225, 0, 233, 66, 7, 10, 0, 1, 7, 33, 0, 64, 107, 2, 9, 1, 2, 3, 34, 0, 117, 104, 4, 4, 0, 1, 4, 66, 0, 24, 58, 7, 9, 1, 2, 8, 162, 0, 200, 57, 7, 11, 0, 2, 7, 194, 0, 120, 2, 9, 12, 0, -1, 8, 226, 0, 244, 62, 7, 10, 0, 1, 7, 98, 0, 151, 47, 7, 10, 0, 1, 7, 99, 0, 24, 71, 7, 7, 0, 4, 7, 163, 0, 140, 17, 8, 9, 0, 2, 8, 67, 0, 26, 45, 8, 9, 0, 2, 8, 227, 0, 211, 57, 7, 11, 0, 0, 7, 195, 0, 28, 28, 9, 13, 0, -2, 8, 35, 0, 38, 45, 8, 9, 0, 2, 8, 68, 0, 46, 58, 7, 9, 1, 2, 9, 196, 0, 172, 2, 9, 12, 0, -1, 8, 36, 0, 162, 47, 7, 13, 0, 0, 7, 164, 0, 159, 2, 9, 10, 0, 2, 9, 228, 0, 13, 87, 7, 10, 0, 1, 7, 100, 0, 118, 44, 7, 10, 0, 1, 7, 101, 0, 35, 71, 7, 7, 0, 4, 7, 229, 0, 13, 71, 7, 12, 0, -1, 7, 197, 0, 67, 28, 9, 14, 0, -3, 8, 165, 0, 176, 28, 8, 9, 0, 2, 8, 69, 0, 112, 61, 7, 9, 1, 2, 8, 37, 0, 211, 15, 9, 9, 0, 2, 10, 230, 0, 51, 13, 11, 7, 0, 4, 11, 102, 0, 47, 96, 5, 10, 0, 1, 4, 166, 0, 9, 117, 3, 11, 0, 2, 3, 198, 0, 2, 2, 13, 9, -1, 2, 12, 70, 0, 101, 61, 7, 9, 1, 2, 8, 38, 0, 14, 45, 8, 9, 0, 2, 8, 39, 0, 46, 110, 2, 4, 0, 1, 2, 103, 0, 189, 57, 7, 10, 0, 4, 7, 167, 0, 200, 28, 8, 12, 0, 2, 8, 199, 0, 188, 28, 8, 12, 0, 2, 8, 231, 0, 24, 82, 7, 10, 0, 4, 7, 71, 0, 164, 18, 8, 9, 0, 2, 9, 168, 0, 38, 96, 5, 2, 1, 1, 6, 104, 0, 167, 64, 7, 10, 0, 1, 7, 200, 0, 79, 75, 7, 12, 1, -1, 8, 40, 0, 83, 105, 5, 13, 0, 1, 4, 232, 0, 2, 75, 7, 10, 0, 1, 7, 72, 0, 152, 30, 8, 9, 1, 2, 9, 105, 0, 16, 117, 2, 11, 1, 0, 3, 201, 0, 90, 74, 7, 12, 1, -1, 8, 41, 0, 173, 103, 4, 13, 0, 1, 4, 233, 0, 211, 72, 7, 10, 0, 1, 7, 169, 0, 66, 2, 10, 9, 0, 2, 10, 73, 0, 58, 107, 2, 9, 1, 2, 4, 170, 0, 65, 97, 5, 5, 0, 2, 6, 42, 0, 123, 83, 6, 6, 0, 2, 6, 202, 0, 101, 74, 7, 12, 1, -1, 8, 106, 0, 221, 102, 4, 14, -1, 0, 3, 234, 0, 200, 72, 7, 10, 0, 1, 7, 74, 0, 90, 61, 7, 9, 0, 2, 7, 171, 0, 233, 80, 6, 5, 0, 5, 6, 43, 0, 74, 46, 7, 8, 0, 3, 7, 107, 0, 145, 61, 7, 10, 0, 1, 7, 203, 0, 112, 74, 7, 12, 1, -1, 8, 235, 0, 189, 71, 7, 10, 0, 1, 7, 75, 0, 152, 17, 8, 9, 1, 2, 8, 172, 0, 222, 68, 7, 3, 0, 6, 7, 44, 0, 52, 110, 2, 4, 0, 10, 3, 108, 0, 40, 102, 2, 10, 1, 1, 3, 204, 0, 213, 102, 4, 12, -1, -1, 4, 236, 0, 141, 97, 4, 10, -1, 1, 3, 76, 0, 243, 80, 6, 9, 1, 2, 7, 173, 0, 125, 98, 4, 1, 0, 7, 4, 45, 0, 125, 93, 4, 1, 0, 7, 4, 109, 0, 51, 2, 11, 7, 0, 4, 11, 205, 0, 181, 103, 4, 12, 0, -1, 4, 237, 0, 149, 94, 4, 10, 0, 1, 3, 77, 0, 80, 2, 10, 9, 1, 2, 11, 46, 0, 34, 112, 2, 2, 1, 9, 3, 110, 0, 57, 72, 7, 7, 0, 4, 7, 206, 0, 133, 97, 4, 12, 0, -1, 4, 238, 0, 157, 103, 4, 10, 0, 1, 3, 174, 0, 66, 15, 10, 9, 0, 2, 10, 78, 0, 128, 31, 8, 9, 1, 2, 9, 175, 0, 143, 87, 6, 1, 0, 2, 6, 111, 0, 68, 72, 7, 7, 0, 4, 7, 47, 0, 163, 89, 6, 10, 0, 2, 5, 207, 0, 29, 96, 5, 12, 0, -1, 4, 239, 0, 92, 104, 5, 10, -1, 1, 3, 79, 0, 198, 15, 9, 9, 0, 2, 9, 176, 0, 74, 105, 5, 4, 0, 2, 5, 112, 0, 112, 90, 7, 10, 0, 4, 7, 240, 0, 134, 72, 7, 10, 0, 1, 8, 208, 0, 185, 2, 9, 9, 0, 2, 9, 80, 0, 68, 59, 7, 9, 1, 2, 8, 48, 0, 35, 58, 7, 9, 0, 2, 7, 177, 0, 145, 75, 7, 8, 0, 3, 7, 113, 0, 101, 90, 7, 10, 0, 4, 7, 81, 0, 133, 2, 9, 11, 0, 2, 9, 241, 0, 233, 51, 7, 11, 0, 0, 7, 209, 0, 140, 30, 8, 13, 1, -2, 9, 49, 0, 189, 100, 4, 9, 1, 2, 7, 178, 0, 20, 101, 5, 6, 0, 2, 6, 114, 0, 2, 89, 5, 7, 0, 4, 4, 210, 0, 54, 28, 9, 12, 0, -1, 9, 242, 0, 173, 47, 7, 10, 0, 1, 7, 82, 0, 57, 59, 7, 9, 1, 2, 9, 50, 0, 13, 58, 7, 9, 0, 2, 7, 179, 0, 56, 97, 5, 6, 0, 2, 6, 115, 0, 123, 72, 7, 7, 0, 4, 7, 211, 0, 41, 24, 9, 12, 0, -1, 9, 243, 0, 140, 47, 7, 10, 0, 1, 7, 83, 0, 104, 31, 8, 9, 0, 2, 8, 51, 0, 2, 47, 7, 9, 0, 2, 7, 180, 0, 101, 104, 4, 2, 0, 1, 4, 116, 0, 205, 99, 4, 9, 0, 2, 5, 244, 0, 156, 64, 7, 10, 0, 1, 7, 212, 0, 2, 15, 9, 12, 0, -1, 9, 84, 0, 104, 18, 8, 9, 0, 2, 8, 52, 0, 224, 22, 8, 9, 0, 2, 7, 245, 0, 2, 60, 7, 11, 0, 0, 7, 181, 0, 79, 91, 7, 10, 0, 4, 7, 117, 0, 46, 71, 7, 7, 0, 4, 7, 53, 0, 239, 38, 7, 9, 0, 2, 7, 85, 0, 92, 26, 8, 9, 0, 2, 9, 213, 0, 15, 28, 9, 13, 0, -2, 9, 118, 0, 222, 57, 7, 7, 0, 4, 7, 246, 0, 123, 58, 7, 10, 0, 1, 7, 214, 0, 237, 2, 9, 12, 0, -1, 9, 182, 0, 203, 86, 6, 9, 0, 2, 6, 86, 0, 211, 2, 9, 9, 0, 2, 8, 54, 0, 228, 38, 7, 9, 0, 2, 7, 183, 0, 22, 111, 2, 2, 1, 6, 3, 215, 0, 178, 72, 7, 6, 0, 4, 7, 119, 0, 80, 15, 10, 7, 0, 4, 10, 247, 0, 156, 78, 7, 7, 0, 3, 7, 55, 0, 217, 44, 7, 9, 0, 2, 7, 87, 0, 19, 15, 12, 9, 0, 2, 11, 184, 0, 2, 100, 3, 3, 0, 11, 3, 120, 0, 178, 61, 7, 7, 0, 4, 7, 56, 0, 206, 44, 7, 9, 0, 2, 7, 216, 0, 146, 2, 9, 11, 0, 1, 9, 248, 0, 129, 44, 7, 9, 0, 3, 7, 88, 0, 62, 46, 8, 9, 0, 2, 8, 185, 0, 236, 98, 3, 6, 0, 2, 4, 89, 0, 80, 26, 8, 9, 0, 2, 8, 57, 0, 195, 44, 7, 9, 0, 2, 7, 121, 0, 68, 83, 7, 10, 0, 4, 7, 249, 0, 90, 90, 7, 10, 0, 1, 7, 217, 0, 164, 31, 8, 12, 0, -1, 9, 186, 0, 183, 85, 6, 5, 0, 2, 6, 58, 0, 70, 113, 2, 7, 1, 4, 3, 122, 0, 167, 78, 7, 7, 0, 4, 7, 90, 0, 128, 18, 8, 9, 0, 2, 8, 250, 0, 57, 83, 7, 10, 0, 1, 7, 218, 0, 212, 28, 8, 12, 0, -1, 9, 187, 0, 233, 89, 6, 5, 0, 5, 6, 251, 0, 46, 82, 7, 10, 0, 1, 7, 123, 0, 11, 101, 5, 12, 0, 1, 4, 219, 0, 236, 22, 8, 12, 0, -1, 9, 91, 0, 197, 100, 4, 13, 0, 0, 4, 59, 0, 250, 93, 3, 10, 0, 4, 3, 60, 0, 133, 86, 6, 7, 0, 4, 7, 124, 0, 28, 112, 2, 11, 1, 2, 3, 220, 0, 2, 31, 8, 12, 0, -1, 9, 252, 0, 35, 82, 7, 10, 0, 1, 7, 92, 0, 193, 86, 6, 10, 0, 2, 5, 188, 0, 185, 15, 9, 9, 1, 2, 10, 61, 0, 184, 44, 7, 6, 0, 4, 7, 125, 0, 165, 103, 4, 12, 0, 1, 4, 221, 0, 116, 18, 8, 12, 0, -1, 8, 253, 0, 107, 44, 7, 13, 0, 1, 7, 93, 0, 229, 98, 3, 13, 0, 0, 4, 189, 0, 198, 2, 9, 9, 1, 2, 11, 126, 0, 224, 15, 9, 3, 0, 6, 9, 94, 0, 223, 89, 6, 5, 0, 2, 5, 62, 0, 134, 61, 7, 7, 0, 4, 7, 254, 0, 96, 44, 7, 13, 0, 1, 8, 222, 0, 85, 39, 7, 9, 1, 2, 8, 190, 0, 19, 2, 12, 9, 0, 2, 11, 95, 0, 153, 89, 6, 1, 0, 11, 6, 63, 0, 213, 89, 6, 9, 0, 2, 6, 191, 0, 173, 89, 6, 10, 0, 4, 6, 255, 0, 79, 58, 7, 13, 0, 1, 7, 223, 0, 50, 44, 8, 10, 0, 1, 8 )
 kernings = PoolIntArray(  )
 height = 13.0
 ascent = 11.0
@@ -463,10 +480,28 @@ VScrollBar/styles/grabber = SubResource( 31 )
 VScrollBar/styles/grabber_hilite = SubResource( 32 )
 VScrollBar/styles/scroll = SubResource( 33 )
 VScrollBar/styles/scroll_focus = SubResource( 35 )
+_sections_unfolded = [ "VScrollBar", "VScrollBar/icons", "VScrollBar/styles" ]
+
+[sub_resource type="Shader" id=41]
+
+code = "shader_type canvas_item;
+
+uniform vec4 start:hint_color;
+uniform vec4 stop:hint_color;
+
+void fragment() {
+COLOR = mix(start, stop, UV.x);
+
+COLOR.a = texture(TEXTURE,UV).a*COLOR.a;
+}"
 
 [sub_resource type="ShaderMaterial" id=37]
 
 render_priority = 0
+shader = SubResource( 41 )
+shader_param/start = Color( 0.04, 0.22, 0.21, 0 )
+shader_param/stop = Color( 0.0392157, 0.219608, 0.207843, 1 )
+_sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="ImageTexture" id=38]
 
@@ -483,7 +518,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[node name="menu" type="Control" index="0"]
+[node name="menu" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -528,6 +563,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
+_sections_unfolded = [ "Focus" ]
 
 [node name="stats" type="Control" parent="panels" index="0"]
 
@@ -576,6 +612,7 @@ position = Vector2( 356, 62 )
 scale = Vector2( 256, 1 )
 texture = SubResource( 16 )
 centered = false
+_sections_unfolded = [ "Material" ]
 
 [node name="title_ornament" type="Sprite" parent="panels/stats" index="3"]
 
@@ -786,44 +823,35 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 custom_constants/separation = 184
 alignment = 1
+_sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="yes" parent="panels/stats/shield/options" index="0" instance=ExtResource( 18 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 200.0
 margin_right = 279.0
-rect_pivot_offset = Vector2( 0, 0 )
+margin_bottom = 25.0
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath("../no")
 focus_neighbour_bottom = NodePath(".")
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-group = null
+size_flags_horizontal = 0
 text = "KEY_YES"
+align = 1
+_sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="no" parent="panels/stats/shield/options" index="1" instance=ExtResource( 18 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 463.0
 margin_right = 535.0
-rect_pivot_offset = Vector2( 0, 0 )
+margin_bottom = 25.0
 focus_neighbour_left = NodePath("../yes")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath(".")
 focus_neighbour_bottom = NodePath(".")
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-group = null
+size_flags_horizontal = 0
 text = "KEY_NO"
+align = 1
+_sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="title_bg 2" parent="panels/stats" index="11" instance=ExtResource( 10 )]
 
@@ -842,23 +870,14 @@ flip_h = true
 
 [node name="quit" parent="panels/stats" index="13" instance=ExtResource( 18 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 522.0
-margin_top = 466.0
+margin_top = 460.0
 margin_right = 727.0
-margin_bottom = 498.0
-rect_pivot_offset = Vector2( 0, 0 )
+margin_bottom = 492.0
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath("../../../tabs/HBoxContainer/stats")
 focus_neighbour_right = NodePath(".")
 focus_neighbour_bottom = NodePath(".")
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-group = null
 text = "KEY_QUITMENU"
 align = 1
 
@@ -939,22 +958,13 @@ size_flags_vertical = 2
 
 [node name="item" parent="panels/items/types" index="0" instance=ExtResource( 18 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 0.0
 margin_right = 168.0
 margin_bottom = 40.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath("../../../../tabs/HBoxContainer/items")
 focus_neighbour_right = NodePath("../special")
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
 custom_fonts/font = ExtResource( 14 )
-group = null
 text = "KEY_ITEMS"
 
 [node name="icon" parent="panels/items/types/item" index="0"]
@@ -971,22 +981,13 @@ texture = ExtResource( 20 )
 
 [node name="special" parent="panels/items/types" index="1" instance=ExtResource( 18 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 376.0
 margin_right = 656.0
 margin_bottom = 40.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath("../item")
 focus_neighbour_top = NodePath("../../../../tabs/HBoxContainer/items")
 focus_neighbour_right = NodePath(".")
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
 custom_fonts/font = ExtResource( 14 )
-group = null
 text = "KEY_SPECIALITEMS"
 
 [node name="icon" parent="panels/items/types/special" index="0"]
@@ -1050,7 +1051,7 @@ size_flags_vertical = 2
 scroll_horizontal_enabled = true
 scroll_horizontal = 0
 scroll_vertical_enabled = true
-scroll_vertical = 1
+scroll_vertical = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="panels/items/itemcontainer" index="0"]
 
@@ -1162,22 +1163,13 @@ texture = ExtResource( 16 )
 
 [node name="use" parent="panels/items/info" index="5" instance=ExtResource( 18 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_top = 306.0
 margin_right = 212.0
 margin_bottom = 345.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_bottom = NodePath("../drop")
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
 custom_fonts/font = ExtResource( 14 )
-group = null
 text = "KEY_USE"
 
 [node name="icon" parent="panels/items/info/use" index="0"]
@@ -1187,21 +1179,12 @@ margin_bottom = 31.0
 
 [node name="drop" parent="panels/items/info" index="6" instance=ExtResource( 18 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_top = 348.0
 margin_right = 212.0
 margin_bottom = 387.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath("../use")
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
 custom_fonts/font = ExtResource( 14 )
-group = null
 text = "KEY_DROP"
 
 [node name="icon" parent="panels/items/info/drop" index="0"]
@@ -1211,6 +1194,8 @@ margin_bottom = 31.0
 
 [node name="magic" type="Control" parent="panels" index="2"]
 
+editor/display_folded = true
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1561,6 +1546,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 script = ExtResource( 41 )
+_sections_unfolded = [ "Theme" ]
 
 [node name="bg" type="Sprite" parent="panels/scrolls" index="0"]
 
@@ -1603,7 +1589,7 @@ anchor_right = 1.0
 anchor_bottom = 0.0
 margin_left = 52.0
 margin_top = 108.0
-margin_right = 0.972826
+margin_right = -21.0
 margin_bottom = 372.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
@@ -1654,6 +1640,7 @@ scroll_active = true
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
+_sections_unfolded = [ "Anchor", "BBCode", "Grow Direction", "Margin", "Rect", "Theme", "custom_constants", "custom_styles" ]
 
 [node name="selection_header" type="Sprite" parent="panels/scrolls" index="4"]
 
@@ -1673,6 +1660,7 @@ position = Vector2( 127, 434 )
 scale = Vector2( 256, 30 )
 texture = SubResource( 38 )
 centered = false
+_sections_unfolded = [ "Material" ]
 
 [node name="select_bgright" type="Sprite" parent="panels/scrolls" index="7"]
 
@@ -1801,8 +1789,6 @@ focus_neighbour_right = NodePath(".")
 script = ExtResource( 45 )
 
 [node name="settings" parent="panels" index="5" instance=ExtResource( 46 )]
-
-visible = false
 
 [node name="frame" type="TextureRect" parent="." index="2"]
 
@@ -1946,13 +1932,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 455.0
-margin_top = 534.0
-margin_right = 696.0
-margin_bottom = 565.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-mouse_default_cursor_shape = 0
+margin_left = 423.0
+margin_top = 528.0
+margin_right = 664.0
+margin_bottom = 564.0
 
 [connection signal="pressed" from="panels/stats/shield/options/yes" to="panels/stats" method="quitgame"]
 

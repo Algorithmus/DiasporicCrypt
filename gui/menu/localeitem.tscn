@@ -52,21 +52,24 @@ text = "KEY_LOCALE"
 flat = true
 align = 1
 script = ExtResource( 2 )
+_sections_unfolded = [ "Rect" ]
 
 [node name="icon" parent="." index="0" instance=ExtResource( 3 )]
 
 margin_left = -12.0
-margin_top = 4.0
+margin_top = 8.0
 margin_right = 0.0
-margin_bottom = 26.0
+margin_bottom = 30.0
 rect_scale = Vector2( -1, 1 )
+_sections_unfolded = [ "Material", "Rect" ]
 
 [node name="icon1" parent="." index="1" instance=ExtResource( 3 )]
 
 margin_left = 128.0
-margin_top = 4.0
+margin_top = 8.0
 margin_right = 140.0
-margin_bottom = 26.0
+margin_bottom = 30.0
+_sections_unfolded = [ "Material", "Rect" ]
 
 [connection signal="focus_entered" from="." to="." method="_on_choice_focus_enter"]
 

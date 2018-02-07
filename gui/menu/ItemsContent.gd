@@ -43,8 +43,8 @@ func update_container():
 			item_obj.set_focus_neighbour(MARGIN_LEFT, ".")
 			item_obj.set_focus_neighbour(MARGIN_RIGHT, ".")
 			item_obj.set_focus_neighbour(MARGIN_BOTTOM, ".")
-			item_obj.connect("focus_enter", self, "focus_item_enter")
-			item_obj.connect("focus_exit", self, "focus_item_exit")
+			item_obj.connect("focus_entered", self, "focus_item_enter")
+			item_obj.connect("focus_exited", self, "focus_item_exit")
 			# previous item should focus the next item properly
 			if (itemcontainer.get_child_count() > 0):
 				var lastitem = itemcontainer.get_child(itemcontainer.get_child_count() - 1)
@@ -158,7 +158,8 @@ func _input(event):
 				else:
 					check_item(item)
 					selecteditem = itemcontainer.get_node(item.title)
-				sfx.play("confirm")
+				#TODO - play sounds properly
+				#sfx.play("confirm")
 			elif (focus.get_name() == drop.get_name()):
 				var item = inventory.get("inventory")[selecteditem.get_name()]["item"]
 				var quantity = inventory.remove_item(item, 1)

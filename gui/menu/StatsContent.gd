@@ -85,7 +85,8 @@ func quitgame():
 	get_tree().change_scene("res://scenes/global.tscn")
 
 func no_pressed():
-	sfx.play("confirm")
+	#TODO - play sounds properly
+	#sfx.play("confirm")
 	shield.hide()
 	get_node("quit").grab_focus()
 
