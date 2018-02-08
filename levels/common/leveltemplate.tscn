@@ -1,38 +1,38 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene format=2]
 
-
-[node name="LVL_NOTITLE" type="Node2D"]
+[node name="LVL_NOTITLE" type="Node2D" index="0"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
 
-[node name="tilemap" type="TileMap" parent="."]
+[node name="tilemap" type="TileMap" parent="." index="0"]
 
 mode = 0
 tile_set = null
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
-cell/custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 cell_half_offset = 2
 cell_tile_origin = 0
 cell_y_sort = false
+cell_clip_uv = false
 collision_use_kinematic = false
 collision_friction = 1.0
 collision_bounce = 0.0
-collision_layer = 1
+collision_layer = 524288
 collision_mask = 1
 occluder_light_mask = 1
+format = 1
 tile_data = PoolIntArray(  )
+_sections_unfolded = [ "Collision" ]
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="0"]
 
+[node name="boundaries" type="Node2D" parent="tilemap" index="1"]
 
-[node name="boundaries" type="Node2D" parent="tilemap"]
+[node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
 
+[node name="SE" type="Position2D" parent="tilemap/boundaries" index="1"]
 
-[node name="NW" type="Position2D" parent="tilemap/boundaries"]
-
-
-[node name="SE" type="Position2D" parent="tilemap/boundaries"]
 

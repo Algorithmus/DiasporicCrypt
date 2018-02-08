@@ -1,45 +1,108 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/common/torch.png" type="Texture" id=1]
 [ext_resource path="res://players/magic/fire/magic.png" type="Texture" id=2]
 
-[sub_resource type="Gradient" id=1]
+[sub_resource type="CanvasItemMaterial" id=1]
 
-offsets = PoolRealArray( 0, 0.467262, 0.998512 )
-colors = PoolColorArray( 0, 0, 0, 1, 1, 0.622611, 0, 1, 1, 1, 1, 0 )
+render_priority = 0
+blend_mode = 1
+light_mode = 0
 
-[node name="torch" type="Node2D"]
+[sub_resource type="Gradient" id=2]
 
+offsets = PoolRealArray( 0, 0.514793, 0.982249 )
+colors = PoolColorArray( 0, 0, 0, 1, 1, 0.62, 0, 1, 1, 1, 1, 0 )
 
-[node name="torch" type="Sprite" parent="."]
+[sub_resource type="GradientTexture" id=3]
+
+flags = 4
+gradient = SubResource( 2 )
+width = 2048
+
+[sub_resource type="Curve" id=4]
+
+min_value = 0.0
+max_value = 1.0
+bake_resolution = 100
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.424805 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+
+flags = 4
+width = 2048
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 1
+emission_sphere_radius = 5.0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 0.0
+flatness = 0.0
+gravity = Vector3( 0, -80, 0 )
+initial_velocity = 0.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = -90.0
+angle_random = 1.0
+scale = 0.7
+scale_random = 0.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 1.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Animation", "Color", "Emission Shape", "Gravity", "Initial Velocity", "Scale", "Spread" ]
+
+[node name="torch" type="Node2D" index="0"]
+
+[node name="torch" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 1 )
 
-[node name="flame" type="Particles2D" parent="."]
+[node name="flame" type="Particles2D" parent="." index="1"]
 
-visibility/blend_mode = 1
+material = SubResource( 1 )
 position = Vector2( 0, -10 )
-rotation_deg = -180.0
-config/amount = 12
-config/lifetime = 1.0
-config/half_extents = Vector2( 5, 5 )
-config/local_space = false
-config/texture = ExtResource( 2 )
-params/direction = 0.0
-params/spread = 0.0
-params/linear_velocity = 0.0
-params/spin_velocity = 0.0
-params/orbit_velocity = 0.0
-params/gravity_direction = 180.0
-params/gravity_strength = 80.0
-params/radial_accel = 0.0
-params/tangential_accel = 0.0
-params/damping = 0.0
-params/initial_angle = 180.0
-params/initial_size = 0.7
-params/final_size = 0.3
-params/hue_variation = 0.0
-params/anim_speed_scale = 1.0
-params/anim_initial_pos = 0.0
-randomness/initial_angle = 1.0
-color/color_ramp = SubResource( 1 )
+rotation = 3.14159
+emitting = true
+amount = 12
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 6 )
+texture = ExtResource( 2 )
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Transform" ]
+
+

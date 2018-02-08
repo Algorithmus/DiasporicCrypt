@@ -26,12 +26,12 @@ func _ready():
 	set_physics_process(false)
 
 func _physics_process(delta):
-	if (is_crumbling):
+	if (is_crumbling && current_animation == "idle"):
 		current_animation = "break"
 	update_animation()
 
 func update_animation():
-	if (animation_player.get_current_animation() != current_animation):
+	if (animation_player.get_assigned_animation() != current_animation):
 		animation_player.play(current_animation)
 
 func crumble():
