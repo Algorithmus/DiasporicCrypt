@@ -1,106 +1,100 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/fallislandcastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/fallislandcastle/climbableblock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/common/damagables/flyingskull/flyingskull.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=4]
 
-[node name="LVL_NOTITLE" type="Node2D"]
+[node name="LVL_NOTITLE" type="Node2D" index="0"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
 
-[node name="tilemap" type="TileMap" parent="."]
+[node name="tilemap" type="TileMap" parent="." index="0"]
 
 mode = 0
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
-cell/custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 cell_half_offset = 2
 cell_tile_origin = 0
 cell_y_sort = false
+cell_clip_uv = false
 collision_use_kinematic = false
 collision_friction = 1.0
 collision_bounce = 0.0
-collision_layer = 1
+collision_layer = 524288
 collision_mask = 1
 occluder_light_mask = 1
-tile_data = PoolIntArray( -786443, 1610612737, -786442, 1073741824, -786441, 1073741824, -786440, 1073741824, -786439, 1073741824, -786438, 1073741824, -786437, 1073741824, -786436, 1073741824, -786435, 1073741824, -786434, 1073741824, -786433, 1073741824, -851968, 1073741824, -851967, 1073741824, -851966, 1073741824, -851965, 1073741824, -851964, 1073741824, -851963, 1073741824, -851962, 1073741824, -851961, 1073741824, -851960, 1073741824, -851959, 1073741824, -851958, 1073741824, -851957, 1073741824, -851956, 1073741824, -851955, 1073741824, -851954, 1073741824, -851953, 1073741824, -851952, 1073741824, -851951, 1073741824, -851950, 1073741824, -851949, 1073741824, -851948, 1073741824, -851947, 1073741824, -851946, 1073741825, -720907, 1073741826, -720906, 10, -720902, 10, -720898, 10, -786430, 10, -786426, 10, -786422, 10, -786418, 10, -786414, 10, -786410, 1073741826, -655371, 1073741826, -720874, 1073741826, -589835, 1073741826, -589834, 11, -589830, 11, -589826, 11, -655358, 11, -655354, 11, -655350, 11, -655346, 11, -655342, 11, -655338, 1073741826, -524299, 1073741826, -589802, 1073741826, -458763, 1073741826, -524266, 1610612737, -393227, 1073741826, -393226, 6, -393222, 6, -393218, 6, -458750, 6, -458746, 6, -458742, 6, -458738, 6, -458734, 6, -458730, 7, -327691, 1073741826, -393194, 7, -262155, 1073741826, -327658, 7, -196619, 1073741826, -262122, 7, -131083, 1073741826, -196586, 7, -65547, 1073741826, -131053, 0, -131052, 0, -131051, 0, -131050, 0, -11, 1073741826, -65514, 2, 65525, 1073741826, 22, 2, 131061, 1073741826, 131062, 6, 131066, 6, 131070, 6, 65538, 6, 65542, 6, 65546, 6, 65550, 6, 65554, 6, 65558, 2, 196597, 1073741826, 131094, 2, 262133, 1073741826, 196630, 2, 327669, 1073741826, 262166, 2, 393205, 1073741826, 327702, 2, 458741, 1073741826, 393238, 2, 524277, 1073741826, 458774, 2, 589813, 1073741826, 524310, 2, 655349, 1073741826, 655350, 12, 655354, 6, 655358, 12, 589826, 6, 589830, 12, 589834, 6, 589838, 12, 589842, 6, 589846, 2, 720885, 1073741826, 655382, 2, 786421, 1073741826, 720918, 2, 851957, 1073741826, 786454, 2, 917493, 1073741825, 851990, 2, 983029, 7, 917526, 2, 1048565, 7, 983062, 2, 1114101, 7, 1048598, 2, 1179637, 7, 1179638, 6, 1179642, 6, 1179646, 6, 1114114, 6, 1114118, 6, 1114122, 6, 1114126, 6, 1114130, 6, 1114134, 2, 1245173, 7, 1179670, 2, 1310709, 0, 1310710, 0, 1310711, 0, 1310712, 0, 1310719, 0, 1245184, 0, 1245206, 2, 1376245, 2, 1376254, 2, 1376255, 3, 1310720, 536870915, 1310721, 2, 1310742, 2, 1441781, 2, 1441790, 2, 1441791, 4, 1376256, 4, 1376257, 2, 1376278, 2, 1507317, 2, 1507326, 2, 1507327, 4, 1441792, 4, 1441793, 2, 1441814, 2, 1572853, 2, 1572862, 2, 1572863, 4, 1507328, 4, 1507329, 2, 1507350, 2, 1638389, 2, 1638398, 2, 1638399, 4, 1572864, 4, 1572865, 2, 1572886, 2 )
+format = 1
+tile_data = PoolIntArray( -786443, 1610612737, 0, -786442, 1073741824, 0, -786441, 1073741824, 0, -786440, 1073741824, 0, -786439, 1073741824, 0, -786438, 1073741824, 0, -786437, 1073741824, 0, -786436, 1073741824, 0, -786435, 1073741824, 0, -786434, 1073741824, 0, -786433, 1073741824, 0, -851968, 1073741824, 0, -851967, 1073741824, 0, -851966, 1073741824, 0, -851965, 1073741824, 0, -851964, 1073741824, 0, -851963, 1073741824, 0, -851962, 1073741824, 0, -851961, 1073741824, 0, -851960, 1073741824, 0, -851959, 1073741824, 0, -851958, 1073741824, 0, -851957, 1073741824, 0, -851956, 1073741824, 0, -851955, 1073741824, 0, -851954, 1073741824, 0, -851953, 1073741824, 0, -851952, 1073741824, 0, -851951, 1073741824, 0, -851950, 1073741824, 0, -851949, 1073741824, 0, -851948, 1073741824, 0, -851947, 1073741824, 0, -851946, 1073741825, 0, -720907, 1073741826, 0, -720906, 10, 0, -720902, 10, 0, -720898, 10, 0, -786430, 10, 0, -786426, 10, 0, -786422, 10, 0, -786418, 10, 0, -786414, 10, 0, -786410, 1073741826, 0, -655371, 1073741826, 0, -720874, 1073741826, 0, -589835, 1073741826, 0, -589834, 11, 0, -589830, 11, 0, -589826, 11, 0, -655358, 11, 0, -655354, 11, 0, -655350, 11, 0, -655346, 11, 0, -655342, 11, 0, -655338, 1073741826, 0, -524299, 1073741826, 0, -589802, 1073741826, 0, -458763, 1073741826, 0, -524266, 1610612737, 0, -393227, 1073741826, 0, -393226, 6, 0, -393222, 6, 0, -393218, 6, 0, -458750, 6, 0, -458746, 6, 0, -458742, 6, 0, -458738, 6, 0, -458734, 6, 0, -458730, 7, 0, -327691, 1073741826, 0, -393194, 7, 0, -262155, 1073741826, 0, -327658, 7, 0, -196619, 1073741826, 0, -262122, 7, 0, -131083, 1073741826, 0, -196586, 7, 0, -65547, 1073741826, 0, -131053, 0, 0, -131052, 0, 0, -131051, 0, 0, -131050, 0, 0, -11, 1073741826, 0, -65514, 2, 0, 65525, 1073741826, 0, 22, 2, 0, 131061, 1073741826, 0, 131062, 6, 0, 131066, 6, 0, 131070, 6, 0, 65538, 6, 0, 65542, 6, 0, 65546, 6, 0, 65550, 6, 0, 65554, 6, 0, 65558, 2, 0, 196597, 1073741826, 0, 131094, 2, 0, 262133, 1073741826, 0, 196630, 2, 0, 327669, 1073741826, 0, 262166, 2, 0, 393205, 1073741826, 0, 327702, 2, 0, 458741, 1073741826, 0, 393238, 2, 0, 524277, 1073741826, 0, 458774, 2, 0, 589813, 1073741826, 0, 524310, 2, 0, 655349, 1073741826, 0, 655350, 12, 0, 655354, 6, 0, 655358, 12, 0, 589826, 6, 0, 589830, 12, 0, 589834, 6, 0, 589838, 12, 0, 589842, 6, 0, 589846, 2, 0, 720885, 1073741826, 0, 655382, 2, 0, 786421, 1073741826, 0, 720918, 2, 0, 851957, 1073741826, 0, 786454, 2, 0, 917493, 1073741825, 0, 851990, 2, 0, 983029, 7, 0, 917526, 2, 0, 1048565, 7, 0, 983062, 2, 0, 1114101, 7, 0, 1048598, 2, 0, 1179637, 7, 0, 1179638, 6, 0, 1179642, 6, 0, 1179646, 6, 0, 1114114, 6, 0, 1114118, 6, 0, 1114122, 6, 0, 1114126, 6, 0, 1114130, 6, 0, 1114134, 2, 0, 1245173, 7, 0, 1179670, 2, 0, 1310709, 0, 0, 1310710, 0, 0, 1310711, 0, 0, 1310712, 0, 0, 1310719, 0, 0, 1245184, 0, 0, 1245206, 2, 0, 1376245, 2, 0, 1376254, 2, 0, 1376255, 3, 0, 1310720, 536870915, 0, 1310721, 2, 0, 1310742, 2, 0, 1441781, 2, 0, 1441790, 2, 0, 1441791, 4, 0, 1376256, 4, 0, 1376257, 2, 0, 1376278, 2, 0, 1507317, 2, 0, 1507326, 2, 0, 1507327, 4, 0, 1441792, 4, 0, 1441793, 2, 0, 1441814, 2, 0, 1572853, 2, 0, 1572862, 2, 0, 1572863, 4, 0, 1507328, 4, 0, 1507329, 2, 0, 1507350, 2, 0, 1638389, 2, 0, 1638398, 2, 0, 1638399, 4, 0, 1572864, 4, 0, 1572865, 2, 0, 1572886, 2, 0 )
+_sections_unfolded = [ "Collision" ]
 
-[node name="ClimbableGroup" type="Node2D" parent="tilemap"]
+[node name="ClimbableGroup" type="Node2D" parent="tilemap" index="0"]
 
 editor/display_folded = true
 
-[node name="ClimbableBlock" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+[node name="ClimbableBlock" parent="tilemap/ClimbableGroup" index="0" instance=ExtResource( 2 )]
 
 position = Vector2( 592, -48 )
 
-[node name="ClimbableBlock1" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+[node name="ClimbableBlock1" parent="tilemap/ClimbableGroup" index="1" instance=ExtResource( 2 )]
 
 position = Vector2( -48, 624 )
 
-[node name="ClimbableBlock2" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+[node name="ClimbableBlock2" parent="tilemap/ClimbableGroup" index="2" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( 48, 624 )
 
-[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock2"]
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock2" index="0"]
 
 flip_h = false
 
-[node name="ClimbableBlock3" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+[node name="ClimbableBlock3" parent="tilemap/ClimbableGroup" index="3" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( -208, 624 )
 
-[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock3"]
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock3" index="0"]
 
 flip_h = false
 
-[node name="EnemiesGroup" type="Node2D" parent="tilemap"]
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="1"]
 
-
-[node name="FlyingSkull" parent="tilemap/EnemiesGroup" instance=ExtResource( 3 )]
+[node name="FlyingSkull" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( -256, 432 )
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="2"]
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 4 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 752, -144 )
 target_level = "res://levels/bergfortress/0-3.tscn"
 teleport_to = Vector2( -1740, 368 )
 
-[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport" index="0"]
 
 scale = Vector2( 1, 5 )
 
-[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
-
-pause_animated_sprites = true
-
-[node name="Teleport3" parent="tilemap/TeleportGroup" instance=ExtResource( 4 )]
+[node name="Teleport3" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( -368, 528 )
 target_level = "res://levels/bergfortress/3-0.tscn"
 teleport_to = Vector2( 460, 336 )
 
-[node name="teleport" parent="tilemap/TeleportGroup/Teleport3"]
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport3" index="0"]
 
 scale = Vector2( 1, 5 )
 
-[node name="enabler" parent="tilemap/TeleportGroup/Teleport3/teleport"]
-
-pause_animated_sprites = true
-
-[node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 4 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( -192, 816 )
@@ -108,15 +102,11 @@ is_horizontal = false
 target_level = "res://levels/bergfortress/0-5.tscn"
 teleport_to = Vector2( -352, -1328 )
 
-[node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport1" index="0"]
 
 scale = Vector2( 8, 1 )
 
-[node name="enabler" parent="tilemap/TeleportGroup/Teleport1/teleport"]
-
-pause_animated_sprites = true
-
-[node name="Teleport2" parent="tilemap/TeleportGroup" instance=ExtResource( 4 )]
+[node name="Teleport2" parent="tilemap/TeleportGroup" index="3" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 384, 816 )
@@ -124,41 +114,23 @@ is_horizontal = false
 target_level = "res://levels/bergfortress/0-5.tscn"
 teleport_to = Vector2( 224, -1328 )
 
-[node name="teleport" parent="tilemap/TeleportGroup/Teleport2"]
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport2" index="0"]
 
 scale = Vector2( 20, 1 )
 
-[node name="enabler" parent="tilemap/TeleportGroup/Teleport2/teleport"]
-
-pause_animated_sprites = true
-
-[node name="boundaries" type="Node2D" parent="tilemap"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="3"]
 
 editor/display_folded = true
 
-[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+[node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
 
 position = Vector2( -358, -422 )
 
-[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+[node name="SE" type="Position2D" parent="tilemap/boundaries" index="1"]
 
 position = Vector2( 746, 810 )
 
-[connection signal="enter_screen"  from="tilemap/TeleportGroup/Teleport/teleport/enabler"  to="tilemap/TeleportGroup/Teleport" method="enter_screen" binds=[  ]]
 
-[connection signal="exit_screen"  from="tilemap/TeleportGroup/Teleport/teleport/enabler"  to="tilemap/TeleportGroup/Teleport" method="exit_screen" binds=[  ]]
-
-[connection signal="enter_screen"  from="tilemap/TeleportGroup/Teleport3/teleport/enabler"  to="tilemap/TeleportGroup/Teleport3" method="enter_screen" binds=[  ]]
-
-[connection signal="exit_screen"  from="tilemap/TeleportGroup/Teleport3/teleport/enabler"  to="tilemap/TeleportGroup/Teleport3" method="exit_screen" binds=[  ]]
-
-[connection signal="enter_screen"  from="tilemap/TeleportGroup/Teleport1/teleport/enabler"  to="tilemap/TeleportGroup/Teleport1" method="enter_screen" binds=[  ]]
-
-[connection signal="exit_screen"  from="tilemap/TeleportGroup/Teleport1/teleport/enabler"  to="tilemap/TeleportGroup/Teleport1" method="exit_screen" binds=[  ]]
-
-[connection signal="enter_screen"  from="tilemap/TeleportGroup/Teleport2/teleport/enabler"  to="tilemap/TeleportGroup/Teleport2" method="enter_screen" binds=[  ]]
-
-[connection signal="exit_screen"  from="tilemap/TeleportGroup/Teleport2/teleport/enabler"  to="tilemap/TeleportGroup/Teleport2" method="exit_screen" binds=[  ]]
 [editable path="tilemap/ClimbableGroup/ClimbableBlock2"]
 [editable path="tilemap/ClimbableGroup/ClimbableBlock3"]
 [editable path="tilemap/TeleportGroup/Teleport"]

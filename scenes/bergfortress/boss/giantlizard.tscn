@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/bergfortress/boss/giantlizard.gd" type="Script" id=1]
 [ext_resource path="res://scenes/bergfortress/boss/giantlizard.png" type="Texture" id=2]
@@ -24,388 +24,497 @@ extents = Vector2( 64, 48 )
 custom_solver_bias = 0.0
 extents = Vector2( 16, 48 )
 
-[sub_resource type="Gradient" id=8]
+[sub_resource type="CanvasItemMaterial" id=4]
 
-offsets = PoolRealArray( 0, 0.125, 0.660714, 1 )
-colors = PoolColorArray( 0, 0.507066, 1, 0, 0.886275, 0.4, 0, 1, 1, 0.678431, 0.431373, 0.12549, 0, 0, 0, 0 )
+render_priority = 0
+blend_mode = 1
+light_mode = 0
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Gradient" id=5]
+
+offsets = PoolRealArray( 0, 0.218935, 0.674556, 1 )
+colors = PoolColorArray( 0, 0.51, 1, 0, 0.89, 0.4, 0, 1, 1, 0.68, 0.43, 0.12, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=6]
+
+flags = 4
+gradient = SubResource( 5 )
+width = 2048
+
+[sub_resource type="Curve" id=7]
+
+min_value = 0.0
+max_value = 1.0
+bake_resolution = 100
+_data = [ Vector2( 0, 0.15625 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=8]
+
+flags = 4
+width = 2048
+curve = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 1
+emission_sphere_radius = 15.0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 45.0
+flatness = 0.0
+gravity = Vector3( 0, -80, 0 )
+initial_velocity = 0.0
+initial_velocity_random = 0.0
+angular_velocity = 3.09379e-41
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 100.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 100.0
+damping_random = 0.0
+angle = 1.0
+angle_random = 0.0
+scale = 3.0
+scale_random = 0.0
+scale_curve = SubResource( 8 )
+color_ramp = SubResource( 6 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 1.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Animation", "Color", "Damping", "Emission Shape", "Gravity", "Initial Velocity", "Linear Accel", "Scale" ]
+
+[sub_resource type="Animation" id=10]
 
 length = 0.6
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("hammer:rotation_deg")
+tracks/0/path = NodePath("hammer:position")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"cont": true,
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"values": [ 84.1533, 95.745, 107.337, 118.928, 130.52, -3.21935, -90.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("hammer:position")
-tracks/1/interp = 1
-tracks/1/keys = {
-"cont": true,
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
 "values": [ Vector2( 85.6913, -122.309 ), Vector2( 51.5391, -154.461 ), Vector2( 10.387, -172.28 ), Vector2( -20.2652, -191.598 ), Vector2( -50.9174, -210.917 ), Vector2( 145.747, 1.74657 ), Vector2( 0, 64 ) ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("sprite:frame")
-tracks/2/interp = 1
-tracks/2/keys = {
-"cont": false,
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
+"update": 1,
 "values": [ 8 ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("arm:frame")
-tracks/3/interp = 1
-tracks/3/keys = {
-"cont": false,
+tracks/2/type = "value"
+tracks/2/path = NodePath("arm:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("hammer:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ -84.2, -95.7, -107.3, -118.9, -130.5, 3.2, 90.0 ]
+}
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=11]
 
-resource_name = "die"
 length = 1.1
 loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("explode:position")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"cont": false,
 "times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 48, -192 ), Vector2( -32, -112 ), Vector2( 64, -48 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("explode:config/emitting")
+tracks/1/path = NodePath("explode:emitting")
 tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
-"cont": false,
 "times": PoolRealArray( 0, 0.2, 0.3, 0.5, 0.6, 0.8, 0.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
 "values": [ true, false, true, false, true, false, true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("sprite:visibility/opacity")
+tracks/2/path = NodePath("sprite:modulate")
 tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/keys = {
-"cont": false,
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"values": [ 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0 ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.5 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("arm:visibility/opacity")
+tracks/3/path = NodePath("arm:modulate")
 tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/keys = {
-"cont": false,
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"values": [ 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0 ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.5 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("hammer:visibility/opacity")
+tracks/4/path = NodePath("hammer:modulate")
 tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/keys = {
-"cont": false,
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"values": [ 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0 ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.5 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=12]
 
 length = 1.6
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("hammer:rotation_deg")
+tracks/0/path = NodePath("hammer:position")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"cont": true,
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ 84.1533 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("hammer:position")
-tracks/1/interp = 1
-tracks/1/keys = {
-"cont": true,
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"update": 0,
 "values": [ Vector2( 85.6913, -122.309 ) ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("sprite:frame")
-tracks/2/interp = 1
-tracks/2/keys = {
-"cont": false,
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("arm:frame")
-tracks/3/interp = 1
-tracks/3/keys = {
-"cont": false,
+tracks/2/type = "value"
+tracks/2/path = NodePath("arm:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
+"update": 1,
 "values": [ 0 ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("arm:visibility/opacity")
-tracks/4/interp = 1
-tracks/4/keys = {
-"cont": true,
+tracks/3/type = "value"
+tracks/3/path = NodePath("arm:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ 1.0 ]
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("hammer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("sprite:visibility/opacity")
+tracks/5/path = NodePath("sprite:modulate")
 tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/keys = {
-"cont": true,
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ 1.0 ]
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("hammer:visibility/opacity")
+tracks/6/path = NodePath("hammer:rotation_degrees")
 tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/keys = {
-"cont": true,
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ 1.0 ]
+"update": 0,
+"values": [ -84.2 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=13]
 
 length = 0.3
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("hammer:rotation_deg")
+tracks/0/path = NodePath("hammer:position")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"cont": false,
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
-"values": [ -90.0, -31.9333, 26.1333, 84.2 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("hammer:position")
-tracks/1/interp = 1
-tracks/1/keys = {
-"cont": false,
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
 "values": [ Vector2( 0, 64 ), Vector2( 28.5638, 1.89701 ), Vector2( 57.1275, -60.206 ), Vector2( 85.6913, -122.309 ) ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("arm:frame")
-tracks/2/interp = 1
-tracks/2/keys = {
-"cont": false,
+tracks/1/type = "value"
+tracks/1/path = NodePath("arm:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
 "values": [ 6, 7, 8, 0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("hammer:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 90.0, 31.9, -26.1, -84.2 ]
+}
 
-[node name="GiantLizard" type="Node2D"]
+[node name="GiantLizard" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 hp = 100
 
-[node name="sprite" type="Sprite" parent="."]
+[node name="sprite" type="Sprite" parent="." index="0"]
 
 position = Vector2( 32, -80 )
 texture = ExtResource( 2 )
 vframes = 3
 hframes = 4
-frame = 2
+_sections_unfolded = [ "Visibility" ]
 
-[node name="damagable" type="Area2D" parent="."]
+[node name="damagable" type="Area2D" parent="." index="1"]
 
 input_pickable = true
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, -80 )
-shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="damagable"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damagable" index="0"]
 
 position = Vector2( 0, -80 )
 shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
 
-[node name="ArmorGroup" type="Node2D" parent="."]
+[node name="ArmorGroup" type="Node2D" parent="." index="2"]
 
-__meta__ = {
-"_editor_collapsed": true
-}
+editor/display_folded = true
 
-[node name="armor2" parent="ArmorGroup" instance=ExtResource( 3 )]
+[node name="armor2" parent="ArmorGroup" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( -97, -35 )
 
-[node name="sprite" parent="ArmorGroup/armor2"]
+[node name="sprite" parent="ArmorGroup/armor2" index="0"]
 
 position = Vector2( -64, -32 )
 texture = ExtResource( 4 )
 
-[node name="damagable" parent="ArmorGroup/armor2"]
+[node name="damagable" parent="ArmorGroup/armor2" index="1"]
 
 position = Vector2( 96, 32 )
 scale = Vector2( 6, 2 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="armor1" parent="ArmorGroup" instance=ExtResource( 3 )]
+[node name="armor1" parent="ArmorGroup" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( -98, -176 )
 
-[node name="sprite" parent="ArmorGroup/armor1"]
+[node name="sprite" parent="ArmorGroup/armor1" index="0"]
 
 position = Vector2( -64, -32 )
 texture = ExtResource( 5 )
 
-[node name="damagable" parent="ArmorGroup/armor1"]
+[node name="damagable" parent="ArmorGroup/armor1" index="1"]
 
 position = Vector2( 96, 96 )
 scale = Vector2( 6, 5 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="armor" parent="ArmorGroup" instance=ExtResource( 3 )]
+[node name="armor" parent="ArmorGroup" index="2" instance=ExtResource( 3 )]
 
 position = Vector2( -106, -272 )
 
-[node name="sprite" parent="ArmorGroup/armor"]
+[node name="sprite" parent="ArmorGroup/armor" index="0"]
 
 position = Vector2( -48, -48 )
 
-[node name="damagable" parent="ArmorGroup/armor"]
+[node name="damagable" parent="ArmorGroup/armor" index="1"]
 
 position = Vector2( 96, 48 )
-rotation_deg = -0.1
 scale = Vector2( 8, 5 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="hammer" type="Node2D" parent="."]
+[node name="hammer" type="Node2D" parent="." index="3"]
 
+editor/display_folded = true
 position = Vector2( 85.6913, -122.309 )
-rotation_deg = -84.1533
-__meta__ = {
-"_editor_collapsed": true
-}
+rotation = -1.46957
+_sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="Polygon2D" type="Sprite" parent="hammer"]
+[node name="Polygon2D" type="Sprite" parent="hammer" index="0"]
 
 position = Vector2( 0, -128 )
 texture = ExtResource( 6 )
 
-[node name="collision" type="Area2D" parent="hammer"]
+[node name="collision" type="Area2D" parent="hammer" index="1"]
 
 position = Vector2( 0, -224 )
 input_pickable = true
-shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hammer/collision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hammer/collision" index="0"]
 
 shape = SubResource( 2 )
-trigger = false
-_update_shape_index = 0
 
-[node name="oneway" type="Area2D" parent="hammer"]
+[node name="oneway" type="Area2D" parent="hammer" index="2"]
 
 position = Vector2( -48, -224 )
 input_pickable = true
-shapes/0/shape = SubResource( 3 )
-shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hammer/oneway"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hammer/oneway" index="0"]
 
 shape = SubResource( 3 )
-trigger = false
-_update_shape_index = 0
 
-[node name="arm" type="Sprite" parent="."]
+[node name="arm" type="Sprite" parent="." index="4"]
 
 position = Vector2( 32, -80 )
 texture = ExtResource( 7 )
 vframes = 3
 hframes = 3
+_sections_unfolded = [ "Visibility" ]
 
-[node name="explode" type="Particles2D" parent="."]
+[node name="explode" type="Particles2D" parent="." index="5"]
 
-visibility/blend_mode = 1
+material = SubResource( 4 )
 position = Vector2( 64, -48 )
-rotation_deg = 180.0
-z = 3
-config/amount = 32
-config/lifetime = 1.0
-config/time_scale = 2.0
-config/emit_timeout = 0.5
-config/emitting = false
-config/half_extents = Vector2( 15, 15 )
-config/local_space = false
-config/explosiveness = 0.05
-config/texture = ExtResource( 8 )
-params/direction = 0.0
-params/spread = 180.0
-params/linear_velocity = 184.55
-params/spin_velocity = 0.0
-params/orbit_velocity = 0.0
-params/gravity_direction = 180.0
-params/gravity_strength = 80.0
-params/radial_accel = 0.0
-params/tangential_accel = 0.0
-params/damping = 366.3
-params/initial_angle = 1.0
-params/initial_size = 0.7
-params/final_size = 3.0
-params/hue_variation = 0.0
-params/anim_speed_scale = 1.0
-params/anim_initial_pos = 0.0
-color/color_ramp = SubResource( 8 )
+z_index = 3
+emitting = false
+amount = 32
+lifetime = 1.0
+one_shot = true
+preprocess = 0.0
+speed_scale = 2.0
+explosiveness = 0.05
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 9 )
+texture = ExtResource( 8 )
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Z Index" ]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 
+root_node = NodePath("..")
+autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-root_node = NodePath("..")
-anims/attack = SubResource( 4 )
-anims/die = SubResource( 5 )
-anims/idle = SubResource( 6 )
-anims/return = SubResource( 7 )
-playback/active = true
-playback/speed = 1.0
+playback_speed = 1.0
+anims/attack = SubResource( 10 )
+anims/die = SubResource( 11 )
+anims/idle = SubResource( 12 )
+anims/return = SubResource( 13 )
 blend_times = [  ]
-autoplay = ""
+
+
 [editable path="ArmorGroup/armor2"]
 [editable path="ArmorGroup/armor1"]
 [editable path="ArmorGroup/armor"]

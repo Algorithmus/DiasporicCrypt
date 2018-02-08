@@ -27,7 +27,7 @@ func dust():
 	var dust_obj = dust.instance()
 	add_child(dust_obj)
 	dust_obj.set_position(Vector2(randf()*32 - 16, randf()*32 - 16))
-	dust_obj.get_node("particles").set_color(sprite.get_modulate())
+	dust_obj.get_node("particles").set_modulate(sprite.get_self_modulate())
 	dust_obj.get_node("particles").set_emitting(true)
 	dust_particles.append(dust_obj)
 
