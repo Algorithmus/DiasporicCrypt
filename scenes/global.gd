@@ -249,7 +249,7 @@ func _ready():
 							ProjectSettings.set("controls", globalsettings.gamepad)
 						else:
 							ProjectSettings.set("controls", globalsettings.keyboard)
-						ProjectSettings.set("newcontrols", ProjectSettings.get("controls"))
+						ProjectSettings.set("newcontrols", ProjectSettings.get("controls").duplicate())
 						ProjectSettings.get("serialization").unserialize_controls(globalsettings.keyboard, true)
 						ProjectSettings.get("serialization").unserialize_controls(globalsettings.gamepad, false)
 						if (TranslationServer.get_locale() != globalsettings.locale):

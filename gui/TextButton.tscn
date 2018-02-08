@@ -23,10 +23,12 @@ content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
+_sections_unfolded = [ "Content Margin" ]
 
 [node name="textbutton" type="Node2D"]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 __meta__ = {
 "__editor_plugin_screen__": "Script"
 }
@@ -38,15 +40,15 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -64.0
-margin_top = -64.0
-margin_right = -52.0
-margin_bottom = -26.0
+margin_left = -264.0
+margin_top = -83.0
+margin_right = 136.0
+margin_bottom = -45.0
 rect_pivot_offset = Vector2( 0, 0 )
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 2
+size_flags_horizontal = 0
 size_flags_vertical = 2
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
@@ -58,7 +60,7 @@ shortcut = null
 group = null
 flat = false
 align = 1
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Rect", "Size Flags", "custom_styles" ]
 
 [node name="SamplePlayer" type="Node" parent="." index="1"]
 

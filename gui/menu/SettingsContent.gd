@@ -73,7 +73,8 @@ func update_container():
 	get_node("layout").set_text(tr(layouts[old_layout_index].name))
 	for key in get_node("inputs").get_children():
 		key.update_key()
-	ProjectSettings.set("newcontrols", ProjectSettings.get("controls"))
+	if (ProjectSettings.get("controls") != null):
+		ProjectSettings.set("newcontrols", ProjectSettings.get("controls").duplicate())
 	var resetwidth = get_node("reset").get_size().x
 	get_node("reset").set_position(Vector2(689 - resetwidth, get_node("reset").get_position().y))
 
@@ -117,7 +118,7 @@ func reset():
 	ProjectSettings.set("current_input", layouts[old_layout_index].id)
 	for key in get_node("inputs").get_children():
 		key.update_key()
-	ProjectSettings.set("newcontrols", ProjectSettings.get("controls"))
+	ProjectSettings.set("newcontrols", ProjectSettings.get("controls").duplicate())
 
 func update_mute_controls():
 	if (sfxMute):
@@ -140,11 +141,11 @@ func save():
 	ProjectSettings.set("bgmvolume", bgmValue)
 	ProjectSettings.set("sfxmute", sfxMute)
 	ProjectSettings.set("bgmmute", bgmMute)
-	ProjectSettings.set("controls", ProjectSettings.get("newcontrols"))
+	ProjectSettings.set("controls", ProjectSettings.get("newcontrols").duplicate())
 	if (ProjectSettings.get("current_input") == "keyboard"):
-		ProjectSettings.set("keyboard_controls", ProjectSettings.get("controls"))
+		ProjectSettings.set("keyboard_controls", ProjectSettings.get("controls").duplicate())
 	else:
-		ProjectSettings.set("gamepad_controls", ProjectSettings.get("controls"))
+		ProjectSettings.set("gamepad_controls", ProjectSettings.get("controls").duplicate())
 	for key in get_node("inputs").get_children():
 		key.set_input()
 		key.get_node("key").set("custom_colors/font_color", null)
@@ -219,10 +220,15 @@ func _input(event):
 
 		if (old_index != layout_index):
 			get_node("layout").set_text(tr(layouts[layout_index].name))
-			ProjectSettings.set("current_input", layouts[layout_index].id)
+			var current_input = layouts[layout_index].id
+			ProjectSettings.set("current_input", current_input)
 			for key in get_node("inputs").get_children():
 				key.update_key()
-			ProjectSettings.set("newcontrols", ProjectSettings.get("controls"))
+			if (current_input == "keyboard"):
+				ProjectSettings.set("controls", ProjectSettings.get("keyboard_controls").duplicate())
+			else:
+				ProjectSettings.set("controls", ProjectSettings.get("gamepad_controls").duplicate())
+			ProjectSettings.set("newcontrols", ProjectSettings.get("controls").duplicate())
 
 func set_layout_index(id):
 	var size = layouts.size()

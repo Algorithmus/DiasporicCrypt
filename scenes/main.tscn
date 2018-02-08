@@ -501,7 +501,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="world" type="Node2D"]
+[node name="world" type="Node2D" index="0"]
 
 pause_mode = 2
 script = ExtResource( 1 )
@@ -1228,7 +1228,6 @@ _sections_unfolded = [ "Rect" ]
 [node name="yes" parent="gui/CanvasLayer/choice" index="2" instance=ExtResource( 30 )]
 
 position = Vector2( 256, 404 )
-_sections_unfolded = [ "Transform" ]
 default_focus = true
 
 [node name="button" parent="gui/CanvasLayer/choice/yes" index="0"]
@@ -1240,7 +1239,6 @@ text = "KEY_YES"
 [node name="no" parent="gui/CanvasLayer/choice" index="3" instance=ExtResource( 30 )]
 
 position = Vector2( 544, 404 )
-_sections_unfolded = [ "Transform" ]
 
 [node name="button" parent="gui/CanvasLayer/choice/no" index="0"]
 

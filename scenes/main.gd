@@ -184,6 +184,7 @@ func _input(event):
 			elif(!is_paused):
 				pause.show()
 				pausemenu.show()
+				pausemenu.update_keys()
 				var big_map = map.get_node("objects").duplicate()
 				big_map.set_draw_behind_parent(false)
 				var map_pos_obj = map_position.instance()
