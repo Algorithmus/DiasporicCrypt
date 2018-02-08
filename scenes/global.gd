@@ -299,6 +299,7 @@ func _ready():
 
 func load_backkeys():
 	settings.get_node("back").set_key("ui_cancel")
+	info.get_node("backbutton/key").set_text(settings.get_node("back/key").get_text())
 	newgame.get_node("backbutton/key").set_text(settings.get_node("back/key").get_text())
 
 func check_gamesaves():
@@ -437,6 +438,7 @@ func reload_backkeys():
 	if (back.get("actionid") == null):
 		load_backkeys()
 	back.reload_key()
+	info.get_node("backbutton/key").set_text(back.get_node("key").get_text())
 	newgame.get_node("backbutton/key").set_text(back.get_node("key").get_text())
 
 func gamestart(resource):

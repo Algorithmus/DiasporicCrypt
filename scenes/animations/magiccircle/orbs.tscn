@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://scenes/animations/magiccircle/outer.png" type="Texture" id=1]
 [ext_resource path="res://scenes/animations/magiccircle/orbs/bg.png" type="Texture" id=2]
@@ -10,899 +10,1338 @@
 [ext_resource path="res://scenes/animations/magiccircle/orbs/jupiter.png" type="Texture" id=8]
 [ext_resource path="res://scenes/animations/magiccircle/orbs/saturn.png" type="Texture" id=9]
 
-[sub_resource type="Gradient" id=1]
+[sub_resource type="CanvasItemMaterial" id=1]
 
-offsets = PoolRealArray( 0, 0.506173, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 0.734375, 0, 1, 1, 0.734375, 0, 1, 0 )
+render_priority = 0
+blend_mode = 1
+light_mode = 0
 
 [sub_resource type="Gradient" id=2]
 
-offsets = PoolRealArray( 0, 0.504801, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 1, 0.914062, 0, 1, 1, 0.984375, 0, 0 )
+offsets = PoolRealArray( 0, 0.526627, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.73, 0, 1, 1, 0.729412, 0, 1, 0 )
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="GradientTexture" id=3]
 
-offsets = PoolRealArray( 0, 0.504801, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 0.144531, 0.298248, 1, 1, 0, 0.367188, 1, 0 )
+flags = 4
+gradient = SubResource( 2 )
+width = 2048
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Curve" id=4]
 
-offsets = PoolRealArray( 0, 0.506173, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 0, 1, 0.578125, 1, 0, 1, 0.53125, 0 )
+min_value = 0.0
+max_value = 1.0
+bake_resolution = 100
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.209961 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="CurveTexture" id=5]
 
-offsets = PoolRealArray( 0, 0.506173, 1 )
+flags = 4
+width = 2048
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 2
+emission_box_extents = Vector3( 24, 12, 1 )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 0.0
+flatness = 0.0
+gravity = Vector3( 0, -96, 0 )
+initial_velocity = 0.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 180.0
+angle_random = 1.0
+scale = 2.0
+scale_random = 0.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 1.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Emission Shape", "Gravity", "Initial Velocity", "Scale", "Spread" ]
+
+[sub_resource type="CanvasItemMaterial" id=7]
+
+render_priority = 0
+blend_mode = 1
+light_mode = 0
+
+[sub_resource type="Gradient" id=8]
+
+offsets = PoolRealArray( 0, 0.526627, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 1, 0.91, 0, 1, 1, 0.98, 0, 0 )
+
+[sub_resource type="GradientTexture" id=9]
+
+flags = 4
+gradient = SubResource( 8 )
+width = 2048
+
+[sub_resource type="ParticlesMaterial" id=10]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 2
+emission_box_extents = Vector3( 24, 12, 1 )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 0.0
+flatness = 0.0
+gravity = Vector3( 0, -96, 0 )
+initial_velocity = 0.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 180.0
+angle_random = 1.0
+scale = 2.0
+scale_random = 0.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 9 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 1.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Emission Shape", "Gravity", "Initial Velocity", "Scale", "Spread" ]
+
+[sub_resource type="CanvasItemMaterial" id=11]
+
+render_priority = 0
+blend_mode = 1
+light_mode = 0
+
+[sub_resource type="Gradient" id=12]
+
+offsets = PoolRealArray( 0, 0.526627, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.14, 0.3, 1, 1, 0, 0.37, 1, 0 )
+
+[sub_resource type="GradientTexture" id=13]
+
+flags = 4
+gradient = SubResource( 12 )
+width = 2048
+
+[sub_resource type="ParticlesMaterial" id=14]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 2
+emission_box_extents = Vector3( 24, 12, 1 )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 0.0
+flatness = 0.0
+gravity = Vector3( 0, -96, 0 )
+initial_velocity = 0.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 180.0
+angle_random = 1.0
+scale = 2.0
+scale_random = 0.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 13 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 1.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Emission Shape", "Gravity", "Initial Velocity", "Scale", "Spread" ]
+
+[sub_resource type="CanvasItemMaterial" id=15]
+
+render_priority = 0
+blend_mode = 1
+light_mode = 0
+
+[sub_resource type="Gradient" id=16]
+
+offsets = PoolRealArray( 0, 0.526627, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0, 1, 0.58, 1, 0, 1, 0.53, 0 )
+
+[sub_resource type="GradientTexture" id=17]
+
+flags = 4
+gradient = SubResource( 16 )
+width = 2048
+
+[sub_resource type="ParticlesMaterial" id=18]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 2
+emission_box_extents = Vector3( 24, 12, 1 )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 0.0
+flatness = 0.0
+gravity = Vector3( 0, -96, 0 )
+initial_velocity = 0.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 180.0
+angle_random = 1.0
+scale = 2.0
+scale_random = 0.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 17 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 1.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Emission Shape", "Gravity", "Initial Velocity", "Scale", "Spread" ]
+
+[sub_resource type="CanvasItemMaterial" id=21]
+
+render_priority = 0
+blend_mode = 1
+light_mode = 0
+
+[sub_resource type="Gradient" id=22]
+
+offsets = PoolRealArray( 0, 0.526627, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0 )
 
-[sub_resource type="Gradient" id=6]
+[sub_resource type="GradientTexture" id=23]
 
-offsets = PoolRealArray( 0, 0.506173, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 1, 0.585938, 0, 1, 1, 0.492188, 0, 0 )
+flags = 4
+gradient = SubResource( 22 )
+width = 2048
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="ParticlesMaterial" id=24]
 
-resource_name = "hide"
+render_priority = 0
+trail_divisor = 1
+emission_shape = 2
+emission_box_extents = Vector3( 24, 12, 1 )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 0.0
+flatness = 0.0
+gravity = Vector3( 0, -96, 0 )
+initial_velocity = 0.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 180.0
+angle_random = 1.0
+scale = 2.0
+scale_random = 0.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 23 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 1.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Emission Shape", "Gravity", "Initial Velocity", "Scale", "Spread" ]
+
+[sub_resource type="CanvasItemMaterial" id=25]
+
+render_priority = 0
+blend_mode = 1
+light_mode = 0
+
+[sub_resource type="Gradient" id=26]
+
+offsets = PoolRealArray( 0, 0.526627, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 1, 0.59, 0, 1, 1, 0.49, 0, 0 )
+
+[sub_resource type="GradientTexture" id=27]
+
+flags = 4
+gradient = SubResource( 26 )
+width = 2048
+
+[sub_resource type="ParticlesMaterial" id=28]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 2
+emission_box_extents = Vector3( 24, 12, 1 )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 0.0
+flatness = 0.0
+gravity = Vector3( 0, -96, 0 )
+initial_velocity = 0.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 180.0
+angle_random = 1.0
+scale = 2.0
+scale_random = 0.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 27 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 1.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Emission Shape", "Gravity", "Initial Velocity", "Scale", "Spread" ]
+
+[sub_resource type="Animation" id=19]
+
 length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("saturn/bg:visible")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"cont": false,
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
+"update": 1,
 "values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("saturn:visibility/self_opacity")
+tracks/1/path = NodePath("jupiter/bg:visible")
 tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
-"cont": true,
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ 1.0, 0.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("saturn/symbol:visibility/opacity")
-tracks/2/interp = 1
-tracks/2/keys = {
-"cont": true,
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ 1.0, 0.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("saturn/flame:config/emitting")
-tracks/3/interp = 1
-tracks/3/keys = {
-"cont": false,
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ true, false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("jupiter/flame:config/emitting")
-tracks/4/interp = 1
-tracks/4/keys = {
-"cont": false,
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ true, false ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("jupiter/bg:visible")
-tracks/5/interp = 1
-tracks/5/keys = {
-"cont": false,
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("uranus/bg:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("neptune/bg:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("moon/bg:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("mercury/bg:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
 "values": [ false ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("jupiter/symbol:visibility/opacity")
+tracks/6/path = NodePath("saturn:self_modulate")
 tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/keys = {
-"cont": true,
-"times": PoolRealArray( 0, 0.8 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
-"values": [ 1.0, 0.0 ]
+"update": 0,
+"values": [ Color( 1, 0.588235, 0, 1 ), Color( 1, 0.588235, 0, 0 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("jupiter:visibility/self_opacity")
+tracks/7/path = NodePath("saturn/symbol:modulate")
 tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
 tracks/7/keys = {
-"cont": true,
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.8 ),
 "transitions": PoolRealArray( 1, 1 ),
-"values": [ 1.0, 0.0 ]
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("uranus:visibility/self_opacity")
+tracks/8/path = NodePath("saturn/flame:emitting")
 tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
 tracks/8/keys = {
-"cont": true,
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
-"values": [ 1.0, 0.0 ]
+"update": 1,
+"values": [ true, false ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("uranus/flame:config/emitting")
+tracks/9/path = NodePath("jupiter/flame:emitting")
 tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
 tracks/9/keys = {
-"cont": false,
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
+"update": 1,
 "values": [ true, false ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("uranus/bg:visible")
+tracks/10/path = NodePath("jupiter/symbol:modulate")
 tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
 tracks/10/keys = {
-"cont": false,
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ false ]
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("uranus/symbol:visibility/opacity")
+tracks/11/path = NodePath("jupiter:self_modulate")
 tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
 tracks/11/keys = {
-"cont": true,
-"times": PoolRealArray( 0, 0.8 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
-"values": [ 1.0, 0.0 ]
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 0 ) ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("neptune:visibility/self_opacity")
+tracks/12/path = NodePath("uranus:self_modulate")
 tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
 tracks/12/keys = {
-"cont": true,
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
-"values": [ 1.0, 0.0 ]
+"update": 0,
+"values": [ Color( 0, 0.760784, 0.509804, 1 ), Color( 0, 0.760784, 0.509804, 0 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("neptune/bg:visible")
+tracks/13/path = NodePath("uranus/flame:emitting")
 tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
 tracks/13/keys = {
-"cont": false,
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ false ]
-}
-tracks/14/type = "value"
-tracks/14/path = NodePath("neptune/symbol:visibility/opacity")
-tracks/14/interp = 1
-tracks/14/keys = {
-"cont": true,
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ 1.0, 0.0 ]
-}
-tracks/15/type = "value"
-tracks/15/path = NodePath("neptune/flame:config/emitting")
-tracks/15/interp = 1
-tracks/15/keys = {
-"cont": false,
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
+"update": 1,
 "values": [ true, false ]
 }
-tracks/16/type = "value"
-tracks/16/path = NodePath("moon:visibility/self_opacity")
-tracks/16/interp = 1
-tracks/16/keys = {
-"cont": true,
+tracks/14/type = "value"
+tracks/14/path = NodePath("uranus/symbol:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("neptune:self_modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
-"values": [ 1.0, 0.0 ]
+"update": 0,
+"values": [ Color( 0, 0.313726, 0.760784, 1 ), Color( 0, 0.313726, 0.760784, 0 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("neptune/symbol:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("moon/flame:config/emitting")
+tracks/17/path = NodePath("neptune/flame:emitting")
 tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
 tracks/17/keys = {
-"cont": false,
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
+"update": 1,
 "values": [ true, false ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("moon/bg:visible")
+tracks/18/path = NodePath("moon:self_modulate")
 tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
 tracks/18/keys = {
-"cont": false,
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ false ]
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.941176, 0.470588, 1 ), Color( 1, 0.941176, 0.470588, 0 ) ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("moon/symbol:visibility/opacity")
+tracks/19/path = NodePath("moon/flame:emitting")
 tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
 tracks/19/keys = {
-"cont": true,
-"times": PoolRealArray( 0, 0.8 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
-"values": [ 1.0, 0.0 ]
+"update": 1,
+"values": [ true, false ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("mercury:visibility/self_opacity")
+tracks/20/path = NodePath("moon/symbol:modulate")
 tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
 tracks/20/keys = {
-"cont": true,
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ 1.0, 0.0 ]
-}
-tracks/21/type = "value"
-tracks/21/path = NodePath("mercury/bg:visible")
-tracks/21/interp = 1
-tracks/21/keys = {
-"cont": false,
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ false ]
-}
-tracks/22/type = "value"
-tracks/22/path = NodePath("mercury/symbol:visibility/opacity")
-tracks/22/interp = 1
-tracks/22/keys = {
-"cont": true,
 "times": PoolRealArray( 0, 0.8 ),
 "transitions": PoolRealArray( 1, 1 ),
-"values": [ 1.0, 0.0 ]
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
-tracks/23/type = "value"
-tracks/23/path = NodePath("mercury/flame:config/emitting")
-tracks/23/interp = 1
-tracks/23/keys = {
-"cont": false,
+tracks/21/type = "value"
+tracks/21/path = NodePath("mercury:self_modulate")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.666667, 0, 1, 1 ), Color( 0.666667, 0, 1, 0 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("mercury/symbol:modulate")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("mercury/flame:emitting")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=20]
 
-resource_name = "show"
 length = 0.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("moon:visibility/opacity")
+tracks/0/path = NodePath("neptune/flame:emitting")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"cont": true,
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 0.25, 1 ),
-"values": [ 0.0, 1.0 ]
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("mercury:visibility/opacity")
+tracks/1/path = NodePath("uranus/flame:emitting")
 tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
-"cont": true,
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 0.25, 1 ),
-"values": [ 0.0, 1.0 ]
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("neptune:visibility/opacity")
+tracks/2/path = NodePath("jupiter/flame:emitting")
 tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/keys = {
-"cont": true,
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 0.25, 1 ),
-"values": [ 0.0, 1.0 ]
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("uranus:visibility/opacity")
+tracks/3/path = NodePath("saturn/flame:emitting")
 tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/keys = {
-"cont": true,
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 0.25, 1 ),
-"values": [ 0.0, 1.0 ]
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("jupiter:visibility/opacity")
+tracks/4/path = NodePath("saturn/bg:visible")
 tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/keys = {
-"cont": true,
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 0.25, 1 ),
-"values": [ 0.0, 1.0 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("saturn:visibility/opacity")
+tracks/5/path = NodePath("jupiter/bg:visible")
 tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/keys = {
-"cont": true,
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 0.25, 1 ),
-"values": [ 0.0, 1.0 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("mercury/flame:config/emitting")
+tracks/6/path = NodePath("uranus/bg:visible")
 tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/keys = {
-"cont": false,
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ false, true ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("moon/flame:config/emitting")
+tracks/7/path = NodePath("neptune/bg:visible")
 tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
 tracks/7/keys = {
-"cont": false,
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ false, true ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("neptune/flame:config/emitting")
+tracks/8/path = NodePath("moon/bg:visible")
 tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
 tracks/8/keys = {
-"cont": false,
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ false, true ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("uranus/flame:config/emitting")
+tracks/9/path = NodePath("mercury/bg:visible")
 tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
 tracks/9/keys = {
-"cont": false,
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ false, true ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("jupiter/flame:config/emitting")
+tracks/10/path = NodePath("moon:modulate")
 tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
 tracks/10/keys = {
-"cont": false,
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ false, true ]
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("saturn/flame:config/emitting")
+tracks/11/path = NodePath("mercury:modulate")
 tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
 tracks/11/keys = {
-"cont": false,
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ false, true ]
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("saturn:visibility/self_opacity")
+tracks/12/path = NodePath("neptune:modulate")
 tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
 tracks/12/keys = {
-"cont": true,
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ 1.0 ]
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("saturn/bg:visible")
+tracks/13/path = NodePath("uranus:modulate")
 tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
 tracks/13/keys = {
-"cont": false,
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ true ]
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("saturn/symbol:visibility/opacity")
+tracks/14/path = NodePath("jupiter:modulate")
 tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
 tracks/14/keys = {
-"cont": true,
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ 1.0 ]
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("jupiter:visibility/self_opacity")
+tracks/15/path = NodePath("saturn:modulate")
 tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
 tracks/15/keys = {
-"cont": true,
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ 1.0 ]
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("jupiter/bg:visible")
+tracks/16/path = NodePath("mercury/flame:emitting")
 tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
 tracks/16/keys = {
-"cont": false,
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ true ]
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("jupiter/symbol:visibility/opacity")
+tracks/17/path = NodePath("moon/flame:emitting")
 tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
 tracks/17/keys = {
-"cont": true,
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ 1.0 ]
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("uranus:visibility/self_opacity")
+tracks/18/path = NodePath("saturn:self_modulate")
 tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
 tracks/18/keys = {
-"cont": true,
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ 1.0 ]
+"update": 0,
+"values": [ Color( 1, 0.588235, 0, 1 ) ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("uranus/bg:visible")
+tracks/19/path = NodePath("saturn/symbol:modulate")
 tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
 tracks/19/keys = {
-"cont": false,
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ true ]
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("uranus/symbol:visibility/opacity")
+tracks/20/path = NodePath("jupiter:self_modulate")
 tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
 tracks/20/keys = {
-"cont": true,
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ 1.0 ]
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ) ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("neptune:visibility/self_opacity")
+tracks/21/path = NodePath("jupiter/symbol:modulate")
 tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
 tracks/21/keys = {
-"cont": true,
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ 1.0 ]
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/22/type = "value"
-tracks/22/path = NodePath("neptune/bg:visible")
+tracks/22/path = NodePath("uranus:self_modulate")
 tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
 tracks/22/keys = {
-"cont": false,
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ true ]
+"update": 0,
+"values": [ Color( 0, 0.760784, 0.509804, 1 ) ]
 }
 tracks/23/type = "value"
-tracks/23/path = NodePath("neptune/symbol:visibility/opacity")
+tracks/23/path = NodePath("uranus/symbol:modulate")
 tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
 tracks/23/keys = {
-"cont": true,
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ 1.0 ]
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/24/type = "value"
-tracks/24/path = NodePath("moon:visibility/self_opacity")
+tracks/24/path = NodePath("neptune:self_modulate")
 tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
 tracks/24/keys = {
-"cont": true,
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ 1.0 ]
+"update": 0,
+"values": [ Color( 0, 0.313726, 0.760784, 1 ) ]
 }
 tracks/25/type = "value"
-tracks/25/path = NodePath("moon/bg:visible")
+tracks/25/path = NodePath("neptune/symbol:modulate")
 tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
 tracks/25/keys = {
-"cont": false,
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ true ]
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/26/type = "value"
-tracks/26/path = NodePath("moon/symbol:visibility/opacity")
+tracks/26/path = NodePath("moon:self_modulate")
 tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
 tracks/26/keys = {
-"cont": true,
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ 1.0 ]
+"update": 0,
+"values": [ Color( 1, 0.941176, 0.470588, 1 ) ]
 }
 tracks/27/type = "value"
-tracks/27/path = NodePath("mercury:visibility/self_opacity")
+tracks/27/path = NodePath("moon/symbol:modulate")
 tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
 tracks/27/keys = {
-"cont": true,
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ 1.0 ]
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/28/type = "value"
-tracks/28/path = NodePath("mercury/bg:visible")
+tracks/28/path = NodePath("mercury:self_modulate")
 tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
 tracks/28/keys = {
-"cont": false,
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ true ]
+"update": 0,
+"values": [ Color( 0.666667, 0, 1, 1 ) ]
 }
 tracks/29/type = "value"
-tracks/29/path = NodePath("mercury/symbol:visibility/opacity")
+tracks/29/path = NodePath("mercury/symbol:modulate")
 tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
 tracks/29/keys = {
-"cont": true,
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ 1.0 ]
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="orbs" type="Node2D"]
+[node name="orbs" type="Node2D" index="0"]
 
-
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="Sprite" parent="." index="0"]
 
 visible = false
 position = Vector2( -320, -267 )
 texture = ExtResource( 1 )
 centered = false
 
-[node name="mercury" type="Sprite" parent="."]
+[node name="mercury" type="Sprite" parent="." index="1"]
 
-visibility/self_opacity = 0.0
+self_modulate = Color( 0.666667, 0, 1, 1 )
 position = Vector2( -42, 160 )
 texture = ExtResource( 2 )
 centered = false
-self_modulate = Color( 0.666667, 0, 1, 1 )
+_sections_unfolded = [ "Visibility" ]
 
-[node name="flame" type="Particles2D" parent="mercury"]
+[node name="flame" type="Particles2D" parent="mercury" index="0"]
 
-visibility/opacity = 0.25
-visibility/blend_mode = 1
+modulate = Color( 1, 1, 1, 0.25 )
+material = SubResource( 1 )
 position = Vector2( 80, 36 )
-rotation_deg = 90.0
+rotation = -1.5708
 scale = Vector2( 3, 3 )
-z = 3
-config/amount = 64
-config/lifetime = 1.0
-config/time_scale = 2.0
-config/emitting = false
-config/half_extents = Vector2( 24, 12 )
-config/local_space = false
-config/texture = ExtResource( 3 )
-params/direction = 0.0
-params/spread = 0.0
-params/linear_velocity = 0.0
-params/spin_velocity = 0.0
-params/orbit_velocity = 0.0
-params/gravity_direction = 180.0
-params/gravity_strength = 96.0
-params/radial_accel = 0.0
-params/tangential_accel = 0.0
-params/damping = 0.0
-params/initial_angle = 180.0
-params/initial_size = 2.0
-params/final_size = 0.5
-params/hue_variation = 0.0
-params/anim_speed_scale = 1.0
-params/anim_initial_pos = 0.0
-randomness/initial_angle = 1.0
-color/color_ramp = SubResource( 1 )
+z_index = 3
+emitting = false
+amount = 64
+lifetime = 1.0
+one_shot = true
+preprocess = 0.0
+speed_scale = 2.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 6 )
+texture = ExtResource( 3 )
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Transform", "Visibility", "Z Index" ]
 
-[node name="bg" type="Sprite" parent="mercury"]
+[node name="bg" type="Sprite" parent="mercury" index="1"]
 
-visible = false
+self_modulate = Color( 0.666667, 0, 1, 1 )
 texture = ExtResource( 2 )
 centered = false
-self_modulate = Color( 0.666667, 0, 1, 1 )
 
-[node name="symbol" type="Sprite" parent="mercury"]
+[node name="symbol" type="Sprite" parent="mercury" index="2"]
 
-visibility/opacity = 0.0
 texture = ExtResource( 4 )
 centered = false
+_sections_unfolded = [ "Visibility" ]
 
-[node name="moon" type="Sprite" parent="."]
+[node name="moon" type="Sprite" parent="." index="2"]
 
-visibility/self_opacity = 0.0
+editor/display_folded = true
+self_modulate = Color( 1, 0.941176, 0.470588, 1 )
 position = Vector2( -80, -300 )
 texture = ExtResource( 2 )
 centered = false
-self_modulate = Color( 1, 0.941176, 0.470588, 1 )
-__meta__ = {
-"_editor_collapsed": true
-}
+_sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="flame" type="Particles2D" parent="moon"]
+[node name="flame" type="Particles2D" parent="moon" index="0"]
 
-visibility/opacity = 0.25
-visibility/blend_mode = 1
+modulate = Color( 1, 1, 1, 0.25 )
+material = SubResource( 7 )
 position = Vector2( 79, 37 )
-rotation_deg = -270.0
+rotation = 4.71239
 scale = Vector2( 3, 3 )
-z = 3
-config/amount = 64
-config/lifetime = 1.0
-config/time_scale = 2.0
-config/emitting = false
-config/half_extents = Vector2( 24, 12 )
-config/local_space = false
-config/texture = ExtResource( 3 )
-params/direction = 0.0
-params/spread = 0.0
-params/linear_velocity = 0.0
-params/spin_velocity = 0.0
-params/orbit_velocity = 0.0
-params/gravity_direction = 180.0
-params/gravity_strength = 96.0
-params/radial_accel = 0.0
-params/tangential_accel = 0.0
-params/damping = 0.0
-params/initial_angle = 180.0
-params/initial_size = 2.0
-params/final_size = 0.5
-params/hue_variation = 0.0
-params/anim_speed_scale = 1.0
-params/anim_initial_pos = 0.0
-randomness/initial_angle = 1.0
-color/color_ramp = SubResource( 2 )
+z_index = 3
+emitting = false
+amount = 64
+lifetime = 1.0
+one_shot = true
+preprocess = 0.0
+speed_scale = 2.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 10 )
+texture = ExtResource( 3 )
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Transform", "Visibility", "Z Index" ]
 
-[node name="bg" type="Sprite" parent="moon"]
+[node name="bg" type="Sprite" parent="moon" index="1"]
 
-visible = false
+self_modulate = Color( 1, 0.941176, 0.470588, 1 )
 texture = ExtResource( 2 )
 centered = false
-self_modulate = Color( 1, 0.941176, 0.470588, 1 )
 
-[node name="symbol" type="Sprite" parent="moon"]
+[node name="symbol" type="Sprite" parent="moon" index="2"]
 
-visibility/opacity = 0.0
 texture = ExtResource( 5 )
 centered = false
+_sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="neptune" type="Sprite" parent="."]
+[node name="neptune" type="Sprite" parent="." index="3"]
 
-visibility/self_opacity = 0.0
+editor/display_folded = true
+self_modulate = Color( 0, 0.313726, 0.760784, 1 )
 position = Vector2( -302, -175 )
 texture = ExtResource( 2 )
 centered = false
-self_modulate = Color( 0, 0.313726, 0.760784, 1 )
-__meta__ = {
-"_editor_collapsed": true
-}
+_sections_unfolded = [ "Visibility" ]
 
-[node name="flame" type="Particles2D" parent="neptune"]
+[node name="flame" type="Particles2D" parent="neptune" index="0"]
 
-visibility/opacity = 0.25
-visibility/blend_mode = 1
+modulate = Color( 1, 1, 1, 0.25 )
+material = SubResource( 11 )
 position = Vector2( 80, 32 )
-rotation_deg = 90.0
+rotation = -1.5708
 scale = Vector2( 3, 3 )
-z = 3
-config/amount = 64
-config/lifetime = 1.0
-config/time_scale = 2.0
-config/emitting = false
-config/half_extents = Vector2( 24, 12 )
-config/local_space = false
-config/texture = ExtResource( 3 )
-params/direction = 0.0
-params/spread = 0.0
-params/linear_velocity = 0.0
-params/spin_velocity = 0.0
-params/orbit_velocity = 0.0
-params/gravity_direction = 180.0
-params/gravity_strength = 96.0
-params/radial_accel = 0.0
-params/tangential_accel = 0.0
-params/damping = 0.0
-params/initial_angle = 180.0
-params/initial_size = 2.0
-params/final_size = 0.5
-params/hue_variation = 0.0
-params/anim_speed_scale = 1.0
-params/anim_initial_pos = 0.0
-randomness/initial_angle = 1.0
-color/color_ramp = SubResource( 3 )
+z_index = 3
+emitting = false
+amount = 64
+lifetime = 1.0
+one_shot = true
+preprocess = 0.0
+speed_scale = 2.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 14 )
+texture = ExtResource( 3 )
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Transform", "Visibility", "Z Index" ]
 
-[node name="bg" type="Sprite" parent="neptune"]
+[node name="bg" type="Sprite" parent="neptune" index="1"]
 
-visible = false
+self_modulate = Color( 0, 0.313726, 0.760784, 1 )
 texture = ExtResource( 2 )
 centered = false
-self_modulate = Color( 0, 0.313726, 0.760784, 1 )
 
-[node name="symbol" type="Sprite" parent="neptune"]
+[node name="symbol" type="Sprite" parent="neptune" index="2"]
 
-visibility/opacity = 0.0
 texture = ExtResource( 6 )
 centered = false
+_sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="uranus" type="Sprite" parent="."]
+[node name="uranus" type="Sprite" parent="." index="4"]
 
-visibility/self_opacity = 0.0
+editor/display_folded = true
+self_modulate = Color( 0, 0.760784, 0.509804, 1 )
 position = Vector2( 128, -212 )
 texture = ExtResource( 2 )
 centered = false
-self_modulate = Color( 0, 0.760784, 0.509804, 1 )
-__meta__ = {
-"_editor_collapsed": true
-}
+_sections_unfolded = [ "Visibility" ]
 
-[node name="flame" type="Particles2D" parent="uranus"]
+[node name="flame" type="Particles2D" parent="uranus" index="0"]
 
-visibility/opacity = 0.25
-visibility/blend_mode = 1
+modulate = Color( 1, 1, 1, 0.25 )
+material = SubResource( 15 )
 position = Vector2( 80, 36 )
-rotation_deg = 90.0
+rotation = -1.5708
 scale = Vector2( 3, 3 )
-z = 3
-config/amount = 64
-config/lifetime = 1.0
-config/time_scale = 2.0
-config/emitting = false
-config/half_extents = Vector2( 24, 12 )
-config/local_space = false
-config/texture = ExtResource( 3 )
-params/direction = 0.0
-params/spread = 0.0
-params/linear_velocity = 0.0
-params/spin_velocity = 0.0
-params/orbit_velocity = 0.0
-params/gravity_direction = 180.0
-params/gravity_strength = 96.0
-params/radial_accel = 0.0
-params/tangential_accel = 0.0
-params/damping = 0.0
-params/initial_angle = 180.0
-params/initial_size = 2.0
-params/final_size = 0.5
-params/hue_variation = 0.0
-params/anim_speed_scale = 1.0
-params/anim_initial_pos = 0.0
-randomness/initial_angle = 1.0
-color/color_ramp = SubResource( 4 )
+z_index = 3
+emitting = false
+amount = 64
+lifetime = 1.0
+one_shot = true
+preprocess = 0.0
+speed_scale = 2.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 18 )
+texture = ExtResource( 3 )
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Transform", "Visibility", "Z Index" ]
 
-[node name="bg" type="Sprite" parent="uranus"]
+[node name="bg" type="Sprite" parent="uranus" index="1"]
 
-visible = false
+self_modulate = Color( 0, 0.760784, 0.509804, 1 )
 texture = ExtResource( 2 )
 centered = false
-self_modulate = Color( 0, 0.760784, 0.509804, 1 )
 
-[node name="symbol" type="Sprite" parent="uranus"]
+[node name="symbol" type="Sprite" parent="uranus" index="2"]
 
-visibility/opacity = 0.0
 texture = ExtResource( 7 )
 centered = false
+_sections_unfolded = [ "Visibility" ]
 
-[node name="jupiter" type="Sprite" parent="."]
+[node name="jupiter" type="Sprite" parent="." index="5"]
 
-visibility/self_opacity = 0.0
+editor/display_folded = true
+self_modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 110, 30 )
 texture = ExtResource( 2 )
 centered = false
-self_modulate = Color( 1, 0, 0, 1 )
-__meta__ = {
-"_editor_collapsed": true
-}
+_sections_unfolded = [ "Visibility" ]
 
-[node name="flame" type="Particles2D" parent="jupiter"]
+[node name="flame" type="Particles2D" parent="jupiter" index="0"]
 
-visibility/opacity = 0.25
-visibility/blend_mode = 1
+modulate = Color( 1, 1, 1, 0.25 )
+material = SubResource( 21 )
 position = Vector2( 80, 40 )
-rotation_deg = 90.0
+rotation = -1.5708
 scale = Vector2( 3, 3 )
-z = 3
-config/amount = 64
-config/lifetime = 1.0
-config/time_scale = 2.0
-config/emitting = false
-config/half_extents = Vector2( 24, 12 )
-config/local_space = false
-config/texture = ExtResource( 3 )
-params/direction = 0.0
-params/spread = 0.0
-params/linear_velocity = 0.0
-params/spin_velocity = 0.0
-params/orbit_velocity = 0.0
-params/gravity_direction = 180.0
-params/gravity_strength = 96.0
-params/radial_accel = 0.0
-params/tangential_accel = 0.0
-params/damping = 0.0
-params/initial_angle = 180.0
-params/initial_size = 2.0
-params/final_size = 0.5
-params/hue_variation = 0.0
-params/anim_speed_scale = 1.0
-params/anim_initial_pos = 0.0
-randomness/initial_angle = 1.0
-color/color_ramp = SubResource( 5 )
+z_index = 3
+emitting = false
+amount = 64
+lifetime = 1.0
+one_shot = true
+preprocess = 0.0
+speed_scale = 2.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 24 )
+texture = ExtResource( 3 )
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Transform", "Visibility", "Z Index" ]
 
-[node name="bg" type="Sprite" parent="jupiter"]
+[node name="bg" type="Sprite" parent="jupiter" index="1"]
 
-visible = false
+self_modulate = Color( 1, 0, 0, 1 )
 texture = ExtResource( 2 )
 centered = false
-self_modulate = Color( 1, 0, 0, 1 )
 
-[node name="symbol" type="Sprite" parent="jupiter"]
+[node name="symbol" type="Sprite" parent="jupiter" index="2"]
 
-visibility/opacity = 0.0
 texture = ExtResource( 8 )
 centered = false
+_sections_unfolded = [ "Visibility" ]
 
-[node name="saturn" type="Sprite" parent="."]
+[node name="saturn" type="Sprite" parent="." index="6"]
 
-visibility/self_opacity = 0.0
+editor/display_folded = true
+self_modulate = Color( 1, 0.588235, 0, 1 )
 position = Vector2( -268, 28 )
 texture = ExtResource( 2 )
 centered = false
-self_modulate = Color( 1, 0.588235, 0, 1 )
-__meta__ = {
-"_editor_collapsed": true
-}
+_sections_unfolded = [ "Visibility" ]
 
-[node name="flame" type="Particles2D" parent="saturn"]
+[node name="flame" type="Particles2D" parent="saturn" index="0"]
 
-visibility/opacity = 0.25
-visibility/blend_mode = 1
+modulate = Color( 1, 1, 1, 0.25 )
+material = SubResource( 25 )
 position = Vector2( 80, 42 )
-rotation_deg = 90.0
+rotation = -1.5708
 scale = Vector2( 3, 3 )
-z = 3
-config/amount = 64
-config/lifetime = 1.0
-config/time_scale = 2.0
-config/emitting = false
-config/half_extents = Vector2( 24, 12 )
-config/local_space = false
-config/texture = ExtResource( 3 )
-params/direction = 0.0
-params/spread = 0.0
-params/linear_velocity = 0.0
-params/spin_velocity = 0.0
-params/orbit_velocity = 0.0
-params/gravity_direction = 180.0
-params/gravity_strength = 96.0
-params/radial_accel = 0.0
-params/tangential_accel = 0.0
-params/damping = 0.0
-params/initial_angle = 180.0
-params/initial_size = 2.0
-params/final_size = 0.5
-params/hue_variation = 0.0
-params/anim_speed_scale = 1.0
-params/anim_initial_pos = 0.0
-randomness/initial_angle = 1.0
-color/color_ramp = SubResource( 6 )
+z_index = 3
+emitting = false
+amount = 64
+lifetime = 1.0
+one_shot = true
+preprocess = 0.0
+speed_scale = 2.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 28 )
+texture = ExtResource( 3 )
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Transform", "Visibility", "Z Index" ]
 
-[node name="bg" type="Sprite" parent="saturn"]
+[node name="bg" type="Sprite" parent="saturn" index="1"]
 
-visible = false
+self_modulate = Color( 1, 0.588235, 0, 1 )
 texture = ExtResource( 2 )
 centered = false
-self_modulate = Color( 1, 0.588235, 0, 1 )
 
-[node name="symbol" type="Sprite" parent="saturn"]
+[node name="symbol" type="Sprite" parent="saturn" index="2"]
 
-visibility/opacity = 0.0
 texture = ExtResource( 9 )
 centered = false
+_sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
 
+root_node = NodePath("..")
+autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-root_node = NodePath("..")
-anims/hide = SubResource( 7 )
-anims/show = SubResource( 8 )
-playback/active = true
-playback/speed = 1.0
+playback_speed = 1.0
+anims/hide = SubResource( 19 )
+anims/show = SubResource( 20 )
 blend_times = [  ]
-autoplay = ""
+
+

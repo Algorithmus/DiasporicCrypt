@@ -17,23 +17,24 @@
 [ext_resource path="res://gui/theme/slidergrabber_active.png" type="Texture" id=15]
 [ext_resource path="res://gui/theme/slider.png" type="Texture" id=16]
 [ext_resource path="res://gui/theme/scrollgrabber.png" type="Texture" id=17]
-[ext_resource path="res://gui/theme/scrollbar.png" type="Texture" id=18]
-[ext_resource path="res://gui/worldmap/typelistfilter.tscn" type="PackedScene" id=19]
-[ext_resource path="res://gui/worldmap/shield.png" type="Texture" id=20]
-[ext_resource path="res://gui/menu/titlebg.tscn" type="PackedScene" id=21]
-[ext_resource path="res://gui/worldmap/icons/quest.png" type="Texture" id=22]
-[ext_resource path="res://gui/menu/titleframe.png" type="Texture" id=23]
-[ext_resource path="res://gui/fonts/L-24.font" type="BitmapFont" id=24]
-[ext_resource path="res://gui/menu/tabs/map.png" type="Texture" id=25]
-[ext_resource path="res://gui/worldmap/tag.tscn" type="PackedScene" id=26]
-[ext_resource path="res://gui/worldmap/icons/complete.png" type="Texture" id=27]
-[ext_resource path="res://gui/menu/scrollscroll.png" type="Texture" id=28]
-[ext_resource path="res://gui/theme/scrollbar_scrolls.png" type="Texture" id=29]
-[ext_resource path="res://gui/fonts/S-13-scroll.font" type="BitmapFont" id=30]
-[ext_resource path="res://gui/fonts/L-24-Keyboard.font" type="BitmapFont" id=31]
-[ext_resource path="res://gui/menu/icons/gold.png" type="Texture" id=32]
-[ext_resource path="res://gui/menu/icons/special.png" type="Texture" id=33]
-[ext_resource path="res://gui/menu/textitem.tscn" type="PackedScene" id=34]
+[ext_resource path="res://gui/theme/scrollgrabber_active.png" type="Texture" id=18]
+[ext_resource path="res://gui/theme/scrollbar.png" type="Texture" id=19]
+[ext_resource path="res://gui/worldmap/typelistfilter.tscn" type="PackedScene" id=20]
+[ext_resource path="res://gui/worldmap/shield.png" type="Texture" id=21]
+[ext_resource path="res://gui/menu/titlebg.tscn" type="PackedScene" id=22]
+[ext_resource path="res://gui/worldmap/icons/quest.png" type="Texture" id=23]
+[ext_resource path="res://gui/menu/titleframe.png" type="Texture" id=24]
+[ext_resource path="res://gui/fonts/L-24.font" type="BitmapFont" id=25]
+[ext_resource path="res://gui/menu/tabs/map.png" type="Texture" id=26]
+[ext_resource path="res://gui/worldmap/tag.tscn" type="PackedScene" id=27]
+[ext_resource path="res://gui/worldmap/icons/complete.png" type="Texture" id=28]
+[ext_resource path="res://gui/menu/scrollscroll.png" type="Texture" id=29]
+[ext_resource path="res://gui/theme/scrollbar_scrolls.png" type="Texture" id=30]
+[ext_resource path="res://gui/fonts/S-13-scroll.font" type="BitmapFont" id=31]
+[ext_resource path="res://gui/fonts/L-24-Keyboard.font" type="BitmapFont" id=32]
+[ext_resource path="res://gui/menu/icons/gold.png" type="Texture" id=33]
+[ext_resource path="res://gui/menu/icons/special.png" type="Texture" id=34]
+[ext_resource path="res://gui/menu/textitem.tscn" type="PackedScene" id=35]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -119,15 +120,45 @@ _data = [ Vector2( 0, 0 ) ]
 flags = 0
 _data = [ Vector2( 0, 0 ) ]
 
-[sub_resource type="LargeTexture" id=10]
+[sub_resource type="StyleBoxTexture" id=10]
 
-flags = 0
-_data = [ Vector2( 0, 0 ) ]
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 28, 61 )
+margin_left = 0.0
+margin_right = 28.0
+margin_top = 30.0
+margin_bottom = 30.0
+expand_margin_left = 8.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+_sections_unfolded = [ "Expand Margin", "Margin" ]
 
-[sub_resource type="LargeTexture" id=11]
+[sub_resource type="StyleBoxTexture" id=11]
 
-flags = 0
-_data = [ Vector2( 0, 0 ) ]
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 28, 61 )
+margin_left = 0.0
+margin_right = 28.0
+margin_top = 30.0
+margin_bottom = 30.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+_sections_unfolded = [ "Margin" ]
 
 [sub_resource type="StyleBoxTexture" id=12]
 
@@ -152,9 +183,9 @@ draw_center = true
 
 content_margin_left = -1.0
 content_margin_right = -1.0
-content_margin_top = 0.0
-content_margin_bottom = 30.0
-texture = ExtResource( 17 )
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 18 )
 region_rect = Rect2( 0, 0, 28, 61 )
 margin_left = 0.0
 margin_right = 28.0
@@ -166,6 +197,7 @@ expand_margin_top = 0.0
 expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
+_sections_unfolded = [ "Margin" ]
 
 [sub_resource type="StyleBoxTexture" id=14]
 
@@ -173,7 +205,7 @@ content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
-texture = ExtResource( 18 )
+texture = ExtResource( 19 )
 region_rect = Rect2( 0, 0, 18, 64 )
 margin_left = 28.0
 margin_right = 0.0
@@ -185,27 +217,9 @@ expand_margin_top = 0.0
 expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
+_sections_unfolded = [ "Margin" ]
 
-[sub_resource type="StyleBoxTexture" id=15]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-texture = ExtResource( 18 )
-region_rect = Rect2( 0, 0, 18, 64 )
-margin_left = 18.0
-margin_right = 0.0
-margin_top = 32.0
-margin_bottom = 32.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-modulate_color = Color( 1, 1, 1, 1 )
-draw_center = true
-
-[sub_resource type="Theme" id=16]
+[sub_resource type="Theme" id=15]
 
 default_font = ExtResource( 12 )
 HSlider/icons/grabber = ExtResource( 14 )
@@ -214,16 +228,21 @@ HSlider/icons/tick = SubResource( 4 )
 HSlider/styles/focus = SubResource( 5 )
 HSlider/styles/grabber_hilite = SubResource( 6 )
 HSlider/styles/slider = SubResource( 7 )
-VScrollBar/icons/decrement = SubResource( 8 )
-VScrollBar/icons/decrement_hilite = SubResource( 9 )
-VScrollBar/icons/increment = SubResource( 10 )
-VScrollBar/icons/increment_hilite = SubResource( 11 )
-VScrollBar/styles/grabber = SubResource( 12 )
-VScrollBar/styles/grabber_hilite = SubResource( 13 )
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/decrement_hilite = SubResource( 8 )
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/icons/increment_hilite = SubResource( 9 )
+VScrollBar/styles/grabber = SubResource( 10 )
+VScrollBar/styles/grabber_highlight = SubResource( 11 )
+VScrollBar/styles/grabber_hilite = SubResource( 12 )
+VScrollBar/styles/grabber_pressed = SubResource( 13 )
 VScrollBar/styles/scroll = SubResource( 14 )
-VScrollBar/styles/scroll_focus = SubResource( 15 )
+VScrollBar/styles/scroll_focus = null
+_sections_unfolded = [ "VScrollBar", "VScrollBar/icons", "VScrollBar/styles" ]
 
-[sub_resource type="ImageTexture" id=18]
+[sub_resource type="ImageTexture" id=16]
 
 flags = 7
 storage = 0
@@ -231,16 +250,16 @@ lossy_quality = 0.7
 flags = 7
 size = Vector2( 0, 0 )
 
-[sub_resource type="BitmapFont" id=19]
+[sub_resource type="BitmapFont" id=17]
 
-textures = [ SubResource( 18 ) ]
-chars = PoolIntArray( 32, 0, 0, 0, 0, 0, 0, 11, 3, 160, 0, 0, 0, 0, 0, 0, 11, 3, 96, 0, 109, 104, 4, 2, 0, 1, 4, 64, 0, 35, 2, 12, 12, 0, 2, 12, 192, 0, 94, 2, 9, 12, 0, -1, 8, 224, 0, 222, 75, 7, 10, 0, 1, 7, 97, 0, 244, 51, 7, 7, 0, 4, 7, 161, 0, 243, 93, 3, 9, 0, 4, 3, 65, 0, 224, 2, 9, 9, 0, 2, 8, 193, 0, 107, 2, 9, 12, 0, -1, 8, 225, 0, 233, 66, 7, 10, 0, 1, 7, 33, 0, 64, 107, 2, 9, 1, 2, 3, 34, 0, 117, 104, 4, 4, 0, 1, 4, 66, 0, 24, 58, 7, 9, 1, 2, 8, 162, 0, 200, 57, 7, 11, 0, 2, 7, 194, 0, 120, 2, 9, 12, 0, -1, 8, 226, 0, 244, 62, 7, 10, 0, 1, 7, 98, 0, 151, 47, 7, 10, 0, 1, 7, 99, 0, 24, 71, 7, 7, 0, 4, 7, 163, 0, 140, 17, 8, 9, 0, 2, 8, 67, 0, 26, 45, 8, 9, 0, 2, 8, 227, 0, 211, 57, 7, 11, 0, 0, 7, 195, 0, 28, 28, 9, 13, 0, -2, 8, 35, 0, 38, 45, 8, 9, 0, 2, 8, 68, 0, 46, 58, 7, 9, 1, 2, 9, 196, 0, 172, 2, 9, 12, 0, -1, 8, 36, 0, 162, 47, 7, 13, 0, 0, 7, 164, 0, 159, 2, 9, 10, 0, 2, 9, 228, 0, 13, 87, 7, 10, 0, 1, 7, 100, 0, 118, 44, 7, 10, 0, 1, 7, 101, 0, 35, 71, 7, 7, 0, 4, 7, 229, 0, 13, 71, 7, 12, 0, -1, 7, 197, 0, 67, 28, 9, 14, 0, -3, 8, 165, 0, 176, 28, 8, 9, 0, 2, 8, 69, 0, 112, 61, 7, 9, 1, 2, 8, 37, 0, 211, 15, 9, 9, 0, 2, 10, 230, 0, 51, 13, 11, 7, 0, 4, 11, 102, 0, 47, 96, 5, 10, 0, 1, 4, 166, 0, 9, 117, 3, 11, 0, 2, 3, 198, 0, 2, 2, 13, 9, -1, 2, 12, 70, 0, 101, 61, 7, 9, 1, 2, 8, 38, 0, 14, 45, 8, 9, 0, 2, 8, 39, 0, 46, 110, 2, 4, 0, 1, 2, 103, 0, 189, 57, 7, 10, 0, 4, 7, 167, 0, 200, 28, 8, 12, 0, 2, 8, 199, 0, 188, 28, 8, 12, 0, 2, 8, 231, 0, 24, 82, 7, 10, 0, 4, 7, 71, 0, 164, 18, 8, 9, 0, 2, 9, 168, 0, 38, 96, 5, 2, 1, 1, 6, 104, 0, 167, 64, 7, 10, 0, 1, 7, 200, 0, 79, 75, 7, 12, 1, -1, 8, 40, 0, 83, 105, 5, 13, 0, 1, 4, 232, 0, 2, 75, 7, 10, 0, 1, 7, 72, 0, 152, 30, 8, 9, 1, 2, 9, 105, 0, 16, 117, 2, 11, 1, 0, 3, 201, 0, 90, 74, 7, 12, 1, -1, 8, 41, 0, 173, 103, 4, 13, 0, 1, 4, 233, 0, 211, 72, 7, 10, 0, 1, 7, 169, 0, 66, 2, 10, 9, 0, 2, 10, 73, 0, 58, 107, 2, 9, 1, 2, 4, 170, 0, 65, 97, 5, 5, 0, 2, 6, 42, 0, 123, 83, 6, 6, 0, 2, 6, 202, 0, 101, 74, 7, 12, 1, -1, 8, 106, 0, 221, 102, 4, 14, -1, 0, 3, 234, 0, 200, 72, 7, 10, 0, 1, 7, 74, 0, 90, 61, 7, 9, 0, 2, 7, 171, 0, 233, 80, 6, 5, 0, 5, 6, 43, 0, 74, 46, 7, 8, 0, 3, 7, 107, 0, 145, 61, 7, 10, 0, 1, 7, 203, 0, 112, 74, 7, 12, 1, -1, 8, 235, 0, 189, 71, 7, 10, 0, 1, 7, 75, 0, 152, 17, 8, 9, 1, 2, 8, 172, 0, 222, 68, 7, 3, 0, 6, 7, 44, 0, 52, 110, 2, 4, 0, 10, 3, 108, 0, 40, 102, 2, 10, 1, 1, 3, 204, 0, 213, 102, 4, 12, -1, -1, 4, 236, 0, 141, 97, 4, 10, -1, 1, 3, 76, 0, 243, 80, 6, 9, 1, 2, 7, 173, 0, 125, 98, 4, 1, 0, 7, 4, 45, 0, 125, 93, 4, 1, 0, 7, 4, 109, 0, 51, 2, 11, 7, 0, 4, 11, 205, 0, 181, 103, 4, 12, 0, -1, 4, 237, 0, 149, 94, 4, 10, 0, 1, 3, 77, 0, 80, 2, 10, 9, 1, 2, 11, 46, 0, 34, 112, 2, 2, 1, 9, 3, 110, 0, 57, 72, 7, 7, 0, 4, 7, 206, 0, 133, 97, 4, 12, 0, -1, 4, 238, 0, 157, 103, 4, 10, 0, 1, 3, 174, 0, 66, 15, 10, 9, 0, 2, 10, 78, 0, 128, 31, 8, 9, 1, 2, 9, 175, 0, 143, 87, 6, 1, 0, 2, 6, 111, 0, 68, 72, 7, 7, 0, 4, 7, 47, 0, 163, 89, 6, 10, 0, 2, 5, 207, 0, 29, 96, 5, 12, 0, -1, 4, 239, 0, 92, 104, 5, 10, -1, 1, 3, 79, 0, 198, 15, 9, 9, 0, 2, 9, 176, 0, 74, 105, 5, 4, 0, 2, 5, 112, 0, 112, 90, 7, 10, 0, 4, 7, 240, 0, 134, 72, 7, 10, 0, 1, 8, 208, 0, 185, 2, 9, 9, 0, 2, 9, 80, 0, 68, 59, 7, 9, 1, 2, 8, 48, 0, 35, 58, 7, 9, 0, 2, 7, 177, 0, 145, 75, 7, 8, 0, 3, 7, 113, 0, 101, 90, 7, 10, 0, 4, 7, 81, 0, 133, 2, 9, 11, 0, 2, 9, 241, 0, 233, 51, 7, 11, 0, 0, 7, 209, 0, 140, 30, 8, 13, 1, -2, 9, 49, 0, 189, 100, 4, 9, 1, 2, 7, 178, 0, 20, 101, 5, 6, 0, 2, 6, 114, 0, 2, 89, 5, 7, 0, 4, 4, 210, 0, 54, 28, 9, 12, 0, -1, 9, 242, 0, 173, 47, 7, 10, 0, 1, 7, 82, 0, 57, 59, 7, 9, 1, 2, 9, 50, 0, 13, 58, 7, 9, 0, 2, 7, 179, 0, 56, 97, 5, 6, 0, 2, 6, 115, 0, 123, 72, 7, 7, 0, 4, 7, 211, 0, 41, 24, 9, 12, 0, -1, 9, 243, 0, 140, 47, 7, 10, 0, 1, 7, 83, 0, 104, 31, 8, 9, 0, 2, 8, 51, 0, 2, 47, 7, 9, 0, 2, 7, 180, 0, 101, 104, 4, 2, 0, 1, 4, 116, 0, 205, 99, 4, 9, 0, 2, 5, 244, 0, 156, 64, 7, 10, 0, 1, 7, 212, 0, 2, 15, 9, 12, 0, -1, 9, 84, 0, 104, 18, 8, 9, 0, 2, 8, 52, 0, 224, 22, 8, 9, 0, 2, 7, 117, 0, 46, 71, 7, 7, 0, 4, 7, 181, 0, 79, 91, 7, 10, 0, 4, 7, 245, 0, 2, 60, 7, 11, 0, 0, 7, 213, 0, 15, 28, 9, 13, 0, -2, 9, 85, 0, 92, 26, 8, 9, 0, 2, 9, 53, 0, 239, 38, 7, 9, 0, 2, 7, 118, 0, 222, 57, 7, 7, 0, 4, 7, 246, 0, 123, 58, 7, 10, 0, 1, 7, 214, 0, 237, 2, 9, 12, 0, -1, 9, 182, 0, 203, 86, 6, 9, 0, 2, 6, 86, 0, 211, 2, 9, 9, 0, 2, 8, 54, 0, 228, 38, 7, 9, 0, 2, 7, 183, 0, 22, 111, 2, 2, 1, 6, 3, 215, 0, 178, 72, 7, 6, 0, 4, 7, 119, 0, 80, 15, 10, 7, 0, 4, 10, 247, 0, 156, 78, 7, 7, 0, 3, 7, 55, 0, 217, 44, 7, 9, 0, 2, 7, 87, 0, 19, 15, 12, 9, 0, 2, 11, 184, 0, 2, 100, 3, 3, 0, 11, 3, 120, 0, 178, 61, 7, 7, 0, 4, 7, 56, 0, 206, 44, 7, 9, 0, 2, 7, 216, 0, 146, 2, 9, 11, 0, 1, 9, 248, 0, 129, 44, 7, 9, 0, 3, 7, 88, 0, 62, 46, 8, 9, 0, 2, 8, 185, 0, 236, 98, 3, 6, 0, 2, 4, 89, 0, 80, 26, 8, 9, 0, 2, 8, 57, 0, 195, 44, 7, 9, 0, 2, 7, 121, 0, 68, 83, 7, 10, 0, 4, 7, 249, 0, 90, 90, 7, 10, 0, 1, 7, 217, 0, 164, 31, 8, 12, 0, -1, 9, 186, 0, 183, 85, 6, 5, 0, 2, 6, 58, 0, 70, 113, 2, 7, 1, 4, 3, 122, 0, 167, 78, 7, 7, 0, 4, 7, 90, 0, 128, 18, 8, 9, 0, 2, 8, 250, 0, 57, 83, 7, 10, 0, 1, 7, 218, 0, 212, 28, 8, 12, 0, -1, 9, 187, 0, 233, 89, 6, 5, 0, 5, 6, 251, 0, 46, 82, 7, 10, 0, 1, 7, 123, 0, 11, 101, 5, 12, 0, 1, 4, 219, 0, 236, 22, 8, 12, 0, -1, 9, 91, 0, 197, 100, 4, 13, 0, 0, 4, 59, 0, 250, 93, 3, 10, 0, 4, 3, 60, 0, 133, 86, 6, 7, 0, 4, 7, 124, 0, 28, 112, 2, 11, 1, 2, 3, 220, 0, 2, 31, 8, 12, 0, -1, 9, 252, 0, 35, 82, 7, 10, 0, 1, 7, 92, 0, 193, 86, 6, 10, 0, 2, 5, 188, 0, 185, 15, 9, 9, 1, 2, 10, 61, 0, 184, 44, 7, 6, 0, 4, 7, 125, 0, 165, 103, 4, 12, 0, 1, 4, 221, 0, 116, 18, 8, 12, 0, -1, 8, 253, 0, 107, 44, 7, 13, 0, 1, 7, 93, 0, 229, 98, 3, 13, 0, 0, 4, 189, 0, 198, 2, 9, 9, 1, 2, 11, 126, 0, 224, 15, 9, 3, 0, 6, 9, 94, 0, 223, 89, 6, 5, 0, 2, 5, 62, 0, 134, 61, 7, 7, 0, 4, 7, 254, 0, 96, 44, 7, 13, 0, 1, 8, 222, 0, 85, 39, 7, 9, 1, 2, 8, 190, 0, 19, 2, 12, 9, 0, 2, 11, 95, 0, 153, 89, 6, 1, 0, 11, 6, 63, 0, 213, 89, 6, 9, 0, 2, 6, 191, 0, 173, 89, 6, 10, 0, 4, 6, 255, 0, 79, 58, 7, 13, 0, 1, 7, 223, 0, 50, 44, 8, 10, 0, 1, 8 )
+textures = [ SubResource( 16 ) ]
+chars = PoolIntArray( 224, 0, 222, 75, 7, 10, 0, 1, 7, 192, 0, 94, 2, 9, 12, 0, -1, 8, 64, 0, 35, 2, 12, 12, 0, 2, 12, 96, 0, 109, 104, 4, 2, 0, 1, 4, 160, 0, 0, 0, 0, 0, 0, 11, 3, 32, 0, 0, 0, 0, 0, 0, 11, 3, 33, 0, 64, 107, 2, 9, 1, 2, 3, 225, 0, 233, 66, 7, 10, 0, 1, 7, 193, 0, 107, 2, 9, 12, 0, -1, 8, 65, 0, 224, 2, 9, 9, 0, 2, 8, 161, 0, 243, 93, 3, 9, 0, 4, 3, 97, 0, 244, 51, 7, 7, 0, 4, 7, 98, 0, 151, 47, 7, 10, 0, 1, 7, 226, 0, 244, 62, 7, 10, 0, 1, 7, 194, 0, 120, 2, 9, 12, 0, -1, 8, 162, 0, 200, 57, 7, 11, 0, 2, 7, 66, 0, 24, 58, 7, 9, 1, 2, 8, 34, 0, 117, 104, 4, 4, 0, 1, 4, 35, 0, 38, 45, 8, 9, 0, 2, 8, 195, 0, 28, 28, 9, 13, 0, -2, 8, 227, 0, 211, 57, 7, 11, 0, 0, 7, 67, 0, 26, 45, 8, 9, 0, 2, 8, 163, 0, 140, 17, 8, 9, 0, 2, 8, 99, 0, 24, 71, 7, 7, 0, 4, 7, 100, 0, 118, 44, 7, 10, 0, 1, 7, 228, 0, 13, 87, 7, 10, 0, 1, 7, 164, 0, 159, 2, 9, 10, 0, 2, 9, 36, 0, 162, 47, 7, 13, 0, 0, 7, 196, 0, 172, 2, 9, 12, 0, -1, 8, 68, 0, 46, 58, 7, 9, 1, 2, 9, 37, 0, 211, 15, 9, 9, 0, 2, 10, 69, 0, 112, 61, 7, 9, 1, 2, 8, 165, 0, 176, 28, 8, 9, 0, 2, 8, 197, 0, 67, 28, 9, 14, 0, -3, 8, 229, 0, 13, 71, 7, 12, 0, -1, 7, 101, 0, 35, 71, 7, 7, 0, 4, 7, 38, 0, 14, 45, 8, 9, 0, 2, 8, 70, 0, 101, 61, 7, 9, 1, 2, 8, 198, 0, 2, 2, 13, 9, -1, 2, 12, 166, 0, 9, 117, 3, 11, 0, 2, 3, 102, 0, 47, 96, 5, 10, 0, 1, 4, 230, 0, 51, 13, 11, 7, 0, 4, 11, 71, 0, 164, 18, 8, 9, 0, 2, 9, 231, 0, 24, 82, 7, 10, 0, 4, 7, 199, 0, 188, 28, 8, 12, 0, 2, 8, 167, 0, 200, 28, 8, 12, 0, 2, 8, 103, 0, 189, 57, 7, 10, 0, 4, 7, 39, 0, 46, 110, 2, 4, 0, 1, 2, 72, 0, 152, 30, 8, 9, 1, 2, 9, 232, 0, 2, 75, 7, 10, 0, 1, 7, 40, 0, 83, 105, 5, 13, 0, 1, 4, 200, 0, 79, 75, 7, 12, 1, -1, 8, 104, 0, 167, 64, 7, 10, 0, 1, 7, 168, 0, 38, 96, 5, 2, 1, 1, 6, 73, 0, 58, 107, 2, 9, 1, 2, 4, 169, 0, 66, 2, 10, 9, 0, 2, 10, 233, 0, 211, 72, 7, 10, 0, 1, 7, 41, 0, 173, 103, 4, 13, 0, 1, 4, 201, 0, 90, 74, 7, 12, 1, -1, 8, 105, 0, 16, 117, 2, 11, 1, 0, 3, 234, 0, 200, 72, 7, 10, 0, 1, 7, 106, 0, 221, 102, 4, 14, -1, 0, 3, 202, 0, 101, 74, 7, 12, 1, -1, 8, 42, 0, 123, 83, 6, 6, 0, 2, 6, 170, 0, 65, 97, 5, 5, 0, 2, 6, 74, 0, 90, 61, 7, 9, 0, 2, 7, 171, 0, 233, 80, 6, 5, 0, 5, 6, 43, 0, 74, 46, 7, 8, 0, 3, 7, 107, 0, 145, 61, 7, 10, 0, 1, 7, 203, 0, 112, 74, 7, 12, 1, -1, 8, 235, 0, 189, 71, 7, 10, 0, 1, 7, 75, 0, 152, 17, 8, 9, 1, 2, 8, 172, 0, 222, 68, 7, 3, 0, 6, 7, 44, 0, 52, 110, 2, 4, 0, 10, 3, 108, 0, 40, 102, 2, 10, 1, 1, 3, 204, 0, 213, 102, 4, 12, -1, -1, 4, 236, 0, 141, 97, 4, 10, -1, 1, 3, 76, 0, 243, 80, 6, 9, 1, 2, 7, 173, 0, 125, 98, 4, 1, 0, 7, 4, 45, 0, 125, 93, 4, 1, 0, 7, 4, 109, 0, 51, 2, 11, 7, 0, 4, 11, 205, 0, 181, 103, 4, 12, 0, -1, 4, 237, 0, 149, 94, 4, 10, 0, 1, 3, 77, 0, 80, 2, 10, 9, 1, 2, 11, 46, 0, 34, 112, 2, 2, 1, 9, 3, 110, 0, 57, 72, 7, 7, 0, 4, 7, 206, 0, 133, 97, 4, 12, 0, -1, 4, 238, 0, 157, 103, 4, 10, 0, 1, 3, 174, 0, 66, 15, 10, 9, 0, 2, 10, 78, 0, 128, 31, 8, 9, 1, 2, 9, 175, 0, 143, 87, 6, 1, 0, 2, 6, 111, 0, 68, 72, 7, 7, 0, 4, 7, 47, 0, 163, 89, 6, 10, 0, 2, 5, 207, 0, 29, 96, 5, 12, 0, -1, 4, 239, 0, 92, 104, 5, 10, -1, 1, 3, 79, 0, 198, 15, 9, 9, 0, 2, 9, 176, 0, 74, 105, 5, 4, 0, 2, 5, 112, 0, 112, 90, 7, 10, 0, 4, 7, 240, 0, 134, 72, 7, 10, 0, 1, 8, 208, 0, 185, 2, 9, 9, 0, 2, 9, 80, 0, 68, 59, 7, 9, 1, 2, 8, 48, 0, 35, 58, 7, 9, 0, 2, 7, 177, 0, 145, 75, 7, 8, 0, 3, 7, 113, 0, 101, 90, 7, 10, 0, 4, 7, 81, 0, 133, 2, 9, 11, 0, 2, 9, 241, 0, 233, 51, 7, 11, 0, 0, 7, 209, 0, 140, 30, 8, 13, 1, -2, 9, 49, 0, 189, 100, 4, 9, 1, 2, 7, 178, 0, 20, 101, 5, 6, 0, 2, 6, 114, 0, 2, 89, 5, 7, 0, 4, 4, 210, 0, 54, 28, 9, 12, 0, -1, 9, 242, 0, 173, 47, 7, 10, 0, 1, 7, 82, 0, 57, 59, 7, 9, 1, 2, 9, 50, 0, 13, 58, 7, 9, 0, 2, 7, 179, 0, 56, 97, 5, 6, 0, 2, 6, 115, 0, 123, 72, 7, 7, 0, 4, 7, 211, 0, 41, 24, 9, 12, 0, -1, 9, 243, 0, 140, 47, 7, 10, 0, 1, 7, 83, 0, 104, 31, 8, 9, 0, 2, 8, 51, 0, 2, 47, 7, 9, 0, 2, 7, 180, 0, 101, 104, 4, 2, 0, 1, 4, 116, 0, 205, 99, 4, 9, 0, 2, 5, 244, 0, 156, 64, 7, 10, 0, 1, 7, 212, 0, 2, 15, 9, 12, 0, -1, 9, 84, 0, 104, 18, 8, 9, 0, 2, 8, 52, 0, 224, 22, 8, 9, 0, 2, 7, 213, 0, 15, 28, 9, 13, 0, -2, 9, 85, 0, 92, 26, 8, 9, 0, 2, 9, 53, 0, 239, 38, 7, 9, 0, 2, 7, 245, 0, 2, 60, 7, 11, 0, 0, 7, 181, 0, 79, 91, 7, 10, 0, 4, 7, 117, 0, 46, 71, 7, 7, 0, 4, 7, 54, 0, 228, 38, 7, 9, 0, 2, 7, 86, 0, 211, 2, 9, 9, 0, 2, 8, 182, 0, 203, 86, 6, 9, 0, 2, 6, 214, 0, 237, 2, 9, 12, 0, -1, 9, 246, 0, 123, 58, 7, 10, 0, 1, 7, 118, 0, 222, 57, 7, 7, 0, 4, 7, 87, 0, 19, 15, 12, 9, 0, 2, 11, 55, 0, 217, 44, 7, 9, 0, 2, 7, 247, 0, 156, 78, 7, 7, 0, 3, 7, 119, 0, 80, 15, 10, 7, 0, 4, 10, 215, 0, 178, 72, 7, 6, 0, 4, 7, 183, 0, 22, 111, 2, 2, 1, 6, 3, 88, 0, 62, 46, 8, 9, 0, 2, 8, 248, 0, 129, 44, 7, 9, 0, 3, 7, 216, 0, 146, 2, 9, 11, 0, 1, 9, 56, 0, 206, 44, 7, 9, 0, 2, 7, 120, 0, 178, 61, 7, 7, 0, 4, 7, 184, 0, 2, 100, 3, 3, 0, 11, 3, 217, 0, 164, 31, 8, 12, 0, -1, 9, 249, 0, 90, 90, 7, 10, 0, 1, 7, 121, 0, 68, 83, 7, 10, 0, 4, 7, 57, 0, 195, 44, 7, 9, 0, 2, 7, 89, 0, 80, 26, 8, 9, 0, 2, 8, 185, 0, 236, 98, 3, 6, 0, 2, 4, 218, 0, 212, 28, 8, 12, 0, -1, 9, 250, 0, 57, 83, 7, 10, 0, 1, 7, 90, 0, 128, 18, 8, 9, 0, 2, 8, 122, 0, 167, 78, 7, 7, 0, 4, 7, 58, 0, 70, 113, 2, 7, 1, 4, 3, 186, 0, 183, 85, 6, 5, 0, 2, 6, 59, 0, 250, 93, 3, 10, 0, 4, 3, 91, 0, 197, 100, 4, 13, 0, 0, 4, 219, 0, 236, 22, 8, 12, 0, -1, 9, 123, 0, 11, 101, 5, 12, 0, 1, 4, 251, 0, 46, 82, 7, 10, 0, 1, 7, 187, 0, 233, 89, 6, 5, 0, 5, 6, 188, 0, 185, 15, 9, 9, 1, 2, 10, 92, 0, 193, 86, 6, 10, 0, 2, 5, 252, 0, 35, 82, 7, 10, 0, 1, 7, 220, 0, 2, 31, 8, 12, 0, -1, 9, 124, 0, 28, 112, 2, 11, 1, 2, 3, 60, 0, 133, 86, 6, 7, 0, 4, 7, 189, 0, 198, 2, 9, 9, 1, 2, 11, 93, 0, 229, 98, 3, 13, 0, 0, 4, 253, 0, 107, 44, 7, 13, 0, 1, 7, 221, 0, 116, 18, 8, 12, 0, -1, 8, 125, 0, 165, 103, 4, 12, 0, 1, 4, 61, 0, 184, 44, 7, 6, 0, 4, 7, 190, 0, 19, 2, 12, 9, 0, 2, 11, 222, 0, 85, 39, 7, 9, 1, 2, 8, 254, 0, 96, 44, 7, 13, 0, 1, 8, 62, 0, 134, 61, 7, 7, 0, 4, 7, 94, 0, 223, 89, 6, 5, 0, 2, 5, 126, 0, 224, 15, 9, 3, 0, 6, 9, 223, 0, 50, 44, 8, 10, 0, 1, 8, 255, 0, 79, 58, 7, 13, 0, 1, 7, 191, 0, 173, 89, 6, 10, 0, 4, 6, 63, 0, 213, 89, 6, 9, 0, 2, 6, 95, 0, 153, 89, 6, 1, 0, 11, 6 )
 kernings = PoolIntArray(  )
 height = 13.0
 ascent = 11.0
 distance_field = false
 
-[sub_resource type="ImageTexture" id=20]
+[sub_resource type="ImageTexture" id=18]
 
 flags = 4
 storage = 0
@@ -248,13 +267,13 @@ lossy_quality = 0.7
 flags = 4
 size = Vector2( 0, 0 )
 
-[sub_resource type="StyleBoxTexture" id=21]
+[sub_resource type="StyleBoxTexture" id=19]
 
 content_margin_left = 4.0
 content_margin_right = 22.0
 content_margin_top = 4.0
 content_margin_bottom = 5.0
-texture = SubResource( 20 )
+texture = SubResource( 18 )
 margin_left = 5.0
 margin_right = 5.0
 margin_top = 5.0
@@ -266,6 +285,16 @@ expand_margin_bottom = 1.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
+[sub_resource type="LargeTexture" id=20]
+
+flags = 0
+_data = [ Vector2( 0, 0 ) ]
+
+[sub_resource type="LargeTexture" id=21]
+
+flags = 0
+_data = [ Vector2( 0, 0 ) ]
+
 [sub_resource type="LargeTexture" id=22]
 
 flags = 0
@@ -276,15 +305,43 @@ _data = [ Vector2( 0, 0 ) ]
 flags = 0
 _data = [ Vector2( 0, 0 ) ]
 
-[sub_resource type="LargeTexture" id=24]
+[sub_resource type="StyleBoxTexture" id=24]
 
-flags = 0
-_data = [ Vector2( 0, 0 ) ]
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 28, 61 )
+margin_left = 0.0
+margin_right = 28.0
+margin_top = 30.0
+margin_bottom = 30.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
 
-[sub_resource type="LargeTexture" id=25]
+[sub_resource type="StyleBoxTexture" id=25]
 
-flags = 0
-_data = [ Vector2( 0, 0 ) ]
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 28, 61 )
+margin_left = 0.0
+margin_right = 28.0
+margin_top = 30.0
+margin_bottom = 30.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=26]
 
@@ -292,45 +349,7 @@ content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
-texture = ExtResource( 17 )
-region_rect = Rect2( 0, 0, 28, 61 )
-margin_left = 0.0
-margin_right = 28.0
-margin_top = 30.0
-margin_bottom = 30.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-modulate_color = Color( 1, 1, 1, 1 )
-draw_center = true
-
-[sub_resource type="StyleBoxTexture" id=27]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-texture = ExtResource( 17 )
-region_rect = Rect2( 0, 0, 28, 61 )
-margin_left = 0.0
-margin_right = 28.0
-margin_top = 30.0
-margin_bottom = 30.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-modulate_color = Color( 1, 1, 1, 1 )
-draw_center = true
-
-[sub_resource type="StyleBoxTexture" id=28]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-texture = ExtResource( 29 )
+texture = ExtResource( 30 )
 region_rect = Rect2( 0, 0, 64, 64 )
 margin_left = 32.0
 margin_right = 0.0
@@ -343,7 +362,7 @@ expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[sub_resource type="ImageTexture" id=29]
+[sub_resource type="ImageTexture" id=27]
 
 flags = 4
 storage = 0
@@ -351,13 +370,13 @@ lossy_quality = 0.7
 flags = 4
 size = Vector2( 0, 0 )
 
-[sub_resource type="StyleBoxTexture" id=30]
+[sub_resource type="StyleBoxTexture" id=28]
 
 content_margin_left = 0.0
 content_margin_right = 0.0
 content_margin_top = 0.0
 content_margin_bottom = 0.0
-texture = SubResource( 29 )
+texture = SubResource( 27 )
 margin_left = 5.0
 margin_right = 5.0
 margin_top = 5.0
@@ -369,7 +388,7 @@ expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
 
-[sub_resource type="Theme" id=31]
+[sub_resource type="Theme" id=29]
 
 RichTextLabel/colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 RichTextLabel/colors/font_color_selected = Color( 0.490196, 0.490196, 0.490196, 1 )
@@ -377,29 +396,29 @@ RichTextLabel/colors/selection_color = Color( 0.1, 0.1, 1, 0.8 )
 RichTextLabel/constants/line_separation = 1
 RichTextLabel/constants/table_hseparation = 3
 RichTextLabel/constants/table_vseparation = 3
-RichTextLabel/fonts/bold_font = SubResource( 19 )
-RichTextLabel/fonts/bold_italics_font = SubResource( 19 )
-RichTextLabel/fonts/italics_font = SubResource( 19 )
-RichTextLabel/fonts/mono_font = SubResource( 19 )
-RichTextLabel/fonts/normal_font = SubResource( 19 )
-RichTextLabel/styles/focus = SubResource( 21 )
-VScrollBar/icons/decrement = SubResource( 22 )
-VScrollBar/icons/decrement_hilite = SubResource( 23 )
-VScrollBar/icons/increment = SubResource( 24 )
-VScrollBar/icons/increment_hilite = SubResource( 25 )
-VScrollBar/styles/grabber = SubResource( 26 )
-VScrollBar/styles/grabber_hilite = SubResource( 27 )
-VScrollBar/styles/scroll = SubResource( 28 )
-VScrollBar/styles/scroll_focus = SubResource( 30 )
+RichTextLabel/fonts/bold_font = SubResource( 17 )
+RichTextLabel/fonts/bold_italics_font = SubResource( 17 )
+RichTextLabel/fonts/italics_font = SubResource( 17 )
+RichTextLabel/fonts/mono_font = SubResource( 17 )
+RichTextLabel/fonts/normal_font = SubResource( 17 )
+RichTextLabel/styles/focus = SubResource( 19 )
+VScrollBar/icons/decrement = SubResource( 20 )
+VScrollBar/icons/decrement_hilite = SubResource( 21 )
+VScrollBar/icons/increment = SubResource( 22 )
+VScrollBar/icons/increment_hilite = SubResource( 23 )
+VScrollBar/styles/grabber = SubResource( 24 )
+VScrollBar/styles/grabber_hilite = SubResource( 25 )
+VScrollBar/styles/scroll = SubResource( 26 )
+VScrollBar/styles/scroll_focus = SubResource( 28 )
 
-[sub_resource type="Animation" id=32]
+[sub_resource type="Animation" id=30]
 
 resource_name = "hidden"
 length = 0.1
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("title:rect/pos")
+tracks/0/path = NodePath("shield:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -407,11 +426,11 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 520 ) ]
+"update": 1,
+"values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("shield:visible")
+tracks/1/path = NodePath("title/content/warp:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -420,10 +439,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("title/content/warp:disabled")
+tracks/2/path = NodePath("title/content/tags/red:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -435,7 +454,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("title/content/tags/red:disabled")
+tracks/3/path = NodePath("title/content/tags/green:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -447,7 +466,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("title/content/tags/green:disabled")
+tracks/4/path = NodePath("title/content/tags/blue:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -459,7 +478,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("title/content/tags/blue:disabled")
+tracks/5/path = NodePath("title/content/tags/purple:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -471,7 +490,7 @@ tracks/5/keys = {
 "values": [ true ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("title/content/tags/purple:disabled")
+tracks/6/path = NodePath("list:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -480,10 +499,10 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("list:visible")
+tracks/7/path = NodePath("title:rect_position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -491,11 +510,11 @@ tracks/7/enabled = true
 tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"update": 0,
+"values": [ Vector2( 0, 520 ) ]
 }
 
-[sub_resource type="Animation" id=33]
+[sub_resource type="Animation" id=31]
 
 resource_name = "hide"
 length = 1.0
@@ -600,7 +619,7 @@ tracks/7/keys = {
 "values": [ Color( 1, 1, 1, 0.95 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=34]
+[sub_resource type="Animation" id=32]
 
 resource_name = "hidelist"
 length = 1.0
@@ -645,26 +664,26 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 64 ), Vector2( -736, 64 ) ]
 }
 
-[sub_resource type="Animation" id=35]
+[sub_resource type="Animation" id=33]
 
 resource_name = "show"
 length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("shield:visible")
+tracks/0/path = NodePath("title/content/tags/red:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("title/content/tags/red:disabled")
+tracks/1/path = NodePath("title/content/tags/green:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -676,7 +695,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("title/content/tags/green:disabled")
+tracks/2/path = NodePath("title/content/tags/blue:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -688,7 +707,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("title/content/tags/blue:disabled")
+tracks/3/path = NodePath("title/content/tags/purple:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -700,7 +719,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("title/content/tags/purple:disabled")
+tracks/4/path = NodePath("title/content/warp:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -711,8 +730,8 @@ tracks/4/keys = {
 "update": 1,
 "values": [ false ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath("title/content/warp:disabled")
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -720,26 +739,26 @@ tracks/5/enabled = true
 tracks/5/keys = {
 "times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/6/type = "method"
-tracks/6/path = NodePath(".")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "focus_warp"
 } ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("title:rect_position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 520 ), Vector2( 0, 64 ) ]
+}
 tracks/7/type = "value"
-tracks/7/path = NodePath("title:rect_position")
-tracks/7/interp = 2
+tracks/7/path = NodePath("shield:modulate")
+tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
@@ -747,22 +766,22 @@ tracks/7/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 0.25, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 520 ), Vector2( 0, 64 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.95 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("shield:modulate")
+tracks/8/path = NodePath("shield:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 0.25, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.95 ) ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
-[sub_resource type="Animation" id=36]
+[sub_resource type="Animation" id=34]
 
 resource_name = "showlist"
 length = 1.0
@@ -819,7 +838,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 520 ), Vector2( 0, 592 ) ]
 }
 
-[node name="WorldMap" type="Control"]
+[node name="WorldMap" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -833,6 +852,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 script = ExtResource( 1 )
+_sections_unfolded = [ "Theme" ]
 
 [node name="map" type="Sprite" parent="." index="0"]
 
@@ -1196,19 +1216,21 @@ override_selected_font_color = false
 
 [node name="list" type="Control" parent="." index="4"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_left = -736.0
 margin_top = 64.0
-margin_right = 40.0
+margin_right = -696.0
 margin_bottom = 104.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Rect", "Theme" ]
 
 [node name="TextureFrame" type="TextureRect" parent="list" index="0"]
 
@@ -1244,11 +1266,12 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-theme = SubResource( 16 )
-scroll_horizontal_enabled = true
+theme = SubResource( 15 )
+scroll_horizontal_enabled = false
 scroll_horizontal = 0
 scroll_vertical_enabled = true
 scroll_vertical = 0
+_sections_unfolded = [ "Scroll", "Theme" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="list/listcontainer" index="0"]
 
@@ -1264,6 +1287,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 alignment = 0
+_sections_unfolded = [ "Theme" ]
 
 [node name="filters" type="Control" parent="list" index="2"]
 
@@ -1457,89 +1481,49 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 alignment = 0
 
-[node name="quest" parent="list/filters/type" index="0" instance=ExtResource( 19 )]
+[node name="quest" parent="list/filters/type" index="0" instance=ExtResource( 20 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_bottom = 24.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath("../../tagtitle")
 focus_neighbour_top = NodePath(".")
-mouse_filter = 0
-mouse_default_cursor_shape = 0
+focus_mode = 0
 disabled = true
-enabled_focus_mode = 2
-shortcut = null
-group = null
-align = 1
 
-[node name="boss" parent="list/filters/type" index="1" instance=ExtResource( 19 )]
+[node name="boss" parent="list/filters/type" index="1" instance=ExtResource( 20 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 28.0
 margin_right = 52.0
 margin_bottom = 24.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_top = NodePath(".")
-mouse_filter = 0
-mouse_default_cursor_shape = 0
+focus_mode = 0
 disabled = true
-enabled_focus_mode = 2
-shortcut = null
-group = null
-align = 1
 
 [node name="icon" parent="list/filters/type/boss" index="0"]
 
 texture = ExtResource( 9 )
 
-[node name="bonus" parent="list/filters/type" index="2" instance=ExtResource( 19 )]
+[node name="bonus" parent="list/filters/type" index="2" instance=ExtResource( 20 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 56.0
 margin_right = 80.0
 margin_bottom = 24.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_top = NodePath(".")
-mouse_filter = 0
-mouse_default_cursor_shape = 0
+focus_mode = 0
 disabled = true
-enabled_focus_mode = 2
-shortcut = null
-group = null
-align = 1
 
 [node name="icon" parent="list/filters/type/bonus" index="0"]
 
 texture = ExtResource( 10 )
 
-[node name="colosseum" parent="list/filters/type" index="3" instance=ExtResource( 19 )]
+[node name="colosseum" parent="list/filters/type" index="3" instance=ExtResource( 20 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 84.0
 margin_right = 108.0
 margin_bottom = 24.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath(".")
-mouse_filter = 0
-mouse_default_cursor_shape = 0
+focus_mode = 0
 disabled = true
-enabled_focus_mode = 2
-shortcut = null
-group = null
-align = 1
 
 [node name="icon" parent="list/filters/type/colosseum" index="0"]
 
@@ -1589,11 +1573,11 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-texture = ExtResource( 20 )
+texture = ExtResource( 21 )
 stretch_mode = 0
 _sections_unfolded = [ "Visibility" ]
 
-[node name="title_bg" parent="." index="6" instance=ExtResource( 21 )]
+[node name="title_bg" parent="." index="6" instance=ExtResource( 22 )]
 
 margin_left = 215.0
 margin_top = -1.0
@@ -1607,7 +1591,6 @@ polygon = PoolVector2Array( 0, 0, 160, 0, 160, 44, 0, 44 )
 [node name="fade" parent="title_bg" index="1"]
 
 margin_bottom = 4.0
-_sections_unfolded = [ "Margin", "Material", "Rect" ]
 
 [node name="current" type="Label" parent="." index="7"]
 
@@ -1635,14 +1618,14 @@ max_lines_visible = -1
 
 self_modulate = Color( 0.137255, 0.0705882, 0.0705882, 1 )
 position = Vector2( -24, -4 )
-texture = ExtResource( 22 )
+texture = ExtResource( 23 )
 centered = false
 
 [node name="ornament" type="Sprite" parent="current" index="1"]
 
 self_modulate = Color( 0.137255, 0.0705882, 0.0705882, 1 )
 position = Vector2( 96, -16 )
-texture = ExtResource( 23 )
+texture = ExtResource( 24 )
 centered = false
 flip_v = true
 
@@ -1652,9 +1635,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 592.0
+margin_top = 520.0
 margin_right = 40.0
-margin_bottom = 632.0
+margin_bottom = 560.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -1662,7 +1645,7 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 _sections_unfolded = [ "Rect" ]
 
-[node name="title_bg" parent="title" index="0" instance=ExtResource( 21 )]
+[node name="title_bg" parent="title" index="0" instance=ExtResource( 22 )]
 
 margin_left = 263.0
 margin_top = 11.0
@@ -1698,7 +1681,7 @@ invert_border = 100.0
 
 self_modulate = Color( 0.137255, 0.0705882, 0.0705882, 1 )
 position = Vector2( 344, 0 )
-texture = ExtResource( 23 )
+texture = ExtResource( 24 )
 centered = false
 
 [node name="level" type="Label" parent="title" index="3"]
@@ -1716,7 +1699,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 24 )
+custom_fonts/font = ExtResource( 25 )
 text = "LVL_CATACOMBgjpq"
 percent_visible = 1.0
 lines_skipped = 0
@@ -1737,7 +1720,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 24 )
+custom_fonts/font = ExtResource( 25 )
 text = "100%"
 align = 2
 percent_visible = 1.0
@@ -1747,7 +1730,7 @@ max_lines_visible = -1
 [node name="map" type="Sprite" parent="title" index="5"]
 
 position = Vector2( 764, 26 )
-texture = ExtResource( 25 )
+texture = ExtResource( 26 )
 centered = false
 
 [node name="tags" type="HBoxContainer" parent="title" index="6"]
@@ -1769,7 +1752,7 @@ size_flags_vertical = 2
 custom_constants/separation = -8
 alignment = 2
 
-[node name="red" parent="title/tags" index="0" instance=ExtResource( 26 )]
+[node name="red" parent="title/tags" index="0" instance=ExtResource( 27 )]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -1780,7 +1763,7 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 
-[node name="green" parent="title/tags" index="1" instance=ExtResource( 26 )]
+[node name="green" parent="title/tags" index="1" instance=ExtResource( 27 )]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -1797,7 +1780,7 @@ mouse_default_cursor_shape = 0
 
 self_modulate = Color( 0, 0.662745, 0.333333, 1 )
 
-[node name="blue" parent="title/tags" index="2" instance=ExtResource( 26 )]
+[node name="blue" parent="title/tags" index="2" instance=ExtResource( 27 )]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -1814,7 +1797,7 @@ mouse_default_cursor_shape = 0
 
 self_modulate = Color( 0, 0.858824, 1, 1 )
 
-[node name="purple" parent="title/tags" index="3" instance=ExtResource( 26 )]
+[node name="purple" parent="title/tags" index="3" instance=ExtResource( 27 )]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -1835,13 +1818,13 @@ self_modulate = Color( 0.403922, 0, 1, 1 )
 
 self_modulate = Color( 0.196078, 0.0705882, 0.0705882, 1 )
 position = Vector2( 32, 24 )
-texture = ExtResource( 22 )
+texture = ExtResource( 23 )
 centered = false
 
 [node name="complete" type="Sprite" parent="title" index="8"]
 
 position = Vector2( 10, 24 )
-texture = ExtResource( 27 )
+texture = ExtResource( 28 )
 centered = false
 
 [node name="new" type="Label" parent="title" index="9"]
@@ -1885,7 +1868,7 @@ size_flags_vertical = 2
 
 [node name="bg" type="Sprite" parent="title/content" index="0"]
 
-texture = ExtResource( 28 )
+texture = ExtResource( 29 )
 centered = false
 
 [node name="description" type="RichTextLabel" parent="title/content" index="1"]
@@ -1904,9 +1887,9 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-theme = SubResource( 31 )
-custom_fonts/normal_font = ExtResource( 30 )
-custom_fonts/mono_font = ExtResource( 31 )
+theme = SubResource( 29 )
+custom_fonts/normal_font = ExtResource( 31 )
+custom_fonts/mono_font = ExtResource( 32 )
 custom_colors/default_color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
 bbcode_enabled = true
 bbcode_text = "Heiße Untergrundhöhle. Achtung auf Gefahr von Lava von unten und fallende Felsen von oben! Besiegen Sie der Drache.
@@ -2105,7 +2088,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 30 )
+custom_fonts/font = ExtResource( 31 )
 custom_colors/font_color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
 text = "MAP_REWARD"
 percent_visible = 1.0
@@ -2115,7 +2098,7 @@ max_lines_visible = -1
 [node name="rewardicon" type="Sprite" parent="title/content/info/reward" index="0"]
 
 position = Vector2( 0, -4 )
-texture = ExtResource( 32 )
+texture = ExtResource( 33 )
 centered = false
 offset = Vector2( -24, 0 )
 
@@ -2133,7 +2116,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 30 )
+custom_fonts/font = ExtResource( 31 )
 custom_colors/font_color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
 text = "MAP_TARGET"
 percent_visible = 1.0
@@ -2143,7 +2126,7 @@ max_lines_visible = -1
 [node name="targeticon" type="Sprite" parent="title/content/info/target" index="0"]
 
 position = Vector2( 0, -4 )
-texture = ExtResource( 33 )
+texture = ExtResource( 34 )
 centered = false
 offset = Vector2( -24, 0 )
 
@@ -2161,7 +2144,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 30 )
+custom_fonts/font = ExtResource( 31 )
 custom_colors/font_color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
 text = "x10"
 percent_visible = 1.0
@@ -2258,27 +2241,20 @@ override_selected_font_color = false
 
 self_modulate = Color( 0.137255, 0.0705882, 0.0705882, 1 )
 position = Vector2( 256, 346 )
-texture = ExtResource( 23 )
+texture = ExtResource( 24 )
 centered = false
+_sections_unfolded = [ "Visibility" ]
 
-[node name="warp" parent="title/content" index="10" instance=ExtResource( 34 )]
+[node name="warp" parent="title/content" index="10" instance=ExtResource( 35 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 300.0
-margin_top = 372.0
-margin_right = 396.0
-margin_bottom = 404.0
-rect_pivot_offset = Vector2( 0, 0 )
+margin_top = 366.0
+margin_right = 460.0
+margin_bottom = 398.0
 focus_neighbour_left = NodePath("../tags/purple")
 focus_neighbour_top = NodePath(".")
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-group = null
 text = "MAP_WARP"
+align = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
 
@@ -2287,11 +2263,11 @@ autoplay = "hidden"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/hidden = SubResource( 32 )
-anims/hide = SubResource( 33 )
-anims/hidelist = SubResource( 34 )
-anims/show = SubResource( 35 )
-anims/showlist = SubResource( 36 )
+anims/hidden = SubResource( 30 )
+anims/hide = SubResource( 31 )
+anims/hidelist = SubResource( 32 )
+anims/show = SubResource( 33 )
+anims/showlist = SubResource( 34 )
 blend_times = [  ]
 
 [connection signal="focus_entered" from="filters/tags" to="." method="_on_tags_focus_enter"]

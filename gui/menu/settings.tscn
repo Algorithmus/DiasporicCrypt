@@ -254,7 +254,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[node name="settings" type="Control"]
+[node name="settings" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -369,7 +369,9 @@ margin_right = 663.0
 margin_bottom = 160.0
 focus_neighbour_left = NodePath(".")
 focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../inputs/up")
 text = "Allgemeines Gamepad"
+_sections_unfolded = [ "Focus", "Rect" ]
 
 [node name="icon1" parent="layout" index="1"]
 
@@ -400,6 +402,7 @@ alignment = 0
 margin_left = 0.0
 margin_right = 64.0
 margin_bottom = 24.0
+focus_neighbour_top = NodePath("../../layout")
 focus_neighbour_bottom = NodePath("../down")
 custom_styles/hover = SubResource( 17 )
 custom_styles/pressed = SubResource( 18 )

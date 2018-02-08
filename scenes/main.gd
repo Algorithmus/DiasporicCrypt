@@ -282,23 +282,23 @@ func restore_animation():
 	get_tree().set_pause(false)
 	if (!ProjectSettings.get("eventmode")):
 		toggle_eventmode(true)
-	get_node("AnimationPlayer").connect("finished", self, "show_restore")
+	get_node("AnimationPlayer").connect("animation_finished", self, "show_restore")
 	get_node("AnimationPlayer").play("hide")
 	sequences.show()
 
-func show_restore():
-	get_node("AnimationPlayer").disconnect("finished", self, "show_restore")
-	get_node("AnimationPlayer").connect("finished", self, "end_restore_animation")
+func show_restore(animation=null):
+	get_node("AnimationPlayer").disconnect("animation_finished", self, "show_restore")
+	get_node("AnimationPlayer").connect("animation_finished", self, "end_restore_animation")
 	get_node("AnimationPlayer").play("show")
 	var player = get_node("playercontainer/player")
 	player.current_hp = player.hp
 	player.current_mp = player.mp
 
-func end_restore_animation():
-	if (get_node("AnimationPlayer").is_connected("finished", self, "show_restore")):
-		get_node("AnimationPlayer").disconnect("finished", self, "show_restore")
-	if (get_node("AnimationPlayer").is_connected("finished", self, "end_restore_animation")):
-		get_node("AnimationPlayer").disconnect("finished", self, "end_restore_animation")
+func end_restore_animation(animation=null):
+	if (get_node("AnimationPlayer").is_connected("animation_finished", self, "show_restore")):
+		get_node("AnimationPlayer").disconnect("animation_finished", self, "show_restore")
+	if (get_node("AnimationPlayer").is_connected("animation_finished", self, "end_restore_animation")):
+		get_node("AnimationPlayer").disconnect("animation_finished", self, "end_restore_animation")
 	get_node("level").modulate.a = 1
 	get_node("playercontainer").modulate.a = 1
 	get_node("AnimationPlayer").stop()
@@ -320,58 +320,58 @@ func warp_animation():
 		toggle_eventmode(true)
 	var circle = magiccircleclass.instance()
 	circle.set_position(Vector2(400, 274))
-	circle.get_node("AnimationPlayer").connect("finished", self, "circle_rotate")
+	circle.get_node("AnimationPlayer").connect("animation_finished", self, "circle_rotate")
 	sequences.add_child(circle)
 	sequences.show()
 	circle.get_node("AnimationPlayer").play("grow")
 	get_node("level/LVL_CATACOMB/tilemap/NPCGroup/Kaleva").warp_animation()
 
-func circle_rotate():
+func circle_rotate(animation=null):
 	var circle = sequences.get_node("circle/AnimationPlayer")
-	circle.disconnect("finished", self, "circle_rotate")
-	circle.connect("finished", self, "circle_fade")
+	circle.disconnect("animation_finished", self, "circle_rotate")
+	circle.connect("animation_finished", self, "circle_fade")
 	circle.play("rotate")
 
-func circle_fade():
+func circle_fade(animation=null):
 	var circle = sequences.get_node("circle/AnimationPlayer")
-	circle.disconnect("finished", self, "circle_fade")
+	circle.disconnect("animation_finished", self, "circle_fade")
 	circle.play("fade")
 	var orbs = magicorbsclass.instance()
 	orbs.set_position(Vector2(400, 274))
-	orbs.get_node("AnimationPlayer").connect("finished", self, "orbs_fade")
+	orbs.get_node("AnimationPlayer").connect("animation_finished", self, "orbs_fade")
 	sequences.add_child(orbs)
 	orbs.get_node("AnimationPlayer").play("show")
 
-func orbs_fade():
+func orbs_fade(animation=null):
 	var orbs_animation = sequences.get_node("orbs/AnimationPlayer")
-	orbs_animation.disconnect("finished", self, "orbs_fade")
-	orbs_animation.connect("finished", self, "fade_level")
+	orbs_animation.disconnect("animation_finished", self, "orbs_fade")
+	orbs_animation.connect("animation_finished", self, "fade_level")
 	orbs_animation.play("hide")
 
-func fade_level():
+func fade_level(animation=null):
 	get_node("level/LVL_CATACOMB/tilemap/NPCGroup/Kaleva").end_warp_animation()
 	var orbs = sequences.get_node("orbs")
 	orbs.get_node("AnimationPlayer").stop()
 	sequences.remove_child(orbs)
 	orbs.queue_free()
-	get_node("AnimationPlayer").connect("finished", self, "show_level")
+	get_node("AnimationPlayer").connect("animation_finished", self, "show_level")
 	get_node("AnimationPlayer").play("hide")
 	var stardust = stardustclass.instance()
 	stardust.set_position(Vector2(400, 296))
 	sequences.add_child(stardust)
 	stardust.set_emitting(true)
 
-func show_level():
+func show_level(animation=null):
 	if (sequences.has_node("circle")):
 		var circle = sequences.get_node("circle")
 		circle.get_node("AnimationPlayer").stop()
 		sequences.remove_child(circle)
 		circle.queue_free()
-	get_node("AnimationPlayer").disconnect("finished", self, "show_level")
-	get_node("AnimationPlayer").connect("finished", self, "end_warp_animation")
+	get_node("AnimationPlayer").disconnect("animation_finished", self, "show_level")
+	get_node("AnimationPlayer").connect("animation_finished", self, "end_warp_animation")
 	get_node("AnimationPlayer").play("show")
 
-func end_warp_animation():
+func end_warp_animation(animation=null):
 	if (sequences.has_node("circle")):
 		var circle = sequences.get_node("circle")
 		circle.get_node("AnimationPlayer").stop()
@@ -388,7 +388,7 @@ func end_warp_animation():
 		stardust.queue_free()
 	get_node("level").modulate.a = 1
 	get_node("playercontainer").modulate.a = 1
-	get_node("AnimationPlayer").disconnect("finished", self, "end_warp_animation")
+	get_node("AnimationPlayer").disconnect("animation_finished", self, "end_warp_animation")
 	get_node("AnimationPlayer").stop()
 	get_node("level/LVL_CATACOMB/tilemap/NPCGroup/Kaleva").end_warp_animation()
 	sequences.hide()

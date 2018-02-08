@@ -194,7 +194,7 @@ func unserialize_controls(data, is_keyboard):
 				inputvalue = "button_index"
 				event = InputEventJoypadButton.new()
 			else:
-				break
+				continue
 			InputMap.action_erase_event(actionid, e)
 			#event.type = e.type
 			event[inputvalue] = data[actionid]

@@ -4,12 +4,13 @@
 [ext_resource path="res://gui/theme/slidergrabber_active.png" type="Texture" id=2]
 [ext_resource path="res://gui/theme/slider.png" type="Texture" id=3]
 [ext_resource path="res://gui/theme/scrollgrabber.png" type="Texture" id=4]
-[ext_resource path="res://gui/theme/scrollbar.png" type="Texture" id=5]
-[ext_resource path="res://gui/fonts/S-13-dialog.font" type="BitmapFont" id=6]
-[ext_resource path="res://gui/menu/loadsave.gd" type="Script" id=7]
-[ext_resource path="res://gui/menu/panelbg.png" type="Texture" id=8]
-[ext_resource path="res://gui/menu/frame.png" type="Texture" id=9]
-[ext_resource path="res://gui/menu/keylabel.tscn" type="PackedScene" id=10]
+[ext_resource path="res://gui/theme/scrollgrabber_active.png" type="Texture" id=5]
+[ext_resource path="res://gui/theme/scrollbar.png" type="Texture" id=6]
+[ext_resource path="res://gui/fonts/S-13-dialog.font" type="BitmapFont" id=7]
+[ext_resource path="res://gui/menu/loadsave.gd" type="Script" id=8]
+[ext_resource path="res://gui/menu/panelbg.png" type="Texture" id=9]
+[ext_resource path="res://gui/menu/frame.png" type="Texture" id=10]
+[ext_resource path="res://gui/menu/keylabel.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -74,15 +75,45 @@ _data = [ Vector2( 0, 0 ) ]
 flags = 0
 _data = [ Vector2( 0, 0 ) ]
 
-[sub_resource type="LargeTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=7]
 
-flags = 0
-_data = [ Vector2( 0, 0 ) ]
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 28, 61 )
+margin_left = 0.0
+margin_right = 28.0
+margin_top = 30.0
+margin_bottom = 30.0
+expand_margin_left = 8.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+_sections_unfolded = [ "Expand Margin", "Margin" ]
 
-[sub_resource type="LargeTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=8]
 
-flags = 0
-_data = [ Vector2( 0, 0 ) ]
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 28, 61 )
+margin_left = 0.0
+margin_right = 28.0
+margin_top = 30.0
+margin_bottom = 30.0
+expand_margin_left = 8.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+_sections_unfolded = [ "Expand Margin", "Margin" ]
 
 [sub_resource type="StyleBoxTexture" id=9]
 
@@ -107,20 +138,21 @@ draw_center = true
 
 content_margin_left = -1.0
 content_margin_right = -1.0
-content_margin_top = 0.0
-content_margin_bottom = 30.0
-texture = ExtResource( 4 )
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 28, 61 )
 margin_left = 0.0
 margin_right = 28.0
 margin_top = 30.0
 margin_bottom = 30.0
-expand_margin_left = 0.0
+expand_margin_left = 8.0
 expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
+_sections_unfolded = [ "Expand Margin", "Margin" ]
 
 [sub_resource type="StyleBoxTexture" id=11]
 
@@ -128,7 +160,7 @@ content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 18, 64 )
 margin_left = 28.0
 margin_right = 0.0
@@ -140,51 +172,38 @@ expand_margin_top = 0.0
 expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
+_sections_unfolded = [ "Margin" ]
 
-[sub_resource type="StyleBoxTexture" id=12]
+[sub_resource type="Theme" id=12]
 
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-texture = ExtResource( 5 )
-region_rect = Rect2( 0, 0, 18, 64 )
-margin_left = 18.0
-margin_right = 0.0
-margin_top = 32.0
-margin_bottom = 32.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-modulate_color = Color( 1, 1, 1, 1 )
-draw_center = true
-
-[sub_resource type="Theme" id=13]
-
-default_font = ExtResource( 6 )
+default_font = ExtResource( 7 )
 HSlider/icons/grabber = ExtResource( 1 )
 HSlider/icons/grabber_hilite = ExtResource( 2 )
 HSlider/icons/tick = SubResource( 1 )
 HSlider/styles/focus = SubResource( 2 )
 HSlider/styles/grabber_hilite = SubResource( 3 )
 HSlider/styles/slider = SubResource( 4 )
-VScrollBar/icons/decrement = SubResource( 5 )
-VScrollBar/icons/decrement_hilite = SubResource( 6 )
-VScrollBar/icons/increment = SubResource( 7 )
-VScrollBar/icons/increment_hilite = SubResource( 8 )
-VScrollBar/styles/grabber = SubResource( 9 )
-VScrollBar/styles/grabber_hilite = SubResource( 10 )
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/decrement_hilite = SubResource( 5 )
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/icons/increment_hilite = SubResource( 6 )
+VScrollBar/styles/grabber = SubResource( 7 )
+VScrollBar/styles/grabber_highlight = SubResource( 8 )
+VScrollBar/styles/grabber_hilite = SubResource( 9 )
+VScrollBar/styles/grabber_pressed = SubResource( 10 )
 VScrollBar/styles/scroll = SubResource( 11 )
-VScrollBar/styles/scroll_focus = SubResource( 12 )
+VScrollBar/styles/scroll_focus = null
+_sections_unfolded = [ "VScrollBar", "VScrollBar/icons", "VScrollBar/styles" ]
 
-[sub_resource type="StyleBoxTexture" id=14]
+[sub_resource type="StyleBoxTexture" id=13]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 region_rect = Rect2( 0, 0, 736, 528 )
 margin_left = 0.0
 margin_right = 0.0
@@ -210,8 +229,9 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-theme = SubResource( 13 )
-script = ExtResource( 7 )
+theme = SubResource( 12 )
+script = ExtResource( 8 )
+_sections_unfolded = [ "Theme" ]
 
 [node name="BG" type="Panel" parent="." index="0"]
 
@@ -226,7 +246,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/panel = SubResource( 14 )
+custom_styles/panel = SubResource( 13 )
 
 [node name="frame" type="TextureRect" parent="." index="1"]
 
@@ -243,7 +263,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 stretch_mode = 0
 
 [node name="title" type="Label" parent="." index="2"]
@@ -261,18 +281,18 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 7 )
 text = "KEY_SAVEMENU"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="back" parent="." index="3" instance=ExtResource( 10 )]
+[node name="back" parent="." index="3" instance=ExtResource( 11 )]
 
-margin_left = 455.0
-margin_top = 542.0
-margin_right = 696.0
-margin_bottom = 573.0
+margin_left = 383.0
+margin_top = 508.0
+margin_right = 624.0
+margin_bottom = 544.0
 
 [node name="saves" type="ScrollContainer" parent="." index="4"]
 

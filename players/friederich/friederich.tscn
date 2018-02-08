@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://players/friederich/friederich.gd" type="Script" id=1]
 [ext_resource path="res://players/friederich/idle.png" type="Texture" id=2]
@@ -10836,9 +10836,47 @@ extents = Vector2( 14, 62 )
 custom_solver_bias = 0.0
 extents = Vector2( 14, 62 )
 
-[sub_resource type="ShaderMaterial" id=35]
+[sub_resource type="Shader" id=35]
+
+code = "shader_type canvas_item;
+
+uniform float aura_width=2.0;
+uniform vec4 aura_color:hint_color;
+uniform float opacity = 1.0;
+
+void fragment() {
+vec4 col = vec4(texture(TEXTURE,UV).rgb, texture(TEXTURE,UV).a*opacity);
+vec2 ps = TEXTURE_PIXEL_SIZE;
+float a;
+float maxa=col.a;
+float mina=col.a;
+a=texture(TEXTURE,UV+vec2(0,-aura_width)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(0,aura_width)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(-aura_width,0)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(aura_width,0)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+col.rgb*=col.a;
+COLOR=mix(col,aura_color,maxa-mina);
+float auraa=(maxa-mina);
+
+COLOR.rgb+=aura_color.rgb*(maxa-mina);
+}"
+
+[sub_resource type="ShaderMaterial" id=36]
 
 render_priority = 0
+shader = SubResource( 35 )
+shader_param/aura_width = 1.0
+shader_param/aura_color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
+shader_param/opacity = 1.0
+_sections_unfolded = [ "shader_param" ]
 
 [node name="player" type="KinematicBody2D" index="0"]
 
@@ -11494,10 +11532,10 @@ shape = SubResource( 34 )
 
 [node name="talk" type="Sprite" parent="." index="6"]
 
-material = SubResource( 35 )
+material = SubResource( 36 )
 z_index = 2
 texture = ExtResource( 50 )
 offset = Vector2( 4, -80 )
-_sections_unfolded = [ "Z Index" ]
+_sections_unfolded = [ "Material", "Z Index" ]
 
 

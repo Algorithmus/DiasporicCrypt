@@ -693,7 +693,6 @@ max_lines_visible = -1
 
 [node name="newgame" type="Control" parent="CanvasLayer/menu" index="3"]
 
-editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -733,7 +732,6 @@ _sections_unfolded = [ "Anchor", "Grow Direction", "Hint", "Margin", "Rect", "Si
 
 [node name="backbutton" type="HBoxContainer" parent="CanvasLayer/menu/newgame" index="1"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -758,7 +756,10 @@ focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath("../../adela")
 focus_neighbour_bottom = NodePath("../../friederich")
+size_flags_horizontal = 3
 text = "MAP_BACK"
+align = 1
+_sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="key" type="Label" parent="CanvasLayer/menu/newgame/backbutton" index="1"]
 
@@ -768,7 +769,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 97.0
 margin_right = 121.0
-margin_bottom = 30.0
+margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 mouse_default_cursor_shape = 0
@@ -898,7 +899,6 @@ script = null
 
 [node name="info" type="Control" parent="CanvasLayer/menu" index="4"]
 
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -927,6 +927,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 alignment = 0
+_sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="back" parent="CanvasLayer/menu/info/backbutton" index="0" instance=ExtResource( 13 )]
 
@@ -937,7 +938,10 @@ focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath("../../adela")
 focus_neighbour_bottom = NodePath("../../friederich")
+size_flags_horizontal = 3
 text = "MAP_BACK"
+align = 1
+_sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="key" type="Label" parent="CanvasLayer/menu/info/backbutton" index="1"]
 
@@ -947,7 +951,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 97.0
 margin_right = 121.0
-margin_bottom = 30.0
+margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 mouse_default_cursor_shape = 0
@@ -2624,32 +2628,38 @@ margin_bottom = 416.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 1
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 2
+size_flags_horizontal = 0
 size_flags_vertical = 2
 custom_constants/separation = 200
 alignment = 1
+_sections_unfolded = [ "Size Flags" ]
 
 [node name="yes" parent="CanvasLayer/menu/quit/options" index="0" instance=ExtResource( 13 )]
 
-margin_left = 0.0
-margin_right = 79.0
+margin_left = 224.0
+margin_right = 303.0
 margin_bottom = 25.0
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath("../no")
 focus_neighbour_bottom = NodePath(".")
+size_flags_horizontal = 1
 text = "KEY_YES"
+align = 1
+_sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="no" parent="CanvasLayer/menu/quit/options" index="1" instance=ExtResource( 13 )]
 
-margin_left = 500.0
-margin_right = 572.0
+margin_left = 503.0
+margin_right = 575.0
 margin_bottom = 25.0
 focus_neighbour_left = NodePath("../yes")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath(".")
 focus_neighbour_bottom = NodePath(".")
+size_flags_horizontal = 1
 text = "KEY_NO"
+_sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 

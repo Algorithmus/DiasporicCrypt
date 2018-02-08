@@ -154,6 +154,7 @@ func do_select():
 	#sfx.play("confirm")
 
 func focus_warp():
+	get_node("shield").visible = true
 	if (selectedlevel.get_name() == currentlevel):
 		content.get_node("tags/purple").grab_focus()
 		content.get_node("warp").set_disabled(true)
@@ -304,7 +305,6 @@ func _input(event):
 		container.scroll_to_line(currentline)
 
 func end_level_animation():
-	print("end level animation")
 	if (selectedlevel != null):
 		listcontainer.get_node(selectedlevel.get_name()).grab_focus()
 		selectedlevel = null
