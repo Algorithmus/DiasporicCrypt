@@ -10,7 +10,7 @@ source_file="res://scenes/common/damagables/spiketile.png"
 source_md5="3097fbc7bf5b7d225e8a928245b2cbaa"
 
 dest_files=[ "res://.import/spiketile.png-1b51d180e79dd31d3aecaa0814be8b11.stex" ]
-dest_md5="f90fb2958cd58593cb32f470f6d9f71a"
+dest_md5="4f89b1643b129bc98a2c4bcfbf478c32"
 
 [params]
 
@@ -18,7 +18,7 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

@@ -10,7 +10,7 @@ source_file="res://scenes/icecave/BGs/floor.png"
 source_md5="138db8d67eaa99152c1b061826b1cdb5"
 
 dest_files=[ "res://.import/floor.png-811e2a96a3acb1af6c3f66f53ac07a5c.stex" ]
-dest_md5="c48c159c24973cf826f74b780edfd2e6"
+dest_md5="186652fcad161c6ae216a869a0d7415b"
 
 [params]
 
@@ -18,7 +18,7 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

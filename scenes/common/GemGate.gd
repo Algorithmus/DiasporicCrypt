@@ -23,9 +23,11 @@ func _ready():
 	collision = get_node("StaticBody2D")
 	detection = get_node("Area2D")
 	aura = get_node("gate").get_material()
-	var sprite = Image()
+	var sprite = Image.new()
 	sprite.load(ProjectSettings.get("itemfactory").items[key].image)
-	keysprite.get_texture().set_data(sprite)
+	var imageTexture = ImageTexture.new()
+	imageTexture.create_from_image(sprite)
+	keysprite.texture = imageTexture
 	#print("setup gem gate")
 	#print(aura)
 	#print(get_node(".").get_name())

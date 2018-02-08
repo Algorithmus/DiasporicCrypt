@@ -91,6 +91,8 @@ func _physics_process(delta):
 					freezeblock_obj.get_node("sprite").set_scale(Vector2(sprite_offset.x / 16, freezescale))
 					freezeblock_obj.get_node("sprite").set_position(Vector2(0, sprite_offset.y - 16))
 					freezeblock_obj.get_node("oneway").set_scale(Vector2(sprite_offset.x / 16, 1))
+					freezeblock_obj.get_node("block").set_position(Vector2(0, sprite_offset.y * 2 - 16))
+					freezeblock_obj.get_node("block").set_scale(Vector2(sprite_offset.x / 16, 1))
 					freezeblock_obj.set_position(Vector2(0, -sprite_offset.y + 16))
 					add_child(freezeblock_obj)
 					if (has_node(collision_rect.get_name())):
