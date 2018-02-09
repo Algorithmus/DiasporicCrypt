@@ -13,15 +13,13 @@ var currentAnimation
 func _ready():
 	water = get_node("TestWaterSurface")
 	animationplayer = get_node("AnimationPlayer")
-	animationplayer.set_speed(speed_scale)
+	animationplayer.playback_speed = speed_scale
 	var waterScale = water.get_node("Sprite").get_scale()
 	var rise = animationplayer.get_animation("rise")
 	var fall = animationplayer.get_animation("fall")
 	var fullscale = Vector2(waterScale.x, waterScale.y)
 	var emptyscale = Vector2(waterScale.x, 0)
 	var emptypos = Vector2(0, waterScale.y*16)
-	print(fullscale)
-	print(emptypos)
 	rise.track_set_key_value(0, 0, emptyscale)
 	rise.track_set_key_value(0, 1, fullscale)
 	rise.track_set_key_value(1, 0, emptypos)
@@ -42,15 +40,11 @@ func _ready():
 		currentAnimation = "rise"
 	if (automatic):
 		animationplayer.play(currentAnimation)
-		print("play")
-		print(animationplayer.get_current_animation())
 	
 func change_tide():
 	if (automatic):
-		print("change tide")
 		if (currentAnimation == "rise"):
 			currentAnimation = "fall"
 		else:
 			currentAnimation = "rise"
 		animationplayer.play(currentAnimation)
-		print(animationplayer.get_current_animation())

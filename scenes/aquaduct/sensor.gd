@@ -15,7 +15,6 @@ func _ready():
 			var item = peridotkeyclass.instance()
 			item.set_global_position(Vector2(-608, -368))
 			tilemap.get_node("BossGroup").add_child(item)
-	set_physics_process(false)
 
 func trigger_fighting():
 	var plant = tilemap.get_node("BossGroup/MonsterPlant")

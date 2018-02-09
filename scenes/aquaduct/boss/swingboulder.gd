@@ -43,16 +43,16 @@ func _physics_process(delta):
 				state = "falling"
 				var swingable_rect = swingable.get_node("swingable")
 				swingable_rect.set_name("unavailable")
-				swingable_rect.set_layer_mask_bit(1, false)
-				swingable_rect.set_layer_mask_bit(0, false)
+				swingable_rect.set_collision_layer_bit(1, false)
+				swingable_rect.set_collision_layer_bit(0, false)
 				player.stop_swinging()
 	elif (state == "falling"):
 		accel += 1
 		boulder.set_global_position(Vector2(boulder.get_global_position().x, boulder.get_global_position().y + accel))
 		if (boulder.get_global_position().y + 32 >= groundplane || collided):
 			state = "dormant"
-			collision_rect.set_layer_mask_bit(1, false)
-			collision_rect.set_layer_mask_bit(0, false)
+			collision_rect.set_collision_layer_bit(1, false)
+			collision_rect.set_collision_layer_bit(0, false)
 			boulder.hide()
 			accel = 0
 			boulder.set_position(Vector2(0, 0))
@@ -61,11 +61,11 @@ func _physics_process(delta):
 		current_dormant_duration += 1
 		if (current_dormant_duration >= dormant_duration):
 			current_dormant_duration = 0
-			collision_rect.set_layer_mask_bit(1, true)
-			collision_rect.set_layer_mask_bit(0, true)
+			collision_rect.set_collision_layer_bit(1, true)
+			collision_rect.set_collision_layer_bit(0, true)
 			boulder.show()
 			state = "idle"
 			var swingable_rect = swingable.get_node("unavailable")
 			swingable_rect.set_name("swingable")
-			swingable_rect.set_layer_mask_bit(1, true)
-			swingable_rect.set_layer_mask_bit(0, true)
+			swingable_rect.set_collision_layer_bit(1, true)
+			swingable_rect.set_collision_layer_bit(0, true)

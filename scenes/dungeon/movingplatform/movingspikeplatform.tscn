@@ -1,11 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/dungeon/movingplatform/MovingPlatform.gd" type="Script" id=1]
 [ext_resource path="res://scenes/dungeon/climbableblock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/dungeon/movingplatform/movingplatform.png" type="Texture" id=3]
 [ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=4]
 
-[node name="MovingSpikePlatform" type="Node2D"]
+[node name="MovingSpikePlatform" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 __meta__ = {
@@ -17,68 +17,91 @@ offset = 0.0
 linear = false
 start_direction = 1
 
-[node name="blockR" parent="." instance=ExtResource( 2 )]
+[node name="blockR" parent="." index="0" instance=ExtResource( 2 )]
 
 position = Vector2( 16, 0 )
 
-[node name="Sprite" parent="blockR"]
+[node name="Sprite" parent="blockR" index="0"]
 
 texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )
 
-[node name="SpikeTile" parent="blockR" instance=ExtResource( 4 )]
+[node name="SpikeTile" parent="blockR" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( -32, -32 )
 
-[node name="SpikeTile1" parent="blockR" instance=ExtResource( 4 )]
+[node name="SpikeTile1" parent="blockR" index="3" instance=ExtResource( 4 )]
 
 position = Vector2( 0, -32 )
 
-[node name="SpikeTile2" parent="blockR" instance=ExtResource( 4 )]
+[node name="SpikeTile2" parent="blockR" index="4" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 position = Vector2( 32, 0 )
 
-[node name="Sprite" parent="blockR/SpikeTile2"]
+[node name="Sprite" parent="blockR/SpikeTile2" index="0"]
 
-rotation_deg = 90.0
+rotation = 1.5708
+_sections_unfolded = [ "Transform" ]
 
-[node name="SpikeTile3" parent="blockR" instance=ExtResource( 4 )]
+[node name="damagable" parent="blockR/SpikeTile2" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile3" parent="blockR" index="5" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( -64, 0 )
 
-[node name="Sprite" parent="blockR/SpikeTile3"]
+[node name="Sprite" parent="blockR/SpikeTile3" index="0"]
 
-rotation_deg = -90.0
+rotation = -1.5708
+_sections_unfolded = [ "Transform" ]
 
-[node name="SpikeTile4" parent="blockR" instance=ExtResource( 4 )]
+[node name="damagable" parent="blockR/SpikeTile3" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile4" parent="blockR" index="6" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( -32, 32 )
 
-[node name="Sprite" parent="blockR/SpikeTile4"]
+[node name="Sprite" parent="blockR/SpikeTile4" index="0"]
 
 flip_v = true
 
-[node name="SpikeTile5" parent="blockR" instance=ExtResource( 4 )]
+[node name="damagable" parent="blockR/SpikeTile4" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile5" parent="blockR" index="7" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 0, 32 )
 
-[node name="Sprite" parent="blockR/SpikeTile5"]
+[node name="Sprite" parent="blockR/SpikeTile5" index="0"]
 
 flip_v = true
 
-[node name="blockL" parent="." instance=ExtResource( 2 )]
+[node name="damagable" parent="blockR/SpikeTile5" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="blockL" parent="." index="1" instance=ExtResource( 2 )]
 
 position = Vector2( -16, 0 )
 
-[node name="Sprite" parent="blockL"]
+[node name="Sprite" parent="blockL" index="0"]
 
 texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )
 flip_h = false
+
+
 [editable path="blockR"]
 [editable path="blockR/SpikeTile2"]
 [editable path="blockR/SpikeTile3"]

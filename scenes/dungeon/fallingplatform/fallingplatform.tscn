@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/dungeon/fallingplatform/fallingplatform.gd" type="Script" id=1]
 [ext_resource path="res://scenes/dungeon/climbableblock.tscn" type="PackedScene" id=2]
@@ -18,7 +18,9 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("blockR/Sprite:position")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -28,7 +30,9 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/path = NodePath("blockL/Sprite:position")
 tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -45,7 +49,9 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("blockR/Sprite:position")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
@@ -55,7 +61,9 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/path = NodePath("blockL/Sprite:position")
 tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
@@ -63,7 +71,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 5, 0 ), Vector2( -5, 0 ), Vector2( 0, 0 ) ]
 }
 
-[node name="FallingPlatform" type="Node2D"]
+[node name="FallingPlatform" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 __meta__ = {
@@ -71,7 +79,7 @@ __meta__ = {
 }
 is_climbable = true
 
-[node name="enabler" type="VisibilityEnabler2D" parent="."]
+[node name="enabler" type="VisibilityEnabler2D" parent="." index="0"]
 
 position = Vector2( 0, 128 )
 scale = Vector2( 8, 20 )
@@ -81,61 +89,59 @@ freeze_bodies = true
 pause_particles = true
 pause_animated_sprites = true
 process_parent = false
-fixed_process_parent = false
+physics_process_parent = false
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." index="1"]
 
 visible = false
 input_pickable = true
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 
 shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
 
-[node name="blockR" parent="." instance=ExtResource( 2 )]
+[node name="blockR" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 16, 0 )
 
-[node name="Sprite" parent="blockR"]
+[node name="Sprite" parent="blockR" index="0"]
 
+self_modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )
-self_modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
 
-[node name="blockL" parent="." instance=ExtResource( 2 )]
+[node name="blockL" parent="." index="3" instance=ExtResource( 2 )]
 
 position = Vector2( -16, 0 )
 
-[node name="Sprite" parent="blockL"]
+[node name="Sprite" parent="blockL" index="0"]
 
+self_modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )
 flip_h = false
-self_modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 
+root_node = NodePath("..")
+autoplay = "idle"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-root_node = NodePath("..")
+playback_speed = 1.0
 anims/idle = SubResource( 2 )
 anims/shake = SubResource( 3 )
-playback/active = true
-playback/speed = 1.0
 blend_times = [  ]
-autoplay = "idle"
 
-[connection signal="enter_screen"  from="enabler"  to="." method="enter_screen" binds=[  ]]
+[connection signal="screen_entered" from="enabler" to="." method="enter_screen"]
 
-[connection signal="exit_screen"  from="enabler"  to="." method="exit_screen" binds=[  ]]
+[connection signal="screen_exited" from="enabler" to="." method="exit_screen"]
+
+
 [editable path="blockR"]
 [editable path="blockL"]

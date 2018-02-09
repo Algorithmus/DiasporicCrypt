@@ -1,81 +1,68 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/aquaduct/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=2]
 
-[node name="LVL_NOTITLE" type="Node2D"]
+[node name="LVL_NOTITLE" type="Node2D" index="0"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
 
-[node name="tilemap" type="TileMap" parent="."]
+[node name="tilemap" type="TileMap" parent="." index="0"]
 
 mode = 0
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
-cell/custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 cell_half_offset = 2
 cell_tile_origin = 0
 cell_y_sort = false
+cell_clip_uv = false
 collision_use_kinematic = false
 collision_friction = 1.0
 collision_bounce = 0.0
-collision_layer = 1
+collision_layer = 524288
 collision_mask = 1
 occluder_light_mask = 1
-tile_data = PoolIntArray( -393224, 1610612749, -393223, 1073741862, -393222, 1073741862, -393221, 1073741862, -393220, 1073741862, -393219, 1073741862, -393218, 1073741862, -393217, 1073741862, -458752, 1073741862, -458751, 1073741862, -458750, 1073741862, -458749, 1073741862, -458748, 1073741862, -458747, 1073741862, -458746, 1073741862, -458745, 1073741862, -458744, 1073741862, -458743, 1073741862, -458742, 1073741862, -458741, 1073741862, -458740, 1073741862, -458739, 1073741862, -458738, 1073741862, -458737, 1073741862, -458736, 1073741862, -458735, 1073741862, -458734, 1073741862, -458733, 1073741862, -458732, 1073741837, -458728, 1610612749, -458727, 1073741862, -458726, 1073741862, -458725, 1073741837, -327688, 1073741838, -393189, 1073741838, -262152, 1073741838, -327653, 1073741838, -196616, 1073741838, -262117, 1073741838, -131080, 1073741838, -196581, 1073741838, -65544, 1073741838, -131045, 1073741838, -8, 1073741838, -65509, 1073741838, 65528, 1073741838, 27, 1073741838, 131064, 1073741838, 65563, 1073741838, 196600, 1073741838, 131099, 1073741838, 262136, 1073741838, 196635, 1073741838, 327672, 1073741838, 262171, 1073741838, 393208, 1073741837, 327707, 1073741838, 393243, 1073741838, 458779, 1073741838, 524315, 1073741838, 589851, 1073741838, 655387, 1073741838, 786424, 536870925, 786425, 38, 786426, 38, 786427, 38, 786428, 38, 786429, 38, 786430, 38, 786431, 38, 720896, 38, 720897, 38, 720898, 38, 720899, 38, 720900, 38, 720901, 38, 720902, 38, 720903, 38, 720904, 38, 720905, 38, 720906, 38, 720907, 38, 720908, 38, 720909, 38, 720910, 38, 720911, 38, 720912, 38, 720913, 38, 720914, 38, 720915, 38, 720916, 38, 720917, 38, 720918, 38, 720919, 38, 720920, 38, 720921, 38, 720922, 38, 720923, 13 )
+format = 1
+tile_data = PoolIntArray( -393224, 1610612749, 0, -393223, 1073741862, 0, -393222, 1073741862, 0, -393221, 1073741862, 0, -393220, 1073741862, 0, -393219, 1073741862, 0, -393218, 1073741862, 0, -393217, 1073741862, 0, -458752, 1073741862, 0, -458751, 1073741862, 0, -458750, 1073741862, 0, -458749, 1073741862, 0, -458748, 1073741862, 0, -458747, 1073741862, 0, -458746, 1073741862, 0, -458745, 1073741862, 0, -458744, 1073741862, 0, -458743, 1073741862, 0, -458742, 1073741862, 0, -458741, 1073741862, 0, -458740, 1073741862, 0, -458739, 1073741862, 0, -458738, 1073741862, 0, -458737, 1073741862, 0, -458736, 1073741862, 0, -458735, 1073741862, 0, -458734, 1073741862, 0, -458733, 1073741862, 0, -458732, 1073741837, 0, -458728, 1610612749, 0, -458727, 1073741862, 0, -458726, 1073741862, 0, -458725, 1073741837, 0, -327688, 1073741838, 0, -393189, 1073741838, 0, -262152, 1073741838, 0, -327653, 1073741838, 0, -196616, 1073741838, 0, -262117, 1073741838, 0, -131080, 1073741838, 0, -196581, 1073741838, 0, -65544, 1073741838, 0, -131045, 1073741838, 0, -8, 1073741838, 0, -65509, 1073741838, 0, 65528, 1073741838, 0, 27, 1073741838, 0, 131064, 1073741838, 0, 65563, 1073741838, 0, 196600, 1073741838, 0, 131099, 1073741838, 0, 262136, 1073741838, 0, 196635, 1073741838, 0, 327672, 1073741838, 0, 262171, 1073741838, 0, 393208, 1073741837, 0, 327707, 1073741838, 0, 393243, 1073741838, 0, 458779, 1073741838, 0, 524315, 1073741838, 0, 589851, 1073741838, 0, 655387, 1073741838, 0, 786424, 536870925, 0, 786425, 38, 0, 786426, 38, 0, 786427, 38, 0, 786428, 38, 0, 786429, 38, 0, 786430, 38, 0, 786431, 38, 0, 720896, 38, 0, 720897, 38, 0, 720898, 38, 0, 720899, 38, 0, 720900, 38, 0, 720901, 38, 0, 720902, 38, 0, 720903, 38, 0, 720904, 38, 0, 720905, 38, 0, 720906, 38, 0, 720907, 38, 0, 720908, 38, 0, 720909, 38, 0, 720910, 38, 0, 720911, 38, 0, 720912, 38, 0, 720913, 38, 0, 720914, 38, 0, 720915, 38, 0, 720916, 38, 0, 720917, 38, 0, 720918, 38, 0, 720919, 38, 0, 720920, 38, 0, 720921, 38, 0, 720922, 38, 0, 720923, 13, 0 )
+_sections_unfolded = [ "Collision" ]
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="0"]
 
-
-[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 2 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 2 )]
 
 position = Vector2( 720, -240 )
 is_horizontal = false
 target_level = "res://levels/aquaduct/0-8.tscn"
 teleport_to = Vector2( -1712, 352 )
 
-[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport" index="0"]
 
 scale = Vector2( 3, 1 )
 
-[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
-
-pause_animated_sprites = true
-
-[node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 2 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 2 )]
 
 position = Vector2( -272, 272 )
 target_level = "res://levels/aquaduct/2-0.tscn"
 teleport_to = Vector2( 460, 336 )
 
-[node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport1" index="0"]
 
 scale = Vector2( 1, 5 )
 
-[node name="enabler" parent="tilemap/TeleportGroup/Teleport1/teleport"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="1"]
 
-pause_animated_sprites = true
-
-[node name="boundaries" type="Node2D" parent="tilemap"]
-
-
-[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+[node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
 
 position = Vector2( -262, -230 )
 
-[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+[node name="SE" type="Position2D" parent="tilemap/boundaries" index="1"]
 
 position = Vector2( 906, 394 )
 
-[connection signal="enter_screen"  from="tilemap/TeleportGroup/Teleport/teleport/enabler"  to="tilemap/TeleportGroup/Teleport" method="enter_screen" binds=[  ]]
 
-[connection signal="exit_screen"  from="tilemap/TeleportGroup/Teleport/teleport/enabler"  to="tilemap/TeleportGroup/Teleport" method="exit_screen" binds=[  ]]
-
-[connection signal="enter_screen"  from="tilemap/TeleportGroup/Teleport1/teleport/enabler"  to="tilemap/TeleportGroup/Teleport1" method="enter_screen" binds=[  ]]
-
-[connection signal="exit_screen"  from="tilemap/TeleportGroup/Teleport1/teleport/enabler"  to="tilemap/TeleportGroup/Teleport1" method="exit_screen" binds=[  ]]
 [editable path="tilemap/TeleportGroup/Teleport"]
 [editable path="tilemap/TeleportGroup/Teleport1"]

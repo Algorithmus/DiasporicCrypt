@@ -23,7 +23,7 @@ func _physics_process(delta):
 	if (state == "idle"):
 		var space = get_world_2d().get_space()
 		var space_state = Physics2DServer.space_get_direct_state(space)
-		var collisions = space_state.intersect_ray(Vector2(lOffset + get_global_position().x - 16, get_global_position().y - 18), Vector2(rOffset + get_global_position().x + 16, get_global_position().y - 18), [self, get_node("Area2D")], 2147483647, 16)
+		var collisions = space_state.intersect_ray(Vector2(lOffset + get_global_position().x - 16, get_global_position().y - 18), Vector2(rOffset + get_global_position().x + 16, get_global_position().y - 18), [self, get_node("Area2D")])
 		if (collisions.has("collider") && collisions["collider"].get_name() == "damage"):
 			var player = collisions["collider"]
 			if (is_climbable || (!is_climbable && player.get_global_position().y + player.get_parent().sprite_offset.y <= get_global_position().y - 16)):
@@ -45,10 +45,10 @@ func _physics_process(delta):
 			camera.get_camera_position().y + camera.get_offset().y > blockR.get_global_position().y + 16 ||
 			camera.get_camera_position().y - camera.get_offset().y < blockR.get_global_position().y - 16):
 			state = "dormant"
-			blockL.set_layer_mask_bit(1, false)
-			blockR.set_layer_mask_bit(1, false)
-			blockL.set_layer_mask_bit(0, false)
-			blockR.set_layer_mask_bit(0, false)
+			blockL.set_collision_layer_bit(1, false)
+			blockR.set_collision_layer_bit(1, false)
+			blockL.set_collision_layer_bit(0, false)
+			blockR.set_collision_layer_bit(0, false)
 			blockL.hide()
 			blockR.hide()
 			accel = 0
@@ -64,10 +64,10 @@ func _physics_process(delta):
 					blacklisted_tiles = true
 			if (tiles.empty() || blacklisted_tiles):
 				current_dormant_duration = 0
-				blockL.set_layer_mask_bit(0, true)
-				blockR.set_layer_mask_bit(0, true)
-				blockR.set_layer_mask_bit(1, true)
-				blockL.set_layer_mask_bit(1, true)
+				blockL.set_collision_layer_bit(0, true)
+				blockR.set_collision_layer_bit(0, true)
+				blockR.set_collision_layer_bit(1, true)
+				blockL.set_collision_layer_bit(1, true)
 				blockL.show()
 				blockR.show()
 				state = "idle"
