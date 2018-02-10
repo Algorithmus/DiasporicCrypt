@@ -10,7 +10,7 @@ source_file="res://scenes/cave/BGs/edge.png"
 source_md5="22b088f4203ed5a90cf769f512b476ec"
 
 dest_files=[ "res://.import/edge.png-21e37682558eea0dd102711fb68dbd02.stex" ]
-dest_md5="1331b685c3fb04ac5bcf75a21222c37c"
+dest_md5="f5c82b0853f3417261c946f289f2e3ec"
 
 [params]
 
@@ -18,7 +18,7 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

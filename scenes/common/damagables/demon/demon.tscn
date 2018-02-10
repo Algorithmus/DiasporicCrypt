@@ -1,26 +1,92 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/common/damagables/demon/demon.gd" type="Script" id=1]
 [ext_resource path="res://players/magic/fire/magic.png" type="Texture" id=2]
 [ext_resource path="res://scenes/common/damagables/flyingskull/flyingskull.png" type="Texture" id=3]
-[ext_resource path="res://scenes/common/damagables/skeleton/die.wav" type="Sample" id=4]
-[ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=4]
 
-[sub_resource type="Gradient" id=1]
+[sub_resource type="CanvasItemMaterial" id=1]
 
-offsets = PoolRealArray( 0, 0.502976, 1 )
+render_priority = 0
+blend_mode = 1
+light_mode = 0
+
+[sub_resource type="Gradient" id=2]
+
+offsets = PoolRealArray( 0, 0.532544, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="GradientTexture" id=3]
 
-resource_name = "attack"
+flags = 4
+gradient = SubResource( 2 )
+width = 2048
+
+[sub_resource type="Curve" id=4]
+
+min_value = 0.0
+max_value = 1.0
+bake_resolution = 100
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.996511, 0.295898 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+
+flags = 4
+width = 2048
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 1
+emission_sphere_radius = 5.0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 0.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 1.0
+scale = 0.7
+scale_random = 0.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 1.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Damping", "Emission Shape", "Gravity", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Radial Accel", "Scale", "Spread", "Tangential Accel" ]
+
+[sub_resource type="Animation" id=7]
+
 length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("attack:visible")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -30,7 +96,9 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/path = NodePath("hurt:visible")
 tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -40,7 +108,9 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/path = NodePath("die:visible")
 tracks/2/interp = 1
+tracks/2/loop_wrap = true
 tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -50,7 +120,9 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/path = NodePath("walk:visible")
 tracks/3/interp = 1
+tracks/3/loop_wrap = true
 tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -60,7 +132,9 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/path = NodePath("attack:frame")
 tracks/4/interp = 1
+tracks/4/loop_wrap = true
 tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -68,7 +142,7 @@ tracks/4/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=8]
 
 length = 0.8
 loop = false
@@ -76,7 +150,9 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("walk:visible")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -86,7 +162,9 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/path = NodePath("die:visible")
 tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -96,7 +174,9 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/path = NodePath("die:frame")
 tracks/2/interp = 1
+tracks/2/loop_wrap = true
 tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
@@ -106,7 +186,9 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/path = NodePath("SamplePlayer:play/play")
 tracks/3/interp = 1
+tracks/3/loop_wrap = true
 tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -116,7 +198,9 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/path = NodePath("hurt:visible")
 tracks/4/interp = 1
+tracks/4/loop_wrap = true
 tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -126,7 +210,9 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/path = NodePath("aura:config/emitting")
 tracks/5/interp = 1
+tracks/5/loop_wrap = true
 tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -136,7 +222,9 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/path = NodePath("attack:visible")
 tracks/6/interp = 1
+tracks/6/loop_wrap = true
 tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -144,7 +232,7 @@ tracks/6/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=9]
 
 length = 0.5
 loop = false
@@ -152,7 +240,9 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("walk:visible")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -162,7 +252,9 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/path = NodePath("die:visible")
 tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -172,7 +264,9 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/path = NodePath("hurt:visible")
 tracks/2/interp = 1
+tracks/2/loop_wrap = true
 tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -182,7 +276,9 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/path = NodePath("hurt:frame")
 tracks/3/interp = 1
+tracks/3/loop_wrap = true
 tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -192,7 +288,9 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/path = NodePath("hurt:offset")
 tracks/4/interp = 1
+tracks/4/loop_wrap = true
 tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -202,7 +300,9 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/path = NodePath("aura:config/emitting")
 tracks/5/interp = 1
+tracks/5/loop_wrap = true
 tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -212,7 +312,9 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/path = NodePath("attack:visible")
 tracks/6/interp = 1
+tracks/6/loop_wrap = true
 tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -220,7 +322,7 @@ tracks/6/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=10]
 
 length = 0.1
 loop = true
@@ -228,7 +330,9 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("die:visible")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -238,7 +342,9 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/path = NodePath("walk:visible")
 tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -248,7 +354,9 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/path = NodePath("hurt:visible")
 tracks/2/interp = 1
+tracks/2/loop_wrap = true
 tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -258,7 +366,9 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/path = NodePath("walk:frame")
 tracks/3/interp = 1
+tracks/3/loop_wrap = true
 tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -268,7 +378,9 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/path = NodePath("aura:config/emitting")
 tracks/4/interp = 1
+tracks/4/loop_wrap = true
 tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -278,7 +390,9 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/path = NodePath("attack:visible")
 tracks/5/interp = 1
+tracks/5/loop_wrap = true
 tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -286,33 +400,24 @@ tracks/5/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=11]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[sub_resource type="Resource" id=7]
+[node name="Demon" type="KinematicBody2D" index="0"]
 
-samples/s_die = {
-"db": 0.0,
-"pitch": 1.0,
-"sample": ExtResource( 4 )
-}
-
-[node name="Demon" type="KinematicBody2D"]
-
-z = 1
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
-collision/margin = 0.08
+collision/safe_margin = 0.08
 script = ExtResource( 1 )
 __meta__ = {
 "__editor_plugin_screen__": "Script"
 }
 patrolrange = 10
 
-[node name="enabler" type="VisibilityEnabler2D" parent="."]
+[node name="enabler" type="VisibilityEnabler2D" parent="." index="0"]
 
 scale = Vector2( 10, 5 )
 rect = Rect2( -10, -10, 20, 20 )
@@ -321,127 +426,104 @@ freeze_bodies = true
 pause_particles = true
 pause_animated_sprites = true
 process_parent = false
-fixed_process_parent = false
+physics_process_parent = false
 
-[node name="aura" type="Particles2D" parent="."]
+[node name="aura" type="Particles2D" parent="." index="1"]
 
-visibility/blend_mode = 1
-rotation_deg = -270.0
-config/amount = 64
-config/lifetime = 1.0
-config/emitting = false
-config/half_extents = Vector2( 10, 10 )
-config/local_space = false
-config/texture = ExtResource( 2 )
-params/direction = 0.0
-params/spread = 0.0
-params/linear_velocity = 0.0
-params/spin_velocity = 0.0
-params/orbit_velocity = 0.0
-params/gravity_direction = 0.0
-params/gravity_strength = 0.0
-params/radial_accel = 0.0
-params/tangential_accel = 0.0
-params/damping = 0.0
-params/initial_angle = 0.0
-params/initial_size = 0.7
-params/final_size = 0.3
-params/hue_variation = 0.0
-params/anim_speed_scale = 1.0
-params/anim_initial_pos = 0.0
-randomness/initial_angle = 1.0
-color/color_ramp = SubResource( 1 )
+material = SubResource( 1 )
+rotation = 4.71239
+emitting = true
+amount = 64
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 6 )
+texture = ExtResource( 2 )
+normal_map = null
+h_frames = 1
+v_frames = 1
 
-[node name="walk" type="Sprite" parent="."]
+[node name="walk" type="Sprite" parent="." index="2"]
 
 visible = false
+self_modulate = Color( 0.26799, 0.283709, 0.355469, 1 )
 texture = ExtResource( 3 )
 offset = Vector2( -5, -5 )
 flip_h = true
 hframes = 4
-self_modulate = Color( 0.26799, 0.283709, 0.355469, 1 )
 
-[node name="die" type="Sprite" parent="."]
+[node name="die" type="Sprite" parent="." index="3"]
 
 visible = false
+self_modulate = Color( 0.266667, 0.282353, 0.352941, 1 )
 texture = ExtResource( 3 )
 offset = Vector2( -5, -5 )
 flip_h = true
 hframes = 4
 frame = 3
-self_modulate = Color( 0.266667, 0.282353, 0.352941, 1 )
 
-[node name="hurt" type="Sprite" parent="."]
+[node name="hurt" type="Sprite" parent="." index="4"]
 
 visible = false
+self_modulate = Color( 0.266667, 0.282353, 0.352941, 1 )
 texture = ExtResource( 3 )
 offset = Vector2( -5, -5 )
 flip_h = true
 hframes = 4
 frame = 2
-self_modulate = Color( 0.266667, 0.282353, 0.352941, 1 )
 
-[node name="attack" type="Sprite" parent="."]
+[node name="attack" type="Sprite" parent="." index="5"]
 
+self_modulate = Color( 0.26799, 0.283709, 0.355469, 1 )
 texture = ExtResource( 3 )
 offset = Vector2( -5, -5 )
 flip_h = true
 hframes = 4
 frame = 1
-self_modulate = Color( 0.26799, 0.283709, 0.355469, 1 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 
+root_node = NodePath("..")
+autoplay = "walk"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-root_node = NodePath("..")
-anims/attack = SubResource( 2 )
-anims/die = SubResource( 3 )
-anims/hurt = SubResource( 4 )
-anims/walk = SubResource( 5 )
-playback/active = true
-playback/speed = 1.0
+playback_speed = 1.0
+anims/attack = SubResource( 7 )
+anims/die = SubResource( 8 )
+anims/hurt = SubResource( 9 )
+anims/walk = SubResource( 10 )
 blend_times = [  ]
-autoplay = "walk"
 
-[node name="damagable" type="Area2D" parent="."]
+[node name="damagable" type="Area2D" parent="." index="7"]
 
 input_pickable = true
-shapes/0/shape = SubResource( 6 )
-shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="damagable"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damagable" index="0"]
 
-shape = SubResource( 6 )
-trigger = false
-_update_shape_index = 0
+shape = SubResource( 11 )
 
-[node name="SamplePlayer" type="Node" parent="."]
+[node name="SamplePlayer" type="Node" parent="." index="8"]
 
-polyphony = 1
-samples = SubResource( 7 )
-default/volume_db = 0.0
-default/pitch_scale = 1.0
-default/pan = 0.0
-default/depth = 0.0
-default/height = 0.0
-default/filter/type = 0
-default/filter/cutoff = 5000.0
-default/filter/resonance = 1.0
-default/filter/gain = 1.0
-default/reverb_room = 2
-default/reverb_send = 0.0
-default/chorus_send = 0.0
-
-[node name="Stun" parent="." instance=ExtResource( 5 )]
+[node name="Stun" parent="." index="9" instance=ExtResource( 4 )]
 
 position = Vector2( 0, -16 )
 
-[connection signal="enter_screen"  from="enabler"  to="." method="enter_screen" binds=[  ]]
+[connection signal="screen_entered" from="enabler" to="." method="enter_screen"]
 
-[connection signal="exit_screen"  from="enabler"  to="." method="exit_screen" binds=[  ]]
+[connection signal="screen_exited" from="enabler" to="." method="exit_screen"]
+
+

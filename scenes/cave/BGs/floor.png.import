@@ -10,7 +10,7 @@ source_file="res://scenes/cave/BGs/floor.png"
 source_md5="e70910ba20bd29476abc2a142e934a22"
 
 dest_files=[ "res://.import/floor.png-1698cd0a8564e0eece3cadc0046c1a72.stex" ]
-dest_md5="e9927f08af14e7ea278185875efc4ad8"
+dest_md5="7ab21c0537b2a73ec10b4bca7305b47e"
 
 [params]
 
@@ -18,7 +18,7 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
