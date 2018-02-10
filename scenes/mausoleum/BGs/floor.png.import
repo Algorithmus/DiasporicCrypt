@@ -10,7 +10,7 @@ source_file="res://scenes/mausoleum/BGs/floor.png"
 source_md5="38cfdbb8fbd106f9abdd218bc4807544"
 
 dest_files=[ "res://.import/floor.png-18e28eeb950ad5ba2a0566ba9f106d83.stex" ]
-dest_md5="b55175592c019c8ed3788a8b062add43"
+dest_md5="41a08751e587790184c67bb4a07907ff"
 
 [params]
 
@@ -18,7 +18,7 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
