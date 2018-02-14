@@ -1,0 +1,654 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/fallislandcastle/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/fallislandcastle/climbableblock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/dungeon/movingplatform/movingplatform.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/damagables/skeleton/skeleton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=6]
+
+[node name="LVL_NOTITLE" type="Node2D" index="0"]
+
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+
+[node name="tilemap" type="TileMap" parent="." index="0"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 524288
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -983095, 1610612737, 0, -983094, 1073741824, 0, -983093, 1073741824, 0, -983092, 1073741824, 0, -983091, 1073741824, 0, -983090, 1073741824, 0, -983089, 1073741824, 0, -983088, 1073741824, 0, -983087, 1073741824, 0, -983086, 1073741824, 0, -983085, 1073741824, 0, -983084, 1073741824, 0, -983083, 1073741824, 0, -983082, 1073741824, 0, -983081, 1073741824, 0, -983080, 1073741824, 0, -983079, 1073741824, 0, -983078, 1073741824, 0, -983077, 1073741824, 0, -983076, 1073741824, 0, -983075, 1073741824, 0, -983074, 1073741824, 0, -983073, 1073741824, 0, -983072, 1073741824, 0, -983071, 1073741824, 0, -983070, 1073741824, 0, -983069, 1073741824, 0, -983068, 1073741824, 0, -983067, 1073741824, 0, -983066, 1073741824, 0, -983065, 1073741824, 0, -983064, 1073741824, 0, -983063, 1073741824, 0, -983062, 1073741824, 0, -983061, 1073741824, 0, -983060, 1073741824, 0, -983059, 1073741824, 0, -983058, 1073741824, 0, -983057, 1073741824, 0, -983056, 1073741824, 0, -983055, 1073741824, 0, -983054, 1073741824, 0, -983053, 1073741824, 0, -983052, 1073741824, 0, -983051, 1073741824, 0, -983050, 1073741824, 0, -983049, 1073741824, 0, -983048, 1073741824, 0, -983047, 1073741824, 0, -983046, 1073741824, 0, -983045, 1073741824, 0, -983044, 1073741824, 0, -983043, 1073741824, 0, -983042, 1073741824, 0, -983041, 1073741824, 0, -1048576, 1073741824, 0, -1048575, 1073741824, 0, -1048574, 1073741824, 0, -1048573, 1073741824, 0, -1048572, 1073741824, 0, -1048571, 1073741824, 0, -1048570, 1073741824, 0, -1048569, 1073741824, 0, -1048568, 1073741824, 0, -1048567, 1073741824, 0, -1048566, 1073741824, 0, -1048565, 1073741824, 0, -1048564, 1073741824, 0, -1048563, 1073741824, 0, -1048562, 1073741824, 0, -1048561, 1073741824, 0, -1048560, 1073741824, 0, -1048559, 1073741824, 0, -1048558, 1073741825, 0, -917559, 2, 0, -917558, 10, 0, -917554, 10, 0, -917550, 10, 0, -917546, 10, 0, -917542, 10, 0, -917538, 10, 0, -917534, 10, 0, -917530, 2, 0, -917529, 3, 0, -917528, 536870915, 0, -917527, 2, 0, -917526, 10, 0, -917522, 10, 0, -917518, 10, 0, -917514, 10, 0, -917510, 10, 0, -917506, 10, 0, -983038, 10, 0, -983034, 2, 0, -983033, 3, 0, -983032, 536870915, 0, -983031, 2, 0, -983030, 10, 0, -983026, 10, 0, -983022, 1073741826, 0, -852023, 2, 0, -851994, 2, 0, -851993, 4, 0, -851992, 4, 0, -851991, 2, 0, -917498, 2, 0, -917497, 4, 0, -917496, 4, 0, -917495, 2, 0, -917486, 1073741826, 0, -786487, 2, 0, -786486, 11, 0, -786482, 11, 0, -786478, 11, 0, -786474, 11, 0, -786470, 11, 0, -786466, 11, 0, -786462, 11, 0, -786458, 2, 0, -786457, 4, 0, -786456, 4, 0, -786455, 2, 0, -786454, 11, 0, -786450, 11, 0, -786446, 11, 0, -786442, 11, 0, -786438, 11, 0, -786434, 11, 0, -851966, 11, 0, -851962, 2, 0, -851961, 4, 0, -851960, 4, 0, -851959, 2, 0, -851958, 11, 0, -851954, 11, 0, -851950, 1073741826, 0, -720951, 2, 0, -720922, 2, 0, -720921, 4, 0, -720920, 4, 0, -720919, 2, 0, -786426, 2, 0, -786425, 4, 0, -786424, 4, 0, -786423, 2, 0, -786414, 1073741826, 0, -655415, 2, 0, -655386, 2, 0, -655385, 4, 0, -655384, 4, 0, -655383, 2, 0, -720890, 2, 0, -720889, 4, 0, -720888, 4, 0, -720887, 2, 0, -720878, 1073741826, 0, -589879, 2, 0, -589878, 6, 0, -589874, 6, 0, -589870, 6, 0, -589866, 6, 0, -589862, 6, 0, -589858, 6, 0, -589854, 6, 0, -589850, 2, 0, -589849, 4, 0, -589848, 4, 0, -589847, 2, 0, -589846, 6, 0, -589842, 6, 0, -589838, 6, 0, -589834, 6, 0, -589830, 6, 0, -589826, 6, 0, -655358, 6, 0, -655354, 2, 0, -655353, 4, 0, -655352, 4, 0, -655351, 2, 0, -655350, 6, 0, -655346, 6, 0, -655342, 1610612737, 0, -524343, 2, 0, -524314, 2, 0, -524313, 4, 0, -524312, 4, 0, -524311, 2, 0, -589818, 2, 0, -589817, 4, 0, -589816, 4, 0, -589815, 2, 0, -589806, 7, 0, -458807, 2, 0, -458778, 2, 0, -458777, 4, 0, -458776, 4, 0, -458775, 2, 0, -524282, 2, 0, -524281, 4, 0, -524280, 4, 0, -524279, 2, 0, -524270, 7, 0, -393271, 2, 0, -393242, 2, 0, -393241, 4, 0, -393240, 4, 0, -393239, 2, 0, -458746, 2, 0, -458745, 4, 0, -458744, 4, 0, -458743, 2, 0, -458734, 7, 0, -327735, 2, 0, -327706, 2, 0, -327705, 4, 0, -327704, 4, 0, -327703, 2, 0, -393210, 2, 0, -393209, 4, 0, -393208, 4, 0, -393207, 2, 0, -393198, 7, 0, -262199, 2, 0, -262170, 2, 0, -262169, 4, 0, -262168, 4, 0, -262167, 2, 0, -327674, 2, 0, -327673, 4, 0, -327672, 4, 0, -327671, 2, 0, -327662, 7, 0, -196663, 2, 0, -196653, 0, 0, -196652, 0, 0, -196651, 0, 0, -196650, 0, 0, -196649, 0, 0, -196648, 0, 0, -196647, 0, 0, -196646, 0, 0, -196645, 0, 0, -196644, 0, 0, -196634, 2, 0, -196633, 4, 0, -196632, 4, 0, -196631, 2, 0, -196621, 0, 0, -196620, 0, 0, -196619, 0, 0, -196618, 0, 0, -196617, 0, 0, -196616, 0, 0, -196615, 0, 0, -196614, 0, 0, -196613, 0, 0, -196612, 0, 0, -262138, 2, 0, -262137, 4, 0, -262136, 4, 0, -262135, 2, 0, -262129, 0, 0, -262128, 0, 0, -262127, 0, 0, -262126, 0, 0, -131127, 2, 0, -131118, 2, 0, -131117, 3, 0, -131116, -1610612732, 0, -131115, -1610612732, 0, -131114, -1610612732, 0, -131113, -1610612732, 0, -131112, -1610612732, 0, -131111, -1610612732, 0, -131110, -1610612732, 0, -131109, -1610612732, 0, -131108, 536870915, 0, -131107, 2, 0, -131098, 2, 0, -131097, 4, 0, -131096, 4, 0, -131095, 2, 0, -131086, 2, 0, -131085, 3, 0, -131084, -1610612732, 0, -131083, -1610612732, 0, -131082, -1610612732, 0, -131081, -1610612732, 0, -131080, -1610612732, 0, -131079, -1610612732, 0, -131078, -1610612732, 0, -131077, -1610612732, 0, -131076, 536870915, 0, -131075, 2, 0, -196602, 2, 0, -196601, 4, 0, -196600, 4, 0, -196599, 2, 0, -196590, 2, 0, -65591, 2, 0, -65590, 6, 0, -65586, 6, 0, -65582, 2, 0, -65581, 4, 0, -65580, 3, 0, -65579, -1610612732, 0, -65578, -1610612732, 0, -65577, -1610612732, 0, -65576, -1610612732, 0, -65575, -1610612732, 0, -65574, -1610612732, 0, -65573, -1610612732, 0, -65572, 1610612739, 0, -65571, 2, 0, -65570, 6, 0, -65566, 6, 0, -65562, 2, 0, -65561, 4, 0, -65560, 4, 0, -65559, 2, 0, -65558, 6, 0, -65554, 6, 0, -65550, 2, 0, -65549, 4, 0, -65548, 3, 0, -65547, -1610612732, 0, -65546, -1610612732, 0, -65545, -1610612732, 0, -65544, -1610612732, 0, -65543, -1610612732, 0, -65542, -1610612732, 0, -65541, -1610612732, 0, -65540, 1610612739, 0, -65539, 2, 0, -65538, 6, 0, -131070, 6, 0, -131066, 2, 0, -131065, 4, 0, -131064, 4, 0, -131063, 2, 0, -131062, 6, 0, -131058, 6, 0, -131054, 2, 0, -55, 2, 0, -46, 2, 0, -45, 4, 0, -44, 4, 0, -43, 1610612737, 0, -42, 1073741824, 0, -41, 1073741824, 0, -40, 1073741824, 0, -39, 1073741824, 0, -38, 1073741824, 0, -37, 1073741824, 0, -36, 1073741824, 0, -35, 1073741825, 0, -26, 2, 0, -25, 4, 0, -24, 4, 0, -23, 2, 0, -14, 2, 0, -13, 4, 0, -12, 4, 0, -11, 1610612737, 0, -10, 1073741824, 0, -9, 1073741824, 0, -8, 1073741824, 0, -7, 1073741824, 0, -6, 1073741824, 0, -5, 1073741824, 0, -4, 1073741824, 0, -3, 1073741825, 0, -65530, 2, 0, -65529, 4, 0, -65528, 4, 0, -65527, 2, 0, -65518, 2, 0, 65481, 2, 0, 65490, 2, 0, 65491, 4, 0, 65492, 4, 0, 65493, 2, 0, 65494, 11, 0, 65498, 11, 0, 65510, 2, 0, 65511, 4, 0, 65512, 4, 0, 65513, 2, 0, 65522, 2, 0, 65523, 4, 0, 65524, 4, 0, 65525, 2, 0, 65526, 11, 0, 65530, 11, 0, 6, 2, 0, 7, 4, 0, 8, 4, 0, 9, 2, 0, 18, 2, 0, 131017, 2, 0, 131026, 2, 0, 131027, 4, 0, 131028, 4, 0, 131029, 2, 0, 131046, 2, 0, 131047, 4, 0, 131048, 4, 0, 131049, 2, 0, 131058, 2, 0, 131059, 4, 0, 131060, 4, 0, 131061, 2, 0, 65542, 2, 0, 65543, 4, 0, 65544, 4, 0, 65545, 2, 0, 65554, 2, 0, 196553, 2, 0, 196562, 2, 0, 196563, 4, 0, 196564, 4, 0, 196565, 2, 0, 196582, 2, 0, 196583, 4, 0, 196584, 4, 0, 196585, 2, 0, 196594, 2, 0, 196595, 4, 0, 196596, 4, 0, 196597, 2, 0, 131078, 2, 0, 131079, 4, 0, 131080, 4, 0, 131081, 2, 0, 131090, 2, 0, 262089, 2, 0, 262098, 2, 0, 262099, 4, 0, 262100, 4, 0, 262101, 2, 0, 262102, 11, 0, 262106, 11, 0, 262118, 2, 0, 262119, 4, 0, 262120, 4, 0, 262121, 2, 0, 262130, 2, 0, 262131, 4, 0, 262132, 4, 0, 262133, 2, 0, 262134, 11, 0, 262138, 11, 0, 196614, 2, 0, 196615, 4, 0, 196616, 4, 0, 196617, 2, 0, 196626, 2, 0, 327625, 2, 0, 327634, 2, 0, 327635, 4, 0, 327636, 4, 0, 327637, 2, 0, 327654, 2, 0, 327655, 4, 0, 327656, 4, 0, 327657, 2, 0, 327666, 2, 0, 327667, 4, 0, 327668, 4, 0, 327669, 2, 0, 262150, 2, 0, 262151, 4, 0, 262152, 4, 0, 262153, 2, 0, 262162, 2, 0, 393161, 2, 0, 393170, 2, 0, 393171, 4, 0, 393172, 4, 0, 393173, 2, 0, 393183, 0, 0, 393184, 0, 0, 393185, 0, 0, 393186, 0, 0, 393187, 0, 0, 393188, 0, 0, 393189, 0, 0, 393190, 1, 0, 393191, 4, 0, 393192, 4, 0, 393193, 2, 0, 393202, 2, 0, 393203, 4, 0, 393204, 4, 0, 393205, 2, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 1, 0, 327687, 4, 0, 327688, 4, 0, 327689, 2, 0, 327698, 2, 0, 458697, 2, 0, 458698, 12, 0, 458702, 6, 0, 458706, 2, 0, 458707, 4, 0, 458708, 4, 0, 458709, 2, 0, 458710, 6, 0, 458714, 12, 0, 458718, 2, 0, 458719, 3, 0, 458720, -1610612732, 0, 458721, -1610612732, 0, 458722, -1610612732, 0, 458723, -1610612732, 0, 458724, -1610612732, 0, 458725, -1610612732, 0, 458726, -1610612732, 0, 458727, 1610612739, 0, 458728, 4, 0, 458729, 2, 0, 458730, 12, 0, 458734, 6, 0, 458738, 2, 0, 458739, 4, 0, 458740, 4, 0, 458741, 2, 0, 458742, 6, 0, 458746, 12, 0, 458750, 2, 0, 458751, 3, 0, 393216, -1610612732, 0, 393217, -1610612732, 0, 393218, -1610612732, 0, 393219, -1610612732, 0, 393220, -1610612732, 0, 393221, -1610612732, 0, 393222, -1610612732, 0, 393223, 1610612739, 0, 393224, 4, 0, 393225, 2, 0, 393226, 12, 0, 393230, 6, 0, 393234, 2, 0, 524233, 2, 0, 524242, 2, 0, 524243, 4, 0, 524244, 4, 0, 524245, 2, 0, 524254, 2, 0, 524255, 1073741827, 0, 524256, -1610612732, 0, 524257, -1610612732, 0, 524258, -1610612732, 0, 524259, -1610612732, 0, 524260, -1610612732, 0, 524261, -1610612732, 0, 524262, -1610612732, 0, 524263, -1610612732, 0, 524264, 1610612739, 0, 524265, 2, 0, 524274, 2, 0, 524275, 4, 0, 524276, 4, 0, 524277, 2, 0, 524286, 2, 0, 524287, 1073741827, 0, 458752, -1610612732, 0, 458753, -1610612732, 0, 458754, -1610612732, 0, 458755, -1610612732, 0, 458756, -1610612732, 0, 458757, -1610612732, 0, 458758, -1610612732, 0, 458759, -1610612732, 0, 458760, 1610612739, 0, 458761, 2, 0, 458770, 2, 0, 589769, 1073741825, 0, 589778, 2, 0, 589779, 4, 0, 589780, 4, 0, 589781, 2, 0, 589790, 1610612737, 0, 589791, 1073741824, 0, 589792, 1073741824, 0, 589793, 1073741824, 0, 589794, 1073741824, 0, 589795, 1073741824, 0, 589796, 1073741824, 0, 589797, 1073741824, 0, 589798, 1073741824, 0, 589799, 1073741824, 0, 589800, 1073741824, 0, 589801, 1073741825, 0, 589810, 2, 0, 589811, 4, 0, 589812, 4, 0, 589813, 2, 0, 589822, 1610612737, 0, 589823, 1073741824, 0, 524288, 1073741824, 0, 524289, 1073741824, 0, 524290, 1073741824, 0, 524291, 1073741824, 0, 524292, 1073741824, 0, 524293, 1073741824, 0, 524294, 1073741824, 0, 524295, 1073741824, 0, 524296, 1073741824, 0, 524297, 1073741825, 0, 524306, 2, 0, 655305, 7, 0, 655314, 2, 0, 655315, 4, 0, 655316, 4, 0, 655317, 2, 0, 655326, 9, 0, 655327, 8, 0, 655328, 8, 0, 655329, 9, 0, 655330, 9, 0, 655331, 8, 0, 655332, 8, 0, 655333, 9, 0, 655334, 9, 0, 655335, 8, 0, 655336, 8, 0, 655337, 9, 0, 655346, 2, 0, 655347, 4, 0, 655348, 4, 0, 655349, 2, 0, 655358, 9, 0, 655359, 8, 0, 589824, 8, 0, 589825, 9, 0, 589826, 9, 0, 589827, 8, 0, 589828, 8, 0, 589829, 9, 0, 589830, 9, 0, 589831, 8, 0, 589832, 8, 0, 589833, 9, 0, 589842, 2, 0, 720841, 7, 0, 720850, 2, 0, 720851, 4, 0, 720852, 4, 0, 720853, 2, 0, 720862, 11, 0, 720866, 11, 0, 720870, 11, 0, 720882, 2, 0, 720883, 4, 0, 720884, 4, 0, 720885, 2, 0, 720894, 11, 0, 655362, 11, 0, 655366, 11, 0, 655378, 2, 0, 786377, 7, 0, 786386, 2, 0, 786387, 4, 0, 786388, 4, 0, 786389, 2, 0, 786418, 2, 0, 786419, 4, 0, 786420, 4, 0, 786421, 2, 0, 720914, 2, 0, 851913, 7, 0, 851922, 2, 0, 851923, 4, 0, 851924, 4, 0, 851925, 2, 0, 851954, 2, 0, 851955, 4, 0, 851956, 4, 0, 851957, 2, 0, 786450, 2, 0, 917449, 7, 0, 917458, 2, 0, 917459, 1073741827, 0, 917460, 1610612739, 0, 917461, 2, 0, 917470, 9, 0, 917471, 8, 0, 917472, 8, 0, 917473, 9, 0, 917474, 9, 0, 917475, 8, 0, 917476, 8, 0, 917477, 9, 0, 917478, 9, 0, 917479, 8, 0, 917480, 8, 0, 917481, 9, 0, 917490, 2, 0, 917491, 1073741827, 0, 917492, 1610612739, 0, 917493, 2, 0, 917502, 9, 0, 917503, 8, 0, 851968, 8, 0, 851969, 9, 0, 851970, 9, 0, 851971, 8, 0, 851972, 8, 0, 851973, 9, 0, 851974, 9, 0, 851975, 8, 0, 851976, 8, 0, 851977, 9, 0, 851986, 2, 0, 982985, 536870913, 0, 982986, 0, 0, 982987, 0, 0, 982988, 0, 0, 982989, 0, 0, 982990, 0, 0, 982991, 0, 0, 982992, 0, 0, 982993, 0, 0, 982994, 0, 0, 982995, 0, 0, 982996, 0, 0, 982997, 0, 0, 982998, 0, 0, 982999, 0, 0, 983000, 0, 0, 983001, 0, 0, 983002, 0, 0, 983003, 0, 0, 983004, 0, 0, 983005, 0, 0, 983006, 0, 0, 983007, 0, 0, 983008, 0, 0, 983009, 0, 0, 983010, 0, 0, 983011, 0, 0, 983012, 0, 0, 983013, 0, 0, 983014, 0, 0, 983015, 0, 0, 983016, 0, 0, 983017, 0, 0, 983018, 0, 0, 983019, 0, 0, 983020, 0, 0, 983021, 0, 0, 983022, 0, 0, 983023, 0, 0, 983024, 0, 0, 983025, 0, 0, 983026, 0, 0, 983027, 0, 0, 983028, 0, 0, 983029, 0, 0, 983030, 0, 0, 983031, 0, 0, 983032, 0, 0, 983033, 0, 0, 983034, 0, 0, 983035, 0, 0, 983036, 0, 0, 983037, 0, 0, 983038, 0, 0, 983039, 0, 0, 917504, 0, 0, 917505, 0, 0, 917506, 0, 0, 917507, 0, 0, 917508, 0, 0, 917509, 0, 0, 917510, 0, 0, 917511, 0, 0, 917512, 0, 0, 917513, 0, 0, 917514, 0, 0, 917515, 0, 0, 917516, 0, 0, 917517, 0, 0, 917518, 0, 0, 917519, 0, 0, 917520, 0, 0, 917521, 0, 0, 917522, 1, 0 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="ClimbableGroup" type="Node2D" parent="tilemap" index="0"]
+
+editor/display_folded = true
+
+[node name="ClimbableBlock" parent="tilemap/ClimbableGroup" index="0" instance=ExtResource( 2 )]
+
+position = Vector2( 464, -112 )
+
+[node name="ClimbableBlock1" parent="tilemap/ClimbableGroup" index="1" instance=ExtResource( 2 )]
+
+position = Vector2( -48, 176 )
+
+[node name="ClimbableBlock2" parent="tilemap/ClimbableGroup" index="2" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+position = Vector2( -80, -112 )
+
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock2" index="0"]
+
+flip_h = false
+
+[node name="ClimbableBlock3" parent="tilemap/ClimbableGroup" index="3" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+position = Vector2( -1072, 176 )
+
+[node name="ClimbableBlock4" parent="tilemap/ClimbableGroup" index="4" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+position = Vector2( -1104, -112 )
+
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock4" index="0"]
+
+flip_h = false
+
+[node name="ClimbableBlock6" parent="tilemap/ClimbableGroup" index="5" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+position = Vector2( -1456, -112 )
+
+[node name="ClimbableBlock5" parent="tilemap/ClimbableGroup" index="6" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+position = Vector2( -432, -112 )
+
+[node name="DamageGroup" type="Node2D" parent="tilemap" index="1"]
+
+[node name="SpikeTile3" parent="tilemap/DamageGroup" index="0" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -464, 48 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile3" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile3" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile4" parent="tilemap/DamageGroup" index="1" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -464, 80 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile4" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile4" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile5" parent="tilemap/DamageGroup" index="2" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -464, 112 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile5" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile5" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile6" parent="tilemap/DamageGroup" index="3" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -464, 144 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile6" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile6" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile7" parent="tilemap/DamageGroup" index="4" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -464, 176 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile7" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile7" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile8" parent="tilemap/DamageGroup" index="5" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -464, 208 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile8" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile8" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile9" parent="tilemap/DamageGroup" index="6" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -464, 240 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile9" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile9" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile10" parent="tilemap/DamageGroup" index="7" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -464, 272 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile10" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile10" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile1115" parent="tilemap/DamageGroup" index="8" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -1488, 48 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile1115" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile1115" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile1116" parent="tilemap/DamageGroup" index="9" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -1488, 80 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile1116" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile1116" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile1117" parent="tilemap/DamageGroup" index="10" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -1488, 112 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile1117" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile1117" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile1118" parent="tilemap/DamageGroup" index="11" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -1488, 144 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile1118" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile1118" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile1119" parent="tilemap/DamageGroup" index="12" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -1488, 176 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile1119" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile1119" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile1120" parent="tilemap/DamageGroup" index="13" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -1488, 208 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile1120" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile1120" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile1121" parent="tilemap/DamageGroup" index="14" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -1488, 240 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile1121" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile1121" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile1122" parent="tilemap/DamageGroup" index="15" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -1488, 272 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile1122" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile1122" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile11" parent="tilemap/DamageGroup" index="16" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -688, 48 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile11" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile11" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile11 10" parent="tilemap/DamageGroup" index="17" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -688, 80 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile11 10" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile11 10" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile11 7" parent="tilemap/DamageGroup" index="18" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -688, 112 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile11 7" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile11 7" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile11 5" parent="tilemap/DamageGroup" index="19" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -688, 144 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile11 5" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile11 5" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile11 6" parent="tilemap/DamageGroup" index="20" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -688, 176 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile11 6" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile11 6" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile11 3" parent="tilemap/DamageGroup" index="21" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -688, 208 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile11 3" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile11 3" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile11 2" parent="tilemap/DamageGroup" index="22" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -688, 240 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile11 2" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile11 2" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile11 4" parent="tilemap/DamageGroup" index="23" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -688, 272 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile11 4" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile11 4" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile1126" parent="tilemap/DamageGroup" index="24" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -1712, 48 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile1126" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile1126" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile1127" parent="tilemap/DamageGroup" index="25" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -1712, 80 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile1127" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile1127" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile1128" parent="tilemap/DamageGroup" index="26" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -1712, 112 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile1128" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile1128" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile1129" parent="tilemap/DamageGroup" index="27" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -1712, 144 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile1129" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile1129" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile1130" parent="tilemap/DamageGroup" index="28" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -1712, 176 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile1130" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile1130" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile1131" parent="tilemap/DamageGroup" index="29" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -1712, 208 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile1131" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile1131" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile1132" parent="tilemap/DamageGroup" index="30" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -1712, 240 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile1132" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile1132" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile1133" parent="tilemap/DamageGroup" index="31" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -1712, 272 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile1133" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile1133" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="MovingPlatformGroup" type="Node2D" parent="tilemap" index="2"]
+
+editor/display_folded = true
+
+[node name="MovingPlatform" parent="tilemap/MovingPlatformGroup" index="0" instance=ExtResource( 4 )]
+
+position = Vector2( 384, 176 )
+motion = Vector2( 0, 96 )
+cycle = 5.0
+
+[node name="MovingPlatform1" parent="tilemap/MovingPlatformGroup" index="1" instance=ExtResource( 4 )]
+
+position = Vector2( -576, 176 )
+motion = Vector2( 0, 96 )
+cycle = 5.0
+
+[node name="MovingPlatform2" parent="tilemap/MovingPlatformGroup" index="2" instance=ExtResource( 4 )]
+
+position = Vector2( -1600, 176 )
+motion = Vector2( 0, 96 )
+cycle = 5.0
+
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="3"]
+
+[node name="Skeleton" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 5 )]
+
+position = Vector2( 128, 400 )
+
+[node name="Skeleton1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 5 )]
+
+position = Vector2( -256, -176 )
+
+[node name="Skeleton2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 5 )]
+
+position = Vector2( 64, 112 )
+
+[node name="Skeleton3" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 5 )]
+
+position = Vector2( -896, 400 )
+
+[node name="Skeleton4" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 5 )]
+
+position = Vector2( -1200, 400 )
+
+[node name="Skeleton5" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 5 )]
+
+position = Vector2( -1280, -176 )
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="4"]
+
+editor/display_folded = true
+
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 6 )]
+
+editor/display_folded = true
+position = Vector2( 624, -208 )
+target_level = "res://levels/bergfortress/0-2.tscn"
+teleport_to = Vector2( -236, -1808 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport" index="0"]
+
+scale = Vector2( 1, 5 )
+
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 6 )]
+
+editor/display_folded = true
+position = Vector2( -1776, 368 )
+target_level = "res://levels/bergfortress/0-4.tscn"
+teleport_to = Vector2( 716, -144 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport1" index="0"]
+
+scale = Vector2( 1, 5 )
+
+[node name="boundaries" type="Node2D" parent="tilemap" index="5"]
+
+editor/display_folded = true
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
+
+position = Vector2( -1766, -518 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries" index="1"]
+
+position = Vector2( 618, 490 )
+
+
+[editable path="tilemap/ClimbableGroup/ClimbableBlock2"]
+[editable path="tilemap/ClimbableGroup/ClimbableBlock4"]
+[editable path="tilemap/DamageGroup/SpikeTile3"]
+[editable path="tilemap/DamageGroup/SpikeTile4"]
+[editable path="tilemap/DamageGroup/SpikeTile5"]
+[editable path="tilemap/DamageGroup/SpikeTile6"]
+[editable path="tilemap/DamageGroup/SpikeTile7"]
+[editable path="tilemap/DamageGroup/SpikeTile8"]
+[editable path="tilemap/DamageGroup/SpikeTile9"]
+[editable path="tilemap/DamageGroup/SpikeTile10"]
+[editable path="tilemap/DamageGroup/SpikeTile1115"]
+[editable path="tilemap/DamageGroup/SpikeTile1116"]
+[editable path="tilemap/DamageGroup/SpikeTile1117"]
+[editable path="tilemap/DamageGroup/SpikeTile1118"]
+[editable path="tilemap/DamageGroup/SpikeTile1119"]
+[editable path="tilemap/DamageGroup/SpikeTile1120"]
+[editable path="tilemap/DamageGroup/SpikeTile1121"]
+[editable path="tilemap/DamageGroup/SpikeTile1122"]
+[editable path="tilemap/DamageGroup/SpikeTile11"]
+[editable path="tilemap/DamageGroup/SpikeTile11 10"]
+[editable path="tilemap/DamageGroup/SpikeTile11 7"]
+[editable path="tilemap/DamageGroup/SpikeTile11 5"]
+[editable path="tilemap/DamageGroup/SpikeTile11 6"]
+[editable path="tilemap/DamageGroup/SpikeTile11 3"]
+[editable path="tilemap/DamageGroup/SpikeTile11 2"]
+[editable path="tilemap/DamageGroup/SpikeTile11 4"]
+[editable path="tilemap/DamageGroup/SpikeTile1126"]
+[editable path="tilemap/DamageGroup/SpikeTile1127"]
+[editable path="tilemap/DamageGroup/SpikeTile1128"]
+[editable path="tilemap/DamageGroup/SpikeTile1129"]
+[editable path="tilemap/DamageGroup/SpikeTile1130"]
+[editable path="tilemap/DamageGroup/SpikeTile1131"]
+[editable path="tilemap/DamageGroup/SpikeTile1132"]
+[editable path="tilemap/DamageGroup/SpikeTile1133"]
+[editable path="tilemap/TeleportGroup/Teleport"]
+[editable path="tilemap/TeleportGroup/Teleport1"]

@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=2]
+
+
+[node name="stat" type="HBoxContainer"]
+
+focus_ignore_mouse = false
+focus_stop_mouse = false
+size_flags_horizontal = 2
+size_flags_vertical = 2
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 178.0
+margin_bottom = 14.0
+alignment = 0
+
+[node name="icon" type="Control" parent="."]
+
+editor/display_folded = true
+rect_min_size = Vector2( 32, 32 )
+focus_ignore_mouse = false
+focus_stop_mouse = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 32.0
+margin_bottom = 32.0
+
+[node name="bg" type="Polygon2D" parent="icon"]
+
+polygon = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0 )
+uv = PoolVector2Array(  )
+color = Color( 0.14902, 0, 0.517647, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="highlight" type="Polygon2D" parent="icon"]
+
+polygon = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="key" type="Label" parent="."]
+
+focus_ignore_mouse = true
+focus_stop_mouse = true
+size_flags_horizontal = 2
+size_flags_vertical = 0
+margin_left = 36.0
+margin_top = 9.0
+margin_right = 66.0
+margin_bottom = 23.0
+text = "KEY: "
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="value" type="Label" parent="."]
+
+focus_ignore_mouse = true
+focus_stop_mouse = true
+size_flags_horizontal = 2
+size_flags_vertical = 0
+margin_left = 70.0
+margin_top = 9.0
+margin_right = 111.0
+margin_bottom = 23.0
+text = "VALUE"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1

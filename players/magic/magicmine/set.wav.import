@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/set.wav-78367bc6ddfce2a3b6638e3b3d4c9c2b.sample"
+
+[deps]
+
+source_file="res://players/magic/magicmine/set.wav"
+source_md5="a70e7bd088ae484cc3e96634a14c825d"
+
+dest_files=[ "res://.import/set.wav-78367bc6ddfce2a3b6638e3b3d4c9c2b.sample" ]
+dest_md5="9a659eaff4d1aca98d693889ebae773e"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

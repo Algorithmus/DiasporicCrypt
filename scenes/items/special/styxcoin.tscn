@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/items/BaseItem.gd" type="Script" id=1]
+[ext_resource path="res://scenes/items/special/styxcoin.png" type="Texture" id=2]
+
+[sub_resource type="ShaderMaterial" id=1]
+
+render_priority = 0
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[node name="StyxCoin" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+title = "ITEM_STYXCOIN"
+isgoal = false
+
+[node name="enabler" type="VisibilityEnabler2D" parent="." index="0"]
+
+scale = Vector2( 3, 3 )
+rect = Rect2( -10, -10, 20, 20 )
+pause_animations = true
+freeze_bodies = true
+pause_particles = true
+pause_animated_sprites = true
+process_parent = false
+physics_process_parent = false
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+
+material = SubResource( 1 )
+texture = ExtResource( 2 )
+
+[node name="item" type="Area2D" parent="." index="2"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="item" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="sound" type="Node" parent="." index="3"]
+
+[connection signal="screen_entered" from="enabler" to="." method="enter_screen"]
+
+[connection signal="screen_exited" from="enabler" to="." method="exit_screen"]
+
+

@@ -1,0 +1,160 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://gui/theme/slidergrabber.png" type="Texture" id=1]
+[ext_resource path="res://gui/theme/slidergrabber_active.png" type="Texture" id=2]
+[ext_resource path="res://gui/theme/slider.png" type="Texture" id=3]
+[ext_resource path="res://gui/dialogue/choice.gd" type="Script" id=4]
+[ext_resource path="res://gui/menu/cursor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gui/fonts/S-13-dialog.font" type="BitmapFont" id=6]
+[ext_resource path="res://gui/menu/icons/mute.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="StyleBoxTexture" id=2]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 47, 26 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 0.5 )
+draw_center = true
+_sections_unfolded = [ "Modulate" ]
+
+[sub_resource type="StyleBoxTexture" id=3]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 47, 26 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=4]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 8, 13 )
+margin_left = 4.0
+margin_right = 4.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+_sections_unfolded = [ "Axis Stretch", "Content Margin", "Expand Margin", "Margin" ]
+
+[sub_resource type="Theme" id=5]
+
+HSlider/icons/grabber = ExtResource( 1 )
+HSlider/icons/grabber_disabled = ExtResource( 1 )
+HSlider/icons/grabber_highlight = ExtResource( 2 )
+HSlider/icons/tick = null
+HSlider/styles/focus = null
+HSlider/styles/grabber_area = SubResource( 1 )
+HSlider/styles/grabber_disabled = SubResource( 2 )
+HSlider/styles/grabber_highlight = SubResource( 3 )
+HSlider/styles/slider = SubResource( 4 )
+_sections_unfolded = [ "HSlider", "HSlider/icons", "HSlider/styles" ]
+
+[sub_resource type="ShaderMaterial" id=6]
+
+render_priority = 0
+
+[node name="slider" type="HSlider"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 114.0
+margin_right = 656.0
+margin_bottom = 26.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme = SubResource( 5 )
+min_value = 0.0
+max_value = 1.0
+step = 0.01
+page = 0.0
+value = 1.0
+exp_edit = false
+rounded = false
+editable = true
+tick_count = 0
+ticks_on_borders = true
+focus_mode = 2
+script = ExtResource( 4 )
+_sections_unfolded = [ "Theme" ]
+
+[node name="icon" parent="." index="0" instance=ExtResource( 5 )]
+
+margin_left = -114.0
+margin_right = -102.0
+_sections_unfolded = [ "Material", "Theme" ]
+
+[node name="title" type="Label" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -58.0
+margin_right = -18.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 6 )
+text = "SFX"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="mute" type="Sprite" parent="." index="2"]
+
+material = SubResource( 6 )
+position = Vector2( 558, 9 )
+texture = ExtResource( 7 )
+
+[connection signal="focus_entered" from="." to="." method="_on_choice_focus_enter"]
+
+[connection signal="focus_exited" from="." to="." method="_on_choice_focus_exit"]
+
+

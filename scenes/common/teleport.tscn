@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/common/teleport.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[node name="Teleport" type="Node2D"]
+
+script = ExtResource( 1 )
+__meta__ = {
+"__editor_plugin_screen__": "Script"
+}
+is_horizontal = true
+target_level = "res://levels/common/leveltemplate.tscn"
+teleport_to = Vector2( 0, 0 )
+
+[node name="teleport" type="Area2D" parent="." index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="enabler" type="VisibilityEnabler2D" parent="teleport" index="0"]
+
+scale = Vector2( 3, 3 )
+rect = Rect2( -10, -10, 20, 20 )
+pause_animations = true
+freeze_bodies = true
+pause_particles = true
+pause_animated_sprites = true
+process_parent = false
+physics_process_parent = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleport" index="1"]
+
+shape = SubResource( 1 )
+
+[connection signal="screen_entered" from="teleport/enabler" to="." method="enter_screen"]
+
+[connection signal="screen_exited" from="teleport/enabler" to="." method="exit_screen"]
+
+

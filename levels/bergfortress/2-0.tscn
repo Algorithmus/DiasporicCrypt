@@ -1,0 +1,239 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/fallislandcastle/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/fallislandcastle/climbableblock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/common/breakables/chainbreakable.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/damagables/flyingskull/flyingskull.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=6]
+
+[node name="LVL_NOTITLE" type="Node2D" index="0"]
+
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+
+[node name="tilemap" type="TileMap" parent="." index="0"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 524288
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -720917, 1610612737, 0, -720916, 1073741824, 0, -720915, 1073741824, 0, -720914, 1073741824, 0, -720913, 1073741824, 0, -720912, 1073741824, 0, -720911, 1073741824, 0, -720910, 1073741824, 0, -720909, 1073741824, 0, -720908, 1073741824, 0, -720907, 1073741824, 0, -720906, 1073741824, 0, -720905, 1073741824, 0, -720904, 1073741824, 0, -720903, 1073741824, 0, -720902, 1073741824, 0, -720901, 1073741824, 0, -720900, 1073741824, 0, -720899, 1073741824, 0, -720898, 1073741824, 0, -720897, 1073741824, 0, -786432, 1073741824, 0, -786431, 1073741824, 0, -786430, 1073741824, 0, -786429, 1073741824, 0, -786428, 1073741824, 0, -786427, 1073741824, 0, -786426, 1073741824, 0, -786425, 1073741824, 0, -786424, 1073741824, 0, -786423, 1073741824, 0, -786422, 1073741824, 0, -786421, 1073741824, 0, -786420, 1073741824, 0, -786419, 1073741824, 0, -786418, 1073741824, 0, -786417, 1073741824, 0, -786416, 1073741824, 0, -786415, 1073741824, 0, -786414, 1073741824, 0, -786413, 1073741824, 0, -786412, 1073741824, 0, -786411, 1073741824, 0, -786410, 1073741824, 0, -786409, 1073741824, 0, -786408, 1073741824, 0, -786407, 1073741824, 0, -786406, 1073741824, 0, -786405, 1073741824, 0, -786404, 1073741824, 0, -786403, 1073741824, 0, -786402, 1073741824, 0, -786401, 1073741824, 0, -786400, 1073741824, 0, -786399, 1073741824, 0, -786398, 1073741824, 0, -786397, 1073741824, 0, -786396, 1073741824, 0, -786395, 1073741824, 0, -786394, 1073741824, 0, -786393, 1073741824, 0, -786392, 1073741824, 0, -786391, 1073741824, 0, -786390, 1073741824, 0, -786389, 1073741824, 0, -786388, 1073741824, 0, -786387, 1073741824, 0, -786386, 1073741824, 0, -786385, 1073741824, 0, -786384, 1073741824, 0, -786383, 1073741824, 0, -786382, 1073741824, 0, -786381, 1073741824, 0, -786380, 1073741825, 0, -655381, 1073741826, 0, -655380, 10, 0, -655376, 10, 0, -655372, 10, 0, -655368, 10, 0, -655364, 10, 0, -720896, 10, 0, -720892, 10, 0, -720888, 10, 0, -720884, 10, 0, -720880, 10, 0, -720876, 10, 0, -720872, 10, 0, -720868, 10, 0, -720864, 10, 0, -720860, 10, 0, -720856, 10, 0, -720852, 10, 0, -720848, 10, 0, -720844, 1073741826, 0, -589845, 1073741826, 0, -655308, 1073741826, 0, -524309, 1073741826, 0, -524308, 9, 0, -524307, 8, 0, -524306, 8, 0, -524305, 9, 0, -524304, 9, 0, -524303, 8, 0, -524302, 8, 0, -524301, 9, 0, -524300, 9, 0, -524299, 8, 0, -524298, 8, 0, -524297, 9, 0, -524296, 9, 0, -524295, 8, 0, -524294, 8, 0, -524293, 9, 0, -524292, 9, 0, -524291, 8, 0, -524290, 8, 0, -524289, 9, 0, -589824, 9, 0, -589823, 8, 0, -589822, 8, 0, -589821, 9, 0, -589820, 9, 0, -589819, 8, 0, -589818, 8, 0, -589817, 9, 0, -589816, 9, 0, -589815, 8, 0, -589814, 8, 0, -589813, 9, 0, -589812, 9, 0, -589811, 8, 0, -589810, 8, 0, -589809, 9, 0, -589808, 9, 0, -589807, 8, 0, -589806, 8, 0, -589805, 9, 0, -589804, 9, 0, -589803, 8, 0, -589802, 8, 0, -589801, 9, 0, -589800, 9, 0, -589799, 8, 0, -589798, 8, 0, -589797, 9, 0, -589796, 9, 0, -589795, 8, 0, -589794, 8, 0, -589793, 9, 0, -589792, 9, 0, -589791, 8, 0, -589790, 8, 0, -589789, 9, 0, -589788, 9, 0, -589787, 8, 0, -589786, 8, 0, -589785, 9, 0, -589784, 9, 0, -589783, 8, 0, -589782, 8, 0, -589781, 9, 0, -589780, 9, 0, -589779, 8, 0, -589778, 8, 0, -589777, 9, 0, -589776, 9, 0, -589775, 8, 0, -589774, 8, 0, -589773, 9, 0, -589772, 1073741826, 0, -458773, 1073741826, 0, -458772, 6, 0, -458768, 6, 0, -458764, 6, 0, -458760, 6, 0, -458756, 6, 0, -524288, 6, 0, -524284, 6, 0, -524280, 6, 0, -524276, 6, 0, -524272, 6, 0, -524268, 6, 0, -524264, 6, 0, -524260, 6, 0, -524256, 6, 0, -524252, 6, 0, -524248, 6, 0, -524244, 6, 0, -524240, 6, 0, -524236, 1073741826, 0, -393237, 1073741825, 0, -458700, 1610612737, 0, -327701, 7, 0, -393164, 7, 0, -262165, 7, 0, -327628, 7, 0, -196629, 7, 0, -262092, 7, 0, -131093, 7, 0, -196556, 7, 0, -65557, 7, 0, -131020, 7, 0, -21, 536870913, 0, -20, 0, 0, -19, 0, 0, -18, 0, 0, -65487, 0, 0, -65486, 0, 0, -65485, 0, 0, -65484, 1, 0, 65515, 2, 0, 65516, 12, 0, 65520, 6, 0, 65524, 13, 0, 65528, 6, 0, 65532, 13, 0, 0, 6, 0, 4, 13, 0, 8, 6, 0, 12, 13, 0, 16, 6, 0, 20, 13, 0, 24, 6, 0, 28, 13, 0, 32, 6, 0, 36, 13, 0, 40, 6, 0, 44, 13, 0, 48, 6, 0, 52, 2, 0, 131051, 2, 0, 65588, 2, 0, 196587, 2, 0, 131124, 2, 0, 262123, 2, 0, 196660, 2, 0, 327659, 2, 0, 262196, 2, 0, 393195, 2, 0, 327732, 2, 0, 458731, 2, 0, 393268, 2, 0, 524267, 2, 0, 458804, 2, 0, 589803, 536870913, 0, 589804, 0, 0, 589805, 0, 0, 589806, 0, 0, 589807, 0, 0, 589808, 0, 0, 589809, 0, 0, 589810, 0, 0, 589811, 0, 0, 589812, 0, 0, 589813, 0, 0, 589814, 0, 0, 589815, 0, 0, 589816, 0, 0, 589817, 0, 0, 589818, 0, 0, 589819, 0, 0, 589820, 0, 0, 589821, 0, 0, 589822, 0, 0, 589823, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 0, 0, 524311, 0, 0, 524312, 0, 0, 524313, 0, 0, 524314, 0, 0, 524315, 0, 0, 524316, 0, 0, 524317, 0, 0, 524318, 0, 0, 524319, 0, 0, 524320, 0, 0, 524321, 0, 0, 524322, 0, 0, 524323, 0, 0, 524324, 0, 0, 524325, 0, 0, 524326, 0, 0, 524327, 0, 0, 524328, 0, 0, 524329, 0, 0, 524330, 0, 0, 524331, 0, 0, 524332, 0, 0, 524333, 0, 0, 524334, 0, 0, 524335, 0, 0, 524336, 0, 0, 524337, 0, 0, 524338, 0, 0, 524339, 0, 0, 524340, 1, 0, 655339, 2, 0, 589876, 2, 0, 720875, 2, 0, 655412, 2, 0, 786411, 2, 0, 720948, 2, 0 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="ClimbableGroup" type="Node2D" parent="tilemap" index="0"]
+
+editor/display_folded = true
+
+[node name="ClimbableBlock" parent="tilemap/ClimbableGroup" index="0" instance=ExtResource( 2 )]
+
+position = Vector2( 1552, -16 )
+
+[node name="ClimbableBlock1" parent="tilemap/ClimbableGroup" index="1" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+position = Vector2( -528, -16 )
+
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock1" index="0"]
+
+flip_h = false
+
+[node name="DamageGroup" type="Node2D" parent="tilemap" index="1"]
+
+editor/display_folded = true
+
+[node name="SpikeTile" parent="tilemap/DamageGroup" index="0" instance=ExtResource( 3 )]
+
+position = Vector2( -368, 240 )
+
+[node name="SpikeTile4 4" parent="tilemap/DamageGroup" index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 16, 240 )
+
+[node name="SpikeTile45" parent="tilemap/DamageGroup" index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 400, 240 )
+
+[node name="SpikeTile46 3" parent="tilemap/DamageGroup" index="3" instance=ExtResource( 3 )]
+
+position = Vector2( 784, 240 )
+
+[node name="SpikeTile464" parent="tilemap/DamageGroup" index="4" instance=ExtResource( 3 )]
+
+position = Vector2( 1168, 240 )
+
+[node name="SpikeTile1" parent="tilemap/DamageGroup" index="5" instance=ExtResource( 3 )]
+
+position = Vector2( -336, 240 )
+
+[node name="SpikeTile4 2" parent="tilemap/DamageGroup" index="6" instance=ExtResource( 3 )]
+
+position = Vector2( 48, 240 )
+
+[node name="SpikeTile43" parent="tilemap/DamageGroup" index="7" instance=ExtResource( 3 )]
+
+position = Vector2( 432, 240 )
+
+[node name="SpikeTile46" parent="tilemap/DamageGroup" index="8" instance=ExtResource( 3 )]
+
+position = Vector2( 816, 240 )
+
+[node name="SpikeTile47" parent="tilemap/DamageGroup" index="9" instance=ExtResource( 3 )]
+
+position = Vector2( 1200, 240 )
+
+[node name="SpikeTile2" parent="tilemap/DamageGroup" index="10" instance=ExtResource( 3 )]
+
+position = Vector2( -304, 240 )
+
+[node name="SpikeTile4" parent="tilemap/DamageGroup" index="11" instance=ExtResource( 3 )]
+
+position = Vector2( 80, 240 )
+
+[node name="SpikeTile5" parent="tilemap/DamageGroup" index="12" instance=ExtResource( 3 )]
+
+position = Vector2( 464, 240 )
+
+[node name="SpikeTile6" parent="tilemap/DamageGroup" index="13" instance=ExtResource( 3 )]
+
+position = Vector2( 848, 240 )
+
+[node name="SpikeTile7" parent="tilemap/DamageGroup" index="14" instance=ExtResource( 3 )]
+
+position = Vector2( 1232, 240 )
+
+[node name="SpikeTile3" parent="tilemap/DamageGroup" index="15" instance=ExtResource( 3 )]
+
+position = Vector2( -272, 240 )
+
+[node name="SpikeTile4 3" parent="tilemap/DamageGroup" index="16" instance=ExtResource( 3 )]
+
+position = Vector2( 112, 240 )
+
+[node name="SpikeTile44" parent="tilemap/DamageGroup" index="17" instance=ExtResource( 3 )]
+
+position = Vector2( 496, 240 )
+
+[node name="SpikeTile46 2" parent="tilemap/DamageGroup" index="18" instance=ExtResource( 3 )]
+
+position = Vector2( 880, 240 )
+
+[node name="SpikeTile463" parent="tilemap/DamageGroup" index="19" instance=ExtResource( 3 )]
+
+position = Vector2( 1264, 240 )
+
+[node name="BreakableGroup" type="Node2D" parent="tilemap" index="2"]
+
+editor/display_folded = true
+
+[node name="ChainBreakable" parent="tilemap/BreakableGroup" index="0" instance=ExtResource( 4 )]
+
+position = Vector2( -576, -48 )
+
+[node name="ChainBreakable1" parent="tilemap/BreakableGroup" index="1" instance=ExtResource( 4 )]
+
+position = Vector2( -576, -80 )
+
+[node name="ChainBreakable2" parent="tilemap/BreakableGroup" index="2" instance=ExtResource( 4 )]
+
+position = Vector2( -576, -112 )
+
+[node name="ChainBreakable3" parent="tilemap/BreakableGroup" index="3" instance=ExtResource( 4 )]
+
+position = Vector2( -576, -144 )
+
+[node name="ChainBreakable4" parent="tilemap/BreakableGroup" index="4" instance=ExtResource( 4 )]
+
+position = Vector2( -576, -176 )
+
+[node name="ChainBreakable5" parent="tilemap/BreakableGroup" index="5" instance=ExtResource( 4 )]
+
+position = Vector2( -576, -208 )
+
+[node name="ChainBreakable6" parent="tilemap/BreakableGroup" index="6" instance=ExtResource( 4 )]
+
+position = Vector2( -576, -240 )
+
+[node name="ChainBreakable7" parent="tilemap/BreakableGroup" index="7" instance=ExtResource( 4 )]
+
+position = Vector2( -576, -272 )
+
+[node name="ChainBreakable8" parent="tilemap/BreakableGroup" index="8" instance=ExtResource( 4 )]
+
+position = Vector2( -576, -304 )
+
+[node name="ChainBreakable9" parent="tilemap/BreakableGroup" index="9" instance=ExtResource( 4 )]
+
+position = Vector2( -576, -336 )
+
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="3"]
+
+editor/display_folded = true
+
+[node name="FlyingSkull" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 5 )]
+
+position = Vector2( -448, 16 )
+
+[node name="FlyingSkull1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 5 )]
+
+position = Vector2( 1088, 16 )
+
+[node name="FlyingSkull2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 5 )]
+
+position = Vector2( 256, 16 )
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="4"]
+
+editor/display_folded = true
+
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 6 )]
+
+editor/display_folded = true
+position = Vector2( 1712, -112 )
+target_level = "res://levels/bergfortress/0-2.tscn"
+teleport_to = Vector2( -236, 16 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport" index="0"]
+
+scale = Vector2( 1, 5 )
+
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 6 )]
+
+editor/display_folded = true
+position = Vector2( -688, -112 )
+target_level = "res://levels/bergfortress/0-5.tscn"
+teleport_to = Vector2( 556, -1104 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport1" index="0"]
+
+scale = Vector2( 1, 5 )
+
+[node name="boundaries" type="Node2D" parent="tilemap" index="5"]
+
+editor/display_folded = true
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
+
+position = Vector2( -678, -390 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries" index="1"]
+
+position = Vector2( 1706, 394 )
+
+
+[editable path="tilemap/ClimbableGroup/ClimbableBlock1"]
+[editable path="tilemap/TeleportGroup/Teleport"]
+[editable path="tilemap/TeleportGroup/Teleport1"]

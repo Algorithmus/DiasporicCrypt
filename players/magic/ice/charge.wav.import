@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/charge.wav-a0bec6e3840c51227a9f6cc1f590c00b.sample"
+
+[deps]
+
+source_file="res://players/magic/ice/charge.wav"
+source_md5="5b1b051280faec888f253f72db4bb7f3"
+
+dest_files=[ "res://.import/charge.wav-a0bec6e3840c51227a9f6cc1f590c00b.sample" ]
+dest_md5="4df85d301576227085b49526bd7ca852"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

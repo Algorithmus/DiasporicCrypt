@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="Curve" id=1]
+
+min_value = 0.0
+max_value = 1.0
+bake_resolution = 100
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+
+flags = 4
+width = 2048
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 1
+emission_sphere_radius = 8.0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 180.0
+flatness = 0.0
+gravity = Vector3( 0, 64, 0 )
+initial_velocity = 64.0
+initial_velocity_random = 1.0
+angular_velocity = 3.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 64.0
+linear_accel_random = 1.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 10.0
+tangential_accel_random = 0.0
+damping = 64.0
+damping_random = 1.0
+angle = 180.0
+angle_random = 1.0
+scale = 2.0
+scale_random = 0.0
+scale_curve = SubResource( 2 )
+color = Color( 0.682353, 0, 0, 0.784314 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 1.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Damping", "Emission Shape", "Flags", "Gravity", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Radial Accel", "Scale", "Spread", "Tangential Accel", "Trail" ]
+
+[node name="blood" type="Node2D" index="0"]
+
+__meta__ = {
+"__editor_plugin_screen__": "Script"
+}
+
+[node name="particles" type="Particles2D" parent="." index="0"]
+
+emitting = false
+amount = 128
+lifetime = 2.0
+one_shot = true
+preprocess = 0.1
+speed_scale = 3.0
+explosiveness = 0.5
+randomness = 0.0
+fixed_fps = 0
+fract_delta = false
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 3 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Process Material", "Time" ]
+
+[node name="sound" type="Node" parent="." index="1"]
+
+

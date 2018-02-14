@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hurt.wav-e2c1892523160be309d3d28f597e6d90.sample"
+
+[deps]
+
+source_file="res://players/adela/hurt.wav"
+source_md5="caf8a86f20a9c51945e34890380b4ee6"
+
+dest_files=[ "res://.import/hurt.wav-e2c1892523160be309d3d28f597e6d90.sample" ]
+dest_md5="cb36793530d6fc3c3292f542e4c7ee68"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

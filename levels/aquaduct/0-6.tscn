@@ -1,0 +1,719 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/aquaduct/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/dungeon/fallingplatform/fallingplatform.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/common/swingable.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/common/damagables/zombie/zombie.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/fluid/water.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=8]
+
+[node name="LVL_NOTITLE" type="Node2D"]
+
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+
+[node name="tilemap" type="TileMap" parent="." index="0"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 524288
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -983040, 1610612749, 0, -983039, 1073741862, 0, -983038, 1073741862, 0, -983037, 1073741862, 0, -983036, 1073741862, 0, -983035, 1073741862, 0, -983034, 1073741862, 0, -983033, 1073741862, 0, -983032, 1073741862, 0, -983031, 1073741862, 0, -983030, 1073741862, 0, -983029, 1073741862, 0, -983028, 1073741862, 0, -983027, 1073741862, 0, -983026, 1073741862, 0, -983025, 1073741837, 0, -983021, 1610612749, 0, -983020, 1073741862, 0, -983019, 1073741862, 0, -983018, 1073741862, 0, -983017, 1073741862, 0, -983016, 1073741862, 0, -983015, 1073741862, 0, -983014, 1073741862, 0, -983013, 1073741862, 0, -983012, 1073741862, 0, -983011, 1073741862, 0, -983010, 1073741862, 0, -983009, 1073741862, 0, -983008, 1073741862, 0, -983007, 1073741837, 0, -917504, 1073741838, 0, -917471, 1073741838, 0, -851968, 1073741838, 0, -851935, 1073741838, 0, -786432, 1073741838, 0, -786399, 1073741838, 0, -720896, 1073741838, 0, -720863, 1073741838, 0, -655360, 1073741838, 0, -655327, 1073741838, 0, -589824, 1073741838, 0, -589791, 1073741838, 0, -524288, 1073741838, 0, -524255, 1073741838, 0, -458752, 1073741838, 0, -458719, 1073741838, 0, -393216, 1073741838, 0, -393183, 1073741838, 0, -327680, 1073741838, 0, -327647, 1073741838, 0, -262144, 1073741838, 0, -262111, 1073741838, 0, -196608, 1073741838, 0, -196575, 1073741838, 0, -131072, 1073741838, 0, -131039, 1073741838, 0, -65536, 1073741838, 0, -65503, 1073741838, 0, 0, 1073741838, 0, 33, 1073741838, 0, 65536, 1073741838, 0, 65569, 1073741838, 0, 131072, 1073741838, 0, 131105, 1073741838, 0, 196608, 1073741838, 0, 196641, 1073741838, 0, 262144, 1073741838, 0, 262177, 1073741838, 0, 327680, 1073741838, 0, 327713, 14, 0, 393216, 1073741838, 0, 393249, 14, 0, 458752, 1073741838, 0, 458772, 536870925, 0, 458773, 38, 0, 458774, 38, 0, 458775, 38, 0, 458776, 38, 0, 458777, 38, 0, 458778, 38, 0, 458779, 38, 0, 458780, 38, 0, 458781, 38, 0, 458782, 38, 0, 458783, 38, 0, 458784, 38, 0, 458785, 13, 0, 524288, 1073741838, 0, 524308, 1610612749, 0, 524309, 1073741862, 0, 524310, 1073741862, 0, 524311, 1073741862, 0, 524312, 1073741862, 0, 524313, 1073741862, 0, 524314, 1073741862, 0, 524315, 1073741862, 0, 524316, 1073741862, 0, 524317, 1073741862, 0, 524318, 1073741862, 0, 524319, 1073741862, 0, 524320, 1073741862, 0, 524321, 1073741837, 0, 589824, 1073741838, 0, 589857, 14, 0, 655360, 1073741838, 0, 655393, 14, 0, 720896, 1073741838, 0, 720929, 14, 0, 786432, 1073741838, 0, 786465, 14, 0, 851968, 1073741838, 0, 852001, 14, 0, 917504, 1073741838, 0, 917537, 14, 0, 983040, 1073741838, 0, 983073, 14, 0, 1048576, 1073741838, 0, 1048577, 38, 0, 1048578, 38, 0, 1048579, 38, 0, 1048580, 38, 0, 1048581, 38, 0, 1048582, 38, 0, 1048583, 38, 0, 1048584, 38, 0, 1048585, 38, 0, 1048586, 38, 0, 1048587, 38, 0, 1048588, 38, 0, 1048589, 38, 0, 1048590, 38, 0, 1048591, 38, 0, 1048592, 38, 0, 1048593, 38, 0, 1048594, 38, 0, 1048595, 38, 0, 1048596, 38, 0, 1048597, 38, 0, 1048598, 38, 0, 1048599, 38, 0, 1048600, 38, 0, 1048601, 38, 0, 1048602, 38, 0, 1048603, 38, 0, 1048604, 13, 0, 1048609, 14, 0, 1114112, 1073741838, 0, 1114113, 1073741862, 0, 1114114, 1073741862, 0, 1114115, 1073741862, 0, 1114116, 1073741862, 0, 1114117, 1073741862, 0, 1114118, 1073741862, 0, 1114119, 1073741862, 0, 1114120, 1073741862, 0, 1114121, 1073741862, 0, 1114122, 1073741862, 0, 1114123, 1073741862, 0, 1114124, 1073741862, 0, 1114125, 1073741862, 0, 1114126, 1073741862, 0, 1114127, 1073741862, 0, 1114128, 1073741862, 0, 1114129, 1073741862, 0, 1114130, 1073741862, 0, 1114131, 1073741862, 0, 1114132, 1073741862, 0, 1114133, 1073741862, 0, 1114134, 1073741862, 0, 1114135, 1073741862, 0, 1114136, 1073741862, 0, 1114137, 1073741862, 0, 1114138, 1073741862, 0, 1114139, 1073741862, 0, 1114140, 1073741837, 0, 1114145, 14, 0, 1179648, 1073741838, 0, 1179681, 14, 0, 1245184, 1073741838, 0, 1245217, 14, 0, 1310720, 1073741838, 0, 1310753, 14, 0, 1376256, 1073741838, 0, 1376289, 14, 0, 1441792, 1073741838, 0, 1441825, 14, 0, 1507328, 1073741838, 0, 1507361, 14, 0, 1572864, 1073741838, 0, 1572897, 14, 0, 1638400, 1073741838, 0, 1638405, 536870925, 0, 1638406, 38, 0, 1638407, 38, 0, 1638408, 38, 0, 1638409, 38, 0, 1638410, 38, 0, 1638411, 38, 0, 1638412, 38, 0, 1638413, 38, 0, 1638414, 38, 0, 1638415, 38, 0, 1638416, 38, 0, 1638417, 38, 0, 1638418, 38, 0, 1638419, 38, 0, 1638420, 38, 0, 1638421, 38, 0, 1638422, 38, 0, 1638423, 38, 0, 1638424, 38, 0, 1638425, 38, 0, 1638426, 38, 0, 1638427, 38, 0, 1638428, 38, 0, 1638429, 38, 0, 1638430, 38, 0, 1638431, 38, 0, 1638432, 38, 0, 1638433, 13, 0, 1703936, 1073741838, 0, 1703941, 1610612749, 0, 1703942, 1073741862, 0, 1703943, 1073741862, 0, 1703944, 1073741862, 0, 1703945, 1073741862, 0, 1703946, 1073741862, 0, 1703947, 1073741862, 0, 1703948, 1073741862, 0, 1703949, 1073741862, 0, 1703950, 1073741862, 0, 1703951, 1073741862, 0, 1703952, 1073741862, 0, 1703953, 1073741862, 0, 1703954, 1073741862, 0, 1703955, 1073741862, 0, 1703956, 1073741862, 0, 1703957, 1073741862, 0, 1703958, 1073741862, 0, 1703959, 1073741862, 0, 1703960, 1073741862, 0, 1703961, 1073741862, 0, 1703962, 1073741862, 0, 1703963, 1073741862, 0, 1703964, 1073741862, 0, 1703965, 1073741862, 0, 1703966, 1073741862, 0, 1703967, 1073741862, 0, 1703968, 1073741862, 0, 1703969, 1073741837, 0, 1769472, 1073741838, 0, 1769505, 14, 0, 1835008, 1073741837, 0, 1835041, 14, 0, 1900577, 14, 0, 1966113, 14, 0, 2031649, 14, 0, 2097185, 14, 0, 2162721, 14, 0, 2228224, 536870925, 0, 2228225, 38, 0, 2228226, 38, 0, 2228227, 38, 0, 2228228, 38, 0, 2228229, 38, 0, 2228230, 38, 0, 2228231, 38, 0, 2228232, 38, 0, 2228233, 38, 0, 2228234, 38, 0, 2228235, 38, 0, 2228236, 38, 0, 2228237, 38, 0, 2228238, 38, 0, 2228239, 38, 0, 2228240, 38, 0, 2228241, 38, 0, 2228242, 38, 0, 2228243, 38, 0, 2228244, 38, 0, 2228245, 38, 0, 2228246, 38, 0, 2228247, 38, 0, 2228248, 38, 0, 2228249, 38, 0, 2228250, 38, 0, 2228251, 38, 0, 2228252, 38, 0, 2228253, 38, 0, 2228254, 38, 0, 2228255, 38, 0, 2228256, 38, 0, 2228257, 13, 0 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="LadderGroup" type="Node2D" parent="tilemap" index="0"]
+
+editor/display_folded = true
+
+[node name="TestLadder" parent="tilemap/LadderGroup" index="0" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+position = Vector2( 560, -384 )
+
+[node name="Sprite" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D" index="0"]
+
+region_rect = Rect2( 0, 0, 32, 196 )
+
+[node name="ladder" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D" index="1"]
+
+scale = Vector2( 1, 6 )
+
+[node name="FallingPlatformGroup" type="Node2D" parent="tilemap" index="1"]
+
+editor/display_folded = true
+
+[node name="FallingPlatform" parent="tilemap/FallingPlatformGroup" index="0" instance=ExtResource( 3 )]
+
+position = Vector2( 560, -208 )
+
+[node name="SwingableGroup" type="Node2D" parent="tilemap" index="2"]
+
+editor/display_folded = true
+
+[node name="SwingBlock" parent="tilemap/SwingableGroup" index="0" instance=ExtResource( 4 )]
+
+position = Vector2( 336, -112 )
+collision/safe_margin = 0.08
+
+[node name="SwingBlock1" parent="tilemap/SwingableGroup" index="1" instance=ExtResource( 4 )]
+
+position = Vector2( 784, -112 )
+collision/safe_margin = 0.08
+
+[node name="DamageGroup" type="Node2D" parent="tilemap" index="3"]
+
+[node name="SpikeTile" parent="tilemap/DamageGroup" index="0" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 48, 496 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile1" parent="tilemap/DamageGroup" index="1" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 48, 464 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile1" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile1" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile2" parent="tilemap/DamageGroup" index="2" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 48, 432 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile2" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile2" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile3" parent="tilemap/DamageGroup" index="3" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 48, 400 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile3" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile3" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile4" parent="tilemap/DamageGroup" index="4" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 48, 368 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile4" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile4" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile5" parent="tilemap/DamageGroup" index="5" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 48, 336 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile5" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile5" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile6" parent="tilemap/DamageGroup" index="6" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 48, 304 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile6" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile6" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile7" parent="tilemap/DamageGroup" index="7" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 48, 272 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile7" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile7" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile8" parent="tilemap/DamageGroup" index="8" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 48, 240 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile8" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile8" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile9" parent="tilemap/DamageGroup" index="9" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 48, 208 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile9" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile9" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile10" parent="tilemap/DamageGroup" index="10" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 48, 176 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile10" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile10" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile11" parent="tilemap/DamageGroup" index="11" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 48, 144 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile11" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile11" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile12" parent="tilemap/DamageGroup" index="12" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 48, 112 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile12" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile12" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile13" parent="tilemap/DamageGroup" index="13" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 48, 80 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile13" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile13" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile14" parent="tilemap/DamageGroup" index="14" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 48, 48 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile14" index="0"]
+
+rotation = 1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile14" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile15" parent="tilemap/DamageGroup" index="15" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 1040, 304 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile15" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile15" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile16" parent="tilemap/DamageGroup" index="16" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 1040, 336 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile16" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile16" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile17" parent="tilemap/DamageGroup" index="17" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 1040, 368 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile17" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile17" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile18" parent="tilemap/DamageGroup" index="18" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 1040, 400 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile18" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile18" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile19" parent="tilemap/DamageGroup" index="19" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 1040, 432 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile19" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile19" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile20" parent="tilemap/DamageGroup" index="20" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 1040, 464 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile20" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile20" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile21" parent="tilemap/DamageGroup" index="21" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 1040, 496 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile21" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile21" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile22" parent="tilemap/DamageGroup" index="22" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 1040, 528 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile22" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile22" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile23" parent="tilemap/DamageGroup" index="23" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 1040, 560 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile23" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile23" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile24" parent="tilemap/DamageGroup" index="24" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 1040, 592 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile24" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile24" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile25" parent="tilemap/DamageGroup" index="25" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 1040, 624 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile25" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile25" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile26" parent="tilemap/DamageGroup" index="26" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 1040, 656 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile26" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile26" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile27" parent="tilemap/DamageGroup" index="27" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 1040, 688 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile27" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile27" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile28" parent="tilemap/DamageGroup" index="28" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 1040, 720 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile28" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile28" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile29" parent="tilemap/DamageGroup" index="29" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 1040, 752 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile29" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile29" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile30" parent="tilemap/DamageGroup" index="30" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 1040, 784 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile30" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile30" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile31" parent="tilemap/DamageGroup" index="31" instance=ExtResource( 5 )]
+
+position = Vector2( 1040, 880 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile31" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile31" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile32" parent="tilemap/DamageGroup" index="32" instance=ExtResource( 5 )]
+
+position = Vector2( 1040, 912 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile32" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile32" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile33" parent="tilemap/DamageGroup" index="33" instance=ExtResource( 5 )]
+
+position = Vector2( 1040, 944 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile33" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile33" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile34" parent="tilemap/DamageGroup" index="34" instance=ExtResource( 5 )]
+
+position = Vector2( 1040, 976 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile34" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile34" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile35" parent="tilemap/DamageGroup" index="35" instance=ExtResource( 5 )]
+
+position = Vector2( 1040, 1008 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile35" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile35" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile36" parent="tilemap/DamageGroup" index="36" instance=ExtResource( 5 )]
+
+position = Vector2( 1040, 1040 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile36" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile36" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile37" parent="tilemap/DamageGroup" index="37" instance=ExtResource( 5 )]
+
+position = Vector2( 1040, 1072 )
+
+[node name="Sprite" parent="tilemap/DamageGroup/SpikeTile37" index="0"]
+
+rotation = -1.5708
+
+[node name="damagable" parent="tilemap/DamageGroup/SpikeTile37" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="4"]
+
+editor/display_folded = true
+
+[node name="Zombie" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 6 )]
+
+position = Vector2( 608, 736 )
+
+[node name="Zombie1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 6 )]
+
+position = Vector2( 144, 448 )
+
+[node name="Zombie2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 6 )]
+
+position = Vector2( 272, 448 )
+
+[node name="Zombie3" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 6 )]
+
+position = Vector2( 976, 160 )
+
+[node name="WaterGroup" type="Node2D" parent="tilemap" index="5"]
+
+[node name="TestWaterSurface" parent="tilemap/WaterGroup" index="0" instance=ExtResource( 7 )]
+
+position = Vector2( 544, 576 )
+
+[node name="Sprite" parent="tilemap/WaterGroup/TestWaterSurface" index="0"]
+
+scale = Vector2( 34, 34 )
+
+[node name="water" parent="tilemap/WaterGroup/TestWaterSurface" index="1"]
+
+scale = Vector2( 34, 34 )
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="6"]
+
+editor/display_folded = true
+
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 8 )]
+
+editor/display_folded = true
+position = Vector2( -16, 1008 )
+target_level = "res://levels/aquaduct/0-5.tscn"
+teleport_to = Vector2( 780, -208 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport" index="0"]
+
+scale = Vector2( 1, 5 )
+
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 8 )]
+
+position = Vector2( 560, -496 )
+is_horizontal = false
+target_level = "res://levels/aquaduct/0-7.tscn"
+teleport_to = Vector2( 1232, 128 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport1" index="0"]
+
+scale = Vector2( 3, 1 )
+
+[node name="boundaries" type="Node2D" parent="tilemap" index="7"]
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
+
+position = Vector2( -6, -486 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries" index="1"]
+
+position = Vector2( 1098, 1130 )
+
+
+[editable path="tilemap/LadderGroup/TestLadder"]
+[editable path="tilemap/DamageGroup/SpikeTile"]
+[editable path="tilemap/DamageGroup/SpikeTile1"]
+[editable path="tilemap/DamageGroup/SpikeTile2"]
+[editable path="tilemap/DamageGroup/SpikeTile3"]
+[editable path="tilemap/DamageGroup/SpikeTile4"]
+[editable path="tilemap/DamageGroup/SpikeTile5"]
+[editable path="tilemap/DamageGroup/SpikeTile6"]
+[editable path="tilemap/DamageGroup/SpikeTile7"]
+[editable path="tilemap/DamageGroup/SpikeTile8"]
+[editable path="tilemap/DamageGroup/SpikeTile9"]
+[editable path="tilemap/DamageGroup/SpikeTile10"]
+[editable path="tilemap/DamageGroup/SpikeTile11"]
+[editable path="tilemap/DamageGroup/SpikeTile12"]
+[editable path="tilemap/DamageGroup/SpikeTile13"]
+[editable path="tilemap/DamageGroup/SpikeTile14"]
+[editable path="tilemap/DamageGroup/SpikeTile15"]
+[editable path="tilemap/DamageGroup/SpikeTile16"]
+[editable path="tilemap/DamageGroup/SpikeTile17"]
+[editable path="tilemap/DamageGroup/SpikeTile18"]
+[editable path="tilemap/DamageGroup/SpikeTile19"]
+[editable path="tilemap/DamageGroup/SpikeTile20"]
+[editable path="tilemap/DamageGroup/SpikeTile21"]
+[editable path="tilemap/DamageGroup/SpikeTile22"]
+[editable path="tilemap/DamageGroup/SpikeTile23"]
+[editable path="tilemap/DamageGroup/SpikeTile24"]
+[editable path="tilemap/DamageGroup/SpikeTile25"]
+[editable path="tilemap/DamageGroup/SpikeTile26"]
+[editable path="tilemap/DamageGroup/SpikeTile27"]
+[editable path="tilemap/DamageGroup/SpikeTile28"]
+[editable path="tilemap/DamageGroup/SpikeTile29"]
+[editable path="tilemap/DamageGroup/SpikeTile30"]
+[editable path="tilemap/DamageGroup/SpikeTile31"]
+[editable path="tilemap/DamageGroup/SpikeTile32"]
+[editable path="tilemap/DamageGroup/SpikeTile33"]
+[editable path="tilemap/DamageGroup/SpikeTile34"]
+[editable path="tilemap/DamageGroup/SpikeTile35"]
+[editable path="tilemap/DamageGroup/SpikeTile36"]
+[editable path="tilemap/DamageGroup/SpikeTile37"]
+[editable path="tilemap/WaterGroup/TestWaterSurface"]
+[editable path="tilemap/TeleportGroup/Teleport"]
+[editable path="tilemap/TeleportGroup/Teleport1"]

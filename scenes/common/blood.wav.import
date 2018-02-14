@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/blood.wav-fc6dda39d4aa37955d81d34888a27e91.sample"
+
+[deps]
+
+source_file="res://scenes/common/blood.wav"
+source_md5="3ae6b08cecdbd0d37a1f9e6759a2a299"
+
+dest_files=[ "res://.import/blood.wav-fc6dda39d4aa37955d81d34888a27e91.sample" ]
+dest_md5="6520babdae356ab25fd4d798d6a41aa7"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

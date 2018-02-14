@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/common/breakables/MagicMineBreakable.gd" type="Script" id=1]
+[ext_resource path="res://scenes/common/breakables/breakabletile.png" type="Texture" id=2]
+[ext_resource path="res://players/magic/magicmine/icon.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 18, 18 )
+
+[node name="MagicMineBreakable" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+__meta__ = {
+"__editor_plugin_screen__": "Script"
+}
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="." index="0"]
+
+input_pickable = false
+collision_layer = 524288
+collision_mask = 1
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+
+[node name="enabler" type="VisibilityEnabler2D" parent="KinematicBody2D" index="0"]
+
+scale = Vector2( 3, 3 )
+rect = Rect2( -10, -10, 20, 20 )
+pause_animations = true
+freeze_bodies = true
+pause_particles = true
+pause_animated_sprites = true
+process_parent = false
+physics_process_parent = false
+
+[node name="Sprite" type="Sprite" parent="KinematicBody2D" index="1"]
+
+texture = ExtResource( 2 )
+
+[node name="magicmine" type="Sprite" parent="KinematicBody2D" index="2"]
+
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="3"]
+
+shape = SubResource( 1 )
+
+[node name="breakable" type="Area2D" parent="KinematicBody2D" index="4"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/breakable" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="sound" type="Node" parent="." index="1"]
+
+[connection signal="screen_entered" from="KinematicBody2D/enabler" to="." method="enter_screen"]
+
+[connection signal="screen_exited" from="KinematicBody2D/enabler" to="." method="exit_screen"]
+
+

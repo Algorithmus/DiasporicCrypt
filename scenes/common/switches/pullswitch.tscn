@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/common/switches/PullSwitch.gd" type="Script" id=1]
+[ext_resource path="res://scenes/common/switches/pullswitch.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[node name="PullSwitch" type="KinematicBody2D"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+once = false
+is_on = false
+target_nodes = [  ]
+related_switches = [  ]
+enabled = true
+invert = false
+show_target = false
+target_pos = Vector2( 0, 0 )
+is_toggle = false
+
+[node name="enabler" type="VisibilityEnabler2D" parent="." index="0"]
+
+scale = Vector2( 3, 3 )
+rect = Rect2( -10, -10, 20, 20 )
+pause_animations = true
+freeze_bodies = true
+pause_particles = true
+pause_animated_sprites = true
+process_parent = false
+physics_process_parent = false
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+
+texture = ExtResource( 2 )
+
+[node name="hangable" type="Area2D" parent="." index="2"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hangable" index="0"]
+
+shape = SubResource( 1 )
+
+

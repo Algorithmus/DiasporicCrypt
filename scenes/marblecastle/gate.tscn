@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/springislandcastle/BGs/edge.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[node name="Gate" type="Node2D"]
+
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 160 )
+
+[node name="gate" type="StaticBody2D" parent="."]
+
+scale = Vector2( 1, 5 )
+input_pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gate"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0

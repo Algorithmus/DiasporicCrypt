@@ -1,0 +1,103 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://scenes/winterislandcastle/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/common/damagables/demon/demon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=4]
+
+[node name="LVL_NOTITLE" type="Node2D"]
+
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+
+[node name="tilemap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell/custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+tile_data = PoolIntArray( -327685, 2, -327684, 3, -327683, -1610612732, -327682, -1610612732, -327681, -1610612732, -393216, -1610612732, -393215, -1610612732, -393214, 536870915, -393213, 2, -393212, 7, -393211, 7, -393210, 7, -393209, 2, -393208, 3, -393207, -1610612732, -393206, -1610612732, -393205, -1610612732, -393204, -1610612732, -393203, -1610612732, -393202, -1610612732, -393201, 536870915, -393200, 2, -262149, 2, -262148, 4, -262147, 5, -262146, 5, -262145, 5, -327680, 5, -327679, 5, -327678, 4, -327677, 2, -327676, 7, -327675, 7, -327674, 7, -327673, 2, -327672, 4, -327671, 5, -327670, 5, -327669, 5, -327668, 5, -327667, 5, -327666, 5, -327665, 4, -327664, 2, -196613, 2, -196612, 1073741827, -196611, -1610612732, -196610, -1610612732, -196609, -1610612732, -262144, -1610612732, -262143, -1610612732, -262142, 1610612739, -262141, 2, -262140, 7, -262139, 7, -262138, 7, -262137, 2, -262136, 1073741827, -262135, -1610612732, -262134, -1610612732, -262133, -1610612732, -262132, -1610612732, -262131, -1610612732, -262130, -1610612732, -262129, 1610612739, -262128, 2, -131077, 1610612737, -131076, 1073741824, -131075, 1073741824, -131074, 1073741824, -131073, 1073741824, -196608, 1073741824, -196607, 1073741824, -196606, 1073741824, -196605, 1073741825, -196604, 7, -196603, 7, -196602, 7, -196601, 1610612737, -196600, 1073741824, -196599, 1073741824, -196598, 1073741824, -196597, 1073741824, -196596, 1073741824, -196595, 1073741824, -196594, 1073741824, -196593, 1073741824, -196592, 1073741825, -65541, 2, -65540, 10, -131072, 10, -131068, 10, -131064, 10, -131060, 10, -131056, 2, -5, 2, -65520, 2, 65531, 2, 65532, 9, 65533, 8, 65534, 8, 65535, 9, 0, 9, 1, 8, 2, 8, 3, 9, 4, 9, 5, 8, 6, 8, 7, 9, 8, 9, 9, 8, 10, 8, 11, 9, 12, 9, 13, 8, 14, 8, 15, 9, 16, 2, 131067, 2, 131068, 11, 65536, 11, 65540, 11, 65544, 11, 65548, 11, 65552, 2, 196603, 2, 131088, 2, 262139, 2, 196624, 2, 327675, 2, 327676, 9, 327677, 8, 327678, 8, 327679, 9, 262144, 9, 262145, 8, 262146, 8, 262147, 9, 262148, 9, 262149, 8, 262150, 8, 262151, 9, 262152, 9, 262153, 8, 262154, 8, 262155, 9, 262156, 9, 262157, 8, 262158, 8, 262159, 9, 262160, 2, 393211, 2, 393212, 12, 327680, 6, 327684, 12, 327688, 6, 327692, 12, 327696, 2, 458747, 2, 393232, 2, 524283, 2, 458768, 2, 589819, 2, 524304, 2, 655355, 2, 589840, 2, 720891, 2, 655376, 2, 786427, 2, 720912, 2, 851963, 2, 786448, 2, 917499, 2, 917500, 6, 851968, 13, 851972, 6, 851976, 13, 851980, 6, 851984, 2, 983035, 2, 917520, 2, 1048571, 1073741825, 983056, 2, 1114107, 7, 1048592, 2, 1179643, 7, 1114128, 2, 1245179, 7, 1179664, 2, 1310715, 7, 1245200, 2, 1376251, 7, 1310736, 2, 1441787, 536870913, 1441788, 0, 1441789, 0, 1441790, 0, 1441791, 0, 1376256, 0, 1376257, 0, 1376258, 0, 1376259, 0, 1376260, 0, 1376261, 0, 1376262, 0, 1376263, 0, 1376264, 0, 1376265, 0, 1376266, 0, 1376267, 0, 1376268, 0, 1376269, 0, 1376270, 0, 1376271, 0, 1376272, 1, 1507323, 2, 1507324, 3, 1507325, -1610612732, 1507326, -1610612732, 1507327, -1610612732, 1441792, -1610612732, 1441793, -1610612732, 1441794, -1610612732, 1441795, -1610612732, 1441796, -1610612732, 1441797, -1610612732, 1441798, -1610612732, 1441799, -1610612732, 1441800, -1610612732, 1441801, -1610612732, 1441802, -1610612732, 1441803, -1610612732, 1441804, -1610612732, 1441805, -1610612732, 1441806, -1610612732, 1441807, 536870915, 1441808, 2, 1572859, 2, 1572860, 4, 1572861, 5, 1572862, 5, 1572863, 5, 1507328, 5, 1507329, 5, 1507330, 5, 1507331, 5, 1507332, 5, 1507333, 5, 1507334, 5, 1507335, 5, 1507336, 5, 1507337, 5, 1507338, 5, 1507339, 5, 1507340, 5, 1507341, 5, 1507342, 5, 1507343, 4, 1507344, 2, 1638395, 2, 1638396, 1073741827, 1638397, -1610612732, 1638398, -1610612732, 1638399, -1610612732, 1572864, -1610612732, 1572865, -1610612732, 1572866, -1610612732, 1572867, -1610612732, 1572868, -1610612732, 1572869, -1610612732, 1572870, -1610612732, 1572871, -1610612732, 1572872, -1610612732, 1572873, -1610612732, 1572874, -1610612732, 1572875, -1610612732, 1572876, -1610612732, 1572877, -1610612732, 1572878, -1610612732, 1572879, 1610612739, 1572880, 2 )
+
+[node name="LadderGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="TestLadder" parent="tilemap/LadderGroup" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+position = Vector2( 176, -96 )
+
+[node name="Sprite" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
+
+region_rect = Rect2( 0, 0, 32, 192 )
+
+[node name="ladder" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
+
+scale = Vector2( 1, 6 )
+
+[node name="EnemiesGroup" type="Node2D" parent="tilemap"]
+
+
+[node name="Demon" parent="tilemap/EnemiesGroup" instance=ExtResource( 3 )]
+
+position = Vector2( 32, 256 )
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+
+editor/display_folded = true
+
+[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+position = Vector2( -176, 592 )
+target_level = "res://levels/winterislandcastle/6-5.tscn"
+teleport_to = Vector2( 844, 368 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+
+scale = Vector2( 1, 5 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+
+pause_animated_sprites = true
+
+[node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+position = Vector2( 176, -208 )
+is_horizontal = false
+target_level = "res://levels/winterislandcastle/6-3.tscn"
+teleport_to = Vector2( -208, 672 )
+
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
+
+scale = Vector2( 3, 1 )
+
+[node name="enabler" parent="tilemap/TeleportGroup/Teleport1/teleport"]
+
+pause_animated_sprites = true
+
+[node name="boundaries" type="Node2D" parent="tilemap"]
+
+
+[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+
+position = Vector2( -176, -208 )
+
+[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+
+position = Vector2( 560, 816 )
+[editable path="tilemap/LadderGroup/TestLadder"]
+[editable path="tilemap/TeleportGroup/Teleport"]
+[editable path="tilemap/TeleportGroup/Teleport1"]

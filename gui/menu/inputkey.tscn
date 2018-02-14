@@ -1,0 +1,121 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://gui/fonts/S-12-dialog.font" type="BitmapFont" id=1]
+[ext_resource path="res://gui/menu/inputkey.gd" type="Script" id=2]
+[ext_resource path="res://gui/menu/cursor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gui/fonts/L-24-Keyboard-outline.font" type="BitmapFont" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+_sections_unfolded = [ "Content Margin" ]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[node name="key" type="ToolButton" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 50.0
+margin_right = 704.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_left = NodePath(".")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "KEY_UP"
+flat = true
+align = 0
+script = ExtResource( 2 )
+_sections_unfolded = [ "Focus", "Material", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
+actionid = "ui_up"
+
+[node name="icon" parent="." index="0" instance=ExtResource( 3 )]
+
+margin_left = -50.0
+margin_top = 4.0
+margin_right = -38.0
+margin_bottom = 25.0
+
+[node name="key" type="Label" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 256.0
+margin_right = 416.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 4 )
+text = "KEY"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="input" type="Label" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 444.0
+margin_top = 7.0
+margin_right = 650.0
+margin_bottom = 28.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+text = "KEY_INPUT"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin", "Theme", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
+
+[connection signal="focus_entered" from="." to="." method="_on_choice_focus_enter"]
+
+[connection signal="focus_entered" from="." to="." method="_on_key_focus_enter"]
+
+[connection signal="focus_exited" from="." to="." method="_on_choice_focus_exit"]
+
+[connection signal="focus_exited" from="." to="." method="_on_key_focus_exit"]
+
+

@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="Shader" id=4]
+
+code = "shader_type canvas_item;
+render_mode blend_add;
+
+uniform vec4 modulate:hint_color;
+
+void fragment() {
+COLOR = modulate;
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+
+render_priority = 0
+shader = SubResource( 4 )
+shader_param/modulate = Color( 1, 0.1875, 0, 0.68 )
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="ImageTexture" id=2]
+
+flags = 2
+storage = 0
+lossy_quality = 0.7
+flags = 2
+size = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[node name="LavaSurface" type="Node2D" index="0"]
+
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+material = SubResource( 5 )
+z_index = 2
+texture = SubResource( 2 )
+_sections_unfolded = [ "Material", "Z Index" ]
+
+[node name="lava" type="Area2D" parent="." index="1"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="lava" type="CollisionShape2D" parent="lava" index="0"]
+
+shape = SubResource( 3 )
+
+

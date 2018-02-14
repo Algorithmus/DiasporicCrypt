@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/skewer.wav-0488ede3018dec03523a2167eb7a3480.sample"
+
+[deps]
+
+source_file="res://players/friederich/attacks/skewer/skewer.wav"
+source_md5="83af0d7510363ee54e6d00aa3f68b631"
+
+dest_files=[ "res://.import/skewer.wav-0488ede3018dec03523a2167eb7a3480.sample" ]
+dest_md5="7a599f577134f4133a842316917742c4"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

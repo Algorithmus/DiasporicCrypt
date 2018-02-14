@@ -1,0 +1,2347 @@
+[gd_scene load_steps=70 format=2]
+
+[ext_resource path="res://gui/worldmap/map.gd" type="Script" id=1]
+[ext_resource path="res://gui/worldmap/map.png" type="Texture" id=2]
+[ext_resource path="res://gui/worldmap/mapfilter.png" type="Texture" id=3]
+[ext_resource path="res://gui/fonts/L-24-Keyboard-outline.font" type="BitmapFont" id=4]
+[ext_resource path="res://gui/fonts/S-12-dialog.font" type="BitmapFont" id=5]
+[ext_resource path="res://gui/fonts/XS-7.font" type="BitmapFont" id=6]
+[ext_resource path="res://gui/worldmap/tagfilter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://gui/worldmap/typefilter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://gui/worldmap/icons/boss.png" type="Texture" id=9]
+[ext_resource path="res://gui/worldmap/icons/bonus.png" type="Texture" id=10]
+[ext_resource path="res://gui/worldmap/icons/colosseum.png" type="Texture" id=11]
+[ext_resource path="res://gui/fonts/S-13-dialog.font" type="BitmapFont" id=12]
+[ext_resource path="res://gui/worldmap/window.png" type="Texture" id=13]
+[ext_resource path="res://gui/theme/slidergrabber.png" type="Texture" id=14]
+[ext_resource path="res://gui/theme/slidergrabber_active.png" type="Texture" id=15]
+[ext_resource path="res://gui/theme/slider.png" type="Texture" id=16]
+[ext_resource path="res://gui/theme/scrollgrabber.png" type="Texture" id=17]
+[ext_resource path="res://gui/theme/scrollgrabber_active.png" type="Texture" id=18]
+[ext_resource path="res://gui/theme/scrollbar.png" type="Texture" id=19]
+[ext_resource path="res://gui/worldmap/typelistfilter.tscn" type="PackedScene" id=20]
+[ext_resource path="res://gui/worldmap/shield.png" type="Texture" id=21]
+[ext_resource path="res://gui/menu/titlebg.tscn" type="PackedScene" id=22]
+[ext_resource path="res://gui/worldmap/icons/quest.png" type="Texture" id=23]
+[ext_resource path="res://gui/menu/titleframe.png" type="Texture" id=24]
+[ext_resource path="res://gui/fonts/L-24.font" type="BitmapFont" id=25]
+[ext_resource path="res://gui/menu/tabs/map.png" type="Texture" id=26]
+[ext_resource path="res://gui/worldmap/tag.tscn" type="PackedScene" id=27]
+[ext_resource path="res://gui/worldmap/icons/complete.png" type="Texture" id=28]
+[ext_resource path="res://gui/menu/scrollscroll.png" type="Texture" id=29]
+[ext_resource path="res://gui/theme/scrollbar_scrolls.png" type="Texture" id=30]
+[ext_resource path="res://gui/fonts/S-13-scroll.font" type="BitmapFont" id=31]
+[ext_resource path="res://gui/fonts/L-24-Keyboard.font" type="BitmapFont" id=32]
+[ext_resource path="res://gui/menu/icons/gold.png" type="Texture" id=33]
+[ext_resource path="res://gui/menu/icons/special.png" type="Texture" id=34]
+[ext_resource path="res://gui/menu/textitem.tscn" type="PackedScene" id=35]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="ImageTexture" id=4]
+
+flags = 4
+storage = 0
+lossy_quality = 0.7
+flags = 4
+size = Vector2( 0, 0 )
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="StyleBoxTexture" id=6]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 47, 26 )
+margin_left = 23.0
+margin_right = 24.0
+margin_top = 13.0
+margin_bottom = 13.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=7]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 16 )
+region_rect = Rect2( 0, 0, 8, 13 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 0.0
+margin_bottom = 13.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="LargeTexture" id=8]
+
+flags = 0
+_data = [ Vector2( 0, 0 ) ]
+
+[sub_resource type="LargeTexture" id=9]
+
+flags = 0
+_data = [ Vector2( 0, 0 ) ]
+
+[sub_resource type="StyleBoxTexture" id=10]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 28, 61 )
+margin_left = 0.0
+margin_right = 28.0
+margin_top = 30.0
+margin_bottom = 30.0
+expand_margin_left = 8.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+_sections_unfolded = [ "Expand Margin", "Margin" ]
+
+[sub_resource type="StyleBoxTexture" id=11]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 28, 61 )
+margin_left = 0.0
+margin_right = 28.0
+margin_top = 30.0
+margin_bottom = 30.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+_sections_unfolded = [ "Margin" ]
+
+[sub_resource type="StyleBoxTexture" id=12]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = 0.0
+content_margin_bottom = 30.0
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 28, 61 )
+margin_left = 0.0
+margin_right = 28.0
+margin_top = 30.0
+margin_bottom = 30.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=13]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 18 )
+region_rect = Rect2( 0, 0, 28, 61 )
+margin_left = 0.0
+margin_right = 28.0
+margin_top = 30.0
+margin_bottom = 30.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+_sections_unfolded = [ "Margin" ]
+
+[sub_resource type="StyleBoxTexture" id=14]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 19 )
+region_rect = Rect2( 0, 0, 18, 64 )
+margin_left = 28.0
+margin_right = 0.0
+margin_top = 32.0
+margin_bottom = 32.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+_sections_unfolded = [ "Margin" ]
+
+[sub_resource type="Theme" id=15]
+
+default_font = ExtResource( 12 )
+HSlider/icons/grabber = ExtResource( 14 )
+HSlider/icons/grabber_hilite = ExtResource( 15 )
+HSlider/icons/tick = SubResource( 4 )
+HSlider/styles/focus = SubResource( 5 )
+HSlider/styles/grabber_hilite = SubResource( 6 )
+HSlider/styles/slider = SubResource( 7 )
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/decrement_hilite = SubResource( 8 )
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/icons/increment_hilite = SubResource( 9 )
+VScrollBar/styles/grabber = SubResource( 10 )
+VScrollBar/styles/grabber_highlight = SubResource( 11 )
+VScrollBar/styles/grabber_hilite = SubResource( 12 )
+VScrollBar/styles/grabber_pressed = SubResource( 13 )
+VScrollBar/styles/scroll = SubResource( 14 )
+VScrollBar/styles/scroll_focus = null
+_sections_unfolded = [ "VScrollBar", "VScrollBar/icons", "VScrollBar/styles" ]
+
+[sub_resource type="ImageTexture" id=16]
+
+flags = 7
+storage = 0
+lossy_quality = 0.7
+flags = 7
+size = Vector2( 0, 0 )
+
+[sub_resource type="BitmapFont" id=17]
+
+textures = [ SubResource( 16 ) ]
+chars = PoolIntArray( 224, 0, 222, 75, 7, 10, 0, 1, 7, 192, 0, 94, 2, 9, 12, 0, -1, 8, 64, 0, 35, 2, 12, 12, 0, 2, 12, 96, 0, 109, 104, 4, 2, 0, 1, 4, 160, 0, 0, 0, 0, 0, 0, 11, 3, 32, 0, 0, 0, 0, 0, 0, 11, 3, 33, 0, 64, 107, 2, 9, 1, 2, 3, 225, 0, 233, 66, 7, 10, 0, 1, 7, 193, 0, 107, 2, 9, 12, 0, -1, 8, 65, 0, 224, 2, 9, 9, 0, 2, 8, 161, 0, 243, 93, 3, 9, 0, 4, 3, 97, 0, 244, 51, 7, 7, 0, 4, 7, 98, 0, 151, 47, 7, 10, 0, 1, 7, 226, 0, 244, 62, 7, 10, 0, 1, 7, 194, 0, 120, 2, 9, 12, 0, -1, 8, 162, 0, 200, 57, 7, 11, 0, 2, 7, 66, 0, 24, 58, 7, 9, 1, 2, 8, 34, 0, 117, 104, 4, 4, 0, 1, 4, 35, 0, 38, 45, 8, 9, 0, 2, 8, 195, 0, 28, 28, 9, 13, 0, -2, 8, 227, 0, 211, 57, 7, 11, 0, 0, 7, 67, 0, 26, 45, 8, 9, 0, 2, 8, 163, 0, 140, 17, 8, 9, 0, 2, 8, 99, 0, 24, 71, 7, 7, 0, 4, 7, 100, 0, 118, 44, 7, 10, 0, 1, 7, 228, 0, 13, 87, 7, 10, 0, 1, 7, 164, 0, 159, 2, 9, 10, 0, 2, 9, 36, 0, 162, 47, 7, 13, 0, 0, 7, 196, 0, 172, 2, 9, 12, 0, -1, 8, 68, 0, 46, 58, 7, 9, 1, 2, 9, 37, 0, 211, 15, 9, 9, 0, 2, 10, 69, 0, 112, 61, 7, 9, 1, 2, 8, 165, 0, 176, 28, 8, 9, 0, 2, 8, 197, 0, 67, 28, 9, 14, 0, -3, 8, 229, 0, 13, 71, 7, 12, 0, -1, 7, 101, 0, 35, 71, 7, 7, 0, 4, 7, 38, 0, 14, 45, 8, 9, 0, 2, 8, 70, 0, 101, 61, 7, 9, 1, 2, 8, 198, 0, 2, 2, 13, 9, -1, 2, 12, 166, 0, 9, 117, 3, 11, 0, 2, 3, 102, 0, 47, 96, 5, 10, 0, 1, 4, 230, 0, 51, 13, 11, 7, 0, 4, 11, 71, 0, 164, 18, 8, 9, 0, 2, 9, 231, 0, 24, 82, 7, 10, 0, 4, 7, 199, 0, 188, 28, 8, 12, 0, 2, 8, 167, 0, 200, 28, 8, 12, 0, 2, 8, 103, 0, 189, 57, 7, 10, 0, 4, 7, 39, 0, 46, 110, 2, 4, 0, 1, 2, 72, 0, 152, 30, 8, 9, 1, 2, 9, 232, 0, 2, 75, 7, 10, 0, 1, 7, 40, 0, 83, 105, 5, 13, 0, 1, 4, 200, 0, 79, 75, 7, 12, 1, -1, 8, 104, 0, 167, 64, 7, 10, 0, 1, 7, 168, 0, 38, 96, 5, 2, 1, 1, 6, 73, 0, 58, 107, 2, 9, 1, 2, 4, 169, 0, 66, 2, 10, 9, 0, 2, 10, 233, 0, 211, 72, 7, 10, 0, 1, 7, 41, 0, 173, 103, 4, 13, 0, 1, 4, 201, 0, 90, 74, 7, 12, 1, -1, 8, 105, 0, 16, 117, 2, 11, 1, 0, 3, 234, 0, 200, 72, 7, 10, 0, 1, 7, 106, 0, 221, 102, 4, 14, -1, 0, 3, 202, 0, 101, 74, 7, 12, 1, -1, 8, 42, 0, 123, 83, 6, 6, 0, 2, 6, 170, 0, 65, 97, 5, 5, 0, 2, 6, 74, 0, 90, 61, 7, 9, 0, 2, 7, 171, 0, 233, 80, 6, 5, 0, 5, 6, 43, 0, 74, 46, 7, 8, 0, 3, 7, 107, 0, 145, 61, 7, 10, 0, 1, 7, 203, 0, 112, 74, 7, 12, 1, -1, 8, 235, 0, 189, 71, 7, 10, 0, 1, 7, 75, 0, 152, 17, 8, 9, 1, 2, 8, 172, 0, 222, 68, 7, 3, 0, 6, 7, 44, 0, 52, 110, 2, 4, 0, 10, 3, 108, 0, 40, 102, 2, 10, 1, 1, 3, 204, 0, 213, 102, 4, 12, -1, -1, 4, 236, 0, 141, 97, 4, 10, -1, 1, 3, 76, 0, 243, 80, 6, 9, 1, 2, 7, 173, 0, 125, 98, 4, 1, 0, 7, 4, 45, 0, 125, 93, 4, 1, 0, 7, 4, 109, 0, 51, 2, 11, 7, 0, 4, 11, 205, 0, 181, 103, 4, 12, 0, -1, 4, 237, 0, 149, 94, 4, 10, 0, 1, 3, 77, 0, 80, 2, 10, 9, 1, 2, 11, 46, 0, 34, 112, 2, 2, 1, 9, 3, 110, 0, 57, 72, 7, 7, 0, 4, 7, 206, 0, 133, 97, 4, 12, 0, -1, 4, 238, 0, 157, 103, 4, 10, 0, 1, 3, 174, 0, 66, 15, 10, 9, 0, 2, 10, 78, 0, 128, 31, 8, 9, 1, 2, 9, 175, 0, 143, 87, 6, 1, 0, 2, 6, 111, 0, 68, 72, 7, 7, 0, 4, 7, 47, 0, 163, 89, 6, 10, 0, 2, 5, 207, 0, 29, 96, 5, 12, 0, -1, 4, 239, 0, 92, 104, 5, 10, -1, 1, 3, 79, 0, 198, 15, 9, 9, 0, 2, 9, 176, 0, 74, 105, 5, 4, 0, 2, 5, 112, 0, 112, 90, 7, 10, 0, 4, 7, 240, 0, 134, 72, 7, 10, 0, 1, 8, 208, 0, 185, 2, 9, 9, 0, 2, 9, 80, 0, 68, 59, 7, 9, 1, 2, 8, 48, 0, 35, 58, 7, 9, 0, 2, 7, 177, 0, 145, 75, 7, 8, 0, 3, 7, 113, 0, 101, 90, 7, 10, 0, 4, 7, 81, 0, 133, 2, 9, 11, 0, 2, 9, 241, 0, 233, 51, 7, 11, 0, 0, 7, 209, 0, 140, 30, 8, 13, 1, -2, 9, 49, 0, 189, 100, 4, 9, 1, 2, 7, 178, 0, 20, 101, 5, 6, 0, 2, 6, 114, 0, 2, 89, 5, 7, 0, 4, 4, 210, 0, 54, 28, 9, 12, 0, -1, 9, 242, 0, 173, 47, 7, 10, 0, 1, 7, 82, 0, 57, 59, 7, 9, 1, 2, 9, 50, 0, 13, 58, 7, 9, 0, 2, 7, 179, 0, 56, 97, 5, 6, 0, 2, 6, 115, 0, 123, 72, 7, 7, 0, 4, 7, 211, 0, 41, 24, 9, 12, 0, -1, 9, 243, 0, 140, 47, 7, 10, 0, 1, 7, 83, 0, 104, 31, 8, 9, 0, 2, 8, 51, 0, 2, 47, 7, 9, 0, 2, 7, 180, 0, 101, 104, 4, 2, 0, 1, 4, 116, 0, 205, 99, 4, 9, 0, 2, 5, 244, 0, 156, 64, 7, 10, 0, 1, 7, 212, 0, 2, 15, 9, 12, 0, -1, 9, 84, 0, 104, 18, 8, 9, 0, 2, 8, 52, 0, 224, 22, 8, 9, 0, 2, 7, 213, 0, 15, 28, 9, 13, 0, -2, 9, 85, 0, 92, 26, 8, 9, 0, 2, 9, 53, 0, 239, 38, 7, 9, 0, 2, 7, 245, 0, 2, 60, 7, 11, 0, 0, 7, 181, 0, 79, 91, 7, 10, 0, 4, 7, 117, 0, 46, 71, 7, 7, 0, 4, 7, 54, 0, 228, 38, 7, 9, 0, 2, 7, 86, 0, 211, 2, 9, 9, 0, 2, 8, 182, 0, 203, 86, 6, 9, 0, 2, 6, 214, 0, 237, 2, 9, 12, 0, -1, 9, 246, 0, 123, 58, 7, 10, 0, 1, 7, 118, 0, 222, 57, 7, 7, 0, 4, 7, 87, 0, 19, 15, 12, 9, 0, 2, 11, 55, 0, 217, 44, 7, 9, 0, 2, 7, 247, 0, 156, 78, 7, 7, 0, 3, 7, 119, 0, 80, 15, 10, 7, 0, 4, 10, 215, 0, 178, 72, 7, 6, 0, 4, 7, 183, 0, 22, 111, 2, 2, 1, 6, 3, 88, 0, 62, 46, 8, 9, 0, 2, 8, 248, 0, 129, 44, 7, 9, 0, 3, 7, 216, 0, 146, 2, 9, 11, 0, 1, 9, 56, 0, 206, 44, 7, 9, 0, 2, 7, 120, 0, 178, 61, 7, 7, 0, 4, 7, 184, 0, 2, 100, 3, 3, 0, 11, 3, 217, 0, 164, 31, 8, 12, 0, -1, 9, 249, 0, 90, 90, 7, 10, 0, 1, 7, 121, 0, 68, 83, 7, 10, 0, 4, 7, 57, 0, 195, 44, 7, 9, 0, 2, 7, 89, 0, 80, 26, 8, 9, 0, 2, 8, 185, 0, 236, 98, 3, 6, 0, 2, 4, 218, 0, 212, 28, 8, 12, 0, -1, 9, 250, 0, 57, 83, 7, 10, 0, 1, 7, 90, 0, 128, 18, 8, 9, 0, 2, 8, 122, 0, 167, 78, 7, 7, 0, 4, 7, 58, 0, 70, 113, 2, 7, 1, 4, 3, 186, 0, 183, 85, 6, 5, 0, 2, 6, 59, 0, 250, 93, 3, 10, 0, 4, 3, 91, 0, 197, 100, 4, 13, 0, 0, 4, 219, 0, 236, 22, 8, 12, 0, -1, 9, 123, 0, 11, 101, 5, 12, 0, 1, 4, 251, 0, 46, 82, 7, 10, 0, 1, 7, 187, 0, 233, 89, 6, 5, 0, 5, 6, 188, 0, 185, 15, 9, 9, 1, 2, 10, 92, 0, 193, 86, 6, 10, 0, 2, 5, 252, 0, 35, 82, 7, 10, 0, 1, 7, 220, 0, 2, 31, 8, 12, 0, -1, 9, 124, 0, 28, 112, 2, 11, 1, 2, 3, 60, 0, 133, 86, 6, 7, 0, 4, 7, 189, 0, 198, 2, 9, 9, 1, 2, 11, 93, 0, 229, 98, 3, 13, 0, 0, 4, 253, 0, 107, 44, 7, 13, 0, 1, 7, 221, 0, 116, 18, 8, 12, 0, -1, 8, 125, 0, 165, 103, 4, 12, 0, 1, 4, 61, 0, 184, 44, 7, 6, 0, 4, 7, 190, 0, 19, 2, 12, 9, 0, 2, 11, 222, 0, 85, 39, 7, 9, 1, 2, 8, 254, 0, 96, 44, 7, 13, 0, 1, 8, 62, 0, 134, 61, 7, 7, 0, 4, 7, 94, 0, 223, 89, 6, 5, 0, 2, 5, 126, 0, 224, 15, 9, 3, 0, 6, 9, 223, 0, 50, 44, 8, 10, 0, 1, 8, 255, 0, 79, 58, 7, 13, 0, 1, 7, 191, 0, 173, 89, 6, 10, 0, 4, 6, 63, 0, 213, 89, 6, 9, 0, 2, 6, 95, 0, 153, 89, 6, 1, 0, 11, 6 )
+kernings = PoolIntArray(  )
+height = 13.0
+ascent = 11.0
+distance_field = false
+
+[sub_resource type="ImageTexture" id=18]
+
+flags = 4
+storage = 0
+lossy_quality = 0.7
+flags = 4
+size = Vector2( 0, 0 )
+
+[sub_resource type="StyleBoxTexture" id=19]
+
+content_margin_left = 4.0
+content_margin_right = 22.0
+content_margin_top = 4.0
+content_margin_bottom = 5.0
+texture = SubResource( 18 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 5.0
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="LargeTexture" id=20]
+
+flags = 0
+_data = [ Vector2( 0, 0 ) ]
+
+[sub_resource type="LargeTexture" id=21]
+
+flags = 0
+_data = [ Vector2( 0, 0 ) ]
+
+[sub_resource type="LargeTexture" id=22]
+
+flags = 0
+_data = [ Vector2( 0, 0 ) ]
+
+[sub_resource type="LargeTexture" id=23]
+
+flags = 0
+_data = [ Vector2( 0, 0 ) ]
+
+[sub_resource type="StyleBoxTexture" id=24]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 28, 61 )
+margin_left = 0.0
+margin_right = 28.0
+margin_top = 30.0
+margin_bottom = 30.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=25]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 28, 61 )
+margin_left = 0.0
+margin_right = 28.0
+margin_top = 30.0
+margin_bottom = 30.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=26]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 30 )
+region_rect = Rect2( 0, 0, 64, 64 )
+margin_left = 32.0
+margin_right = 0.0
+margin_top = 32.0
+margin_bottom = 32.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="ImageTexture" id=27]
+
+flags = 4
+storage = 0
+lossy_quality = 0.7
+flags = 4
+size = Vector2( 0, 0 )
+
+[sub_resource type="StyleBoxTexture" id=28]
+
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+texture = SubResource( 27 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 5.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="Theme" id=29]
+
+RichTextLabel/colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+RichTextLabel/colors/font_color_selected = Color( 0.490196, 0.490196, 0.490196, 1 )
+RichTextLabel/colors/selection_color = Color( 0.1, 0.1, 1, 0.8 )
+RichTextLabel/constants/line_separation = 1
+RichTextLabel/constants/table_hseparation = 3
+RichTextLabel/constants/table_vseparation = 3
+RichTextLabel/fonts/bold_font = SubResource( 17 )
+RichTextLabel/fonts/bold_italics_font = SubResource( 17 )
+RichTextLabel/fonts/italics_font = SubResource( 17 )
+RichTextLabel/fonts/mono_font = SubResource( 17 )
+RichTextLabel/fonts/normal_font = SubResource( 17 )
+RichTextLabel/styles/focus = SubResource( 19 )
+VScrollBar/icons/decrement = SubResource( 20 )
+VScrollBar/icons/decrement_hilite = SubResource( 21 )
+VScrollBar/icons/increment = SubResource( 22 )
+VScrollBar/icons/increment_hilite = SubResource( 23 )
+VScrollBar/styles/grabber = SubResource( 24 )
+VScrollBar/styles/grabber_hilite = SubResource( 25 )
+VScrollBar/styles/scroll = SubResource( 26 )
+VScrollBar/styles/scroll_focus = SubResource( 28 )
+
+[sub_resource type="Animation" id=30]
+
+resource_name = "hidden"
+length = 0.1
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("shield:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("title/content/warp:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("title/content/tags/red:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("title/content/tags/green:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("title/content/tags/blue:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("title/content/tags/purple:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("list:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("title:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 520 ) ]
+}
+
+[sub_resource type="Animation" id=31]
+
+resource_name = "hide"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("title/content/warp:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("title/content/tags/red:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("title/content/tags/green:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("title/content/tags/blue:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("title/content/tags/purple:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "end_level_animation"
+} ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("title:rect_position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 520 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("shield:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.95 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=32]
+
+resource_name = "hidelist"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "end_list_animation"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("title:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 592 ), Vector2( 0, 520 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("list:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 64 ), Vector2( -736, 64 ) ]
+}
+
+[sub_resource type="Animation" id=33]
+
+resource_name = "show"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("title/content/tags/red:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("title/content/tags/green:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("title/content/tags/blue:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("title/content/tags/purple:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("title/content/warp:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "focus_warp"
+} ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("title:rect_position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 520 ), Vector2( 0, 64 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("shield:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.95 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("shield:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=34]
+
+resource_name = "showlist"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("list:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "end_list_animation"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("list:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( -736, 64 ), Vector2( 0, 64 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("title:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 520 ), Vector2( 0, 592 ) ]
+}
+
+[node name="WorldMap" type="Control" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+script = ExtResource( 1 )
+_sections_unfolded = [ "Theme" ]
+
+[node name="map" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+
+[node name="pins" type="Control" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 800.0
+margin_bottom = 592.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="filters" type="Control" parent="." index="2"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 656.0
+margin_top = 8.0
+margin_right = 696.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="bg" type="Control" parent="filters" index="0"]
+
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -96.0
+margin_top = 8.0
+margin_right = -56.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="body" type="TextureRect" parent="filters/bg" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 144.0
+margin_bottom = 128.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource( 3 )
+stretch_mode = 0
+
+[node name="key" type="RichTextLabel" parent="filters" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 128.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_fonts/mono_font = ExtResource( 4 )
+custom_fonts/normal_font = ExtResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[center]Filters:  [code]S[/code][/center]"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "Filters:  S"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+
+[node name="tags" type="ToolButton" parent="filters" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -6.0
+margin_top = 28.0
+margin_right = 34.0
+margin_bottom = 45.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_left = NodePath(".")
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_fonts/font = ExtResource( 6 )
+disabled = true
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Tags"
+flat = true
+align = 0
+
+[node name="type" type="Label" parent="filters" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 122.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 6 )
+text = "MAP_TYPE"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="tagcontainer" type="VBoxContainer" parent="filters" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 48.0
+margin_right = 40.0
+margin_bottom = 140.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+alignment = 0
+
+[node name="red" parent="filters/tagcontainer" index="0" instance=ExtResource( 7 )]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_right = NodePath(".")
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+disabled = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+align = 1
+
+[node name="green" parent="filters/tagcontainer" index="1" instance=ExtResource( 7 )]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 28.0
+margin_bottom = 52.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_right = NodePath(".")
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+disabled = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+align = 1
+
+[node name="tag" parent="filters/tagcontainer/green" index="0"]
+
+color = Color( 0, 0.664062, 0.337219, 1 )
+vertex_colors = PoolColorArray(  )
+antialiased = false
+texture_rotation_degrees = 0.0
+
+[node name="blue" parent="filters/tagcontainer" index="2" instance=ExtResource( 7 )]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 56.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_right = NodePath(".")
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+disabled = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+align = 1
+
+[node name="tag" parent="filters/tagcontainer/blue" index="0"]
+
+color = Color( 0, 0.859375, 1, 1 )
+vertex_colors = PoolColorArray(  )
+antialiased = false
+texture_rotation_degrees = 0.0
+
+[node name="purple" parent="filters/tagcontainer" index="3" instance=ExtResource( 7 )]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 84.0
+margin_bottom = 108.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+disabled = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+align = 1
+
+[node name="tag" parent="filters/tagcontainer/purple" index="0"]
+
+color = Color( 0.40625, 0, 1, 1 )
+vertex_colors = PoolColorArray(  )
+antialiased = false
+texture_rotation_degrees = 0.0
+
+[node name="typecontainer" type="VBoxContainer" parent="filters" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 48.0
+margin_top = 48.0
+margin_right = 128.0
+margin_bottom = 149.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_constants/separation = 7
+alignment = 0
+
+[node name="quest" parent="filters/typecontainer" index="0" instance=ExtResource( 8 )]
+
+focus_neighbour_left = NodePath(".")
+focus_mode = 0
+disabled = true
+
+[node name="boss" parent="filters/typecontainer" index="1" instance=ExtResource( 8 )]
+
+margin_top = 27.0
+margin_bottom = 47.0
+focus_neighbour_left = NodePath(".")
+focus_mode = 0
+disabled = true
+text = "MAP_BOSS"
+
+[node name="icon" parent="filters/typecontainer/boss" index="0"]
+
+texture = ExtResource( 9 )
+
+[node name="bonus" parent="filters/typecontainer" index="2" instance=ExtResource( 8 )]
+
+margin_top = 54.0
+margin_bottom = 74.0
+focus_neighbour_left = NodePath(".")
+focus_mode = 0
+disabled = true
+text = "MAP_BONUS"
+
+[node name="icon" parent="filters/typecontainer/bonus" index="0"]
+
+texture = ExtResource( 10 )
+
+[node name="colosseum" parent="filters/typecontainer" index="3" instance=ExtResource( 8 )]
+
+margin_top = 81.0
+margin_bottom = 101.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_mode = 0
+disabled = true
+text = "MAP_COLOSSEUM"
+
+[node name="icon" parent="filters/typecontainer/colosseum" index="0"]
+
+texture = ExtResource( 11 )
+
+[node name="listinfo" type="RichTextLabel" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 656.0
+margin_top = 216.0
+margin_right = 792.0
+margin_bottom = 280.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_fonts/mono_font = ExtResource( 4 )
+custom_fonts/normal_font = ExtResource( 12 )
+bbcode_enabled = true
+bbcode_text = "[right]List  [code]S[/code][/right]
+[right]Back [code]Z[/code][/right]"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "List  S
+Back Z"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+
+[node name="list" type="Control" parent="." index="4"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -736.0
+margin_top = 64.0
+margin_right = -696.0
+margin_bottom = 104.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+_sections_unfolded = [ "Rect", "Theme" ]
+
+[node name="TextureFrame" type="TextureRect" parent="list" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = -32.0
+margin_right = 736.0
+margin_bottom = 512.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource( 13 )
+stretch_mode = 0
+
+[node name="listcontainer" type="ScrollContainer" parent="list" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 670.0
+margin_bottom = 412.0
+rect_min_size = Vector2( 620, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme = SubResource( 15 )
+scroll_horizontal_enabled = false
+scroll_horizontal = 0
+scroll_vertical_enabled = true
+scroll_vertical = 0
+_sections_unfolded = [ "Scroll", "Theme" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="list/listcontainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 638.0
+rect_min_size = Vector2( 638, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+alignment = 0
+_sections_unfolded = [ "Theme" ]
+
+[node name="filters" type="Control" parent="list" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="tagtitle" type="ToolButton" parent="list/filters" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 26.0
+margin_top = 418.0
+margin_right = 66.0
+margin_bottom = 435.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_fonts/font = ExtResource( 6 )
+disabled = true
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Tags"
+flat = true
+align = 0
+
+[node name="tags" type="HBoxContainer" parent="list/filters" index="1"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 32.0
+margin_top = 438.0
+margin_right = 140.0
+margin_bottom = 462.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+alignment = 0
+
+[node name="red" parent="list/filters/tags" index="0" instance=ExtResource( 7 )]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+disabled = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+align = 1
+
+[node name="green" parent="list/filters/tags" index="1" instance=ExtResource( 7 )]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_right = 52.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+disabled = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+align = 1
+
+[node name="tag" parent="list/filters/tags/green" index="0"]
+
+color = Color( 0, 0.662745, 0.333333, 1 )
+vertex_colors = PoolColorArray(  )
+antialiased = false
+texture_rotation_degrees = 0.0
+
+[node name="blue" parent="list/filters/tags" index="2" instance=ExtResource( 7 )]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 56.0
+margin_right = 80.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+disabled = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+align = 1
+
+[node name="tag" parent="list/filters/tags/blue" index="0"]
+
+color = Color( 0, 0.858824, 1, 1 )
+vertex_colors = PoolColorArray(  )
+antialiased = false
+texture_rotation_degrees = 0.0
+
+[node name="purple" parent="list/filters/tags" index="3" instance=ExtResource( 7 )]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 84.0
+margin_right = 108.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_right = NodePath("../../type/quest")
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+disabled = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+align = 1
+
+[node name="tag" parent="list/filters/tags/purple" index="0"]
+
+color = Color( 0.403922, 0, 1, 1 )
+vertex_colors = PoolColorArray(  )
+antialiased = false
+texture_rotation_degrees = 0.0
+
+[node name="typetitle" type="Label" parent="list/filters" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 192.0
+margin_top = 422.0
+margin_right = 232.0
+margin_bottom = 435.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 6 )
+text = "MAP_TYPE"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="type" type="HBoxContainer" parent="list/filters" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 192.0
+margin_top = 438.0
+margin_right = 300.0
+margin_bottom = 462.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+alignment = 0
+
+[node name="quest" parent="list/filters/type" index="0" instance=ExtResource( 20 )]
+
+margin_bottom = 24.0
+focus_neighbour_left = NodePath("../../tagtitle")
+focus_neighbour_top = NodePath(".")
+focus_mode = 0
+disabled = true
+
+[node name="boss" parent="list/filters/type" index="1" instance=ExtResource( 20 )]
+
+margin_left = 28.0
+margin_right = 52.0
+margin_bottom = 24.0
+focus_neighbour_top = NodePath(".")
+focus_mode = 0
+disabled = true
+
+[node name="icon" parent="list/filters/type/boss" index="0"]
+
+texture = ExtResource( 9 )
+
+[node name="bonus" parent="list/filters/type" index="2" instance=ExtResource( 20 )]
+
+margin_left = 56.0
+margin_right = 80.0
+margin_bottom = 24.0
+focus_neighbour_top = NodePath(".")
+focus_mode = 0
+disabled = true
+
+[node name="icon" parent="list/filters/type/bonus" index="0"]
+
+texture = ExtResource( 10 )
+
+[node name="colosseum" parent="list/filters/type" index="3" instance=ExtResource( 20 )]
+
+margin_left = 84.0
+margin_right = 108.0
+margin_bottom = 24.0
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_mode = 0
+disabled = true
+
+[node name="icon" parent="list/filters/type/colosseum" index="0"]
+
+texture = ExtResource( 11 )
+
+[node name="key" type="RichTextLabel" parent="list/filters" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 324.0
+margin_top = 430.0
+margin_right = 452.0
+margin_bottom = 462.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_fonts/mono_font = ExtResource( 4 )
+custom_fonts/normal_font = ExtResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[center]Filters:  [code]S[/code][/center]"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "Filters:  S"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+
+[node name="shield" type="TextureRect" parent="." index="5"]
+
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 800.0
+margin_bottom = 592.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource( 21 )
+stretch_mode = 0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="title_bg" parent="." index="6" instance=ExtResource( 22 )]
+
+margin_left = 215.0
+margin_top = -1.0
+margin_right = 255.0
+margin_bottom = 39.0
+
+[node name="body" parent="title_bg" index="0"]
+
+polygon = PoolVector2Array( 0, 0, 160, 0, 160, 44, 0, 44 )
+
+[node name="fade" parent="title_bg" index="1"]
+
+margin_bottom = 4.0
+
+[node name="current" type="Label" parent="." index="7"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 40.0
+margin_top = 14.0
+margin_right = 552.0
+margin_bottom = 38.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 12 )
+text = "CURRENT_LOCATION"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="icon" type="Sprite" parent="current" index="0"]
+
+self_modulate = Color( 0.137255, 0.0705882, 0.0705882, 1 )
+position = Vector2( -24, -4 )
+texture = ExtResource( 23 )
+centered = false
+
+[node name="ornament" type="Sprite" parent="current" index="1"]
+
+self_modulate = Color( 0.137255, 0.0705882, 0.0705882, 1 )
+position = Vector2( 96, -16 )
+texture = ExtResource( 24 )
+centered = false
+flip_v = true
+
+[node name="title" type="Control" parent="." index="8"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 520.0
+margin_right = 40.0
+margin_bottom = 560.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+_sections_unfolded = [ "Rect" ]
+
+[node name="title_bg" parent="title" index="0" instance=ExtResource( 22 )]
+
+margin_left = 263.0
+margin_top = 11.0
+margin_right = 303.0
+margin_bottom = 51.0
+
+[node name="body" parent="title/title_bg" index="0"]
+
+polygon = PoolVector2Array( 0, 0, 320, 0, 320, 44, 0, 44 )
+
+[node name="fade" parent="title/title_bg" index="1"]
+
+margin_left = -264.0
+margin_bottom = 4.0
+
+[node name="underline" type="Polygon2D" parent="title" index="1"]
+
+position = Vector2( 0, 54 )
+polygon = PoolVector2Array( 0, 0, 800, 0, 800, 1, 0, 1 )
+uv = PoolVector2Array(  )
+color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="ornament" type="Sprite" parent="title" index="2"]
+
+self_modulate = Color( 0.137255, 0.0705882, 0.0705882, 1 )
+position = Vector2( 344, 0 )
+texture = ExtResource( 24 )
+centered = false
+
+[node name="level" type="Label" parent="title" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 64.0
+margin_top = 20.0
+margin_right = 664.0
+margin_bottom = 51.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 25 )
+text = "LVL_CATACOMBgjpq"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="percent" type="Label" parent="title" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 664.0
+margin_top = 20.0
+margin_right = 760.0
+margin_bottom = 51.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 25 )
+text = "100%"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="map" type="Sprite" parent="title" index="5"]
+
+position = Vector2( 764, 26 )
+texture = ExtResource( 26 )
+centered = false
+
+[node name="tags" type="HBoxContainer" parent="title" index="6"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 512.0
+margin_top = 10.0
+margin_right = 566.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_constants/separation = -8
+alignment = 2
+
+[node name="red" parent="title/tags" index="0" instance=ExtResource( 27 )]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+
+[node name="green" parent="title/tags" index="1" instance=ExtResource( 27 )]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 12.0
+margin_right = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+
+[node name="icon" parent="title/tags/green" index="0"]
+
+self_modulate = Color( 0, 0.662745, 0.333333, 1 )
+
+[node name="blue" parent="title/tags" index="2" instance=ExtResource( 27 )]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 24.0
+margin_right = 44.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+
+[node name="icon" parent="title/tags/blue" index="0"]
+
+self_modulate = Color( 0, 0.858824, 1, 1 )
+
+[node name="purple" parent="title/tags" index="3" instance=ExtResource( 27 )]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 36.0
+margin_right = 56.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+
+[node name="icon" parent="title/tags/purple" index="0"]
+
+self_modulate = Color( 0.403922, 0, 1, 1 )
+
+[node name="icon" type="Sprite" parent="title" index="7"]
+
+self_modulate = Color( 0.196078, 0.0705882, 0.0705882, 1 )
+position = Vector2( 32, 24 )
+texture = ExtResource( 23 )
+centered = false
+
+[node name="complete" type="Sprite" parent="title" index="8"]
+
+position = Vector2( 10, 24 )
+texture = ExtResource( 28 )
+centered = false
+
+[node name="new" type="Label" parent="title" index="9"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 24.0
+margin_top = 16.0
+margin_right = 64.0
+margin_bottom = 29.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+text = "ITEM_NEW"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="content" type="Control" parent="title" index="10"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 16.0
+margin_top = 96.0
+margin_right = 56.0
+margin_bottom = 136.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="bg" type="Sprite" parent="title/content" index="0"]
+
+texture = ExtResource( 29 )
+centered = false
+
+[node name="description" type="RichTextLabel" parent="title/content" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = 36.0
+margin_top = 36.0
+margin_right = 596.0
+margin_bottom = 268.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme = SubResource( 29 )
+custom_fonts/normal_font = ExtResource( 31 )
+custom_fonts/mono_font = ExtResource( 32 )
+custom_colors/default_color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
+bbcode_enabled = true
+bbcode_text = "Heiße Untergrundhöhle. Achtung auf Gefahr von Lava von unten und fallende Felsen von oben! Besiegen Sie der Drache.
+
+Heiße Untergrundhöhle. Achtung auf Gefahr von Lava von unten und fallende Felsen von oben! Besiegen Sie der Drache.
+
+Heiße Untergrundhöhle. Achtung auf Gefahr von Lava von unten und fallende Felsen von oben! Besiegen Sie der Drache.
+Heiße Untergrundhöhle. Achtung auf Gefahr von Lava von unten und fallende Felsen von oben! Besiegen Sie der Drache.
+Heiße Untergrundhöhle. Achtung auf Gefahr von Lava von unten und fallende Felsen von oben! Besiegen Sie der Drache.
+Heiße Untergrundhöhle. Achtung auf Gefahr von Lava von unten und fallende Felsen von oben! Besiegen Sie der Drache.
+
+Heiße Untergrundhöhle. Achtung auf Gefahr von Lava von unten und fallende Felsen von oben! Besiegen Sie der Drache.
+Heiße Untergrundhöhle. Achtung auf Gefahr von Lava von unten und fallende Felsen von oben! Besiegen Sie der Drache.
+Heiße Untergrundhöhle. Achtung auf Gefahr von Lava von unten und fallende Felsen von oben! Besiegen Sie der Drache."
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "Heiße Untergrundhöhle. Achtung auf Gefahr von Lava von unten und fallende Felsen von oben! Besiegen Sie der Drache.
+
+Heiße Untergrundhöhle. Achtung auf Gefahr von Lava von unten und fallende Felsen von oben! Besiegen Sie der Drache.
+
+Heiße Untergrundhöhle. Achtung auf Gefahr von Lava von unten und fallende Felsen von oben! Besiegen Sie der Drache.
+Heiße Untergrundhöhle. Achtung auf Gefahr von Lava von unten und fallende Felsen von oben! Besiegen Sie der Drache.
+Heiße Untergrundhöhle. Achtung auf Gefahr von Lava von unten und fallende Felsen von oben! Besiegen Sie der Drache.
+Heiße Untergrundhöhle. Achtung auf Gefahr von Lava von unten und fallende Felsen von oben! Besiegen Sie der Drache.
+
+Heiße Untergrundhöhle. Achtung auf Gefahr von Lava von unten und fallende Felsen von oben! Besiegen Sie der Drache.
+Heiße Untergrundhöhle. Achtung auf Gefahr von Lava von unten und fallende Felsen von oben! Besiegen Sie der Drache.
+Heiße Untergrundhöhle. Achtung auf Gefahr von Lava von unten und fallende Felsen von oben! Besiegen Sie der Drache."
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "Anchor", "Margin", "Rect" ]
+
+[node name="tagstitle" type="Label" parent="title/content" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 16.0
+margin_top = 354.0
+margin_right = 56.0
+margin_bottom = 367.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 6 )
+text = "Tags"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="tags" type="HBoxContainer" parent="title/content" index="3"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 16.0
+margin_top = 372.0
+margin_right = 124.0
+margin_bottom = 396.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+alignment = 0
+
+[node name="red" parent="title/content/tags" index="0" instance=ExtResource( 7 )]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+enabled_focus_mode = 2
+shortcut = null
+group = null
+align = 1
+
+[node name="green" parent="title/content/tags" index="1" instance=ExtResource( 7 )]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_right = 52.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+enabled_focus_mode = 2
+shortcut = null
+group = null
+align = 1
+
+[node name="tag" parent="title/content/tags/green" index="0"]
+
+color = Color( 0, 0.662745, 0.333333, 1 )
+vertex_colors = PoolColorArray(  )
+antialiased = false
+texture_rotation_degrees = 0.0
+
+[node name="blue" parent="title/content/tags" index="2" instance=ExtResource( 7 )]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 56.0
+margin_right = 80.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+enabled_focus_mode = 2
+shortcut = null
+group = null
+align = 1
+
+[node name="tag" parent="title/content/tags/blue" index="0"]
+
+color = Color( 0, 0.858824, 1, 1 )
+vertex_colors = PoolColorArray(  )
+antialiased = false
+texture_rotation_degrees = 0.0
+
+[node name="purple" parent="title/content/tags" index="3" instance=ExtResource( 7 )]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 84.0
+margin_right = 108.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_right = NodePath("../../warp")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+enabled_focus_mode = 2
+shortcut = null
+group = null
+align = 1
+
+[node name="tag" parent="title/content/tags/purple" index="0"]
+
+color = Color( 0.403922, 0, 1, 1 )
+vertex_colors = PoolColorArray(  )
+antialiased = false
+texture_rotation_degrees = 0.0
+
+[node name="info" type="HBoxContainer" parent="title/content" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 60.0
+margin_top = 285.0
+margin_right = 165.0
+margin_bottom = 325.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_constants/separation = 36
+alignment = 0
+
+[node name="reward" type="Label" parent="title/content/info" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 105.0
+margin_bottom = 17.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 31 )
+custom_colors/font_color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
+text = "MAP_REWARD"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="rewardicon" type="Sprite" parent="title/content/info/reward" index="0"]
+
+position = Vector2( 0, -4 )
+texture = ExtResource( 33 )
+centered = false
+offset = Vector2( -24, 0 )
+
+[node name="target" type="Label" parent="title/content/info" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 141.0
+margin_right = 243.0
+margin_bottom = 17.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 31 )
+custom_colors/font_color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
+text = "MAP_TARGET"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="targeticon" type="Sprite" parent="title/content/info/target" index="0"]
+
+position = Vector2( 0, -4 )
+texture = ExtResource( 34 )
+centered = false
+offset = Vector2( -24, 0 )
+
+[node name="bonus" type="Label" parent="title/content/info" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 279.0
+margin_right = 304.0
+margin_bottom = 17.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 31 )
+custom_colors/font_color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
+text = "x10"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="bonusicon" type="Sprite" parent="title/content/info/bonus" index="0"]
+
+self_modulate = Color( 0.403922, 0.0627451, 0.0627451, 1 )
+position = Vector2( 0, -4 )
+texture = ExtResource( 10 )
+centered = false
+offset = Vector2( -24, 2 )
+
+[node name="underline" type="Polygon2D" parent="title/content" index="5"]
+
+position = Vector2( -16, 400 )
+polygon = PoolVector2Array( 0, 0, 800, 0, 800, 1, 0, 1 )
+uv = PoolVector2Array(  )
+color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="fill" type="Polygon2D" parent="title/content" index="6"]
+
+position = Vector2( -16, 401 )
+polygon = PoolVector2Array( 0, 0, 800, 0, 800, 7, 0, 7 )
+uv = PoolVector2Array(  )
+color = Color( 0.0352941, 0.219608, 0.207843, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="underline1" type="Polygon2D" parent="title/content" index="7"]
+
+position = Vector2( -16, 408 )
+polygon = PoolVector2Array( 0, 0, 800, 0, 800, 1, 0, 1 )
+uv = PoolVector2Array(  )
+color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="close" type="RichTextLabel" parent="title/content" index="8"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 640.0
+margin_top = 368.0
+margin_right = 776.0
+margin_bottom = 404.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_fonts/mono_font = ExtResource( 4 )
+custom_fonts/normal_font = ExtResource( 12 )
+bbcode_enabled = true
+bbcode_text = "[right]Zuruck  [code]S[/code][/right]"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "Zuruck  S"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+
+[node name="ornament" type="Sprite" parent="title/content" index="9"]
+
+self_modulate = Color( 0.137255, 0.0705882, 0.0705882, 1 )
+position = Vector2( 256, 346 )
+texture = ExtResource( 24 )
+centered = false
+_sections_unfolded = [ "Visibility" ]
+
+[node name="warp" parent="title/content" index="10" instance=ExtResource( 35 )]
+
+margin_left = 300.0
+margin_top = 366.0
+margin_right = 460.0
+margin_bottom = 398.0
+focus_neighbour_left = NodePath("../tags/purple")
+focus_neighbour_top = NodePath(".")
+text = "MAP_WARP"
+align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
+
+root_node = NodePath("..")
+autoplay = "hidden"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/hidden = SubResource( 30 )
+anims/hide = SubResource( 31 )
+anims/hidelist = SubResource( 32 )
+anims/show = SubResource( 33 )
+anims/showlist = SubResource( 34 )
+blend_times = [  ]
+
+[connection signal="focus_entered" from="filters/tags" to="." method="_on_tags_focus_enter"]
+
+[connection signal="focus_exited" from="filters/tags" to="." method="_on_tags_focus_exit"]
+
+[connection signal="pressed" from="filters/tags" to="." method="toggle_tags"]
+
+[connection signal="pressed" from="filters/tagcontainer/red" to="." method="set_tagfilter"]
+
+[connection signal="pressed" from="filters/tagcontainer/green" to="." method="set_tagfilter"]
+
+[connection signal="pressed" from="filters/tagcontainer/blue" to="." method="set_tagfilter"]
+
+[connection signal="pressed" from="filters/tagcontainer/purple" to="." method="set_tagfilter"]
+
+[connection signal="pressed" from="filters/typecontainer/quest" to="." method="set_typefilter"]
+
+[connection signal="pressed" from="filters/typecontainer/boss" to="." method="set_typefilter"]
+
+[connection signal="pressed" from="filters/typecontainer/bonus" to="." method="set_typefilter"]
+
+[connection signal="pressed" from="filters/typecontainer/colosseum" to="." method="set_typefilter"]
+
+[connection signal="focus_entered" from="list/filters/tagtitle" to="." method="_on_tags_focus_enter"]
+
+[connection signal="focus_exited" from="list/filters/tagtitle" to="." method="_on_tags_focus_exit"]
+
+[connection signal="pressed" from="list/filters/tagtitle" to="." method="toggle_tags"]
+
+[connection signal="pressed" from="list/filters/tags/red" to="." method="set_tagfilter"]
+
+[connection signal="pressed" from="list/filters/tags/green" to="." method="set_tagfilter"]
+
+[connection signal="pressed" from="list/filters/tags/blue" to="." method="set_tagfilter"]
+
+[connection signal="pressed" from="list/filters/tags/purple" to="." method="set_tagfilter"]
+
+[connection signal="pressed" from="list/filters/type/quest" to="." method="set_typefilter"]
+
+[connection signal="pressed" from="list/filters/type/boss" to="." method="set_typefilter"]
+
+[connection signal="pressed" from="list/filters/type/bonus" to="." method="set_typefilter"]
+
+[connection signal="pressed" from="list/filters/type/colosseum" to="." method="set_typefilter"]
+
+[connection signal="pressed" from="title/content/tags/red" to="." method="set_tag"]
+
+[connection signal="pressed" from="title/content/tags/green" to="." method="set_tag"]
+
+[connection signal="pressed" from="title/content/tags/blue" to="." method="set_tag"]
+
+[connection signal="pressed" from="title/content/tags/purple" to="." method="set_tag"]
+
+[connection signal="pressed" from="title/content/warp" to="." method="_on_warp_pressed"]
+
+
+[editable path="filters/tagcontainer/green"]
+[editable path="filters/tagcontainer/blue"]
+[editable path="filters/tagcontainer/purple"]
+[editable path="filters/typecontainer/boss"]
+[editable path="filters/typecontainer/bonus"]
+[editable path="filters/typecontainer/colosseum"]
+[editable path="list/filters/tags/green"]
+[editable path="list/filters/tags/blue"]
+[editable path="list/filters/tags/purple"]
+[editable path="list/filters/type/boss"]
+[editable path="list/filters/type/bonus"]
+[editable path="list/filters/type/colosseum"]
+[editable path="title_bg"]
+[editable path="title/title_bg"]
+[editable path="title/tags/green"]
+[editable path="title/tags/blue"]
+[editable path="title/tags/purple"]
+[editable path="title/content/tags/green"]
+[editable path="title/content/tags/blue"]
+[editable path="title/content/tags/purple"]

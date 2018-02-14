@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://gui/fonts/S-12-dialog.font" type="Font" id=1]
+[ext_resource path="res://gui/hud/scroll.png" type="Texture" id=2]
+[ext_resource path="res://gui/fonts/S-10-pixel.font" type="Font" id=3]
+
+[node name="item" type="Label"]
+
+margin_top = 12.0
+margin_bottom = 35.0
+focus_ignore_mouse = true
+focus_stop_mouse = true
+size_flags_horizontal = 2
+custom_fonts/font = ExtResource( 1 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="icon" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -24, -2 )
+
+[node name="new" type="Label" parent="."]
+
+margin_left = -24.0
+margin_top = -4.0
+margin_right = 8.0
+margin_bottom = 4.0
+focus_ignore_mouse = true
+focus_stop_mouse = true
+size_flags_horizontal = 2
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+text = "ITEM_NEW"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1

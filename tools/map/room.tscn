@@ -1,0 +1,232 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://tools/map/stat.tscn" type="PackedScene" id=1]
+
+[node name="room" type="VBoxContainer"]
+
+focus_ignore_mouse = false
+focus_stop_mouse = false
+size_flags_horizontal = 2
+size_flags_vertical = 2
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 212.0
+margin_bottom = 212.0
+alignment = 0
+
+[node name="title" parent="." instance=ExtResource( 1 )]
+
+editor/display_folded = true
+margin_right = 244.0
+margin_bottom = 32.0
+
+[node name="icon" parent="title"]
+
+rect_min_size = Vector2( 64, 32 )
+margin_right = 64.0
+
+[node name="key" parent="title"]
+
+margin_left = 68.0
+margin_right = 113.0
+text = "Room: "
+
+[node name="value" parent="title"]
+
+margin_left = 117.0
+margin_right = 158.0
+
+[node name="grid" parent="." instance=ExtResource( 1 )]
+
+editor/display_folded = true
+margin_top = 36.0
+margin_right = 244.0
+margin_bottom = 68.0
+
+[node name="icon" parent="grid"]
+
+rect_min_size = Vector2( 64, 32 )
+margin_right = 64.0
+
+[node name="key" parent="grid"]
+
+margin_left = 68.0
+margin_right = 103.0
+text = "Grid: "
+
+[node name="value" parent="grid"]
+
+margin_left = 107.0
+margin_right = 148.0
+
+[node name="total" parent="." instance=ExtResource( 1 )]
+
+editor/display_folded = true
+margin_top = 72.0
+margin_right = 244.0
+margin_bottom = 104.0
+
+[node name="icon" parent="total"]
+
+rect_min_size = Vector2( 64, 32 )
+margin_right = 64.0
+
+[node name="bg" parent="total/icon"]
+
+position = Vector2( 32, 0 )
+polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[node name="highlight" parent="total/icon"]
+
+position = Vector2( 32, 0 )
+polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[node name="key" parent="total"]
+
+margin_left = 68.0
+margin_right = 141.0
+text = "Total Tiles: "
+
+[node name="value" parent="total"]
+
+margin_left = 145.0
+margin_right = 186.0
+
+[node name="size" parent="." instance=ExtResource( 1 )]
+
+editor/display_folded = true
+margin_top = 108.0
+margin_right = 244.0
+margin_bottom = 140.0
+
+[node name="icon" parent="size"]
+
+rect_min_size = Vector2( 64, 32 )
+margin_right = 64.0
+
+[node name="bg" parent="size/icon"]
+
+position = Vector2( 32, 0 )
+polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[node name="highlight" parent="size/icon"]
+
+position = Vector2( 32, 0 )
+polygon = PoolVector2Array( 0, 0, 24, 0, 24, 24, 0, 24 )
+
+[node name="key" parent="size"]
+
+margin_left = 68.0
+margin_right = 129.0
+text = "Tile Size: "
+
+[node name="value" parent="size"]
+
+margin_left = 133.0
+margin_right = 174.0
+
+[node name="horizontal" parent="." instance=ExtResource( 1 )]
+
+editor/display_folded = true
+margin_top = 144.0
+margin_right = 244.0
+margin_bottom = 176.0
+
+[node name="icon" parent="horizontal"]
+
+rect_min_size = Vector2( 64, 32 )
+margin_right = 64.0
+
+[node name="bg" parent="horizontal/icon"]
+
+position = Vector2( 32, 0 )
+polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[node name="highlight" parent="horizontal/icon"]
+
+position = Vector2( 32, 0 )
+polygon = PoolVector2Array( 0, 24, 32, 24, 32, 32, 0, 32 )
+
+[node name="key" parent="horizontal"]
+
+margin_left = 68.0
+margin_right = 199.0
+text = "Horizontal Tile Size: "
+
+[node name="value" parent="horizontal"]
+
+margin_left = 203.0
+margin_right = 244.0
+
+[node name="vertical" parent="." instance=ExtResource( 1 )]
+
+editor/display_folded = true
+margin_top = 180.0
+margin_right = 244.0
+margin_bottom = 212.0
+
+[node name="icon" parent="vertical"]
+
+rect_min_size = Vector2( 64, 32 )
+margin_right = 64.0
+
+[node name="bg" parent="vertical/icon"]
+
+position = Vector2( 32, 0 )
+polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[node name="highlight" parent="vertical/icon"]
+
+position = Vector2( 32, 0 )
+polygon = PoolVector2Array( 24, 0, 32, 0, 32, 32, 24, 32 )
+
+[node name="key" parent="vertical"]
+
+margin_left = 68.0
+margin_right = 181.0
+text = "Vertical Tile Size: "
+
+[node name="value" parent="vertical"]
+
+margin_left = 185.0
+margin_right = 226.0
+
+[node name="corner" parent="." instance=ExtResource( 1 )]
+
+editor/display_folded = true
+margin_top = 216.0
+margin_right = 244.0
+margin_bottom = 248.0
+
+[node name="icon" parent="corner"]
+
+rect_min_size = Vector2( 64, 32 )
+margin_right = 64.0
+
+[node name="bg" parent="corner/icon"]
+
+position = Vector2( 32, 0 )
+polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[node name="highlight" parent="corner/icon"]
+
+position = Vector2( 32, 0 )
+polygon = PoolVector2Array( 24, 24, 32, 24, 32, 32, 24, 32 )
+
+[node name="key" parent="corner"]
+
+margin_left = 68.0
+margin_right = 175.0
+text = "Corner Tile Size: "
+
+[node name="value" parent="corner"]
+
+margin_left = 179.0
+margin_right = 220.0
+[editable path="title"]
+[editable path="grid"]
+[editable path="total"]
+[editable path="size"]
+[editable path="horizontal"]
+[editable path="vertical"]
+[editable path="corner"]

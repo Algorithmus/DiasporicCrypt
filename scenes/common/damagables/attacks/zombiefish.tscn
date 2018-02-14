@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/common/damagables/attacks/zombiefish.gd" type="Script" id=1]
+[ext_resource path="res://scenes/common/damagables/attacks/fishspine.png" type="Texture" id=2]
+[ext_resource path="res://scenes/common/damagables/attacks/fishjaw.png" type="Texture" id=3]
+[ext_resource path="res://scenes/common/damagables/attacks/fishhead.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "bite"
+length = 0.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("jaw:rotation_deg")
+tracks/0/interp = 1
+tracks/0/keys = {
+"cont": true,
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ -12.6449, 14.5414, -12.6449 ]
+}
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[node name="ZombieFish" type="Node2D"]
+
+z = 3
+script = ExtResource( 1 )
+__meta__ = {
+"__editor_plugin_screen__": "Script"
+}
+atk = 1
+
+[node name="sprite" type="Node2D" parent="."]
+
+rotation_deg = -135.0
+
+[node name="spine" type="Sprite" parent="sprite"]
+
+texture = ExtResource( 2 )
+
+[node name="jaw" type="Sprite" parent="sprite"]
+
+position = Vector2( -13, 2 )
+rotation_deg = -13.8485
+texture = ExtResource( 3 )
+offset = Vector2( 13, -2 )
+
+[node name="head" type="Sprite" parent="sprite"]
+
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="sprite"]
+
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+anims/bite = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "bite"
+
+[node name="damagable" type="Area2D" parent="."]
+
+input_pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damagable"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0

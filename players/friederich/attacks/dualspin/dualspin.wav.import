@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dualspin.wav-5e3239cf94ea6ef92f24aba70cb81d6b.sample"
+
+[deps]
+
+source_file="res://players/friederich/attacks/dualspin/dualspin.wav"
+source_md5="d1a67a5761efb2461ba6e4e1dee96e36"
+
+dest_files=[ "res://.import/dualspin.wav-5e3239cf94ea6ef92f24aba70cb81d6b.sample" ]
+dest_md5="f493e373d3139235f5c379ce13830418"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

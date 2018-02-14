@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://gui/loading/loading.gd" type="Script" id=1]
+[ext_resource path="res://gui/worldmap/shield.png" type="Texture" id=2]
+[ext_resource path="res://gui/fonts/L-24.font" type="BitmapFont" id=3]
+[ext_resource path="res://gui/loading/bat.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gui/loading/cat.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gui/loading/logo.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "loading"
+length = 1.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("text:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 2.73208, 2.73208, 1 ),
+"update": 0,
+"values": [ 1.0, 0.5, 1.0 ]
+}
+
+[node name="loading" type="Control"]
+
+focus_ignore_mouse = false
+focus_stop_mouse = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+
+[node name="TextureFrame" type="TextureRect" parent="."]
+
+focus_ignore_mouse = true
+focus_stop_mouse = true
+size_flags_horizontal = 2
+size_flags_vertical = 2
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 800.0
+margin_bottom = 592.0
+texture = ExtResource( 2 )
+self_modulate = Color( 0.28125, 0.28125, 0.28125, 1 )
+expand = true
+stretch_mode = 0
+
+[node name="text" type="Label" parent="."]
+
+visibility/opacity = 0.731597
+focus_ignore_mouse = true
+focus_stop_mouse = true
+size_flags_horizontal = 2
+size_flags_vertical = 0
+margin_left = 0.0
+margin_top = 544.0
+margin_right = 768.0
+margin_bottom = 575.0
+custom_fonts/font = ExtResource( 3 )
+text = "KEY_LOADING"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="bat" parent="." instance=ExtResource( 4 )]
+
+position = Vector2( 720, 464 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="cat" parent="." instance=ExtResource( 5 )]
+
+position = Vector2( 704, 488 )
+scale = Vector2( 0.75, 0.75 )
+
+[node name="logo" type="Sprite" parent="."]
+
+visibility/opacity = 0.5
+position = Vector2( 400, 256 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+anims/loading = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
