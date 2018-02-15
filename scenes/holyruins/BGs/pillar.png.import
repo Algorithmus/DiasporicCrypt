@@ -10,7 +10,7 @@ source_file="res://scenes/holyruins/BGs/pillar.png"
 source_md5="3161dbcb3aa33dfe2a8ad9c9a2559346"
 
 dest_files=[ "res://.import/pillar.png-72e7a594fdc44bb019ba903ab6913b41.stex" ]
-dest_md5="bc47396d573f73d6a645995bd6330cbd"
+dest_md5="14530c9b15c517dd092889c045a580e9"
 
 [params]
 
@@ -18,7 +18,7 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

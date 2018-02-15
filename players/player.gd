@@ -345,8 +345,8 @@ func check_climb_platform_horizontal(space_state):
 		# character can sometimes look like they're oscillating up and down on the platform
 		# vertical motion is delayed until vertical motion checking
 		if (climbing_platform && climb_platform != null):
-			var ceilingA = space_state.intersect_ray(Vector2(get_global_position().x - sprite_offset.x, get_global_position().y - 64), Vector2(get_global_position().x - sprite_offset.x, get_global_position().y-96), [self])
-			var ceilingB = space_state.intersect_ray(Vector2(get_global_position().x + sprite_offset.x, get_global_position().y - 64), Vector2(get_global_position().x + sprite_offset.x, get_global_position().y-96), [self])
+			var ceilingA = space_state.intersect_ray(Vector2(get_global_position().x - sprite_offset.x, get_global_position().y - 64), Vector2(get_global_position().x - sprite_offset.x, get_global_position().y-96), [self], 524288)
+			var ceilingB = space_state.intersect_ray(Vector2(get_global_position().x + sprite_offset.x, get_global_position().y - 64), Vector2(get_global_position().x + sprite_offset.x, get_global_position().y-96), [self], 524288)
 			if (get_position().y + sprite_offset.y <= climb_platform.get_global_position().y - TILE_SIZE/2):
 				_collider = move_and_collide(Vector2(climbspeed * direction, 0))
 				if ((direction == 1 && get_global_position().x >= climb_platform.get_global_position().x) || (direction == -1 && get_global_position().x <= climb_platform.get_global_position().x)):
