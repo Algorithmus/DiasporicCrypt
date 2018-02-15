@@ -83,11 +83,11 @@ func _physics_process(delta):
 			var display = get_node("ring/"+combo.substr(combo_index, 1))
 			if (flashon_current_delay >= FLASH_ON):
 				flashon_current_delay = 0
-				display.set_modulate(DISPLAY_DEFAULT)
+				display.set_self_modulate(DISPLAY_DEFAULT)
 				combo_index += 1
 				flash_current_delay = 0
 			elif (combo_index < combo.length()):
-				display.set_modulate(Color(1, 0, 0))
+				display.set_self_modulate(Color(1, 0, 0))
 				flashon_current_delay += 1
 			else:
 				# end attacking phase

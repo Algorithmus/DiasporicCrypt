@@ -161,7 +161,7 @@ func _ready():
 		ProjectSettings.set("gamedata", null)
 
 func _on_resolution_changed():
-	var new_size = root.get_rect().size
+	var new_size = root.get_visible_rect().size
 	var scaleX = new_size.x/original_size.x
 	var scaleY = new_size.y/original_size.y
 	pause.get_node("shield").set_scale(Vector2(scaleX, scaleY))

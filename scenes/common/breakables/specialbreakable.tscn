@@ -13,7 +13,7 @@ extents = Vector2( 16, 16 )
 custom_solver_bias = 0.0
 extents = Vector2( 18, 18 )
 
-[node name="SpecialBreakable" type="Node2D" index="0"]
+[node name="SpecialBreakable" type="Node2D"]
 
 script = ExtResource( 1 )
 __meta__ = {
@@ -43,6 +43,7 @@ physics_process_parent = false
 [node name="Sprite" type="Sprite" parent="KinematicBody2D" index="1"]
 
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="2"]
 

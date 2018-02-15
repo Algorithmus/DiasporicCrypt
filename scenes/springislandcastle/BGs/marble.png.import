@@ -10,7 +10,7 @@ source_file="res://scenes/springislandcastle/BGs/marble.png"
 source_md5="897d440f64d004db679aa0f3c6c77c49"
 
 dest_files=[ "res://.import/marble.png-473018d5f84333086fe0015ce29f33d8.stex" ]
-dest_md5="25ea8cafa285d8a77f333b1b8400551e"
+dest_md5="c2dfaa9c85fa15c27764980206e7e193"
 
 [params]
 
@@ -18,7 +18,7 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
