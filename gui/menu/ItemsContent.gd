@@ -62,19 +62,22 @@ func clear_items():
 		itemcontainer.remove_child(i)
 		i.queue_free()
 
-func unfocus_all():
+func unfocus_items():
 	for item in itemcontainer.get_children():
 		item.release_focus()
 	for item in get_node("types").get_children():
 		item.release_focus()
 	currenttype = "item"
-	clear_items()
 	use.modulate.a = 0.5
 	drop.modulate.a = 0.5
 	use.release_focus()
 	drop.release_focus()
 	info.hide()
 	selecteditem = null
+
+func unfocus_all():
+	unfocus_items()
+	clear_items()
 
 func change_type():
 	if (get_focus_owner() != null && get_focus_owner().get_name() != currenttype):
@@ -168,7 +171,8 @@ func _input(event):
 					clear_selection(item)
 				else:
 					selecteditem = itemcontainer.get_node(item.title)
-				sfx.play("confirm")
+				#TODO - play sounds properly
+				#sfx.play("confirm")
 			else:
 				# no items selected, select current item instead
 				var item = inventory.get("inventory")[focus.get_name()]["item"]
@@ -185,18 +189,24 @@ func _input(event):
 			selecteditem = null
 
 func clear_selection(item):
+	var previous_index = 0
 	if (itemcontainer.has_node(item.title)):
 		var item_obj = itemcontainer.get_node(item.title)
+		previous_index = max(item_obj.get_index(), 1)
 		itemcontainer.remove_child(item_obj)
 		item_obj.queue_free()
 	var type = currenttype
-	unfocus_all()
+	unfocus_items()
 	currenttype = type
 	if (itemcontainer.get_child_count() > 0):
-		itemcontainer.get_child(0).grab_focus()
+		var next_item = itemcontainer.get_child(previous_index - 1)
+		if (previous_index == itemcontainer.get_child_count()):
+			next_item.set_focus_neighbour(MARGIN_BOTTOM, ".")
+		next_item.grab_focus()
 	else:
 		get_node("noitems").show()
 		get_node("types/" + currenttype).grab_focus()
+	get_node("itemcontainer").queue_sort()
 
 func check_item(item):
 	if (ProjectSettings.get("inventory").check_usable(item)):
