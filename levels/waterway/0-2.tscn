@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/waterway/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/waterway/climbableblock.tscn" type="PackedScene" id=2]
@@ -12,545 +12,811 @@
 [ext_resource path="res://scenes/common/sunbeam.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=11]
 
-[node name="LVL_NOTITLE" type="Node2D"]
+[node name="LVL_NOTITLE" type="Node2D" index="0"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
 
-[node name="tilemap" type="TileMap" parent="."]
+[node name="tilemap" type="TileMap" parent="." index="0"]
 
 mode = 0
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
-cell/custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 cell_half_offset = 2
 cell_tile_origin = 0
 cell_y_sort = false
+cell_clip_uv = false
 collision_use_kinematic = false
 collision_friction = 1.0
 collision_bounce = 0.0
-collision_layer = 1
+collision_layer = 524288
 collision_mask = 1
 occluder_light_mask = 1
-tile_data = PoolIntArray( -6225929, 1610612749, -6225928, 1073741862, -6225927, 1073741862, -6225926, 1073741862, -6225925, 1073741862, -6225924, 1073741862, -6225923, 1073741862, -6225922, 1073741862, -6225921, 1073741862, -6291456, 1073741862, -6291455, 1073741862, -6291454, 1073741862, -6291453, 1073741862, -6291452, 1073741862, -6291451, 1073741837, -6160393, 14, -6225915, 14, -6094857, 14, -6160379, 14, -6029321, 14, -6094843, 14, -5963785, 14, -6029307, 14, -5898249, 14, -5963771, 14, -5832713, 14, -5898235, 14, -5767177, 14, -5832699, 14, -5701641, 14, -5767163, 14, -5636105, 14, -5701627, 14, -5570569, 14, -5636091, 14, -5505033, 14, -5570555, 14, -5439497, 14, -5505019, 14, -5373961, 14, -5439483, 14, -5308425, 14, -5373947, 14, -5242889, 14, -5308411, 14, -5177353, 14, -5242875, 14, -5111817, 14, -5177339, 14, -5046281, 14, -5111803, 14, -4980745, 14, -5046267, 14, -4915209, 14, -4980731, 14, -4849674, 1610612780, -4849673, 1073741837, -4915195, 14, -4784138, 14, -4849659, 14, -4718602, 536870956, -4718601, 13, -4784123, 14, -4653065, 14, -4718587, 14, -4587529, 14, -4653051, 14, -4521993, 14, -4587515, 14, -4456457, 14, -4521979, 1610612749, -4521978, 1073741868, -4390921, 1073741838, -4456442, 14, -4325385, 1073741838, -4390907, 536870925, -4390906, 44, -4259849, 14, -4325371, 14, -4194313, 14, -4259835, 14, -4128777, 14, -4194299, 14, -4063241, 14, -4128763, 14, -3997705, 14, -4063227, 14, -3932169, 14, -3997691, 14, -3866633, 14, -3932155, 14, -3801097, 14, -3866619, 14, -3735562, 1610612780, -3735561, 1073741837, -3801083, 14, -3670026, 14, -3735547, 14, -3604490, 536870956, -3604489, 13, -3670011, 14, -3538953, 14, -3604475, 14, -3473417, 14, -3538939, 14, -3407881, 14, -3473403, 14, -3342345, 14, -3407867, 14, -3276809, 14, -3342331, 14, -3211273, 14, -3276795, 14, -3145737, 14, -3211259, 14, -3080201, 14, -3145723, 14, -3014665, 14, -3014664, 38, -3014663, 38, -3080187, 14, -2949129, 14, -3014651, 14, -2883593, 14, -2949115, 14, -2818057, 14, -2883579, 1610612749, -2883578, 1073741868, -2752521, 14, -2818042, 14, -2686985, 14, -2752507, 536870925, -2752506, 44, -2621449, 14, -2686971, 14, -2555913, 14, -2621435, 14, -2490377, 14, -2555899, 14, -2424841, 14, -2490363, 14, -2359305, 14, -2424827, 14, -2293769, 14, -2359291, 14, -2228233, 14, -2293755, 14, -2162698, 1610612780, -2162697, 1073741837, -2228219, 14, -2097162, 14, -2162683, 14, -2031626, 536870956, -2031625, 13, -2097147, 14, -1966089, 14, -2031611, 14, -1900553, 14, -1966075, 14, -1835017, 14, -1900539, 14, -1769481, 14, -1835003, 14, -1703945, 14, -1769467, 14, -1638409, 14, -1703931, 14, -1572873, 14, -1638395, 14, -1507337, 14, -1572859, 14, -1441801, 14, -1507323, 14, -1376265, 14, -1376264, 38, -1376263, 38, -1441787, 14, -1310729, 14, -1376251, 14, -1245193, 14, -1310715, 14, -1179657, 14, -1245179, 14, -1114121, 14, -1179643, 1610612749, -1179642, 1073741868, -1048585, 14, -1114106, 14, -983049, 14, -1048571, 536870925, -1048570, 44, -917513, 14, -983035, 14, -851977, 14, -917499, 14, -786441, 14, -851963, 14, -720905, 14, -786427, 14, -655369, 14, -720891, 14, -589833, 14, -655355, 14, -524298, 1610612780, -524297, 1073741837, -589819, 14, -458762, 14, -524285, 38, -524284, 38, -524283, 14, -393226, 536870956, -393225, 13, -458747, 14, -327689, 14, -393211, 14, -262153, 14, -327675, 14, -196617, 14, -262139, 14, -131081, 14, -196603, 14, -65545, 14, -131067, 14, -9, 14, -65531, 14, 65527, 14, 5, 14, 131063, 536870925, 131064, 38, 131065, 38, 131066, 38, 131067, 38, 131068, 13, 65536, 536870925, 65537, 38, 65538, 38, 65539, 38, 65540, 38, 65541, 13 )
+format = 1
+tile_data = PoolIntArray( -6225929, 1610612749, 0, -6225928, 1073741862, 0, -6225927, 1073741862, 0, -6225926, 1073741862, 0, -6225925, 1073741862, 0, -6225924, 1073741862, 0, -6225923, 1073741862, 0, -6225922, 1073741862, 0, -6225921, 1073741862, 0, -6291456, 1073741862, 0, -6291455, 1073741862, 0, -6291454, 1073741862, 0, -6291453, 1073741862, 0, -6291452, 1073741862, 0, -6291451, 1073741837, 0, -6160393, 14, 0, -6225915, 14, 0, -6094857, 14, 0, -6160379, 14, 0, -6029321, 14, 0, -6094843, 14, 0, -5963785, 14, 0, -6029307, 14, 0, -5898249, 14, 0, -5963771, 14, 0, -5832713, 14, 0, -5898235, 14, 0, -5767177, 14, 0, -5832699, 14, 0, -5701641, 14, 0, -5767163, 14, 0, -5636105, 14, 0, -5701627, 14, 0, -5570569, 14, 0, -5636091, 14, 0, -5505033, 14, 0, -5570555, 14, 0, -5439497, 14, 0, -5505019, 14, 0, -5373961, 14, 0, -5439483, 14, 0, -5308425, 14, 0, -5373947, 14, 0, -5242889, 14, 0, -5308411, 14, 0, -5177353, 14, 0, -5242875, 14, 0, -5111817, 14, 0, -5177339, 14, 0, -5046281, 14, 0, -5111803, 14, 0, -4980745, 14, 0, -5046267, 14, 0, -4915209, 14, 0, -4980731, 14, 0, -4849674, 1610612780, 0, -4849673, 1073741837, 0, -4915195, 14, 0, -4784138, 14, 0, -4849659, 14, 0, -4718602, 536870956, 0, -4718601, 13, 0, -4784123, 14, 0, -4653065, 14, 0, -4718587, 14, 0, -4587529, 14, 0, -4653051, 14, 0, -4521993, 14, 0, -4587515, 14, 0, -4456457, 14, 0, -4521979, 1610612749, 0, -4521978, 1073741868, 0, -4390921, 1073741838, 0, -4456442, 14, 0, -4325385, 1073741838, 0, -4390907, 536870925, 0, -4390906, 44, 0, -4259849, 14, 0, -4325371, 14, 0, -4194313, 14, 0, -4259835, 14, 0, -4128777, 14, 0, -4194299, 14, 0, -4063241, 14, 0, -4128763, 14, 0, -3997705, 14, 0, -4063227, 14, 0, -3932169, 14, 0, -3997691, 14, 0, -3866633, 14, 0, -3932155, 14, 0, -3801097, 14, 0, -3866619, 14, 0, -3735562, 1610612780, 0, -3735561, 1073741837, 0, -3801083, 14, 0, -3670026, 14, 0, -3735547, 14, 0, -3604490, 536870956, 0, -3604489, 13, 0, -3670011, 14, 0, -3538953, 14, 0, -3604475, 14, 0, -3473417, 14, 0, -3538939, 14, 0, -3407881, 14, 0, -3473403, 14, 0, -3342345, 14, 0, -3407867, 14, 0, -3276809, 14, 0, -3342331, 14, 0, -3211273, 14, 0, -3276795, 14, 0, -3145737, 14, 0, -3211259, 14, 0, -3080201, 14, 0, -3145723, 14, 0, -3014665, 14, 0, -3014664, 38, 0, -3014663, 38, 0, -3080187, 14, 0, -2949129, 14, 0, -3014651, 14, 0, -2883593, 14, 0, -2949115, 14, 0, -2818057, 14, 0, -2883579, 1610612749, 0, -2883578, 1073741868, 0, -2752521, 14, 0, -2818042, 14, 0, -2686985, 14, 0, -2752507, 536870925, 0, -2752506, 44, 0, -2621449, 14, 0, -2686971, 14, 0, -2555913, 14, 0, -2621435, 14, 0, -2490377, 14, 0, -2555899, 14, 0, -2424841, 14, 0, -2490363, 14, 0, -2359305, 14, 0, -2424827, 14, 0, -2293769, 14, 0, -2359291, 14, 0, -2228233, 14, 0, -2293755, 14, 0, -2162698, 1610612780, 0, -2162697, 1073741837, 0, -2228219, 14, 0, -2097162, 14, 0, -2162683, 14, 0, -2031626, 536870956, 0, -2031625, 13, 0, -2097147, 14, 0, -1966089, 14, 0, -2031611, 14, 0, -1900553, 14, 0, -1966075, 14, 0, -1835017, 14, 0, -1900539, 14, 0, -1769481, 14, 0, -1835003, 14, 0, -1703945, 14, 0, -1769467, 14, 0, -1638409, 14, 0, -1703931, 14, 0, -1572873, 14, 0, -1638395, 14, 0, -1507337, 14, 0, -1572859, 14, 0, -1441801, 14, 0, -1507323, 14, 0, -1376265, 14, 0, -1376264, 38, 0, -1376263, 38, 0, -1441787, 14, 0, -1310729, 14, 0, -1376251, 14, 0, -1245193, 14, 0, -1310715, 14, 0, -1179657, 14, 0, -1245179, 14, 0, -1114121, 14, 0, -1179643, 1610612749, 0, -1179642, 1073741868, 0, -1048585, 14, 0, -1114106, 14, 0, -983049, 14, 0, -1048571, 536870925, 0, -1048570, 44, 0, -917513, 14, 0, -983035, 14, 0, -851977, 14, 0, -917499, 14, 0, -786441, 14, 0, -851963, 14, 0, -720905, 14, 0, -786427, 14, 0, -655369, 14, 0, -720891, 14, 0, -589833, 14, 0, -655355, 14, 0, -524298, 1610612780, 0, -524297, 1073741837, 0, -589819, 14, 0, -458762, 14, 0, -524285, 38, 0, -524284, 38, 0, -524283, 14, 0, -393226, 536870956, 0, -393225, 13, 0, -458747, 14, 0, -327689, 14, 0, -393211, 14, 0, -262153, 14, 0, -327675, 14, 0, -196617, 14, 0, -262139, 14, 0, -131081, 14, 0, -196603, 14, 0, -65545, 14, 0, -131067, 14, 0, -9, 14, 0, -65531, 14, 0, 65527, 14, 0, 5, 14, 0, 131063, 536870925, 0, 131064, 38, 0, 131065, 38, 0, 131066, 38, 0, 131067, 38, 0, 131068, 13, 0, 65536, 536870925, 0, 65537, 38, 0, 65538, 38, 0, 65539, 38, 0, 65540, 38, 0, 65541, 13, 0 )
+_sections_unfolded = [ "Collision" ]
 
-[node name="ClimbableGroup" type="Node2D" parent="tilemap"]
+[node name="ClimbableGroup" type="Node2D" parent="tilemap" index="0"]
 
 editor/display_folded = true
 
-[node name="ClimbableBlock" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+[node name="ClimbableBlock" parent="tilemap/ClimbableGroup" index="0" instance=ExtResource( 2 )]
 
 position = Vector2( 80, -240 )
 
-[node name="ClimbableBlock7" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+[node name="ClimbableBlock7" parent="tilemap/ClimbableGroup" index="1" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( -176, -1488 )
 
-[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock7"]
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock7" index="0"]
 
 offset = Vector2( 3, 0 )
 flip_h = false
 
-[node name="ClimbableBlock1" parent="tilemap/ClimbableGroup" instance=ExtResource( 2 )]
+[node name="ClimbableBlock1" parent="tilemap/ClimbableGroup" index="2" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( -176, -688 )
 
-[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock1"]
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock1" index="0"]
 
 offset = Vector2( 3, 0 )
 flip_h = false
 
-[node name="One-WayPlatformGroup" type="Node2D" parent="tilemap"]
+[node name="One-WayPlatformGroup" type="Node2D" parent="tilemap" index="1"]
 
 editor/display_folded = true
 
-[node name="One-WayPlatform" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="One-WayPlatform" parent="tilemap/One-WayPlatformGroup" index="0" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -48, -416 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform/KinematicBody2D" index="0"]
 
 region_enabled = true
 region_rect = Rect2( 0, 0, 128, 32 )
 
-[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform/KinematicBody2D"]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform/KinematicBody2D" index="1"]
 
 scale = Vector2( 4, 1 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="One-WayPlatform3 3" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="One-WayPlatform3 3" parent="tilemap/One-WayPlatformGroup" index="1" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -48, -864 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform3 3/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform3 3" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform3 3/KinematicBody2D" index="0"]
 
 region_enabled = true
 region_rect = Rect2( 0, 0, 128, 32 )
 
-[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform3 3/KinematicBody2D"]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform3 3/KinematicBody2D" index="1"]
 
 scale = Vector2( 4, 1 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="One-WayPlatform34" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="One-WayPlatform34" parent="tilemap/One-WayPlatformGroup" index="2" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 32, -1024 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform34/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform34" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform34/KinematicBody2D" index="0"]
 
 region_enabled = true
 region_rect = Rect2( 0, 0, 128, 32 )
 
-[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform34/KinematicBody2D"]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform34/KinematicBody2D" index="1"]
 
 scale = Vector2( 4, 1 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="One-WayPlatform35 2" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="One-WayPlatform35 2" parent="tilemap/One-WayPlatformGroup" index="3" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -48, -1200 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform35 2/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform35 2" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform35 2/KinematicBody2D" index="0"]
 
 region_enabled = true
 region_rect = Rect2( 0, 0, 128, 32 )
 
-[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform35 2/KinematicBody2D"]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform35 2/KinematicBody2D" index="1"]
 
 scale = Vector2( 4, 1 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="One-WayPlatform353" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="One-WayPlatform353" parent="tilemap/One-WayPlatformGroup" index="4" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -48, -1648 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform353/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform353" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform353/KinematicBody2D" index="0"]
 
 region_enabled = true
 region_rect = Rect2( 0, 0, 128, 32 )
 
-[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform353/KinematicBody2D"]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform353/KinematicBody2D" index="1"]
 
 scale = Vector2( 4, 1 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="One-WayPlatform354" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="One-WayPlatform354" parent="tilemap/One-WayPlatformGroup" index="5" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -48, -1824 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform354/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform354" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform354/KinematicBody2D" index="0"]
 
 region_enabled = true
 region_rect = Rect2( 0, 0, 128, 32 )
 
-[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform354/KinematicBody2D"]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform354/KinematicBody2D" index="1"]
 
 scale = Vector2( 4, 1 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="One-WayPlatform355" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="One-WayPlatform355" parent="tilemap/One-WayPlatformGroup" index="6" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 32, -2000 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform355/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform355" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform355/KinematicBody2D" index="0"]
 
 region_enabled = true
 region_rect = Rect2( 0, 0, 128, 32 )
 
-[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform355/KinematicBody2D"]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform355/KinematicBody2D" index="1"]
 
 scale = Vector2( 4, 1 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="One-WayPlatform356" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="One-WayPlatform356" parent="tilemap/One-WayPlatformGroup" index="7" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -48, -2176 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform356/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform356" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform356/KinematicBody2D" index="0"]
 
 region_enabled = true
 region_rect = Rect2( 0, 0, 128, 32 )
 
-[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform356/KinematicBody2D"]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform356/KinematicBody2D" index="1"]
 
 scale = Vector2( 4, 1 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="One-WayPlatform357" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="One-WayPlatform357" parent="tilemap/One-WayPlatformGroup" index="8" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 32, -2352 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform357/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform357" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform357/KinematicBody2D" index="0"]
 
 region_enabled = true
 region_rect = Rect2( 0, 0, 128, 32 )
 
-[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform357/KinematicBody2D"]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform357/KinematicBody2D" index="1"]
 
 scale = Vector2( 4, 1 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="One-WayPlatform358" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="One-WayPlatform358" parent="tilemap/One-WayPlatformGroup" index="9" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -48, -2528 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform358/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform358" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform358/KinematicBody2D" index="0"]
 
 region_enabled = true
 region_rect = Rect2( 0, 0, 128, 32 )
 
-[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform358/KinematicBody2D"]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform358/KinematicBody2D" index="1"]
 
 scale = Vector2( 4, 1 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="One-WayPlatform359" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="One-WayPlatform359" parent="tilemap/One-WayPlatformGroup" index="10" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 32, -2704 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform359/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform359" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform359/KinematicBody2D" index="0"]
 
 region_enabled = true
 region_rect = Rect2( 0, 0, 128, 32 )
 
-[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform359/KinematicBody2D"]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform359/KinematicBody2D" index="1"]
 
 scale = Vector2( 4, 1 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="One-WayPlatform1" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="One-WayPlatform1" parent="tilemap/One-WayPlatformGroup" index="11" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 32, -416 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform1/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform1" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform1/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( 3, 0 )
 
-[node name="One-WayPlatform3" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform1/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform3" parent="tilemap/One-WayPlatformGroup" index="12" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 32, -864 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform3/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform3" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform3/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( 3, 0 )
 
-[node name="One-WayPlatform4" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform3/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform4" parent="tilemap/One-WayPlatformGroup" index="13" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 112, -1024 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform4/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform4" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform4/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( 3, 0 )
 
-[node name="One-WayPlatform5" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform4/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform5" parent="tilemap/One-WayPlatformGroup" index="14" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 32, -1200 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform5/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform5" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform5/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( 3, 0 )
 
-[node name="One-WayPlatform6" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform5/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform6" parent="tilemap/One-WayPlatformGroup" index="15" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 32, -1648 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform6/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform6" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform6/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( 3, 0 )
 
-[node name="One-WayPlatform7" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform6/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform7" parent="tilemap/One-WayPlatformGroup" index="16" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 32, -1824 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform7/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform7" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform7/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( 3, 0 )
 
-[node name="One-WayPlatform8" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform7/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform8" parent="tilemap/One-WayPlatformGroup" index="17" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 112, -2000 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform8/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform8" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform8/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( 3, 0 )
 
-[node name="One-WayPlatform9" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform8/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform9" parent="tilemap/One-WayPlatformGroup" index="18" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 32, -2176 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform9/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform9" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform9/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( 3, 0 )
 
-[node name="One-WayPlatform10" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform9/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform10" parent="tilemap/One-WayPlatformGroup" index="19" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 112, -2352 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform10/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform10" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform10/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( 3, 0 )
 
-[node name="One-WayPlatform11" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform10/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform11" parent="tilemap/One-WayPlatformGroup" index="20" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 32, -2528 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform11/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform11" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform11/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( 3, 0 )
 
-[node name="One-WayPlatform12" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform11/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform12" parent="tilemap/One-WayPlatformGroup" index="21" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 112, -2704 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform12/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform12" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform12/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( 3, 0 )
 
-[node name="One-WayPlatform2" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform12/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform2" parent="tilemap/One-WayPlatformGroup" index="22" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -128, -416 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform2/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform2" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform2/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( -3, 0 )
 flip_h = true
 
-[node name="One-WayPlatform3 2" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform2/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform3 2" parent="tilemap/One-WayPlatformGroup" index="23" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -128, -864 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform3 2/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform3 2" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform3 2/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( -3, 0 )
 flip_h = true
 
-[node name="One-WayPlatform33" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform3 2/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform33" parent="tilemap/One-WayPlatformGroup" index="24" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -48, -1024 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform33/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform33" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform33/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( -3, 0 )
 flip_h = true
 
-[node name="One-WayPlatform35" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform33/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform35" parent="tilemap/One-WayPlatformGroup" index="25" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -128, -1200 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform35/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform35" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform35/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( -3, 0 )
 flip_h = true
 
-[node name="One-WayPlatform36" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform35/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform36" parent="tilemap/One-WayPlatformGroup" index="26" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -128, -1648 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform36/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform36" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform36/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( -3, 0 )
 flip_h = true
 
-[node name="One-WayPlatform37" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform36/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform37" parent="tilemap/One-WayPlatformGroup" index="27" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -128, -1824 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform37/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform37" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform37/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( -3, 0 )
 flip_h = true
 
-[node name="One-WayPlatform38" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform37/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform38" parent="tilemap/One-WayPlatformGroup" index="28" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -48, -2000 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform38/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform38" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform38/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( -3, 0 )
 flip_h = true
 
-[node name="One-WayPlatform39" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform38/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform39" parent="tilemap/One-WayPlatformGroup" index="29" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -128, -2176 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform39/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform39" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform39/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( -3, 0 )
 flip_h = true
 
-[node name="One-WayPlatform40" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform39/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform40" parent="tilemap/One-WayPlatformGroup" index="30" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -48, -2352 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform40/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform40" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform40/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( -3, 0 )
 flip_h = true
 
-[node name="One-WayPlatform41" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform40/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform41" parent="tilemap/One-WayPlatformGroup" index="31" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -128, -2528 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform41/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform41" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform41/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( -3, 0 )
 flip_h = true
 
-[node name="One-WayPlatform42" parent="tilemap/One-WayPlatformGroup" instance=ExtResource( 3 )]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform41/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="One-WayPlatform42" parent="tilemap/One-WayPlatformGroup" index="32" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -48, -2704 )
 
-[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform42/KinematicBody2D"]
+[node name="KinematicBody2D" parent="tilemap/One-WayPlatformGroup/One-WayPlatform42" index="0"]
+
+collision/safe_margin = 0.08
+
+[node name="Sprite" parent="tilemap/One-WayPlatformGroup/One-WayPlatform42/KinematicBody2D" index="0"]
 
 texture = ExtResource( 4 )
 offset = Vector2( -3, 0 )
 flip_h = true
 
-[node name="LadderGroup" type="Node2D" parent="tilemap"]
+[node name="oneway" parent="tilemap/One-WayPlatformGroup/One-WayPlatform42/KinematicBody2D" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="LadderGroup" type="Node2D" parent="tilemap" index="2"]
 
 editor/display_folded = true
 
-[node name="TestLadder" parent="tilemap/LadderGroup" instance=ExtResource( 5 )]
+[node name="TestLadder" parent="tilemap/LadderGroup" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( -48, 0 )
 
-[node name="Sprite" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
+[node name="Sprite" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D" index="0"]
 
 region_rect = Rect2( 0, 0, 32, 128 )
 
-[node name="ladder" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
+[node name="ladder" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D" index="1"]
 
 scale = Vector2( 1, 4 )
 
-[node name="PotGroup" type="Node2D" parent="tilemap"]
+[node name="PotGroup" type="Node2D" parent="tilemap" index="3"]
 
 editor/display_folded = true
 
-[node name="Pot" parent="tilemap/PotGroup" instance=ExtResource( 6 )]
+[node name="Pot" parent="tilemap/PotGroup" index="0" instance=ExtResource( 6 )]
 
 position = Vector2( -176, -16 )
 
-[node name="EnemiesGroup" type="Node2D" parent="tilemap"]
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="4"]
 
-
-[node name="Bust" parent="tilemap/EnemiesGroup" instance=ExtResource( 7 )]
+[node name="Bust" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( -272, -2352 )
 rateX = 1
 
-[node name="Bust1" parent="tilemap/EnemiesGroup" instance=ExtResource( 7 )]
+[node name="Bust1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 7 )]
 
 position = Vector2( 176, -2160 )
 rateX = -1
 
-[node name="Bust2" parent="tilemap/EnemiesGroup" instance=ExtResource( 7 )]
+[node name="Bust2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 7 )]
 
 position = Vector2( -272, -1808 )
 rateX = 1
 
-[node name="Bust3" parent="tilemap/EnemiesGroup" instance=ExtResource( 7 )]
+[node name="Bust3" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 7 )]
 
 position = Vector2( 176, -1360 )
 rateX = -1
 
-[node name="Bust4" parent="tilemap/EnemiesGroup" instance=ExtResource( 7 )]
+[node name="Bust4" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 7 )]
 
 position = Vector2( -272, -1040 )
 rateX = 1
 
-[node name="Bust5" parent="tilemap/EnemiesGroup" instance=ExtResource( 7 )]
+[node name="Bust5" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 7 )]
 
 position = Vector2( 176, -528 )
 rateX = -1
 
-[node name="Bust6" parent="tilemap/EnemiesGroup" instance=ExtResource( 7 )]
+[node name="Bust6" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 7 )]
 
 position = Vector2( -272, -240 )
 rateX = 1
 
-[node name="SpecialItemGroup" type="Node2D" parent="tilemap"]
+[node name="SpecialItemGroup" type="Node2D" parent="tilemap" index="5"]
 
 editor/display_folded = true
 
-[node name="ITEM_MANAPOTIONPLUS" parent="tilemap/SpecialItemGroup" instance=ExtResource( 8 )]
+[node name="ITEM_MANAPOTIONPLUS" parent="tilemap/SpecialItemGroup" index="0" instance=ExtResource( 8 )]
 
 position = Vector2( 32, -2896 )
 isgoal = true
 
-[node name="ITEM_STYXCOIN" parent="tilemap/SpecialItemGroup" instance=ExtResource( 9 )]
+[node name="ITEM_STYXCOIN" parent="tilemap/SpecialItemGroup" index="1" instance=ExtResource( 9 )]
 
 position = Vector2( 32, -2896 )
 isgoal = true
 
-[node name="SunbeamGroup" type="Node2D" parent="tilemap"]
+[node name="SunbeamGroup" type="Node2D" parent="tilemap" index="6"]
 
 editor/display_folded = true
 
-[node name="Sunbeam" parent="tilemap/SunbeamGroup" instance=ExtResource( 10 )]
+[node name="Sunbeam" parent="tilemap/SunbeamGroup" index="0" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( -48, -1504 )
 
-[node name="block" parent="tilemap/SunbeamGroup/Sunbeam"]
+[node name="block" parent="tilemap/SunbeamGroup/Sunbeam" index="0"]
 
 scale = Vector2( 13, 96 )
 
-[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam"]
+[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam" index="1"]
 
 scale = Vector2( 13, 96 )
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="7"]
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 11 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 position = Vector2( -48, 80 )
@@ -558,24 +824,21 @@ is_horizontal = false
 target_level = "res://levels/waterway/0-1.tscn"
 teleport_to = Vector2( -144, -816 )
 
-[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport" index="0"]
 
 scale = Vector2( 3, 1 )
 
-[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="8"]
 
-pause_animated_sprites = true
-
-[node name="boundaries" type="Node2D" parent="tilemap"]
-
-
-[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+[node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
 
 position = Vector2( -304, -3088 )
 
-[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+[node name="SE" type="Position2D" parent="tilemap/boundaries" index="1"]
 
 position = Vector2( 208, 80 )
+
+
 [editable path="tilemap/ClimbableGroup/ClimbableBlock7"]
 [editable path="tilemap/ClimbableGroup/ClimbableBlock1"]
 [editable path="tilemap/One-WayPlatformGroup/One-WayPlatform"]

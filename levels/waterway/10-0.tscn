@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/waterway/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/damagables/minotaur/minotaur.tscn" type="PackedScene" id=2]
@@ -6,124 +6,122 @@
 [ext_resource path="res://scenes/common/sunbeam.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=5]
 
-[node name="LVL_NOTITLE" type="Node2D"]
+[node name="LVL_NOTITLE" type="Node2D" index="0"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
 
-[node name="tilemap" type="TileMap" parent="."]
+[node name="tilemap" type="TileMap" parent="." index="0"]
 
 mode = 0
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
-cell/custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 cell_half_offset = 2
 cell_tile_origin = 0
 cell_y_sort = false
+cell_clip_uv = false
 collision_use_kinematic = false
 collision_friction = 1.0
 collision_bounce = 0.0
-collision_layer = 1
+collision_layer = 524288
 collision_mask = 1
 occluder_light_mask = 1
-tile_data = PoolIntArray( -917522, 1610612749, -917521, 1073741862, -917520, 1073741862, -917519, 1073741862, -917518, 1073741862, -917517, 1073741862, -917516, 1073741862, -917515, 1073741862, -917514, 1073741862, -917513, 1073741862, -917512, 1073741862, -917511, 1073741862, -917510, 1073741862, -917509, 1073741862, -917508, 1073741862, -917507, 1073741862, -917506, 1073741862, -917505, 1073741862, -983040, 1073741862, -983039, 1073741862, -983038, 1073741862, -983037, 1073741862, -983036, 1073741862, -983035, 1073741862, -983034, 1073741862, -983033, 1073741862, -983032, 1073741862, -983031, 1073741862, -983030, 1073741862, -983029, 1073741862, -983028, 1073741862, -983027, 1073741862, -983026, 1073741862, -983025, 1073741862, -983024, 1073741862, -983023, 1073741862, -983022, 1073741862, -983021, 1073741862, -983020, 1073741862, -983019, 1073741862, -983018, 1073741862, -983017, 1073741862, -983016, 1073741862, -983015, 1073741862, -983014, 1073741862, -983013, 1073741862, -983012, 1073741862, -983011, 1073741862, -983010, 1073741862, -983009, 1073741862, -983008, 1073741862, -983007, 1073741862, -983006, 1073741862, -983005, 1073741862, -983004, 1073741862, -983003, 1073741862, -983002, 1073741862, -983001, 1073741862, -983000, 1073741862, -982999, 1073741862, -982998, 1073741862, -982997, 1073741862, -982996, 1073741862, -982995, 1073741862, -982994, 1073741862, -982993, 1073741862, -982992, 1073741862, -982991, 1073741862, -982990, 1073741862, -982989, 1073741862, -982988, 1073741862, -982987, 1073741862, -982986, 1073741862, -982985, 1073741862, -982984, 1073741837, -851986, 1073741838, -917448, 14, -786450, 1073741838, -851912, 14, -720914, 1073741838, -786376, 14, -655378, 1073741838, -720840, 14, -589842, 1073741838, -655304, 14, -524306, 1073741838, -589768, 14, -458770, 1073741838, -524232, 14, -393234, 1073741838, -458696, 14, -327698, 1073741838, -393160, 14, -262162, 1073741837, -327624, 14, -262088, 14, -196552, 14, -131016, 14, -65480, 14, 56, 14, 131054, 536870925, 131055, 38, 131056, 38, 131057, 38, 131058, 38, 131059, 38, 131060, 38, 131061, 38, 131062, 38, 131063, 38, 131064, 38, 131065, 38, 131066, 38, 131067, 38, 131068, 38, 131069, 38, 131070, 38, 131071, 38, 65536, 38, 65537, 38, 65538, 38, 65539, 38, 65540, 38, 65541, 38, 65542, 38, 65543, 38, 65544, 38, 65545, 38, 65546, 38, 65547, 38, 65548, 38, 65549, 38, 65550, 38, 65551, 38, 65552, 38, 65553, 38, 65554, 38, 65555, 38, 65556, 38, 65557, 38, 65558, 38, 65559, 38, 65560, 38, 65561, 38, 65562, 38, 65563, 38, 65564, 38, 65565, 38, 65566, 38, 65567, 38, 65568, 38, 65569, 38, 65570, 38, 65571, 38, 65572, 38, 65573, 38, 65574, 38, 65575, 38, 65576, 38, 65577, 38, 65578, 38, 65579, 38, 65580, 38, 65581, 38, 65582, 38, 65583, 38, 65584, 38, 65585, 38, 65586, 38, 65587, 38, 65588, 38, 65589, 38, 65590, 38, 65591, 38, 65592, 13, 196590, 14, 131128, 14, 262126, 14, 196664, 14, 327662, 14, 262200, 14 )
+format = 1
+tile_data = PoolIntArray( -917522, 1610612749, 0, -917521, 1073741862, 0, -917520, 1073741862, 0, -917519, 1073741862, 0, -917518, 1073741862, 0, -917517, 1073741862, 0, -917516, 1073741862, 0, -917515, 1073741862, 0, -917514, 1073741862, 0, -917513, 1073741862, 0, -917512, 1073741862, 0, -917511, 1073741862, 0, -917510, 1073741862, 0, -917509, 1073741862, 0, -917508, 1073741862, 0, -917507, 1073741862, 0, -917506, 1073741862, 0, -917505, 1073741862, 0, -983040, 1073741862, 0, -983039, 1073741862, 0, -983038, 1073741862, 0, -983037, 1073741862, 0, -983036, 1073741862, 0, -983035, 1073741862, 0, -983034, 1073741862, 0, -983033, 1073741862, 0, -983032, 1073741862, 0, -983031, 1073741862, 0, -983030, 1073741862, 0, -983029, 1073741862, 0, -983028, 1073741862, 0, -983027, 1073741862, 0, -983026, 1073741862, 0, -983025, 1073741862, 0, -983024, 1073741862, 0, -983023, 1073741862, 0, -983022, 1073741862, 0, -983021, 1073741862, 0, -983020, 1073741862, 0, -983019, 1073741862, 0, -983018, 1073741862, 0, -983017, 1073741862, 0, -983016, 1073741862, 0, -983015, 1073741862, 0, -983014, 1073741862, 0, -983013, 1073741862, 0, -983012, 1073741862, 0, -983011, 1073741862, 0, -983010, 1073741862, 0, -983009, 1073741862, 0, -983008, 1073741862, 0, -983007, 1073741862, 0, -983006, 1073741862, 0, -983005, 1073741862, 0, -983004, 1073741862, 0, -983003, 1073741862, 0, -983002, 1073741862, 0, -983001, 1073741862, 0, -983000, 1073741862, 0, -982999, 1073741862, 0, -982998, 1073741862, 0, -982997, 1073741862, 0, -982996, 1073741862, 0, -982995, 1073741862, 0, -982994, 1073741862, 0, -982993, 1073741862, 0, -982992, 1073741862, 0, -982991, 1073741862, 0, -982990, 1073741862, 0, -982989, 1073741862, 0, -982988, 1073741862, 0, -982987, 1073741862, 0, -982986, 1073741862, 0, -982985, 1073741862, 0, -982984, 1073741837, 0, -851986, 1073741838, 0, -917448, 14, 0, -786450, 1073741838, 0, -851912, 14, 0, -720914, 1073741838, 0, -786376, 14, 0, -655378, 1073741838, 0, -720840, 14, 0, -589842, 1073741838, 0, -655304, 14, 0, -524306, 1073741838, 0, -589768, 14, 0, -458770, 1073741838, 0, -524232, 14, 0, -393234, 1073741838, 0, -458696, 14, 0, -327698, 1073741838, 0, -393160, 14, 0, -262162, 1073741837, 0, -327624, 14, 0, -262088, 14, 0, -196552, 14, 0, -131016, 14, 0, -65480, 14, 0, 56, 14, 0, 131054, 536870925, 0, 131055, 38, 0, 131056, 38, 0, 131057, 38, 0, 131058, 38, 0, 131059, 38, 0, 131060, 38, 0, 131061, 38, 0, 131062, 38, 0, 131063, 38, 0, 131064, 38, 0, 131065, 38, 0, 131066, 38, 0, 131067, 38, 0, 131068, 38, 0, 131069, 38, 0, 131070, 38, 0, 131071, 38, 0, 65536, 38, 0, 65537, 38, 0, 65538, 38, 0, 65539, 38, 0, 65540, 38, 0, 65541, 38, 0, 65542, 38, 0, 65543, 38, 0, 65544, 38, 0, 65545, 38, 0, 65546, 38, 0, 65547, 38, 0, 65548, 38, 0, 65549, 38, 0, 65550, 38, 0, 65551, 38, 0, 65552, 38, 0, 65553, 38, 0, 65554, 38, 0, 65555, 38, 0, 65556, 38, 0, 65557, 38, 0, 65558, 38, 0, 65559, 38, 0, 65560, 38, 0, 65561, 38, 0, 65562, 38, 0, 65563, 38, 0, 65564, 38, 0, 65565, 38, 0, 65566, 38, 0, 65567, 38, 0, 65568, 38, 0, 65569, 38, 0, 65570, 38, 0, 65571, 38, 0, 65572, 38, 0, 65573, 38, 0, 65574, 38, 0, 65575, 38, 0, 65576, 38, 0, 65577, 38, 0, 65578, 38, 0, 65579, 38, 0, 65580, 38, 0, 65581, 38, 0, 65582, 38, 0, 65583, 38, 0, 65584, 38, 0, 65585, 38, 0, 65586, 38, 0, 65587, 38, 0, 65588, 38, 0, 65589, 38, 0, 65590, 38, 0, 65591, 38, 0, 65592, 13, 0, 196590, 14, 0, 131128, 14, 0, 262126, 14, 0, 196664, 14, 0, 327662, 14, 0, 262200, 14, 0 )
+_sections_unfolded = [ "Collision" ]
 
-[node name="EnemiesGroup" type="Node2D" parent="tilemap"]
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="0"]
 
 editor/display_folded = true
 
-[node name="Minotaur" parent="tilemap/EnemiesGroup" instance=ExtResource( 2 )]
+[node name="Minotaur" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 2 )]
 
 position = Vector2( -48, -48 )
 
-[node name="Minotaur1" parent="tilemap/EnemiesGroup" instance=ExtResource( 2 )]
+[node name="Minotaur1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 752, -48 )
 
-[node name="Minotaur2" parent="tilemap/EnemiesGroup" instance=ExtResource( 2 )]
+[node name="Minotaur2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 1552, -48 )
 
-[node name="ItemGroup" type="Node2D" parent="tilemap"]
+[node name="ItemGroup" type="Node2D" parent="tilemap" index="1"]
 
-
-[node name="ManaPotion" parent="tilemap/ItemGroup" instance=ExtResource( 3 )]
+[node name="ManaPotion" parent="tilemap/ItemGroup" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( 1744, 0 )
 
-[node name="SunbeamGroup" type="Node2D" parent="tilemap"]
+[node name="SunbeamGroup" type="Node2D" parent="tilemap" index="2"]
 
 editor/display_folded = true
 
-[node name="Sunbeam" parent="tilemap/SunbeamGroup" instance=ExtResource( 4 )]
+[node name="Sunbeam" parent="tilemap/SunbeamGroup" index="0" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 16, -224 )
 
-[node name="block" parent="tilemap/SunbeamGroup/Sunbeam"]
+[node name="block" parent="tilemap/SunbeamGroup/Sunbeam" index="0"]
 
 scale = Vector2( 16, 16 )
 
-[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam"]
+[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam" index="1"]
 
 scale = Vector2( 16, 16 )
 
-[node name="Sunbeam1" parent="tilemap/SunbeamGroup" instance=ExtResource( 4 )]
+[node name="Sunbeam1" parent="tilemap/SunbeamGroup" index="1" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 688, -224 )
 
-[node name="block" parent="tilemap/SunbeamGroup/Sunbeam1"]
+[node name="block" parent="tilemap/SunbeamGroup/Sunbeam1" index="0"]
 
 scale = Vector2( 16, 16 )
 
-[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam1"]
+[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam1" index="1"]
 
 scale = Vector2( 16, 16 )
 
-[node name="Sunbeam2" parent="tilemap/SunbeamGroup" instance=ExtResource( 4 )]
+[node name="Sunbeam2" parent="tilemap/SunbeamGroup" index="2" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 1360, -224 )
 
-[node name="block" parent="tilemap/SunbeamGroup/Sunbeam2"]
+[node name="block" parent="tilemap/SunbeamGroup/Sunbeam2" index="0"]
 
 scale = Vector2( 16, 16 )
 
-[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam2"]
+[node name="sunbeam" parent="tilemap/SunbeamGroup/Sunbeam2" index="1"]
 
 scale = Vector2( 16, 16 )
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="3"]
 
-
-[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 5 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 position = Vector2( -592, -48 )
 target_level = "res://levels/waterway/3-1.tscn"
 teleport_to = Vector2( 908, -656 )
 
-[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport" index="0"]
 
 scale = Vector2( 1, 5 )
 
-[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="4"]
 
-pause_animated_sprites = true
-
-[node name="boundaries" type="Node2D" parent="tilemap"]
-
-
-[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+[node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
 
 position = Vector2( -592, -496 )
 
-[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+[node name="SE" type="Position2D" parent="tilemap/boundaries" index="1"]
 
 position = Vector2( 1840, 176 )
+
+
 [editable path="tilemap/SunbeamGroup/Sunbeam"]
 [editable path="tilemap/SunbeamGroup/Sunbeam1"]
 [editable path="tilemap/SunbeamGroup/Sunbeam2"]
