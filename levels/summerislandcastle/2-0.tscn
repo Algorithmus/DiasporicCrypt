@@ -1,134 +1,133 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/summerislandcastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/breakables/magicminebreakable.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=4]
 
-[node name="LVL_NOTITLE" type="Node2D"]
+[node name="LVL_NOTITLE" type="Node2D" index="0"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
 
-[node name="tilemap" type="TileMap" parent="."]
+[node name="tilemap" type="TileMap" parent="." index="0"]
 
 mode = 0
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
-cell/custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 cell_half_offset = 2
 cell_tile_origin = 0
 cell_y_sort = false
+cell_clip_uv = false
 collision_use_kinematic = false
 collision_friction = 1.0
 collision_bounce = 0.0
-collision_layer = 1
+collision_layer = 524288
 collision_mask = 1
 occluder_light_mask = 1
-tile_data = PoolIntArray( -458762, 1610612737, -458761, 1073741824, -458760, 1073741824, -458759, 1073741824, -458758, 1073741824, -458757, 1073741824, -458756, 1073741824, -458755, 1073741824, -458754, 1073741824, -458753, 1073741824, -524288, 1073741824, -524287, 1073741824, -524286, 1073741824, -524285, 1073741824, -524284, 1073741824, -524283, 1073741824, -524282, 1073741824, -524281, 1073741824, -524280, 1073741824, -524279, 1073741824, -524278, 1073741824, -524277, 1073741824, -524276, 1073741824, -524275, 1073741824, -524274, 1073741824, -524273, 1073741825, -393226, 2, -393225, 10, -393221, 10, -393217, 10, -458749, 10, -458745, 10, -458741, 10, -458737, 2, -327690, 2, -393201, 2, -262154, 2, -262153, 11, -262149, 11, -262145, 11, -327677, 11, -327673, 11, -327669, 11, -327665, 2, -196618, 2, -262129, 2, -131082, 2, -196593, 2, -65546, 2, -65545, 9, -65544, 8, -65543, 8, -65542, 9, -65541, 9, -65540, 8, -65539, 8, -65538, 9, -65537, 9, -131072, 8, -131071, 8, -131070, 9, -131069, 9, -131068, 8, -131067, 8, -131066, 9, -131065, 9, -131064, 8, -131063, 8, -131062, 9, -131061, 9, -131060, 8, -131059, 8, -131058, 9, -131057, 2, -10, 2, -9, 6, -5, 13, -1, 6, -65533, 13, -65529, 6, -65525, 13, -65521, 2, 65526, 2, 15, 2, 131062, 1073741825, 65551, 2, 196598, 7, 131087, 2, 262134, 7, 196623, 2, 327670, 7, 262159, 2, 393206, 7, 327695, 2, 458742, 7, 393231, 2, 524278, 536870913, 524279, 0, 524280, 0, 524281, 0, 524282, 0, 524283, 0, 524284, 0, 524285, 0, 524286, 0, 524287, 0, 458752, 0, 458753, 0, 458754, 0, 458755, 0, 458756, 0, 458757, 0, 458758, 0, 458759, 0, 458760, 0, 458761, 0, 458762, 0, 458763, 0, 458764, 0, 458765, 0, 458766, 0, 458767, 1 )
+format = 1
+tile_data = PoolIntArray( -458762, 1610612737, 0, -458761, 1073741824, 0, -458760, 1073741824, 0, -458759, 1073741824, 0, -458758, 1073741824, 0, -458757, 1073741824, 0, -458756, 1073741824, 0, -458755, 1073741824, 0, -458754, 1073741824, 0, -458753, 1073741824, 0, -524288, 1073741824, 0, -524287, 1073741824, 0, -524286, 1073741824, 0, -524285, 1073741824, 0, -524284, 1073741824, 0, -524283, 1073741824, 0, -524282, 1073741824, 0, -524281, 1073741824, 0, -524280, 1073741824, 0, -524279, 1073741824, 0, -524278, 1073741824, 0, -524277, 1073741824, 0, -524276, 1073741824, 0, -524275, 1073741824, 0, -524274, 1073741824, 0, -524273, 1073741825, 0, -393226, 2, 0, -393225, 10, 0, -393221, 10, 0, -393217, 10, 0, -458749, 10, 0, -458745, 10, 0, -458741, 10, 0, -458737, 2, 0, -327690, 2, 0, -393201, 2, 0, -262154, 2, 0, -262153, 11, 0, -262149, 11, 0, -262145, 11, 0, -327677, 11, 0, -327673, 11, 0, -327669, 11, 0, -327665, 2, 0, -196618, 2, 0, -262129, 2, 0, -131082, 2, 0, -196593, 2, 0, -65546, 2, 0, -65545, 9, 0, -65544, 8, 0, -65543, 8, 0, -65542, 9, 0, -65541, 9, 0, -65540, 8, 0, -65539, 8, 0, -65538, 9, 0, -65537, 9, 0, -131072, 8, 0, -131071, 8, 0, -131070, 9, 0, -131069, 9, 0, -131068, 8, 0, -131067, 8, 0, -131066, 9, 0, -131065, 9, 0, -131064, 8, 0, -131063, 8, 0, -131062, 9, 0, -131061, 9, 0, -131060, 8, 0, -131059, 8, 0, -131058, 9, 0, -131057, 2, 0, -10, 2, 0, -9, 6, 0, -5, 13, 0, -1, 6, 0, -65533, 13, 0, -65529, 6, 0, -65525, 13, 0, -65521, 2, 0, 65526, 2, 0, 15, 2, 0, 131062, 1073741825, 0, 65551, 2, 0, 196598, 7, 0, 131087, 2, 0, 262134, 7, 0, 196623, 2, 0, 327670, 7, 0, 262159, 2, 0, 393206, 7, 0, 327695, 2, 0, 458742, 7, 0, 393231, 2, 0, 524278, 536870913, 0, 524279, 0, 0, 524280, 0, 0, 524281, 0, 0, 524282, 0, 0, 524283, 0, 0, 524284, 0, 0, 524285, 0, 0, 524286, 0, 0, 524287, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 1, 0 )
+_sections_unfolded = [ "Collision" ]
 
-[node name="BreakableGroup" type="Node2D" parent="tilemap"]
+[node name="BreakableGroup" type="Node2D" parent="tilemap" index="0"]
 
 editor/display_folded = true
 
-[node name="MagicMineBreakable" parent="tilemap/BreakableGroup" instance=ExtResource( 2 )]
+[node name="MagicMineBreakable" parent="tilemap/BreakableGroup" index="0" instance=ExtResource( 2 )]
 
 position = Vector2( -176, 208 )
 
-[node name="MagicMineBreakable1" parent="tilemap/BreakableGroup" instance=ExtResource( 2 )]
+[node name="MagicMineBreakable1" parent="tilemap/BreakableGroup" index="1" instance=ExtResource( 2 )]
 
 position = Vector2( -176, 176 )
 
-[node name="MagicMineBreakable2" parent="tilemap/BreakableGroup" instance=ExtResource( 2 )]
+[node name="MagicMineBreakable2" parent="tilemap/BreakableGroup" index="2" instance=ExtResource( 2 )]
 
 position = Vector2( -176, 144 )
 
-[node name="MagicMineBreakable3" parent="tilemap/BreakableGroup" instance=ExtResource( 2 )]
+[node name="MagicMineBreakable3" parent="tilemap/BreakableGroup" index="3" instance=ExtResource( 2 )]
 
 position = Vector2( -176, 112 )
 
-[node name="MagicMineBreakable4" parent="tilemap/BreakableGroup" instance=ExtResource( 2 )]
+[node name="MagicMineBreakable4" parent="tilemap/BreakableGroup" index="4" instance=ExtResource( 2 )]
 
 position = Vector2( -176, 80 )
 
-[node name="MagicMineBreakable5" parent="tilemap/BreakableGroup" instance=ExtResource( 2 )]
+[node name="MagicMineBreakable5" parent="tilemap/BreakableGroup" index="5" instance=ExtResource( 2 )]
 
 position = Vector2( -176, 48 )
 
-[node name="MagicMineBreakable6" parent="tilemap/BreakableGroup" instance=ExtResource( 2 )]
+[node name="MagicMineBreakable6" parent="tilemap/BreakableGroup" index="6" instance=ExtResource( 2 )]
 
 position = Vector2( -176, 16 )
 
-[node name="MagicMineBreakable7" parent="tilemap/BreakableGroup" instance=ExtResource( 2 )]
+[node name="MagicMineBreakable7" parent="tilemap/BreakableGroup" index="7" instance=ExtResource( 2 )]
 
 position = Vector2( -176, -16 )
 
-[node name="MagicMineBreakable8" parent="tilemap/BreakableGroup" instance=ExtResource( 2 )]
+[node name="MagicMineBreakable8" parent="tilemap/BreakableGroup" index="8" instance=ExtResource( 2 )]
 
 position = Vector2( -176, -48 )
 
-[node name="MagicMineBreakable9" parent="tilemap/BreakableGroup" instance=ExtResource( 2 )]
+[node name="MagicMineBreakable9" parent="tilemap/BreakableGroup" index="9" instance=ExtResource( 2 )]
 
 position = Vector2( -176, -80 )
 
-[node name="MagicMineBreakable10" parent="tilemap/BreakableGroup" instance=ExtResource( 2 )]
+[node name="MagicMineBreakable10" parent="tilemap/BreakableGroup" index="10" instance=ExtResource( 2 )]
 
 position = Vector2( -176, -112 )
 
-[node name="MagicMineBreakable11" parent="tilemap/BreakableGroup" instance=ExtResource( 2 )]
+[node name="MagicMineBreakable11" parent="tilemap/BreakableGroup" index="11" instance=ExtResource( 2 )]
 
 position = Vector2( -176, -144 )
 
-[node name="MagicMineBreakable12" parent="tilemap/BreakableGroup" instance=ExtResource( 2 )]
+[node name="MagicMineBreakable12" parent="tilemap/BreakableGroup" index="12" instance=ExtResource( 2 )]
 
 position = Vector2( -176, -176 )
 
-[node name="MagicMineBreakable13" parent="tilemap/BreakableGroup" instance=ExtResource( 2 )]
+[node name="MagicMineBreakable13" parent="tilemap/BreakableGroup" index="13" instance=ExtResource( 2 )]
 
 position = Vector2( -176, -208 )
 
-[node name="NPCGroup" type="Node2D" parent="tilemap"]
+[node name="NPCGroup" type="Node2D" parent="tilemap" index="1"]
 
 editor/display_folded = true
 
-[node name="NPC" parent="tilemap/NPCGroup" instance=ExtResource( 3 )]
+[node name="NPC" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 368, 160 )
 
-[node name="Sprite" parent="tilemap/NPCGroup/NPC"]
+[node name="Sprite" parent="tilemap/NPCGroup/NPC" index="1"]
 
 scale = Vector2( -1, 1 )
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="2"]
 
-
-[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 4 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( -336, 144 )
 target_level = "res://levels/summerislandcastle/0-3.tscn"
 teleport_to = Vector2( 492, -528 )
 
-[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport" index="0"]
 
 scale = Vector2( 1, 5 )
 
-[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="3"]
 
-pause_animated_sprites = true
-
-[node name="boundaries" type="Node2D" parent="tilemap"]
-
-
-[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+[node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
 
 position = Vector2( -336, -272 )
 
-[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+[node name="SE" type="Position2D" parent="tilemap/boundaries" index="1"]
 
 position = Vector2( 528, 272 )
+
+
 [editable path="tilemap/NPCGroup/NPC"]
 [editable path="tilemap/TeleportGroup/Teleport"]
