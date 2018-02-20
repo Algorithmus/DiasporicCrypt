@@ -8,7 +8,8 @@ var offset
 export var percent = 0.0
 
 func _ready():
-	set_physics_process(false)
+	if (curve == null):
+		set_physics_process(false)
 
 func set_curve(value):
 	curve = value

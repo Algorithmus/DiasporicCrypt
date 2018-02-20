@@ -15,8 +15,8 @@ var motion
 func _ready():
 	ball = get_node("ball")
 	fireball = ball.get_node("fireball")
-	fireball.set_emission_half_extents(Vector2(5, 32))
-	fireball.set_param(Particles2D.PARAM_GRAVITY_STRENGTH, 16)
+	fireball.process_material.emission_box_extents = Vector3(5, 32, 1)
+	fireball.process_material.gravity.y = 16
 	motion = -height * 32
 	set_physics_process(true)
 
@@ -26,8 +26,8 @@ func _physics_process(delta):
 		if (current_delay >= DORMANT_DELAY):
 			current_delay = 0
 			active = true
-			fireball.set_emission_half_extents(Vector2(5, 5))
-			fireball.set_param(Particles2D.PARAM_GRAVITY_STRENGTH, 80)
+			fireball.process_material.emission_box_extents = Vector3(5, 5, 1)
+			fireball.process_material.gravity.y = 80
 	else:
 		var diff = (delta/cycle)*PI*2.0
 		accum += diff
@@ -35,8 +35,8 @@ func _physics_process(delta):
 		var d = sin(accum)
 		ball.set_position(Vector2(0, motion * d))
 		if (cos(accum) >= -1 - diff && cos(accum) <= -1 + diff):
-			fireball.set_emission_half_extents(Vector2(5, 32))
-			fireball.set_param(Particles2D.PARAM_GRAVITY_STRENGTH, 16)
+			fireball.process_material.emission_box_extents = Vector3(5, 32, 1)
+			fireball.process_material.gravity.y = 16
 			ball.set_position(Vector2(0, 0))
 			active = false
 			accum = 0

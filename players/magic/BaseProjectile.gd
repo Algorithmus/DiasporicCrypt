@@ -14,6 +14,7 @@ var collision
 var release_sfx
 var charge_sfx
 var atk = 10
+var boundaries
 
 func _ready():
 	set_physics_process(true)
@@ -21,9 +22,18 @@ func _ready():
 func _physics_process(delta):
 	if (is_released):
 		set_global_position(Vector2(direction*speed + get_global_position().x, get_global_position().y))
-		if ((camera.get_camera_screen_center().x - direction * camera.get_offset().x < get_global_position().x && direction > 0)
+		var clear_object = false
+		if (boundaries != null):
+			var nw = boundaries.get_node("NW")
+			var se = boundaries.get_node("SE")
+			if (global_position.x <= nw.global_position.x || global_position.x >= se.global_position.x || global_position.y <= nw.global_position.y || global_position.y >= se.global_position.y):
+				clear_object = true
+		elif ((camera.get_camera_screen_center().x - direction * camera.get_offset().x < get_global_position().x && direction > 0)
 			|| (camera.get_camera_screen_center().x - direction * camera.get_offset().x > get_global_position().x && direction < 0)
 			|| hp <= 0):
+				clear_object = true
+
+		if (clear_object):
 			if (has_node(collision.get_name())):
 				remove_child(collision)
 			#TODO - play sounds properly

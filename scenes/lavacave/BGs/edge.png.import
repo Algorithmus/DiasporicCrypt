@@ -10,7 +10,7 @@ source_file="res://scenes/lavacave/BGs/edge.png"
 source_md5="c47c00a40826e5505658cbd0429cff54"
 
 dest_files=[ "res://.import/edge.png-7892ceb64ec6d87aef2e31daf0064297.stex" ]
-dest_md5="0489004a3e2edd462a6addb06086153b"
+dest_md5="70c2fd2b69d1d683b094c6aca63ed364"
 
 [params]
 
@@ -18,7 +18,7 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

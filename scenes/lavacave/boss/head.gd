@@ -33,6 +33,7 @@ func _ready():
 	elemental_weaknesses = ["ice"]
 	elemental_protection = ["fire"]
 	collision_rect.set_name("damagable")
+	set_physics_process(false)
 
 func _physics_process(delta):
 	if (cycle == "die"):
@@ -77,6 +78,7 @@ func _physics_process(delta):
 				var fire = fireclass.instance()
 				fire.set_global_position(Vector2(get_global_position().x, get_global_position().y + 80))
 				get_parent().get_parent().add_child(fire)
+				fire.boundaries = get_parent().get_parent().get_parent().get_node("boundaries")
 				fire.change_direction(-1)
 				fire.set("camera", player_obj.get_node("Camera2D"))
 				fire.set("speed", 5)
