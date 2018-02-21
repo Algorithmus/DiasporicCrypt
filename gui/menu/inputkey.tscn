@@ -7,7 +7,7 @@
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
-content_margin_left = -1.0
+content_margin_left = 6.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
@@ -15,19 +15,21 @@ _sections_unfolded = [ "Content Margin" ]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
-content_margin_left = -1.0
+content_margin_left = 6.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
+_sections_unfolded = [ "Content Margin" ]
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
-content_margin_left = -1.0
+content_margin_left = 6.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
+_sections_unfolded = [ "Content Margin" ]
 
-[node name="key" type="ToolButton" index="0"]
+[node name="key" type="ToolButton"]
 
 anchor_left = 0.0
 anchor_top = 0.0

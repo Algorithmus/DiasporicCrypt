@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://gui/theme/slidergrabber.png" type="Texture" id=1]
 [ext_resource path="res://gui/theme/slidergrabber_active.png" type="Texture" id=2]
@@ -212,48 +212,6 @@ lossy_quality = 1.0
 flags = 6
 size = Vector2( 1, 1 )
 
-[sub_resource type="StyleBoxEmpty" id=17]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-
-[sub_resource type="StyleBoxEmpty" id=18]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-
-[sub_resource type="StyleBoxEmpty" id=19]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-
-[sub_resource type="StyleBoxEmpty" id=20]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-
-[sub_resource type="StyleBoxEmpty" id=21]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-
-[sub_resource type="StyleBoxEmpty" id=22]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-
 [node name="settings" type="Control" index="0"]
 
 anchor_left = 0.0
@@ -269,6 +227,7 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 theme = SubResource( 13 )
 script = ExtResource( 7 )
+_sections_unfolded = [ "Theme" ]
 
 [node name="sound" type="Label" parent="." index="0"]
 
@@ -404,9 +363,6 @@ margin_right = 64.0
 margin_bottom = 24.0
 focus_neighbour_top = NodePath("../../layout")
 focus_neighbour_bottom = NodePath("../down")
-custom_styles/hover = SubResource( 17 )
-custom_styles/pressed = SubResource( 18 )
-custom_styles/focus = SubResource( 19 )
 
 [node name="down" parent="inputs" index="1" instance=ExtResource( 12 )]
 
@@ -416,9 +372,6 @@ margin_right = 88.0
 margin_bottom = 48.0
 focus_neighbour_top = NodePath("../up")
 focus_neighbour_bottom = NodePath("../left")
-custom_styles/hover = SubResource( 17 )
-custom_styles/pressed = SubResource( 18 )
-custom_styles/focus = SubResource( 19 )
 text = "KEY_DOWN"
 actionid = "ui_down"
 
@@ -430,9 +383,6 @@ margin_right = 80.0
 margin_bottom = 72.0
 focus_neighbour_top = NodePath("../down")
 focus_neighbour_bottom = NodePath("../right")
-custom_styles/hover = SubResource( 17 )
-custom_styles/pressed = SubResource( 18 )
-custom_styles/focus = SubResource( 19 )
 text = "KEY_LEFT"
 actionid = "ui_left"
 
@@ -444,9 +394,6 @@ margin_right = 89.0
 margin_bottom = 96.0
 focus_neighbour_top = NodePath("../left")
 focus_neighbour_bottom = NodePath("../attack")
-custom_styles/hover = SubResource( 17 )
-custom_styles/pressed = SubResource( 18 )
-custom_styles/focus = SubResource( 19 )
 text = "KEY_RIGHT"
 actionid = "ui_right"
 
@@ -458,9 +405,6 @@ margin_right = 100.0
 margin_bottom = 120.0
 focus_neighbour_top = NodePath("../right")
 focus_neighbour_bottom = NodePath("../jump")
-custom_styles/hover = SubResource( 17 )
-custom_styles/pressed = SubResource( 18 )
-custom_styles/focus = SubResource( 19 )
 text = "KEY_ATTACK"
 actionid = "ui_attack"
 
@@ -472,9 +416,6 @@ margin_right = 81.0
 margin_bottom = 144.0
 focus_neighbour_top = NodePath("../attack")
 focus_neighbour_bottom = NodePath("../magic")
-custom_styles/hover = SubResource( 17 )
-custom_styles/pressed = SubResource( 18 )
-custom_styles/focus = SubResource( 19 )
 text = "KEY_JUMP"
 actionid = "ui_jump"
 
@@ -486,9 +427,6 @@ margin_right = 92.0
 margin_bottom = 168.0
 focus_neighbour_top = NodePath("../jump")
 focus_neighbour_bottom = NodePath("../blood")
-custom_styles/hover = SubResource( 17 )
-custom_styles/pressed = SubResource( 18 )
-custom_styles/focus = SubResource( 19 )
 text = "KEY_MAGIC"
 actionid = "ui_magic"
 
@@ -500,9 +438,6 @@ margin_right = 92.0
 margin_bottom = 192.0
 focus_neighbour_top = NodePath("../magic")
 focus_neighbour_bottom = NodePath("../prev")
-custom_styles/hover = SubResource( 17 )
-custom_styles/pressed = SubResource( 18 )
-custom_styles/focus = SubResource( 19 )
 text = "KEY_BLOOD"
 actionid = "ui_blood"
 
@@ -514,9 +449,6 @@ margin_right = 127.0
 margin_bottom = 216.0
 focus_neighbour_top = NodePath("../blood")
 focus_neighbour_bottom = NodePath("../next")
-custom_styles/hover = SubResource( 17 )
-custom_styles/pressed = SubResource( 18 )
-custom_styles/focus = SubResource( 19 )
 text = "KEY_PREVMAGIC"
 actionid = "ui_spell_prev"
 
@@ -528,9 +460,6 @@ margin_right = 129.0
 margin_bottom = 240.0
 focus_neighbour_top = NodePath("../prev")
 focus_neighbour_bottom = NodePath("../pause")
-custom_styles/hover = SubResource( 17 )
-custom_styles/pressed = SubResource( 18 )
-custom_styles/focus = SubResource( 19 )
 text = "KEY_NEXTMAGIC"
 actionid = "ui_spell_next"
 
@@ -542,9 +471,6 @@ margin_right = 50.0
 margin_bottom = 264.0
 focus_neighbour_top = NodePath("../next")
 focus_neighbour_bottom = NodePath("../minimap")
-custom_styles/hover = SubResource( 17 )
-custom_styles/pressed = SubResource( 18 )
-custom_styles/focus = SubResource( 19 )
 text = "Pause"
 actionid = "ui_pause"
 
@@ -555,9 +481,6 @@ margin_top = 264.0
 margin_right = 109.0
 margin_bottom = 288.0
 focus_neighbour_top = NodePath("../pause")
-custom_styles/hover = SubResource( 17 )
-custom_styles/pressed = SubResource( 18 )
-custom_styles/focus = SubResource( 19 )
 text = "KEY_MINIMAP"
 actionid = "ui_select"
 
@@ -582,9 +505,6 @@ margin_right = 155.0
 margin_bottom = 492.0
 focus_neighbour_left = NodePath(".")
 focus_neighbour_right = NodePath("../reset")
-custom_styles/hover = SubResource( 20 )
-custom_styles/pressed = SubResource( 21 )
-custom_styles/focus = SubResource( 22 )
 
 [node name="reset_bg" parent="." index="13" instance=ExtResource( 13 )]
 
@@ -606,9 +526,6 @@ margin_top = 460.0
 margin_right = 689.0
 margin_bottom = 492.0
 focus_neighbour_left = NodePath("../save")
-custom_styles/hover = SubResource( 20 )
-custom_styles/pressed = SubResource( 21 )
-custom_styles/focus = SubResource( 22 )
 text = "KEY_RESET"
 
 [connection signal="focus_exited" from="sfxslider" to="." method="_on_sfxslider_focus_exit"]

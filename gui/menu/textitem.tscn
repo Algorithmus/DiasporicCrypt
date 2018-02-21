@@ -6,24 +6,27 @@
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
+content_margin_left = 6.0
+content_margin_right = 0.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+_sections_unfolded = [ "Content Margin" ]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
-content_margin_left = -1.0
+content_margin_left = 6.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
+_sections_unfolded = [ "Content Margin" ]
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
-content_margin_left = -1.0
+content_margin_left = 6.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
+_sections_unfolded = [ "Content Margin" ]
 
 [node name="item" type="ToolButton"]
 
@@ -52,7 +55,7 @@ text = "KEY_SAVE"
 flat = true
 align = 0
 script = ExtResource( 2 )
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Margin", "Mouse", "Rect", "Size Flags", "custom_styles" ]
 
 [node name="icon" parent="." index="0" instance=ExtResource( 3 )]
 

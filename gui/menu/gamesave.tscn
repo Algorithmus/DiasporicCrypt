@@ -93,7 +93,7 @@ lossy_quality = 0.7
 flags = 6
 size = Vector2( 1, 1 )
 
-[node name="gamesave" type="ToolButton" index="0"]
+[node name="gamesave" type="ToolButton"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -431,8 +431,7 @@ focus_neighbour_right = NodePath(".")
 size_flags_stretch_ratio = 3.0
 custom_fonts/font = ExtResource( 10 )
 text = "KEY_LOAD"
-align = 2
-_sections_unfolded = [ "Rect", "Size Flags", "custom_constants" ]
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Margin", "Mouse", "Rect", "Size Flags", "custom_constants", "custom_styles" ]
 
 [node name="line" type="TextureRect" parent="options/options" index="1"]
 
@@ -465,8 +464,6 @@ focus_neighbour_left = NodePath(".")
 focus_neighbour_right = NodePath(".")
 size_flags_stretch_ratio = 3.0
 custom_fonts/font = ExtResource( 10 )
-align = 2
-_sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="line1" type="TextureRect" parent="options/options" index="3"]
 
@@ -500,8 +497,6 @@ focus_neighbour_right = NodePath(".")
 size_flags_stretch_ratio = 3.0
 custom_fonts/font = ExtResource( 10 )
 text = "KEY_DELETE"
-align = 2
-_sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="line2" type="TextureRect" parent="options/options" index="5"]
 
@@ -536,8 +531,7 @@ focus_neighbour_bottom = NodePath(".")
 size_flags_stretch_ratio = 3.0
 custom_fonts/font = ExtResource( 10 )
 text = "KEY_CLONE"
-align = 2
-_sections_unfolded = [ "Rect", "Size Flags", "Theme", "Visibility" ]
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_styles" ]
 
 [node name="description" type="Label" parent="options" index="2"]
 
@@ -593,7 +587,6 @@ focus_neighbour_right = NodePath("../no")
 focus_neighbour_bottom = NodePath(".")
 custom_fonts/font = ExtResource( 10 )
 text = "KEY_YES"
-align = 2
 
 [node name="no" parent="options/choice" index="1" instance=ExtResource( 9 )]
 
@@ -606,7 +599,6 @@ focus_neighbour_right = NodePath(".")
 focus_neighbour_bottom = NodePath(".")
 custom_fonts/font = ExtResource( 10 )
 text = "KEY_NO"
-align = 2
 
 [node name="icon" parent="." index="8" instance=ExtResource( 11 )]
 

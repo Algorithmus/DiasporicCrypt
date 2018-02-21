@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://scenes/global.gd" type="Script" id=1]
 [ext_resource path="res://gui/theme/slidergrabber.png" type="Texture" id=2]
@@ -210,6 +210,30 @@ VScrollBar/styles/grabber_pressed = SubResource( 10 )
 VScrollBar/styles/scroll = SubResource( 11 )
 VScrollBar/styles/scroll_focus = null
 _sections_unfolded = [ "HSlider", "VScrollBar", "VScrollBar/icons", "VScrollBar/styles" ]
+
+[sub_resource type="StyleBoxEmpty" id=25]
+
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+_sections_unfolded = [ "Content Margin" ]
+
+[sub_resource type="StyleBoxEmpty" id=26]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+_sections_unfolded = [ "Content Margin" ]
+
+[sub_resource type="StyleBoxEmpty" id=27]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+_sections_unfolded = [ "Content Margin" ]
 
 [sub_resource type="StyleBoxEmpty" id=13]
 
@@ -757,9 +781,11 @@ focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath("../../adela")
 focus_neighbour_bottom = NodePath("../../friederich")
 size_flags_horizontal = 3
+custom_styles/hover = SubResource( 25 )
+custom_styles/pressed = SubResource( 26 )
+custom_styles/focus = SubResource( 27 )
 text = "MAP_BACK"
 align = 1
-_sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="key" type="Label" parent="CanvasLayer/menu/newgame/backbutton" index="1"]
 
@@ -941,7 +967,6 @@ focus_neighbour_bottom = NodePath("../../friederich")
 size_flags_horizontal = 3
 text = "MAP_BACK"
 align = 1
-_sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="key" type="Label" parent="CanvasLayer/menu/info/backbutton" index="1"]
 
@@ -2498,6 +2523,7 @@ margin_right = 234.0
 margin_bottom = 96.0
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath("../settings/save")
+_sections_unfolded = [ "Focus", "custom_styles" ]
 
 [node name="settings" parent="CanvasLayer/menu/settingsmenu" index="3" instance=ExtResource( 22 )]
 
@@ -2645,8 +2671,6 @@ focus_neighbour_right = NodePath("../no")
 focus_neighbour_bottom = NodePath(".")
 size_flags_horizontal = 1
 text = "KEY_YES"
-align = 1
-_sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="no" parent="CanvasLayer/menu/quit/options" index="1" instance=ExtResource( 13 )]
 
@@ -2659,7 +2683,6 @@ focus_neighbour_right = NodePath(".")
 focus_neighbour_bottom = NodePath(".")
 size_flags_horizontal = 1
 text = "KEY_NO"
-_sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 
@@ -2694,23 +2717,23 @@ bus = "Master"
 
 [connection signal="pressed" from="CanvasLayer/menu/newgame/backbutton/back" to="." method="_on_newgame_back_pressed"]
 
-[connection signal="focus_entered" from="CanvasLayer/menu/newgame/friederich" to="." method="_on_friederich_focus_enter"]
-
 [connection signal="focus_entered" from="CanvasLayer/menu/newgame/friederich" to="CanvasLayer/menu/newgame/friederich" method="_on_focus_enter"]
 
-[connection signal="focus_exited" from="CanvasLayer/menu/newgame/friederich" to="." method="_on_friederich_focus_exit"]
+[connection signal="focus_entered" from="CanvasLayer/menu/newgame/friederich" to="." method="_on_friederich_focus_enter"]
 
 [connection signal="focus_exited" from="CanvasLayer/menu/newgame/friederich" to="CanvasLayer/menu/newgame/friederich" method="_on_focus_exit"]
 
-[connection signal="pressed" from="CanvasLayer/menu/newgame/friederich" to="." method="_on_friederich_selected"]
+[connection signal="focus_exited" from="CanvasLayer/menu/newgame/friederich" to="." method="_on_friederich_focus_exit"]
 
-[connection signal="focus_entered" from="CanvasLayer/menu/newgame/adela" to="." method="_on_adela_focus_enter"]
+[connection signal="pressed" from="CanvasLayer/menu/newgame/friederich" to="." method="_on_friederich_selected"]
 
 [connection signal="focus_entered" from="CanvasLayer/menu/newgame/adela" to="CanvasLayer/menu/newgame/adela" method="_on_focus_enter"]
 
-[connection signal="focus_exited" from="CanvasLayer/menu/newgame/adela" to="." method="_on_adela_focus_exit"]
+[connection signal="focus_entered" from="CanvasLayer/menu/newgame/adela" to="." method="_on_adela_focus_enter"]
 
 [connection signal="focus_exited" from="CanvasLayer/menu/newgame/adela" to="CanvasLayer/menu/newgame/adela" method="_on_focus_exit"]
+
+[connection signal="focus_exited" from="CanvasLayer/menu/newgame/adela" to="." method="_on_adela_focus_exit"]
 
 [connection signal="pressed" from="CanvasLayer/menu/newgame/adela" to="." method="_on_adela_selected"]
 
