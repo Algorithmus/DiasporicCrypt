@@ -10,7 +10,7 @@ source_file="res://scenes/crypt/BGs/floor.png"
 source_md5="441d926ecdd9d99c2aef547d3b2355bd"
 
 dest_files=[ "res://.import/floor.png-7804196694c2c4511339404599ee2af1.stex" ]
-dest_md5="ebca9a3c07362b3cf71e74c08a026082"
+dest_md5="3cbb5fc69a4d76b91c68b21a8757df6a"
 
 [params]
 
@@ -18,7 +18,7 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

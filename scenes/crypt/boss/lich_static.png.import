@@ -10,7 +10,7 @@ source_file="res://scenes/crypt/boss/lich_static.png"
 source_md5="87372ad829896f0f45d26afadbb47bbc"
 
 dest_files=[ "res://.import/lich_static.png-1660310e415c802005684b6a69b7ea5f.stex" ]
-dest_md5="ed150b2d52bf01ad3a62e05595ae3185"
+dest_md5="92db07074584863f4e81da7470501f4f"
 
 [params]
 
@@ -18,9 +18,9 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
-flags/filter=false
-flags/mipmaps=false
+flags/repeat=1
+flags/filter=true
+flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

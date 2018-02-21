@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/crypt/BGs/corner.png" type="Texture" id=1]
 
@@ -7,29 +7,27 @@
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[node name="ClimbableBlock" type="StaticBody2D"]
+[node name="ClimbableBlock" type="StaticBody2D" index="0"]
 
 input_pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-collision_layer = 1
+collision_layer = 524288
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 0.0
 bounce = 0.0
+_sections_unfolded = [ "Collision" ]
 __meta__ = {
 "__editor_plugin_screen__": "Script"
 }
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 1 )
 flip_h = true
 
-[node name="climbable" type="CollisionShape2D" parent="."]
+[node name="climbable" type="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
+
+

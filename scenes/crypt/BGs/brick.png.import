@@ -10,7 +10,7 @@ source_file="res://scenes/crypt/BGs/brick.png"
 source_md5="59b97730714fc132f7c6a3009bd939bd"
 
 dest_files=[ "res://.import/brick.png-d4ab6322fd133f52e85098cce9f5cb38.stex" ]
-dest_md5="6c383e7ae3f55ebb5913da7fa9acc2b8"
+dest_md5="219a1ee9173e580ba6aa67604ab4d4a1"
 
 [params]
 
@@ -18,7 +18,7 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

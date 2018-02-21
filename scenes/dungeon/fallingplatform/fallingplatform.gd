@@ -24,9 +24,9 @@ func _physics_process(delta):
 		var space = get_world_2d().get_space()
 		var space_state = Physics2DServer.space_get_direct_state(space)
 		var collisions = space_state.intersect_ray(Vector2(lOffset + get_global_position().x - 16, get_global_position().y - 18), Vector2(rOffset + get_global_position().x + 16, get_global_position().y - 18), [self, get_node("Area2D")])
-		if (collisions.has("collider") && collisions["collider"].get_name() == "damage"):
+		if (collisions.has("collider") && collisions["collider"].get_name() == "player"):
 			var player = collisions["collider"]
-			if (is_climbable || (!is_climbable && player.get_global_position().y + player.get_parent().sprite_offset.y <= get_global_position().y - 16)):
+			if (is_climbable || (!is_climbable && player.get_global_position().y + player.sprite_offset.y <= get_global_position().y - 16)):
 				current_duration += 1
 				if (current_duration / float(platform_duration) >= 0.65 && animationplayer.get_current_animation() != "shake"):
 					animationplayer.play("shake")
