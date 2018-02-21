@@ -10,7 +10,7 @@ source_file="res://scenes/springislandcastle/BGs/walledge.png"
 source_md5="0e3f3f5614be7d8eab6c08b891f1df28"
 
 dest_files=[ "res://.import/walledge.png-6de70fc3a51680963d0f606a8413e3f3.stex" ]
-dest_md5="719997c3240c4b486c1297aee06e34cc"
+dest_md5="d2ee8bb90f48ba6b8b7c5721042b52a9"
 
 [params]
 
@@ -18,7 +18,7 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
