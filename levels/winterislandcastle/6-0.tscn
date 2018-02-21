@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/winterislandcastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=2]
@@ -9,135 +9,132 @@
 [ext_resource path="res://scenes/common/damagables/enchantedarmor/enchantedarmor.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=8]
 
-[node name="LVL_NOTITLE" type="Node2D"]
+[node name="LVL_NOTITLE" type="Node2D" index="0"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
 
-[node name="tilemap" type="TileMap" parent="."]
+[node name="tilemap" type="TileMap" parent="." index="0"]
 
 mode = 0
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
-cell/custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 cell_half_offset = 2
 cell_tile_origin = 0
 cell_y_sort = false
+cell_clip_uv = false
 collision_use_kinematic = false
 collision_friction = 1.0
 collision_bounce = 0.0
-collision_layer = 1
+collision_layer = 524288
 collision_mask = 1
 occluder_light_mask = 1
-tile_data = PoolIntArray( -327690, 2, -327689, 3, -327688, -1610612732, -327687, -1610612732, -327686, -1610612732, -327685, 536870915, -327684, 2, -327683, 7, -327682, 7, -327681, 7, -393216, 2, -393215, 3, -393214, -1610612732, -393213, -1610612732, -393212, -1610612732, -393211, -1610612732, -393210, 536870915, -393209, 2, -262154, 2, -262153, 4, -262152, 5, -262151, 5, -262150, 5, -262149, 4, -262148, 2, -262147, 7, -262146, 7, -262145, 7, -327680, 2, -327679, 4, -327678, 5, -327677, 5, -327676, 5, -327675, 5, -327674, 4, -327673, 2, -196618, 2, -196617, 1073741827, -196616, -1610612732, -196615, -1610612732, -196614, -1610612732, -196613, 1610612739, -196612, 2, -196611, 7, -196610, 7, -196609, 7, -262144, 2, -262143, 1073741827, -262142, -1610612732, -262141, -1610612732, -262140, -1610612732, -262139, -1610612732, -262138, 1610612739, -262137, 2, -131082, 1610612737, -131081, 1073741824, -131080, 1073741824, -131079, 1073741824, -131078, 1073741824, -131077, 1073741824, -131076, 1073741825, -131075, 7, -131074, 7, -131073, 7, -196608, 1610612737, -196607, 1073741824, -196606, 1073741824, -196605, 1073741824, -196604, 1073741824, -196603, 1073741824, -196602, 1073741824, -196601, 1073741825, -65546, 2, -65545, 6, -65541, 12, -65537, 6, -131069, 12, -131065, 2, -10, 2, -65529, 2, 65526, 2, 7, 2, 131062, 2, 65543, 2, 196598, 2, 131079, 2, 262134, 2, 196615, 2, 327670, 2, 262151, 2, 393206, 2, 327687, 2, 458742, 2, 458743, 12, 458747, 6, 458751, 12, 393219, 6, 393223, 2, 524278, 2, 458759, 2, 589814, 536870913, 589815, 0, 589816, 0, 589817, 0, 589818, 0, 524291, 0, 524292, 0, 524293, 0, 524294, 0, 524295, 1, 655350, 2, 589831, 2, 720886, 2, 655367, 2, 786422, 2, 720903, 2, 851958, 2, 786439, 2, 917494, 2, 851975, 2, 983030, 2, 983031, 6, 983035, 12, 983039, 6, 917507, 12, 917511, 2, 1048566, 2, 983047, 2, 1114102, 2, 1048583, 2, 1179638, 2, 1114119, 2, 1245174, 2, 1179655, 2, 1310710, 2, 1245191, 2, 1376246, 2, 1310727, 2, 1441782, 2, 1376263, 2, 1507318, 2, 1507319, 13, 1507323, 6, 1507327, 13, 1441795, 6, 1441799, 2, 1572854, 2, 1507335, 2, 1638390, 2, 1572871, 1610612737, 1703926, 2, 1638407, 7, 1769462, 2, 1703943, 7, 1834998, 2, 1769479, 7, 1900534, 2, 1835015, 7, 1966070, 2, 1900551, 7, 2031606, 536870913, 2031607, 0, 2031608, 0, 2031609, 0, 2031610, 0, 2031611, 0, 2031612, 0, 2031613, 0, 2031614, 0, 2031615, 0, 1966080, 0, 1966081, 0, 1966082, 0, 1966083, 0, 1966084, 0, 1966085, 0, 1966086, 0, 1966087, 1, 2097142, 2, 2097143, 3, 2097144, -1610612732, 2097145, -1610612732, 2097146, -1610612732, 2097147, -1610612732, 2097148, -1610612732, 2097149, -1610612732, 2097150, -1610612732, 2097151, -1610612732, 2031616, -1610612732, 2031617, -1610612732, 2031618, -1610612732, 2031619, -1610612732, 2031620, -1610612732, 2031621, -1610612732, 2031622, 536870915, 2031623, 2, 2162678, 2, 2162679, 4, 2162680, 5, 2162681, 5, 2162682, 5, 2162683, 5, 2162684, 5, 2162685, 5, 2162686, 5, 2162687, 5, 2097152, 5, 2097153, 5, 2097154, 5, 2097155, 5, 2097156, 5, 2097157, 5, 2097158, 4, 2097159, 2, 2228214, 2, 2228215, 1073741827, 2228216, -1610612732, 2228217, -1610612732, 2228218, -1610612732, 2228219, -1610612732, 2228220, -1610612732, 2228221, -1610612732, 2228222, -1610612732, 2228223, -1610612732, 2162688, -1610612732, 2162689, -1610612732, 2162690, -1610612732, 2162691, -1610612732, 2162692, -1610612732, 2162693, -1610612732, 2162694, 1610612739, 2162695, 2 )
+format = 1
+tile_data = PoolIntArray( -327690, 2, 0, -327689, 3, 0, -327688, -1610612732, 0, -327687, -1610612732, 0, -327686, -1610612732, 0, -327685, 536870915, 0, -327684, 2, 0, -327683, 7, 0, -327682, 7, 0, -327681, 7, 0, -393216, 2, 0, -393215, 3, 0, -393214, -1610612732, 0, -393213, -1610612732, 0, -393212, -1610612732, 0, -393211, -1610612732, 0, -393210, 536870915, 0, -393209, 2, 0, -262154, 2, 0, -262153, 4, 0, -262152, 5, 0, -262151, 5, 0, -262150, 5, 0, -262149, 4, 0, -262148, 2, 0, -262147, 7, 0, -262146, 7, 0, -262145, 7, 0, -327680, 2, 0, -327679, 4, 0, -327678, 5, 0, -327677, 5, 0, -327676, 5, 0, -327675, 5, 0, -327674, 4, 0, -327673, 2, 0, -196618, 2, 0, -196617, 1073741827, 0, -196616, -1610612732, 0, -196615, -1610612732, 0, -196614, -1610612732, 0, -196613, 1610612739, 0, -196612, 2, 0, -196611, 7, 0, -196610, 7, 0, -196609, 7, 0, -262144, 2, 0, -262143, 1073741827, 0, -262142, -1610612732, 0, -262141, -1610612732, 0, -262140, -1610612732, 0, -262139, -1610612732, 0, -262138, 1610612739, 0, -262137, 2, 0, -131082, 1610612737, 0, -131081, 1073741824, 0, -131080, 1073741824, 0, -131079, 1073741824, 0, -131078, 1073741824, 0, -131077, 1073741824, 0, -131076, 1073741825, 0, -131075, 7, 0, -131074, 7, 0, -131073, 7, 0, -196608, 1610612737, 0, -196607, 1073741824, 0, -196606, 1073741824, 0, -196605, 1073741824, 0, -196604, 1073741824, 0, -196603, 1073741824, 0, -196602, 1073741824, 0, -196601, 1073741825, 0, -65546, 2, 0, -65545, 6, 0, -65541, 12, 0, -65537, 6, 0, -131069, 12, 0, -131065, 2, 0, -10, 2, 0, -65529, 2, 0, 65526, 2, 0, 7, 2, 0, 131062, 2, 0, 65543, 2, 0, 196598, 2, 0, 131079, 2, 0, 262134, 2, 0, 196615, 2, 0, 327670, 2, 0, 262151, 2, 0, 393206, 2, 0, 327687, 2, 0, 458742, 2, 0, 458743, 12, 0, 458747, 6, 0, 458751, 12, 0, 393219, 6, 0, 393223, 2, 0, 524278, 2, 0, 458759, 2, 0, 589814, 536870913, 0, 589815, 0, 0, 589816, 0, 0, 589817, 0, 0, 589818, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 1, 0, 655350, 2, 0, 589831, 2, 0, 720886, 2, 0, 655367, 2, 0, 786422, 2, 0, 720903, 2, 0, 851958, 2, 0, 786439, 2, 0, 917494, 2, 0, 851975, 2, 0, 983030, 2, 0, 983031, 6, 0, 983035, 12, 0, 983039, 6, 0, 917507, 12, 0, 917511, 2, 0, 1048566, 2, 0, 983047, 2, 0, 1114102, 2, 0, 1048583, 2, 0, 1179638, 2, 0, 1114119, 2, 0, 1245174, 2, 0, 1179655, 2, 0, 1310710, 2, 0, 1245191, 2, 0, 1376246, 2, 0, 1310727, 2, 0, 1441782, 2, 0, 1376263, 2, 0, 1507318, 2, 0, 1507319, 13, 0, 1507323, 6, 0, 1507327, 13, 0, 1441795, 6, 0, 1441799, 2, 0, 1572854, 2, 0, 1507335, 2, 0, 1638390, 2, 0, 1572871, 1610612737, 0, 1703926, 2, 0, 1638407, 7, 0, 1769462, 2, 0, 1703943, 7, 0, 1834998, 2, 0, 1769479, 7, 0, 1900534, 2, 0, 1835015, 7, 0, 1966070, 2, 0, 1900551, 7, 0, 2031606, 536870913, 0, 2031607, 0, 0, 2031608, 0, 0, 2031609, 0, 0, 2031610, 0, 0, 2031611, 0, 0, 2031612, 0, 0, 2031613, 0, 0, 2031614, 0, 0, 2031615, 0, 0, 1966080, 0, 0, 1966081, 0, 0, 1966082, 0, 0, 1966083, 0, 0, 1966084, 0, 0, 1966085, 0, 0, 1966086, 0, 0, 1966087, 1, 0, 2097142, 2, 0, 2097143, 3, 0, 2097144, -1610612732, 0, 2097145, -1610612732, 0, 2097146, -1610612732, 0, 2097147, -1610612732, 0, 2097148, -1610612732, 0, 2097149, -1610612732, 0, 2097150, -1610612732, 0, 2097151, -1610612732, 0, 2031616, -1610612732, 0, 2031617, -1610612732, 0, 2031618, -1610612732, 0, 2031619, -1610612732, 0, 2031620, -1610612732, 0, 2031621, -1610612732, 0, 2031622, 536870915, 0, 2031623, 2, 0, 2162678, 2, 0, 2162679, 4, 0, 2162680, 5, 0, 2162681, 5, 0, 2162682, 5, 0, 2162683, 5, 0, 2162684, 5, 0, 2162685, 5, 0, 2162686, 5, 0, 2162687, 5, 0, 2097152, 5, 0, 2097153, 5, 0, 2097154, 5, 0, 2097155, 5, 0, 2097156, 5, 0, 2097157, 5, 0, 2097158, 4, 0, 2097159, 2, 0, 2228214, 2, 0, 2228215, 1073741827, 0, 2228216, -1610612732, 0, 2228217, -1610612732, 0, 2228218, -1610612732, 0, 2228219, -1610612732, 0, 2228220, -1610612732, 0, 2228221, -1610612732, 0, 2228222, -1610612732, 0, 2228223, -1610612732, 0, 2162688, -1610612732, 0, 2162689, -1610612732, 0, 2162690, -1610612732, 0, 2162691, -1610612732, 0, 2162692, -1610612732, 0, 2162693, -1610612732, 0, 2162694, 1610612739, 0, 2162695, 2, 0 )
+_sections_unfolded = [ "Collision" ]
 
-[node name="LadderGroup" type="Node2D" parent="tilemap"]
+[node name="LadderGroup" type="Node2D" parent="tilemap" index="0"]
 
 editor/display_folded = true
 position = Vector2( 0, -1 )
 
-[node name="TestLadder" parent="tilemap/LadderGroup" instance=ExtResource( 2 )]
+[node name="TestLadder" parent="tilemap/LadderGroup" index="0" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( -48, -95 )
 
-[node name="Sprite" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
+[node name="Sprite" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D" index="0"]
 
 region_rect = Rect2( 0, 0, 32, 192 )
 
-[node name="ladder" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D"]
+[node name="ladder" parent="tilemap/LadderGroup/TestLadder/KinematicBody2D" index="1"]
 
 scale = Vector2( 1, 6 )
 
-[node name="ClimbableGroup" type="Node2D" parent="tilemap"]
+[node name="ClimbableGroup" type="Node2D" parent="tilemap" index="1"]
 
 editor/display_folded = true
 
-[node name="ClimbableBlock" parent="tilemap/ClimbableGroup" instance=ExtResource( 3 )]
+[node name="ClimbableBlock" parent="tilemap/ClimbableGroup" index="0" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -144, 272 )
 
-[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock"]
+[node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock" index="0"]
 
 flip_h = false
 
-[node name="ClimbableBlock1" parent="tilemap/ClimbableGroup" instance=ExtResource( 3 )]
+[node name="ClimbableBlock1" parent="tilemap/ClimbableGroup" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 80, 272 )
 
-[node name="SpikeGroup" type="Node2D" parent="tilemap"]
+[node name="SpikeGroup" type="Node2D" parent="tilemap" index="2"]
 
 editor/display_folded = true
 
-[node name="SpikeTile" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+[node name="SpikeTile" parent="tilemap/SpikeGroup" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( -144, 944 )
 
-[node name="SpikeTile1" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+[node name="SpikeTile1" parent="tilemap/SpikeGroup" index="1" instance=ExtResource( 4 )]
 
 position = Vector2( -112, 944 )
 
-[node name="SpikeTile2" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+[node name="SpikeTile2" parent="tilemap/SpikeGroup" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( -80, 944 )
 
-[node name="SpikeTile3" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+[node name="SpikeTile3" parent="tilemap/SpikeGroup" index="3" instance=ExtResource( 4 )]
 
 position = Vector2( -48, 944 )
 
-[node name="SpikeTile4" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+[node name="SpikeTile4" parent="tilemap/SpikeGroup" index="4" instance=ExtResource( 4 )]
 
 position = Vector2( -16, 944 )
 
-[node name="SpikeTile5" parent="tilemap/SpikeGroup" instance=ExtResource( 4 )]
+[node name="SpikeTile5" parent="tilemap/SpikeGroup" index="5" instance=ExtResource( 4 )]
 
 position = Vector2( 16, 944 )
 
-[node name="EnemiesGroup" type="Node2D" parent="tilemap"]
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="3"]
 
-
-[node name="Statue1" parent="tilemap/EnemiesGroup" instance=ExtResource( 5 )]
+[node name="Statue1" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( -208, 160 )
 
-[node name="Statue2" parent="tilemap/EnemiesGroup" instance=ExtResource( 5 )]
+[node name="Statue2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 5 )]
 
 position = Vector2( 144, 160 )
 
-[node name="Demon" parent="tilemap/EnemiesGroup" instance=ExtResource( 6 )]
+[node name="Demon" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 6 )]
 
 position = Vector2( -192, 528 )
 
-[node name="EnchantedArmor" parent="tilemap/EnemiesGroup" instance=ExtResource( 7 )]
+[node name="EnchantedArmor" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 7 )]
 
 position = Vector2( -192, 896 )
 
-[node name="EnchantedArmor1" parent="tilemap/EnemiesGroup" instance=ExtResource( 7 )]
+[node name="EnchantedArmor1" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 7 )]
 
 position = Vector2( 80, 896 )
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="4"]
 
-
-[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 8 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 8 )]
 
 editor/display_folded = true
 position = Vector2( 272, 880 )
 target_level = "res://levels/winterislandcastle/6-1.tscn"
 teleport_to = Vector2( -428, 80 )
 
-[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport" index="0"]
 
 scale = Vector2( 1, 5 )
 
-[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
-
-pause_animated_sprites = true
-
-[node name="Teleport1" parent="tilemap/TeleportGroup" instance=ExtResource( 8 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 8 )]
 
 editor/display_folded = true
 position = Vector2( -48, -208 )
@@ -145,24 +142,21 @@ is_horizontal = false
 target_level = "res://levels/winterislandcastle/0-12.tscn"
 teleport_to = Vector2( 1040, 224 )
 
-[node name="teleport" parent="tilemap/TeleportGroup/Teleport1"]
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport1" index="0"]
 
 scale = Vector2( 3, 1 )
 
-[node name="enabler" parent="tilemap/TeleportGroup/Teleport1/teleport"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="5"]
 
-pause_animated_sprites = true
-
-[node name="boundaries" type="Node2D" parent="tilemap"]
-
-
-[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+[node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
 
 position = Vector2( -336, -208 )
 
-[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+[node name="SE" type="Position2D" parent="tilemap/boundaries" index="1"]
 
 position = Vector2( 266, 1098 )
+
+
 [editable path="tilemap/LadderGroup/TestLadder"]
 [editable path="tilemap/ClimbableGroup/ClimbableBlock"]
 [editable path="tilemap/TeleportGroup/Teleport"]

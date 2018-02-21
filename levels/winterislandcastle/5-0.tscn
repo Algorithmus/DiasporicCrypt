@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/winterislandcastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=2]
@@ -6,223 +6,302 @@
 [ext_resource path="res://scenes/common/damagables/statues/bust.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=5]
 
-[node name="LVL_NOTITLE" type="Node2D"]
+[node name="LVL_NOTITLE" type="Node2D" index="0"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
 
-[node name="tilemap" type="TileMap" parent="."]
+[node name="tilemap" type="TileMap" parent="." index="0"]
 
 mode = 0
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
-cell/custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 cell_half_offset = 2
 cell_tile_origin = 0
 cell_y_sort = false
+cell_clip_uv = false
 collision_use_kinematic = false
 collision_friction = 1.0
 collision_bounce = 0.0
-collision_layer = 1
+collision_layer = 524288
 collision_mask = 1
 occluder_light_mask = 1
-tile_data = PoolIntArray( -655368, 1610612737, -655367, 1073741824, -655366, 1073741824, -655365, 1073741824, -655364, 1073741824, -655363, 1073741824, -655362, 1073741824, -655361, 1073741824, -720896, 1073741824, -720895, 1073741824, -720894, 1073741824, -720893, 1073741824, -720892, 1073741824, -720891, 1073741824, -720890, 1073741824, -720889, 1073741824, -720888, 1073741824, -720887, 1073741825, -589832, 2, -589831, 9, -589830, 8, -589829, 8, -589828, 9, -589827, 9, -589826, 8, -589825, 8, -655360, 9, -655359, 9, -655358, 8, -655357, 8, -655356, 9, -655355, 9, -655354, 8, -655353, 8, -655352, 9, -655351, 2, -524296, 2, -524295, 10, -524291, 10, -589823, 10, -589819, 10, -589815, 2, -458760, 2, -524279, 2, -393224, 2, -393223, 11, -393219, 11, -458751, 11, -458747, 11, -458743, 2, -327688, 2, -393207, 2, -262152, 2, -327671, 2, -196616, 2, -196615, 9, -196614, 8, -196613, 8, -196612, 9, -196611, 9, -196610, 8, -196609, 8, -262144, 9, -262143, 9, -262142, 8, -262141, 8, -262140, 9, -262139, 9, -262138, 8, -262137, 8, -262136, 9, -262135, 2, -131080, 2, -131079, 6, -131075, 13, -196607, 6, -196603, 13, -196599, 2, -65544, 2, -131063, 2, -8, 1073741825, -65527, 2, 65528, 7, 9, 1610612737, 10, 1073741825, 131064, 7, 65545, 7, 65546, 2, 196600, 7, 131081, 536870913, 131082, 1, 262136, 7, 196617, 2, 327672, 7, 262153, 2, 393208, 536870913, 393209, 0, 393210, 0, 393211, 0, 393212, 0, 393213, 0, 393214, 0, 393215, 0, 327680, 0, 327681, 0, 327682, 0, 327683, 0, 327684, 0, 327685, 0, 327686, 0, 327687, 0, 327688, 0, 327689, 1, 458744, 2, 458745, 3, 458746, -1610612732, 458747, -1610612732, 458748, -1610612732, 458749, -1610612732, 458750, -1610612732, 458751, -1610612732, 393216, -1610612732, 393217, -1610612732, 393218, -1610612732, 393219, -1610612732, 393220, -1610612732, 393221, -1610612732, 393222, -1610612732, 393223, -1610612732, 393224, 536870915, 393225, 2, 524280, 2, 524281, 4, 524282, 5, 524283, 5, 524284, 5, 524285, 5, 524286, 5, 524287, 5, 458752, 5, 458753, 5, 458754, 5, 458755, 5, 458756, 5, 458757, 5, 458758, 5, 458759, 5, 458760, 4, 458761, 2, 589816, 2, 589817, 4, 589818, 5, 589819, 5, 589820, 5, 589821, 5, 589822, 5, 589823, 5, 524288, 5, 524289, 5, 524290, 5, 524291, 5, 524292, 5, 524293, 5, 524294, 5, 524295, 5, 524296, 4, 524297, 2, 655352, 2, 655353, 1073741827, 655354, -1610612732, 655355, -1610612732, 655356, -1610612732, 655357, -1610612732, 655358, -1610612732, 655359, -1610612732, 589824, -1610612732, 589825, -1610612732, 589826, -1610612732, 589827, -1610612732, 589828, -1610612732, 589829, -1610612732, 589830, -1610612732, 589831, -1610612732, 589832, 1610612739, 589833, 2 )
+format = 1
+tile_data = PoolIntArray( -655368, 1610612737, 0, -655367, 1073741824, 0, -655366, 1073741824, 0, -655365, 1073741824, 0, -655364, 1073741824, 0, -655363, 1073741824, 0, -655362, 1073741824, 0, -655361, 1073741824, 0, -720896, 1073741824, 0, -720895, 1073741824, 0, -720894, 1073741824, 0, -720893, 1073741824, 0, -720892, 1073741824, 0, -720891, 1073741824, 0, -720890, 1073741824, 0, -720889, 1073741824, 0, -720888, 1073741824, 0, -720887, 1073741825, 0, -589832, 2, 0, -589831, 9, 0, -589830, 8, 0, -589829, 8, 0, -589828, 9, 0, -589827, 9, 0, -589826, 8, 0, -589825, 8, 0, -655360, 9, 0, -655359, 9, 0, -655358, 8, 0, -655357, 8, 0, -655356, 9, 0, -655355, 9, 0, -655354, 8, 0, -655353, 8, 0, -655352, 9, 0, -655351, 2, 0, -524296, 2, 0, -524295, 10, 0, -524291, 10, 0, -589823, 10, 0, -589819, 10, 0, -589815, 2, 0, -458760, 2, 0, -524279, 2, 0, -393224, 2, 0, -393223, 11, 0, -393219, 11, 0, -458751, 11, 0, -458747, 11, 0, -458743, 2, 0, -327688, 2, 0, -393207, 2, 0, -262152, 2, 0, -327671, 2, 0, -196616, 2, 0, -196615, 9, 0, -196614, 8, 0, -196613, 8, 0, -196612, 9, 0, -196611, 9, 0, -196610, 8, 0, -196609, 8, 0, -262144, 9, 0, -262143, 9, 0, -262142, 8, 0, -262141, 8, 0, -262140, 9, 0, -262139, 9, 0, -262138, 8, 0, -262137, 8, 0, -262136, 9, 0, -262135, 2, 0, -131080, 2, 0, -131079, 6, 0, -131075, 13, 0, -196607, 6, 0, -196603, 13, 0, -196599, 2, 0, -65544, 2, 0, -131063, 2, 0, -8, 1073741825, 0, -65527, 2, 0, 65528, 7, 0, 9, 1610612737, 0, 10, 1073741825, 0, 131064, 7, 0, 65545, 7, 0, 65546, 2, 0, 196600, 7, 0, 131081, 536870913, 0, 131082, 1, 0, 262136, 7, 0, 196617, 2, 0, 327672, 7, 0, 262153, 2, 0, 393208, 536870913, 0, 393209, 0, 0, 393210, 0, 0, 393211, 0, 0, 393212, 0, 0, 393213, 0, 0, 393214, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 1, 0, 458744, 2, 0, 458745, 3, 0, 458746, -1610612732, 0, 458747, -1610612732, 0, 458748, -1610612732, 0, 458749, -1610612732, 0, 458750, -1610612732, 0, 458751, -1610612732, 0, 393216, -1610612732, 0, 393217, -1610612732, 0, 393218, -1610612732, 0, 393219, -1610612732, 0, 393220, -1610612732, 0, 393221, -1610612732, 0, 393222, -1610612732, 0, 393223, -1610612732, 0, 393224, 536870915, 0, 393225, 2, 0, 524280, 2, 0, 524281, 4, 0, 524282, 5, 0, 524283, 5, 0, 524284, 5, 0, 524285, 5, 0, 524286, 5, 0, 524287, 5, 0, 458752, 5, 0, 458753, 5, 0, 458754, 5, 0, 458755, 5, 0, 458756, 5, 0, 458757, 5, 0, 458758, 5, 0, 458759, 5, 0, 458760, 4, 0, 458761, 2, 0, 589816, 2, 0, 589817, 4, 0, 589818, 5, 0, 589819, 5, 0, 589820, 5, 0, 589821, 5, 0, 589822, 5, 0, 589823, 5, 0, 524288, 5, 0, 524289, 5, 0, 524290, 5, 0, 524291, 5, 0, 524292, 5, 0, 524293, 5, 0, 524294, 5, 0, 524295, 5, 0, 524296, 4, 0, 524297, 2, 0, 655352, 2, 0, 655353, 1073741827, 0, 655354, -1610612732, 0, 655355, -1610612732, 0, 655356, -1610612732, 0, 655357, -1610612732, 0, 655358, -1610612732, 0, 655359, -1610612732, 0, 589824, -1610612732, 0, 589825, -1610612732, 0, 589826, -1610612732, 0, 589827, -1610612732, 0, 589828, -1610612732, 0, 589829, -1610612732, 0, 589830, -1610612732, 0, 589831, -1610612732, 0, 589832, 1610612739, 0, 589833, 2, 0 )
+_sections_unfolded = [ "Collision" ]
 
-[node name="SpikeGroup" type="Node2D" parent="tilemap"]
+[node name="SpikeGroup" type="Node2D" parent="tilemap" index="0"]
 
 editor/display_folded = true
 
-[node name="SpikeTile" parent="tilemap/SpikeGroup" instance=ExtResource( 2 )]
+[node name="SpikeTile" parent="tilemap/SpikeGroup" index="0" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( -208, -304 )
 
-[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile"]
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile" index="0"]
 
 flip_v = true
 
-[node name="SpikeTile1" parent="tilemap/SpikeGroup" instance=ExtResource( 2 )]
+[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile1" parent="tilemap/SpikeGroup" index="1" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( -176, -304 )
 
-[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile1"]
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile1" index="0"]
 
 flip_v = true
 
-[node name="SpikeTile2" parent="tilemap/SpikeGroup" instance=ExtResource( 2 )]
+[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile1" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile2" parent="tilemap/SpikeGroup" index="2" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( -144, -304 )
 
-[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile2"]
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile2" index="0"]
 
 flip_v = true
 
-[node name="SpikeTile3" parent="tilemap/SpikeGroup" instance=ExtResource( 2 )]
+[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile2" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile3" parent="tilemap/SpikeGroup" index="3" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( -112, -304 )
 
-[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile3"]
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile3" index="0"]
 
 flip_v = true
 
-[node name="SpikeTile4" parent="tilemap/SpikeGroup" instance=ExtResource( 2 )]
+[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile3" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile4" parent="tilemap/SpikeGroup" index="4" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( -80, -304 )
 
-[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile4"]
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile4" index="0"]
 
 flip_v = true
 
-[node name="SpikeTile5" parent="tilemap/SpikeGroup" instance=ExtResource( 2 )]
+[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile4" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile5" parent="tilemap/SpikeGroup" index="5" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( -48, -304 )
 
-[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile5"]
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile5" index="0"]
 
 flip_v = true
 
-[node name="SpikeTile6" parent="tilemap/SpikeGroup" instance=ExtResource( 2 )]
+[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile5" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile6" parent="tilemap/SpikeGroup" index="6" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( -16, -304 )
 
-[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile6"]
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile6" index="0"]
 
 flip_v = true
 
-[node name="SpikeTile7" parent="tilemap/SpikeGroup" instance=ExtResource( 2 )]
+[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile6" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile7" parent="tilemap/SpikeGroup" index="7" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( 16, -304 )
 
-[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile7"]
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile7" index="0"]
 
 flip_v = true
 
-[node name="SpikeTile8" parent="tilemap/SpikeGroup" instance=ExtResource( 2 )]
+[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile7" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile8" parent="tilemap/SpikeGroup" index="8" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( 48, -304 )
 
-[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile8"]
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile8" index="0"]
 
 flip_v = true
 
-[node name="SpikeTile9" parent="tilemap/SpikeGroup" instance=ExtResource( 2 )]
+[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile8" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile9" parent="tilemap/SpikeGroup" index="9" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( 80, -304 )
 
-[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile9"]
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile9" index="0"]
 
 flip_v = true
 
-[node name="SpikeTile10" parent="tilemap/SpikeGroup" instance=ExtResource( 2 )]
+[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile9" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile10" parent="tilemap/SpikeGroup" index="10" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( 112, -304 )
 
-[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile10"]
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile10" index="0"]
 
 flip_v = true
 
-[node name="SpikeTile11" parent="tilemap/SpikeGroup" instance=ExtResource( 2 )]
+[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile10" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile11" parent="tilemap/SpikeGroup" index="11" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( 144, -304 )
 
-[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile11"]
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile11" index="0"]
 
 flip_v = true
 
-[node name="SpikeTile12" parent="tilemap/SpikeGroup" instance=ExtResource( 2 )]
+[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile11" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile12" parent="tilemap/SpikeGroup" index="12" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( 176, -304 )
 
-[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile12"]
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile12" index="0"]
 
 flip_v = true
 
-[node name="SpikeTile13" parent="tilemap/SpikeGroup" instance=ExtResource( 2 )]
+[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile12" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile13" parent="tilemap/SpikeGroup" index="13" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( 208, -304 )
 
-[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile13"]
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile13" index="0"]
 
 flip_v = true
 
-[node name="SpikeTile14" parent="tilemap/SpikeGroup" instance=ExtResource( 2 )]
+[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile13" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile14" parent="tilemap/SpikeGroup" index="14" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( 240, -304 )
 
-[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile14"]
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile14" index="0"]
 
 flip_v = true
 
-[node name="SpikeTile15" parent="tilemap/SpikeGroup" instance=ExtResource( 2 )]
+[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile14" index="1"]
+
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="SpikeTile15" parent="tilemap/SpikeGroup" index="15" instance=ExtResource( 2 )]
 
 editor/display_folded = true
 position = Vector2( 272, -304 )
 
-[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile15"]
+[node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile15" index="0"]
 
 flip_v = true
 
-[node name="EnemiesGroup" type="Node2D" parent="tilemap"]
+[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile15" index="1"]
 
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="Skeleton" parent="tilemap/EnemiesGroup" instance=ExtResource( 3 )]
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="1"]
+
+[node name="Skeleton" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( -64, 112 )
 
-[node name="Skeleton1" parent="tilemap/EnemiesGroup" instance=ExtResource( 3 )]
+[node name="Skeleton1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 112, 112 )
 
-[node name="Bust" parent="tilemap/EnemiesGroup" instance=ExtResource( 4 )]
+[node name="Bust" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 304, 48 )
 rateX = -1
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="2"]
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" instance=ExtResource( 5 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 position = Vector2( -272, 80 )
 target_level = "res://levels/winterislandcastle/0-3.tscn"
 teleport_to = Vector2( 300, -496 )
 
-[node name="teleport" parent="tilemap/TeleportGroup/Teleport"]
+[node name="teleport" parent="tilemap/TeleportGroup/Teleport" index="0"]
 
 scale = Vector2( 1, 5 )
 
-[node name="enabler" parent="tilemap/TeleportGroup/Teleport/teleport"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="3"]
 
-pause_animated_sprites = true
-
-[node name="boundaries" type="Node2D" parent="tilemap"]
-
-
-[node name="NW" type="Position2D" parent="tilemap/boundaries"]
+[node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
 
 position = Vector2( -262, -358 )
 
-[node name="SE" type="Position2D" parent="tilemap/boundaries"]
+[node name="SE" type="Position2D" parent="tilemap/boundaries" index="1"]
 
 position = Vector2( 330, 330 )
+
+
 [editable path="tilemap/SpikeGroup/SpikeTile"]
 [editable path="tilemap/SpikeGroup/SpikeTile1"]
 [editable path="tilemap/SpikeGroup/SpikeTile2"]
