@@ -12,6 +12,8 @@ var gui
 var music
 var animation
 var previously_paused = false
+# Ensure focus calls are only called once
+var is_focused = true
 
 func _ready():
 	gui = get_tree().get_root().get_node("world/gui")
@@ -55,7 +57,7 @@ static func display_time(time):
 	return "%02d:%02d:%02d" % [hours, minutes, seconds]
 
 func _notification(what):
-	if (what == MainLoop.NOTIFICATION_WM_FOCUS_IN):
+	if (what == MainLoop.NOTIFICATION_WM_FOCUS_IN && !is_focused):
 		gui.set_pause_mode(Node.PAUSE_MODE_PROCESS)
 		animation.set_pause_mode(Node.PAUSE_MODE_INHERIT)
 		#TODO - play sound properly
@@ -63,7 +65,8 @@ func _notification(what):
 		shield.hide()
 		get_tree().set_pause(previously_paused)
 		resume()
-	elif (what == MainLoop.NOTIFICATION_WM_FOCUS_OUT):
+		is_focused = true
+	elif (what == MainLoop.NOTIFICATION_WM_FOCUS_OUT && is_focused):
 		shield.show()
 		gui.set_pause_mode(Node.PAUSE_MODE_STOP)
 		animation.set_pause_mode(Node.PAUSE_MODE_STOP)
@@ -72,3 +75,4 @@ func _notification(what):
 		previously_paused = get_tree().is_paused()
 		get_tree().set_pause(true)
 		idle()
+		is_focused = false
