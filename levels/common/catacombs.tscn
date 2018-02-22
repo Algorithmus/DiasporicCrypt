@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scenes/catacombs/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/torch.tscn" type="PackedScene" id=2]
@@ -23,11 +23,26 @@
 custom_solver_bias = 0.0
 extents = Vector2( 32, 80 )
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="Shader" id=2]
+
+code = "shader_type canvas_item;
+
+uniform vec4 start:hint_color;
+uniform vec4 stop:hint_color;
+
+void fragment() {
+COLOR = mix(start, stop, UV.x);
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
 
 render_priority = 0
+shader = SubResource( 2 )
+shader_param/start = Color( 0, 0, 0, 0 )
+shader_param/stop = null
+_sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="ImageTexture" id=3]
+[sub_resource type="ImageTexture" id=4]
 
 flags = 2
 storage = 0
@@ -35,19 +50,42 @@ lossy_quality = 0.7
 flags = 2
 size = Vector2( 32, 32 )
 
-[sub_resource type="ShaderMaterial" id=4]
-
-render_priority = 0
-
 [sub_resource type="ShaderMaterial" id=5]
 
 render_priority = 0
+shader = SubResource( 2 )
+shader_param/start = Color( 0, 0, 0, 0 )
+shader_param/stop = null
+_sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="ShaderMaterial" id=6]
 
 render_priority = 0
+shader = SubResource( 2 )
+shader_param/start = null
+shader_param/stop = Color( 0, 0, 0, 0 )
+_sections_unfolded = [ "shader_param" ]
 
-[node name="LVL_CATACOMB" type="Node2D"]
+[sub_resource type="Shader" id=7]
+
+code = "shader_type canvas_item;
+
+uniform vec4 start:hint_color;
+uniform vec4 stop:hint_color;
+
+void fragment() {
+COLOR = mix(start, stop, UV.y);
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+
+render_priority = 0
+shader = SubResource( 7 )
+shader_param/start = null
+shader_param/stop = Color( 0, 0, 0, 0 )
+_sections_unfolded = [ "shader_param" ]
+
+[node name="LVL_CATACOMB" type="Node2D" index="0"]
 
 __meta__ = {
 "__editor_plugin_screen__": "Script"
@@ -325,35 +363,39 @@ position = Vector2( 586, 554 )
 
 [node name="Sprite2" type="Sprite" parent="fg_deco" index="0"]
 
-material = SubResource( 2 )
+material = SubResource( 3 )
 position = Vector2( 544, -32 )
 scale = Vector2( 4, 13 )
-texture = SubResource( 3 )
+texture = SubResource( 4 )
 centered = false
+_sections_unfolded = [ "Material" ]
 
 [node name="Sprite3" type="Sprite" parent="fg_deco" index="1"]
 
-material = SubResource( 4 )
+material = SubResource( 5 )
 position = Vector2( 576, 480 )
 scale = Vector2( 4, 2 )
-texture = SubResource( 3 )
+texture = SubResource( 4 )
 centered = false
+_sections_unfolded = [ "Material" ]
 
 [node name="Sprite5" type="Sprite" parent="fg_deco" index="2"]
 
-material = SubResource( 5 )
+material = SubResource( 6 )
 position = Vector2( -640, 480 )
 scale = Vector2( 2, 2 )
-texture = SubResource( 3 )
+texture = SubResource( 4 )
 centered = false
+_sections_unfolded = [ "Material" ]
 
 [node name="Sprite6" type="Sprite" parent="fg_deco" index="3"]
 
-material = SubResource( 6 )
+material = SubResource( 8 )
 position = Vector2( -672, -352 )
 scale = Vector2( 43, 2 )
-texture = SubResource( 3 )
+texture = SubResource( 4 )
 centered = false
+_sections_unfolded = [ "Material" ]
 
 
 [editable path="tilemap/LadderGroup/TestLadder"]
