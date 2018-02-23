@@ -8,6 +8,7 @@ export var linear = false
 export var start_direction = 1
 var accum = 0.0
 var velocity = 0.0
+var speed = 0
 var direction = 1
 var lOffset = null
 var rOffset = null
@@ -35,6 +36,8 @@ func _physics_process(delta):
 
 	get_node("blockR").set_position(posR)
 	get_node("blockL").set_position(posL)
+
+	speed = get_node("blockR").global_position - previousPos_blockR
 
 func _ready():
 	if (lOffset == null):

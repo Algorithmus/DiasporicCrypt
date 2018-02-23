@@ -24,9 +24,13 @@ func _physics_process(delta):
 		var space = get_world_2d().get_space()
 		var space_state = Physics2DServer.space_get_direct_state(space)
 		var collisions = space_state.intersect_ray(Vector2(lOffset + get_global_position().x - 16, get_global_position().y - 18), Vector2(rOffset + get_global_position().x + 16, get_global_position().y - 18), [self, get_node("Area2D")])
-		if (collisions.has("collider") && collisions["collider"].get_name() == "player"):
-			var player = collisions["collider"]
-			if (is_climbable || (!is_climbable && player.get_global_position().y + player.sprite_offset.y <= get_global_position().y - 16)):
+		if (collisions.has("collider")):
+			var player
+			if (collisions["collider"].get_name() == "player"):
+				player = collisions["collider"]
+			elif (collisions["collider"].get_name() == "damage"):
+				player = collisions["collider"].get_parent()
+			if (player != null && (is_climbable || (!is_climbable && player.get_global_position().y + player.sprite_offset.y <= get_global_position().y - 16))):
 				current_duration += 1
 				if (current_duration / float(platform_duration) >= 0.65 && animationplayer.get_current_animation() != "shake"):
 					animationplayer.play("shake")
@@ -47,8 +51,8 @@ func _physics_process(delta):
 			state = "dormant"
 			blockL.set_collision_layer_bit(1, false)
 			blockR.set_collision_layer_bit(1, false)
-			blockL.set_collision_layer_bit(0, false)
-			blockR.set_collision_layer_bit(0, false)
+			blockL.set_collision_layer_bit(19, false)
+			blockR.set_collision_layer_bit(19, false)
 			blockL.hide()
 			blockR.hide()
 			accel = 0
@@ -64,8 +68,8 @@ func _physics_process(delta):
 					blacklisted_tiles = true
 			if (tiles.empty() || blacklisted_tiles):
 				current_dormant_duration = 0
-				blockL.set_collision_layer_bit(0, true)
-				blockR.set_collision_layer_bit(0, true)
+				blockL.set_collision_layer_bit(19, true)
+				blockR.set_collision_layer_bit(19, true)
 				blockR.set_collision_layer_bit(1, true)
 				blockL.set_collision_layer_bit(1, true)
 				blockL.show()

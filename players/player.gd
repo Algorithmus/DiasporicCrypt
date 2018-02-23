@@ -329,9 +329,11 @@ func check_climb_platform_horizontal(space_state):
 			hang_delay += 1
 		# stick with moving platform
 		# more noticeable on faster horizontal platforms
+		var movingPlatformDelta = 0
 		if (movingPlatform == climb_platform && climb_platform != null && hanging):
 			var d = climb_platform.get_global_position().x - direction * TILE_SIZE/2 - get_global_position().x - direction * sprite_offset.x
-			_collider = move_and_collide(Vector2(d, 0))
+			movingPlatformDelta = movingPlatform.global_position.y - TILE_SIZE/2 - int(position.y + sprite_offset.y)
+			_collider = move_and_collide(Vector2(d, movingPlatform.get_parent().speed.y))
 		
 		if (platform_check == null && climb_platform != null && !climbing_platform):
 			climb_platform = null
@@ -356,7 +358,7 @@ func check_climb_platform_horizontal(space_state):
 			# but clamp to it horizontally if it is and we are moving up
 			elif (get_position().y - sprite_offset.y <= climb_platform.get_global_position().y + TILE_SIZE/2 && ceilingA.empty() && ceilingB.empty()) :
 				var platformDeltaX = climb_platform.get_global_position().x - direction * TILE_SIZE/2 - get_global_position().x - sprite_offset.x * direction
-				_collider = move_and_collide(Vector2(platformDeltaX, 0))
+				_collider = move_and_collide(Vector2(platformDeltaX, movingPlatformDelta))
 				
 				climb_vertically = true
 			else:
@@ -463,7 +465,13 @@ func check_jump():
 			falling = true
 			jumpPressed = true
 		elif (jumping_allowed()):
-			accel = -jumpspeed * current_gravity
+			var jump_modifier = 0
+			# Ensure it is still possible to jump while on a moving platform going up
+			if (movingPlatform != null && movingPlatform.get_parent().speed.y < 0):
+				global_position.y = movingPlatform.global_position.y - TILE_SIZE/2 - sprite_offset.y
+				jump_modifier = movingPlatform.get_parent().speed.y
+				clearMovingPlatform()
+			accel = -jumpspeed * current_gravity + jump_modifier
 			falling = true
 			jumpPressed = true
 
@@ -565,7 +573,7 @@ func check_crouch(space_state, normalTileCheck, abSlope, onSlope, onOneWayTile):
 	# keep player crouched if they are blocked from returning to normal state
 	var ceiling = space_state.intersect_ray(Vector2(get_global_position().x, get_global_position().y), Vector2(get_global_position().x, get_global_position().y-64), [self], 524288)
 
-	if ((!ceiling.empty() && is_crouching) || (crouch_requested && !is_attacking && !falling && (normalTileCheck || onSlope || abSlope != null || onOneWayTile))):
+	if ((!ceiling.empty() && is_crouching) || (crouch_requested && !is_attacking && (!falling || onMovingPlatform) && (normalTileCheck || onSlope || abSlope != null || onOneWayTile))):
 		is_crouching = true
 		get_node("CollisionShape2D").set_scale(Vector2(1, 0.5))
 		get_node("CollisionShape2D").set_position(Vector2(0, sprite_offset.y/2.0))
@@ -586,6 +594,10 @@ func check_climb_platform_vertical(climb_vertically):
 	# move character up from climbing ledge
 	# see notes in horizontal motion about animation
 	if (climb_vertically && climbing_platform):
+		# make sure climbing speed on downward moving platforms stays consistent
+		var movingPlatformDelta = 0
+		if (movingPlatform != null):
+			movingPlatformDelta = max(movingPlatform.get_parent().speed.y, 0)
 		#var d = climb_platform.get_global_position().y - TILE_SIZE/2 - get_position().y + sprite_offset.y
 		# If the platform is too far away, stop trying to climb it.
 		if (abs(climb_platform.get_global_position().x - get_position().x) >= 36):
@@ -594,7 +606,7 @@ func check_climb_platform_vertical(climb_vertically):
 			climb_vertically = false
 			climbing_platform = false
 		else:
-			accel = -climbspeed
+			accel = -climbspeed - movingPlatformDelta
 			falling = false
 
 func check_attacking():

@@ -170,6 +170,11 @@ func closestXTile(desired_direction, desiredX, space_state):
 	# 1 = check right side
 	if (has_kinematic_collision):
 		if (is_colliding()):
+			# standing on moving platforms shouldn't block player from moving horizontally
+			if (onMovingPlatform && (_collider.collider.get_name() == "blockR" || _collider.collider.get_name() == "blockL") && _collider.collider.get_parent() is MovingPlatform
+			&& _collider.collider.get_parent().speed.y > 0):
+				_collider = move_and_collide(Vector2(0, movingPlatform.global_position.y - TILE_SIZE/2 - global_position.y - sprite_offset.y))
+				return desiredX
 			if (_collider.position.y > int(get_position().y - sprite_offset.y) && _collider.position.y < int(get_position().y + sprite_offset.y)):
 				return 0
 	else:
@@ -203,9 +208,8 @@ func check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space
 		if((movingPlatform_check.get_name() == "blockR" || movingPlatform_check.get_name() == "blockL") && movingPlatform_check.get_parent() is MovingPlatform):
 			onMovingPlatform = true
 			if (movingPlatform_check.get_global_position().y - TILE_SIZE/2 >= int(get_position().y + sprite_offset.y)):
-				movingPlatform = movingPlatform_check
-			else:
-				clearMovingPlatform()
+				_collider = move_and_collide(Vector2(0, movingPlatform_check.global_position.y - TILE_SIZE/2 - int(position.y + sprite_offset.y)))
+			movingPlatform = movingPlatform_check
 		else:
 			clearMovingPlatform()
 
@@ -226,8 +230,7 @@ func check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space
 
 	if (movingPlatform != null):
 		var newPos = Vector2(movingPlatform.get_global_position().x, movingPlatform.get_global_position().y)
-		if (movingPlatformPos == null):
-			movingPlatformPos = movingPlatform.get_parent()["previousPos_" + movingPlatform.get_name()]
+		movingPlatformPos = movingPlatform.get_parent()["previousPos_" + movingPlatform.get_name()]
 		var movingDeltaX = newPos.x - movingPlatformPos.x
 		# only move with the platform if landed on it
 		# merely detecting it is there doesn't count
@@ -235,8 +238,7 @@ func check_moving_platforms(normalTileCheck, relevantTileA, relevantTileB, space
 			var platformDeltaX = 0
 			if (get_global_position().x + movingDeltaX > newPos.x + TILE_SIZE/2 || get_global_position().x + movingDeltaX < newPos.x - TILE_SIZE/2):
 				movingDeltaX = 0
-		_collider = move_and_collide(Vector2(movingDeltaX, newPos.y - movingPlatformPos.y))
-		movingPlatformPos = newPos
+		_collider = move_and_collide(Vector2(movingDeltaX, movingPlatform.get_parent().speed.y))
 	return onOneWayTile
 
 func check_underwater(areaTiles):
@@ -395,7 +397,7 @@ func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, o
 		var closestTileY = desiredY
 
 		# check regular static blocks
-		if (normalTileCheck):
+		if (normalTileCheck && !onMovingPlatform):
 			closestTileY = closestYTile(relevantTileA, relevantTileB)
 
 			closestTileY -= get_position().y+sprite_offset.y
@@ -484,6 +486,8 @@ func check_falling(normalTileCheck, relevantSlopeTile, onSlope, abSlope, ladder_
 
 func check_on_moving_platform(desiredY):
 	if (desiredY > - jumpspeed + 1 && movingPlatform != null && !hanging && !climbing_platform && movingPlatform.get_global_position().y - TILE_SIZE/2 >= get_position().y + sprite_offset.y):
+		falling = false
+	if (onMovingPlatform):
 		falling = false
 
 func check_animations(new_animation, animation_speed, horizontal_motion, ladderY):
