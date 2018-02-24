@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://scenes/global.gd" type="Script" id=1]
 [ext_resource path="res://gui/theme/slidergrabber.png" type="Texture" id=2]
@@ -24,7 +24,9 @@
 [ext_resource path="res://gui/menu/settings.tscn" type="PackedScene" id=22]
 [ext_resource path="res://gui/menu/keylabel.tscn" type="PackedScene" id=23]
 [ext_resource path="res://gui/loading/loading.tscn" type="PackedScene" id=24]
-[ext_resource path="res://gui/global/global.ogg" type="AudioStream" id=25]
+[ext_resource path="res://gui/confirm.wav" type="AudioStream" id=25]
+[ext_resource path="res://gui/cursor.wav" type="AudioStream" id=26]
+[ext_resource path="res://gui/global/global.ogg" type="AudioStream" id=27]
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -2697,13 +2699,29 @@ blend_times = [  ]
 
 [node name="sound" type="Node" parent="." index="2"]
 
-[node name="music" type="AudioStreamPlayer" parent="." index="3"]
+[node name="confirm" type="AudioStreamPlayer" parent="sound" index="0"]
 
 stream = ExtResource( 25 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
-bus = "Master"
+bus = "SFX"
+
+[node name="cursor" type="AudioStreamPlayer" parent="sound" index="1"]
+
+stream = ExtResource( 26 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="music" type="AudioStreamPlayer" parent="." index="3"]
+
+stream = ExtResource( 27 )
+volume_db = 0.0
+autoplay = true
+mix_target = 0
+bus = "BGM"
 
 [connection signal="pressed" from="CanvasLayer/menu/main/options/newgame" to="." method="_on_newgame_pressed"]
 
@@ -2717,13 +2735,13 @@ bus = "Master"
 
 [connection signal="pressed" from="CanvasLayer/menu/newgame/backbutton/back" to="." method="_on_newgame_back_pressed"]
 
-[connection signal="focus_entered" from="CanvasLayer/menu/newgame/friederich" to="." method="_on_friederich_focus_enter"]
-
 [connection signal="focus_entered" from="CanvasLayer/menu/newgame/friederich" to="CanvasLayer/menu/newgame/friederich" method="_on_focus_enter"]
 
-[connection signal="focus_exited" from="CanvasLayer/menu/newgame/friederich" to="." method="_on_friederich_focus_exit"]
+[connection signal="focus_entered" from="CanvasLayer/menu/newgame/friederich" to="." method="_on_friederich_focus_enter"]
 
 [connection signal="focus_exited" from="CanvasLayer/menu/newgame/friederich" to="CanvasLayer/menu/newgame/friederich" method="_on_focus_exit"]
+
+[connection signal="focus_exited" from="CanvasLayer/menu/newgame/friederich" to="." method="_on_friederich_focus_exit"]
 
 [connection signal="pressed" from="CanvasLayer/menu/newgame/friederich" to="." method="_on_friederich_selected"]
 

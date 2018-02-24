@@ -15,6 +15,7 @@ var bgmValue
 var mute = preload("res://gui/menu/icons/mute.png")
 var sound = preload("res://gui/menu/icons/sound.png")
 var sfxclass = preload("res://gui/menu/sfx.tscn")
+var AudioFunctions = preload("res://gui/AudioFunctions.gd")
 var sfx
 
 var is_global = false
@@ -80,15 +81,11 @@ func update_container():
 
 func _on_sfxslider_value_changed( value ):
 	if (!sfxMute):
-		#TODO - play sounds correctly
-		#AudioServer.set_fx_global_volume_scale(value)
-		pass
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), AudioFunctions.scale_to_db(value))
 
 func _on_bgmslider_value_changed( value ):
 	if (!bgmMute):
-		#TODO - play sounds correctly
-		#AudioServer.set_stream_global_volume_scale(value)
-		pass
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("BGM"), AudioFunctions.scale_to_db(value))
 
 func unfocus_all():
 	reset()
@@ -101,16 +98,21 @@ func reset_content():
 func reset():
 	sfxMute = ProjectSettings.get("sfxmute")
 	bgmMute = ProjectSettings.get("bgmmute")
+	var sfx_index = AudioServer.get_bus_index("SFX")
+	var bgm_index = AudioServer.get_bus_index("BGM")
 	var sfx = sfxValue
 	if (sfxMute):
-		sfx = 0
+		AudioServer.set_bus_mute(sfx_index, true)
+	else:
+		AudioServer.set_bus_mute(sfx_index, false)
 	var bgm = bgmValue
 	if (bgmMute):
-		bgm = 0
+		AudioServer.set_bus_mute(bgm_index, true)
+	else:
+		AudioServer.set_bus_mute(bgm_index, false)
 	update_mute_controls()
-	#TODO - Set up sound system properly
-	#AudioServer.set_fx_global_volume_scale(sfx)
-	#AudioServer.set_stream_global_volume_scale(bgm)
+	AudioServer.set_bus_volume_db(sfx_index, AudioFunctions.scale_to_db(sfx))
+	AudioServer.set_bus_volume_db(bgm_index, AudioFunctions.scale_to_db(bgm))
 	sfxslider.value = sfxValue
 	bgmslider.value = bgmValue
 	layout_index = old_layout_index
@@ -158,13 +160,11 @@ func _on_sfxslider_focus_exit():
 
 func _on_reset_pressed():
 	reset()
-	#TODO - play sounds properly
-	#sfx.play("confirm")
+	sfx.get_node("confirm").play()
 
 func _on_save_pressed():
 	save()
-	#TODO - play sounds properly
-	#sfx.play("confirm")
+	sfx.get_node("confirm").play()
 
 func block_cancel():
 	# block focusing on tabs while capturing input
@@ -179,32 +179,31 @@ func block_pause():
 
 func _on_sfxslider_input_event( ev ):
 	if (ev.is_action_pressed("ui_accept") && ev.is_pressed() && !ev.is_echo()):
+		var sfx_index = AudioServer.get_bus_index("SFX")
 		sfxMute = !sfxMute
 		if (sfxMute):
-			#TODO - play sounds properly
-			#AudioServer.set_fx_global_volume_scale(0)
+			AudioServer.set_bus_mute(sfx_index, true)
 			sfxslider.self_modulate.a = 0.5
 			sfxslider.get_node("mute").set_texture(mute)
 		else:
-			#TODO - play sounds properly
-			#AudioServer.set_fx_global_volume_scale(sfxValue)
+			AudioServer.set_bus_mute(sfx_index, false)
+			AudioServer.set_bus_volume_db(sfx_index, AudioFunctions.scale_to_db(sfxslider.value))
 			sfxslider.self_modulate.a = 1
 			sfxslider.get_node("mute").set_texture(sound)
 
 func _on_bgmslider_input_event( ev ):
 	if (ev.is_action_pressed("ui_accept") && ev.is_pressed() && !ev.is_echo()):
+		var bgm_index = AudioServer.get_bus_index("BGM")
 		bgmMute = !bgmMute
 		if (bgmMute):
-			#TODO - play sounds properly
-			#AudioServer.set_stream_global_volume_scale(0)
-			#bgmslider.set_self_opacity(0.5)
-			#bgmslider.get_node("mute").set_texture(mute)
-			pass
+			AudioServer.set_bus_mute(bgm_index, true)
+			bgmslider.self_modulate.a = 0.5
+			bgmslider.get_node("mute").set_texture(mute)
 		else:
-			#AudioServer.set_stream_global_volume_scale(bgmValue)
-			#bgmslider.set_self_opacity(1)
-			#bgmslider.get_node("mute").set_texture(sound)
-			pass
+			AudioServer.set_bus_mute(bgm_index, false)
+			AudioServer.set_bus_volume_db(bgm_index, AudioFunctions.scale_to_db(bgmslider.value))
+			bgmslider.self_modulate.a = 1
+			bgmslider.get_node("mute").set_texture(sound)
 
 func _input(event):
 	if (event.is_pressed() && !event.is_echo()):

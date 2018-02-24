@@ -61,7 +61,7 @@ func _notification(what):
 		gui.set_pause_mode(Node.PAUSE_MODE_PROCESS)
 		animation.set_pause_mode(Node.PAUSE_MODE_INHERIT)
 		#TODO - play sound properly
-		#music.set_paused(false)
+		music.play(music.get_playback_position())
 		shield.hide()
 		get_tree().set_pause(previously_paused)
 		resume()
@@ -71,7 +71,7 @@ func _notification(what):
 		gui.set_pause_mode(Node.PAUSE_MODE_STOP)
 		animation.set_pause_mode(Node.PAUSE_MODE_STOP)
 		#TODO - play sound properly
-		#music.set_paused(true)
+		music.stop()
 		previously_paused = get_tree().is_paused()
 		get_tree().set_pause(true)
 		idle()

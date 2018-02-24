@@ -11,6 +11,7 @@ var sequences
 var root
 var is_paused = false
 var music
+var AudioFunctions = preload("res://gui/AudioFunctions.gd")
 var choice
 var gameover = false
 var dialog
@@ -96,21 +97,16 @@ func _ready():
 	get_node("gui/CanvasLayer/chain").hide()
 	dialog = get_node("gui/CanvasLayer/dialogue")
 	
-	#TODO - play sounds properly
-	"""
-	var sfx = AudioServer.get_fx_global_volume_scale()
-	if (ProjectSettings.has("sfxvolume")):
-		sfx = ProjectSettings.get("sfxvolume")
-	if (ProjectSettings.get("sfxmute") && ProjectSettings.get("sfxmute")):
-		sfx = 0
-	var bgm = AudioServer.get_stream_global_volume_scale()
-	if (ProjectSettings.hasSettings("bgmvolume")):
-		bgm = ProjectSettings.get("bgmvolume")
-	if (ProjectSettings.hasSettings("bgmmute") && ProjectSettings.get("bgmmute")):
-		bgm = 0
-	AudioServer.set_fx_global_volume_scale(sfx)
-	AudioServer.set_stream_global_volume_scale(bgm)
-	"""
+	var sfx_index = AudioServer.get_bus_index("SFX")
+	var bgm_index = AudioServer.get_bus_index("BGM")
+	if (ProjectSettings.has_setting("sfxvolume")):
+		AudioServer.set_bus_volume_db(sfx_index, AudioFunctions.scale_to_db(ProjectSettings.get("sfxvolume")))
+	if (ProjectSettings.has_setting("sfxmute")):
+		AudioServer.set_bus_mute(sfx_index, ProjectSettings.get("sfxmute"))
+	if (ProjectSettings.has_setting("bgmvolume")):
+		AudioServer.set_bus_volume_db(bgm_index, AudioFunctions.scale_to_db(ProjectSettings.get("bgmvolume")))
+	if (ProjectSettings.has_setting("bgmmute")):
+		AudioServer.set_bus_mute(sfx_index, ProjectSettings.get("bgmmute"))
 
 	for spell in get_node("gui/CanvasLayer/hud/SpellIcons").get_children():
 		spell.hide()
@@ -171,6 +167,7 @@ func _input(event):
 	if (!gameover && dialog.get("dialogs") == null && !pause.has_node("shopping") && !pause.has_node("save") && !canvas.has_node("WorldMap") && !ProjectSettings.get("eventmode")):
 		var helpPressed = event.is_action("ui_help") && ProjectSettings.get("demomode")
 		if ((event.is_action("ui_pause") || helpPressed) && event.is_pressed() && !event.is_echo() && get_node("playercontainer").has_node("player") && !get_node("playercontainer/player").get("is_transforming") && !ProjectSettings.get("show_switch")):
+			var bgm_index = AudioServer.get_bus_index("BGM")
 			if (is_paused && pausemenu.can_unpause() && !helpPressed):
 				# return back to focused tabs properly for when menu gets opened again
 				pausemenu.focus_tab()
@@ -180,7 +177,7 @@ func _input(event):
 				is_paused = false
 				if (pausemenu.get_node("panels/map/mapcontainer/viewport").has_node("objects")):
 					pausemenu.get_node("panels/map/mapcontainer/viewport/objects").queue_free()
-				music.set_volume_db(0)
+				AudioServer.set_bus_effect_enabled(bgm_index, 0, false)
 			elif(!is_paused):
 				pause.show()
 				pausemenu.show()
@@ -210,7 +207,7 @@ func _input(event):
 							tab = "scrolls"
 						pausemenu.change_tab(tab)
 				pausemenu.focus_tab()
-				music.set_volume_db(-20)
+				AudioServer.set_bus_effect_enabled(bgm_index, 0, true)
 			get_tree().set_pause(is_paused)
 		elif (event.is_action_pressed("ui_select") && event.is_pressed() && !event.is_echo() && !is_paused):
 			if (map.is_visible()):

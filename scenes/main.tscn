@@ -1443,9 +1443,9 @@ texture = ExtResource( 36 )
 
 stream = ExtResource( 37 )
 volume_db = 0.0
-autoplay = false
+autoplay = true
 mix_target = 0
-bus = "Master"
+bus = "BGM"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 

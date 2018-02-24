@@ -375,6 +375,7 @@ func _input(event):
 			if (state == SETTINGS && !input_capture):
 				focus.release_focus()
 				hide_settings()
+				settings.get_node("settings").reset()
 				state = MAIN
 			if (state == INFO):
 				_on_info_back_pressed()
@@ -388,9 +389,7 @@ func _input(event):
 				if (focus.get_name() != "language"):
 					playsound = false
 			if (playsound):
-				#TODO - play sounds properly
-				#sound.play("confirm")
-				pass
+				sound.get_node("confirm").play()
 			echo = false
 	if ((event.is_action("ui_down") || event.is_action("ui_up")) && state == INFO):
 		var container = info.get_node("container")
@@ -548,14 +547,12 @@ func _on_newgame_back_pressed():
 func _on_friederich_focus_enter():
 	friederich.modulate.a = 1
 	friederich.raise()
-	#TODO - play sounds properly
-	#sound.play("cursor")
+	sound.get_node("cursor").play()
 
 func _on_adela_focus_enter():
 	adela.modulate.a = 1
 	adela.raise()
-	#TODO - play sounds properly
-	#sound.play("cursor")
+	sound.get_node("cursor").play()
 
 func _on_friederich_focus_exit():
 	friederich.modulate.a = 0
