@@ -45,12 +45,11 @@ func process_fighting():
 				# add next wave of enemies
 				var wave = waves[currentwave].instance()
 				var size = nonenemy_objects.size()
+				var oldGroup = tilemap.get_node("EnemiesGroup")
 				for i in range(0, size):
 					var obj = nonenemy_objects[i]
-					var clone = obj.duplicate()
-					clone.value = obj.value
-					wave.add_child(clone)
-				var oldGroup = tilemap.get_node("EnemiesGroup")
+					oldGroup.remove_child(obj)
+					wave.add_child(obj)
 				tilemap.remove_child(oldGroup)
 				oldGroup.queue_free()
 				tilemap.add_child(wave)
