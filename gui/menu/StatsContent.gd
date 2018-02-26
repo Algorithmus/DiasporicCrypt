@@ -71,8 +71,7 @@ func update_container():
 	get_node("info").set_bbcode(infostring)
 
 func _on_quit():
-	#TODO - play sound properly
-	#sfx.play("confirm")
+	sfx.get_node("confirm").play()
 	shield.show()
 	shield.get_node("options/no").grab_focus()
 
@@ -80,13 +79,12 @@ func block_cancel():
 	return shield.is_visible()
 
 func quitgame():
-	#TODO - play sound properly
-	#sfx.play("confirm")
+	sfx.get_node("confirm").play()
+	AudioServer.set_bus_effect_enabled(AudioServer.get_bus_index("BGM"), 0, false)
 	get_tree().change_scene("res://scenes/global.tscn")
 
 func no_pressed():
-	#TODO - play sounds properly
-	#sfx.play("confirm")
+	sfx.get_node("confirm").play()
 	shield.hide()
 	get_node("quit").grab_focus()
 

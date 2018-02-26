@@ -139,8 +139,7 @@ func unfocus_pins():
 func focus_pin():
 	var pin = get_focus_owner()
 	set_content(pin.get_name())
-	#TODO - play sounds properly
-	#sfx.play("cursor")
+	sfx.get_node("cursor").play()
 
 func select_pin():
 	selectedlevel = get_focus_owner()
@@ -150,8 +149,7 @@ func select_pin():
 func do_select():
 	animation.play("show")
 	leveldisplay = true
-	#TODO - play sounds properly
-	#sfx.play("confirm")
+	sfx.get_node("confirm").play()
 
 func focus_warp():
 	get_node("shield").visible = true
@@ -349,8 +347,7 @@ func set_typefilter():
 	else:
 		list.get_node("filters/type/" + filter).select(typefilters[filter])
 	update_filters()
-	#TODO - play sounds properly
-	#sfx.play("confirm")
+	sfx.get_node("confirm").play()
 
 func update_filters():
 	var filteredlevels = {}
@@ -435,8 +432,7 @@ func _on_tags_focus_enter():
 		focus = list.get_node("filters/tagtitle")
 	focus.set("custom_colors/font_color", Color(1, 215/255.0, 0))
 	focus.set("custom_colors/font_color_hover", Color(1, 215/255.0, 0))
-	#TODO - play sounds properly
-	#sfx.play("cursor")
+	sfx.get_node("cursor").play()
 
 func _on_tags_focus_exit():
 	var focus = filters.get_node("tags")
@@ -453,8 +449,7 @@ func set_tagfilter():
 	else:
 		list.get_node("filters/tags/" + tag + "/tag").set_invert(!tagfilters[tag])
 	update_filters()
-	#TODO - play sounds properly
-	#sfx.play("confirm")
+	sfx.get_node("confirm").play()
 
 # enable or disable tag filter
 func toggle_tags():
@@ -469,8 +464,7 @@ func toggle_tags():
 		list.get_node("filters/type/quest").set_focus_neighbour(MARGIN_LEFT, list.get_node("filters/tags/purple").get_path())
 	toggle_filters(false)
 	update_filters()
-	#TODO - play sounds properly
-	#sfx.play("confirm")
+	sfx.get_node("confirm").play()
 
 func _on_warp_pressed():
 	hudmap.cache_map()
@@ -488,7 +482,6 @@ func _on_warp_pressed():
 	hudmap.clear_objects()
 	hudmap.load_cached_map(level)
 	ProjectSettings.set("current_level", map.title)
-	#TODO - play sounds properly
-	#sfx.play("confirm")
+	sfx.get_node("confirm").play()
 	get_tree().get_root().get_node("world").warp_animation()
 

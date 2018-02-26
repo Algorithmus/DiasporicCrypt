@@ -129,8 +129,7 @@ func disengage_hanging():
 	accel = -JUMP_SPEED * current_gravity
 	swing_block = null
 	whipswing_obj.hide()
-	#TODO - play sounds properly
-	#whipswing_obj.get_node("sound").stop_all()
+	whipswing_obj.get_node("sound/whipswing").stop()
 	if (input_up()):
 		accel -= 4
 
@@ -294,9 +293,8 @@ func step_player(delta):
 				swing_radius = min(MAX_SWING_RADIUS, swing_radius + SWING_RADIUS_DELTA)
 			# don't bother calculating swinging position and just clamp to position directly below swing block if there is not enough
 			# swinging speed
-			#TODO - play sounds properly
-			#$if (!whipswing_obj.get_node("sound").is_active()):
-			#	whipswing_obj.get_node("sound").play("whipswing")
+			if (!whipswing_obj.get_node("sound/whipswing").playing):
+				whipswing_obj.get_node("sound/whipswing").play()
 			if (swing_speed != 0 && PI/2 - swing_range != 0):
 				var angle_delta = sin((PI/2)*(swing_angle - swing_range)/(PI/2 - swing_range)) * swing_direction
 				# don't get stuck at updating angle with 0 change
@@ -332,9 +330,8 @@ func step_player(delta):
 				if (weapon_collided):
 					weapon_collided = false
 					remove_weapon_collider()
-				#TODO - play sounds properly
-				#if (!whipswing_obj.get_node("sound").is_active()):
-				#	whipswing_obj.get_node("sound").play("whipswing")
+				if (!whipswing_obj.get_node("sound/whipswing").playing):
+					whipswing_obj.get_node("sound/whipswing").play()
 				if (Input.is_action_pressed("ui_attack")):
 					var deltaX = 0
 					if (input_up()):
@@ -406,8 +403,7 @@ func stop_swinging():
 	attack_requested = false
 	accel = min(-JUMP_SPEED*abs(cos((PI/2)*(swing_angle - swing_range)/(PI/2 - swing_range))), 0)
 	whipswing_obj.hide()
-	#TODO - play sounds properly
-	#whipswing_obj.get_node("sound").stop_all()
+	whipswing_obj.get_node("sound/whipswing").stop()
 	swing_speed_frame = 0
 
 func _ready():
@@ -532,8 +528,7 @@ func _on_weapon_collision(area):
 		swing_speed = MAX_SWING_SPEED*cos(swing_range)
 		whipswing_obj.show()
 		whipswing_obj.get_node("whipring").show()
-		#TODO - play sounds properly
-		#whipswing_obj.get_node("sound").play("whipswing")
+		whipswing_obj.get_node("sound/whipswing").play()
 	if (area.get_name() == "hangable" && !whip_hanging && !is_transforming):
 		weapon_collided = true
 		is_attacking = false
@@ -544,5 +539,4 @@ func _on_weapon_collision(area):
 		_collider = move_and_collide(Vector2(swing_block.get_global_position().x - get_global_position().x, swing_block.get_global_position().y + TILE_SIZE/2 - get_position().y + sprite_offset.y + swing_radius))
 		whipswing_obj.show()
 		whipswing_obj.get_node("whipring").hide()
-		#TODO - play sounds properly
-		#whipswing_obj.get_node("sound").play("whipswing")
+		whipswing_obj.get_node("sound/whipswing").play()

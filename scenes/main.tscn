@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://scenes/main.gd" type="Script" id=1]
 [ext_resource path="res://levels/common/catacombs.tscn" type="PackedScene" id=2]
@@ -36,8 +36,10 @@
 [ext_resource path="res://gui/fonts/S-13-dialog.font" type="BitmapFont" id=34]
 [ext_resource path="res://gui/loading/loading.tscn" type="PackedScene" id=35]
 [ext_resource path="res://gui/loading/logo.png" type="Texture" id=36]
-[ext_resource path="res://levels/common/catacombs.ogg" type="AudioStream" id=37]
-[ext_resource path="res://scenes/GameClock.gd" type="Script" id=38]
+[ext_resource path="res://gui/confirm.wav" type="AudioStream" id=37]
+[ext_resource path="res://gui/cursor.wav" type="AudioStream" id=38]
+[ext_resource path="res://levels/common/catacombs.ogg" type="AudioStream" id=39]
+[ext_resource path="res://scenes/GameClock.gd" type="Script" id=40]
 
 [sub_resource type="Shader" id=1]
 
@@ -501,7 +503,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="world" type="Node2D" index="0"]
+[node name="world" type="Node2D"]
 
 pause_mode = 2
 script = ExtResource( 1 )
@@ -1439,9 +1441,25 @@ texture = ExtResource( 36 )
 
 [node name="sound" type="Node" parent="gui" index="2"]
 
-[node name="music" type="AudioStreamPlayer" parent="." index="3"]
+[node name="confirm" type="AudioStreamPlayer" parent="gui/sound" index="0"]
 
 stream = ExtResource( 37 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="cursor" type="AudioStreamPlayer" parent="gui/sound" index="1"]
+
+stream = ExtResource( 38 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="music" type="AudioStreamPlayer" parent="." index="3"]
+
+stream = ExtResource( 39 )
 volume_db = 0.0
 autoplay = true
 mix_target = 0
@@ -1460,7 +1478,7 @@ blend_times = [  ]
 
 [node name="gameclock" type="Node2D" parent="." index="5"]
 
-script = ExtResource( 38 )
+script = ExtResource( 40 )
 
 [connection signal="pressed" from="gui/CanvasLayer/choice/yes/button" to="." method="confirm_selected"]
 

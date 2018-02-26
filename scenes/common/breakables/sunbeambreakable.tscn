@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/common/breakables/SunbeamBreakable.gd" type="Script" id=1]
 [ext_resource path="res://scenes/common/breakables/breakabletile.png" type="Texture" id=2]
+[ext_resource path="res://scenes/common/breakables/crumble.wav" type="AudioStream" id=3]
 
 [sub_resource type="ParticlesMaterial" id=1]
 
@@ -72,7 +73,7 @@ tracks/0/keys = {
 "values": [ true ]
 }
 
-[node name="SunbeamBreakable" type="Node2D"]
+[node name="SunbeamBreakable" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 __meta__ = {
@@ -148,6 +149,14 @@ audio_bus_name = "Master"
 shape = SubResource( 3 )
 
 [node name="sound" type="Node" parent="." index="1"]
+
+[node name="crumble" type="AudioStreamPlayer" parent="sound" index="0"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 

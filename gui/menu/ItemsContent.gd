@@ -162,7 +162,7 @@ func _input(event):
 					check_item(item)
 					selecteditem = itemcontainer.get_node(item.title)
 				#TODO - play sounds properly
-				#sfx.play("confirm")
+				sfx.get_node("confirm").play()
 			elif (focus.get_name() == drop.get_name()):
 				var item = inventory.get("inventory")[selecteditem.get_name()]["item"]
 				var quantity = inventory.remove_item(item, 1)
@@ -172,9 +172,10 @@ func _input(event):
 				else:
 					selecteditem = itemcontainer.get_node(item.title)
 				#TODO - play sounds properly
-				#sfx.play("confirm")
+				sfx.get_node("confirm").play()
 			else:
 				# no items selected, select current item instead
+				sfx.get_node("confirm").play()
 				var item = inventory.get("inventory")[focus.get_name()]["item"]
 				selecteditem = focus
 				check_item(item)

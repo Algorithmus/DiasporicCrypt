@@ -36,8 +36,7 @@ func bleed():
 	add_child(blood_obj)
 	blood_obj.set_position(Vector2(randf()*sprite_offset.x + sprite_offset.x/2 - 16, sprite_offset.y - randf()*sprite_offset.y*2))
 	blood_obj.get_node("particles").set_emitting(true)
-	#TODO - play sound properly
-	#blood_obj.get_node("sound").play("blood")
+	blood_obj.get_node("sound/blood").play()
 	blood_particles.append(blood_obj)
 
 func calculate_atk_value(obj):

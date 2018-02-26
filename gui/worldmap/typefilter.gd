@@ -14,8 +14,7 @@ func _ready():
 func _on_mapfilter_focus_enter():
 	set("custom_colors/font_color", Color(1, 215/255.0, 0))
 	set("custom_colors/font_color_hover", Color(1, 215/255.0, 0))
-	#TODO - play sound properly
-	#sfx.play("cursor")
+	sfx.get_node("cursor").play()
 
 func _on_mapfilter_focus_exit():
 	set("custom_colors/font_color", null)

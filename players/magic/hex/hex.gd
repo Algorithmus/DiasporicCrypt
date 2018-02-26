@@ -19,17 +19,17 @@ func _ready():
 	beam = get_node("light")
 	beam.hide()
 	swirl = get_node("swirl")
-	#TODO - play sounds properly
-	#sampleplayer = get_node("SamplePlayer")
-	#soundid = sampleplayer.play("charge")
+	sampleplayer = get_node("SamplePlayer")
+	soundid = "charge"
+	sampleplayer.get_node(soundid).play()
 	direction = 1
 
 func step_spell():
 	if (is_release):
 		.step_spell()
-	#TODO - play sounds properly
-	#elif (!sampleplayer.is_active()):
-	#	soundid = sampleplayer.play("charge")
+	elif (!sampleplayer.get_node(soundid).playing):
+		soundid = "charge"
+		sampleplayer.get_node(soundid).play()
 		
 func fix_scale(top_check, top_y):
 	beam.set_scale(Vector2(beam.get_scale().x, beam.get_scale().y - (beam.get_position().y - top_check + top_y)/(32*get_scale().y)))
@@ -51,14 +51,14 @@ func step_finish_animation():
 func change_scale(scale):
 	set_scale(Vector2(scale, scale))
 	collision.set_scale(Vector2(1, 1/scale))
-	#TODO - play sounds properly
-	#sampleplayer.set_volume_db(soundid, (scale - 1) * 10)
+	sampleplayer.get_node(soundid).set_volume_db((scale - 1) * 10)
 
 func release():
 	is_release = true
 	beam.show()
 	add_child(collision)
-	#TODO - play sounds properly
-	#var volume = sampleplayer.get_volume_db(soundid)
-	#soundid = sampleplayer.play("hex")
-	#sampleplayer.set_volume_db(soundid, volume)
+	var volume = sampleplayer.get_node(soundid).get_volume_db()
+	sampleplayer.get_node(soundid).stop()
+	soundid = "hex"
+	sampleplayer.get_node(soundid).play()
+	sampleplayer.get_node(soundid).set_volume_db(volume)

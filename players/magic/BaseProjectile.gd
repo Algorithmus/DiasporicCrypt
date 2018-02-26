@@ -36,18 +36,16 @@ func _physics_process(delta):
 		if (clear_object):
 			if (has_node(collision.get_name())):
 				remove_child(collision)
-			#TODO - play sounds properly
-			#if (!sampleplayer.is_active()):
+			if (!sampleplayer.get_node(soundid).playing):
 				queue_free()
-	#TODO - play sounds properly
-	#elif (!sampleplayer.is_active()):
-	#	soundid = sampleplayer.play(charge_sfx)
+	elif (!sampleplayer.get_node(soundid).playing):
+		soundid = charge_sfx
+		sampleplayer.get_node(soundid).play()
 
 func change_scale(scale):
 	sprite.process_material.scale = scale
 	set_scale(Vector2(scale, scale))
-	#TODO - play sounds properly
-	#sampleplayer.set_volume_db(soundid, 5 * (scale - 1) - 10)
+	sampleplayer.get_node(soundid).set_volume_db(5 * (scale - 1) - 10)
 
 func change_direction(new_direction):
 	direction = new_direction
@@ -59,10 +57,9 @@ func change_direction(new_direction):
 func release():
 	var scale = sprite.process_material.scale
 	is_released = true
-	#TODO - play sounds properly
-	"""
-	var volume = sampleplayer.get_volume_db(soundid)
-	soundid = sampleplayer.play(release_sfx)
-	sampleplayer.set_volume_db(soundid, volume)
-	"""
+	var volume = sampleplayer.get_node(soundid).get_volume_db()
+	sampleplayer.get_node(soundid).stop()
+	soundid = release_sfx
+	sampleplayer.get_node(soundid).play()
+	sampleplayer.get_node(soundid).set_volume_db(volume)
 	hp = hp * ceil(scale)

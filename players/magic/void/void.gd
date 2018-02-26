@@ -21,11 +21,11 @@ func _ready():
 
 func _physics_process(delta):
 	if (fail):
-		#TODO - play sounds properly
-		#if (!sampleplayer.is_active()):
-		#	if (soundid == null):
-		#		soundid = sampleplayer.play("fail")
-		#	else:
+		if (!sampleplayer.get_node("fail").playing):
+			if (soundid == null):
+				soundid = "fail"
+				sampleplayer.get_node(soundid).play()
+			else:
 				queue_free()
 	else:
 		if (!is_set):

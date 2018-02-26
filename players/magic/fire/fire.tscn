@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://players/magic/fire/fire.gd" type="Script" id=1]
 [ext_resource path="res://players/magic/fire/magic.png" type="Texture" id=2]
+[ext_resource path="res://players/magic/fire/fire.wav" type="AudioStream" id=3]
+[ext_resource path="res://players/magic/fire/charge.wav" type="AudioStream" id=4]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -79,7 +81,7 @@ _sections_unfolded = [ "Angle", "Animation", "Color", "Emission Shape", "Gravity
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[node name="Fire" type="Node2D"]
+[node name="Fire" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 __meta__ = {
@@ -126,5 +128,21 @@ audio_bus_name = "Master"
 shape = SubResource( 7 )
 
 [node name="SamplePlayer" type="Node" parent="." index="2"]
+
+[node name="fire" type="AudioStreamPlayer" parent="SamplePlayer" index="0"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="charge" type="AudioStreamPlayer" parent="SamplePlayer" index="1"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
 
 

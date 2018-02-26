@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=102 format=2]
 
 [ext_resource path="res://players/friederich/friederich.gd" type="Script" id=1]
 [ext_resource path="res://players/friederich/idle.png" type="Texture" id=2]
@@ -49,7 +49,23 @@
 [ext_resource path="res://players/friederich/attacks/rush/attack.png" type="Texture" id=47]
 [ext_resource path="res://players/friederich/attacks/rush/sword.png" type="Texture" id=48]
 [ext_resource path="res://players/friederich/attacks/rush/aura.png" type="Texture" id=49]
-[ext_resource path="res://gui/dialogue/talk.png" type="Texture" id=50]
+[ext_resource path="res://players/friederich/attacks/attack.wav" type="AudioStream" id=50]
+[ext_resource path="res://players/friederich/attacks/chain.wav" type="AudioStream" id=51]
+[ext_resource path="res://players/friederich/attacks/chop/chop.wav" type="AudioStream" id=52]
+[ext_resource path="res://players/friederich/attacks/dualspin/dualspin.wav" type="AudioStream" id=53]
+[ext_resource path="res://players/friederich/hurt.wav" type="AudioStream" id=54]
+[ext_resource path="res://players/jump2.wav" type="AudioStream" id=55]
+[ext_resource path="res://players/land.wav" type="AudioStream" id=56]
+[ext_resource path="res://players/friederich/attacks/rush/rush.wav" type="AudioStream" id=57]
+[ext_resource path="res://players/friederich/attacks/skewer/skewer.wav" type="AudioStream" id=58]
+[ext_resource path="res://players/friederich/attacks/slice/slice.wav" type="AudioStream" id=59]
+[ext_resource path="res://scenes/common/fluid/splash_down.wav" type="AudioStream" id=60]
+[ext_resource path="res://scenes/common/fluid/splash_up.wav" type="AudioStream" id=61]
+[ext_resource path="res://players/friederich/attacks/stab/stab.wav" type="AudioStream" id=62]
+[ext_resource path="res://players/friederich/attacks/swift/swift.wav" type="AudioStream" id=63]
+[ext_resource path="res://players/friederich/attacks/thrust/thrust.wav" type="AudioStream" id=64]
+[ext_resource path="res://players/friederich/attacks/void/void.wav" type="AudioStream" id=65]
+[ext_resource path="res://gui/dialogue/talk.png" type="Texture" id=66]
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -10874,7 +10890,7 @@ shader_param/aura_color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
 shader_param/opacity = 1.0
 _sections_unfolded = [ "shader_param" ]
 
-[node name="player" type="KinematicBody2D" index="0"]
+[node name="player" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 524288
@@ -11530,11 +11546,139 @@ shape = SubResource( 33 )
 
 [node name="sound" type="Node" parent="." index="5"]
 
+[node name="attack" type="AudioStreamPlayer" parent="sound" index="0"]
+
+stream = ExtResource( 50 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="chain" type="AudioStreamPlayer" parent="sound" index="1"]
+
+stream = ExtResource( 51 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="chop" type="AudioStreamPlayer" parent="sound" index="2"]
+
+stream = ExtResource( 52 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="dualspin" type="AudioStreamPlayer" parent="sound" index="3"]
+
+stream = ExtResource( 53 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="hurt" type="AudioStreamPlayer" parent="sound" index="4"]
+
+stream = ExtResource( 54 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="jump" type="AudioStreamPlayer" parent="sound" index="5"]
+
+stream = ExtResource( 55 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="land" type="AudioStreamPlayer" parent="sound" index="6"]
+
+stream = ExtResource( 56 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="rush" type="AudioStreamPlayer" parent="sound" index="7"]
+
+stream = ExtResource( 57 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="skewer" type="AudioStreamPlayer" parent="sound" index="8"]
+
+stream = ExtResource( 58 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="slice" type="AudioStreamPlayer" parent="sound" index="9"]
+
+stream = ExtResource( 59 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="splash_down" type="AudioStreamPlayer" parent="sound" index="10"]
+
+stream = ExtResource( 60 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="splash_up" type="AudioStreamPlayer" parent="sound" index="11"]
+
+stream = ExtResource( 61 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="stab" type="AudioStreamPlayer" parent="sound" index="12"]
+
+stream = ExtResource( 62 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="swift" type="AudioStreamPlayer" parent="sound" index="13"]
+
+stream = ExtResource( 63 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="thrust" type="AudioStreamPlayer" parent="sound" index="14"]
+
+stream = ExtResource( 64 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="void" type="AudioStreamPlayer" parent="sound" index="15"]
+
+stream = ExtResource( 65 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
 [node name="talk" type="Sprite" parent="." index="6"]
 
 material = SubResource( 35 )
 z_index = 2
-texture = ExtResource( 50 )
+texture = ExtResource( 66 )
 offset = Vector2( 4, -80 )
 _sections_unfolded = [ "Material", "Z Index" ]
 

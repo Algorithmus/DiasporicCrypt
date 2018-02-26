@@ -60,7 +60,6 @@ func _notification(what):
 	if (what == MainLoop.NOTIFICATION_WM_FOCUS_IN && !is_focused):
 		gui.set_pause_mode(Node.PAUSE_MODE_PROCESS)
 		animation.set_pause_mode(Node.PAUSE_MODE_INHERIT)
-		#TODO - play sound properly
 		music.play(music.get_playback_position())
 		shield.hide()
 		get_tree().set_pause(previously_paused)
@@ -70,7 +69,6 @@ func _notification(what):
 		shield.show()
 		gui.set_pause_mode(Node.PAUSE_MODE_STOP)
 		animation.set_pause_mode(Node.PAUSE_MODE_STOP)
-		#TODO - play sound properly
 		music.stop()
 		previously_paused = get_tree().is_paused()
 		get_tree().set_pause(true)

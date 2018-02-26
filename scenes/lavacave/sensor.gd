@@ -17,8 +17,7 @@ func _ready():
 
 func trigger_fighting():
 	var head = tilemap.get_node("BossGroup/FireDragon/head")
-	#TODO - play sounds properly
-	#head.get_node("SamplePlayer").play("roar")
+	head.get_node("SamplePlayer/roar").play()
 	head.set_physics_process(true)
 
 func process_fighting():

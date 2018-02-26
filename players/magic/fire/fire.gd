@@ -9,6 +9,6 @@ func _ready():
 	release_sfx = "fire"
 	sampleplayer = get_node("SamplePlayer")
 	collision = get_node("Area2D")
-	#TODO - play sound properly
-	#soundid = sampleplayer.play(charge_sfx)
-	#sampleplayer.set_volume_db(soundid, -10)
+	soundid = charge_sfx
+	sampleplayer.get_node(charge_sfx).play()
+	sampleplayer.get_node(charge_sfx).set_volume_db(-10)

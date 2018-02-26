@@ -358,7 +358,8 @@ func step_player(delta):
 									add_child(special_collider)
 								new_animation = current_chain_special["id"]
 								#TODO - play sounds properly
-								#get_node("sound").set_volume_db(get_node("sound").play(current_chain_special["id"]), current_chain_special["db"])
+								get_node("sound/" + current_chain_special["id"]).play()
+								get_node("sound/" + current_chain_special["id"]).set_volume_db(current_chain_special["db"])
 								if (current_chain_special["id"] == "slice"):
 									accel = -10
 								if (current_chain_special["id"] == "skewer"):
@@ -382,7 +383,8 @@ func step_player(delta):
 						chain_collided = false
 						#TODO - play sounds properly
 						#get_node("sound").stop_all()
-						#get_node("sound").set_volume_db(get_node("sound").play("chain"), 3)
+						get_node("sound/chain").play()
+						get_node("sound/chain").set_volume_db(3)
 					else:
 						chain_animation = ""
 					chain_next = !chain_next

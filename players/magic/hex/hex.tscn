@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://players/magic/hex/hex.gd" type="Script" id=1]
 [ext_resource path="res://players/magic/MagicParameters.gd" type="Script" id=2]
+[ext_resource path="res://players/magic/hex/charge.wav" type="AudioStream" id=3]
+[ext_resource path="res://players/magic/hex/hex.wav" type="AudioStream" id=4]
 
 [sub_resource type="Shader" id=1]
 
@@ -180,5 +182,21 @@ position = Vector2( 0, -16 )
 shape = SubResource( 9 )
 
 [node name="SamplePlayer" type="Node" parent="." index="4"]
+
+[node name="charge" type="AudioStreamPlayer" parent="SamplePlayer" index="0"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="hex" type="AudioStreamPlayer" parent="SamplePlayer" index="1"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
 
 

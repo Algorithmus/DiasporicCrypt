@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://players/magic/ice/ice.gd" type="Script" id=1]
 [ext_resource path="res://players/magic/ice/magic.png" type="Texture" id=2]
+[ext_resource path="res://players/magic/ice/charge.wav" type="AudioStream" id=3]
+[ext_resource path="res://players/magic/ice/ice.wav" type="AudioStream" id=4]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -119,7 +121,7 @@ _sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Damping", "Emi
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[node name="Ice" type="Node2D"]
+[node name="Ice" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -191,5 +193,21 @@ audio_bus_name = "Master"
 shape = SubResource( 8 )
 
 [node name="SamplePlayer" type="Node" parent="." index="3"]
+
+[node name="charge" type="AudioStreamPlayer" parent="SamplePlayer" index="0"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="ice" type="AudioStreamPlayer" parent="SamplePlayer" index="1"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
 
 

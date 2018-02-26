@@ -11,13 +11,12 @@ func _ready():
 	release_sfx = "ice"
 	collision = get_node("Area2D")
 	sampleplayer = get_node("SamplePlayer")
-	#TODO - play sounds properly
-	#soundid = sampleplayer.play(charge_sfx)
+	soundid = charge_sfx
+	sampleplayer.get_node(soundid).play()
 
 func change_scale(scale):
 	.change_scale(scale)
-	#TODO - play sounds properly
-	#sampleplayer.set_volume_db(soundid, 5 * (scale - 1))
+	sampleplayer.get_node(soundid).set_volume_db(5 * (scale - 1))
 
 func change_direction(new_direction):
 	.change_direction(new_direction)

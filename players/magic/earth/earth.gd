@@ -15,6 +15,7 @@ var earthquake_power = 0
 var rock = preload("res://players/magic/earth/rock.tscn")
 var sampleplayer
 var atk = 10
+var AudioFunctions = preload("res://gui/AudioFunctions.gd")
 
 func _ready():
 	set_physics_process(true)
@@ -27,9 +28,9 @@ func _physics_process(delta):
 		camera_offset = camera.get_offset()
 		set_scale(Vector2(-camera_offset.x/16.0, -camera_offset.y/16.0))
 		physicsChanged = true
-		#TODO - play sounds properly
-		#var soundid = sampleplayer.play("earth")
-		#sampleplayer.set_volume_db(soundid, earthquake_power * 10)
+		var soundid = "earth"
+		sampleplayer.get_node(soundid).play()
+		sampleplayer.get_node(soundid).set_volume_db(AudioFunctions.scale_to_db(earthquake_power / 100.0) + 10)
 	# detect all enemies on screen (that are not in the air) and stun them
 	elif (screen != null && !physicsChanged):
 		var collisions = screen.get_overlapping_areas()

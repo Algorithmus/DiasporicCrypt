@@ -12,17 +12,15 @@ func _ready():
 	bolts = get_node("bolts")
 	get_node("AnimationPlayer").play("runningbolts")
 	sampleplayer = get_node("SamplePlayer")
-	#TODO - play sounds properly
-	#soundid = sampleplayer.play("charge")
-	#sampleplayer.set_volume_db(soundid, -10)
+	soundid = "charge"
+	sampleplayer.get_node(soundid).play()
+	sampleplayer.get_node(soundid).set_volume_db(-10)
 
 func _physics_process(delta):
-	#TODO - play sounds properly
-	#if (!sampleplayer.is_active()):
-		#soundid = sampleplayer.play("charge")
-		pass
+	if (!sampleplayer.get_node(soundid).playing):
+		soundid = "charge"
+		sampleplayer.get_node(soundid).play()
 
 func change_scale(scale):
 	set_scale(Vector2(scale, scale))
-	#TODO - play sounds properly
-	#sampleplayer.set_volume_db(soundid, -10 + (scale - 1) * 5)
+	sampleplayer.get_node(soundid).set_volume_db(-10 + (scale - 1) * 5)

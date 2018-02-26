@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/items/BaseItem.gd" type="Script" id=1]
 [ext_resource path="res://scenes/items/potion/potionplus.png" type="Texture" id=2]
+[ext_resource path="res://scenes/items/potion/potion.wav" type="AudioStream" id=3]
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -52,6 +53,14 @@ audio_bus_name = "Master"
 shape = SubResource( 2 )
 
 [node name="sound" type="Node" parent="." index="3"]
+
+[node name="potion" type="AudioStreamPlayer" parent="sound" index="0"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
 
 [connection signal="screen_entered" from="enabler" to="." method="enter_screen"]
 

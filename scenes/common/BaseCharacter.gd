@@ -251,15 +251,15 @@ func check_underwater(areaTiles):
 					fluid_constant = LAVA
 				watertile = true
 				if (i.get_global_position().y - TILE_SIZE * i.get_scale().y/2 <= get_position().y - sprite_offset.y):
-					#TODO - play sounds properly
-					#if (!underwater && has_node("sound") && get_node("sound").get_sample_library().has_sample("splash_down")):
-					#	get_node("sound").set_volume_db(get_node("sound").play("splash_down"), (fall_height/defaultfallheight*current_gravity - 1)*10)
+					if (!underwater && has_node("sound/splash_down")):
+						get_node("sound/splash_down").play()
+						get_node("sound/splash_down").set_volume_db((fall_height/defaultfallheight*current_gravity - 1)*10)
 					underwater = true
 					current_gravity = fluid_constant
 		if (!watertile):
-			#TODO - play sounds properly
-			#if (underwater && has_node("sound") && get_node("sound").get_sample_library().has_sample("splash_up")):
-			#	get_node("sound").set_volume_db(get_node("sound").play("splash_up"), 0)
+			if (underwater && has_node("sound/splash_up")):
+				get_node("sound/splash_up").play()
+				get_node("sound/splash_up").set_volume_db(0)
 			underwater = false
 			current_gravity = DEFAULT_GRAVITY
 

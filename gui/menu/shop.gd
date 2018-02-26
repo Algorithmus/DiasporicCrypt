@@ -256,8 +256,7 @@ func _input(event):
 					clear_selection(currentitem)
 				else:
 					itemcontainer.get_node(currentitem.title).grab_focus()
-				#TODO - play sounds properly
-				#sfx.play("confirm")
+				sfx.get_node("confirm").play()
 
 func clear_selection(item):
 	if (itemcontainer.has_node(item.title)):

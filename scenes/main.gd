@@ -406,8 +406,7 @@ func start(player):
 	map.load_cached_map(level)
 	connect_catacombs(level)
 	level.get_node("tilemap/SaveGroup/savepoint").check_sprite()
-	#TODO - play sounds properly
-	#get_node("gui/sound").play("confirm")
+	get_node("gui/sound/confirm").play()
 	player.set_global_position(Vector2(-16, 322))
 	get_node("playercontainer").add_child(player)
 	player.load_tilemap(level)
@@ -433,8 +432,8 @@ func hide_choice():
 	no.disconnect("pressed", self, "global_menu")
 
 func reset_level():
-	#TODO - play sounds properly
-	#get_node("gui/sound").play("confirm")
+	get_node("gui/sound/confirm").play()
+	AudioServer.set_bus_effect_enabled(AudioServer.get_bus_index("BGM"), 0, false)
 	hide_choice()
 	var old_player = get_node("playercontainer/player")
 	get_node("gui/CanvasLayer/hud/SpellIcons/" + old_player.get_selected_spell_id()).hide()
@@ -477,8 +476,8 @@ func reset_level():
 	get_tree().set_pause(false)
 
 func global_menu():
-	#TODO - play sounds properly
-	#get_node("gui/sound").play("confirm")
+	get_node("gui/sound/confirm").play()
+	AudioServer.set_bus_effect_enabled(AudioServer.get_bus_index("BGM"), 0, false)
 	get_tree().change_scene("res://scenes/global.tscn")
 
 func clear_game():

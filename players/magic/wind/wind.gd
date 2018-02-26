@@ -36,9 +36,8 @@ func update_size():
 		gust.process_material.scale = 0.8 * gust_power + 0.2
 		if (gust_power > 0.5):
 			screen.get_node("collision").set_name("magic")
-		#TODO - play sounds properly
-		#var soundid = sampleplayer.play("wind")
-		#sampleplayer.set_volume_db(soundid, gust_power * 10)
+		sampleplayer.get_node("wind").play()
+		sampleplayer.get_node("wind").set_volume_db(gust_power * 10)
 
 func _physics_process(delta):
 	if (screen.get_scale() == Vector2(1, 1)):

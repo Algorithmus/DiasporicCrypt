@@ -122,8 +122,7 @@ func _input(event):
 			oldscroll.set("custom_colors/font_color", null)
 			index = scrollcontainer.get_child(currentindex).get_name()
 			show_scroll()
-			#TODO - play sounds properly
-			#sfx.play("cursor")
+			sfx.get_node("cursor").play()
 		elif (event.is_action_pressed("ui_left") && currentindex > 0):
 			currentline = 0
 			currentindex -= 1
@@ -131,7 +130,6 @@ func _input(event):
 			oldscroll.set("custom_colors/font_color", null)
 			index = scrollcontainer.get_child(currentindex).get_name()
 			show_scroll()
-			#TODO - play sounds properly
-			#sfx.play("cursor")
+			sfx.get_node("cursor").play()
 	scrollcontent.scroll_to_line(currentline)
 		

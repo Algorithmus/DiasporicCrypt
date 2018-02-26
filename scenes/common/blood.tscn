@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/common/blood.wav" type="AudioStream" id=1]
 
 [sub_resource type="Curve" id=1]
 
@@ -83,5 +85,13 @@ v_frames = 1
 _sections_unfolded = [ "Drawing", "Process Material", "Time" ]
 
 [node name="sound" type="Node" parent="." index="1"]
+
+[node name="blood" type="AudioStreamPlayer" parent="sound" index="0"]
+
+stream = ExtResource( 1 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
 
 

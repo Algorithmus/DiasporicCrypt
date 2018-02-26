@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/common/breakables/SpecialBreakable.gd" type="Script" id=1]
 [ext_resource path="res://scenes/springislandcastle/BGs/edge.png" type="Texture" id=2]
+[ext_resource path="res://scenes/common/breakables/crumble.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -13,7 +14,7 @@ extents = Vector2( 16, 16 )
 custom_solver_bias = 0.0
 extents = Vector2( 18, 18 )
 
-[node name="SpecialBreakable" type="Node2D"]
+[node name="SpecialBreakable" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 __meta__ = {
@@ -64,6 +65,14 @@ audio_bus_name = "Master"
 shape = SubResource( 2 )
 
 [node name="sound" type="Node" parent="." index="1"]
+
+[node name="crumble" type="AudioStreamPlayer" parent="sound" index="0"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
 
 [connection signal="screen_entered" from="KinematicBody2D/enabler" to="." method="enter_screen"]
 

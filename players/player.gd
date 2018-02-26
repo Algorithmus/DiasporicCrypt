@@ -629,8 +629,7 @@ func do_attack():
 	var weapon_height = 0
 	if (is_crouching):
 		weapon_height = sprite_offset.y
-	#TODO - play sound properly
-	#get_node("sound").set_volume_db(get_node("sound").play("attack"), -10)
+	get_node("sound/attack").set_volume_db(-10)
 	weapon_collider.set_position(Vector2((weapon_offset.x + sprite_offset.x + 4) * direction, -sprite_offset.y + weapon_offset.y + weapon_height))
 	add_child(weapon_collider)
 	weapon_collided = false
@@ -674,10 +673,8 @@ func check_animations(new_animation, animation_speed, horizontal_motion, ladderY
 			if (!horizontal_motion):
 				new_animation = "land"
 			if (current_animation != "land"):
-				#TODO - play sounds properly
-				#get_node("sound").set_volume_db(get_node("sound").play("land"), (fall_height/defaultfallheight*current_gravity - 1)*10)
-				pass
-		
+				get_node("sound/land").set_volume_db((fall_height/defaultfallheight*current_gravity - 1)*10)
+
 		if (!falling && animation_player.get_current_animation().match("*aattack")):
 			attack_frame = animation_player.get_current_animation_position()
 		
@@ -944,10 +941,9 @@ func check_magic():
 					charge_obj = magic_spells[selected_spell]["charge"].instance()
 					charge_obj.set_position(Vector2(0, sprite_offset.y))
 					add_child(charge_obj)
-					var sampleplayer = charge_obj.get_node("SamplePlayer")
-					#TODO - play sounds properly
-					#charge_volume = sampleplayer.play("charge")
-					#sampleplayer.set_volume_db(charge_volume, -5)
+					var sampleplayer = charge_obj.get_node("SamplePlayer/charge")
+					sampleplayer.play()
+					sampleplayer.set_volume_db(-5)
 				else:
 					is_charging = false
 					charge_counter = 0
@@ -963,15 +959,13 @@ func check_magic():
 				charge_obj = magic_spells[selected_spell]["charge"].instance()
 				charge_obj.set_position(Vector2(0, sprite_offset.y))
 				add_child(charge_obj)
-				#TODO - play sounds properly
-				#charge_volume = charge_obj.get_node("SamplePlayer").play("charge")
+				charge_volume = charge_obj.get_node("SamplePlayer/charge").play()
 			if (magic_spells[selected_spell]["id"] == "wind"):
 				charge_obj = magic_spells[selected_spell]["charge"].instance()
 				charge_obj.set_position(Vector2(0, sprite_offset.y))
 				add_child(charge_obj)
-				#TODO - play sounds properly
-				#charge_volume = charge_obj.get_node("SamplePlayer").play("charge")
-				#charge_obj.get_node("SamplePlayer").set_volume_db(charge_volume, -5)
+				charge_obj.get_node("SamplePlayer/charge").play()
+				charge_obj.get_node("SamplePlayer/charge").set_volume_db(-5)
 	# charge magic
 	elif (is_charging):
 		if (Input.is_action_pressed("ui_magic") && !is_transforming):
@@ -994,11 +988,10 @@ func check_magic():
 			if (magic_spells[selected_spell]["id"] == "shield"):
 				var scale = charge_counter/float(MAX_CHARGE) + 1
 				charge_obj.set_scale(Vector2(scale, scale))
-				var sampleplayer = charge_obj.get_node("SamplePlayer")
-				#TODO - play sounds properly
-				#if (!sampleplayer.is_active()):
-				#	charge_volume = sampleplayer.play("charge")
-				#sampleplayer.set_volume_db(charge_volume, (scale - 1) * 10 - 5)
+				var sampleplayer = charge_obj.get_node("SamplePlayer/charge")
+				if (!sampleplayer.playing):
+					sampleplayer.play()
+				sampleplayer.set_volume_db((scale - 1) * 10 - 5)
 			if (magic_spells[selected_spell]["id"] == "void"):
 				# void spell is an exception and takes max mp required
 				charge_counter = MAX_CHARGE
@@ -1016,23 +1009,21 @@ func check_magic():
 				var size = float(charge_counter) / MAX_CHARGE + 1
 				charge_obj.get_node("rocks").process_material.initial_velocity = velocity
 				charge_obj.get_node("rocks").process_material.scale = size
-				var sampleplayer = charge_obj.get_node("SamplePlayer")
-				#TODO - play sound properly
-				#if (!sampleplayer.is_active()):
-				#	charge_volume = sampleplayer.play("charge")
+				var sampleplayer = charge_obj.get_node("SamplePlayer/charge")
+				if (!sampleplayer.playing):
+					sampleplayer.play()
 				var volume = 10 * charge_counter / MAX_CHARGE
-				#sampleplayer.set_volume_db(charge_volume, volume)
+				sampleplayer.set_volume_db(volume)
 			if (magic_spells[selected_spell]["id"] == "wind"):
 				var velocity = 40.0 * charge_counter / MAX_CHARGE
 				var size = 0.67 * charge_counter / MAX_CHARGE + 0.33
 				charge_obj.get_node("cloud").process_material.initial_velocity = velocity
 				charge_obj.get_node("cloud").process_material.scale = size
-				var sampleplayer = charge_obj.get_node("SamplePlayer")
-				#TODO - play sounds properly
-				#if (!sampleplayer.is_active()):
-				#	charge_volume = sampleplayer.play("charge")
+				var sampleplayer = charge_obj.get_node("SamplePlayer/charge")
+				if (!sampleplayer.playing):
+					sampleplayer.play()
 				var volume = 10 * charge_counter / MAX_CHARGE - 5
-				#sampleplayer.set_volume_db(charge_volume, volume)
+				sampleplayer.set_volume_db(volume)
 		else:
 			var scale = float(charge_counter)/MAX_CHARGE
 			var mp_consumed = max(round(magic_spells[selected_spell]["mp"] * scale), 1)
@@ -1070,26 +1061,23 @@ func check_magic():
 			if (magic_spells[selected_spell]["id"] == "shield"):
 				if (has_node(charge_obj.get_name())):
 					remove_child(charge_obj)
-				#TODO - play sounds properly
-				#charge_obj.get_node("SamplePlayer").stop_all()
+				charge_obj.get_node("SamplePlayer/charge").stop()
 				charge_obj = null
 				shield = magic_spells[selected_spell]["attack"].instance()
 				shield_delay = 300 * (scale + 1)
 				shield_current_delay = 0
 				var shieldbody = shield.get_node("shield")
-				var shieldcolor = shieldbody.get_modulate()
+				var shieldcolor = shieldbody.get_self_modulate()
 				shield_alpha = 0.5 * ((3 - 0.7) * scale + 0.7 - 1)/2.0
-				shieldbody.set_modulate(Color(shieldcolor.r, shieldcolor.g, shieldcolor.b, shield_alpha))
+				shieldbody.set_self_modulate(Color(shieldcolor.r, shieldcolor.g, shieldcolor.b, shield_alpha))
 				add_child(shield)
-				#TODO - play sounds properly
-				#shield.get_node("SamplePlayer").play("on")
+				shield.get_node("SamplePlayer/on").play()
 				shield.get_node("AnimationPlayer").play("rotate")
 			if (magic_spells[selected_spell]["id"] == "void"):
 				if (charge_obj.get("is_valid")):
 					set_global_position(charge_obj.get_global_position())
 					charge_obj.set("is_set", true)
-					#TODO - play sound properly
-					#charge_obj.get_node("SamplePlayer").play("void")
+					charge_obj.get_node("SamplePlayer/void").play()
 					current_mp -= mp_consumed
 				else:
 					charge_obj.set("fail", true)
@@ -1100,8 +1088,7 @@ func check_magic():
 			if (magic_spells[selected_spell]["id"] == "earth"):
 				if (has_node(charge_obj.get_name())):
 					remove_child(charge_obj)
-				#TODO - play sound properly
-				#charge_obj.get_node("SamplePlayer").stop_all()
+				charge_obj.get_node("SamplePlayer/charge").stop()
 				charge_obj = null
 				var earthquake_obj = magic_spells[selected_spell]["attack"].instance()
 				earthquake_obj.set("player", self)
@@ -1115,8 +1102,7 @@ func check_magic():
 			if (magic_spells[selected_spell]["id"] == "wind"):
 				if (has_node(charge_obj.get_name())):
 					remove_child(charge_obj)
-				#TODO - play sounds properly
-				#charge_obj.get_node("SamplePlayer").stop_all()
+				charge_obj.get_node("SamplePlayer/charge").stop()
 				charge_obj = null
 				var wind_obj = magic_spells[selected_spell]["attack"].instance()
 				wind_obj.set("camera", get_node("Camera2D"))
@@ -1154,8 +1140,7 @@ func step_shield():
 		var shieldcolor = shieldbody.get_self_modulate()
 		shieldbody.set_self_modulate(Color(shieldcolor.r, shieldcolor.g, shieldcolor.b, alpha))
 		if (shield_current_delay == shield_delay - 39):
-			#TODO - play sounds properly
-			#shield.get_node("SamplePlayer").play("off")
+			shield.get_node("SamplePlayer/off").play()
 			pass
 		if (shield_current_delay >= shield_delay):
 			if (has_node(shield.get_name())):
@@ -1201,9 +1186,6 @@ func _ready():
 	weapon_collider.connect("body_entered", self, "_on_weapon_body_collision")
 	
 	reset_blacklist()
-	
-	#TODO - play sounds properly
-	#get_node("sound").set_polyphony(10)
 	
 	set_process_input(true)
 	camera_offset = get_node("Camera2D").get_offset()

@@ -7,9 +7,7 @@ var countdown = 100
 # Mine used by players
 
 func _ready():
-	#TODO - play sounds properly
-	#sampleplayer.play("set")
-	pass
+	sampleplayer.get_node("set").play()
 
 func collision_setup():
 	collision = get_node("collision")
