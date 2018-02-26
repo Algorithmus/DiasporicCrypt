@@ -629,6 +629,7 @@ func do_attack():
 	var weapon_height = 0
 	if (is_crouching):
 		weapon_height = sprite_offset.y
+	get_node("sound/attack").play()
 	get_node("sound/attack").set_volume_db(-10)
 	weapon_collider.set_position(Vector2((weapon_offset.x + sprite_offset.x + 4) * direction, -sprite_offset.y + weapon_offset.y + weapon_height))
 	add_child(weapon_collider)
@@ -673,7 +674,8 @@ func check_animations(new_animation, animation_speed, horizontal_motion, ladderY
 			if (!horizontal_motion):
 				new_animation = "land"
 			if (current_animation != "land"):
-				get_node("sound/land").set_volume_db((fall_height/defaultfallheight*current_gravity - 1)*10)
+				get_node("sound/land").play()
+				get_node("sound/land").set_volume_db(min((fall_height/defaultfallheight*current_gravity - 1)*10, 20))
 
 		if (!falling && animation_player.get_current_animation().match("*aattack")):
 			attack_frame = animation_player.get_current_animation_position()
@@ -1266,6 +1268,7 @@ func teleport(pos, ladder):
 
 func loop_jump_animation():
 	animation_player.seek(0.1, true)
+	get_node("sound/jump").stop()
 	
 func loop_fall_animation():
 	animation_player.seek(0.2, true)

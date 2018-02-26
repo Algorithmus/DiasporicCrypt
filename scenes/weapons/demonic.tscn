@@ -5,7 +5,7 @@
 [ext_resource path="res://players/friederich/demonic/attacks/chop.png" type="Texture" id=3]
 [ext_resource path="res://players/friederich/demonic/attacks/void.png" type="Texture" id=4]
 
-[sub_resource type="Shader" id=6]
+[sub_resource type="Shader" id=1]
 
 code = "shader_type canvas_item;
 render_mode blend_premul_alpha;
@@ -41,10 +41,10 @@ float auraa=(maxa-mina);
 COLOR.rgb+=aura_color.rgb*(maxa-mina);
 }"
 
-[sub_resource type="ShaderMaterial" id=7]
+[sub_resource type="ShaderMaterial" id=2]
 
 render_priority = 0
-shader = SubResource( 6 )
+shader = SubResource( 1 )
 shader_param/aura_width = 2.0
 shader_param/aura_color = Color( 0.709804, 0.733333, 0, 1 )
 shader_param/modulate = Color( 0.247059, 0.227451, 0.219608, 1 )
@@ -106,7 +106,7 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Damping", "Emission Shape", "Flags", "Gravity", "Hue Variation", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Scale", "Spread", "Tangential Accel", "Trail" ]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=6]
 
 code = "shader_type canvas_item;
 
@@ -140,16 +140,16 @@ float auraa=(maxa-mina);
 COLOR.rgb+=aura_color.rgb*(maxa-mina);
 }"
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=7]
 
 render_priority = 0
-shader = SubResource( 1 )
+shader = SubResource( 6 )
 shader_param/aura_width = 2.0
 shader_param/aura_color = Color( 1, 0, 0, 1 )
 shader_param/opacity = 1.0
 _sections_unfolded = [ "shader_param" ]
 
-[node name="attack" type="Node2D" index="0"]
+[node name="attack" type="Node2D"]
 
 _sections_unfolded = [ "Transform", "Z Index" ]
 __meta__ = {
@@ -167,7 +167,7 @@ frame = 4
 
 [node name="sword" type="Sprite" parent="." index="1"]
 
-material = SubResource( 7 )
+material = SubResource( 2 )
 texture = ExtResource( 2 )
 offset = Vector2( -80, -56 )
 vframes = 2
@@ -203,7 +203,7 @@ _sections_unfolded = [ "Textures", "Transform" ]
 
 [node name="attack" type="Sprite" parent="." index="3"]
 
-material = SubResource( 2 )
+material = SubResource( 7 )
 texture = ExtResource( 4 )
 offset = Vector2( -160, -96 )
 vframes = 2

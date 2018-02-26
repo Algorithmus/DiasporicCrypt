@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/weapons/special.gd" type="Script" id=1]
 [ext_resource path="res://players/friederich/attacks/void/attack.png" type="Texture" id=2]
 [ext_resource path="res://players/friederich/attacks/void/aura.png" type="Texture" id=3]
 [ext_resource path="res://players/friederich/attacks/void/sword.png" type="Texture" id=4]
+[ext_resource path="res://players/friederich/attacks/void/void.wav" type="AudioStream" id=5]
 
-[sub_resource type="Shader" id=6]
+[sub_resource type="Shader" id=1]
 
 code = "shader_type canvas_item;
 render_mode blend_premul_alpha;
@@ -41,21 +42,21 @@ float auraa=(maxa-mina);
 COLOR.rgb+=aura_color.rgb*(maxa-mina);
 }"
 
-[sub_resource type="ShaderMaterial" id=7]
+[sub_resource type="ShaderMaterial" id=2]
 
 render_priority = 0
-shader = SubResource( 6 )
+shader = SubResource( 1 )
 shader_param/aura_width = 2.0
 shader_param/aura_color = Color( 0.709804, 0.733333, 0, 1 )
 shader_param/modulate = Color( 0.247059, 0.227451, 0.219608, 1 )
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 144, 80 )
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=4]
 
 length = 0.6
 loop = false
@@ -109,16 +110,16 @@ tracks/3/keys = {
 "values": [ 1.0, 0.0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("sound:play/play")
+tracks/4/path = NodePath("sound/void:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ "void" ]
+"values": [ true, false ]
 }
 
 [node name="Void" type="Area2D"]
@@ -156,7 +157,7 @@ frame = 4
 
 [node name="sword" type="Sprite" parent="attack" index="2"]
 
-material = SubResource( 7 )
+material = SubResource( 2 )
 texture = ExtResource( 4 )
 offset = Vector2( -80, -56 )
 vframes = 2
@@ -166,7 +167,7 @@ _sections_unfolded = [ "Material" ]
 
 [node name="weapon" type="CollisionShape2D" parent="." index="1"]
 
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 
@@ -175,9 +176,17 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/attack = SubResource( 9 )
+anims/attack = SubResource( 4 )
 blend_times = [  ]
 
 [node name="sound" type="Node" parent="." index="3"]
+
+[node name="void" type="AudioStreamPlayer" parent="sound" index="0"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
 
 

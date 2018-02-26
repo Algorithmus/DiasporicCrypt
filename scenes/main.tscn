@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://scenes/main.gd" type="Script" id=1]
 [ext_resource path="res://levels/common/catacombs.tscn" type="PackedScene" id=2]
@@ -38,8 +38,9 @@
 [ext_resource path="res://gui/loading/logo.png" type="Texture" id=36]
 [ext_resource path="res://gui/confirm.wav" type="AudioStream" id=37]
 [ext_resource path="res://gui/cursor.wav" type="AudioStream" id=38]
-[ext_resource path="res://levels/common/catacombs.ogg" type="AudioStream" id=39]
-[ext_resource path="res://scenes/GameClock.gd" type="Script" id=40]
+[ext_resource path="res://gui/sequences/demonic.wav" type="AudioStream" id=39]
+[ext_resource path="res://levels/common/catacombs.ogg" type="AudioStream" id=40]
+[ext_resource path="res://scenes/GameClock.gd" type="Script" id=41]
 
 [sub_resource type="Shader" id=1]
 
@@ -431,16 +432,16 @@ tracks/3/keys = {
 } ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../../sound:play/play")
+tracks/4/path = NodePath("../../sound/demonic:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ "demonic" ]
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=20]
@@ -503,7 +504,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="world" type="Node2D"]
+[node name="world" type="Node2D" index="0"]
 
 pause_mode = 2
 script = ExtResource( 1 )
@@ -1310,7 +1311,7 @@ _sections_unfolded = [ "Process Material", "Textures", "Time", "Transform" ]
 
 [node name="sprite" type="Node2D" parent="gui/CanvasLayer/sequences/demonic" index="2"]
 
-position = Vector2( -800, 0 )
+position = Vector2( 800, 0 )
 
 [node name="friederich" type="Sprite" parent="gui/CanvasLayer/sequences/demonic/sprite" index="0"]
 
@@ -1457,9 +1458,17 @@ autoplay = false
 mix_target = 0
 bus = "SFX"
 
-[node name="music" type="AudioStreamPlayer" parent="." index="3"]
+[node name="demonic" type="AudioStreamPlayer" parent="gui/sound" index="2"]
 
 stream = ExtResource( 39 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="music" type="AudioStreamPlayer" parent="." index="3"]
+
+stream = ExtResource( 40 )
 volume_db = 0.0
 autoplay = true
 mix_target = 0
@@ -1478,7 +1487,7 @@ blend_times = [  ]
 
 [node name="gameclock" type="Node2D" parent="." index="5"]
 
-script = ExtResource( 40 )
+script = ExtResource( 41 )
 
 [connection signal="pressed" from="gui/CanvasLayer/choice/yes/button" to="." method="confirm_selected"]
 

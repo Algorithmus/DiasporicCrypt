@@ -482,6 +482,7 @@ func _on_warp_pressed():
 	hudmap.clear_objects()
 	hudmap.load_cached_map(level)
 	ProjectSettings.set("current_level", map.title)
-	sfx.get_node("confirm").play()
+	# The worldmap object gets removed before the sound finishes playing, so use the global one
+	get_parent().get_parent().get_node("sound/confirm").play()
 	get_tree().get_root().get_node("world").warp_animation()
 

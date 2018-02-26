@@ -4702,7 +4702,7 @@ tracks/13/keys = {
 "values": [ false ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("sound:play/play")
+tracks/14/path = NodePath("NormalSpriteGroup/hurt:visible")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -4711,10 +4711,10 @@ tracks/14/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "hurt" ]
+"values": [ true ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("sound:default/volume_db")
+tracks/15/path = NodePath("NormalSpriteGroup/uattack:visible")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -4722,11 +4722,11 @@ tracks/15/enabled = true
 tracks/15/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ -10.0 ]
+"update": 1,
+"values": [ false ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("NormalSpriteGroup/hurt:visible")
+tracks/16/path = NodePath("NormalSpriteGroup/uaattack:visible")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -4735,10 +4735,10 @@ tracks/16/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("NormalSpriteGroup/uattack:visible")
+tracks/17/path = NodePath("NormalSpriteGroup/daattack:visible")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -4750,7 +4750,7 @@ tracks/17/keys = {
 "values": [ false ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("NormalSpriteGroup/uaattack:visible")
+tracks/18/path = NodePath("NormalSpriteGroup/dgattack:visible")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -4762,7 +4762,7 @@ tracks/18/keys = {
 "values": [ false ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("NormalSpriteGroup/daattack:visible")
+tracks/19/path = NodePath("NormalSpriteGroup/dgaattack:visible")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -4774,7 +4774,7 @@ tracks/19/keys = {
 "values": [ false ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("NormalSpriteGroup/dgattack:visible")
+tracks/20/path = NodePath("NormalSpriteGroup/ddgaattack:visible")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -4786,7 +4786,7 @@ tracks/20/keys = {
 "values": [ false ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("NormalSpriteGroup/dgaattack:visible")
+tracks/21/path = NodePath("NormalSpriteGroup/swing:visible")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
@@ -4798,7 +4798,7 @@ tracks/21/keys = {
 "values": [ false ]
 }
 tracks/22/type = "value"
-tracks/22/path = NodePath("NormalSpriteGroup/ddgaattack:visible")
+tracks/22/path = NodePath("NormalSpriteGroup/charge:visible")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
@@ -4810,7 +4810,7 @@ tracks/22/keys = {
 "values": [ false ]
 }
 tracks/23/type = "value"
-tracks/23/path = NodePath("NormalSpriteGroup/swing:visible")
+tracks/23/path = NodePath("NormalSpriteGroup/magic:visible")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false
@@ -4822,7 +4822,7 @@ tracks/23/keys = {
 "values": [ false ]
 }
 tracks/24/type = "value"
-tracks/24/path = NodePath("NormalSpriteGroup/charge:visible")
+tracks/24/path = NodePath("NormalSpriteGroup/transform:visible")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/imported = false
@@ -4834,7 +4834,7 @@ tracks/24/keys = {
 "values": [ false ]
 }
 tracks/25/type = "value"
-tracks/25/path = NodePath("NormalSpriteGroup/magic:visible")
+tracks/25/path = NodePath("NormalSpriteGroup/detransform:visible")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/imported = false
@@ -4846,7 +4846,7 @@ tracks/25/keys = {
 "values": [ false ]
 }
 tracks/26/type = "value"
-tracks/26/path = NodePath("NormalSpriteGroup/transform:visible")
+tracks/26/path = NodePath("NormalSpriteGroup/wall:visible")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/imported = false
@@ -4858,7 +4858,7 @@ tracks/26/keys = {
 "values": [ false ]
 }
 tracks/27/type = "value"
-tracks/27/path = NodePath("NormalSpriteGroup/detransform:visible")
+tracks/27/path = NodePath("NormalSpriteGroup/gameover:visible")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/imported = false
@@ -4870,7 +4870,7 @@ tracks/27/keys = {
 "values": [ false ]
 }
 tracks/28/type = "value"
-tracks/28/path = NodePath("NormalSpriteGroup/wall:visible")
+tracks/28/path = NodePath("NormalSpriteGroup/hurt:self_modulate")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/imported = false
@@ -4878,11 +4878,11 @@ tracks/28/enabled = true
 tracks/28/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/29/type = "value"
-tracks/29/path = NodePath("NormalSpriteGroup/gameover:visible")
+tracks/29/path = NodePath("sound/hurt:playing")
 tracks/29/interp = 1
 tracks/29/loop_wrap = true
 tracks/29/imported = false
@@ -4891,10 +4891,10 @@ tracks/29/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/30/type = "value"
-tracks/30/path = NodePath("NormalSpriteGroup/hurt:self_modulate")
+tracks/30/path = NodePath("sound/hurt:volume_db")
 tracks/30/interp = 1
 tracks/30/loop_wrap = true
 tracks/30/imported = false
@@ -4903,7 +4903,7 @@ tracks/30/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ -10.0 ]
 }
 
 [sub_resource type="Animation" id=18]
@@ -5424,7 +5424,7 @@ tracks/14/keys = {
 "values": [ false ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("sound:play/play")
+tracks/15/path = NodePath("NormalSpriteGroup/uattack:visible")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -5432,11 +5432,11 @@ tracks/15/enabled = true
 tracks/15/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 2,
-"values": [ "jump2" ]
+"update": 1,
+"values": [ false ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("NormalSpriteGroup/uattack:visible")
+tracks/16/path = NodePath("NormalSpriteGroup/uaattack:visible")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -5448,7 +5448,7 @@ tracks/16/keys = {
 "values": [ false ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("NormalSpriteGroup/uaattack:visible")
+tracks/17/path = NodePath("NormalSpriteGroup/daattack:visible")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -5460,7 +5460,7 @@ tracks/17/keys = {
 "values": [ false ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("NormalSpriteGroup/daattack:visible")
+tracks/18/path = NodePath("NormalSpriteGroup/dgattack:visible")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -5472,7 +5472,7 @@ tracks/18/keys = {
 "values": [ false ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("NormalSpriteGroup/dgattack:visible")
+tracks/19/path = NodePath("NormalSpriteGroup/dgaattack:visible")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -5484,7 +5484,7 @@ tracks/19/keys = {
 "values": [ false ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("NormalSpriteGroup/dgaattack:visible")
+tracks/20/path = NodePath("NormalSpriteGroup/ddgaattack:visible")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -5496,7 +5496,7 @@ tracks/20/keys = {
 "values": [ false ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("NormalSpriteGroup/ddgaattack:visible")
+tracks/21/path = NodePath("NormalSpriteGroup/swing:visible")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
@@ -5508,7 +5508,7 @@ tracks/21/keys = {
 "values": [ false ]
 }
 tracks/22/type = "value"
-tracks/22/path = NodePath("NormalSpriteGroup/swing:visible")
+tracks/22/path = NodePath("NormalSpriteGroup/charge:visible")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
@@ -5520,7 +5520,7 @@ tracks/22/keys = {
 "values": [ false ]
 }
 tracks/23/type = "value"
-tracks/23/path = NodePath("NormalSpriteGroup/charge:visible")
+tracks/23/path = NodePath("NormalSpriteGroup/magic:visible")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false
@@ -5532,7 +5532,7 @@ tracks/23/keys = {
 "values": [ false ]
 }
 tracks/24/type = "value"
-tracks/24/path = NodePath("NormalSpriteGroup/magic:visible")
+tracks/24/path = NodePath("NormalSpriteGroup/transform:visible")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/imported = false
@@ -5544,7 +5544,7 @@ tracks/24/keys = {
 "values": [ false ]
 }
 tracks/25/type = "value"
-tracks/25/path = NodePath("NormalSpriteGroup/transform:visible")
+tracks/25/path = NodePath("NormalSpriteGroup/detransform:visible")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/imported = false
@@ -5556,7 +5556,7 @@ tracks/25/keys = {
 "values": [ false ]
 }
 tracks/26/type = "value"
-tracks/26/path = NodePath("NormalSpriteGroup/detransform:visible")
+tracks/26/path = NodePath("NormalSpriteGroup/wall:visible")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/imported = false
@@ -5568,7 +5568,7 @@ tracks/26/keys = {
 "values": [ false ]
 }
 tracks/27/type = "value"
-tracks/27/path = NodePath("NormalSpriteGroup/wall:visible")
+tracks/27/path = NodePath("NormalSpriteGroup/gameover:visible")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/imported = false
@@ -5580,7 +5580,7 @@ tracks/27/keys = {
 "values": [ false ]
 }
 tracks/28/type = "value"
-tracks/28/path = NodePath("NormalSpriteGroup/gameover:visible")
+tracks/28/path = NodePath("sound/jump:playing")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/imported = false
@@ -5589,7 +5589,7 @@ tracks/28/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=20]
@@ -8604,7 +8604,7 @@ shader_param/aura_color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
 shader_param/opacity = 1.0
 _sections_unfolded = [ "shader_param" ]
 
-[node name="player" type="KinematicBody2D" index="0"]
+[node name="player" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 524288
@@ -8620,6 +8620,7 @@ __meta__ = {
 
 [node name="idle" type="Sprite" parent="NormalSpriteGroup" index="0"]
 
+visible = false
 texture = ExtResource( 2 )
 offset = Vector2( 0, -13 )
 hframes = 4
@@ -8634,7 +8635,6 @@ hframes = 8
 
 [node name="jump" type="Sprite" parent="NormalSpriteGroup" index="2"]
 
-visible = false
 texture = ExtResource( 4 )
 offset = Vector2( 0, -13 )
 hframes = 3
@@ -8757,6 +8757,7 @@ visible = false
 
 [node name="attack" type="Sprite" parent="NormalSpriteGroup/attack" index="0"]
 
+visible = false
 texture = ExtResource( 17 )
 offset = Vector2( 48, -62 )
 hframes = 3
@@ -9091,7 +9092,7 @@ bus = "SFX"
 [node name="hurt" type="AudioStreamPlayer" parent="sound" index="1"]
 
 stream = ExtResource( 39 )
-volume_db = 0.0
+volume_db = -10.0
 autoplay = false
 mix_target = 0
 bus = "SFX"

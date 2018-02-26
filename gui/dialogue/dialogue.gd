@@ -14,6 +14,8 @@ var choiceclass = preload("res://gui/dialogue/choice.tscn")
 
 var shopclass = preload("res://gui/menu/shopping.tscn")
 var mapclass = preload("res://gui/worldmap/map.tscn")
+var sfxclass = preload("res://gui/menu/sfx.tscn")
+var sfx
 
 const DIAG_DIRECTION = 0
 const DIAG_TITLE = 1
@@ -57,6 +59,8 @@ func _ready():
 	vchoice = textarea.get_node("vchoice")
 	next.hide()
 	profile.hide()
+	sfx = sfxclass.instance()
+	add_child(sfx)
 	set_physics_process(true)
 
 func has_choice():
@@ -126,6 +130,7 @@ func check_dialog():
 	if (text.get_total_character_count() == text.get_visible_characters() || text.get_visible_characters() < 0):
 		if (has_choice() && find_choice() != null):
 			var choice = find_choice()
+			sfx.get_node("confirm").play()
 			if (choice.get("action") == "dialog"):
 				clear_choices()
 				if (typeof(choice.get("data")) == TYPE_INT):
