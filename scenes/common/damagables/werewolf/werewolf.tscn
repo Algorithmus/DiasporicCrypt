@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/common/damagables/werewolf/Werewolf.gd" type="Script" id=1]
 [ext_resource path="res://scenes/common/damagables/werewolf/walk.png" type="Texture" id=2]
 [ext_resource path="res://scenes/common/damagables/werewolf/hurt.png" type="Texture" id=3]
 [ext_resource path="res://scenes/common/damagables/werewolf/rush.png" type="Texture" id=4]
-[ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/common/damagables/skeleton/die.wav" type="AudioStream" id=5]
+[ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Shader" id=1]
 
@@ -182,7 +183,7 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("SamplePlayer:play/play")
+tracks/3/path = NodePath("hurt:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -191,10 +192,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "s_die" ]
+"values": [ false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("hurt:visible")
+tracks/4/path = NodePath("attack:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -206,16 +207,16 @@ tracks/4/keys = {
 "values": [ false ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("attack:visible")
+tracks/5/path = NodePath("SamplePlayer/die:playing")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -403,7 +404,6 @@ visible = false
 texture = ExtResource( 3 )
 offset = Vector2( -16, 0 )
 hframes = 5
-frame = 4
 
 [node name="hurt" type="Sprite" parent="." index="3"]
 
@@ -476,7 +476,15 @@ shape = SubResource( 10 )
 
 [node name="SamplePlayer" type="Node" parent="." index="7"]
 
-[node name="Stun" parent="." index="8" instance=ExtResource( 5 )]
+[node name="die" type="AudioStreamPlayer" parent="SamplePlayer" index="0"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="Stun" parent="." index="8" instance=ExtResource( 6 )]
 
 position = Vector2( 0, -64 )
 

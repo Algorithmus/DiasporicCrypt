@@ -106,28 +106,28 @@ length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:visibility/opacity")
+tracks/0/path = NodePath("aura:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 1.0, 0.0 ]
+"update": 1,
+"values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("aura:config/emitting")
+tracks/1/path = NodePath("sprite:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -136,7 +136,7 @@ length = 0.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:visibility/opacity")
+tracks/0/path = NodePath("sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -145,7 +145,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.5, 0.0, 0.5, 0.0, 0.5 ]
+"values": [ Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.5 ) ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -166,7 +166,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 3, 2, 1, 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("sprite:visibility/opacity")
+tracks/1/path = NodePath("sprite:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -175,10 +175,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 1.0 ]
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("aura:config/emitting")
+tracks/2/path = NodePath("aura:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -190,7 +190,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[node name="Lich" type="Node2D"]
+[node name="Lich" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
@@ -223,6 +223,7 @@ _sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "T
 
 texture = ExtResource( 3 )
 hframes = 5
+_sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="damagable" type="Area2D" parent="." index="2"]
 

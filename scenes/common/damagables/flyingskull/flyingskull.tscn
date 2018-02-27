@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/common/damagables/flyingskull/FlyingSkull.gd" type="Script" id=1]
 [ext_resource path="res://players/magic/fire/magic.png" type="Texture" id=2]
 [ext_resource path="res://scenes/common/damagables/flyingskull/flyingskull.png" type="Texture" id=3]
-[ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/damagables/skeleton/die.wav" type="AudioStream" id=4]
+[ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -118,7 +119,7 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("SamplePlayer:play/play")
+tracks/3/path = NodePath("hurt:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -127,10 +128,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "s_die" ]
+"values": [ false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("hurt:visible")
+tracks/4/path = NodePath("aura:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -142,16 +143,16 @@ tracks/4/keys = {
 "values": [ false ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("aura:config/emitting")
+tracks/5/path = NodePath("SamplePlayer/die:playing")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -220,7 +221,7 @@ tracks/4/keys = {
 "values": [ Vector2( -5, -5 ), Vector2( -10, -5 ), Vector2( -5, -5 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("aura:config/emitting")
+tracks/5/path = NodePath("aura:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -286,7 +287,7 @@ tracks/3/keys = {
 "values": [ 0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("aura:config/emitting")
+tracks/4/path = NodePath("aura:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -407,7 +408,15 @@ shape = SubResource( 10 )
 
 [node name="SamplePlayer" type="Node" parent="." index="7"]
 
-[node name="Stun" parent="." index="8" instance=ExtResource( 4 )]
+[node name="die" type="AudioStreamPlayer" parent="SamplePlayer" index="0"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="Stun" parent="." index="8" instance=ExtResource( 5 )]
 
 visible = false
 position = Vector2( 0, -16 )

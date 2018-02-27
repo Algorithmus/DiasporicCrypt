@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/common/damagables/skeleton/Consumable.gd" type="Script" id=1]
 [ext_resource path="res://scenes/common/damagables/skeleton/walk.png" type="Texture" id=2]
 [ext_resource path="res://scenes/common/damagables/skeleton/die.png" type="Texture" id=3]
-[ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/damagables/skeleton/die.wav" type="AudioStream" id=4]
+[ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 
@@ -48,7 +49,7 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("SamplePlayer:play/play")
+tracks/3/path = NodePath("hurt:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -57,19 +58,19 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "s_die" ]
+"values": [ false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("hurt:visible")
+tracks/4/path = NodePath("SamplePlayer/die:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -231,6 +232,7 @@ frame = 2
 
 [node name="die" type="Sprite" parent="." index="2"]
 
+visible = false
 self_modulate = Color( 1, 1, 0.384314, 1 )
 texture = ExtResource( 3 )
 offset = Vector2( 16, 0 )
@@ -239,7 +241,6 @@ frame = 5
 
 [node name="hurt" type="Sprite" parent="." index="3"]
 
-visible = false
 self_modulate = Color( 1, 1, 0.384314, 1 )
 texture = ExtResource( 3 )
 offset = Vector2( 16, 0 )
@@ -274,7 +275,15 @@ shape = SubResource( 4 )
 
 [node name="SamplePlayer" type="Node" parent="." index="6"]
 
-[node name="Stun" parent="." index="7" instance=ExtResource( 4 )]
+[node name="die" type="AudioStreamPlayer" parent="SamplePlayer" index="0"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="Stun" parent="." index="7" instance=ExtResource( 5 )]
 
 position = Vector2( 0, -48 )
 

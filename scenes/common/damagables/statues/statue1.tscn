@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/common/damagables/statues/Statue.gd" type="Script" id=1]
 [ext_resource path="res://scenes/common/damagables/statues/statue1.png" type="Texture" id=2]
-[ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/common/damagables/skeleton/die.wav" type="AudioStream" id=3]
+[ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=4]
 
-[sub_resource type="ParticlesMaterial" id=11]
+[sub_resource type="ParticlesMaterial" id=1]
 
 render_priority = 0
 trail_divisor = 1
@@ -43,7 +44,7 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Damping", "Flags", "Gravity", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Radial Accel", "Scale", "Spread", "Tangential Accel" ]
 
-[sub_resource type="ParticlesMaterial" id=12]
+[sub_resource type="ParticlesMaterial" id=2]
 
 render_priority = 0
 trail_divisor = 1
@@ -82,20 +83,20 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Damping", "Emission Shape", "Gravity", "Initial Velocity", "Linear Accel", "Scale", "Spread", "Tangential Accel" ]
 
-[sub_resource type="Curve" id=13]
+[sub_resource type="Curve" id=3]
 
 min_value = 0.0
 max_value = 1.0
 bake_resolution = 100
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=14]
+[sub_resource type="CurveTexture" id=4]
 
 flags = 4
 width = 2048
-curve = SubResource( 13 )
+curve = SubResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=15]
+[sub_resource type="ParticlesMaterial" id=5]
 
 render_priority = 0
 trail_divisor = 1
@@ -125,7 +126,7 @@ angle = 180.0
 angle_random = 1.0
 scale = 2.0
 scale_random = 0.0
-scale_curve = SubResource( 14 )
+scale_curve = SubResource( 4 )
 color = Color( 0.31, 0.36, 0.39, 1 )
 hue_variation = 0.0
 hue_variation_random = 0.0
@@ -136,7 +137,7 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Damping", "Emission Shape", "Flags", "Gravity", "Initial Velocity", "Linear Accel", "Radial Accel", "Scale", "Spread", "Tangential Accel", "Trail" ]
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=6]
 
 length = 0.1
 loop = false
@@ -256,7 +257,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("SamplePlayer:play/play")
+tracks/2/path = NodePath("hurt:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -265,10 +266,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "s_die" ]
+"values": [ false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("hurt:visible")
+tracks/3/path = NodePath("attack:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -280,7 +281,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("attack:visible")
+tracks/4/path = NodePath("eye:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -292,40 +293,40 @@ tracks/4/keys = {
 "values": [ false ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("eye:visible")
+tracks/5/path = NodePath("explode:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("explode:emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
 "times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("die:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.313726, 0.360784, 0.392157, 1 ), Color( 0.313726, 0.360784, 0.392157, 0 ) ]
+}
 tracks/7/type = "value"
-tracks/7/path = NodePath("die:self_modulate")
+tracks/7/path = NodePath("SamplePlayer/die:playing")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.3 ),
+"times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 0.313726, 0.360784, 0.392157, 1 ), Color( 0.313726, 0.360784, 0.392157, 0 ) ]
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -588,6 +589,7 @@ _sections_unfolded = [ "Animation", "Region", "Visibility" ]
 
 [node name="hurt" type="Sprite" parent="." index="3"]
 
+visible = false
 self_modulate = Color( 0.313726, 0.360784, 0.392157, 1 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, 5 )
@@ -595,7 +597,6 @@ _sections_unfolded = [ "Animation" ]
 
 [node name="attack" type="Sprite" parent="." index="4"]
 
-visible = false
 self_modulate = Color( 0.313726, 0.360784, 0.392157, 1 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, 5 )
@@ -617,7 +618,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 11 )
+process_material = SubResource( 1 )
 texture = null
 normal_map = null
 h_frames = 1
@@ -642,7 +643,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 12 )
+process_material = SubResource( 2 )
 texture = null
 normal_map = null
 h_frames = 1
@@ -665,7 +666,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 12 )
+process_material = SubResource( 2 )
 texture = null
 normal_map = null
 h_frames = 1
@@ -688,7 +689,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 12 )
+process_material = SubResource( 2 )
 texture = null
 normal_map = null
 h_frames = 1
@@ -711,7 +712,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 12 )
+process_material = SubResource( 2 )
 texture = null
 normal_map = null
 h_frames = 1
@@ -734,7 +735,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 12 )
+process_material = SubResource( 2 )
 texture = null
 normal_map = null
 h_frames = 1
@@ -756,7 +757,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = false
 draw_order = 0
-process_material = SubResource( 15 )
+process_material = SubResource( 5 )
 texture = null
 normal_map = null
 h_frames = 1
@@ -770,7 +771,7 @@ autoplay = "walk"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/attack = SubResource( 16 )
+anims/attack = SubResource( 6 )
 anims/die = SubResource( 7 )
 anims/hurt = SubResource( 8 )
 anims/walk = SubResource( 9 )
@@ -792,7 +793,17 @@ shape = SubResource( 10 )
 
 [node name="SamplePlayer" type="Node" parent="." index="10"]
 
-[node name="Stun" parent="." index="11" instance=ExtResource( 3 )]
+_sections_unfolded = [ "Pause" ]
+
+[node name="die" type="AudioStreamPlayer" parent="SamplePlayer" index="0"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="Stun" parent="." index="11" instance=ExtResource( 4 )]
 
 position = Vector2( 0, -96 )
 

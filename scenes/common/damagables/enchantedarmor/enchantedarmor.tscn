@@ -1,17 +1,50 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/common/damagables/enchantedarmor/EnchantedArmor.gd" type="Script" id=1]
 [ext_resource path="res://scenes/common/damagables/enchantedarmor/walk.png" type="Texture" id=2]
 [ext_resource path="res://scenes/common/damagables/enchantedarmor/hurt.png" type="Texture" id=3]
-[ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/damagables/skeleton/die.wav" type="AudioStream" id=4]
+[ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=5]
 
-[sub_resource type="ShaderMaterial" id=1]
+[sub_resource type="Shader" id=1]
 
-render_priority = 0
+code = "shader_type canvas_item;
+
+uniform float aura_width=2.0;
+uniform vec4 aura_color:hint_color;
+
+void fragment() {
+vec4 col = texture(TEXTURE,UV);
+vec2 ps = TEXTURE_PIXEL_SIZE;
+float a;
+float maxa=col.a;
+float mina=col.a;
+a=texture(TEXTURE,UV+vec2(0,-aura_width)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(0,aura_width)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(-aura_width,0)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(aura_width,0)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+col.rgb*=col.a;
+COLOR=col;
+mix(col,aura_color,maxa-mina);
+float auraa=(maxa-mina);
+COLOR.rgb+=aura_color.rgb*(maxa-mina);
+}"
 
 [sub_resource type="ShaderMaterial" id=2]
 
 render_priority = 0
+shader = SubResource( 1 )
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 0, 0.78, 1, 1 )
+_sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="Animation" id=3]
 
@@ -55,7 +88,7 @@ tracks/2/keys = {
 "values": [ 3, 4, 4, 5, 5 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("SamplePlayer:play/play")
+tracks/3/path = NodePath("hurt:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -64,10 +97,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "s_die" ]
+"values": [ false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("hurt:visible")
+tracks/4/path = NodePath("SamplePlayer/die:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -76,7 +109,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -229,11 +262,12 @@ physics_process_parent = false
 [node name="walk" type="Sprite" parent="." index="1"]
 
 visible = false
-material = SubResource( 1 )
+material = SubResource( 2 )
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 4
 frame = 1
+_sections_unfolded = [ "Material" ]
 
 [node name="die" type="Sprite" parent="." index="2"]
 
@@ -251,6 +285,7 @@ texture = ExtResource( 3 )
 offset = Vector2( 16, 0 )
 hframes = 5
 frame = 1
+_sections_unfolded = [ "Material" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 
@@ -280,7 +315,15 @@ shape = SubResource( 6 )
 
 [node name="SamplePlayer" type="Node" parent="." index="6"]
 
-[node name="Stun" parent="." index="7" instance=ExtResource( 4 )]
+[node name="die" type="AudioStreamPlayer" parent="SamplePlayer" index="0"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="Stun" parent="." index="7" instance=ExtResource( 5 )]
 
 position = Vector2( 0, -64 )
 

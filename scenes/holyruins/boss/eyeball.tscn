@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/holyruins/boss/eyeball.gd" type="Script" id=1]
 [ext_resource path="res://scenes/holyruins/boss/eyeball.png" type="Texture" id=2]
 [ext_resource path="res://scenes/common/blood.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/damagables/skeleton/die.wav" type="AudioStream" id=4]
+[ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 
@@ -244,7 +245,15 @@ shape = SubResource( 4 )
 
 [node name="SamplePlayer" type="Node" parent="." index="7"]
 
-[node name="Stun" parent="." index="8" instance=ExtResource( 4 )]
+[node name="die" type="AudioStreamPlayer" parent="SamplePlayer" index="0"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="Stun" parent="." index="8" instance=ExtResource( 5 )]
 
 position = Vector2( 0, -16 )
 
