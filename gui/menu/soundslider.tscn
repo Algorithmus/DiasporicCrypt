@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://gui/theme/slidergrabber.png" type="Texture" id=1]
 [ext_resource path="res://gui/theme/slidergrabber_active.png" type="Texture" id=2]
@@ -87,11 +87,49 @@ HSlider/styles/grabber_highlight = SubResource( 3 )
 HSlider/styles/slider = SubResource( 4 )
 _sections_unfolded = [ "HSlider", "HSlider/icons", "HSlider/styles" ]
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="Shader" id=6]
+
+code = "shader_type canvas_item;
+
+uniform float aura_width=2.0;
+uniform vec4 aura_color:hint_color;
+uniform float opacity = 1.0;
+
+void fragment() {
+vec4 col = vec4(texture(TEXTURE,UV).rgb, texture(TEXTURE,UV).a*opacity);
+vec2 ps = TEXTURE_PIXEL_SIZE;
+float a;
+float maxa=col.a;
+float mina=col.a;
+a=texture(TEXTURE,UV+vec2(0,-aura_width)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(0,aura_width)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(-aura_width,0)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(aura_width,0)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+col.rgb*=col.a;
+COLOR=mix(col,aura_color,maxa-mina);
+float auraa=(maxa-mina);
+
+COLOR.rgb+=aura_color.rgb*(maxa-mina);
+}"
+
+[sub_resource type="ShaderMaterial" id=7]
 
 render_priority = 0
+shader = SubResource( 6 )
+shader_param/aura_width = 1.0
+shader_param/aura_color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
+shader_param/opacity = null
+_sections_unfolded = [ "shader_param" ]
 
-[node name="slider" type="HSlider"]
+[node name="slider" type="HSlider" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -149,9 +187,10 @@ max_lines_visible = -1
 
 [node name="mute" type="Sprite" parent="." index="2"]
 
-material = SubResource( 6 )
+material = SubResource( 7 )
 position = Vector2( 558, 9 )
 texture = ExtResource( 7 )
+_sections_unfolded = [ "Material" ]
 
 [connection signal="focus_entered" from="." to="." method="_on_choice_focus_enter"]
 

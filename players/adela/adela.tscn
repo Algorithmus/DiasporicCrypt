@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://players/adela/adela.gd" type="Script" id=1]
 [ext_resource path="res://players/adela/idle.png" type="Texture" id=2]
@@ -45,11 +45,50 @@
 [ext_resource path="res://scenes/common/fluid/splash_up.wav" type="AudioStream" id=43]
 [ext_resource path="res://gui/dialogue/talk.png" type="Texture" id=44]
 
-[sub_resource type="ShaderMaterial" id=1]
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+
+uniform float aura_width=2.0;
+uniform vec4 aura_color:hint_color;
+uniform float opacity = 1.0;
+
+void fragment() {
+vec4 col = vec4(texture(TEXTURE,UV).rgb, texture(TEXTURE,UV).a*opacity);
+vec2 ps = TEXTURE_PIXEL_SIZE;
+float a;
+float maxa=col.a;
+float mina=col.a;
+a=texture(TEXTURE,UV+vec2(0,-aura_width)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(0,aura_width)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(-aura_width,0)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(aura_width,0)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+col.rgb*=col.a;
+COLOR=col;
+//mix(col,aura_color,maxa-mina);
+float auraa=(maxa-mina);
+
+COLOR.rgb+=aura_color.rgb*(maxa-mina);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
 
 render_priority = 0
+shader = SubResource( 1 )
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+_sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=3]
 
 code = "shader_type canvas_item;
 render_mode blend_premul_alpha;
@@ -85,18 +124,17 @@ float auraa=(maxa-mina);
 COLOR.rgb+=aura_color.rgb*(maxa-mina);
 }"
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=4]
 
 render_priority = 0
-shader = SubResource( 2 )
+shader = SubResource( 3 )
 shader_param/aura_width = 2.0
 shader_param/aura_color = Color( 0, 0.74902, 0.360784, 1 )
 shader_param/modulate = Color( 0.733333, 1, 0.901961, 1 )
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 
-resource_name = "aattack"
 length = 0.45
 loop = false
 step = 0.05
@@ -437,9 +475,8 @@ tracks/27/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 
-resource_name = "attack"
 length = 0.45
 loop = false
 step = 0.05
@@ -792,9 +829,8 @@ tracks/28/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 
-resource_name = "charge"
 length = 0.1
 loop = false
 step = 0.1
@@ -1111,7 +1147,7 @@ tracks/25/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 
 length = 0.7
 loop = false
@@ -1441,7 +1477,7 @@ tracks/26/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 
 length = 0.1
 loop = false
@@ -1771,9 +1807,8 @@ tracks/26/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 
-resource_name = "daattack"
 length = 0.45
 loop = false
 step = 0.05
@@ -2114,9 +2149,8 @@ tracks/27/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 
-resource_name = "dattack"
 length = 0.45
 loop = false
 step = 0.05
@@ -2457,9 +2491,8 @@ tracks/27/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 
-resource_name = "ddgaattack"
 length = 0.45
 loop = false
 step = 0.05
@@ -2800,9 +2833,8 @@ tracks/27/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 
-resource_name = "detransform"
 length = 0.9
 loop = false
 step = 0.1
@@ -3131,9 +3163,8 @@ tracks/26/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 
-resource_name = "dgaattack"
 length = 0.45
 loop = false
 step = 0.05
@@ -3462,9 +3493,8 @@ tracks/26/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=15]
 
-resource_name = "dgattack"
 length = 0.45
 loop = false
 step = 0.05
@@ -3817,7 +3847,7 @@ tracks/28/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=16]
 
 length = 0.4
 loop = true
@@ -4161,9 +4191,8 @@ tracks/27/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=17]
 
-resource_name = "gameover"
 length = 1.4
 loop = false
 step = 0.1
@@ -4528,7 +4557,7 @@ tracks/29/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=18]
 
 length = 0.4
 loop = false
@@ -4906,7 +4935,7 @@ tracks/30/keys = {
 "values": [ -10.0 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=19]
 
 length = 0.6
 loop = true
@@ -5236,7 +5265,7 @@ tracks/26/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=20]
 
 length = 0.3
 loop = false
@@ -5592,7 +5621,7 @@ tracks/28/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=21]
 
 length = 0.4
 loop = true
@@ -5922,7 +5951,7 @@ tracks/26/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=22]
 
 length = 0.3
 loop = false
@@ -6252,9 +6281,8 @@ tracks/26/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=23]
 
-resource_name = "magic"
 length = 0.3
 loop = false
 step = 0.1
@@ -6583,7 +6611,7 @@ tracks/26/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=24]
 
 length = 0.63
 loop = true
@@ -6913,7 +6941,7 @@ tracks/26/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=25]
 
 length = 0.5
 loop = false
@@ -7231,9 +7259,8 @@ tracks/25/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=26]
 
-resource_name = "transform"
 length = 1.2
 loop = false
 step = 0.1
@@ -7562,7 +7589,7 @@ tracks/26/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=27]
 
 length = 0.5
 loop = false
@@ -7904,7 +7931,7 @@ tracks/27/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=28]
 
 length = 0.5
 loop = false
@@ -8234,7 +8261,7 @@ tracks/26/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=29]
 
 length = 0.1
 loop = false
@@ -8552,17 +8579,17 @@ tracks/25/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="RectangleShape2D" id=29]
-
-custom_solver_bias = 0.0
-extents = Vector2( 14, 62 )
-
 [sub_resource type="RectangleShape2D" id=30]
 
 custom_solver_bias = 0.0
 extents = Vector2( 14, 62 )
 
-[sub_resource type="Shader" id=31]
+[sub_resource type="RectangleShape2D" id=31]
+
+custom_solver_bias = 0.0
+extents = Vector2( 14, 62 )
+
+[sub_resource type="Shader" id=32]
 
 code = "shader_type canvas_item;
 
@@ -8595,16 +8622,16 @@ float auraa=(maxa-mina);
 COLOR.rgb+=aura_color.rgb*(maxa-mina);
 }"
 
-[sub_resource type="ShaderMaterial" id=32]
+[sub_resource type="ShaderMaterial" id=33]
 
 render_priority = 0
-shader = SubResource( 31 )
+shader = SubResource( 32 )
 shader_param/aura_width = 1.0
 shader_param/aura_color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
 shader_param/opacity = 1.0
 _sections_unfolded = [ "shader_param" ]
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 524288
@@ -8743,12 +8770,13 @@ offset = Vector2( -28, 32 )
 [node name="gameover" type="Sprite" parent="NormalSpriteGroup" index="15"]
 
 visible = false
-material = SubResource( 1 )
+material = SubResource( 2 )
 position = Vector2( -50, -148 )
 texture = ExtResource( 16 )
 vframes = 2
 hframes = 3
 frame = 5
+_sections_unfolded = [ "Animation", "Material", "Region" ]
 
 [node name="attack" type="Node2D" parent="NormalSpriteGroup" index="16"]
 
@@ -8773,7 +8801,7 @@ frame = 2
 
 [node name="whip" type="Sprite" parent="NormalSpriteGroup/attack" index="2"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 texture = ExtResource( 19 )
 offset = Vector2( 48, -60 )
 hframes = 5
@@ -8794,7 +8822,7 @@ frame = 2
 
 [node name="whip" type="Sprite" parent="NormalSpriteGroup/dattack" index="1"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 texture = ExtResource( 21 )
 offset = Vector2( 44, -60 )
 hframes = 5
@@ -8824,7 +8852,7 @@ frame = 2
 
 [node name="whip" type="Sprite" parent="NormalSpriteGroup/aattack" index="1"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 texture = ExtResource( 19 )
 offset = Vector2( 48, -68 )
 hframes = 5
@@ -8852,7 +8880,7 @@ frame = 2
 
 [node name="whip" type="Sprite" parent="NormalSpriteGroup/uattack" index="1"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 texture = ExtResource( 25 )
 offset = Vector2( 0, -46 )
 hframes = 5
@@ -8880,7 +8908,7 @@ frame = 2
 
 [node name="whip" type="Sprite" parent="NormalSpriteGroup/uaattack" index="1"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 texture = ExtResource( 25 )
 offset = Vector2( 0, -46 )
 hframes = 5
@@ -8907,7 +8935,7 @@ hframes = 3
 
 [node name="whip" type="Sprite" parent="NormalSpriteGroup/daattack" index="1"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 texture = ExtResource( 29 )
 offset = Vector2( 48, 16 )
 hframes = 5
@@ -8932,7 +8960,7 @@ hframes = 3
 
 [node name="whip" type="Sprite" parent="NormalSpriteGroup/dgattack" index="1"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 texture = ExtResource( 32 )
 offset = Vector2( 48, -60 )
 hframes = 5
@@ -8958,7 +8986,7 @@ frame = 2
 
 [node name="whip" type="Sprite" parent="NormalSpriteGroup/dgaattack" index="1"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 texture = ExtResource( 32 )
 offset = Vector2( 48, -68 )
 hframes = 5
@@ -8986,7 +9014,7 @@ frame = 2
 
 [node name="whip" type="Sprite" parent="NormalSpriteGroup/ddgaattack" index="1"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 texture = ExtResource( 36 )
 offset = Vector2( 48, 16 )
 hframes = 5
@@ -9007,36 +9035,36 @@ autoplay = "idle"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/aattack = SubResource( 4 )
-anims/attack = SubResource( 5 )
-anims/charge = SubResource( 6 )
-anims/climb = SubResource( 7 )
-anims/crouch = SubResource( 8 )
-anims/daattack = SubResource( 9 )
-anims/dattack = SubResource( 10 )
-anims/ddgaattack = SubResource( 11 )
-anims/detransform = SubResource( 12 )
-anims/dgaattack = SubResource( 13 )
-anims/dgattack = SubResource( 14 )
-anims/fall = SubResource( 15 )
-anims/gameover = SubResource( 16 )
-anims/hurt = SubResource( 17 )
-anims/idle = SubResource( 18 )
-anims/jump = SubResource( 19 )
-anims/ladder = SubResource( 20 )
-anims/land = SubResource( 21 )
-anims/magic = SubResource( 22 )
-anims/run = SubResource( 23 )
-anims/swing = SubResource( 24 )
-anims/transform = SubResource( 25 )
-anims/uaattack = SubResource( 26 )
-anims/uattack = SubResource( 27 )
-anims/wall = SubResource( 28 )
+anims/aattack = SubResource( 5 )
+anims/attack = SubResource( 6 )
+anims/charge = SubResource( 7 )
+anims/climb = SubResource( 8 )
+anims/crouch = SubResource( 9 )
+anims/daattack = SubResource( 10 )
+anims/dattack = SubResource( 11 )
+anims/ddgaattack = SubResource( 12 )
+anims/detransform = SubResource( 13 )
+anims/dgaattack = SubResource( 14 )
+anims/dgattack = SubResource( 15 )
+anims/fall = SubResource( 16 )
+anims/gameover = SubResource( 17 )
+anims/hurt = SubResource( 18 )
+anims/idle = SubResource( 19 )
+anims/jump = SubResource( 20 )
+anims/ladder = SubResource( 21 )
+anims/land = SubResource( 22 )
+anims/magic = SubResource( 23 )
+anims/run = SubResource( 24 )
+anims/swing = SubResource( 25 )
+anims/transform = SubResource( 26 )
+anims/uaattack = SubResource( 27 )
+anims/uattack = SubResource( 28 )
+anims/wall = SubResource( 29 )
 blend_times = [  ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
-shape = SubResource( 29 )
+shape = SubResource( 30 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="3"]
 
@@ -9077,7 +9105,7 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage" index="0"]
 
-shape = SubResource( 30 )
+shape = SubResource( 31 )
 
 [node name="sound" type="Node" parent="." index="5"]
 
@@ -9131,7 +9159,7 @@ bus = "SFX"
 
 [node name="talk" type="Sprite" parent="." index="6"]
 
-material = SubResource( 32 )
+material = SubResource( 33 )
 texture = ExtResource( 44 )
 offset = Vector2( 4, -70 )
 _sections_unfolded = [ "Material" ]

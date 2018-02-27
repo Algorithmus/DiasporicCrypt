@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://gui/menu/tabs/friederich.png" type="Texture" id=1]
 [ext_resource path="res://gui/menu/tab.gd" type="Script" id=2]
@@ -6,13 +6,29 @@
 [ext_resource path="res://gui/menu/tabs/tabBG.png" type="Texture" id=4]
 [ext_resource path="res://gui/menu/tabs/tabFG.png" type="Texture" id=5]
 
-[sub_resource type="ShaderMaterial" id=1]
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+
+uniform vec4 modulate:hint_color;
+
+void fragment() {
+float m = (texture(TEXTURE,UV).r + texture(TEXTURE,UV).g + texture(TEXTURE,UV).b) / 3.0;
+COLOR.rgb = vec3(m, m, m);
+COLOR.rgb = mix(COLOR.rgb, modulate.rgb, 0.5);
+COLOR.a = texture(TEXTURE,UV).a*COLOR.a;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
 
 render_priority = 0
+shader = SubResource( 1 )
+shader_param/modulate = Color( 0.79, 0.75, 0.63, 1 )
+_sections_unfolded = [ "shader_param" ]
 
 [node name="tab" type="TextureButton" index="0"]
 
-material = SubResource( 1 )
+material = SubResource( 2 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -33,6 +49,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 1 )
 script = ExtResource( 2 )
+_sections_unfolded = [ "Material" ]
 
 [node name="ornaments" type="Sprite" parent="." index="0"]
 

@@ -1,14 +1,55 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://players/adela/actions/whipring.png" type="Texture" id=1]
 [ext_resource path="res://players/adela/actions/whip.png" type="Texture" id=2]
 [ext_resource path="res://players/adela/actions/whipswing.wav" type="AudioStream" id=3]
 
-[sub_resource type="ShaderMaterial" id=1]
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+render_mode blend_premul_alpha;
+
+uniform float aura_width=2.0;
+uniform vec4 aura_color:hint_color;
+uniform vec4 modulate:hint_color;
+
+void fragment() {
+vec4 col = vec4(modulate.rgb,texture(TEXTURE,UV).a*modulate.a);
+vec2 ps = TEXTURE_PIXEL_SIZE;
+float a;
+float maxa=col.a;
+float mina=col.a;
+a=texture(TEXTURE,UV+vec2(0,-aura_width)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(0,aura_width)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(-aura_width,0)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(aura_width,0)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+col.rgb*=col.a;
+COLOR=col;
+//mix(col,aura_color,maxa-mina);
+
+float auraa=(maxa-mina);
+
+COLOR.rgb+=aura_color.rgb*(maxa-mina);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
 
 render_priority = 0
+shader = SubResource( 1 )
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 0, 0.509804, 0.81, 1 )
+shader_param/modulate = Color( 0, 1, 1, 1 )
+_sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=3]
 
 code = "shader_type canvas_item;
 render_mode blend_premul_alpha;
@@ -43,10 +84,10 @@ float auraa=(maxa-mina);
 COLOR.rgb+=aura_color.rgb*(maxa-mina);
 }"
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=4]
 
 render_priority = 0
-shader = SubResource( 2 )
+shader = SubResource( 3 )
 shader_param/aura_width = 2.0
 shader_param/aura_color = Color( 0, 0.51, 0.81, 1 )
 shader_param/modulate = Color( 0, 1, 1, 1 )
@@ -54,20 +95,21 @@ _sections_unfolded = [ "shader_param" ]
 
 [node name="WhipSwing" type="Node2D" index="0"]
 
-material = SubResource( 1 )
+material = SubResource( 2 )
+_sections_unfolded = [ "Material" ]
 __meta__ = {
 "__editor_plugin_screen__": "Script"
 }
 
 [node name="whipring" type="Sprite" parent="." index="0"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 texture = ExtResource( 1 )
 _sections_unfolded = [ "Material" ]
 
 [node name="whip" type="Sprite" parent="." index="1"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 position = Vector2( 0, 4 )
 texture = ExtResource( 2 )
 centered = false

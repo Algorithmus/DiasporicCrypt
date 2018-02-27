@@ -1,14 +1,52 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/items/BaseItem.gd" type="Script" id=1]
 [ext_resource path="res://scenes/items/special/emeraldkey.png" type="Texture" id=2]
 [ext_resource path="res://scenes/items/potion/potion.wav" type="AudioStream" id=3]
 
-[sub_resource type="ShaderMaterial" id=1]
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+
+uniform float aura_width=2.0;
+uniform vec4 aura_color:hint_color;
+uniform float opacity = 1.0;
+
+void fragment() {
+vec4 col = vec4(texture(TEXTURE,UV).rgb, texture(TEXTURE,UV).a*opacity);
+vec2 ps = TEXTURE_PIXEL_SIZE;
+float a;
+float maxa=col.a;
+float mina=col.a;
+a=texture(TEXTURE,UV+vec2(0,-aura_width)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(0,aura_width)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(-aura_width,0)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(aura_width,0)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+col.rgb*=col.a;
+COLOR=mix(col,aura_color,maxa-mina);
+float auraa=(maxa-mina);
+
+COLOR.rgb+=aura_color.rgb*(maxa-mina);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
 
 render_priority = 0
+shader = SubResource( 1 )
+shader_param/aura_width = 0.5
+shader_param/aura_color = Color( 0, 1, 0.27, 1 )
+shader_param/opacity = 1.0
+_sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
@@ -35,8 +73,9 @@ physics_process_parent = false
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
-material = SubResource( 1 )
+material = SubResource( 2 )
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Material" ]
 
 [node name="item" type="Area2D" parent="." index="2"]
 
@@ -50,7 +89,7 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="item" index="0"]
 
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="sound" type="Node" parent="." index="3"]
 

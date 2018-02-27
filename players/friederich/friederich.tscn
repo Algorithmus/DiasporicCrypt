@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=2]
+[gd_scene load_steps=103 format=2]
 
 [ext_resource path="res://players/friederich/friederich.gd" type="Script" id=1]
 [ext_resource path="res://players/friederich/idle.png" type="Texture" id=2]
@@ -67,11 +67,49 @@
 [ext_resource path="res://players/magic/void/void.wav" type="AudioStream" id=65]
 [ext_resource path="res://gui/dialogue/talk.png" type="Texture" id=66]
 
-[sub_resource type="ShaderMaterial" id=1]
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+
+uniform float aura_width=2.0;
+uniform vec4 aura_color:hint_color;
+uniform float opacity = 1.0;
+
+void fragment() {
+vec4 col = vec4(texture(TEXTURE,UV).rgb, texture(TEXTURE,UV).a*opacity);
+vec2 ps = TEXTURE_PIXEL_SIZE;
+float a;
+float maxa=col.a;
+float mina=col.a;
+a=texture(TEXTURE,UV+vec2(0,-aura_width)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(0,aura_width)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(-aura_width,0)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(aura_width,0)*ps).a;
+maxa=max(a,maxa); 
+mina=min(a,mina);
+col.rgb*=col.a;
+COLOR=col;//mix(col,aura_color,maxa-mina);
+float auraa=(maxa-mina);
+
+COLOR.rgb+=aura_color.rgb*(maxa-mina);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
 
 render_priority = 0
+shader = SubResource( 1 )
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+_sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=3]
 
 code = "shader_type canvas_item;
 render_mode blend_premul_alpha;
@@ -107,18 +145,17 @@ float auraa=(maxa-mina);
 COLOR.rgb+=aura_color.rgb*(maxa-mina);
 }"
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=4]
 
 render_priority = 0
-shader = SubResource( 2 )
+shader = SubResource( 3 )
 shader_param/aura_width = 2.0
 shader_param/aura_color = Color( 0.709804, 0.733333, 0, 1 )
 shader_param/modulate = Color( 0.247059, 0.227451, 0.219608, 1 )
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 
-resource_name = "aattack"
 length = 0.3
 loop = false
 step = 0.05
@@ -495,9 +532,8 @@ tracks/30/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 
-resource_name = "achainattack"
 length = 0.3
 loop = false
 step = 0.05
@@ -886,9 +922,8 @@ tracks/31/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 
-resource_name = "attack"
 length = 0.3
 loop = false
 step = 0.05
@@ -1277,9 +1312,8 @@ tracks/31/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 
-resource_name = "chainattack"
 length = 0.3
 loop = false
 step = 0.05
@@ -1668,9 +1702,8 @@ tracks/31/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 
-resource_name = "charge"
 length = 0.3
 loop = true
 step = 0.1
@@ -2049,9 +2082,8 @@ tracks/30/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 
-resource_name = "chop"
 length = 0.45
 loop = false
 step = 0.05
@@ -2440,7 +2472,7 @@ tracks/31/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 
 length = 0.7
 loop = false
@@ -2806,7 +2838,7 @@ tracks/29/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 
 length = 0.1
 loop = false
@@ -3172,9 +3204,8 @@ tracks/29/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 
-resource_name = "dattack"
 length = 0.3
 loop = false
 step = 0.05
@@ -3551,9 +3582,8 @@ tracks/30/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 
-resource_name = "detransform"
 length = 0.9
 loop = false
 step = 0.1
@@ -3918,9 +3948,8 @@ tracks/29/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=15]
 
-resource_name = "dualspin"
 length = 0.7
 loop = false
 step = 0.05
@@ -4333,7 +4362,7 @@ tracks/33/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=16]
 
 length = 0.4
 loop = true
@@ -4713,9 +4742,8 @@ tracks/30/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=17]
 
-resource_name = "gameover"
 length = 1.4
 loop = false
 step = 0.1
@@ -5116,7 +5144,7 @@ tracks/32/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=18]
 
 length = 0.4
 loop = false
@@ -5530,7 +5558,7 @@ tracks/33/keys = {
 "values": [ -10.0 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=19]
 
 length = 0.6
 loop = true
@@ -5896,7 +5924,7 @@ tracks/29/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=20]
 
 length = 0.3
 loop = false
@@ -6288,7 +6316,7 @@ tracks/31/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=21]
 
 length = 0.4
 loop = true
@@ -6654,7 +6682,7 @@ tracks/29/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=22]
 
 length = 0.3
 loop = false
@@ -7020,9 +7048,8 @@ tracks/29/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=23]
 
-resource_name = "magic"
 length = 0.3
 loop = false
 step = 0.1
@@ -7387,7 +7414,7 @@ tracks/29/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=24]
 
 length = 0.8
 loop = true
@@ -7753,9 +7780,8 @@ tracks/29/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=25]
 
-resource_name = "rush"
 length = 0.3
 loop = false
 step = 0.05
@@ -8144,7 +8170,7 @@ tracks/31/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=26]
 
 length = 0.45
 loop = false
@@ -8534,7 +8560,7 @@ tracks/31/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=27]
 
 length = 0.6
 loop = false
@@ -8924,7 +8950,7 @@ tracks/31/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=28]
 
 length = 0.75
 loop = false
@@ -9314,7 +9340,7 @@ tracks/31/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=29]
 
 length = 0.8
 loop = false
@@ -9704,7 +9730,7 @@ tracks/31/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=29]
+[sub_resource type="Animation" id=30]
 
 length = 0.5
 loop = false
@@ -10094,7 +10120,7 @@ tracks/31/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=30]
+[sub_resource type="Animation" id=31]
 
 length = 1.2
 loop = false
@@ -10460,7 +10486,7 @@ tracks/29/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=31]
+[sub_resource type="Animation" id=32]
 
 length = 0.9
 loop = false
@@ -10838,17 +10864,17 @@ tracks/30/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="RectangleShape2D" id=32]
-
-custom_solver_bias = 0.0
-extents = Vector2( 14, 62 )
-
 [sub_resource type="RectangleShape2D" id=33]
 
 custom_solver_bias = 0.0
 extents = Vector2( 14, 62 )
 
-[sub_resource type="Shader" id=34]
+[sub_resource type="RectangleShape2D" id=34]
+
+custom_solver_bias = 0.0
+extents = Vector2( 14, 62 )
+
+[sub_resource type="Shader" id=35]
 
 code = "shader_type canvas_item;
 
@@ -10881,16 +10907,16 @@ float auraa=(maxa-mina);
 COLOR.rgb+=aura_color.rgb*(maxa-mina);
 }"
 
-[sub_resource type="ShaderMaterial" id=35]
+[sub_resource type="ShaderMaterial" id=36]
 
 render_priority = 0
-shader = SubResource( 34 )
+shader = SubResource( 35 )
 shader_param/aura_width = 1.0
 shader_param/aura_color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
 shader_param/opacity = 1.0
 _sections_unfolded = [ "shader_param" ]
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 524288
@@ -11008,12 +11034,13 @@ frame = 3
 [node name="gameover" type="Sprite" parent="NormalSpriteGroup" index="13"]
 
 visible = false
-material = SubResource( 1 )
+material = SubResource( 2 )
 position = Vector2( 18, -143 )
 texture = ExtResource( 15 )
 vframes = 2
 hframes = 3
 frame = 5
+_sections_unfolded = [ "Material" ]
 
 [node name="attack" type="Node2D" parent="NormalSpriteGroup" index="14"]
 
@@ -11022,6 +11049,7 @@ visible = false
 
 [node name="attack" type="Sprite" parent="NormalSpriteGroup/attack" index="0"]
 
+visible = false
 texture = ExtResource( 16 )
 hframes = 3
 
@@ -11037,7 +11065,7 @@ _sections_unfolded = [ "Material", "Visibility", "Z Index" ]
 
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/attack" index="2"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 z_index = 1
 texture = ExtResource( 18 )
 offset = Vector2( 0, -70 )
@@ -11060,7 +11088,7 @@ _sections_unfolded = [ "Z Index" ]
 
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/dattack" index="1"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 texture = ExtResource( 20 )
 offset = Vector2( 48, 15 )
 hframes = 6
@@ -11079,7 +11107,6 @@ _sections_unfolded = [ "Visibility", "Z Index" ]
 
 [node name="aattack" type="Node2D" parent="NormalSpriteGroup" index="16"]
 
-visible = false
 _sections_unfolded = [ "Z Index" ]
 
 [node name="aattack" type="Sprite" parent="NormalSpriteGroup/aattack" index="0"]
@@ -11090,7 +11117,7 @@ frame = 1
 
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/aattack" index="1"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 z_index = 1
 texture = ExtResource( 18 )
 offset = Vector2( 10, -60 )
@@ -11123,7 +11150,7 @@ frame = 2
 
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/chainattack" index="1"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 z_index = 1
 texture = ExtResource( 18 )
 offset = Vector2( 0, -65 )
@@ -11156,7 +11183,7 @@ frame = 5
 
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/achainattack" index="1"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 z_index = 1
 texture = ExtResource( 18 )
 offset = Vector2( 10, -60 )
@@ -11190,7 +11217,7 @@ frame = 5
 
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/chop" index="1"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 z_index = 1
 texture = ExtResource( 25 )
 offset = Vector2( 75, -56 )
@@ -11224,7 +11251,7 @@ frame = 3
 
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/thrust" index="1"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 z_index = 1
 texture = ExtResource( 28 )
 offset = Vector2( 100, -34 )
@@ -11255,7 +11282,7 @@ frame = 1
 
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/swift" index="1"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 z_index = 1
 texture = ExtResource( 31 )
 offset = Vector2( 100, -34 )
@@ -11287,7 +11314,7 @@ frame = 2
 
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/slice" index="1"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 z_index = 1
 texture = ExtResource( 34 )
 offset = Vector2( 66, -90 )
@@ -11327,7 +11354,7 @@ _sections_unfolded = [ "Z Index" ]
 
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/skewer" index="2"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 z_index = 1
 texture = ExtResource( 38 )
 offset = Vector2( 76, -36 )
@@ -11360,7 +11387,7 @@ _sections_unfolded = [ "Z Index" ]
 
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/stab" index="2"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 z_index = 1
 texture = ExtResource( 41 )
 offset = Vector2( 78, 35 )
@@ -11375,7 +11402,7 @@ visible = false
 
 [node name="swordBG" type="Sprite" parent="NormalSpriteGroup/dualspin" index="0"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 texture = ExtResource( 42 )
 offset = Vector2( 36, -60 )
 hframes = 3
@@ -11397,7 +11424,7 @@ frame = 2
 
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/dualspin" index="3"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 z_index = 1
 texture = ExtResource( 45 )
 offset = Vector2( 36, -60 )
@@ -11431,7 +11458,7 @@ frame = 1
 
 [node name="sword" type="Sprite" parent="NormalSpriteGroup/rush" index="1"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 z_index = 1
 texture = ExtResource( 48 )
 offset = Vector2( 32, -65 )
@@ -11452,6 +11479,8 @@ _sections_unfolded = [ "Z Index" ]
 
 [node name="void" type="Node2D" parent="NormalSpriteGroup" index="27"]
 
+visible = false
+
 [node name="attack" type="Sprite" parent="NormalSpriteGroup/void" index="0"]
 
 texture = ExtResource( 11 )
@@ -11464,40 +11493,40 @@ autoplay = "idle"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/aattack = SubResource( 4 )
-anims/achainattack = SubResource( 5 )
-anims/attack = SubResource( 6 )
-anims/chainattack = SubResource( 7 )
-anims/charge = SubResource( 8 )
-anims/chop = SubResource( 9 )
-anims/climb = SubResource( 10 )
-anims/crouch = SubResource( 11 )
-anims/dattack = SubResource( 12 )
-anims/detransform = SubResource( 13 )
-anims/dualspin = SubResource( 14 )
-anims/fall = SubResource( 15 )
-anims/gameover = SubResource( 16 )
-anims/hurt = SubResource( 17 )
-anims/idle = SubResource( 18 )
-anims/jump = SubResource( 19 )
-anims/ladder = SubResource( 20 )
-anims/land = SubResource( 21 )
-anims/magic = SubResource( 22 )
-anims/run = SubResource( 23 )
-anims/rush = SubResource( 24 )
-anims/skewer = SubResource( 25 )
-anims/slice = SubResource( 26 )
-anims/stab = SubResource( 27 )
-anims/swift = SubResource( 28 )
-anims/thrust = SubResource( 29 )
-anims/transform = SubResource( 30 )
-anims/void = SubResource( 31 )
+anims/aattack = SubResource( 5 )
+anims/achainattack = SubResource( 6 )
+anims/attack = SubResource( 7 )
+anims/chainattack = SubResource( 8 )
+anims/charge = SubResource( 9 )
+anims/chop = SubResource( 10 )
+anims/climb = SubResource( 11 )
+anims/crouch = SubResource( 12 )
+anims/dattack = SubResource( 13 )
+anims/detransform = SubResource( 14 )
+anims/dualspin = SubResource( 15 )
+anims/fall = SubResource( 16 )
+anims/gameover = SubResource( 17 )
+anims/hurt = SubResource( 18 )
+anims/idle = SubResource( 19 )
+anims/jump = SubResource( 20 )
+anims/ladder = SubResource( 21 )
+anims/land = SubResource( 22 )
+anims/magic = SubResource( 23 )
+anims/run = SubResource( 24 )
+anims/rush = SubResource( 25 )
+anims/skewer = SubResource( 26 )
+anims/slice = SubResource( 27 )
+anims/stab = SubResource( 28 )
+anims/swift = SubResource( 29 )
+anims/thrust = SubResource( 30 )
+anims/transform = SubResource( 31 )
+anims/void = SubResource( 32 )
 blend_times = [  ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
 z_index = 1
-shape = SubResource( 32 )
+shape = SubResource( 33 )
 _sections_unfolded = [ "Z Index" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="3"]
@@ -11540,7 +11569,7 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage" index="0"]
 
-shape = SubResource( 33 )
+shape = SubResource( 34 )
 
 [node name="sound" type="Node" parent="." index="5"]
 
@@ -11674,7 +11703,7 @@ bus = "SFX"
 
 [node name="talk" type="Sprite" parent="." index="6"]
 
-material = SubResource( 35 )
+material = SubResource( 36 )
 z_index = 2
 texture = ExtResource( 66 )
 offset = Vector2( 4, -80 )

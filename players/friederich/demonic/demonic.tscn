@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://players/friederich/demonic/idle.png" type="Texture" id=1]
 [ext_resource path="res://players/friederich/demonic/run.png" type="Texture" id=2]
@@ -148,11 +148,50 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Damping", "Emission Shape", "Flags", "Gravity", "Hue Variation", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Scale", "Spread", "Tangential Accel", "Trail" ]
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="Shader" id=12]
+
+code = "shader_type canvas_item;
+
+uniform float aura_width=2.0;
+uniform vec4 aura_color:hint_color;
+uniform float opacity = 1.0;
+
+void fragment() {
+vec4 col = vec4(texture(TEXTURE,UV).rgb, texture(TEXTURE,UV).a*opacity);
+vec2 ps = TEXTURE_PIXEL_SIZE;
+float a;
+float maxa=col.a;
+float mina=col.a;
+a=texture(TEXTURE,UV+vec2(0,-aura_width)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(0,aura_width)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(-aura_width,0)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(aura_width,0)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+col.rgb*=col.a;
+COLOR=col;
+mix(col,aura_color,maxa-mina);
+float auraa=(maxa-mina);
+
+COLOR.rgb+=aura_color.rgb*(maxa-mina);
+}"
+
+[sub_resource type="ShaderMaterial" id=13]
 
 render_priority = 0
+shader = SubResource( 12 )
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/opacity = 1.0
+_sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="Shader" id=7]
+[sub_resource type="Shader" id=14]
 
 code = "shader_type canvas_item;
 render_mode blend_premul_alpha;
@@ -188,20 +227,61 @@ float auraa=(maxa-mina);
 COLOR.rgb+=aura_color.rgb*(maxa-mina);
 }"
 
-[sub_resource type="ShaderMaterial" id=8]
+[sub_resource type="ShaderMaterial" id=15]
 
 render_priority = 0
-shader = SubResource( 7 )
+shader = SubResource( 14 )
 shader_param/aura_width = 2.0
 shader_param/aura_color = Color( 0.709804, 0.733333, 0, 1 )
 shader_param/modulate = Color( 0.247059, 0.227451, 0.219608, 1 )
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="ShaderMaterial" id=9]
+[sub_resource type="Shader" id=10]
+
+code = "shader_type canvas_item;
+render_mode blend_premul_alpha;
+
+uniform float aura_width=2.0;
+uniform vec4 aura_color:hint_color;
+uniform vec4 modulate:hint_color;
+
+void fragment() {
+vec4 col = vec4(modulate.rgb,texture(TEXTURE,UV).a*modulate.a);
+vec2 ps = TEXTURE_PIXEL_SIZE;
+float a;
+float maxa=col.a;
+float mina=col.a;
+a=texture(TEXTURE,UV+vec2(0,-aura_width)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(0,aura_width)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(-aura_width,0)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+a=texture(TEXTURE,UV+vec2(aura_width,0)*ps).a;
+maxa=max(a,maxa);
+mina=min(a,mina);
+col.rgb*=col.a;
+COLOR=col;
+//mix(col,aura_color,maxa-mina);
+
+float auraa=(maxa-mina);
+
+COLOR.rgb+=aura_color.rgb*(maxa-mina);
+}"
+
+[sub_resource type="ShaderMaterial" id=11]
 
 render_priority = 0
+shader = SubResource( 10 )
+shader_param/aura_width = 2.0
+shader_param/aura_color = Color( 1, 0, 0, 1 )
+shader_param/modulate = Color( 1, 1, 0, 1 )
+_sections_unfolded = [ "shader_param" ]
 
-[node name="NormalSpriteGroup" type="Node2D"]
+[node name="NormalSpriteGroup" type="Node2D" index="0"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -569,11 +649,12 @@ frame = 1
 [node name="gameover" type="Sprite" parent="." index="13"]
 
 visible = false
-material = SubResource( 6 )
+material = SubResource( 13 )
 position = Vector2( -7, -123 )
 texture = ExtResource( 14 )
 vframes = 2
 hframes = 3
+_sections_unfolded = [ "Material" ]
 
 [node name="attack" type="Node2D" parent="." index="14"]
 
@@ -626,7 +707,7 @@ frame = 1
 
 [node name="sword" type="Sprite" parent="attack" index="3"]
 
-material = SubResource( 8 )
+material = SubResource( 15 )
 texture = ExtResource( 17 )
 offset = Vector2( 0, -70 )
 vframes = 2
@@ -636,7 +717,6 @@ _sections_unfolded = [ "Material" ]
 
 [node name="dattack" type="Node2D" parent="." index="15"]
 
-editor/display_folded = true
 visible = false
 
 [node name="trail" type="Particles2D" parent="dattack" index="0"]
@@ -671,14 +751,16 @@ material = SubResource( 2 )
 texture = ExtResource( 18 )
 offset = Vector2( -38, -2 )
 hframes = 3
-_sections_unfolded = [ "Material" ]
+_sections_unfolded = [ "Animation", "Material" ]
 
 [node name="sword" type="Sprite" parent="dattack" index="2"]
 
-material = SubResource( 9 )
+material = SubResource( 11 )
+z_index = 1
 texture = ExtResource( 19 )
 offset = Vector2( 48, 15 )
 hframes = 6
+_sections_unfolded = [ "Animation", "Material", "Z Index" ]
 
 [node name="aura" type="Sprite" parent="dattack" index="3"]
 
@@ -728,7 +810,7 @@ _sections_unfolded = [ "Material" ]
 
 [node name="sword" type="Sprite" parent="aattack" index="2"]
 
-material = SubResource( 8 )
+material = SubResource( 15 )
 texture = ExtResource( 17 )
 offset = Vector2( 10, -60 )
 vframes = 2
@@ -785,7 +867,7 @@ _sections_unfolded = [ "Material" ]
 
 [node name="sword" type="Sprite" parent="chainattack" index="2"]
 
-material = SubResource( 8 )
+material = SubResource( 15 )
 texture = ExtResource( 17 )
 offset = Vector2( 0, -65 )
 vframes = 2
@@ -843,7 +925,7 @@ _sections_unfolded = [ "Material" ]
 
 [node name="sword" type="Sprite" parent="achainattack" index="2"]
 
-material = SubResource( 8 )
+material = SubResource( 15 )
 texture = ExtResource( 17 )
 offset = Vector2( 10, -60 )
 vframes = 2
@@ -893,7 +975,7 @@ _sections_unfolded = [ "Drawing", "Material", "Textures", "Time", "Transform" ]
 
 [node name="sword" type="Sprite" parent="chop" index="1"]
 
-material = SubResource( 8 )
+material = SubResource( 15 )
 texture = ExtResource( 24 )
 offset = Vector2( 75, -56 )
 vframes = 2
@@ -959,7 +1041,7 @@ _sections_unfolded = [ "Material" ]
 
 [node name="sword" type="Sprite" parent="thrust" index="2"]
 
-material = SubResource( 8 )
+material = SubResource( 15 )
 texture = ExtResource( 27 )
 offset = Vector2( 100, -34 )
 hframes = 4
@@ -1014,7 +1096,7 @@ _sections_unfolded = [ "Material" ]
 
 [node name="sword" type="Sprite" parent="swift" index="2"]
 
-material = SubResource( 8 )
+material = SubResource( 15 )
 texture = ExtResource( 30 )
 offset = Vector2( 100, -34 )
 hframes = 2
@@ -1069,7 +1151,7 @@ _sections_unfolded = [ "Material" ]
 
 [node name="sword" type="Sprite" parent="slice" index="2"]
 
-material = SubResource( 8 )
+material = SubResource( 15 )
 texture = ExtResource( 33 )
 offset = Vector2( 66, -90 )
 hframes = 4
@@ -1131,7 +1213,7 @@ hframes = 3
 
 [node name="sword" type="Sprite" parent="skewer" index="3"]
 
-material = SubResource( 8 )
+material = SubResource( 15 )
 texture = ExtResource( 37 )
 offset = Vector2( 76, -36 )
 hframes = 4
@@ -1187,10 +1269,11 @@ frame = 2
 
 [node name="sword" type="Sprite" parent="stab" index="3"]
 
-material = SubResource( 8 )
+material = SubResource( 15 )
 texture = ExtResource( 40 )
 offset = Vector2( 78, 35 )
 hframes = 5
+_sections_unfolded = [ "Material" ]
 
 [node name="dualspin" type="Node2D" parent="." index="25"]
 
@@ -1225,7 +1308,7 @@ _sections_unfolded = [ "Drawing", "Material", "Process Material", "Time", "Trans
 
 [node name="swordBG" type="Sprite" parent="dualspin" index="1"]
 
-material = SubResource( 8 )
+material = SubResource( 15 )
 texture = ExtResource( 42 )
 offset = Vector2( 36, -60 )
 hframes = 3
@@ -1248,7 +1331,7 @@ _sections_unfolded = [ "Material" ]
 
 [node name="sword" type="Sprite" parent="dualspin" index="4"]
 
-material = SubResource( 8 )
+material = SubResource( 15 )
 texture = ExtResource( 44 )
 offset = Vector2( 36, -60 )
 vframes = 2
@@ -1266,6 +1349,7 @@ frame = 2
 
 [node name="rush" type="Node2D" parent="." index="26"]
 
+editor/display_folded = true
 visible = false
 _sections_unfolded = [ "Transform" ]
 
@@ -1305,7 +1389,7 @@ _sections_unfolded = [ "Material" ]
 
 [node name="sword" type="Sprite" parent="rush" index="2"]
 
-material = SubResource( 8 )
+material = SubResource( 15 )
 texture = ExtResource( 47 )
 offset = Vector2( 32, -65 )
 hframes = 3

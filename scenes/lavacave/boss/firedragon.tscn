@@ -562,6 +562,18 @@ tracks/14/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/15/type = "value"
+tracks/15/path = NodePath("../neck/segments:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=10]
 
@@ -711,12 +723,12 @@ script = ExtResource( 2 )
 
 [node name="segments" type="Node2D" parent="neck" index="1"]
 
-modulate = Color( 1, 1, 1, 0 )
 _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="segment" parent="neck/segments" index="0" instance=ExtResource( 3 )]
 
 use_parent_material = true
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 [node name="segment1" parent="neck/segments" index="1" instance=ExtResource( 3 )]
 
