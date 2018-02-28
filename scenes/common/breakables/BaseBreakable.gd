@@ -41,7 +41,7 @@ func _physics_process(delta):
 			queue_free()
 		if (crumble_cycle < crumble_delay):
 			sprite_opacity(0.5 + fmod(crumble_cycle, 4) * 0.3)
-		if (!sound.get_node("crumble").playing):
+		if (!sound.get_node("crumble").playing && crumble_cycle > crumble_delay):
 			queue_free()
 
 # make game more playable by destroying neighboring breakable objects of the same type
@@ -53,7 +53,8 @@ func crumble_related():
 			related.start_crumble()
 
 func start_crumble():
-	sound.get_node("crumble").play()
+	if (!sound.get_node("crumble").playing):
+		sound.get_node("crumble").play()
 	sound.get_node("crumble").set_volume_db(-10)
 	is_crumbling = true
 	crumble()
