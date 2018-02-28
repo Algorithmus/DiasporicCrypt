@@ -190,11 +190,13 @@ extents = Vector2( 32, 32 )
 
 [node name="Sorcerer" type="KinematicBody2D" index="0"]
 
+z_index = 1
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Z Index" ]
 __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
