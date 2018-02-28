@@ -115,7 +115,7 @@ position = Vector2( 0, -2 )
 
 position = Vector2( 48, 114 )
 motion = Vector2( 0, 128 )
-cycle = 12.0
+cycle = 6.0
 
 [node name="SwitchGroup" type="Node2D" parent="tilemap" index="3"]
 

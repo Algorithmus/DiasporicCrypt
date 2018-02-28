@@ -159,13 +159,13 @@ position = Vector2( -16, 80 )
 
 position = Vector2( -16, -272 )
 motion = Vector2( 0, 96 )
-cycle = 8.0
+cycle = 4.0
 
 [node name="MovingPlatform1" parent="tilemap/MovingPlatformGroup" index="1" instance=ExtResource( 6 )]
 
 position = Vector2( -16, -736 )
 motion = Vector2( 0, -96 )
-cycle = 8.0
+cycle = 4.0
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="4"]
 
