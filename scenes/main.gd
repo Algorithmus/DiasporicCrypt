@@ -166,7 +166,7 @@ func _input(event):
 	var canvas = get_node("gui/CanvasLayer")
 	if (!gameover && dialog.get("dialogs") == null && !pause.has_node("shopping") && !pause.has_node("save") && !canvas.has_node("WorldMap") && !ProjectSettings.get("eventmode")):
 		var helpPressed = event.is_action("ui_help") && ProjectSettings.get("demomode")
-		if ((event.is_action("ui_pause") || helpPressed) && event.is_pressed() && !event.is_echo() && get_node("playercontainer").has_node("player") && !get_node("playercontainer/player").get("is_transforming") && !ProjectSettings.get("show_switch")):
+		if ((event.is_action("ui_pause") || helpPressed) && event.is_pressed() && !event.is_echo() && get_node("playercontainer").has_node("player") && !get_node("playercontainer/player").get("is_transforming") && (!ProjectSettings.has_setting("show_switch") || !ProjectSettings.get("show_switch"))):
 			var bgm_index = AudioServer.get_bus_index("BGM")
 			if (is_paused && pausemenu.can_unpause() && !helpPressed):
 				# return back to focused tabs properly for when menu gets opened again

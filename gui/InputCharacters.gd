@@ -199,7 +199,7 @@ func update_keys():
 
 func update_key(key):
 	for i in InputMap.get_action_list(key):
-		if (ProjectSettings.get("current_input") == "keyboard"):
+		if (!ProjectSettings.has_setting("current_input") || ProjectSettings.get("current_input") == "keyboard"):
 			if (i is InputEventKey):
 				keys[key] = i.scancode
 		else:
@@ -207,12 +207,14 @@ func update_key(key):
 				keys[key] = i.button_index
 
 func map_action(action):
-	if (ProjectSettings.get("current_input") == "keyboard"):
+	if (!ProjectSettings.has_setting("current_input") || ProjectSettings.get("current_input") == "keyboard"):
 		return map_key(OS.get_scancode_string(keys[action]))
 	return map_key(Input.get_joy_button_string(keys[action]))
 
 func map_key(input):
-	var current_input = ProjectSettings.get("current_input")
+	var current_input = "keyboard"
+	if (ProjectSettings.has_setting("current_input")):
+		current_input = ProjectSettings.get("current_input")
 	if (current_input == "keyboard" || current_input == null):
 		if (map.has(input)):
 			return tr(map[input])

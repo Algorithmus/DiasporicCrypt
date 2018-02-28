@@ -449,7 +449,9 @@ func _ready():
 	whipswing_obj.hide()
 	
 	weapon_type = "whip"
-	var available_spells = ProjectSettings.get("available_spells")
+	var available_spells
+	if (ProjectSettings.has_setting("available_spells")):
+		available_spells = ProjectSettings.get("available_spells")
 	if (available_spells != null && available_spells.size() > 0):
 		magic_spells = available_spells
 	else:

@@ -34,7 +34,10 @@ signal nogamepad
 
 func _ready():
 	detect_gamepad()
-	set_layout_index(ProjectSettings.get("current_input"))
+	var current_input = "keyboard"
+	if (ProjectSettings.has_setting("current_input")):
+		current_input = ProjectSettings.get("current_input")
+	set_layout_index(current_input)
 	has_content = true
 	if (!ProjectSettings.has_setting("sfxvolume")):
 		ProjectSettings.set("sfxvolume", 1)
@@ -74,7 +77,7 @@ func update_container():
 	get_node("layout").set_text(tr(layouts[old_layout_index].name))
 	for key in get_node("inputs").get_children():
 		key.update_key()
-	if (ProjectSettings.get("controls") != null):
+	if (ProjectSettings.has_setting("controls")):
 		ProjectSettings.set("newcontrols", ProjectSettings.get("controls").duplicate())
 	var resetwidth = get_node("reset").get_size().x
 	get_node("reset").set_position(Vector2(689 - resetwidth, get_node("reset").get_position().y))

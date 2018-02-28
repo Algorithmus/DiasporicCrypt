@@ -24,9 +24,12 @@ func _ready():
 	update_key()
 	set_process_input(false)
 
+func is_keyboard():
+	return !ProjectSettings.has_setting("current_input") || ProjectSettings.get("current_input") == "keyboard"
+
 func update_key():
 	var list = InputMap.get_action_list(actionid)
-	var is_keyboard = ProjectSettings.get("current_input") == "keyboard"
+	var is_keyboard = is_keyboard()
 	for item in list:
 		if (is_keyboard && item is InputEventKey):
 			currentinput = item
@@ -41,14 +44,14 @@ func update_key():
 
 func set_key(scancode):
 	var string = ""
-	if (ProjectSettings.get("current_input") == "keyboard"):
+	if (is_keyboard()):
 		string = OS.get_scancode_string(scancode)
 	else:
 		string = Input.get_joy_button_string(scancode)
 	key.set_text(keymap.map_key(string))
 
 func _input(event):
-	var is_keyboard = ProjectSettings.get("current_input") == "keyboard"
+	var is_keyboard = is_keyboard()
 	# Help key in demo mode is special; don't overwrite it.
 	var helpPressed = (ProjectSettings.get("demomode") && event.is_action_pressed("ui_help"))
 	if (!iscapture && event.is_action_pressed("ui_accept") && event.is_pressed() && !event.is_echo()):
@@ -89,7 +92,7 @@ func _input(event):
 # commit inputs to InputMap
 func set_input():
 	var old_event
-	var is_keyboard = ProjectSettings.get("current_input") == "keyboard"
+	var is_keyboard = is_keyboard()
 	# remove any old inputs
 	for e in InputMap.get_action_list(actionid):
 		if ((e is InputEventKey && is_keyboard) || (e is InputEventJoypadButton && !is_keyboard)):
