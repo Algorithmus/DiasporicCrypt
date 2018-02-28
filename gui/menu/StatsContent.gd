@@ -78,6 +78,9 @@ func _on_quit():
 func block_cancel():
 	return shield.is_visible()
 
+func block_pause():
+	return block_cancel()
+
 func quitgame():
 	sfx.get_node("confirm").play()
 	AudioServer.set_bus_effect_enabled(AudioServer.get_bus_index("BGM"), 0, false)

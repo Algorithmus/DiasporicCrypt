@@ -711,7 +711,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 15 )
-text = "v0.7"
+text = "v0.8"
 align = 2
 percent_visible = 1.0
 lines_skipped = 0
@@ -2735,13 +2735,13 @@ bus = "BGM"
 
 [connection signal="pressed" from="CanvasLayer/menu/newgame/backbutton/back" to="." method="_on_newgame_back_pressed"]
 
-[connection signal="focus_entered" from="CanvasLayer/menu/newgame/friederich" to="CanvasLayer/menu/newgame/friederich" method="_on_focus_enter"]
-
 [connection signal="focus_entered" from="CanvasLayer/menu/newgame/friederich" to="." method="_on_friederich_focus_enter"]
 
-[connection signal="focus_exited" from="CanvasLayer/menu/newgame/friederich" to="CanvasLayer/menu/newgame/friederich" method="_on_focus_exit"]
+[connection signal="focus_entered" from="CanvasLayer/menu/newgame/friederich" to="CanvasLayer/menu/newgame/friederich" method="_on_focus_enter"]
 
 [connection signal="focus_exited" from="CanvasLayer/menu/newgame/friederich" to="." method="_on_friederich_focus_exit"]
+
+[connection signal="focus_exited" from="CanvasLayer/menu/newgame/friederich" to="CanvasLayer/menu/newgame/friederich" method="_on_focus_exit"]
 
 [connection signal="pressed" from="CanvasLayer/menu/newgame/friederich" to="." method="_on_friederich_selected"]
 
