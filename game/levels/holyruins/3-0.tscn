@@ -109,10 +109,6 @@ transform/pos = Vector2( -336, -240 )
 
 transform/pos = Vector2( 880, 464 )
 
-[connection signal="enter_screen" from="tilemap/NPCGroup/Lucifer/enabler" to="tilemap/NPCGroup/Lucifer" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/NPCGroup/Lucifer/enabler" to="tilemap/NPCGroup/Lucifer" method="exit_screen"]
-
 
 [editable path="tilemap/NPCGroup/Lucifer"]
 [editable path="tilemap/TeleportGroup/Teleport"]

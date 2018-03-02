@@ -45,8 +45,6 @@ tile_data = IntArray( -917519, 536870915, -982979, 3, -851983, 536870915, -91744
 
 [node name="SlopeGroup" type="Node2D" parent="tilemap"]
 
-editor/display_folded = true
-
 [node name="Slope31-24" parent="tilemap/SlopeGroup" instance=ExtResource( 2 )]
 
 transform/pos = Vector2( -304, 176 )

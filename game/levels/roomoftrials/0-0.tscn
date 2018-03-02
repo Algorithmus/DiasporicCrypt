@@ -12,7 +12,9 @@
 
 [node name="LVL_START" type="Node2D"]
 
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -77,10 +79,6 @@ editor/display_folded = true
 editor/display_folded = true
 transform/pos = Vector2( 720, 16 )
 
-[node name="enabler" parent="tilemap/BreakableGroup/TestBreakable/KinematicBody2D"]
-
-enabler/pause_animated_sprites = true
-
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable/KinematicBody2D"]
 
 texture = ExtResource( 6 )
@@ -89,10 +87,6 @@ texture = ExtResource( 6 )
 
 editor/display_folded = true
 transform/pos = Vector2( 720, -16 )
-
-[node name="enabler" parent="tilemap/BreakableGroup/TestBreakable1/KinematicBody2D"]
-
-enabler/pause_animated_sprites = true
 
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable1/KinematicBody2D"]
 
@@ -103,10 +97,6 @@ texture = ExtResource( 6 )
 editor/display_folded = true
 transform/pos = Vector2( 720, -48 )
 
-[node name="enabler" parent="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D"]
-
-enabler/pause_animated_sprites = true
-
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D"]
 
 texture = ExtResource( 6 )
@@ -116,10 +106,6 @@ texture = ExtResource( 6 )
 editor/display_folded = true
 transform/pos = Vector2( 720, -80 )
 
-[node name="enabler" parent="tilemap/BreakableGroup/TestBreakable3/KinematicBody2D"]
-
-enabler/pause_animated_sprites = true
-
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable3/KinematicBody2D"]
 
 texture = ExtResource( 6 )
@@ -128,10 +114,6 @@ texture = ExtResource( 6 )
 
 editor/display_folded = true
 transform/pos = Vector2( 720, -112 )
-
-[node name="enabler" parent="tilemap/BreakableGroup/TestBreakable4/KinematicBody2D"]
-
-enabler/pause_animated_sprites = true
 
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable4/KinematicBody2D"]
 
@@ -229,42 +211,6 @@ transform/pos = Vector2( -518, -342 )
 [node name="SE" type="Position2D" parent="tilemap/boundaries"]
 
 transform/pos = Vector2( 1002, 234 )
-
-[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable1/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable1" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable1/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable1" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable2" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable2" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable3/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable3" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable3/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable3" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/BreakableGroup/TestBreakable4/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable4" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/BreakableGroup/TestBreakable4/KinematicBody2D/enabler" to="tilemap/BreakableGroup/TestBreakable4" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/FakeGroup/Fake/fake/enabler" to="tilemap/FakeGroup/Fake" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/FakeGroup/Fake/fake/enabler" to="tilemap/FakeGroup/Fake" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport/teleport/enabler" to="tilemap/TeleportGroup/Teleport" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport1/teleport/enabler" to="tilemap/TeleportGroup/Teleport1" method="exit_screen"]
-
-[connection signal="enter_screen" from="tilemap/TeleportGroup/Teleport2/teleport/enabler" to="tilemap/TeleportGroup/Teleport2" method="enter_screen"]
-
-[connection signal="exit_screen" from="tilemap/TeleportGroup/Teleport2/teleport/enabler" to="tilemap/TeleportGroup/Teleport2" method="exit_screen"]
 
 
 [editable path="tilemap/LadderGroup/TestLadder"]

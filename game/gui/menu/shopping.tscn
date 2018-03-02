@@ -218,7 +218,6 @@ custom_styles/panel = SubResource( 14 )
 
 [node name="panel" type="Control" parent="."]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -451,8 +450,10 @@ margin/right = 320.0
 margin/bottom = 120.0
 custom_fonts/normal_font = ExtResource( 6 )
 bbcode/enabled = true
-bbcode/bbcode = "[fill]description descriptionTESTTEST\nblah[/fill]"
+bbcode/bbcode = "[fill]description descriptionTESTTEST
+blah[/fill]"
 visible_characters = -1
+percent_visible = 1.0
 
 [node name="transaction" type="Control" parent="panel/info"]
 
