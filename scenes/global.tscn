@@ -546,6 +546,7 @@ anchor_bottom = 0.0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
@@ -596,6 +597,7 @@ anchor_bottom = 0.0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
@@ -612,6 +614,7 @@ margin_top = 356.0
 margin_right = 535.0
 margin_bottom = 568.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
@@ -623,6 +626,7 @@ alignment = 1
 margin_left = 0.0
 margin_right = 130.0
 margin_bottom = 25.0
+rect_clip_content = false
 focus_neighbour_left = NodePath(".")
 focus_neighbour_right = NodePath(".")
 text = "KEY_NEWGAME"
@@ -633,6 +637,7 @@ margin_left = 0.0
 margin_top = 36.0
 margin_right = 135.0
 margin_bottom = 61.0
+rect_clip_content = false
 focus_neighbour_left = NodePath(".")
 focus_neighbour_right = NodePath(".")
 text = "KEY_LOADGAME"
@@ -643,6 +648,7 @@ margin_left = 0.0
 margin_top = 72.0
 margin_right = 125.0
 margin_bottom = 97.0
+rect_clip_content = false
 focus_neighbour_left = NodePath(".")
 focus_neighbour_right = NodePath(".")
 text = "KEY_SETTINGS"
@@ -653,6 +659,7 @@ margin_left = 0.0
 margin_top = 108.0
 margin_right = 58.0
 margin_bottom = 133.0
+rect_clip_content = false
 focus_neighbour_left = NodePath(".")
 focus_neighbour_right = NodePath(".")
 focus_mode = 0
@@ -665,6 +672,7 @@ margin_left = 0.0
 margin_top = 144.0
 margin_right = 114.0
 margin_bottom = 169.0
+rect_clip_content = false
 focus_neighbour_left = NodePath(".")
 focus_neighbour_right = NodePath(".")
 focus_mode = 0
@@ -677,6 +685,7 @@ margin_left = 0.0
 margin_top = 180.0
 margin_right = 132.0
 margin_bottom = 205.0
+rect_clip_content = false
 focus_neighbour_left = NodePath(".")
 focus_neighbour_right = NodePath("../../info")
 focus_neighbour_bottom = NodePath("../../info")
@@ -688,6 +697,7 @@ margin_left = 723.0
 margin_top = 561.0
 margin_right = 800.0
 margin_bottom = 593.0
+rect_clip_content = false
 focus_neighbour_left = NodePath("../options/quitgame")
 focus_neighbour_top = NodePath("../options/quitgame")
 focus_neighbour_right = NodePath(".")
@@ -706,6 +716,7 @@ margin_top = 568.0
 margin_right = 784.0
 margin_bottom = 591.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
@@ -727,6 +738,7 @@ anchor_bottom = 0.0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
@@ -742,6 +754,7 @@ margin_left = -40.0
 margin_right = 760.0
 margin_bottom = 31.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
@@ -767,6 +780,7 @@ margin_top = 20.0
 margin_right = 171.0
 margin_bottom = 52.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
@@ -778,6 +792,7 @@ alignment = 0
 margin_left = 0.0
 margin_right = 93.0
 margin_bottom = 25.0
+rect_clip_content = false
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath("../../adela")
@@ -799,6 +814,7 @@ margin_left = 97.0
 margin_right = 121.0
 margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
@@ -818,6 +834,7 @@ anchor_bottom = 0.0
 margin_right = 12.0
 margin_bottom = 567.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath("../backbutton/back")
 focus_neighbour_right = NodePath("../adela")
@@ -848,6 +865,7 @@ anchor_bottom = 1.0
 margin_left = -12.0
 margin_right = 400.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
@@ -876,6 +894,7 @@ margin_left = 399.0
 margin_right = 411.0
 margin_bottom = 25.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 focus_neighbour_left = NodePath("../friederich")
 focus_neighbour_top = NodePath("../backbutton/back")
 focus_neighbour_right = NodePath(".")
@@ -907,6 +926,7 @@ margin_left = -12.0
 margin_right = 400.0
 margin_bottom = 542.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
@@ -934,6 +954,7 @@ anchor_bottom = 0.0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
@@ -950,6 +971,7 @@ margin_top = 544.0
 margin_right = 205.0
 margin_bottom = 576.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
@@ -962,6 +984,7 @@ _sections_unfolded = [ "Rect", "Size Flags" ]
 margin_left = 0.0
 margin_right = 93.0
 margin_bottom = 25.0
+rect_clip_content = false
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath("../../adela")
@@ -980,6 +1003,7 @@ margin_left = 97.0
 margin_right = 121.0
 margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
@@ -2482,6 +2506,7 @@ anchor_bottom = 0.0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
@@ -2498,6 +2523,7 @@ margin_top = 12.0
 margin_right = 260.0
 margin_bottom = 43.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
@@ -2523,6 +2549,7 @@ margin_left = 98.0
 margin_top = 64.0
 margin_right = 234.0
 margin_bottom = 96.0
+rect_clip_content = false
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath("../settings/save")
 _sections_unfolded = [ "Focus", "custom_styles" ]
@@ -2533,18 +2560,98 @@ margin_left = 32.0
 margin_top = 98.0
 margin_right = 768.0
 margin_bottom = 592.0
+rect_clip_content = false
+
+[node name="sound" parent="CanvasLayer/menu/settingsmenu/settings" index="0"]
+
+rect_clip_content = false
 
 [node name="sfxslider" parent="CanvasLayer/menu/settingsmenu/settings" index="4"]
 
+rect_clip_content = false
 focus_neighbour_top = NodePath("../../language")
 _sections_unfolded = [ "Theme", "Visibility" ]
 
+[node name="bgmslider" parent="CanvasLayer/menu/settingsmenu/settings" index="5"]
+
+rect_clip_content = false
+
+[node name="controls" parent="CanvasLayer/menu/settingsmenu/settings" index="7"]
+
+rect_clip_content = false
+
+[node name="layout" parent="CanvasLayer/menu/settingsmenu/settings" index="8"]
+
+rect_clip_content = false
+
+[node name="inputs" parent="CanvasLayer/menu/settingsmenu/settings" index="9"]
+
+rect_clip_content = false
+
+[node name="up" parent="CanvasLayer/menu/settingsmenu/settings/inputs" index="0"]
+
+rect_clip_content = false
+
+[node name="down" parent="CanvasLayer/menu/settingsmenu/settings/inputs" index="1"]
+
+rect_clip_content = false
+
+[node name="left" parent="CanvasLayer/menu/settingsmenu/settings/inputs" index="2"]
+
+rect_clip_content = false
+
+[node name="right" parent="CanvasLayer/menu/settingsmenu/settings/inputs" index="3"]
+
+rect_clip_content = false
+
+[node name="attack" parent="CanvasLayer/menu/settingsmenu/settings/inputs" index="4"]
+
+rect_clip_content = false
+
+[node name="jump" parent="CanvasLayer/menu/settingsmenu/settings/inputs" index="5"]
+
+rect_clip_content = false
+
+[node name="magic" parent="CanvasLayer/menu/settingsmenu/settings/inputs" index="6"]
+
+rect_clip_content = false
+
+[node name="blood" parent="CanvasLayer/menu/settingsmenu/settings/inputs" index="7"]
+
+rect_clip_content = false
+
+[node name="prev" parent="CanvasLayer/menu/settingsmenu/settings/inputs" index="8"]
+
+rect_clip_content = false
+
+[node name="next" parent="CanvasLayer/menu/settingsmenu/settings/inputs" index="9"]
+
+rect_clip_content = false
+
+[node name="pause" parent="CanvasLayer/menu/settingsmenu/settings/inputs" index="10"]
+
+rect_clip_content = false
+
+[node name="minimap" parent="CanvasLayer/menu/settingsmenu/settings/inputs" index="11"]
+
+rect_clip_content = false
+
+[node name="save_bg" parent="CanvasLayer/menu/settingsmenu/settings" index="10"]
+
+rect_clip_content = false
+
 [node name="save" parent="CanvasLayer/menu/settingsmenu/settings" index="12"]
 
+rect_clip_content = false
 focus_neighbour_bottom = NodePath("../../language")
+
+[node name="reset_bg" parent="CanvasLayer/menu/settingsmenu/settings" index="13"]
+
+rect_clip_content = false
 
 [node name="reset" parent="CanvasLayer/menu/settingsmenu/settings" index="15"]
 
+rect_clip_content = false
 focus_neighbour_bottom = NodePath("../../language")
 
 [node name="back" parent="CanvasLayer/menu/settingsmenu" index="4" instance=ExtResource( 23 )]
@@ -2557,10 +2664,16 @@ margin_left = 503.0
 margin_top = 16.0
 margin_right = 744.0
 margin_bottom = 47.0
+rect_clip_content = false
 
 [node name="input" parent="CanvasLayer/menu/settingsmenu/back" index="0"]
 
+rect_clip_content = false
 text = "MAP_BACK"
+
+[node name="key" parent="CanvasLayer/menu/settingsmenu/back" index="1"]
+
+rect_clip_content = false
 
 [node name="loadmenu" type="Control" parent="CanvasLayer/menu" index="6"]
 
@@ -2571,6 +2684,7 @@ anchor_bottom = 0.0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
@@ -2585,6 +2699,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 
@@ -2598,6 +2713,7 @@ anchor_bottom = 0.0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
@@ -2613,6 +2729,7 @@ anchor_bottom = 0.0
 margin_right = 800.0
 margin_bottom = 592.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
@@ -2632,6 +2749,7 @@ margin_top = 177.0
 margin_right = 800.0
 margin_bottom = 304.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
@@ -2654,6 +2772,7 @@ margin_top = 384.0
 margin_right = 800.0
 margin_bottom = 416.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 0
@@ -2667,6 +2786,7 @@ _sections_unfolded = [ "Size Flags" ]
 margin_left = 224.0
 margin_right = 303.0
 margin_bottom = 25.0
+rect_clip_content = false
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath("../no")
@@ -2679,6 +2799,7 @@ text = "KEY_YES"
 margin_left = 503.0
 margin_right = 575.0
 margin_bottom = 25.0
+rect_clip_content = false
 focus_neighbour_left = NodePath("../yes")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath(".")
