@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/fallislandcastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/fallislandcastle/climbableblock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/npcs/nystev/idle.png" type="Texture" id=5]
+[ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=7]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
 
@@ -61,91 +62,95 @@ position = Vector2( -224, 16 )
 
 [node name="NPCGroup" type="Node2D" parent="tilemap" index="2"]
 
-editor/display_folded = true
+[node name="Nystev" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 4 )]
 
-[node name="NPC" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 4 )]
+position = Vector2( -672, -16 )
+_sections_unfolded = [ "Transform" ]
+dialogues = [ [ -1, "Nystev", "DIAG_NYSTEV0", null, null ], [ 1, "Friederich", "DIAG_NYSTEV1", null, null ], [ -1, "Nystev", "DIAG_NYSTEV2", null, [ [ "KEY_YES", "shop", "SHOP_NYSTEV", true ], [ "KEY_NO", "end" ] ] ] ]
 
-position = Vector2( -672, 0 )
+[node name="Sprite" parent="tilemap/NPCGroup/Nystev" index="1"]
+
+texture = ExtResource( 5 )
 
 [node name="DamageGroup" type="Node2D" parent="tilemap" index="3"]
 
-[node name="SpikeTile" parent="tilemap/DamageGroup" index="0" instance=ExtResource( 5 )]
+[node name="SpikeTile" parent="tilemap/DamageGroup" index="0" instance=ExtResource( 6 )]
 
 position = Vector2( -80, 304 )
 
-[node name="SpikeTile1" parent="tilemap/DamageGroup" index="1" instance=ExtResource( 5 )]
+[node name="SpikeTile1" parent="tilemap/DamageGroup" index="1" instance=ExtResource( 6 )]
 
 position = Vector2( -48, 304 )
 
-[node name="SpikeTile2" parent="tilemap/DamageGroup" index="2" instance=ExtResource( 5 )]
+[node name="SpikeTile2" parent="tilemap/DamageGroup" index="2" instance=ExtResource( 6 )]
 
 position = Vector2( -16, 304 )
 
-[node name="SpikeTile3" parent="tilemap/DamageGroup" index="3" instance=ExtResource( 5 )]
+[node name="SpikeTile3" parent="tilemap/DamageGroup" index="3" instance=ExtResource( 6 )]
 
 position = Vector2( 16, 304 )
 
-[node name="SpikeTile4" parent="tilemap/DamageGroup" index="4" instance=ExtResource( 5 )]
+[node name="SpikeTile4" parent="tilemap/DamageGroup" index="4" instance=ExtResource( 6 )]
 
 position = Vector2( 48, 304 )
 
-[node name="SpikeTile5" parent="tilemap/DamageGroup" index="5" instance=ExtResource( 5 )]
+[node name="SpikeTile5" parent="tilemap/DamageGroup" index="5" instance=ExtResource( 6 )]
 
 position = Vector2( 80, 304 )
 
-[node name="SpikeTile6" parent="tilemap/DamageGroup" index="6" instance=ExtResource( 5 )]
+[node name="SpikeTile6" parent="tilemap/DamageGroup" index="6" instance=ExtResource( 6 )]
 
 position = Vector2( 112, 304 )
 
-[node name="SpikeTile7" parent="tilemap/DamageGroup" index="7" instance=ExtResource( 5 )]
+[node name="SpikeTile7" parent="tilemap/DamageGroup" index="7" instance=ExtResource( 6 )]
 
 position = Vector2( 144, 304 )
 
-[node name="SpikeTile8" parent="tilemap/DamageGroup" index="8" instance=ExtResource( 5 )]
+[node name="SpikeTile8" parent="tilemap/DamageGroup" index="8" instance=ExtResource( 6 )]
 
 position = Vector2( 176, 304 )
 
-[node name="SpikeTile9" parent="tilemap/DamageGroup" index="9" instance=ExtResource( 5 )]
+[node name="SpikeTile9" parent="tilemap/DamageGroup" index="9" instance=ExtResource( 6 )]
 
 position = Vector2( 208, 304 )
 
-[node name="SpikeTile10" parent="tilemap/DamageGroup" index="10" instance=ExtResource( 5 )]
+[node name="SpikeTile10" parent="tilemap/DamageGroup" index="10" instance=ExtResource( 6 )]
 
 position = Vector2( 240, 304 )
 
-[node name="SpikeTile11" parent="tilemap/DamageGroup" index="11" instance=ExtResource( 5 )]
+[node name="SpikeTile11" parent="tilemap/DamageGroup" index="11" instance=ExtResource( 6 )]
 
 position = Vector2( 272, 304 )
 
-[node name="SpikeTile12" parent="tilemap/DamageGroup" index="12" instance=ExtResource( 5 )]
+[node name="SpikeTile12" parent="tilemap/DamageGroup" index="12" instance=ExtResource( 6 )]
 
 position = Vector2( 304, 304 )
 
-[node name="SpikeTile13" parent="tilemap/DamageGroup" index="13" instance=ExtResource( 5 )]
+[node name="SpikeTile13" parent="tilemap/DamageGroup" index="13" instance=ExtResource( 6 )]
 
 position = Vector2( 336, 304 )
 
-[node name="SpikeTile14" parent="tilemap/DamageGroup" index="14" instance=ExtResource( 5 )]
+[node name="SpikeTile14" parent="tilemap/DamageGroup" index="14" instance=ExtResource( 6 )]
 
 position = Vector2( 368, 304 )
 
-[node name="SpikeTile15" parent="tilemap/DamageGroup" index="15" instance=ExtResource( 5 )]
+[node name="SpikeTile15" parent="tilemap/DamageGroup" index="15" instance=ExtResource( 6 )]
 
 position = Vector2( 400, 304 )
 
-[node name="SpikeTile16" parent="tilemap/DamageGroup" index="16" instance=ExtResource( 5 )]
+[node name="SpikeTile16" parent="tilemap/DamageGroup" index="16" instance=ExtResource( 6 )]
 
 position = Vector2( 432, 304 )
 
-[node name="SpikeTile17" parent="tilemap/DamageGroup" index="17" instance=ExtResource( 5 )]
+[node name="SpikeTile17" parent="tilemap/DamageGroup" index="17" instance=ExtResource( 6 )]
 
 position = Vector2( 464, 304 )
 
-[node name="SpikeTile18" parent="tilemap/DamageGroup" index="18" instance=ExtResource( 5 )]
+[node name="SpikeTile18" parent="tilemap/DamageGroup" index="18" instance=ExtResource( 6 )]
 
 position = Vector2( 496, 304 )
 
-[node name="SpikeTile19" parent="tilemap/DamageGroup" index="19" instance=ExtResource( 5 )]
+[node name="SpikeTile19" parent="tilemap/DamageGroup" index="19" instance=ExtResource( 6 )]
 
 position = Vector2( 528, 304 )
 
@@ -153,7 +158,7 @@ position = Vector2( 528, 304 )
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 6 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 7 )]
 
 editor/display_folded = true
 position = Vector2( 592, -16 )
@@ -178,4 +183,5 @@ position = Vector2( 586, 362 )
 
 
 [editable path="tilemap/ClimbableGroup/ClimbableBlock1"]
+[editable path="tilemap/NPCGroup/Nystev"]
 [editable path="tilemap/TeleportGroup/Teleport"]

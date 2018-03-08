@@ -219,6 +219,9 @@ DIAG_CARROT1,"[color=white]That's my familiar.[/color]","[color=white]Das ist me
 DIAG_CARROT2,"[color=white]Oh wow, really? Neat! They seem to be getting along fine.[/color]","[color=white]Oh wow, wirklich? Cool! Sie scheinen sich befreundet zu sein.[/color]"
 DIAG_GODDESS0,"[color=white]What a dark creepy place. I'm so glad I found this nice patch of sunlight. Hmm...? You look kind of sick. Is it too bright?[/color]","[color=white]Was für ein unheimlicher düsterer Ort. Ich bin so froh, dieses Sonnenschein gefunden zu haben. Huch...? Du scheint nicht ganz in Ordnung zu sein. Ist es dir zu hell?[/color]"
 DIAG_GODDESS1,"[color=white]I might have something that might help you with that. Want to buy it?[/color]","[color=white]Ich habe etwas, das dir vielleicht helfen kann. Kaufst du es?[/color]"
+DIAG_NYSTEV0,"[color=white]? How did you get in here? I was looking all over for Taevica, and ended up here and the wall closed up on me. Now I'm stuck. Hmm? You look familiar...[/color]","[color=white]? Wie hast du hierher gekommen? Ich suchte überall nach Taevica, und letzendlich kam ich hier, und das Wand hat sich geschlossen. Jetzt steck ich hier fest. Huch? Du siehst mir bekannt aus...[/color]"
+DIAG_NYSTEV1,"[color=white]...I think I have seen you somewhere before too. But unfortunately, I think your princess is in another castle.[/color]","[color=white]...Ich denke, ich errinnere dich auch ein bisschen. Aber leider glaube ich, deine Prinzessin liegt in ein anderen Schloß.[/color]"
+DIAG_NYSTEV2,"[color=white]What?! Damn. Well, I found a bunch of stuff along the way. Wanna buy it off of me?[/color]","[color=white]Was?! Verdammt. Naja, ich habe ein Paar Sachen auf den Weg gefunden. Willst du sie von mir kaufen?[/color]"
 CHARACTER_NPC,NPC,NSC
 CHOICE_SURE,Sure,Klar
 CHOICE_NAH,Nah,Nö
@@ -263,6 +266,7 @@ SHOP_GABRIEL,Gabriel's Shop,Gabriels Laden
 SHOP_VANCE,Vance's Shop,Vances Laden
 SHOP_PEPPER,Pepper's Shop,Peppers Laden
 SHOP_GODDESS,Goddess' Shop,Goddess' Laden
+SHOP_NYSTEV,Nystev's Shop,Nystevs Laden
 SHOP_AMOUNT,Amount,Menge
 SHOP_TOTAL,Total,Summe
 MAP_QUEST,Quest,Quest

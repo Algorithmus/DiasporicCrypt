@@ -63,3 +63,11 @@ func _init():
 
 	goddess.sellrate = 1.5
 	shops[goddess.title] = goddess
+
+	var nystev = shopclass.new()
+	nystev.title = "SHOP_NYSTEV"
+	nystev.inventory = [{"type": "item", "id": "ITEM_SHIELDPOTION", "quantity": 2},
+						{"type": "item", "id": "ITEM_STRENGTHPOTION", "quantity": 2}]
+
+	nystev.sellrate = 2
+	shops[nystev.title] = nystev
