@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/springislandcastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/springislandcastle/climbableblock.tscn" type="PackedScene" id=2]
@@ -15,7 +15,8 @@
 [ext_resource path="res://scenes/common/damagables/sorcerer/sorcerer.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/items/gold/gold.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/npcs/taevica/idle.png" type="Texture" id=16]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=17]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
 
@@ -223,17 +224,21 @@ value = 100
 
 [node name="NPCGroup" type="Node2D" parent="tilemap" index="7"]
 
-editor/display_folded = true
-
-[node name="NPC" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 15 )]
+[node name="Taevica" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 15 )]
 
 position = Vector2( -864, 928 )
+_sections_unfolded = [ "Transform" ]
+dialogues = [ [ -1, "Taevica", "DIAG_TAEVICA0", null, null ], [ 1, "Adela", "DIAG_TAEVICA1", null, null ], [ -1, "Taevica", "DIAG_TAEVICA2", null, [ [ "KEY_YES", "shop", "SHOP_TAEVICA", true ], [ "KEY_NO", "end" ] ] ] ]
+
+[node name="Sprite" parent="tilemap/NPCGroup/Taevica" index="1"]
+
+texture = ExtResource( 16 )
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="8"]
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 16 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 17 )]
 
 editor/display_folded = true
 position = Vector2( 496, -48 )
@@ -261,4 +266,5 @@ position = Vector2( 490, 1034 )
 [editable path="tilemap/BreakableGroup/TestBreakable1"]
 [editable path="tilemap/BreakableGroup/TestBreakable2"]
 [editable path="tilemap/FakeGroup/Fake"]
+[editable path="tilemap/NPCGroup/Taevica"]
 [editable path="tilemap/TeleportGroup/Teleport"]
