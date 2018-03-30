@@ -2,6 +2,9 @@
 
 - [Pepper and Carrot](https://peppercarrot.com) - David Revoy, CC-By
 - [Goddess](https://github.com/WinterLicht/Chaos-Projectile) - Anna Dorokhova
+- Nystev - Carbonoid
+- Taevica - Carbonoid
+- Neropheus - Aishishii
 
 # Attributions
 
