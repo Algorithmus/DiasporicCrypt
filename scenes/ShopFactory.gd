@@ -79,3 +79,10 @@ func _init():
 
 	taevica.sellrate = 0.5
 	shops[taevica.title] = taevica
+
+	var nero = shopclass.new()
+	nero.title = "SHOP_NERO"
+	nero.inventory = [{"type": "item", "id": "ITEM_STRENGTHPOTION", "quantity": 10}]
+
+	nero.sellrate = 0.25
+	shops[nero.title] = nero

@@ -225,6 +225,8 @@ DIAG_NYSTEV2,"[color=white]What?! Damn. Well, I found a bunch of stuff along the
 DIAG_TAEVICA0,"[color=white]Oh, it's you, my dear. I'm looking for Nystev, but I'm beginning to think he's not coming. Have you seen him?[/color]","[color=white]Oh, du bist es. Ich suche nach Nystev, aber es scheint, er kommt nicht hierher. Hast du ihm gesehen?[/color]"
 DIAG_TAEVICA1,"[color=white]No, not yet...I'll let you know if I see him.[/color]","[color=white]Nein, noch nicht...Ich sag dir Bescheid wenn ich ihm sehe.[/color]"
 DIAG_TAEVICA2,"[color=white]Thanks. Hey, I'm bored. Want to trade stuff with me?[/color]","[color=white]Danke. He, ich fühle mich langweilig. Willst du mir was austauschen?[/color]"
+DIAG_NERO0,"[color=white]Fuck, did you just blow a hole in the wall? ...Hahahaha! I could do better than that![/color]","[color=white]Verdammt, hast du ein Loch in das Mauer gemacht? ...Hahahaha![/color]"
+DIAG_NERO1,"[color=white]And since I'm so strong, I can trade you a little something. How about it?[/color]","[color=white]Ich konnte mal besser! Und weil ich so stark bin, kann ich dir was austauschen. Und, was meinst du?[/color]"
 CHARACTER_NPC,NPC,NSC
 CHOICE_SURE,Sure,Klar
 CHOICE_NAH,Nah,Nö
@@ -271,6 +273,7 @@ SHOP_PEPPER,Pepper's Shop,Peppers Laden
 SHOP_GODDESS,Goddess' Shop,Goddess' Laden
 SHOP_NYSTEV,Nystev's Shop,Nystevs Laden
 SHOP_TAEVICA,Taevica's Shop,Taevicas Laden
+SHOP_NERO,Neropheus' Shop,Neropheus' Laden
 SHOP_AMOUNT,Amount,Menge
 SHOP_TOTAL,Total,Summe
 MAP_QUEST,Quest,Quest

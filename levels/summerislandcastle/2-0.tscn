@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/summerislandcastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/breakables/magicminebreakable.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/npcs/nero/idle.png" type="Texture" id=4]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=5]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
 
@@ -94,20 +95,23 @@ position = Vector2( -176, -208 )
 
 [node name="NPCGroup" type="Node2D" parent="tilemap" index="1"]
 
-editor/display_folded = true
-
-[node name="NPC" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 3 )]
+[node name="Nero" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 368, 160 )
+_sections_unfolded = [ "Transform" ]
+dialogues = [ [ -1, "Neropheus", "DIAG_NERO0", null, null ], [ -1, "Neropheus", "DIAG_NERO1", null, [ [ "KEY_YES", "shop", "SHOP_NERO", true ], [ "KEY_NO", "end" ] ] ] ]
 
-[node name="Sprite" parent="tilemap/NPCGroup/NPC" index="1"]
+[node name="Sprite" parent="tilemap/NPCGroup/Nero" index="1"]
 
 scale = Vector2( -1, 1 )
+texture = ExtResource( 4 )
+offset = Vector2( -28, 0 )
+_sections_unfolded = [ "Offset" ]
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="2"]
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 4 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 position = Vector2( -336, 144 )
@@ -129,5 +133,5 @@ position = Vector2( -336, -272 )
 position = Vector2( 528, 272 )
 
 
-[editable path="tilemap/NPCGroup/NPC"]
+[editable path="tilemap/NPCGroup/Nero"]
 [editable path="tilemap/TeleportGroup/Teleport"]
