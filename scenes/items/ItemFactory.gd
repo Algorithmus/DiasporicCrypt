@@ -264,6 +264,14 @@ func _init():
 	scrolladventure.order = 3
 	items[scrolladventure.title] = scrolladventure
 	
+	var scrollstar1 = scrollclass.new()
+	scrollstar1.title = "SCROLL_STAR1"
+	scrollstar1.display = "SCROLL_STAR1_TITLE"
+	scrollstar1.content = "SCROLL_STAR1_DESCRIPTION"
+	scrollstar1.description = "SCROLL_STAR1_SHORT"
+	scrollstar1.order = 4
+	items[scrollstar1.title] = scrollstar1
+
 	var scrollmoon3 = scrollclass.new()
 	scrollmoon3.title = "SCROLL_MOON3"
 	scrollmoon3.display = "SCROLL_MOON3_TITLE"

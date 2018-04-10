@@ -4,7 +4,8 @@
 - [Goddess](https://github.com/WinterLicht/Chaos-Projectile) - Anna Dorokhova
 - Nystev - Carbonoid
 - Taevica - Carbonoid
-- Neropheus - Aishishii
+- [Neropheus](http://aishishii.tumblr.com/tagged/neropheus) - Aishishii
+- Yuki - Julie Thai
 
 # Attributions
 

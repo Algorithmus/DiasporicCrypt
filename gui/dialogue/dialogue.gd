@@ -50,6 +50,7 @@ var avatars = {"Friederich": {"img": preload("res://gui/dialogue/profiles/friede
 				"Nystev": {"img": preload("res://gui/dialogue/profiles/nystev.png"), "offset": Vector2()},
 				"Taevica": {"img": preload("res://gui/dialogue/profiles/taevica.png"), "offset": Vector2()},
 				"Neropheus": {"img": preload("res://gui/dialogue/profiles/nero.png"), "offset": Vector2()},
+				"Yuki": {"img": preload("res://gui/dialogue/profiles/yuki.png"), "offset": Vector2()},
 				"CHARACTER_NPC": {"img": preload("res://gui/dialogue/profiles/npc.png"), "offset": Vector2()}}
 
 func _ready():
@@ -238,7 +239,7 @@ func show_dialog():
 				else:
 					ProjectSettings.get("inventory").add_item(item_obj, item[ITEM_VALUE])
 				itemtext = "[img]" + itemicon + "[/img]" + itemtext
-				basetext = basetext.replace("[item]", itemtext)
+				basetext = "[center]" + basetext.replace("[item]", itemtext) + "[/center]"
 			text.set_bbcode(basetext)
 			text.set_visible_characters(0)
 		else :
