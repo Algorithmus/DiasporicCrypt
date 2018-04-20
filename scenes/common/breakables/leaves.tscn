@@ -1,0 +1,151 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/common/breakables/BaseBreakable.gd" type="Script" id=1]
+[ext_resource path="res://scenes/forest/BGs/leaves-base-yellow.png" type="Texture" id=2]
+[ext_resource path="res://scenes/forest/colorshift.gd" type="Script" id=3]
+[ext_resource path="res://scenes/forest/BGs/leaves-left-yellow.png" type="Texture" id=4]
+[ext_resource path="res://scenes/forest/BGs/leaves-right-yellow.png" type="Texture" id=5]
+[ext_resource path="res://scenes/cave/BGs/floor.png" type="Texture" id=6]
+[ext_resource path="res://scenes/common/breakables/crumble.wav" type="AudioStream" id=7]
+
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+
+uniform vec4 mask:hint_color; // The color that should be replaced
+uniform vec4 replace:hint_color; // The new color to that replaces the old one
+uniform float threshold; // Usually a value between 0 to 1. Indicates how sensitively the colors should be replaced.
+
+void fragment() {
+	vec4 out_col = texture(TEXTURE, UV);
+	vec3 diff = out_col.rgb - mask.rgb;
+	
+	if(abs(length(diff)) < threshold) {
+		out_col.rgb = replace.rgb * (vec3(1.0, 1.0, 1.0) - diff);
+	}
+	
+	COLOR=out_col;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+
+render_priority = 0
+shader = SubResource( 1 )
+shader_param/mask = Color( 1, 0.834263, 0.648438, 1 )
+shader_param/replace = Color( 0.294118, 0.239032, 0.0509804, 1 )
+shader_param/threshold = 0.6
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 96, 16 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 98, 18 )
+
+[node name="TestBreakable" type="Node2D"]
+
+script = ExtResource( 1 )
+__meta__ = {
+"__editor_plugin_screen__": "Script"
+}
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="." index="0"]
+
+input_pickable = false
+collision_layer = 524288
+collision_mask = 1
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
+
+[node name="enabler" type="VisibilityEnabler2D" parent="KinematicBody2D" index="0"]
+
+position = Vector2( -3.8147e-06, 0 )
+scale = Vector2( 11.2, 3 )
+rect = Rect2( -10, -10, 20, 20 )
+pause_animations = true
+freeze_bodies = true
+pause_particles = true
+pause_animated_sprites = true
+process_parent = false
+physics_process_parent = false
+
+[node name="Sprite" type="Node2D" parent="KinematicBody2D" index="1"]
+
+[node name="Sprite" type="Sprite" parent="KinematicBody2D/Sprite" index="0"]
+
+material = SubResource( 2 )
+texture = ExtResource( 2 )
+offset = Vector2( 0, -32 )
+script = ExtResource( 3 )
+_sections_unfolded = [ "Material", "Offset" ]
+start_color = Color( 1, 0.589817, 0.113281, 1 )
+end_color = Color( 1, 0.831373, 0.647059, 1 )
+curve = 1.0
+
+[node name="Sprite2" type="Sprite" parent="KinematicBody2D/Sprite" index="1"]
+
+material = SubResource( 2 )
+texture = ExtResource( 4 )
+offset = Vector2( -128, -32 )
+script = ExtResource( 3 )
+_sections_unfolded = [ "Material", "Offset" ]
+start_color = Color( 1, 0.588235, 0.109804, 1 )
+end_color = Color( 1, 0.831373, 0.647059, 1 )
+curve = 1.0
+
+[node name="Sprite3" type="Sprite" parent="KinematicBody2D/Sprite" index="2"]
+
+material = SubResource( 2 )
+texture = ExtResource( 5 )
+offset = Vector2( 128, -32 )
+script = ExtResource( 3 )
+_sections_unfolded = [ "Material", "Offset" ]
+start_color = Color( 1, 0.588235, 0.109804, 1 )
+end_color = Color( 1, 0.831373, 0.647059, 1 )
+curve = 1.0
+
+[node name="Sprite4" type="Sprite" parent="KinematicBody2D/Sprite" index="3"]
+
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 192, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="2"]
+
+shape = SubResource( 3 )
+
+[node name="breakable" type="Area2D" parent="KinematicBody2D" index="3"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/breakable" index="0"]
+
+shape = SubResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="sound" type="Node" parent="." index="1"]
+
+[node name="crumble" type="AudioStreamPlayer" parent="sound" index="0"]
+
+stream = ExtResource( 7 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[connection signal="screen_entered" from="KinematicBody2D/enabler" to="." method="enter_screen"]
+
+[connection signal="screen_exited" from="KinematicBody2D/enabler" to="." method="exit_screen"]
+
+

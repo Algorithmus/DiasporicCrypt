@@ -14,7 +14,7 @@ func _init():
 	
 	var forest1 = locationclass.new()
 	forest1.node = "res://levels/forest/nocturn.tscn"
-	forest1.teleportto = Vector2(16, 128)
+	forest1.teleportto = Vector2(16, 544)
 	forest1.id = "LVL_NOCTURNFOREST"
 	forest1.bgm = preload("res://levels/forest/BGM1.ogg")
 	locations[forest1.id] = forest1

@@ -78,6 +78,7 @@ func _init():
 	forest1.location = locationfactory.locations["LVL_NOCTURNFOREST"]
 	forest1.time = 6000
 	forest1.mincounter = 5
+	forest1.sealevel = 112
 	forest1.require = [["LVL_DUNGEON", "LVL_ICECAVE"]]
 	levels[forest1.title] = forest1
 	

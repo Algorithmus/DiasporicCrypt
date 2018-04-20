@@ -1,0 +1,180 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://scenes/forest/BGs/branch1-0.png" type="Texture" id=1]
+[ext_resource path="res://scenes/forest/BGs/f-bush1-0.png" type="Texture" id=2]
+[ext_resource path="res://scenes/forest/BGs/branch1-1.png" type="Texture" id=3]
+[ext_resource path="res://scenes/forest/BGs/f-bush1-1.png" type="Texture" id=4]
+[ext_resource path="res://scenes/forest/BGs/branch1-2.png" type="Texture" id=5]
+[ext_resource path="res://scenes/forest/BGs/f-bush1-2.png" type="Texture" id=6]
+[ext_resource path="res://scenes/forest/BGs/branch2-0.png" type="Texture" id=7]
+[ext_resource path="res://scenes/forest/BGs/f-bush2-0.png" type="Texture" id=8]
+[ext_resource path="res://scenes/forest/BGs/branch2-1.png" type="Texture" id=9]
+[ext_resource path="res://scenes/forest/BGs/f-bush2-1.png" type="Texture" id=10]
+[ext_resource path="res://scenes/forest/BGs/branch2-2.png" type="Texture" id=11]
+[ext_resource path="res://scenes/forest/BGs/f-bush2-2.png" type="Texture" id=12]
+[ext_resource path="res://scenes/forest/BGs/branch2-3.png" type="Texture" id=13]
+[ext_resource path="res://scenes/forest/BGs/f-bush2-3.png" type="Texture" id=14]
+[ext_resource path="res://scenes/forest/BGs/trunkS-1.png" type="Texture" id=15]
+[ext_resource path="res://scenes/forest/BGs/f-bushS-1.png" type="Texture" id=16]
+[ext_resource path="res://scenes/forest/BGs/trunkS-2.png" type="Texture" id=17]
+[ext_resource path="res://scenes/forest/BGs/f-bushS-2.png" type="Texture" id=18]
+[ext_resource path="res://scenes/forest/BGs/trunkM-1.png" type="Texture" id=19]
+[ext_resource path="res://scenes/forest/BGs/f-bushM-1.png" type="Texture" id=20]
+[ext_resource path="res://scenes/forest/BGs/trunkM-2.png" type="Texture" id=21]
+[ext_resource path="res://scenes/forest/BGs/f-bushM-2.png" type="Texture" id=22]
+[ext_resource path="res://scenes/forest/BGs/leaves-base.png" type="Texture" id=23]
+[ext_resource path="res://scenes/forest/BGs/leaves-repeat.png" type="Texture" id=24]
+[ext_resource path="res://scenes/forest/BGs/leaves-left.png" type="Texture" id=25]
+[ext_resource path="res://scenes/forest/BGs/leaves-right.png" type="Texture" id=26]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="fbranch1-0" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Region" ]
+
+[node name="fbush1-0" type="Sprite" parent="." index="1"]
+
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
+
+[node name="fbranch1-1" type="Sprite" parent="." index="2"]
+
+position = Vector2( 352, 32 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="fbush1-1" type="Sprite" parent="." index="3"]
+
+position = Vector2( 352, 32 )
+texture = ExtResource( 4 )
+
+[node name="fbranch1-2" type="Sprite" parent="." index="4"]
+
+position = Vector2( 720, -16 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="fbush1-2" type="Sprite" parent="." index="5"]
+
+position = Vector2( 720, -16 )
+texture = ExtResource( 6 )
+
+[node name="fbranch2-0" type="Sprite" parent="." index="6"]
+
+position = Vector2( -16, 352 )
+texture = ExtResource( 7 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="fbush2-0" type="Sprite" parent="." index="7"]
+
+position = Vector2( -16, 352 )
+texture = ExtResource( 8 )
+
+[node name="fbranch2-1" type="Sprite" parent="." index="8"]
+
+position = Vector2( 336, 368 )
+texture = ExtResource( 9 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="fbush2-1" type="Sprite" parent="." index="9"]
+
+position = Vector2( 336, 368 )
+texture = ExtResource( 10 )
+
+[node name="fbranch2-2" type="Sprite" parent="." index="10"]
+
+position = Vector2( 672, 368 )
+texture = ExtResource( 11 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="fbush2-2" type="Sprite" parent="." index="11"]
+
+position = Vector2( 672, 368 )
+texture = ExtResource( 12 )
+
+[node name="fbranch2-3" type="Sprite" parent="." index="12"]
+
+position = Vector2( 992, 320 )
+texture = ExtResource( 13 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="fbush2-3" type="Sprite" parent="." index="13"]
+
+position = Vector2( 992, 320 )
+texture = ExtResource( 14 )
+
+[node name="ftrunkS-1" type="Sprite" parent="." index="14"]
+
+position = Vector2( 32, 992 )
+texture = ExtResource( 15 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="fbushS-1" type="Sprite" parent="." index="15"]
+
+position = Vector2( -16, 704 )
+texture = ExtResource( 16 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="ftrunkS-2" type="Sprite" parent="." index="16"]
+
+position = Vector2( 272, 992 )
+texture = ExtResource( 17 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="fbushS-2" type="Sprite" parent="." index="17"]
+
+position = Vector2( 304, 704 )
+texture = ExtResource( 18 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="ftrunkM-1" type="Sprite" parent="." index="18"]
+
+position = Vector2( 576, 1200 )
+texture = ExtResource( 19 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="fbushM-1" type="Sprite" parent="." index="19"]
+
+position = Vector2( 592, 768 )
+texture = ExtResource( 20 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="ftrunkM-2" type="Sprite" parent="." index="20"]
+
+position = Vector2( 928, 1200 )
+texture = ExtResource( 21 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="fbushM-2" type="Sprite" parent="." index="21"]
+
+position = Vector2( 896, 720 )
+texture = ExtResource( 22 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="leaves-base" type="Sprite" parent="." index="22"]
+
+position = Vector2( -96, -176 )
+texture = ExtResource( 23 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="leaves-repeat" type="Sprite" parent="." index="23"]
+
+position = Vector2( 32, -176 )
+texture = ExtResource( 24 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="leaves-left" type="Sprite" parent="." index="24"]
+
+position = Vector2( 96, -176 )
+texture = ExtResource( 25 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="leaves-right" type="Sprite" parent="." index="25"]
+
+position = Vector2( 160, -176 )
+texture = ExtResource( 26 )
+_sections_unfolded = [ "Transform" ]
+
+

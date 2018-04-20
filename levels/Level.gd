@@ -19,6 +19,7 @@ var mincounter # minimum number of enemies required for bonus level
 var location # location level takes place in
 var require # levels required to be completed before this level becomes available
 var character # character the level is for
+var sealevel # level underwhich sunbeams have no effect
 
 func _ready():
 	# Called every time the node is added to the scene.
