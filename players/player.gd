@@ -242,7 +242,7 @@ func check_damage(damageTiles):
 				check_gameover()
 			if (i.get_name() == "npc"):
 				npc = i.get_parent()
-		if (ProjectSettings.get("sun") && !is_hurt_check):
+		if (ProjectSettings.get("sun") && !is_hurt_check && !is_demonic):
 			var current_level = ProjectSettings.get("levels")[ProjectSettings.get("current_level")]
 			if (current_level.get("sealevel") != null && current_level.sealevel > get_global_position().y + sprite_offset.y):
 				var damage = max(get_def_adjusted_damage(hp * 0.1), 0)
@@ -253,6 +253,7 @@ func check_damage(damageTiles):
 				hp_obj.display_damage(get_global_position(), damage)
 
 				is_hurt_check = true
+				check_gameover()
 		
 		if (npc != null && !ProjectSettings.get("eventmode")):
 			get_node("talk").show()

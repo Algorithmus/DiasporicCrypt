@@ -1,0 +1,226 @@
+[gd_resource type="TileSet" load_steps=23 format=2]
+
+[ext_resource path="res://scenes/forest/BGs/branch1-0.png" type="Texture" id=1]
+[ext_resource path="res://scenes/forest/BGs/c-bush1-0.png" type="Texture" id=2]
+[ext_resource path="res://scenes/forest/BGs/branch2-2.png" type="Texture" id=3]
+[ext_resource path="res://scenes/forest/BGs/c-bush2-2.png" type="Texture" id=4]
+[ext_resource path="res://scenes/forest/BGs/branch2-3.png" type="Texture" id=5]
+[ext_resource path="res://scenes/forest/BGs/c-bush2-3.png" type="Texture" id=6]
+[ext_resource path="res://scenes/forest/BGs/trunkS-1.png" type="Texture" id=7]
+[ext_resource path="res://scenes/forest/BGs/c-bushS-1.png" type="Texture" id=8]
+[ext_resource path="res://scenes/forest/BGs/trunkS-2.png" type="Texture" id=9]
+[ext_resource path="res://scenes/forest/BGs/c-bushS-2.png" type="Texture" id=10]
+[ext_resource path="res://scenes/forest/BGs/trunkM-1.png" type="Texture" id=11]
+[ext_resource path="res://scenes/forest/BGs/c-bushM-1.png" type="Texture" id=12]
+[ext_resource path="res://scenes/forest/BGs/branch1-1.png" type="Texture" id=13]
+[ext_resource path="res://scenes/forest/BGs/trunkM-2.png" type="Texture" id=14]
+[ext_resource path="res://scenes/forest/BGs/c-bushM-2.png" type="Texture" id=15]
+[ext_resource path="res://scenes/forest/BGs/c-bush1-1.png" type="Texture" id=16]
+[ext_resource path="res://scenes/forest/BGs/branch1-2.png" type="Texture" id=17]
+[ext_resource path="res://scenes/forest/BGs/c-bush1-2.png" type="Texture" id=18]
+[ext_resource path="res://scenes/forest/BGs/branch2-0.png" type="Texture" id=19]
+[ext_resource path="res://scenes/forest/BGs/c-bush2-0.png" type="Texture" id=20]
+[ext_resource path="res://scenes/forest/BGs/branch2-1.png" type="Texture" id=21]
+[ext_resource path="res://scenes/forest/BGs/c-bush2-1.png" type="Texture" id=22]
+
+[resource]
+
+0/name = "cbranch1-0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 384, 256 )
+0/is_autotile = false
+0/occluder_offset = Vector2( 192, 128 )
+0/navigation_offset = Vector2( 192, 128 )
+0/shapes = [  ]
+1/name = "cbush1-0"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 384, 256 )
+1/is_autotile = false
+1/occluder_offset = Vector2( 192, 128 )
+1/navigation_offset = Vector2( 192, 128 )
+1/shapes = [  ]
+2/name = "cbranch1-1"
+2/texture = ExtResource( 13 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 320, 320 )
+2/is_autotile = false
+2/occluder_offset = Vector2( 160, 160 )
+2/navigation_offset = Vector2( 160, 160 )
+2/shapes = [  ]
+3/name = "cbush1-1"
+3/texture = ExtResource( 16 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 320, 320 )
+3/is_autotile = false
+3/occluder_offset = Vector2( 160, 160 )
+3/navigation_offset = Vector2( 160, 160 )
+3/shapes = [  ]
+4/name = "cbranch1-2"
+4/texture = ExtResource( 17 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 416, 224 )
+4/is_autotile = false
+4/occluder_offset = Vector2( 208, 112 )
+4/navigation_offset = Vector2( 208, 112 )
+4/shapes = [  ]
+5/name = "cbush1-2"
+5/texture = ExtResource( 18 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 0, 416, 224 )
+5/is_autotile = false
+5/occluder_offset = Vector2( 208, 112 )
+5/navigation_offset = Vector2( 208, 112 )
+5/shapes = [  ]
+6/name = "cbranch2-0"
+6/texture = ExtResource( 19 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 0, 0, 352, 320 )
+6/is_autotile = false
+6/occluder_offset = Vector2( 176, 160 )
+6/navigation_offset = Vector2( 176, 160 )
+6/shapes = [  ]
+7/name = "cbush2-0"
+7/texture = ExtResource( 20 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 0, 352, 320 )
+7/is_autotile = false
+7/occluder_offset = Vector2( 176, 160 )
+7/navigation_offset = Vector2( 176, 160 )
+7/shapes = [  ]
+8/name = "cbranch2-1"
+8/texture = ExtResource( 21 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 0, 0, 352, 352 )
+8/is_autotile = false
+8/occluder_offset = Vector2( 176, 176 )
+8/navigation_offset = Vector2( 176, 176 )
+8/shapes = [  ]
+9/name = "cbush2-1"
+9/texture = ExtResource( 22 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 0, 0, 352, 352 )
+9/is_autotile = false
+9/occluder_offset = Vector2( 176, 176 )
+9/navigation_offset = Vector2( 176, 176 )
+9/shapes = [  ]
+10/name = "cbranch2-2"
+10/texture = ExtResource( 3 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 0, 0, 320, 352 )
+10/is_autotile = false
+10/occluder_offset = Vector2( 160, 176 )
+10/navigation_offset = Vector2( 160, 176 )
+10/shapes = [  ]
+11/name = "cbush2-2"
+11/texture = ExtResource( 4 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 0, 0, 320, 352 )
+11/is_autotile = false
+11/occluder_offset = Vector2( 160, 176 )
+11/navigation_offset = Vector2( 160, 176 )
+11/shapes = [  ]
+12/name = "cbranch2-3"
+12/texture = ExtResource( 5 )
+12/tex_offset = Vector2( 0, 0 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 0, 0, 320, 256 )
+12/is_autotile = false
+12/occluder_offset = Vector2( 160, 128 )
+12/navigation_offset = Vector2( 160, 128 )
+12/shapes = [  ]
+13/name = "cbush2-3"
+13/texture = ExtResource( 6 )
+13/tex_offset = Vector2( 0, 0 )
+13/modulate = Color( 1, 1, 1, 1 )
+13/region = Rect2( 0, 0, 320, 256 )
+13/is_autotile = false
+13/occluder_offset = Vector2( 160, 128 )
+13/navigation_offset = Vector2( 160, 128 )
+13/shapes = [  ]
+14/name = "ctrunkS-1"
+14/texture = ExtResource( 7 )
+14/tex_offset = Vector2( 0, 0 )
+14/modulate = Color( 1, 1, 1, 1 )
+14/region = Rect2( 0, 0, 192, 704 )
+14/is_autotile = false
+14/occluder_offset = Vector2( 96, 352 )
+14/navigation_offset = Vector2( 96, 352 )
+14/shapes = [  ]
+15/name = "cbushS-1"
+15/texture = ExtResource( 8 )
+15/tex_offset = Vector2( 0, 0 )
+15/modulate = Color( 1, 1, 1, 1 )
+15/region = Rect2( 0, 0, 352, 320 )
+15/is_autotile = false
+15/occluder_offset = Vector2( 176, 160 )
+15/navigation_offset = Vector2( 176, 160 )
+15/shapes = [  ]
+16/name = "ctrunkS-2"
+16/texture = ExtResource( 9 )
+16/tex_offset = Vector2( 0, 0 )
+16/modulate = Color( 1, 1, 1, 1 )
+16/region = Rect2( 0, 0, 224, 672 )
+16/is_autotile = false
+16/occluder_offset = Vector2( 112, 336 )
+16/navigation_offset = Vector2( 112, 336 )
+16/shapes = [  ]
+17/name = "cbushS-2"
+17/texture = ExtResource( 10 )
+17/tex_offset = Vector2( 0, 0 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 0, 0, 288, 320 )
+17/is_autotile = false
+17/occluder_offset = Vector2( 144, 160 )
+17/navigation_offset = Vector2( 144, 160 )
+17/shapes = [  ]
+18/name = "ctrunkM-1"
+18/texture = ExtResource( 11 )
+18/tex_offset = Vector2( 0, 0 )
+18/modulate = Color( 1, 1, 1, 1 )
+18/region = Rect2( 0, 0, 256, 1056 )
+18/is_autotile = false
+18/occluder_offset = Vector2( 128, 528 )
+18/navigation_offset = Vector2( 128, 528 )
+18/shapes = [  ]
+19/name = "cbushM-1"
+19/texture = ExtResource( 12 )
+19/tex_offset = Vector2( 0, 0 )
+19/modulate = Color( 1, 1, 1, 1 )
+19/region = Rect2( 0, 0, 288, 448 )
+19/is_autotile = false
+19/occluder_offset = Vector2( 144, 224 )
+19/navigation_offset = Vector2( 144, 224 )
+19/shapes = [  ]
+20/name = "ctrunkM-2"
+20/texture = ExtResource( 14 )
+20/tex_offset = Vector2( 0, 0 )
+20/modulate = Color( 1, 1, 1, 1 )
+20/region = Rect2( 0, 0, 256, 960 )
+20/is_autotile = false
+20/occluder_offset = Vector2( 128, 480 )
+20/navigation_offset = Vector2( 128, 480 )
+20/shapes = [  ]
+21/name = "cbushM-2"
+21/texture = ExtResource( 15 )
+21/tex_offset = Vector2( 0, 0 )
+21/modulate = Color( 1, 1, 1, 1 )
+21/region = Rect2( 0, 0, 320, 352 )
+21/is_autotile = false
+21/occluder_offset = Vector2( 160, 176 )
+21/navigation_offset = Vector2( 160, 176 )
+21/shapes = [  ]
+

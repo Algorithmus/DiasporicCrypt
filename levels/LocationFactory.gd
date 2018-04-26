@@ -11,14 +11,21 @@ func _init():
 	sandbox.id = "LVL_SANDBOX"
 	sandbox.bgm = preload("res://levels/common/BGM3.ogg")
 	locations[sandbox.id] = sandbox
-	
+
 	var forest1 = locationclass.new()
 	forest1.node = "res://levels/forest/nocturn.tscn"
 	forest1.teleportto = Vector2(16, 544)
 	forest1.id = "LVL_NOCTURNFOREST"
 	forest1.bgm = preload("res://levels/forest/BGM1.ogg")
 	locations[forest1.id] = forest1
-	
+
+	var forest2 = locationclass.new()
+	forest2.node = "res://levels/forest/lake.tscn"
+	forest2.teleportto = Vector2(16, 32)
+	forest2.id = "LVL_LAKEFOREST"
+	forest2.bgm = preload("res://levels/forest/BGM1.ogg")
+	locations[forest2.id] = forest2
+
 	var start = locationclass.new()
 	start.node = "res://levels/roomoftrials/0-0.tscn"
 	start.teleportto = Vector2(336, 128)

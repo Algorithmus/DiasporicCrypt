@@ -1,0 +1,212 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://scenes/forest/BGs/grass.png" type="Texture" id=1]
+[ext_resource path="res://scenes/forest/BGs/grass-1.png" type="Texture" id=2]
+[ext_resource path="res://scenes/forest/BGs/grass2.png" type="Texture" id=3]
+[ext_resource path="res://scenes/forest/BGs/grass-bg.png" type="Texture" id=4]
+[ext_resource path="res://scenes/forest/BGs/bark.png" type="Texture" id=5]
+[ext_resource path="res://scenes/forest/BGs/innerbark.png" type="Texture" id=6]
+[ext_resource path="res://scenes/forest/BGs/log.png" type="Texture" id=7]
+[ext_resource path="res://scenes/forest/BGs/giantbranch-0.png" type="Texture" id=8]
+[ext_resource path="res://scenes/forest/BGs/giantbranch-1.png" type="Texture" id=9]
+[ext_resource path="res://scenes/forest/BGs/treetop-bg.png" type="Texture" id=10]
+[ext_resource path="res://scenes/forest/BGs/inner-stump.png" type="Texture" id=11]
+[ext_resource path="res://scenes/cave/BGs/edge.png" type="Texture" id=12]
+[ext_resource path="res://scenes/cave/BGs/cornerR.png" type="Texture" id=13]
+[ext_resource path="res://scenes/cave/BGs/cornerL.png" type="Texture" id=14]
+[ext_resource path="res://scenes/cave/BGs/wall.png" type="Texture" id=15]
+[ext_resource path="res://scenes/cave/BGs/floor.png" type="Texture" id=16]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="grass" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="grass2" type="Sprite" parent="." index="1"]
+
+position = Vector2( 32, 0 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="grass3" type="Sprite" parent="." index="2"]
+
+position = Vector2( 64, 0 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="grassbg" type="Sprite" parent="." index="3"]
+
+position = Vector2( 96, 0 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bark" type="Sprite" parent="." index="4"]
+
+editor/display_folded = true
+position = Vector2( 128, 0 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="bark" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bark/StaticBody2D" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="innerbark" type="Sprite" parent="." index="5"]
+
+position = Vector2( 256, 0 )
+texture = ExtResource( 6 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="log" type="Sprite" parent="." index="6"]
+
+editor/display_folded = true
+position = Vector2( 384, 0 )
+texture = ExtResource( 7 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="log" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="log/StaticBody2D" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="branch-0" type="Sprite" parent="." index="7"]
+
+position = Vector2( 512, 0 )
+texture = ExtResource( 8 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="branch-1" type="Sprite" parent="." index="8"]
+
+position = Vector2( 736, 0 )
+texture = ExtResource( 9 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="top-bg" type="Sprite" parent="." index="9"]
+
+position = Vector2( 400, 240 )
+texture = ExtResource( 10 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="stump" type="Sprite" parent="." index="10"]
+
+position = Vector2( 1136, 240 )
+texture = ExtResource( 11 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+
+[node name="edge" type="Sprite" parent="." index="11"]
+
+editor/display_folded = true
+position = Vector2( 0, 384 )
+texture = ExtResource( 12 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="edge" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="edge/StaticBody2D" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="cornerR" type="Sprite" parent="." index="12"]
+
+editor/display_folded = true
+position = Vector2( 32, 384 )
+texture = ExtResource( 13 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="cornerR" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cornerR/StaticBody2D" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="cornerL" type="Sprite" parent="." index="13"]
+
+editor/display_folded = true
+position = Vector2( 64, 384 )
+texture = ExtResource( 14 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="cornerL" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cornerL/StaticBody2D" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="wall" type="Sprite" parent="." index="14"]
+
+position = Vector2( 96, 384 )
+texture = ExtResource( 15 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="floor" type="Sprite" parent="." index="15"]
+
+editor/display_folded = true
+position = Vector2( 128, 384 )
+texture = ExtResource( 16 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="floor" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor/StaticBody2D" index="0"]
+
+shape = SubResource( 1 )
+
+

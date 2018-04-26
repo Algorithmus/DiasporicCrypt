@@ -81,16 +81,28 @@ func _init():
 	forest1.sealevel = 112
 	forest1.require = [["LVL_DUNGEON", "LVL_ICECAVE"]]
 	levels[forest1.title] = forest1
-	
+
 	var forest2 = levelclass.new()
 	forest2.title = "LVL_FOREST2"
 	forest2.type = "bonus"
-	forest2.position = Vector2(669, 238)
+	forest2.position = Vector2(482, 116)
 	forest2.description = "LVL_FOREST2_DESCRIPTION"
-	forest2.location = locationfactory.locations["LVL_SANDBOX"]
+	forest2.location = locationfactory.locations["LVL_LAKEFOREST"]
+	forest2.time = 6000
 	forest2.mincounter = 10
+	forest2.sealevel = -208
+	forest2.require = [["LVL_CAVE", "LVL_MAUSOLEUM"]]
 	levels[forest2.title] = forest2
-	
+
+	var forest3 = levelclass.new()
+	forest3.title = "LVL_FOREST3"
+	forest3.type = "bonus"
+	forest3.position = Vector2(669, 238)
+	forest3.description = "LVL_FOREST3_DESCRIPTION"
+	forest3.location = locationfactory.locations["LVL_SANDBOX"]
+	forest3.mincounter = 10
+	levels[forest3.title] = forest3
+
 	var lavacave = levelclass.new()
 	lavacave.title = "LVL_LAVACAVE"
 	lavacave.type = "boss"
