@@ -767,7 +767,7 @@ uppercase = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Anchor", "Grow Direction", "Hint", "Margin", "Rect", "Size Flags" ]
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Rect", "Size Flags" ]
 
 [node name="backbutton" type="HBoxContainer" parent="CanvasLayer/menu/newgame" index="1"]
 
@@ -786,6 +786,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 alignment = 0
+_sections_unfolded = [ "Focus" ]
 
 [node name="back" parent="CanvasLayer/menu/newgame/backbutton" index="0" instance=ExtResource( 13 )]
 
@@ -793,7 +794,7 @@ margin_left = 0.0
 margin_right = 93.0
 margin_bottom = 25.0
 rect_clip_content = false
-focus_neighbour_left = NodePath(".")
+focus_neighbour_left = NodePath("../../friederich")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath("../../adela")
 focus_neighbour_bottom = NodePath("../../friederich")
