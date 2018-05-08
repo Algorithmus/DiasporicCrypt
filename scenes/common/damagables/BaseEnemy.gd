@@ -248,11 +248,13 @@ func die():
 		follow_player = false
 		is_dying = false
 		if (has_node(damage_rect.get_name())):
+			remove_from_blacklist(damage_rect)
 			remove_child(damage_rect)
 		damage_rect = consumable_instance.instance()
 		damage_rect.set_scale(consumable_size)
 		consumable_offset = damage_rect.get_node("CollisionShape2D").get_shape().get_extents()
 		damage_rect.set_position(Vector2(consumable_sprite_offset.x * direction, sprite_offset.y - consumable_offset.y + consumable_sprite_offset.y))
+		add_to_blacklist(damage_rect)
 		add_child(damage_rect)
 	else:
 		player.get_node("player").remove_from_blacklist(get_node("damagable"))

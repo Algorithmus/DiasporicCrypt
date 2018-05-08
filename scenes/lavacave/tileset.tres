@@ -1,12 +1,13 @@
-[gd_resource type="TileSet" load_steps=2 format=2]
+[gd_resource type="TileSet" load_steps=10 format=2]
 
 [ext_resource path="res://scenes/lavacave/BGs/floor.png" type="Texture" id=1]
 [ext_resource path="res://scenes/lavacave/BGs/cornerL.png" type="Texture" id=2]
 [ext_resource path="res://scenes/lavacave/BGs/wall.png" type="Texture" id=3]
-[ext_resource path="res://scenes/lavacave/slopes/slopetile0-15.png" type="Texture" id=4]
-[ext_resource path="res://scenes/lavacave/slopes/slopetile0-7.png" type="Texture" id=5]
-[ext_resource path="res://scenes/lavacave/BGs/cornerR.png" type="Texture" id=6]
-[ext_resource path="res://scenes/lavacave/BGs/edge.png" type="Texture" id=7]
+[ext_resource path="res://scenes/lavacave/slopes/slopetile0-31.png" type="Texture" id=4]
+[ext_resource path="res://scenes/lavacave/slopes/slopetile0-15.png" type="Texture" id=5]
+[ext_resource path="res://scenes/lavacave/slopes/slopetile0-7.png" type="Texture" id=6]
+[ext_resource path="res://scenes/lavacave/BGs/cornerR.png" type="Texture" id=7]
+[ext_resource path="res://scenes/lavacave/BGs/edge.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -20,163 +21,169 @@ extents = Vector2( 16, 16 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 32, 32 )
+0/is_autotile = false
 0/occluder_offset = Vector2( 16, 16 )
 0/navigation_offset = Vector2( 16, 16 )
-0/shape_offset = Vector2( 16, 16 )
-0/shapes = [ SubResource( 1 ) ]
-0/one_way_collision_direction = Vector2( 0, 0 )
-0/one_way_collision_max_depth = 0.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
+} ]
 1/name = "cornerL"
 1/texture = ExtResource( 2 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 0, 0, 32, 32 )
+1/is_autotile = false
 1/occluder_offset = Vector2( 16, 16 )
 1/navigation_offset = Vector2( 16, 16 )
-1/shape_offset = Vector2( 16, 16 )
-1/shapes = [ SubResource( 1 ) ]
-1/one_way_collision_direction = Vector2( 0, 0 )
-1/one_way_collision_max_depth = 0.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
+} ]
 2/name = "cornerR"
-2/texture = ExtResource( 6 )
+2/texture = ExtResource( 7 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 0, 0, 32, 32 )
+2/is_autotile = false
 2/occluder_offset = Vector2( 16, 16 )
 2/navigation_offset = Vector2( 16, 16 )
-2/shape_offset = Vector2( 16, 16 )
-2/shapes = [ SubResource( 1 ) ]
-2/one_way_collision_direction = Vector2( 0, 0 )
-2/one_way_collision_max_depth = 0.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
+} ]
 3/name = "edge"
-3/texture = ExtResource( 7 )
+3/texture = ExtResource( 8 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 0, 0, 32, 32 )
+3/is_autotile = false
 3/occluder_offset = Vector2( 16, 16 )
 3/navigation_offset = Vector2( 16, 16 )
-3/shape_offset = Vector2( 16, 16 )
-3/shapes = [ SubResource( 1 ) ]
-3/one_way_collision_direction = Vector2( 0, 0 )
-3/one_way_collision_max_depth = 0.0
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
+} ]
 4/name = "slopeAB"
-4/texture = ExtResource( 4 )
+4/texture = ExtResource( 5 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 0, 32, 32, 32 )
+4/is_autotile = false
 4/occluder_offset = Vector2( 16, 16 )
 4/navigation_offset = Vector2( 16, 16 )
-4/shape_offset = Vector2( 0, 0 )
 4/shapes = [  ]
-4/one_way_collision_direction = Vector2( 0, 0 )
-4/one_way_collision_max_depth = 0.0
 5/name = "slopeAB2"
-5/texture = ExtResource( 4 )
+5/texture = ExtResource( 5 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 32, 32, 32, 32 )
+5/is_autotile = false
 5/occluder_offset = Vector2( 16, 16 )
 5/navigation_offset = Vector2( 16, 16 )
-5/shape_offset = Vector2( 0, 0 )
 5/shapes = [  ]
-5/one_way_collision_direction = Vector2( 0, 0 )
-5/one_way_collision_max_depth = 0.0
 6/name = "slopeAB3"
 6/texture = ExtResource( 4 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 0, 32, 32, 32 )
+6/is_autotile = false
 6/occluder_offset = Vector2( 16, 16 )
 6/navigation_offset = Vector2( 16, 16 )
-6/shape_offset = Vector2( 0, 0 )
 6/shapes = [  ]
-6/one_way_collision_direction = Vector2( 0, 0 )
-6/one_way_collision_max_depth = 0.0
 7/name = "slopeAB4"
-7/texture = ExtResource( 5 )
+7/texture = ExtResource( 6 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 32, 32, 32, 32 )
+7/is_autotile = false
 7/occluder_offset = Vector2( 16, 16 )
 7/navigation_offset = Vector2( 16, 16 )
-7/shape_offset = Vector2( 0, 0 )
 7/shapes = [  ]
-7/one_way_collision_direction = Vector2( 0, 0 )
-7/one_way_collision_max_depth = 0.0
 8/name = "slopeAB5"
-8/texture = ExtResource( 5 )
+8/texture = ExtResource( 6 )
 8/tex_offset = Vector2( 0, 0 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( 64, 32, 32, 32 )
+8/is_autotile = false
 8/occluder_offset = Vector2( 16, 16 )
 8/navigation_offset = Vector2( 16, 16 )
-8/shape_offset = Vector2( 0, 0 )
 8/shapes = [  ]
-8/one_way_collision_direction = Vector2( 0, 0 )
-8/one_way_collision_max_depth = 0.0
 9/name = "slopeAB6"
-9/texture = ExtResource( 5 )
+9/texture = ExtResource( 6 )
 9/tex_offset = Vector2( 0, 0 )
 9/modulate = Color( 1, 1, 1, 1 )
 9/region = Rect2( 96, 32, 32, 32 )
+9/is_autotile = false
 9/occluder_offset = Vector2( 16, 16 )
 9/navigation_offset = Vector2( 16, 16 )
-9/shape_offset = Vector2( 0, 0 )
 9/shapes = [  ]
-9/one_way_collision_direction = Vector2( 0, 0 )
-9/one_way_collision_max_depth = 0.0
 10/name = "floor_slope"
 10/texture = ExtResource( 1 )
 10/tex_offset = Vector2( 0, 0 )
 10/modulate = Color( 1, 1, 1, 1 )
 10/region = Rect2( 0, 0, 32, 32 )
+10/is_autotile = false
 10/occluder_offset = Vector2( 16, 16 )
 10/navigation_offset = Vector2( 16, 16 )
-10/shape_offset = Vector2( 0, 0 )
 10/shapes = [  ]
-10/one_way_collision_direction = Vector2( 0, 0 )
-10/one_way_collision_max_depth = 0.0
 11/name = "wall"
 11/texture = ExtResource( 3 )
 11/tex_offset = Vector2( 0, 0 )
 11/modulate = Color( 1, 1, 1, 1 )
 11/region = Rect2( 0, 0, 32, 32 )
+11/is_autotile = false
 11/occluder_offset = Vector2( 16, 16 )
 11/navigation_offset = Vector2( 16, 16 )
-11/shape_offset = Vector2( 0, 0 )
 11/shapes = [  ]
-11/one_way_collision_direction = Vector2( 0, 0 )
-11/one_way_collision_max_depth = 0.0
 12/name = "slope0-31"
-12/texture = ExtResource( 3 )
+12/texture = ExtResource( 4 )
 12/tex_offset = Vector2( 0, 0 )
 12/modulate = Color( 1, 1, 1, 1 )
 12/region = Rect2( 0, 0, 32, 64 )
+12/is_autotile = false
 12/occluder_offset = Vector2( 16, 32 )
 12/navigation_offset = Vector2( 16, 32 )
-12/shape_offset = Vector2( 16, 32 )
-12/shapes = [ SubResource( 1 ) ]
-12/one_way_collision_direction = Vector2( 0, 0 )
-12/one_way_collision_max_depth = 0.0
+12/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 32 )
+} ]
 13/name = "slope0-15"
-13/texture = ExtResource( 4 )
+13/texture = ExtResource( 5 )
 13/tex_offset = Vector2( 0, 0 )
 13/modulate = Color( 1, 1, 1, 1 )
 13/region = Rect2( 0, 0, 64, 64 )
+13/is_autotile = false
 13/occluder_offset = Vector2( 32, 32 )
 13/navigation_offset = Vector2( 32, 32 )
-13/shape_offset = Vector2( 32, 32 )
-13/shapes = [ SubResource( 1 ) ]
-13/one_way_collision_direction = Vector2( 0, 0 )
-13/one_way_collision_max_depth = 0.0
+13/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 32, 32 )
+} ]
 14/name = "slope0-7"
-14/texture = ExtResource( 5 )
+14/texture = ExtResource( 6 )
 14/tex_offset = Vector2( 0, 0 )
 14/modulate = Color( 1, 1, 1, 1 )
 14/region = Rect2( 0, 0, 128, 64 )
+14/is_autotile = false
 14/occluder_offset = Vector2( 64, 32 )
 14/navigation_offset = Vector2( 64, 32 )
-14/shape_offset = Vector2( 64, 32 )
-14/shapes = [ SubResource( 1 ) ]
-14/one_way_collision_direction = Vector2( 0, 0 )
-14/one_way_collision_max_depth = 0.0
+14/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 64, 32 )
+} ]
+

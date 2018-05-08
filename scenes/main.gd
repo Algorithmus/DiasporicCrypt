@@ -122,7 +122,7 @@ func _ready():
 	var player
 	var available_levels = ["LVL_START"]
 	if (ProjectSettings.get("debugmode")):
-		available_levels = ["LVL_SANDBOX", "LVL_START", "LVL_FOREST1", "LVL_FOREST2", "LVL_COLOSSEUM1", "LVL_COLOSSEUM2"]
+		available_levels = ["LVL_SANDBOX", "LVL_START", "LVL_FOREST1", "LVL_FOREST2", "LVL_FOREST3", "LVL_COLOSSEUM1", "LVL_COLOSSEUM2"]
 	if (ProjectSettings.get("demomode")):
 		get_node("gui/CanvasLayer/demo/RichTextLabel").set_bbcode("[center]" + tr("KEY_HELP") + " [b]" + keymap.map_key("F1") + "[/b][/center]")
 	else:

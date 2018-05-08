@@ -99,8 +99,11 @@ func _init():
 	forest3.type = "bonus"
 	forest3.position = Vector2(669, 238)
 	forest3.description = "LVL_FOREST3_DESCRIPTION"
-	forest3.location = locationfactory.locations["LVL_SANDBOX"]
+	forest3.location = locationfactory.locations["LVL_JUNGLE"]
+	forest3.time = 4500
 	forest3.mincounter = 10
+	forest3.sealevel = 368
+	forest3.require = [["LVL_AQUADUCT2", "LVL_SUMMERISLANDCASTLE"]]
 	levels[forest3.title] = forest3
 
 	var lavacave = levelclass.new()
