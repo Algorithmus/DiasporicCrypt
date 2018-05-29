@@ -2,9 +2,12 @@
 extends Node2D
 
 export var overlay = ""
+# Some fakes may be linked so that they share the same overlay
+export var link_group = ["."]
 var area
 var sprite_offset
 var overlay_obj
+var playerfound = false
 
 func _ready():
 	area = get_node("fake")
@@ -14,9 +17,21 @@ func _ready():
 	overlay_obj = get_node(overlay)
 	set_physics_process(false)
 
+func findplayer():
+	var size = link_group.size()
+	for i in range(size):
+		print("findplayer")
+		print(self.name)
+		print(get_node(link_group[i]))
+		print(get_node(link_group[i]).playerfound)
+		var test = get_node(link_group[i])
+		if get_node(link_group[i]).playerfound:
+			return true
+	return playerfound
+
 func _physics_process(delta):
 	var collisions = area.get_overlapping_bodies()
-	var playerfound = false
+	playerfound = false
 	for i in collisions:
 		if (i.get_name() == "player"):
 			var playeroffset = i.get("sprite_offset")
@@ -25,7 +40,7 @@ func _physics_process(delta):
 					playerfound = true
 					overlay_obj.hide()
 			i.get("area2d_blacklist").append(area)
-	if (!playerfound):
+	if (!findplayer()):
 		overlay_obj.show()
 
 func enter_screen():

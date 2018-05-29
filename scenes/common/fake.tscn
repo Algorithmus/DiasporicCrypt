@@ -7,10 +7,11 @@
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[node name="Fake" type="Node2D"]
+[node name="Fake" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 overlay = ""
+link_group = [ "." ]
 
 [node name="fake" type="Area2D" parent="." index="0"]
 

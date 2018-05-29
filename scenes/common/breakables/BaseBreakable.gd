@@ -37,8 +37,6 @@ func _physics_process(delta):
 				collision.queue_free()
 			remove_visuals()
 			crumble_related()
-			#remove this after sounds work
-			queue_free()
 		if (crumble_cycle < crumble_delay):
 			sprite_opacity(0.5 + fmod(crumble_cycle, 4) * 0.3)
 		if (!sound.get_node("crumble").playing && crumble_cycle > crumble_delay):

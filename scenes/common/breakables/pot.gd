@@ -1,7 +1,7 @@
 
 extends "res://scenes/common/breakables/BaseBreakable.gd"
 
-# possible values: NONE, ITEM, SWITCH
+# possible values: NONE, ITEM, SWITCH, ENEMY
 export var type = "NONE"
 # ITEM: class name of the item
 # SWITCH: path from tilemap to the switch
@@ -23,6 +23,9 @@ func _ready():
 		reward_obj.set_position(Vector2(get_position().x, get_position().y + 32))
 	elif (type == "SWITCH"):
 		reward_obj = tilemap.get_node(reward)
+	elif (type == "ENEMY"):
+		reward_obj = load(reward).instance()
+		reward_obj.set_position(Vector2(get_position().x, get_position().y + value))
 	set_physics_process(false)
 
 func _physics_process(delta):
@@ -40,3 +43,5 @@ func crumble():
 	elif (type == "SWITCH"):
 		reward_obj.enable(true)
 		reward_obj.set_physics_process(true)
+	elif (type == "ENEMY"):
+		get_parent().get_parent().get_node("EnemiesGroup").add_child(reward_obj)

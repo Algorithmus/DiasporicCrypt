@@ -168,7 +168,7 @@ func closestXTile(direction, desiredX, space_state):
 func closestXTile_area_check(desired_direction, desiredX, space_state):
 	var frontTile = space_state.intersect_ray(Vector2(get_global_position().x + desired_direction * sprite_offset.x + desiredX, get_global_position().y - sprite_offset.y), Vector2(get_global_position().x + desired_direction * sprite_offset.x + desiredX, get_global_position().y + sprite_offset.y - 1))
 	#Do we even need these exceptions?
-	#if (frontTile != null && frontTile.has("collider") && !"(player,water,lava,item,damagable,consumable,sensor,magic)".match("*" + frontTile["collider"].get_name() + "*") && !frontTile["collider"].has_node("magic") && !frontTile["collider"].get_parent().get_name() != "target"):
+	#if (frontTile != null && frontTile.has("collider") && !"(player,water,lava,snow,item,damagable,consumable,sensor,magic)".match("*" + frontTile["collider"].get_name() + "*") && !frontTile["collider"].has_node("magic") && !frontTile["collider"].get_parent().get_name() != "target"):
 	#	return 0
 	return desiredX
 
@@ -339,10 +339,12 @@ func step_player(delta):
 	var leftX = get_global_position().x - sprite_offset.x
 	var rightX = get_global_position().x + sprite_offset.x
 
+	var blacklist = merge([self, player.get_node("player")], area2d_blacklist)
+
 	# bottom left ray check
-	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+31), [self, player.get_node("player")], 524288)
+	var relevantTileA = space_state.intersect_ray(Vector2(leftX, forwardY-1), Vector2(leftX, forwardY+31), blacklist, 524288)
 	# bottom right ray check
-	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+31), [self, player.get_node("player")], 524288)
+	var relevantTileB = space_state.intersect_ray(Vector2(rightX, forwardY-1), Vector2(rightX, forwardY+31), blacklist, 524288)
 
 	# check regular blocks
 	var normalTileCheck = !relevantTileA.empty() || !relevantTileB.empty()

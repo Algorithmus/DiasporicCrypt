@@ -10,6 +10,7 @@ const JUMP_SPEED = 20
 const TILE_SIZE = 32
 const WATER = 0.25
 const LAVA = 0.75
+const SNOW = 0.5
 const DEFAULT_FALL_HEIGHT = JUMP_SPEED * (JUMP_SPEED - 1)/2
 # restrict vertical speed to prevent skipping and other weirdness
 const SPEED_LIMIT = 30
@@ -45,6 +46,8 @@ var jumpPressed = false
 var hpclass = preload("res://gui/hud/hp.tscn")
 var ignore_gravity = false
 var _collider
+var is_snow = false
+var fluid_tile
 
 var MovingPlatform = preload("res://scenes/dungeon/movingplatform/MovingPlatform.gd")
 
@@ -69,6 +72,16 @@ func get_atk_adjusted_damage(damage, type):
 		elemental_constant = 0
 	
 	return round(elemental_constant * (damage * 2 + randf()*0.1*damage))
+
+func merge(a, b):
+	var c = []
+	var size = a.size()
+	for j in range(size):
+		c.append(a[j])
+	size = b.size()
+	for i in range(size):
+		c.append(b[i])
+	return c
 
 func min_array(array):
 	if (array.size() == 1):
@@ -117,6 +130,13 @@ func remove_from_blacklist(item):
 
 func add_to_blacklist(item):
 	area2d_blacklist.append(item)
+
+func check_blacklist(item):
+	var size = area2d_blacklist.size()
+	for i in range(size):
+		if (i < area2d_blacklist.size() && area2d_blacklist[i] == item):
+			return true
+	return false
 
 # slopes have the format slope#-#, where # denotes the
 # position (from the top) of the corner of the slope from left to right
@@ -245,11 +265,16 @@ func check_underwater(areaTiles):
 	if (!ignore_gravity):
 		var watertile = false
 		for i in areaTiles:
-			if (i.get_name() == "water" || i.get_name() == "lava"):
+			if (i.get_name() == "water" || i.get_name() == "lava" || i.get_name() == "snow"):
 				var fluid_constant = WATER
 				if (i.get_name() == "lava"):
 					fluid_constant = LAVA
+				if (i.get_name() == "snow"):
+					is_snow = true
 				watertile = true
+				fluid_tile = weakref(i)
+				if (!check_blacklist(i)):
+					area2d_blacklist.append(i)
 				if (i.get_global_position().y - TILE_SIZE * i.get_scale().y/2 <= get_position().y - sprite_offset.y):
 					if (!underwater && has_node("sound/splash_down")):
 						get_node("sound/splash_down").play()
@@ -261,7 +286,10 @@ func check_underwater(areaTiles):
 				get_node("sound/splash_up").play()
 				get_node("sound/splash_up").set_volume_db(0)
 			underwater = false
+			is_snow = false
 			current_gravity = DEFAULT_GRAVITY
+			if (fluid_tile):
+				remove_from_blacklist(fluid_tile.get_ref())
 
 func horizontal_input_permitted():
 	return !is_hurt
@@ -303,7 +331,7 @@ func step_horizontal(space_state):
 		if (ignore_gravity):
 			current_gravity = DEFAULT_GRAVITY
 
-		pos.x = pos.x * current_gravity
+		pos.x = pos.x * snow_modifier()
 
 		_collider = move_and_collide(pos)
 
@@ -339,13 +367,18 @@ func step_horizontal(space_state):
 					# clamp to slope only if not jumping
 					# unfortunately, the extra height from the default jump speed isn't enough to clear
 					# neighboring slopes. Playing with the values yields 5 as sufficient to do so
-					if ((forwardY > slopeAdjustedTileY - (jumpspeed - 5)*current_gravity) || !jumpPressed):
+					if ((forwardY > slopeAdjustedTileY - (jumpspeed - 5)*snow_modifier()) || !jumpPressed):
 						pos.y = slopeAdjustedTileY - forwardY
 						_collider = move_and_collide(pos)
 	return {"animation": new_animation, "slope": onSlope, "slopeTile": relevantSlopeTile, "slopeX": slopeX, "motion": horizontal_motion}
 
 func check_climb_platform_horizontal(space_state):
 	pass
+
+func snow_modifier():
+	if (is_snow):
+		return SNOW
+	return current_gravity
 
 func check_jump():
 	if (input_jump()):
