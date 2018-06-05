@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/common/damagables/BaseMine.gd" type="Script" id=1]
 [ext_resource path="res://players/magic/magicmine/mine.png" type="Texture" id=2]
 [ext_resource path="res://players/magic/magicmine/explosion.png" type="Texture" id=3]
+[ext_resource path="res://players/magic/magicmine/mine.wav" type="AudioStream" id=4]
+[ext_resource path="res://players/magic/magicmine/set.wav" type="AudioStream" id=5]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -103,7 +105,7 @@ tracks/0/keys = {
 "values": [ 0.0, 360.0 ]
 }
 
-[node name="MagicMine" type="Node2D"]
+[node name="MagicMine" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 __meta__ = {
@@ -177,6 +179,22 @@ playback_speed = 1.0
 anims/rotate = SubResource( 9 )
 blend_times = [  ]
 
-[node name="SamplePlayer" type="Node" parent="." index="5"]
+[node name="sound" type="Node" parent="." index="5"]
+
+[node name="mine" type="AudioStreamPlayer" parent="sound" index="0"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
+
+[node name="set" type="AudioStreamPlayer" parent="sound" index="1"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "SFX"
 
 

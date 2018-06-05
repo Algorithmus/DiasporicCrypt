@@ -6,7 +6,7 @@ var collision
 var is_exploding = false
 var explosion
 var sensor
-var sampleplayer
+var sound
 var atk = 40
 
 # This object has two collision shapes: one for detecting enemies
@@ -20,7 +20,7 @@ func _ready():
 	explosion.hide()
 	sensor = get_node("sensor")
 	collision_setup()
-	sampleplayer = get_node("SamplePlayer")
+	sound = get_node("sound")
 
 func collision_setup():
 	collision = get_node("damagable")
@@ -58,4 +58,5 @@ func set_explosion():
 	explosion.set_emitting(true)
 	get_node("AnimationPlayer").stop()
 	get_node("mine").hide()
-	sampleplayer.get_node("mine").play()
+	if (!sound.get_node("mine").playing):
+		sound.get_node("mine").play()
