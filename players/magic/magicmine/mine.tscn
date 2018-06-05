@@ -181,9 +181,9 @@ playback_speed = 1.0
 anims/rotate = SubResource( 9 )
 blend_times = [  ]
 
-[node name="SamplePlayer" type="Node" parent="." index="5"]
+[node name="sound" type="Node" parent="." index="5"]
 
-[node name="mine" type="AudioStreamPlayer" parent="SamplePlayer" index="0"]
+[node name="mine" type="AudioStreamPlayer" parent="sound" index="0"]
 
 stream = ExtResource( 4 )
 volume_db = 0.0
@@ -191,7 +191,7 @@ autoplay = false
 mix_target = 0
 bus = "SFX"
 
-[node name="set" type="AudioStreamPlayer" parent="SamplePlayer" index="1"]
+[node name="set" type="AudioStreamPlayer" parent="sound" index="1"]
 
 stream = ExtResource( 5 )
 volume_db = 0.0
