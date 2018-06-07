@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/common/damagables/ghost/ghost.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/common/damagables/zombie/zombie.tscn" type="PackedScene" id=2]
+
+[node name="EnemiesGroup" type="Node2D" index="0"]
+
+[node name="Ghost" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( -368, 0 )
+
+[node name="Ghost2" parent="." index="1" instance=ExtResource( 1 )]
+
+position = Vector2( -368, -288 )
+
+[node name="Ghost3" parent="." index="2" instance=ExtResource( 1 )]
+
+position = Vector2( 560, -288 )
+
+[node name="Ghost4" parent="." index="3" instance=ExtResource( 1 )]
+
+position = Vector2( 560, 0 )
+
+[node name="Zombie" parent="." index="4" instance=ExtResource( 2 )]
+
+position = Vector2( -272, -32 )
+
+[node name="Zombie2" parent="." index="5" instance=ExtResource( 2 )]
+
+position = Vector2( 448, -32 )
+
+[node name="Zombie3" parent="." index="6" instance=ExtResource( 2 )]
+
+position = Vector2( 384, -32 )
+
+[node name="Zombie4" parent="." index="7" instance=ExtResource( 2 )]
+
+position = Vector2( -208, -32 )
+
+

@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/common/damagables/statues/statue1.tscn" type="PackedScene" id=1]
+
+[node name="EnemiesGroup" type="Node2D" index="0"]
+
+[node name="Statue1" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( -16, -64 )
+
+[node name="Statue2" parent="." index="1" instance=ExtResource( 1 )]
+
+position = Vector2( -224, -64 )
+
+[node name="Statue3" parent="." index="2" instance=ExtResource( 1 )]
+
+position = Vector2( 192, -64 )
+
+[node name="Statue4" parent="." index="3" instance=ExtResource( 1 )]
+
+position = Vector2( 400, -64 )
+
+

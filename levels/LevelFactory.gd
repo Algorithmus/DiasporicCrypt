@@ -241,6 +241,19 @@ func _init():
 	colosseum2.type = "colosseum"
 	colosseum2.position = Vector2(193, 360)
 	colosseum2.description = "LVL_COLOSSEUM2_DESCRIPTION"
+	colosseum2.require = [["LVL_MANOR", "LVL_HOLYRUINS"]]
 	colosseum2.location = locationfactory.locations["LVL_COLOSSEUM"]
+	colosseum2.waves = [preload("res://scenes/colosseum/waves/wave1-0.tscn"), preload("res://scenes/colosseum/waves/wave1-1.tscn"), preload("res://scenes/colosseum/waves/wave1-2.tscn"), preload("res://scenes/colosseum/waves/wave1-3.tscn"), preload("res://scenes/colosseum/waves/wave1-4.tscn")]
 	colosseum2.reward = 100000
 	levels[colosseum2.title] = colosseum2
+
+	var colosseum3 = levelclass.new()
+	colosseum3.title = "LVL_COLOSSEUM3"
+	colosseum3.type = "colosseum"
+	colosseum3.position = Vector2(193, 360)
+	colosseum3.description = "LVL_COLOSSEUM3_DESCRIPTION"
+	colosseum3.require = [["LVL_LAVACAVE", "LVL_CAPECRYPT"]]
+	colosseum3.location = locationfactory.locations["LVL_COLOSSEUM"]
+	colosseum3.waves = [preload("res://scenes/colosseum/waves/wave2-0.tscn"), preload("res://scenes/colosseum/waves/wave2-1.tscn"), preload("res://scenes/colosseum/waves/wave2-2.tscn"), preload("res://scenes/colosseum/waves/wave2-3.tscn"), preload("res://scenes/colosseum/waves/wave2-4.tscn"), preload("res://scenes/colosseum/waves/wave2-5.tscn"), preload("res://scenes/colosseum/waves/wave2-6.tscn")]
+	colosseum3.reward = 500000
+	levels[colosseum3.title] = colosseum3

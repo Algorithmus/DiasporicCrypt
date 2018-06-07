@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=1]
+
+[node name="EnemiesGroup" type="Node2D" index="0"]
+
+[node name="Lizardman" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( -288, -16 )
+
+[node name="Lizardman2" parent="." index="1" instance=ExtResource( 1 )]
+
+position = Vector2( -144, -16 )
+
+[node name="Lizardman3" parent="." index="2" instance=ExtResource( 1 )]
+
+position = Vector2( 0, -16 )
+
+[node name="Lizardman4" parent="." index="3" instance=ExtResource( 1 )]
+
+position = Vector2( 144, -16 )
+
+[node name="Lizardman5" parent="." index="4" instance=ExtResource( 1 )]
+
+position = Vector2( 288, -16 )
+
+[node name="Lizardman6" parent="." index="5" instance=ExtResource( 1 )]
+
+position = Vector2( 432, -16 )
+
+

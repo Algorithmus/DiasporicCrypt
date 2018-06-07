@@ -167,9 +167,8 @@ func closestXTile(direction, desiredX, space_state):
 
 func closestXTile_area_check(desired_direction, desiredX, space_state):
 	var frontTile = space_state.intersect_ray(Vector2(get_global_position().x + desired_direction * sprite_offset.x + desiredX, get_global_position().y - sprite_offset.y), Vector2(get_global_position().x + desired_direction * sprite_offset.x + desiredX, get_global_position().y + sprite_offset.y - 1))
-	#Do we even need these exceptions?
-	#if (frontTile != null && frontTile.has("collider") && !"(player,water,lava,snow,item,damagable,consumable,sensor,magic)".match("*" + frontTile["collider"].get_name() + "*") && !frontTile["collider"].has_node("magic") && !frontTile["collider"].get_parent().get_name() != "target"):
-	#	return 0
+	if (frontTile != null && frontTile.has("collider") && !"(player,water,lava,snow,item,damagable,consumable,sensor,magic)".match("*" + frontTile["collider"].get_name() + "*") && !frontTile["collider"].has_node("magic") && frontTile["collider"].get_parent().get_name() != "target"):
+		return 0
 	return desiredX
 
 # ignore gravity in certain special attacks
