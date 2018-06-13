@@ -200,7 +200,7 @@ func _input(event):
 					var totalvalue = item.cost
 					if (currenttype == "sell"):
 						amounttotal = player_inventory[selecteditem.get_name()].quantity
-						totalvalue = totalvalue * sellrate
+						totalvalue = round(totalvalue * sellrate)
 					update_transaction(totalvalue)
 					transaction.show()
 					transaction.get_node("amount").grab_focus()
