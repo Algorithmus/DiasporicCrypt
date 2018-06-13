@@ -953,7 +953,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 520 ), Vector2( 0, 592 ) ]
 }
 
-[node name="WorldMap" type="Control" index="0"]
+[node name="WorldMap" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -989,6 +989,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
+_sections_unfolded = [ "Focus" ]
 
 [node name="filters" type="Control" parent="." index="2"]
 
@@ -1104,6 +1105,7 @@ group = null
 text = "Tags"
 flat = true
 align = 0
+_sections_unfolded = [ "Focus" ]
 
 [node name="type" type="Label" parent="filters" index="3"]
 
@@ -1144,6 +1146,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 alignment = 0
+_sections_unfolded = [ "Focus" ]
 
 [node name="red" parent="filters/tagcontainer" index="0" instance=ExtResource( 7 )]
 
@@ -1164,6 +1167,7 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 align = 1
+_sections_unfolded = [ "Focus" ]
 
 [node name="green" parent="filters/tagcontainer" index="1" instance=ExtResource( 7 )]
 
@@ -1185,6 +1189,7 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 align = 1
+_sections_unfolded = [ "Focus" ]
 
 [node name="tag" parent="filters/tagcontainer/green" index="0"]
 
@@ -1213,6 +1218,7 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 align = 1
+_sections_unfolded = [ "Focus" ]
 
 [node name="tag" parent="filters/tagcontainer/blue" index="0"]
 
@@ -1242,6 +1248,7 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 align = 1
+_sections_unfolded = [ "Focus" ]
 
 [node name="tag" parent="filters/tagcontainer/purple" index="0"]
 
@@ -1278,7 +1285,7 @@ custom_styles/hover = SubResource( 4 )
 custom_styles/pressed = SubResource( 5 )
 custom_styles/focus = SubResource( 6 )
 disabled = true
-_sections_unfolded = [ "custom_styles" ]
+_sections_unfolded = [ "Focus", "custom_styles" ]
 
 [node name="boss" parent="filters/typecontainer" index="1" instance=ExtResource( 8 )]
 
@@ -1292,7 +1299,7 @@ custom_styles/pressed = SubResource( 8 )
 custom_styles/focus = SubResource( 9 )
 disabled = true
 text = "MAP_BOSS"
-_sections_unfolded = [ "custom_styles" ]
+_sections_unfolded = [ "Focus", "custom_styles" ]
 
 [node name="icon" parent="filters/typecontainer/boss" index="0"]
 
@@ -1310,7 +1317,7 @@ custom_styles/pressed = SubResource( 11 )
 custom_styles/focus = SubResource( 12 )
 disabled = true
 text = "MAP_BONUS"
-_sections_unfolded = [ "custom_styles" ]
+_sections_unfolded = [ "Focus", "custom_styles" ]
 
 [node name="icon" parent="filters/typecontainer/bonus" index="0"]
 
@@ -1329,7 +1336,7 @@ custom_styles/pressed = SubResource( 14 )
 custom_styles/focus = SubResource( 15 )
 disabled = true
 text = "MAP_COLOSSEUM"
-_sections_unfolded = [ "custom_styles" ]
+_sections_unfolded = [ "Focus", "custom_styles" ]
 
 [node name="icon" parent="filters/typecontainer/colosseum" index="0"]
 
@@ -1370,13 +1377,13 @@ _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "R
 
 [node name="list" type="Control" parent="." index="4"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -736.0
 margin_top = 64.0
-margin_right = -696.0
+margin_right = 40.0
 margin_bottom = 104.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -1426,7 +1433,7 @@ scroll_horizontal_enabled = false
 scroll_horizontal = 0
 scroll_vertical_enabled = true
 scroll_vertical = 0
-_sections_unfolded = [ "Scroll", "Theme" ]
+_sections_unfolded = [ "Focus", "Scroll", "Theme" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="list/listcontainer" index="0"]
 
@@ -1459,6 +1466,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
+_sections_unfolded = [ "Focus" ]
 
 [node name="tagtitle" type="ToolButton" parent="list/filters" index="0"]
 
@@ -1491,11 +1499,10 @@ group = null
 text = "Tags"
 flat = true
 align = 0
-_sections_unfolded = [ "custom_styles" ]
+_sections_unfolded = [ "Focus", "custom_styles" ]
 
 [node name="tags" type="HBoxContainer" parent="list/filters" index="1"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1511,6 +1518,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 alignment = 0
+_sections_unfolded = [ "Focus" ]
 
 [node name="red" parent="list/filters/tags" index="0" instance=ExtResource( 7 )]
 
@@ -1529,6 +1537,7 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 align = 1
+_sections_unfolded = [ "Focus" ]
 
 [node name="green" parent="list/filters/tags" index="1" instance=ExtResource( 7 )]
 
@@ -1549,6 +1558,7 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 align = 1
+_sections_unfolded = [ "Focus" ]
 
 [node name="tag" parent="list/filters/tags/green" index="0"]
 
@@ -1576,6 +1586,7 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 align = 1
+_sections_unfolded = [ "Focus" ]
 
 [node name="tag" parent="list/filters/tags/blue" index="0"]
 
@@ -1604,6 +1615,7 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 align = 1
+_sections_unfolded = [ "Focus" ]
 
 [node name="tag" parent="list/filters/tags/purple" index="0"]
 
@@ -1660,6 +1672,7 @@ focus_neighbour_left = NodePath("../../tagtitle")
 focus_neighbour_top = NodePath(".")
 focus_mode = 0
 disabled = true
+_sections_unfolded = [ "Focus", "custom_styles" ]
 
 [node name="boss" parent="list/filters/type" index="1" instance=ExtResource( 20 )]
 
@@ -1670,6 +1683,7 @@ rect_clip_content = false
 focus_neighbour_top = NodePath(".")
 focus_mode = 0
 disabled = true
+_sections_unfolded = [ "Focus", "custom_styles" ]
 
 [node name="icon" parent="list/filters/type/boss" index="0"]
 
@@ -1684,6 +1698,7 @@ rect_clip_content = false
 focus_neighbour_top = NodePath(".")
 focus_mode = 0
 disabled = true
+_sections_unfolded = [ "Focus", "custom_styles" ]
 
 [node name="icon" parent="list/filters/type/bonus" index="0"]
 
@@ -1699,6 +1714,7 @@ focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath(".")
 focus_mode = 0
 disabled = true
+_sections_unfolded = [ "Focus", "custom_styles" ]
 
 [node name="icon" parent="list/filters/type/colosseum" index="0"]
 
@@ -2138,7 +2154,7 @@ text = "Tags"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Anchor", "Margin", "custom_constants", "custom_styles" ]
+_sections_unfolded = [ "Anchor", "Focus", "Margin", "custom_constants", "custom_styles" ]
 
 [node name="tags" type="HBoxContainer" parent="title/content" index="3"]
 
@@ -2157,6 +2173,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 alignment = 0
+_sections_unfolded = [ "Focus" ]
 
 [node name="red" parent="title/content/tags" index="0" instance=ExtResource( 7 )]
 
@@ -2167,6 +2184,7 @@ anchor_bottom = 0.0
 margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
+focus_neighbour_left = NodePath(".")
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -2174,6 +2192,7 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 align = 1
+_sections_unfolded = [ "Focus" ]
 
 [node name="green" parent="title/content/tags" index="1" instance=ExtResource( 7 )]
 
@@ -2193,6 +2212,7 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 align = 1
+_sections_unfolded = [ "Focus" ]
 
 [node name="tag" parent="title/content/tags/green" index="0"]
 
@@ -2219,6 +2239,7 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 align = 1
+_sections_unfolded = [ "Focus" ]
 
 [node name="tag" parent="title/content/tags/blue" index="0"]
 
@@ -2246,6 +2267,7 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 align = 1
+_sections_unfolded = [ "Focus" ]
 
 [node name="tag" parent="title/content/tags/purple" index="0"]
 
@@ -2455,6 +2477,7 @@ margin_bottom = 398.0
 rect_clip_content = false
 focus_neighbour_left = NodePath("../tags/purple")
 focus_neighbour_top = NodePath(".")
+focus_mode = 0
 custom_styles/hover = SubResource( 42 )
 custom_styles/pressed = SubResource( 43 )
 custom_styles/focus = SubResource( 44 )

@@ -118,6 +118,45 @@ func _ready():
 	currentpin.raise()
 	currentpin.grab_focus()
 
+	# Focus Mode is not set properly on ready...
+	# See https://github.com/godotengine/godot/issues/19532
+	list.get_node("filters/tagtitle").set_focus_mode(FOCUS_NONE)
+	filters.get_node("tags").set_focus_mode(FOCUS_NONE)
+	var tagcontainer = filters.get_node("tagcontainer")
+	tagcontainer.get_node("red").set_focus_mode(FOCUS_NONE)
+	tagcontainer.get_node("green").set_focus_mode(FOCUS_NONE)
+	tagcontainer.get_node("blue").set_focus_mode(FOCUS_NONE)
+	tagcontainer.get_node("purple").set_focus_mode(FOCUS_NONE)
+	var typecontainer = filters.get_node("typecontainer")
+	typecontainer.get_node("quest").set_focus_mode(FOCUS_NONE)
+	typecontainer.get_node("boss").set_focus_mode(FOCUS_NONE)
+	typecontainer.get_node("bonus").set_focus_mode(FOCUS_NONE)
+	typecontainer.get_node("colosseum").set_focus_mode(FOCUS_NONE)
+	var listfilters = list.get_node("filters")
+	listfilters.get_node("tagtitle").set_focus_mode(FOCUS_NONE)
+	tagcontainer = listfilters.get_node("tags")
+	tagcontainer.get_node("red").set_focus_mode(FOCUS_NONE)
+	tagcontainer.get_node("green").set_focus_mode(FOCUS_NONE)
+	tagcontainer.get_node("blue").set_focus_mode(FOCUS_NONE)
+	tagcontainer.get_node("purple").set_focus_mode(FOCUS_NONE)
+	typecontainer = listfilters.get_node("type")
+	typecontainer.get_node("quest").set_focus_mode(FOCUS_NONE)
+	typecontainer.get_node("boss").set_focus_mode(FOCUS_NONE)
+	typecontainer.get_node("bonus").set_focus_mode(FOCUS_NONE)
+	typecontainer.get_node("colosseum").set_focus_mode(FOCUS_NONE)
+	tagcontainer = content.get_node("tags")
+	tagcontainer.get_node("red").set_focus_mode(FOCUS_NONE)
+	tagcontainer.get_node("green").set_focus_mode(FOCUS_NONE)
+	tagcontainer.get_node("blue").set_focus_mode(FOCUS_NONE)
+	tagcontainer.get_node("purple").set_focus_mode(FOCUS_NONE)
+	content.get_node("warp").set_focus_mode(FOCUS_NONE)
+
+func focus_mode(state):
+	var mode = FOCUS_ALL
+	if (state):
+		mode = FOCUS_NONE
+	return mode
+
 func focus_list():
 	var item = get_focus_owner()
 	set_content(item.get_name())
@@ -153,20 +192,31 @@ func do_select():
 
 func focus_warp():
 	get_node("shield").visible = true
+	toggle_content(false)
 	if (selectedlevel.get_name() == currentlevel):
 		content.get_node("tags/purple").grab_focus()
 		content.get_node("warp").set_disabled(true)
+		content.get_node("warp").set_focus_mode(FOCUS_NONE)
 	else:
 		content.get_node("warp").set_disabled(false)
+		content.get_node("warp").set_focus_mode(FOCUS_ALL)
 		content.get_node("warp").grab_focus()
 
 func toggle_pins(state):
 	for pin in pincontainer.get_children():
 		pin.set_disabled(state)
+		pin.set_focus_mode(focus_mode(state))
 
 func toggle_list(state):
 	for item in listcontainer.get_children():
 		item.set_disabled(state)
+		item.set_focus_mode(focus_mode(state))
+
+func toggle_content(state):
+	content.get_node("warp").set_focus_mode(focus_mode(state))
+	for tag in content.get_node("tags").get_children():
+		tag.set_focus_mode(focus_mode(state))
+		tag.set_disabled(state)
 
 # update and display selected level information
 func set_content(id):
@@ -209,16 +259,22 @@ func set_content(id):
 func toggle_filters(state):
 	if (islist):
 		list.get_node("filters/tagtitle").set_disabled(state)
+		list.get_node("filters/tagtitle").set_focus_mode(focus_mode(state))
 		for tag in list.get_node("filters/tags").get_children():
 			tag.set_disabled(state || tagsdisabled)
+			tag.set_focus_mode(focus_mode(state || tagsdisabled))
 		for type in list.get_node("filters/type").get_children():
 			type.set_disabled(state)
+			type.set_focus_mode(focus_mode(state))
 	else:
 		filters.get_node("tags").set_disabled(state)
+		filters.get_node("tags").set_focus_mode(focus_mode(state))
 		for tag in filters.get_node("tagcontainer").get_children():
+			tag.set_focus_mode(focus_mode(state || tagsdisabled))
 			tag.set_disabled(state || tagsdisabled)
 		for type in filters.get_node("typecontainer").get_children():
 			type.set_disabled(state)
+			type.set_focus_mode(focus_mode(state))
 
 func _input(event):
 	if (event.is_pressed() && !event.is_echo() && !animation.is_playing()):
@@ -273,10 +329,7 @@ func _input(event):
 		if (event.is_action_pressed("ui_cancel") && leveldisplay):
 			leveldisplay = false
 			animation.play("hide")
-			if (islist):
-				toggle_list(false)
-			else:
-				toggle_pins(false)
+			toggle_content(true)
 			update_filters()
 			# if tagging causes the level to disappear from the map, 
 			# and there's nothing else to select, select the filters instead
@@ -304,7 +357,12 @@ func _input(event):
 
 func end_level_animation():
 	if (selectedlevel != null):
-		listcontainer.get_node(selectedlevel.get_name()).grab_focus()
+		if (islist):
+			toggle_list(false)
+			var list = listcontainer.get_children()
+			listcontainer.get_node(selectedlevel.get_name()).grab_focus()
+		else:
+			toggle_pins(false)
 		selectedlevel = null
 
 func end_list_animation():
@@ -320,6 +378,8 @@ func end_list_animation():
 			toggle_filters(false)
 			filteractive = true
 			list.get_node("filters/tagtitle").grab_focus()
+			toggle_list(true)
+			filters.get_node("bg").hide()
 		get_node("listinfo").set_bbcode("[right]" + tr("MAP_MAP") + ":  [code]" + keyboardmap.map_action("ui_pause") + "[/code]\n" + tr("MAP_BACK") + ":  [code]" + keyboardmap.map_action("ui_cancel") + "[/code][/right]")
 	else:
 		if (filteractive):
@@ -355,9 +415,11 @@ func update_filters():
 	for pin in pincontainer.get_children():
 		pin.hide()
 		pin.set_disabled(true)
+		pin.set_focus_mode(FOCUS_NONE)
 	for listitem in listcontainer.get_children():
 		listitem.hide()
 		listitem.set_disabled(true)
+		listitem.set_focus_mode(FOCUS_NONE)
 	# filter by type
 	for type in typefilters:
 		if (typefilters[type]):
@@ -398,9 +460,11 @@ func update_filters():
 		backup_pin = taggedlevels[pin]
 		backup_pin.show()
 		backup_pin.set_disabled(islist)
+		backup_pin.set_focus_mode(focus_mode(islist))
 		var list = listcontainer.get_node(pin)
 		list.show()
 		list.set_disabled(!islist)
+		list.set_focus_mode(focus_mode(islist))
 		if (backup_pin == old_selectedlevel):
 			selectedlevel = backup_pin
 	if (selectedlevel == null):
