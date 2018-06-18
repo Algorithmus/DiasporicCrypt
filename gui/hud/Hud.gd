@@ -7,6 +7,12 @@ const HP_DEFAULT_COLOR = Color(0, 105/255.0, 1)
 const HP_LOW_COLOR = Color(1, 0, 0)
 const BAR_WIDTH = 500
 
+const DEFAULT_AURA = Color(1, 158.1/255.0, 0)
+const STYX_AURA = Color(73/255.0, 0, 1)
+
+const DEFAULT_PREBAR_COLOR = Color(1, 195 / 255.0, 15/255.0, 230 / 255.0)
+const STYX_PREBAR_COLOR = Color(188 / 255.0, 1, 0, 230 / 255.0)
+
 var playerclass = preload("res://players/player.gd")
 var player
 var hpbar
@@ -61,8 +67,14 @@ func _physics_process(delta):
 		var lowhp = hpscale <= 0.1
 		get_node("hpbar/display").set_use_parent_material(!lowhp)
 		
+		var bonus = ProjectSettings.get("bonus_effects")
+
 		# Update MP bar
 		var current_mp = player.get("current_mp") / float(player.get("mp"))
+		if (bonus.mprate):
+			mpprebar.color = STYX_PREBAR_COLOR
+		else:
+			mpprebar.color = DEFAULT_PREBAR_COLOR
 		if (player.get("is_charging")):
 			is_magic = false
 			mpbar.set_scale(Vector2(current_mp, 1))
@@ -97,7 +109,12 @@ func _physics_process(delta):
 		polygon[0].y = blood_value
 		polygon[1].y = blood_value
 		bloodbar.set_polygon(polygon)
-		get_node("bloodbar/display").set_use_parent_material(!player.get("is_demonic"))
+		var bloodbar_display = get_node("bloodbar/display")
+		if (bonus.demonic):
+			bloodbar_display.get_material().set_shader_param("aura_color", STYX_AURA)
+		else:
+			bloodbar_display.get_material().set_shader_param("aura_color", DEFAULT_AURA)
+		bloodbar_display.set_use_parent_material(!player.get("is_demonic"))
 		if (ProjectSettings.get("show_blood_counter")):
 			bloodcounter.show()
 			bloodcounter.get_node("counter").set_text(str(ProjectSettings.get("blood_count")))

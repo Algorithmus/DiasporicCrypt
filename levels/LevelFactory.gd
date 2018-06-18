@@ -65,7 +65,7 @@ func _init():
 	cave.position = Vector2(424, 73)
 	cave.description = "LVL_CAVE_DESCRIPTION"
 	cave.reward = 4000
-	cave.item = "ITEM_STYXCHALICE"
+	cave.item = "ITEM_STYXCOIN"
 	cave.require = ["LVL_DUNGEON", "LVL_BERGFORTRESS"]
 	cave.location = locationfactory.locations["LVL_CAVE"]
 	levels[cave.title] = cave
@@ -157,7 +157,7 @@ func _init():
 	aquaduct2.description = "LVL_AQUADUCT2_DESCRIPTION"
 	aquaduct2.reward = 10000
 	aquaduct2.require = ["LVL_MANOR", "LVL_CAVE"]
-	aquaduct2.item = "ITEM_STYXCOIN"
+	aquaduct2.item = "ITEM_STYXCHALICE"
 	aquaduct2.location = locationfactory.locations["LVL_AQUADUCT2"]
 	levels[aquaduct2.title] = aquaduct2
 

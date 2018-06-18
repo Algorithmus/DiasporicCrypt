@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
-[sub_resource type="Shader" id=5]
+[sub_resource type="Shader" id=1]
 
 code = "shader_type canvas_item;
 render_mode blend_premul_alpha;
@@ -11,14 +11,14 @@ void fragment() {
 COLOR = modulate;
 }"
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=2]
 
 render_priority = 0
-shader = SubResource( 5 )
+shader = SubResource( 1 )
 shader_param/modulate = Color( 0, 0.54, 0.71, 0 )
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="ImageTexture" id=7]
+[sub_resource type="ImageTexture" id=3]
 
 flags = 7
 storage = 0
@@ -26,7 +26,58 @@ lossy_quality = 0.7
 flags = 7
 size = Vector2( 32, 32 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="Gradient" id=4]
+
+offsets = PoolRealArray( 0, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+
+flags = 4
+gradient = SubResource( 4 )
+width = 2048
+
+[sub_resource type="ParticlesMaterial" id=6]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 2
+emission_box_extents = Vector3( 16, 16, 1 )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 45.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 1.5
+scale_random = 1.0
+color_ramp = SubResource( 5 )
+hue_variation = 1.0
+hue_variation_random = 1.0
+anim_speed = 0.0
+anim_speed_random = 1.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Animation", "Color", "Emission Shape", "Hue Variation", "Initial Velocity", "Scale", "Spread", "Trail" ]
+
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
@@ -43,12 +94,35 @@ __meta__ = {
 
 [node name="sprite" type="Sprite" parent="." index="0"]
 
-material = SubResource( 6 )
-texture = SubResource( 7 )
+material = SubResource( 2 )
+texture = SubResource( 3 )
 _sections_unfolded = [ "Material" ]
 
-[node name="oneway" type="Area2D" parent="." index="1"]
+[node name="shiny" type="Particles2D" parent="." index="1"]
 
+emitting = true
+amount = 4
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 0.5
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 6 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Process Material", "Time", "Transform" ]
+
+[node name="oneway" type="Area2D" parent="." index="2"]
+
+visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -60,10 +134,11 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="oneway" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
-[node name="block" type="Area2D" parent="." index="2"]
+[node name="block" type="Area2D" parent="." index="3"]
 
+visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -75,6 +150,6 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="block" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 

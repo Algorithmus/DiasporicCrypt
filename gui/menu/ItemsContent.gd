@@ -12,6 +12,7 @@ var selecteditem
 var echo = false
 var use
 var drop
+var status
 var sfxclass = preload("res://gui/menu/sfx.tscn")
 var sfx
 
@@ -21,6 +22,7 @@ func _ready():
 	info.hide()
 	use = info.get_node("use")
 	drop = info.get_node("drop")
+	status = info.get_node("status")
 	itemcontainer = get_node("itemcontainer/VBoxContainer")
 	sfx = sfxclass.instance()
 	add_child(sfx)
@@ -100,7 +102,20 @@ func set_type_colors():
 	else:
 		use.show()
 		drop.show()
+		status.hide()
 		get_node("types/special").set("custom_colors/font_color", null)
+
+func update_special(item_obj):
+	var bonus = ProjectSettings.get("bonus_effects")
+	var image = info.get_node("image")
+	if (bonus[item_obj.effect]):
+		status.text = tr("KEY_ACTIVE")
+		status.modulate.a = 1
+		image.use_parent_material = false
+	else:
+		status.text = tr("KEY_INACTIVE")
+		status.modulate.a = 0.5
+		image.use_parent_material = true
 
 func focus_item_enter():
 	info.show()
@@ -114,9 +129,16 @@ func focus_item_enter():
 	item_obj.new = false
 	inventory[item_obj.title]["item"] = item_obj
 	item.get_node("new").hide()
-	info.get_node("image").set_texture(load(item_obj.image))
+	var image = info.get_node("image")
+	image.set_texture(load(item_obj.image))
 	info.get_node("title").set_text(item_obj.title)
 	info.get_node("description").set_bbcode("[fill]" + tr(item_obj.description) + "[/fill]")
+	if (item_obj.effect != null && currenttype == "special"):
+		status.show()
+		update_special(item_obj)
+	else:
+		status.hide()
+		image.use_parent_material = true
 	if (scrollcontainer.get_v_scroll() + scrollcontainer.get_size().y < item.get_position().y + item.get_size().y || scrollcontainer.get_v_scroll() > item.get_position().y):
 		scrollcontainer.set_v_scroll(item.get_position().y)
 
@@ -147,40 +169,49 @@ func _input(event):
 			set_type(newtype.get_name())
 			newtype.grab_focus()
 			set_process_input(false)
-		if (event.is_action_pressed("ui_accept") && info.is_visible() && currenttype != "special"):
-			var focus = get_focus_owner()
+		if (event.is_action_pressed("ui_accept") && info.is_visible()):
 			var inventory = ProjectSettings.get("inventory")
-			# update container and item when using or dropping them
-			# return back to item selection if no selected items left
-			if (focus.get_name() == use.get_name()):
-				var item = inventory.get("inventory")[selecteditem.get_name()]["item"]
-				var quantity = inventory.use_item(item)
-				update_container()
-				if (quantity == 0):
-					clear_selection(item)
-				else:
-					check_item(item)
-					selecteditem = itemcontainer.get_node(item.title)
-				#TODO - play sounds properly
-				sfx.get_node("confirm").play()
-			elif (focus.get_name() == drop.get_name()):
-				var item = inventory.get("inventory")[selecteditem.get_name()]["item"]
-				var quantity = inventory.remove_item(item, 1)
-				update_container()
-				if (quantity == 0):
-					clear_selection(item)
-				else:
-					selecteditem = itemcontainer.get_node(item.title)
-				#TODO - play sounds properly
-				sfx.get_node("confirm").play()
-			else:
-				# no items selected, select current item instead
-				sfx.get_node("confirm").play()
+			var focus = get_focus_owner()
+			if (currenttype == "special"):
 				var item = inventory.get("inventory")[focus.get_name()]["item"]
-				selecteditem = focus
-				check_item(item)
-				info.show()
-				set_process_input(true)
+				var bonus = ProjectSettings.get("bonus_effects")
+				if (item.effect != null):
+					bonus[item.effect] = !bonus[item.effect]
+					update_special(item)
+					get_tree().get_root().get_node("world/playercontainer/player").set_stats()
+					sfx.get_node("confirm").play()
+			else:
+				# update container and item when using or dropping them
+				# return back to item selection if no selected items left
+				if (focus.get_name() == use.get_name()):
+					var item = inventory.get("inventory")[selecteditem.get_name()]["item"]
+					var quantity = inventory.use_item(item)
+					update_container()
+					if (quantity == 0):
+						clear_selection(item)
+					else:
+						check_item(item)
+						selecteditem = itemcontainer.get_node(item.title)
+					#TODO - play sounds properly
+					sfx.get_node("confirm").play()
+				elif (focus.get_name() == drop.get_name()):
+					var item = inventory.get("inventory")[selecteditem.get_name()]["item"]
+					var quantity = inventory.remove_item(item, 1)
+					update_container()
+					if (quantity == 0):
+						clear_selection(item)
+					else:
+						selecteditem = itemcontainer.get_node(item.title)
+					#TODO - play sounds properly
+					sfx.get_node("confirm").play()
+				else:
+					# no items selected, select current item instead
+					sfx.get_node("confirm").play()
+					var item = inventory.get("inventory")[focus.get_name()]["item"]
+					selecteditem = focus
+					check_item(item)
+					info.show()
+					set_process_input(true)
 		if (event.is_action_pressed("ui_cancel") && item_selected()):
 			# go back to item selection
 			selecteditem.grab_focus()

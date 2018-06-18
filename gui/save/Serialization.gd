@@ -42,6 +42,7 @@ func unserialize_stats(player, data):
 	player.set("base_def", data.def)
 	player.set("base_mag", data.mag)
 	player.set("base_luck", data.luck)
+	player.set_stats()
 
 func serialize_scrolls(data):
 	var scrolls = {}

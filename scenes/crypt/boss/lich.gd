@@ -103,7 +103,11 @@ func _physics_process(delta):
 		if (ProjectSettings.get("inventory").inventory.has("ITEM_AMETHYSTKEY")):
 			item = potionplusplusclass.instance()
 		var exporb = expclass.instance()
-		exporb.set_value(ep)
+		var bonus = ProjectSettings.get("bonus_effects")
+		var rate = 1
+		if (bonus.exp):
+			rate = 2
+		exporb.set_value(ep * 2)
 		exporb.set_global_position(Vector2(512, -592))
 		item.set_global_position(Vector2(512, -624))
 		get_parent().add_child(exporb)

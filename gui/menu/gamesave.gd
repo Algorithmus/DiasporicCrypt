@@ -202,6 +202,7 @@ func save():
 	var stats = serialization.serialize_stats(player)
 	data.player.stats = stats
 	data.player.chainlist = ProjectSettings.get("chain")
+	data.bonuseffects = ProjectSettings.get("bonus_effects")
 	data.inventory = {}
 	data.inventory.gold = ProjectSettings.get("gold")
 	var scrolls = serialization.serialize_scrolls(ProjectSettings.get("scrolls"))

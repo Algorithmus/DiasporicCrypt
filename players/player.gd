@@ -9,6 +9,7 @@ const VERTICAL_DAMAGE_THROWBACK = 6
 const HURT_GRACE_PERIOD = 60
 const MP_REGEN_PERIOD = 1000
 const HANG_DELAY = 2
+const STYX_BONUS = 0.1
 
 var hang_delay = 0
 var tilemap
@@ -93,6 +94,16 @@ var demonic_hp = 0
 var demonic_mp = 0
 var demonic_luck = 0
 
+var styx_atk = 0
+var styx_def = 0
+var styx_mag = 0
+var styx_hp = 0
+var styx_mp = 0
+var styx_luck = 0
+
+var bonus_mprate = 0
+var bonus_blood = 0
+
 var exp_growth = preload("res://players/BaseExpGrowth.gd")
 var exp_growth_obj
 
@@ -110,21 +121,49 @@ func get_critical_bonus(damage):
 	else:
 		return 0
 func set_stats():
-	if (is_demonic):
-		atk = base_atk + demonic_atk * base_atk
-		def = base_def + demonic_def * base_def
-		hp = round(base_hp + demonic_hp * base_hp)
-		mp = round(base_mp + demonic_mp * base_mp)
-		luck = base_luck + demonic_luck * base_luck
-		mag = base_mag + demonic_mag * base_mag
+	var styx_bonus = ProjectSettings.get("bonus_effects")
+	if (styx_bonus.atk):
+		styx_atk = STYX_BONUS * base_atk
 	else:
-		atk = base_atk
-		def = base_def
-		current_hp = round(base_hp * float(current_hp) / hp)
-		hp = base_hp
-		mp = base_mp
-		luck = base_luck
-		mag = base_mag
+		styx_atk = 0
+	if (styx_bonus.def):
+		styx_def = STYX_BONUS * base_def
+	else:
+		styx_def = 0
+	if (styx_bonus.mag):
+		styx_mag = STYX_BONUS * base_mag
+	else:
+		styx_mag = 0
+	if (styx_bonus.luck):
+		styx_luck = STYX_BONUS * base_luck
+	else:
+		styx_luck = 0
+	if (styx_bonus.hp):
+		styx_hp = STYX_BONUS * base_hp
+	else:
+		styx_hp = 0
+	if (styx_bonus.mp):
+		styx_mp = STYX_BONUS * base_mp
+	else:
+		styx_mp = 0
+	if (is_demonic):
+		atk = base_atk + demonic_atk * base_atk + styx_atk
+		def = base_def + demonic_def * base_def + styx_def
+		current_hp = round(round(base_hp + demonic_hp * base_hp + styx_hp) * float(current_hp) / hp)
+		current_mp = round(round(base_mp + demonic_mp * base_mp + styx_mp) * float(current_mp) / mp)
+		hp = round(base_hp + demonic_hp * base_hp + styx_hp)
+		mp = round(base_mp + demonic_mp * base_mp + styx_mp)
+		luck = base_luck + demonic_luck * base_luck + styx_luck
+		mag = base_mag + demonic_mag * base_mag + styx_mag
+	else:
+		atk = base_atk + styx_atk
+		def = base_def + styx_def
+		current_hp = round(round(base_hp + styx_hp) * float(current_hp) / hp)
+		current_mp = round(round(base_mp + styx_mp) * float(current_mp) / mp)
+		hp = round(base_hp + styx_hp)
+		mp = round(base_mp + styx_mp)
+		luck = base_luck + styx_luck
+		mag = base_mag + styx_mag
 
 func get_exp_orb(value):
 	var level_up = exp_growth_obj.check_exp(level, value)
@@ -219,18 +258,32 @@ func check_damage(damageTiles):
 		for i in damageTiles:
 			if (i.get_name() == "damagable" || (i.get_name() == "sunbeam" && !is_demonic) || i.get_name() == "lava"):
 				var damage = 0
+				var bonus = ProjectSettings.get("bonus_effects")
+				var rate = 1
+				var g = 0
 				if (i.get_name() == "damagable"):
-					damage = max(get_def_adjusted_damage(hp * 0.075), 0)
+					if (bonus.spike):
+						rate = 0.5
+						g = 1
+					damage = max(get_def_adjusted_damage(hp * 0.075 * rate), 0)
 					if (i.get_parent() != null && i.get_parent().get("atk") != null):
+						rate = 1
+						g = 0
 						damage = max(get_def_adjusted_damage(get_atk_adjusted_damage(i.get_parent().get("atk"), null)), 0)
 				elif (i.get_name() == "sunbeam"):
-					damage = max(get_def_adjusted_damage(hp * 0.1), 0)
+					if (bonus.sunbeam):
+						rate = 0.5
+						g = 1
+					damage = max(get_def_adjusted_damage(hp * 0.1 * rate), 0)
 				elif (i.get_name() == "lava"):
-					damage = max(get_def_adjusted_damage(hp * 0.01), 0)
+					if (bonus.lava):
+						rate = 0.5
+						g = 1
+					damage = max(get_def_adjusted_damage(hp * 0.01 * rate), 0)
 				current_hp = max(current_hp - damage, 0)
 				if (damage > 0):
 					var hp_obj = hpclass.instance()
-					hp_obj.get_node("hptext").set("custom_colors/font_color", Color(1, 0, 0))
+					hp_obj.get_node("hptext").set("custom_colors/font_color", Color(1, g, 0))
 					hud.add_child(hp_obj)
 					var collider_offset = i.shape_owner_get_shape(0, 0).get_extents()
 					var hitpos = hp_obj.calculate_hitpos(i.get_global_position(), Vector2(collider_offset.x * i.get_scale().x, collider_offset.y * i.get_scale().y), get_position(), sprite_offset)
@@ -528,7 +581,11 @@ func display_demonic():
 
 func check_demonic():
 	if (is_demonic):
-		current_blood -= 1 #later multiply by rate
+		var bonus = ProjectSettings.get("bonus_effects")
+		var rate = 1
+		if (bonus.demonic):
+			rate = 0.5
+		current_blood -= 1 * rate
 		if (current_blood <= 0):
 			current_blood = 0
 			get_node("NormalSpriteGroup/"+current_animation).hide()
@@ -870,7 +927,11 @@ func find_spell(id):
 	return null
 
 func regenerate_mp():
-	current_mp_cycle += 1
+	var bonus = ProjectSettings.get("bonus_effects")
+	var rate = 1
+	if (bonus.mprate):
+		rate = 2
+	current_mp_cycle += 1 * rate
 	if (current_mp_cycle >= MP_REGEN_PERIOD - mag && !is_charging && current_mp < mp):
 		current_mp_cycle = 0
 		current_mp += 1

@@ -43,6 +43,7 @@ var stardustclass = preload("res://scenes/animations/stardust.tscn")
 var keymap = preload("res://gui/InputCharacters.gd").new()
 
 var chainlist = {"chop": false, "slice": false, "skewer": false, "stab": false, "thrust": false, "swift": false, "dualspin": false, "void": false, "rush": false}
+var bonus_effects_default = {"atk": false, "def": false, "mag": false, "luck": false, "hp": false, "mp": false, "demonic": false, "mprate": false, "lava": false, "exp": false, "sunbeam": false, "gold": false, "ice": false, "spike": false}
 
 var loading
 var teleport_params = []
@@ -62,8 +63,9 @@ func _ready():
 					{"id":"fire", "type": "fire", "mp": 20, "auracolor":Color(1, 77/255.0, 0), "weaponcolor1":Color(1, 1, 0), "weaponcolor2":Color(1, 0, 0), "is_single": false, "attack": preload("res://players/magic/fire/fire.tscn"), "delay": false, "atk": 0.7},
 					{"id":"wind", "type": "wind", "mp": 120, "auracolor": Color(0, 1, 149/255.0), "weaponcolor1": Color(187/255.0, 1, 231/255.0), "weaponcolor2": Color(0, 191/255.0, 92/255.0), "delay": true, "is_single": false, "charge": preload("res://players/magic/wind/charge.tscn"), "attack": preload("res://players/magic/wind/wind.tscn"), "atk": 1.2},
 					{"id":"ice", "type": "ice", "mp": 20, "auracolor": Color(0, 130/255.0, 207/255.0), "weaponcolor1": Color(0, 1, 1), "weaponcolor2": Color(0, 130/255.0, 207/255.0), "delay": false, "is_single": false, "attack": preload("res://players/magic/ice/ice.tscn"), "atk": 0.75}]
+	ProjectSettings.set("bonus_effects", bonus_effects_default.duplicate())
 	ProjectSettings.set("magic_spells", magic_spells)
-	ProjectSettings.set("chain", chainlist)
+	ProjectSettings.set("chain", chainlist.duplicate())
 	ProjectSettings.set("itemfactory", itemfactory.new())
 	ProjectSettings.set("levels", levelfactory.new().levels)
 	ProjectSettings.set("current_level", "LVL_START")
@@ -482,9 +484,10 @@ func global_menu():
 
 func clear_game():
 	map.reset()
-	ProjectSettings.set("chain", chainlist)
+	ProjectSettings.set("chain", chainlist.duplicate())
 	ProjectSettings.set("mapid", "LVL_START")
 	ProjectSettings.set("available_spells", null)
+	ProjectSettings.set("bonus_effects", bonus_effects_default.duplicate())
 	sequences.get_node("demonic/sprite/friederich").hide()
 	sequences.get_node("demonic/sprite/adela").hide()
 	get_node("gui/CanvasLayer/chain/chaintext").hide()
@@ -508,6 +511,8 @@ func clearInputs(actionid):
 
 func load_game(data):
 	clear_game()
+	if (data.has("bonuseffects")):
+		ProjectSettings.set("bonus_effects", data.bonuseffects)
 	ProjectSettings.set("mapid", data.maps.id)
 	var grids = serialization.unserialize_grids(data.maps.index)
 	ProjectSettings.set("grids", grids)

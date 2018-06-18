@@ -42,13 +42,30 @@ func update_container():
 	var hpbonus = ""
 	var mpbonus = ""
 
+	var styx_bonus = ProjectSettings.get("bonus_effects")
+
 	if (player.get("is_demonic")):
-		hpbonus = "([color=yellow]+" + str(round(player.get("demonic_hp") * 100)) + "%[/color])"
-		mpbonus = "([color=yellow]+" + str(round(player.get("demonic_mp") * 100)) + "%[/color])"
-		atk = atk + " + [color=yellow]" + str(round(player.get("demonic_atk") * 100)) + "%[/color]"
-		def = def + " + [color=yellow]" + str(round(player.get("demonic_def") * 100)) + "%[/color]"
-		mag = mag + " + [color=yellow]" + str(round(player.get("demonic_mag") * 100)) + "%[/color]"
-		luck = luck + " + [color=yellow]" + str(round(player.get("demonic_luck") * 100)) + "%[/color]"
+		hpbonus = "([color=yellow]+" + str(round(player.get("demonic_hp") * 100) + int(styx_bonus.hp) * 10) + "%[/color])"
+		mpbonus = "([color=yellow]+" + str(round(player.get("demonic_mp") * 100) + int(styx_bonus.mp) * 10) + "%[/color])"
+		atk = atk + " + [color=yellow]" + str(round(player.get("demonic_atk") * 100) + int(styx_bonus.atk) * 10) + "%[/color]"
+		def = def + " + [color=yellow]" + str(round(player.get("demonic_def") * 100) + int(styx_bonus.def) * 10) + "%[/color]"
+		mag = mag + " + [color=yellow]" + str(round(player.get("demonic_mag") * 100) + int(styx_bonus.mag) * 10) + "%[/color]"
+		luck = luck + " + [color=yellow]" + str(round(player.get("demonic_luck") * 100) + int(styx_bonus.luck) * 10) + "%[/color]"
+	else:
+		var bonustext = " + [color=yellow]10%[/color]"
+		var bonustextp = "([color=yellow]+10%[/color])"
+		if (player.get("styx_atk") > 0):
+			atk = atk + bonustext
+		if (player.get("styx_def") > 0):
+			def = def + bonustext
+		if (player.get("styx_mag") > 0):
+			mag = mag + bonustext
+		if (player.get("styx_luck") > 0):
+			luck = luck + bonustext
+		if (player.get("styx_hp") > 0):
+			hpbonus = bonustextp
+		if (player.get("styx_mp") > 0):
+			mpbonus = bonustextp
 
 	var exp_obj = player.get("exp_growth_obj")
 	var ep = str(exp_obj.get("total_exp"))

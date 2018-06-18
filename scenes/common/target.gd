@@ -16,7 +16,8 @@ var current_animation = "idle"
 var dying = false
 var animation_player
 var frozen = false
-const FREEZE_DELAY = 300
+const FREEZE_DELAY = 360
+var adjusted_freeze_delay = FREEZE_DELAY
 var freeze_counter = 0
 var freezeblock = preload("res://scenes/common/iceblock.tscn")
 var freezeblock_obj
@@ -85,14 +86,26 @@ func _physics_process(delta):
 				# freeze enemy in a collision block when hit with an ice attack
 				if (i.get_parent() != null && i.get_parent().get_name() == "Ice"):
 					frozen = true
+					var bonus = ProjectSettings.get("bonus_effects")
 					freezeblock_obj = freezeblock.instance()
 					var freezescale = sprite_offset.y / 16.0
-					freezeblock_obj.get_node("sprite").set_scale(Vector2(sprite_offset.x / 16, freezescale))
+					var freezescalex = sprite_offset.x / 16
+					freezeblock_obj.get_node("sprite").set_scale(Vector2(freezescalex, freezescale))
 					freezeblock_obj.get_node("sprite").set_position(Vector2(0, sprite_offset.y - 16))
-					freezeblock_obj.get_node("oneway").set_scale(Vector2(sprite_offset.x / 16, 1))
+					freezeblock_obj.get_node("oneway").set_scale(Vector2(freezescalex, 1))
 					freezeblock_obj.get_node("block").set_position(Vector2(0, sprite_offset.y * 2 - 16))
-					freezeblock_obj.get_node("block").set_scale(Vector2(sprite_offset.x / 16, 1))
+					freezeblock_obj.get_node("block").set_scale(Vector2(freezescalex, 1))
 					freezeblock_obj.set_position(Vector2(0, -sprite_offset.y + 16))
+					var shiny = freezeblock_obj.get_node("shiny")
+					if (bonus.ice):
+						adjusted_freeze_delay = FREEZE_DELAY * 2
+						shiny.show()
+						shiny.amount = 4 * freezescalex * freezescale
+						shiny.process_material.emission_box_extents = Vector3(16 * freezescalex, 16 * freezescale, 0)
+						shiny.position.y = sprite_offset.y - 16
+					else:
+						adjusted_freeze_delay = FREEZE_DELAY
+						shiny.hide()
 					add_child(freezeblock_obj)
 					if (has_node(collision_rect.get_name())):
 						remove_child(collision_rect)
@@ -126,11 +139,11 @@ func _physics_process(delta):
 	if (frozen):
 		freeze_counter += 1
 		# flash to warn player that frozen state is almost over
-		if (fmod(freeze_counter, 4) == 0 && float(freeze_counter)/FREEZE_DELAY > 0.75):
+		if (fmod(freeze_counter, 4) == 0 && float(freeze_counter)/adjusted_freeze_delay > 0.75):
 			freezeblock_obj.modulate.a = 0
 		else:
 			freezeblock_obj.modulate.a = 1
-		if (freeze_counter >= FREEZE_DELAY):
+		if (freeze_counter >= adjusted_freeze_delay):
 			frozen = false
 			freeze_counter = 0
 			if (has_node(freezeblock_obj.get_name())):

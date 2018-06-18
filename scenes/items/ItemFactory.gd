@@ -20,58 +20,66 @@ func _init():
 	
 	var styxinscription = itemclass.new()
 	styxinscription.title = "ITEM_STYXINSCRIPTION"
-	styxinscription.description = "ITEM_STYX_DESCRIPTION"
+	styxinscription.description = "ITEM_STYXINSCRIPTION_DESCRIPTION"
 	styxinscription.type = "special"
 	styxinscription.image = "res://scenes/items/special/styxinscription.png"
+	styxinscription.effect = "mag"
 	items[styxinscription.title] = styxinscription
 	
 	var styxchalice = itemclass.new()
 	styxchalice.title = "ITEM_STYXCHALICE"
-	styxchalice.description = "ITEM_STYX_DESCRIPTION"
+	styxchalice.description = "ITEM_STYXCHALICE_DESCRIPTION"
 	styxchalice.type = "special"
 	styxchalice.image = "res://scenes/items/special/styxchalice.png"
+	styxchalice.effect = "hp"
 	items[styxchalice.title] = styxchalice
 	
 	var styxcoin = itemclass.new()
 	styxcoin.title = "ITEM_STYXCOIN"
-	styxcoin.description = "ITEM_STYX_DESCRIPTION"
+	styxcoin.description = "ITEM_STYXCOIN_DESCRIPTION"
 	styxcoin.type = "special"
 	styxcoin.image = "res://scenes/items/special/styxcoin.png"
+	styxcoin.effect = "luck"
 	items[styxcoin.title] = styxcoin
 	
 	var styxtome = itemclass.new()
 	styxtome.title = "ITEM_STYXTOME"
-	styxtome.description = "ITEM_STYX_DESCRIPTION"
+	styxtome.description = "ITEM_STYXTOME_DESCRIPTION"
 	styxtome.type = "special"
 	styxtome.image = "res://scenes/items/special/styxtome.png"
+	styxtome.effect = "demonic"
 	items[styxtome.title] = styxtome
 
 	var styxfigurine = itemclass.new()
 	styxfigurine.title = "ITEM_STYXFIGURINE"
-	styxfigurine.description = "ITEM_STYX_DESCRIPTION"
+	styxfigurine.description = "ITEM_STYXFIGURINE_DESCRIPTION"
 	styxfigurine.type = "special"
 	styxfigurine.image = "res://scenes/items/special/styxfigurine.png"
+	styxfigurine.effect = "def"
 	items[styxfigurine.title] = styxfigurine
 
 	var styxbrooch = itemclass.new()
 	styxbrooch.title = "ITEM_STYXBROOCH"
-	styxbrooch.description = "ITEM_STYX_DESCRIPTION"
+	styxbrooch.description = "ITEM_STYXBROOCH_DESCRIPTION"
 	styxbrooch.type = "special"
 	styxbrooch.image = "res://scenes/items/special/styxbrooch.png"
+	styxbrooch.effect = "mp"
 	items[styxbrooch.title] = styxbrooch
 
 	var styxcrest = itemclass.new()
 	styxcrest.title = "ITEM_STYXCREST"
-	styxcrest.description = "ITEM_STYX_DESCRIPTION"
+	styxcrest.description = "ITEM_STYXCREST_DESCRIPTION"
 	styxcrest.type = "special"
 	styxcrest.image = "res://scenes/items/special/styxcrest.png"
+	styxcrest.effect = "atk"
 	items[styxcrest.title] = styxcrest
 
 	var styxmirror = itemclass.new()
 	styxmirror.title = "ITEM_STYXMIRROR"
-	styxmirror.description = "ITEM_STYX_DESCRIPTION"
+	styxmirror.description = "ITEM_STYXMIRROR_DESCRIPTION"
 	styxmirror.type = "special"
 	styxmirror.image = "res://scenes/items/special/styxmirror.png"
+	styxmirror.effect = "mprate"
 	items[styxmirror.title] = styxmirror
 
 	var rubykey = itemclass.new()
@@ -79,6 +87,7 @@ func _init():
 	rubykey.description = "ITEM_RUBYKEY_DESCRIPTION"
 	rubykey.type = "special"
 	rubykey.image = "res://scenes/items/special/rubykey.png"
+	rubykey.effect = "lava"
 	items[rubykey.title] = rubykey
 	
 	var emeraldkey = itemclass.new()
@@ -86,6 +95,7 @@ func _init():
 	emeraldkey.description = "ITEM_EMERALDKEY_DESCRIPTION"
 	emeraldkey.type = "special"
 	emeraldkey.image = "res://scenes/items/special/emeraldkey.png"
+	emeraldkey.effect = "exp"
 	items[emeraldkey.title] = emeraldkey
 	
 	var sapphirekey = itemclass.new()
@@ -93,6 +103,7 @@ func _init():
 	sapphirekey.description = "ITEM_SAPPHIREKEY_DESCRIPTION"
 	sapphirekey.type = "special"
 	sapphirekey.image = "res://scenes/items/special/sapphirekey.png"
+	sapphirekey.effect = "sunbeam"
 	items[sapphirekey.title] = sapphirekey
 	
 	var diamondkey = itemclass.new()
@@ -107,6 +118,7 @@ func _init():
 	topazkey.description = "ITEM_TOPAZKEY_DESCRIPTION"
 	topazkey.type = "special"
 	topazkey.image = "res://scenes/items/special/topazkey.png"
+	topazkey.effect = "gold"
 	items[topazkey.title] = topazkey
 	
 	var peridotkey = itemclass.new()
@@ -114,6 +126,7 @@ func _init():
 	peridotkey.description = "ITEM_PERIDOTKEY_DESCRIPTION"
 	peridotkey.type = "special"
 	peridotkey.image = "res://scenes/items/special/peridotkey.png"
+	peridotkey.effect = "ice"
 	items[peridotkey.title] = peridotkey
 	
 	var amethystkey = itemclass.new()
@@ -121,6 +134,7 @@ func _init():
 	amethystkey.description = "ITEM_AMETHYSTKEY_DESCRIPTION"
 	amethystkey.type = "special"
 	amethystkey.image = "res://scenes/items/special/amethystkey.png"
+	amethystkey.effect = "spike"
 	items[amethystkey.title] = amethystkey
 	
 	var potion = itemclass.new()

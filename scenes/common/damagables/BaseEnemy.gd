@@ -29,6 +29,7 @@ var ignore_collision = false # turn this on for flying enemies
 var floortile_check_requested = true
 var is_rush = false
 var player_loaded = false
+var adjusted_freeze_delay = FREEZE_DELAY
 
 # variables for consumable enemies
 var is_consumable = false
@@ -109,11 +110,23 @@ func check_damage():
 					# without messing up collision detection
 					if (i.get_parent() != null && type == "ice"):
 						frozen = true
+						var bonus = ProjectSettings.get("bonus_effects")
 						freezeblock_obj = freezeblock.instance()
 						var freezescale = sprite_offset.y * 2 / TILE_SIZE
-						freezeblock_obj.get_node("sprite").set_scale(Vector2(sprite_offset.x * 2.0 / TILE_SIZE, freezescale))
+						var freezescalex = sprite_offset.x * 2.0 / TILE_SIZE
+						freezeblock_obj.get_node("sprite").set_scale(Vector2(freezescalex, freezescale))
 						freezeblock_obj.get_node("sprite").set_position(Vector2(0, sprite_offset.y - TILE_SIZE / 2))
-						freezeblock_obj.get_node("oneway").set_scale(Vector2(sprite_offset.x * 2.0 / TILE_SIZE, 1))
+						freezeblock_obj.get_node("oneway").set_scale(Vector2(freezescalex, 1))
+						var shiny = freezeblock_obj.get_node("shiny")
+						if (bonus.ice):
+							adjusted_freeze_delay = FREEZE_DELAY * 2
+							shiny.show()
+							shiny.amount = 4 * freezescalex * freezescale
+							shiny.process_material.emission_box_extents = Vector3(16 * freezescalex, 16 * freezescale, 0)
+							shiny.position.y = sprite_offset.y - TILE_SIZE / 2
+						else:
+							adjusted_freeze_delay = FREEZE_DELAY
+							shiny.hide()
 						if (sprite_offset.y > TILE_SIZE / 2):
 							freezeblock_obj.get_node("block").set_position(Vector2(0, sprite_offset.y * 2 - TILE_SIZE))
 							freezeblock_obj.get_node("block").set_scale(Vector2(sprite_offset.x * 2.0 / TILE_SIZE, 1))
@@ -167,7 +180,7 @@ func closestXTile(direction, desiredX, space_state):
 
 func closestXTile_area_check(desired_direction, desiredX, space_state):
 	var frontTile = space_state.intersect_ray(Vector2(get_global_position().x + desired_direction * sprite_offset.x + desiredX, get_global_position().y - sprite_offset.y), Vector2(get_global_position().x + desired_direction * sprite_offset.x + desiredX, get_global_position().y + sprite_offset.y - 1))
-	if (frontTile != null && frontTile.has("collider") && !("slope" in frontTile["collider"].get_name()) && !"(player,water,lava,snow,item,damagable,consumable,sensor,magic,switch,breakable,sunbeam)".match("*" + frontTile["collider"].get_name() + "*") && !frontTile["collider"].has_node("magic") && frontTile["collider"].get_parent().get_name() != "target"):
+	if (frontTile != null && frontTile.has("collider") && !("slope" in frontTile["collider"].get_name()) && !"(player,water,lava,snow,item,damagable,consumable,sensor,magic,switch,breakable,sunbeam,ladder)".match("*" + frontTile["collider"].get_name() + "*") && !frontTile["collider"].has_node("magic") && frontTile["collider"].get_parent().get_name() != "target"):
 		return 0
 	return desiredX
 
@@ -228,15 +241,22 @@ func bleed():
 
 func die():
 	var drop
+	var bonus = ProjectSettings.get("bonus_effects")
+	var goldrate = 1
+	var eprate = 1
+	if (bonus.gold):
+		goldrate = 2
+	if (bonus.exp):
+		eprate = 2
 	if (custom_drop != null):
 		var custom = custom_drop.instance()
 		drop = custom
 	else:
 		var gold_obj = goldclass.instance()
-		gold_obj.set("value", gold)
+		gold_obj.set("value", gold * goldrate)
 		drop = gold_obj
 	var exporb = expclass.instance()
-	exporb.set_value(ep)
+	exporb.set_value(ep * eprate)
 	drop.set_global_position(Vector2(get_global_position().x - sprite_offset.x, get_global_position().y + sprite_offset.y - TILE_SIZE/2))
 	exporb.set_global_position(Vector2(get_global_position().x + sprite_offset.x, get_global_position().y + sprite_offset.y - TILE_SIZE/2))
 	get_parent().add_child(drop)
@@ -288,11 +308,11 @@ func check_frozen():
 	if (frozen):
 		freeze_counter += 1
 		# flash to warn player that frozen state is almost over
-		if (fmod(freeze_counter, 4) == 0 && float(freeze_counter)/FREEZE_DELAY > 0.75):
+		if (fmod(freeze_counter, 4) == 0 && float(freeze_counter)/adjusted_freeze_delay > 0.75):
 			freezeblock_obj.modulate.a = 0
 		else:
 			freezeblock_obj.modulate.a = 1
-		if (freeze_counter >= FREEZE_DELAY):
+		if (freeze_counter >= adjusted_freeze_delay):
 			frozen = false
 			freeze_counter = 0
 			if (has_node(freezeblock_obj.get_name())):

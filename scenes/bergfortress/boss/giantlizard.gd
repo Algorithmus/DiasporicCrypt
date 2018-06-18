@@ -95,7 +95,11 @@ func step_target():
 		if (ProjectSettings.get("inventory").inventory.has("ITEM_EMERALDKEY")):
 			item = potionplusclass.instance()
 		var exporb = expclass.instance()
-		exporb.set_value(ep)
+		var bonus = ProjectSettings.get("bonus_effects")
+		var rate = 1
+		if (bonus.exp):
+			rate = 2
+		exporb.set_value(ep * rate)
 		exporb.set_global_position(Vector2(-608, -416))
 		item.set_global_position(Vector2(-608, -448))
 		get_parent().add_child(exporb)

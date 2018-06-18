@@ -147,7 +147,11 @@ func _physics_process(delta):
 		if (ProjectSettings.get("inventory").inventory.has("ITEM_PERIDOTKEY")):
 			item = potionplusclass.instance()
 		var exporb = expclass.instance()
-		exporb.set_value(ep)
+		var bonus = ProjectSettings.get("bonus_effects")
+		var rate = 1
+		if (bonus.exp):
+			rate = 2
+		exporb.set_value(ep * rate)
 		exporb.set_global_position(Vector2(-608, -336))
 		item.set_global_position(Vector2(-608, -368))
 		get_parent().add_child(exporb)
