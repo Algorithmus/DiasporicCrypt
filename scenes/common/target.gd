@@ -10,6 +10,8 @@ var hud
 var hurt_delay = 10
 var current_delay = 0
 var blood = preload("res://scenes/common/blood.tscn")
+var sparkle = preload("res://scenes/common/sparkle.tscn")
+var issparklepire = false
 var blood_particles = []
 var sprite_offset
 var current_animation = "idle"
@@ -33,7 +35,14 @@ func _ready():
 	set_physics_process(false)
 
 func bleed():
-	var blood_obj = blood.instance()
+	var counter = player.get_node("player").get("chain_counter")
+	if (counter != null && counter >= 100):
+		issparklepire = true
+	var blood_obj
+	if (issparklepire):
+		blood_obj = sparkle.instance()
+	else:
+		blood_obj = blood.instance()
 	add_child(blood_obj)
 	blood_obj.set_position(Vector2(randf()*sprite_offset.x + sprite_offset.x/2 - 16, sprite_offset.y - randf()*sprite_offset.y*2))
 	blood_obj.get_node("particles").set_emitting(true)
