@@ -286,6 +286,46 @@ func _init():
 	scrollstar1.order = 4
 	items[scrollstar1.title] = scrollstar1
 
+	var scrollstar2 = scrollclass.new()
+	scrollstar2.title = "SCROLL_STAR2"
+	scrollstar2.display = "SCROLL_STAR2_TITLE"
+	scrollstar2.content = "SCROLL_STAR2_DESCRIPTION"
+	scrollstar2.description = "SCROLL_STAR2_SHORT"
+	scrollstar2.order = 5
+	items[scrollstar2.title] = scrollstar2
+
+	var scrollstar3 = scrollclass.new()
+	scrollstar3.title = "SCROLL_STAR3"
+	scrollstar3.display = "SCROLL_STAR3_TITLE"
+	scrollstar3.content = "SCROLL_STAR3_DESCRIPTION"
+	scrollstar3.description = "SCROLL_STAR3_SHORT"
+	scrollstar3.order = 6
+	items[scrollstar3.title] = scrollstar3
+
+	var scrollstar4 = scrollclass.new()
+	scrollstar4.title = "SCROLL_STAR4"
+	scrollstar4.display = "SCROLL_STAR4_TITLE"
+	scrollstar4.content = "SCROLL_STAR4_DESCRIPTION"
+	scrollstar4.description = "SCROLL_STAR4_SHORT"
+	scrollstar4.order = 7
+	items[scrollstar4.title] = scrollstar4
+
+	var scrollmoon1 = scrollclass.new()
+	scrollmoon1.title = "SCROLL_MOON1"
+	scrollmoon1.display = "SCROLL_MOON1_TITLE"
+	scrollmoon1.content = "SCROLL_MOON1_DESCRIPTION"
+	scrollmoon1.description = "SCROLL_MOON1_SHORT"
+	scrollmoon1.order = 4
+	items[scrollmoon1.title] = scrollmoon1
+
+	var scrollmoon2 = scrollclass.new()
+	scrollmoon2.title = "SCROLL_MOON2"
+	scrollmoon2.display = "SCROLL_MOON2_TITLE"
+	scrollmoon2.content = "SCROLL_MOON2_DESCRIPTION"
+	scrollmoon2.description = "SCROLL_MOON2_SHORT"
+	scrollmoon2.order = 5
+	items[scrollmoon2.title] = scrollmoon2
+
 	var scrollmoon3 = scrollclass.new()
 	scrollmoon3.title = "SCROLL_MOON3"
 	scrollmoon3.display = "SCROLL_MOON3_TITLE"
@@ -293,6 +333,14 @@ func _init():
 	scrollmoon3.description = "SCROLL_MOON3_SHORT"
 	scrollmoon3.order = 6
 	items[scrollmoon3.title] = scrollmoon3
+
+	var scrollmoon4 = scrollclass.new()
+	scrollmoon4.title = "SCROLL_MOON4"
+	scrollmoon4.display = "SCROLL_MOON4_TITLE"
+	scrollmoon4.content = "SCROLL_MOON4_DESCRIPTION"
+	scrollmoon4.description = "SCROLL_MOON4_SHORT"
+	scrollmoon4.order = 7
+	items[scrollmoon4.title] = scrollmoon4
 
 	var thunder = itemclass.new()
 	thunder.title = "MAGIC_THUNDER"

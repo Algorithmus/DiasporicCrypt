@@ -164,7 +164,7 @@ position = Vector2( 0, -1 )
 
 editor/display_folded = true
 position = Vector2( -2144, 33 )
-dialogues = [ [ -1, "Gareth", "DIAG_GARETH0", null, null ] ]
+dialogues = [ [ -1, "Gareth", "DIAG_GARETH0", null, null ], [ -1, "Gareth", "DIAG_GARETH1", null, null, [ "scroll", "SCROLL_STAR4" ] ], [ -1, "Gareth", "DIAG_GARETH1", [ "SCROLL_STAR4", null, true ], null ] ]
 
 [node name="Sprite" parent="tilemap/NPCGroup/Gareth" index="1"]
 

@@ -10,7 +10,7 @@
 [ext_resource path="res://scenes/items/scroll/scroll.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=9]
 
-[node name="LVL_NOTITLE" type="Node2D" index="0"]
+[node name="LVL_NOTITLE" type="Node2D"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -160,7 +160,7 @@ position = Vector2( 1808, 0 )
 [node name="Scroll" parent="tilemap/ItemGroup" index="0" instance=ExtResource( 8 )]
 
 position = Vector2( 1584, 16 )
-title = "SCROLL_MAGIC"
+title = "SCROLL_MOON4"
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="4"]
 

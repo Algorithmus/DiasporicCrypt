@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/fallislandcastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/fallislandcastle/climbableblock.tscn" type="PackedScene" id=2]
@@ -6,7 +6,8 @@
 [ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/npcs/nystev/idle.png" type="Texture" id=5]
 [ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/items/scroll/scroll.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=8]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
 
@@ -62,6 +63,8 @@ position = Vector2( -224, 16 )
 
 [node name="NPCGroup" type="Node2D" parent="tilemap" index="2"]
 
+editor/display_folded = true
+
 [node name="Nystev" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( -672, -16 )
@@ -73,6 +76,8 @@ dialogues = [ [ -1, "Nystev", "DIAG_NYSTEV0", null, null ], [ 1, "Friederich", "
 texture = ExtResource( 5 )
 
 [node name="DamageGroup" type="Node2D" parent="tilemap" index="3"]
+
+editor/display_folded = true
 
 [node name="SpikeTile" parent="tilemap/DamageGroup" index="0" instance=ExtResource( 6 )]
 
@@ -154,11 +159,19 @@ position = Vector2( 496, 304 )
 
 position = Vector2( 528, 304 )
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap" index="4"]
+[node name="ItemGroup" type="Node2D" parent="tilemap" index="4"]
+
+[node name="Scroll" parent="tilemap/ItemGroup" index="0" instance=ExtResource( 7 )]
+
+position = Vector2( 464, 48 )
+_sections_unfolded = [ "Transform" ]
+title = "SCROLL_MOON1"
+
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="5"]
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 7 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 8 )]
 
 editor/display_folded = true
 position = Vector2( 592, -16 )
@@ -169,7 +182,7 @@ teleport_to = Vector2( -876, 400 )
 
 scale = Vector2( 1, 5 )
 
-[node name="boundaries" type="Node2D" parent="tilemap" index="5"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="6"]
 
 editor/display_folded = true
 
