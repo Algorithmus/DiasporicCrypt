@@ -7,10 +7,7 @@ path="res://.import/corner.png-4d300fb30d0334baa3a063aa6d0e71f2.stex"
 [deps]
 
 source_file="res://scenes/mausoleum/BGs/corner.png"
-source_md5="3eb158593b78fd0a5abe7f4c04618803"
-
 dest_files=[ "res://.import/corner.png-4d300fb30d0334baa3a063aa6d0e71f2.stex" ]
-dest_md5="e96c3816b7ef2f87bdf4a06262c875b9"
 
 [params]
 

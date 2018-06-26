@@ -7,10 +7,7 @@ path="res://.import/bat.png-6f2a542b078aeff47c1a8523749affb4.stex"
 [deps]
 
 source_file="res://scenes/savepoint/bat.png"
-source_md5="340ecdb66450133d168a8ea7d5404520"
-
 dest_files=[ "res://.import/bat.png-6f2a542b078aeff47c1a8523749affb4.stex" ]
-dest_md5="3f05112d7902768429198608268718e7"
 
 [params]
 

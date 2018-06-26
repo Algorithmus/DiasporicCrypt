@@ -7,10 +7,7 @@ path="res://.import/slidergrabber.png-2a30f92ac8289972c93a3f9047ae22d2.stex"
 [deps]
 
 source_file="res://gui/theme/slidergrabber.png"
-source_md5="354f307e2ce8730211c7a57e9a45fc16"
-
 dest_files=[ "res://.import/slidergrabber.png-2a30f92ac8289972c93a3f9047ae22d2.stex" ]
-dest_md5="07f0345da596d90369eb3c14aaa9a53f"
 
 [params]
 

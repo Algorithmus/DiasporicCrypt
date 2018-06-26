@@ -7,10 +7,7 @@ path="res://.import/wall.png-03bdda61349f5a25690e34257ed25c93.stex"
 [deps]
 
 source_file="res://scenes/springislandcastle/BGs/wall.png"
-source_md5="84dd1d73c20eb1d02716ff97e0c5b426"
-
 dest_files=[ "res://.import/wall.png-03bdda61349f5a25690e34257ed25c93.stex" ]
-dest_md5="daf0a8d1a3c980a2892e2b088e217b8e"
 
 [params]
 

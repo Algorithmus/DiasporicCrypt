@@ -7,10 +7,7 @@ path="res://.import/ice.wav-b7051afb4d16704a1e5ce86df453efc3.sample"
 [deps]
 
 source_file="res://players/magic/ice/ice.wav"
-source_md5="42d5300db4cf7eb12df1ba6843944626"
-
 dest_files=[ "res://.import/ice.wav-b7051afb4d16704a1e5ce86df453efc3.sample" ]
-dest_md5="cffc457467e4026248fa0c05ddbd8c85"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/platform-edge.png-faa81a6ecb0674a44182787577e62f97.stex"
 [deps]
 
 source_file="res://scenes/holyruins/BGs/platform-edge.png"
-source_md5="220bed3116ee4430d6aae4809345840d"
-
 dest_files=[ "res://.import/platform-edge.png-faa81a6ecb0674a44182787577e62f97.stex" ]
-dest_md5="15a8365006b15b8089133c412f45bac6"
 
 [params]
 

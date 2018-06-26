@@ -7,10 +7,7 @@ path="res://.import/die.wav-4b6fbad58a5ae25173be0ef17d613dbf.sample"
 [deps]
 
 source_file="res://scenes/common/damagables/skeleton/die.wav"
-source_md5="e5142d80868b5a1da4837b26b27da5aa"
-
 dest_files=[ "res://.import/die.wav-4b6fbad58a5ae25173be0ef17d613dbf.sample" ]
-dest_md5="5ee084ab8e1cd092c479147cb56134cc"
 
 [params]
 

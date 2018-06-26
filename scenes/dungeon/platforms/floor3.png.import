@@ -7,10 +7,7 @@ path="res://.import/floor3.png-9658f017d722073f0eb938fe8ce3a44e.stex"
 [deps]
 
 source_file="res://scenes/dungeon/platforms/floor3.png"
-source_md5="5c44fe420474984fce6abaed219b49b2"
-
 dest_files=[ "res://.import/floor3.png-9658f017d722073f0eb938fe8ce3a44e.stex" ]
-dest_md5="bb870ddb0c90e085a919860f4311fcbc"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/bgtile3.png-fbf5e4978a97931c72fcd8be7196b13b.stex"
 [deps]
 
 source_file="res://scenes/dungeon/BGs/bgtile3.png"
-source_md5="7938a56fed12b4037c643231fa338271"
-
 dest_files=[ "res://.import/bgtile3.png-fbf5e4978a97931c72fcd8be7196b13b.stex" ]
-dest_md5="95e2a5c50efefbf69438d84e5dc33ccf"
 
 [params]
 

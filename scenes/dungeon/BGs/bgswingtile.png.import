@@ -7,10 +7,7 @@ path="res://.import/bgswingtile.png-629a8197a531f1945e162756b0488d17.stex"
 [deps]
 
 source_file="res://scenes/dungeon/BGs/bgswingtile.png"
-source_md5="0d17a4450adee9d7533e1e6dc433e160"
-
 dest_files=[ "res://.import/bgswingtile.png-629a8197a531f1945e162756b0488d17.stex" ]
-dest_md5="937b9c2cd5f598d5f50bad8348877a69"
 
 [params]
 

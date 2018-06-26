@@ -7,10 +7,7 @@ path="res://.import/gust.png-04e0b26a5f31864d11fbfbeba0afa34b.stex"
 [deps]
 
 source_file="res://players/magic/wind/gust.png"
-source_md5="3b3c4b54d0923b0f6e719cb94484d8f0"
-
 dest_files=[ "res://.import/gust.png-04e0b26a5f31864d11fbfbeba0afa34b.stex" ]
-dest_md5="bbfbe8d3a932bfaf7acde27536b25406"
 
 [params]
 

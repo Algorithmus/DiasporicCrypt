@@ -7,10 +7,7 @@ path="res://.import/styxinscription.png-ffded64c51a36db630c2b60e605df1f4.stex"
 [deps]
 
 source_file="res://scenes/items/special/styxinscription.png"
-source_md5="bdfe2a60caac7bb131bbd25202f38fef"
-
 dest_files=[ "res://.import/styxinscription.png-ffded64c51a36db630c2b60e605df1f4.stex" ]
-dest_md5="8b54023362a4c3e6a92a1890c793f665"
 
 [params]
 

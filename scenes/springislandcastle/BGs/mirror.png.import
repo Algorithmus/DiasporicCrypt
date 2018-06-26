@@ -7,10 +7,7 @@ path="res://.import/mirror.png-61b240e987fa3ce9188c7c354deac4e4.stex"
 [deps]
 
 source_file="res://scenes/springislandcastle/BGs/mirror.png"
-source_md5="40842fb1526efb9c077c9b5a3ebe1d3d"
-
 dest_files=[ "res://.import/mirror.png-61b240e987fa3ce9188c7c354deac4e4.stex" ]
-dest_md5="eb525f797d17ad760d7c6907de216ef4"
 
 [params]
 

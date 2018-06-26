@@ -7,10 +7,7 @@ path="res://.import/spiketile.png-1b51d180e79dd31d3aecaa0814be8b11.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/spiketile.png"
-source_md5="3097fbc7bf5b7d225e8a928245b2cbaa"
-
 dest_files=[ "res://.import/spiketile.png-1b51d180e79dd31d3aecaa0814be8b11.stex" ]
-dest_md5="4f89b1643b129bc98a2c4bcfbf478c32"
 
 [params]
 

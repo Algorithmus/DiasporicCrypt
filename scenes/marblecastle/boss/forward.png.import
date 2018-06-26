@@ -7,10 +7,7 @@ path="res://.import/forward.png-9232067315a48b34e059705a4b415e16.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/boss/forward.png"
-source_md5="5cd0f302f13c7e1fed6d38b918268d22"
-
 dest_files=[ "res://.import/forward.png-9232067315a48b34e059705a4b415e16.stex" ]
-dest_md5="00371c5925a0b8365f60a8cf3e97aec1"
 
 [params]
 

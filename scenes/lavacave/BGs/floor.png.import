@@ -7,10 +7,7 @@ path="res://.import/floor.png-a2cf83623c9738a455933c9ee93e69a7.stex"
 [deps]
 
 source_file="res://scenes/lavacave/BGs/floor.png"
-source_md5="6d108b8fa948f030cbed7be317c1d0c4"
-
 dest_files=[ "res://.import/floor.png-a2cf83623c9738a455933c9ee93e69a7.stex" ]
-dest_md5="532cfc5baf5701dab554ac2e71504c11"
 
 [params]
 

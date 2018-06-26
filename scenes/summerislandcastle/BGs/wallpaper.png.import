@@ -7,10 +7,7 @@ path="res://.import/wallpaper.png-42f4bc5701c3c4310350d5bc4462e08b.stex"
 [deps]
 
 source_file="res://scenes/summerislandcastle/BGs/wallpaper.png"
-source_md5="4d697a89b00c70fd4224238d959b2cab"
-
 dest_files=[ "res://.import/wallpaper.png-42f4bc5701c3c4310350d5bc4462e08b.stex" ]
-dest_md5="83753f641f2d1f47baf5393ae1a50414"
 
 [params]
 

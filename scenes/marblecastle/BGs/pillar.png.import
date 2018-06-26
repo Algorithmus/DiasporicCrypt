@@ -7,10 +7,7 @@ path="res://.import/pillar.png-43dd26bf150695d07b214829feb00ed2.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/BGs/pillar.png"
-source_md5="02bf39038c23bd7f366a5181f8f18ec3"
-
 dest_files=[ "res://.import/pillar.png-43dd26bf150695d07b214829feb00ed2.stex" ]
-dest_md5="64b15f1938910d5fc1b1832ff3abd34b"
 
 [params]
 

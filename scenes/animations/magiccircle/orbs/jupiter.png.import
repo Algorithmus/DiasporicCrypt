@@ -7,10 +7,7 @@ path="res://.import/jupiter.png-aece41bff4ff6eb01d5404da8543d958.stex"
 [deps]
 
 source_file="res://scenes/animations/magiccircle/orbs/jupiter.png"
-source_md5="cfd0385d9d4896b9be6329d194960629"
-
 dest_files=[ "res://.import/jupiter.png-aece41bff4ff6eb01d5404da8543d958.stex" ]
-dest_md5="ad786103d1ac1c4af51b5ee2e04a2875"
 
 [params]
 

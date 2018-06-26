@@ -7,10 +7,7 @@ path="res://.import/fall.png-2380684a85dd91a4e5ca26fc9ec1edd0.stex"
 [deps]
 
 source_file="res://players/friederich/demonic/fall.png"
-source_md5="46c108b2f562ca565e2fcf9a64c01e72"
-
 dest_files=[ "res://.import/fall.png-2380684a85dd91a4e5ca26fc9ec1edd0.stex" ]
-dest_md5="fd8c669934444fce6dc69eabeb1bb929"
 
 [params]
 

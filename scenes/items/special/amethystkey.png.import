@@ -7,10 +7,7 @@ path="res://.import/amethystkey.png-c2b12ad83b06062d746e5dbfb6db8f93.stex"
 [deps]
 
 source_file="res://scenes/items/special/amethystkey.png"
-source_md5="ce53534797a35898e375df8f477618f8"
-
 dest_files=[ "res://.import/amethystkey.png-c2b12ad83b06062d746e5dbfb6db8f93.stex" ]
-dest_md5="e6559499f7e1514b9533074932a86a15"
 
 [params]
 

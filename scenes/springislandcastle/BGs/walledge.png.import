@@ -7,10 +7,7 @@ path="res://.import/walledge.png-6de70fc3a51680963d0f606a8413e3f3.stex"
 [deps]
 
 source_file="res://scenes/springislandcastle/BGs/walledge.png"
-source_md5="0e3f3f5614be7d8eab6c08b891f1df28"
-
 dest_files=[ "res://.import/walledge.png-6de70fc3a51680963d0f606a8413e3f3.stex" ]
-dest_md5="d2ee8bb90f48ba6b8b7c5721042b52a9"
 
 [params]
 

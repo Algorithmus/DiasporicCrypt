@@ -7,10 +7,7 @@ path="res://.import/altorubble.png-f99973af329024b082a151d3bafaad3f.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/boss/altorubble.png"
-source_md5="31f29b9def836fdb2418cd02fa21afad"
-
 dest_files=[ "res://.import/altorubble.png-f99973af329024b082a151d3bafaad3f.stex" ]
-dest_md5="08c9ec6054d2d1a89efb9140bf9d7718"
 
 [params]
 

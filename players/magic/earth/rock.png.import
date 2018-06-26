@@ -7,10 +7,7 @@ path="res://.import/rock.png-546cff72823fffe1068a3aca3199e6ed.stex"
 [deps]
 
 source_file="res://players/magic/earth/rock.png"
-source_md5="6d6572fd94d1c8f8757abe684269929f"
-
 dest_files=[ "res://.import/rock.png-546cff72823fffe1068a3aca3199e6ed.stex" ]
-dest_md5="d435c33a7bbeaa15040dc19b4e52a93d"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/titleframe.png-4a1a6822ac62a1785cd4d1e7674cce45.stex"
 [deps]
 
 source_file="res://gui/menu/titleframe.png"
-source_md5="25e33179b1a1f90834a6f87d3024d294"
-
 dest_files=[ "res://.import/titleframe.png-4a1a6822ac62a1785cd4d1e7674cce45.stex" ]
-dest_md5="cf71d82b4aa750cd895bfb2efae3f32b"
 
 [params]
 

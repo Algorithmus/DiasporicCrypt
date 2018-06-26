@@ -7,10 +7,7 @@ path="res://.import/swift.png-b8799311461831bf48cd921a1ab6dde0.stex"
 [deps]
 
 source_file="res://players/friederich/demonic/attacks/swift.png"
-source_md5="95f1056bdb7f9613724acf5849d84bdb"
-
 dest_files=[ "res://.import/swift.png-b8799311461831bf48cd921a1ab6dde0.stex" ]
-dest_md5="83943032fa21e3cbbef69ed3a5df091d"
 
 [params]
 

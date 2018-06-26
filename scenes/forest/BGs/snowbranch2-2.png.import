@@ -7,10 +7,7 @@ path="res://.import/snowbranch2-2.png-d616fd793bffb53ff600357a2c1fa7f3.stex"
 [deps]
 
 source_file="res://scenes/forest/BGs/snowbranch2-2.png"
-source_md5="3294a58d48dc0292e9091b244c41c5c8"
-
 dest_files=[ "res://.import/snowbranch2-2.png-d616fd793bffb53ff600357a2c1fa7f3.stex" ]
-dest_md5="64f0a0b3df29bad97cde83722b163775"
 
 [params]
 

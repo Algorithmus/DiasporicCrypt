@@ -7,10 +7,7 @@ path="res://.import/hurt.png-3215f4061fb69e426a3ee901a5771d24.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/enchantedarmor/hurt.png"
-source_md5="3b0d1a4842e3619b8f92b3aa2a76ef2c"
-
 dest_files=[ "res://.import/hurt.png-3215f4061fb69e426a3ee901a5771d24.stex" ]
-dest_md5="b3f29c5e41f5052e1cd1d3be37724be8"
 
 [params]
 

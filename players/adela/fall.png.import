@@ -7,10 +7,7 @@ path="res://.import/fall.png-03a621ce4f020acd3cec83be23d2216f.stex"
 [deps]
 
 source_file="res://players/adela/fall.png"
-source_md5="436ccfd8d7c863aeef6d5a4565034f69"
-
 dest_files=[ "res://.import/fall.png-03a621ce4f020acd3cec83be23d2216f.stex" ]
-dest_md5="45a6b7b359b513fa3cd932f158eaae19"
 
 [params]
 

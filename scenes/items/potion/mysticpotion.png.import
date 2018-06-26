@@ -7,10 +7,7 @@ path="res://.import/mysticpotion.png-ffab8cf654dcc26c6a3eb84d04eacbec.stex"
 [deps]
 
 source_file="res://scenes/items/potion/mysticpotion.png"
-source_md5="cfdd52baddbde50dfad90fc8714d904a"
-
 dest_files=[ "res://.import/mysticpotion.png-ffab8cf654dcc26c6a3eb84d04eacbec.stex" ]
-dest_md5="15f7375e5a19439ccefb06a50c02ab82"
 
 [params]
 

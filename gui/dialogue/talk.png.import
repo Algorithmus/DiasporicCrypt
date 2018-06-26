@@ -7,10 +7,7 @@ path="res://.import/talk.png-20dc12c7bf4ca03ffe47930495bcab5f.stex"
 [deps]
 
 source_file="res://gui/dialogue/talk.png"
-source_md5="49a0393f0e81865183fc4d2ec66efaf9"
-
 dest_files=[ "res://.import/talk.png-20dc12c7bf4ca03ffe47930495bcab5f.stex" ]
-dest_md5="0f086f19c9a55b5dd3aa28e9db794219"
 
 [params]
 

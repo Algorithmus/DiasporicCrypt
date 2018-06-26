@@ -7,10 +7,7 @@ path="res://.import/icon.png-059abff7bd16dc070ef23d30ff37fb1c.stex"
 [deps]
 
 source_file="res://players/magic/thunder/icon.png"
-source_md5="62411dbdc97c77f52b0bb2f2763d3f2a"
-
 dest_files=[ "res://.import/icon.png-059abff7bd16dc070ef23d30ff37fb1c.stex" ]
-dest_md5="f321f7b6ba792a31e537a90e74b9fd19"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/whipring.png-360a44208e25971bace2136c9b43707a.stex"
 [deps]
 
 source_file="res://players/adela/actions/whipring.png"
-source_md5="45451e8b7d01016f13675d37bded0002"
-
 dest_files=[ "res://.import/whipring.png-360a44208e25971bace2136c9b43707a.stex" ]
-dest_md5="5932e00955162b203123cb18ddfb9b5b"
 
 [params]
 

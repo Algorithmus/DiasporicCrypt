@@ -7,10 +7,7 @@ path="res://.import/flooredge-l.png-c0c7a0afc1e5c8b6be7a511d2dd8feb3.stex"
 [deps]
 
 source_file="res://scenes/catacombs/platforms/flooredge-l.png"
-source_md5="b445a853fa5494ca07efa7048d26b174"
-
 dest_files=[ "res://.import/flooredge-l.png-c0c7a0afc1e5c8b6be7a511d2dd8feb3.stex" ]
-dest_md5="e81db59240f1a6fde4139d2df8035c69"
 
 [params]
 

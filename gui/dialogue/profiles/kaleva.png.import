@@ -7,10 +7,7 @@ path="res://.import/kaleva.png-4ebd94fc8594446000884cb765018541.stex"
 [deps]
 
 source_file="res://gui/dialogue/profiles/kaleva.png"
-source_md5="9c8e3da1c620a5d38d506d1fba5a61bf"
-
 dest_files=[ "res://.import/kaleva.png-4ebd94fc8594446000884cb765018541.stex" ]
-dest_md5="bde6ba76dbf8d02a82464993189d3d84"
 
 [params]
 

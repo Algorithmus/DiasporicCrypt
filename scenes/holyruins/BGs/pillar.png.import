@@ -7,10 +7,7 @@ path="res://.import/pillar.png-72e7a594fdc44bb019ba903ab6913b41.stex"
 [deps]
 
 source_file="res://scenes/holyruins/BGs/pillar.png"
-source_md5="3161dbcb3aa33dfe2a8ad9c9a2559346"
-
 dest_files=[ "res://.import/pillar.png-72e7a594fdc44bb019ba903ab6913b41.stex" ]
-dest_md5="14530c9b15c517dd092889c045a580e9"
 
 [params]
 

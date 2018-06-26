@@ -7,10 +7,7 @@ path="res://.import/fishjaw.png-454f873c0476d17de297b1a1e2ab7968.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/attacks/fishjaw.png"
-source_md5="3ef277f44d8a2fccf7318f54de42bb5e"
-
 dest_files=[ "res://.import/fishjaw.png-454f873c0476d17de297b1a1e2ab7968.stex" ]
-dest_md5="d3bd79ac148f6e777c5be9294a5b69b9"
 
 [params]
 

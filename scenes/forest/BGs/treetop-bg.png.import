@@ -7,10 +7,7 @@ path="res://.import/treetop-bg.png-c19a2ffb504af1e0cac9d124e63b0625.stex"
 [deps]
 
 source_file="res://scenes/forest/BGs/treetop-bg.png"
-source_md5="c88aadfef6694d7f120998da5c05cb79"
-
 dest_files=[ "res://.import/treetop-bg.png-c19a2ffb504af1e0cac9d124e63b0625.stex" ]
-dest_md5="a18ecba53a5f3094da190a2daea5a69c"
 
 [params]
 

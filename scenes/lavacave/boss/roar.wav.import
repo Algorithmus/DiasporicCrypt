@@ -7,10 +7,7 @@ path="res://.import/roar.wav-31d47ad3047fd2ce2dd45457405be822.sample"
 [deps]
 
 source_file="res://scenes/lavacave/boss/roar.wav"
-source_md5="3617b8dee76388202cc926e0e40f529f"
-
 dest_files=[ "res://.import/roar.wav-31d47ad3047fd2ce2dd45457405be822.sample" ]
-dest_md5="b333e0ca06ea1c2586cd46ce38fa79e9"
 
 [params]
 

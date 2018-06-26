@@ -7,10 +7,7 @@ path="res://.import/stalk.png-bb9f5dd30c9786de389375cf4246bd33.stex"
 [deps]
 
 source_file="res://scenes/aquaduct/boss/stalk.png"
-source_md5="7bfab48d7933a2cae3366947a40f25d9"
-
 dest_files=[ "res://.import/stalk.png-bb9f5dd30c9786de389375cf4246bd33.stex" ]
-dest_md5="af73f38fc6bfae4e97261b4e90dcc289"
 
 [params]
 

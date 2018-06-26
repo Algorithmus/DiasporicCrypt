@@ -7,10 +7,7 @@ path="res://.import/detransform.png-680020dd2c0d7a55067729f5c1af9e18.stex"
 [deps]
 
 source_file="res://players/friederich/demonic/detransform.png"
-source_md5="53a15c98ee6434677a8ff7027724c89c"
-
 dest_files=[ "res://.import/detransform.png-680020dd2c0d7a55067729f5c1af9e18.stex" ]
-dest_md5="3b2707ce27b188d3f60264d58fd7bcc5"
 
 [params]
 

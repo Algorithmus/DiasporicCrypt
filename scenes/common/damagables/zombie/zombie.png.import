@@ -7,10 +7,7 @@ path="res://.import/zombie.png-40c5ae7417e7b3a906330d56014e20ab.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/zombie/zombie.png"
-source_md5="270d23f485873ee7d45ae4ca5e19d03b"
-
 dest_files=[ "res://.import/zombie.png-40c5ae7417e7b3a906330d56014e20ab.stex" ]
-dest_md5="1fe6f02319635180035da3ac656080de"
 
 [params]
 

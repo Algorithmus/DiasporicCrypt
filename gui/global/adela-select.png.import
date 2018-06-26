@@ -7,10 +7,7 @@ path="res://.import/adela-select.png-dd90df59d87e36cfa36d924b4a5c04f8.stex"
 [deps]
 
 source_file="res://gui/global/adela-select.png"
-source_md5="693e357936c62f5a9020a22a3ceeb8e4"
-
 dest_files=[ "res://.import/adela-select.png-dd90df59d87e36cfa36d924b4a5c04f8.stex" ]
-dest_md5="b14da294bb306815c03a9475987aa326"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/scrollgrabber_active.png-77095405b2a57254d488f5b20e7639d6.st
 [deps]
 
 source_file="res://gui/theme/scrollgrabber_active.png"
-source_md5="cd7c590308e0d496326ae0a203b1b178"
-
 dest_files=[ "res://.import/scrollgrabber_active.png-77095405b2a57254d488f5b20e7639d6.stex" ]
-dest_md5="c27738fbd16dc6e6d8cef7bbc599063f"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/bassline.png-d3b12e66a9a4b96c5fccdb8e3c667545.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/boss/bassline.png"
-source_md5="92d78347993c859cf9d7d9b15f3c48bd"
-
 dest_files=[ "res://.import/bassline.png-d3b12e66a9a4b96c5fccdb8e3c667545.stex" ]
-dest_md5="c87cbb5e7530b329312e10a95d706bee"
 
 [params]
 

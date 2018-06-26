@@ -7,10 +7,7 @@ path="res://.import/quest.png-9e3cd7e87fe8a0df7a06f8af107db3d6.stex"
 [deps]
 
 source_file="res://gui/worldmap/icons/quest.png"
-source_md5="24e5cf0a25e7243d4ac9a19ce9caa366"
-
 dest_files=[ "res://.import/quest.png-9e3cd7e87fe8a0df7a06f8af107db3d6.stex" ]
-dest_md5="cd503a5f27271f37bf7c2bdef4686bd0"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/dsword.png-8700827c35a95f7bd0c5aa16a93e5bb2.stex"
 [deps]
 
 source_file="res://players/friederich/attacks/dsword.png"
-source_md5="c57b29eaf159f83261a1d9e1ed983403"
-
 dest_files=[ "res://.import/dsword.png-8700827c35a95f7bd0c5aa16a93e5bb2.stex" ]
-dest_md5="9dcbf8a9268c4d09a7b6b68081f4485f"
 
 [params]
 

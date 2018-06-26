@@ -7,10 +7,7 @@ path="res://.import/hurt.png-dd3769d643e9839e3eacee140704bd9d.stex"
 [deps]
 
 source_file="res://players/friederich/hurt.png"
-source_md5="1027bf44da3ec0b495b61e7a4d79ab4b"
-
 dest_files=[ "res://.import/hurt.png-dd3769d643e9839e3eacee140704bd9d.stex" ]
-dest_md5="92343174d456b91b9b1206be6bb113e9"
 
 [params]
 

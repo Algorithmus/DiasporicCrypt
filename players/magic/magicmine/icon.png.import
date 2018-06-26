@@ -7,10 +7,7 @@ path="res://.import/icon.png-12c384dcc0ce8e87a26fb2f80f6fd78b.stex"
 [deps]
 
 source_file="res://players/magic/magicmine/icon.png"
-source_md5="ddcdfecbb058dbf00b67fbe55ac474b0"
-
 dest_files=[ "res://.import/icon.png-12c384dcc0ce8e87a26fb2f80f6fd78b.stex" ]
-dest_md5="8dec52592c0a71c82286436b2269644d"
 
 [params]
 

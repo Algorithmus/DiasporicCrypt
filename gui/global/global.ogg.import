@@ -7,10 +7,7 @@ path="res://.import/global.ogg-a583e88a77a6fb8df85a2b98b7fed17d.oggstr"
 [deps]
 
 source_file="res://gui/global/global.ogg"
-source_md5="83db471a19011ef7ab430da37be960e6"
-
 dest_files=[ "res://.import/global.ogg-a583e88a77a6fb8df85a2b98b7fed17d.oggstr" ]
-dest_md5="31b2939245c6abce568d9a33f7b3c5f9"
 
 [params]
 

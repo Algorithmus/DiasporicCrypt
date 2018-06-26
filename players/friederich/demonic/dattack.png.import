@@ -7,10 +7,7 @@ path="res://.import/dattack.png-25e1622d4ca320c6c094894836957865.stex"
 [deps]
 
 source_file="res://players/friederich/demonic/dattack.png"
-source_md5="92c0be6ec28ebea590d0268f07a03513"
-
 dest_files=[ "res://.import/dattack.png-25e1622d4ca320c6c094894836957865.stex" ]
-dest_md5="bfff93c5074a188b9399ff7185087cf0"
 
 [params]
 

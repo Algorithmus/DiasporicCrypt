@@ -7,10 +7,7 @@ path="res://.import/f-bush2-1.png-8624fab93fbb8a74040d66cb68f46f16.stex"
 [deps]
 
 source_file="res://scenes/forest/BGs/f-bush2-1.png"
-source_md5="e472dfb2a620143e7da61d57812e3432"
-
 dest_files=[ "res://.import/f-bush2-1.png-8624fab93fbb8a74040d66cb68f46f16.stex" ]
-dest_md5="896f5a280118c7d793f3aa6d0e526266"
 
 [params]
 

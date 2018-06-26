@@ -7,10 +7,7 @@ path="res://.import/idle.png-b7aaa060d573551ba457c2c3484c48c2.stex"
 [deps]
 
 source_file="res://scenes/npcs/lucifer/idle.png"
-source_md5="516704ad0d9add3be18faf47189062a2"
-
 dest_files=[ "res://.import/idle.png-b7aaa060d573551ba457c2c3484c48c2.stex" ]
-dest_md5="70e72ce7786e650e8f9619b40d1cc6e7"
 
 [params]
 

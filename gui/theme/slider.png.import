@@ -7,10 +7,7 @@ path="res://.import/slider.png-27bc6fc5287bdcd7b0554cca09416de0.stex"
 [deps]
 
 source_file="res://gui/theme/slider.png"
-source_md5="c54afbda3582dc1cdb4231168e806c9a"
-
 dest_files=[ "res://.import/slider.png-27bc6fc5287bdcd7b0554cca09416de0.stex" ]
-dest_md5="790e2583218c753f3941cdaf8c666d59"
 
 [params]
 

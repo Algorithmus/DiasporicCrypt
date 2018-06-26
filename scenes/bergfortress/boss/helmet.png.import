@@ -7,10 +7,7 @@ path="res://.import/helmet.png-b2083a53b9327bfa4f0d2fb23489325a.stex"
 [deps]
 
 source_file="res://scenes/bergfortress/boss/helmet.png"
-source_md5="a80a8cf447b874595161db9b535d6b63"
-
 dest_files=[ "res://.import/helmet.png-b2083a53b9327bfa4f0d2fb23489325a.stex" ]
-dest_md5="ee223c73f755d03847d02e023d11b12e"
 
 [params]
 

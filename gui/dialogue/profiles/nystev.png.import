@@ -7,10 +7,7 @@ path="res://.import/nystev.png-932bf80fc1190785d5c96d1c204fd7e4.stex"
 [deps]
 
 source_file="res://gui/dialogue/profiles/nystev.png"
-source_md5="f458d76ef5420b5b1fe1984c7c9a0a03"
-
 dest_files=[ "res://.import/nystev.png-932bf80fc1190785d5c96d1c204fd7e4.stex" ]
-dest_md5="78c39cbfbfbe28e8d5e7819c61dc8a1d"
 
 [params]
 

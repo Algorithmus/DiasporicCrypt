@@ -7,10 +7,7 @@ path="res://.import/torch.png-4e12d2d31150057627164bb05423b1de.stex"
 [deps]
 
 source_file="res://scenes/dungeon/BGs/torch.png"
-source_md5="b2c3e7733df0bf382ea293e4add844d9"
-
 dest_files=[ "res://.import/torch.png-4e12d2d31150057627164bb05423b1de.stex" ]
-dest_md5="9b54c0e53e0bd62720d7ae9e65c69cd2"
 
 [params]
 

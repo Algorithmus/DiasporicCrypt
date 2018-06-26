@@ -7,10 +7,7 @@ path="res://.import/wallpaper.png-854401dfccf7100a43db2fd5f222d5d0.stex"
 [deps]
 
 source_file="res://scenes/fallislandcastle/BGs/wallpaper.png"
-source_md5="63c233c433442715ef303006d6054da1"
-
 dest_files=[ "res://.import/wallpaper.png-854401dfccf7100a43db2fd5f222d5d0.stex" ]
-dest_md5="cb05771e66aa6e74e91a5ef393dbef96"
 
 [params]
 

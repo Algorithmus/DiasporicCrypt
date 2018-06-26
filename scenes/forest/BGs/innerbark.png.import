@@ -7,10 +7,7 @@ path="res://.import/innerbark.png-cb680f1e3cb65e3a7dc981c4ab943933.stex"
 [deps]
 
 source_file="res://scenes/forest/BGs/innerbark.png"
-source_md5="cc556fe8d5a7ca1093cf3602b4731818"
-
 dest_files=[ "res://.import/innerbark.png-cb680f1e3cb65e3a7dc981c4ab943933.stex" ]
-dest_md5="9ea3c286d7beca39076865e197b6162d"
 
 [params]
 

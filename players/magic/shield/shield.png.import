@@ -7,10 +7,7 @@ path="res://.import/shield.png-cacaf1bb0abe395f46205787055ceb51.stex"
 [deps]
 
 source_file="res://players/magic/shield/shield.png"
-source_md5="48633faa9fc9d139550c69fc6c173470"
-
 dest_files=[ "res://.import/shield.png-cacaf1bb0abe395f46205787055ceb51.stex" ]
-dest_md5="475f9e842b4794be7c01ed3b24352d9c"
 
 [params]
 

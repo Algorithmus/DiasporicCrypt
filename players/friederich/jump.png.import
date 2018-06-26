@@ -7,10 +7,7 @@ path="res://.import/jump.png-e6f9baf05f4ab76ecbaa6e78f385e372.stex"
 [deps]
 
 source_file="res://players/friederich/jump.png"
-source_md5="b92c92e43e874bdeaddda9c44e9af511"
-
 dest_files=[ "res://.import/jump.png-e6f9baf05f4ab76ecbaa6e78f385e372.stex" ]
-dest_md5="c8b1bbd7e8f5e007c10a218b281bb9a4"
 
 [params]
 

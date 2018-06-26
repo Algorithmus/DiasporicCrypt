@@ -7,10 +7,7 @@ path="res://.import/colosseum.png-a1a6a2db73930972e028200b7212509f.stex"
 [deps]
 
 source_file="res://gui/worldmap/icons/colosseum.png"
-source_md5="b7ad628de7de5a173c38d03c15208185"
-
 dest_files=[ "res://.import/colosseum.png-a1a6a2db73930972e028200b7212509f.stex" ]
-dest_md5="8434c9928cc36bc59d476b9070ed5d5a"
 
 [params]
 

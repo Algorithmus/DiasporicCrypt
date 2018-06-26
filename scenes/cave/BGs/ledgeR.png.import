@@ -7,10 +7,7 @@ path="res://.import/ledgeR.png-0473896af790b3a2186ca4f7e6239cac.stex"
 [deps]
 
 source_file="res://scenes/cave/BGs/ledgeR.png"
-source_md5="f0c026f9e9cbc1ac19fd2a91c7cec047"
-
 dest_files=[ "res://.import/ledgeR.png-0473896af790b3a2186ca4f7e6239cac.stex" ]
-dest_md5="2bff457c124ef99f149dab6529925b07"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/hill.png-bb6bf84a43a679523bd3d1f54b1ef78a.stex"
 [deps]
 
 source_file="res://scenes/catacombs/solids/hill.png"
-source_md5="cb76c93de6aa59959178f9df56f9084c"
-
 dest_files=[ "res://.import/hill.png-bb6bf84a43a679523bd3d1f54b1ef78a.stex" ]
-dest_md5="f9bea44936af12639bace638cd1e6e5c"
 
 [params]
 

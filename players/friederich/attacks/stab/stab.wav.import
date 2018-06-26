@@ -7,10 +7,7 @@ path="res://.import/stab.wav-b7f56a18a59684d7295738c7d17c7c0c.sample"
 [deps]
 
 source_file="res://players/friederich/attacks/stab/stab.wav"
-source_md5="0c163bcecc455d0a41f32081a9b4a1e4"
-
 dest_files=[ "res://.import/stab.wav-b7f56a18a59684d7295738c7d17c7c0c.sample" ]
-dest_md5="207d7f949c28145b087268c8f24e2d1b"
 
 [params]
 

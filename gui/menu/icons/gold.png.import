@@ -7,10 +7,7 @@ path="res://.import/gold.png-a8b214d7777a7b007dc63d2a06d6fbea.stex"
 [deps]
 
 source_file="res://gui/menu/icons/gold.png"
-source_md5="209af93d3daa958c818910fc9dcd46fa"
-
 dest_files=[ "res://.import/gold.png-a8b214d7777a7b007dc63d2a06d6fbea.stex" ]
-dest_md5="bee4f494d26bf7dd37570db9f36c5538"
 
 [params]
 

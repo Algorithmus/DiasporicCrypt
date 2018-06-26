@@ -7,10 +7,7 @@ path="res://.import/bottomarmor.png-da9cd70d93406202b60bb1e58104d738.stex"
 [deps]
 
 source_file="res://scenes/bergfortress/boss/bottomarmor.png"
-source_md5="cd035286c567f7722252a7794b75079c"
-
 dest_files=[ "res://.import/bottomarmor.png-da9cd70d93406202b60bb1e58104d738.stex" ]
-dest_md5="e87a39eded22cf5617425107c3633382"
 
 [params]
 

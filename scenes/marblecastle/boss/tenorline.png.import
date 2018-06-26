@@ -7,10 +7,7 @@ path="res://.import/tenorline.png-7adf7d1d4cfc9abeed57979a2a3893b3.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/boss/tenorline.png"
-source_md5="78c328facfbab75a8b446b509d8dcd61"
-
 dest_files=[ "res://.import/tenorline.png-7adf7d1d4cfc9abeed57979a2a3893b3.stex" ]
-dest_md5="27f9a86af180cba810d7b72c925fb156"
 
 [params]
 

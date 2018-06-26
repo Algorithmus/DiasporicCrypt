@@ -7,10 +7,7 @@ path="res://.import/wall3.png-ea2a0f1f163f68414aa6ba105bb0f440.stex"
 [deps]
 
 source_file="res://scenes/dungeon/solids/wall3.png"
-source_md5="6050144f56ff5513bc4bdf90dfe1e966"
-
 dest_files=[ "res://.import/wall3.png-ea2a0f1f163f68414aa6ba105bb0f440.stex" ]
-dest_md5="a884350d0db106e4f90cfb80fcf85f7b"
 
 [params]
 

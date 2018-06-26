@@ -7,10 +7,7 @@ path="res://.import/orb.png-a521fc9cc0ae9017606d0a73b43ecc3e.stex"
 [deps]
 
 source_file="res://scenes/items/exporb/orb.png"
-source_md5="a3ae623f66931bb78ee912763662f0be"
-
 dest_files=[ "res://.import/orb.png-a521fc9cc0ae9017606d0a73b43ecc3e.stex" ]
-dest_md5="559d265339cefef8e2c0eb6288da9e04"
 
 [params]
 

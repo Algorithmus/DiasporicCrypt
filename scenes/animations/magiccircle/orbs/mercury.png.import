@@ -7,10 +7,7 @@ path="res://.import/mercury.png-b411acf15ff8c2bf6eb3aa26ca0dfc42.stex"
 [deps]
 
 source_file="res://scenes/animations/magiccircle/orbs/mercury.png"
-source_md5="d2e2e097a5be48779216df8ffeb054ad"
-
 dest_files=[ "res://.import/mercury.png-b411acf15ff8c2bf6eb3aa26ca0dfc42.stex" ]
-dest_md5="36fc56b76337703408c262c2e6453a88"
 
 [params]
 

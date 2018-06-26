@@ -7,10 +7,7 @@ path="res://.import/attack.wav-b483d070c724e7e9bbe48a9f2f841bea.sample"
 [deps]
 
 source_file="res://players/adela/attacks/attack.wav"
-source_md5="31f951623144fed1ffb6d2790bdcd665"
-
 dest_files=[ "res://.import/attack.wav-b483d070c724e7e9bbe48a9f2f841bea.sample" ]
-dest_md5="9bd70228ab8d902297cc99e4a4217d92"
 
 [params]
 

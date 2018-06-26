@@ -7,10 +7,7 @@ path="res://.import/wall.png-d224c9a1fa8fb2fd1d40aabf5343ef1b.stex"
 [deps]
 
 source_file="res://scenes/crypt/BGs/wall.png"
-source_md5="b27e2bf91a0c559eeecca4fc8c078462"
-
 dest_files=[ "res://.import/wall.png-d224c9a1fa8fb2fd1d40aabf5343ef1b.stex" ]
-dest_md5="2685feae52c890ae27910db96a5a308c"
 
 [params]
 

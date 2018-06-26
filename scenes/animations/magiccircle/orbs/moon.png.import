@@ -7,10 +7,7 @@ path="res://.import/moon.png-96a5ba1ecff7f2ed92f36d758f0cfc41.stex"
 [deps]
 
 source_file="res://scenes/animations/magiccircle/orbs/moon.png"
-source_md5="d06c04aa5320213b77f62819a12cbf00"
-
 dest_files=[ "res://.import/moon.png-96a5ba1ecff7f2ed92f36d758f0cfc41.stex" ]
-dest_md5="a7d65196fe9002b20c39462be6bd2b78"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/rush.png-f80f77055cf08c9afff60c77e10862d3.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/werewolf/rush.png"
-source_md5="1e98d7dd6fd14fadb8906c3671937683"
-
 dest_files=[ "res://.import/rush.png-f80f77055cf08c9afff60c77e10862d3.stex" ]
-dest_md5="73f0469638251813f8803455309ea770"
 
 [params]
 

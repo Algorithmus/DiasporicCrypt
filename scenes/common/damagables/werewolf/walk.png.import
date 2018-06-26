@@ -7,10 +7,7 @@ path="res://.import/walk.png-4ea4eed0f0135f7bf59d2a80a6190f46.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/werewolf/walk.png"
-source_md5="29da0b539d64512fa715ebe1bbda2526"
-
 dest_files=[ "res://.import/walk.png-4ea4eed0f0135f7bf59d2a80a6190f46.stex" ]
-dest_md5="89d8d6028db7e977cca1f38b9755cc2a"
 
 [params]
 

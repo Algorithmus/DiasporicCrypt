@@ -7,10 +7,7 @@ path="res://.import/cornerR.png-36634c431b9cf3b6bc5b7b2e6f4437ae.stex"
 [deps]
 
 source_file="res://scenes/icecave/BGs/cornerR.png"
-source_md5="e0a4aaf14f9d354b1738ec29b3d3c565"
-
 dest_files=[ "res://.import/cornerR.png-36634c431b9cf3b6bc5b7b2e6f4437ae.stex" ]
-dest_md5="4312c8a8a7074b4e44de440e73e894a4"
 
 [params]
 

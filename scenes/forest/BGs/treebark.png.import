@@ -7,10 +7,7 @@ path="res://.import/treebark.png-e3e2f9384e149967c080c7408c172fee.stex"
 [deps]
 
 source_file="res://scenes/forest/BGs/treebark.png"
-source_md5="b8e0c714ad0c88c7b4148ec2cae588bb"
-
 dest_files=[ "res://.import/treebark.png-e3e2f9384e149967c080c7408c172fee.stex" ]
-dest_md5="cd6e265897e8eaf718b2cb386ba837cb"
 
 [params]
 

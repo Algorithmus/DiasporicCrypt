@@ -7,10 +7,7 @@ path="res://.import/tenorhead.png-2accde66692124bc7f550fa74830ba3d.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/boss/tenorhead.png"
-source_md5="c01c2b7e9ab85f6126ad5c78395a7b61"
-
 dest_files=[ "res://.import/tenorhead.png-2accde66692124bc7f550fa74830ba3d.stex" ]
-dest_md5="da76626eae81ca578e73bc080486f264"
 
 [params]
 

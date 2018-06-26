@@ -7,10 +7,7 @@ path="res://.import/splash_up.wav-553eba7ecf9c8757efe6ef37b535d87f.sample"
 [deps]
 
 source_file="res://scenes/common/fluid/splash_up.wav"
-source_md5="4013fb3be65cabd4c8307d7c78a9e9bc"
-
 dest_files=[ "res://.import/splash_up.wav-553eba7ecf9c8757efe6ef37b535d87f.sample" ]
-dest_md5="9b1795e64295f2fd86ac11964cd785a5"
 
 [params]
 

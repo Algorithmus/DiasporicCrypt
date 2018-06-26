@@ -7,10 +7,7 @@ path="res://.import/land.png-83c91903062f030f08fb15d1363ad64b.stex"
 [deps]
 
 source_file="res://players/adela/demonic/land.png"
-source_md5="efee4eb73547e44a75607b5b986c40c2"
-
 dest_files=[ "res://.import/land.png-83c91903062f030f08fb15d1363ad64b.stex" ]
-dest_md5="af298aabaeed125de57ab7252910545b"
 
 [params]
 

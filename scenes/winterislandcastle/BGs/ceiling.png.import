@@ -7,10 +7,7 @@ path="res://.import/ceiling.png-b43146afe6071a9e6edd73ba7f2899de.stex"
 [deps]
 
 source_file="res://scenes/winterislandcastle/BGs/ceiling.png"
-source_md5="6540e84f70d7c35eb5fe71c182a2d3cf"
-
 dest_files=[ "res://.import/ceiling.png-b43146afe6071a9e6edd73ba7f2899de.stex" ]
-dest_md5="efc8e3838fdcc843c30f920cc087ce5c"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/inverted.png-e0f85db81add3d87104c5c301ead87a4.stex"
 [deps]
 
 source_file="res://players/magic/shield/inverted.png"
-source_md5="ca333d4afdcbab0ba1757109b03f4b04"
-
 dest_files=[ "res://.import/inverted.png-e0f85db81add3d87104c5c301ead87a4.stex" ]
-dest_md5="e1b6d8ad98d42b9abdd9fe31856e558c"
 
 [params]
 

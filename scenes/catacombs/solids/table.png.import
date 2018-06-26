@@ -7,10 +7,7 @@ path="res://.import/table.png-a0fefe32e4b7f1233d9233692d05f487.stex"
 [deps]
 
 source_file="res://scenes/catacombs/solids/table.png"
-source_md5="76cc33fc1903e844612158e02b29f14d"
-
 dest_files=[ "res://.import/table.png-a0fefe32e4b7f1233d9233692d05f487.stex" ]
-dest_md5="1dd3d17d05a0613c8f67c5e0ef855fd7"
 
 [params]
 

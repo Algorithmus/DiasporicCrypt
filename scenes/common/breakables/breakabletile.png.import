@@ -7,10 +7,7 @@ path="res://.import/breakabletile.png-b03f7b33e137065516b704ffd3f6fec3.stex"
 [deps]
 
 source_file="res://scenes/common/breakables/breakabletile.png"
-source_md5="c084ba851809b2587d3fe58c6f0be3bd"
-
 dest_files=[ "res://.import/breakabletile.png-b03f7b33e137065516b704ffd3f6fec3.stex" ]
-dest_md5="0aa6cca21a126b840be8133fbe83275b"
 
 [params]
 

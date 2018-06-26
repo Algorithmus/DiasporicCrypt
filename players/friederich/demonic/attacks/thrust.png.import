@@ -7,10 +7,7 @@ path="res://.import/thrust.png-adb3a4ad12c4d5751cb9c53861632475.stex"
 [deps]
 
 source_file="res://players/friederich/demonic/attacks/thrust.png"
-source_md5="506b6a857ab82d9e2992821662ed2682"
-
 dest_files=[ "res://.import/thrust.png-adb3a4ad12c4d5751cb9c53861632475.stex" ]
-dest_md5="80c91477e2205763d644b5985040428b"
 
 [params]
 

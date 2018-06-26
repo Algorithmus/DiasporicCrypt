@@ -7,10 +7,7 @@ path="res://.import/dome.png-123cce083e08e012ed136eeda6ca18bb.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/BGs/dome.png"
-source_md5="a6a093396bb22e9cc3a30d718404b4e3"
-
 dest_files=[ "res://.import/dome.png-123cce083e08e012ed136eeda6ca18bb.stex" ]
-dest_md5="5625b1962781708b3adf51c49ac8b439"
 
 [params]
 

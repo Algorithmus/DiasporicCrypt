@@ -7,10 +7,7 @@ path="res://.import/vance.png-08ac0b2ab949b647120caee3bfdad372.stex"
 [deps]
 
 source_file="res://gui/dialogue/profiles/vance.png"
-source_md5="8244a202a8f3fce8b0a37a17eb7bd553"
-
 dest_files=[ "res://.import/vance.png-08ac0b2ab949b647120caee3bfdad372.stex" ]
-dest_md5="4bc4e45cce91c59c40fc53a9bd4b0d14"
 
 [params]
 

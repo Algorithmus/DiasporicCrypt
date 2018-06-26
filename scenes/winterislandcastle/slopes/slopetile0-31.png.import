@@ -7,10 +7,7 @@ path="res://.import/slopetile0-31.png-03fd2fb53dd50b7a552e09e95c6972c1.stex"
 [deps]
 
 source_file="res://scenes/winterislandcastle/slopes/slopetile0-31.png"
-source_md5="1aa43d4c87360fa612994fa2240800dc"
-
 dest_files=[ "res://.import/slopetile0-31.png-03fd2fb53dd50b7a552e09e95c6972c1.stex" ]
-dest_md5="b2f7584f7c618110828fcccc9f5fcb70"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/platform.png-148da0b15f07e61775f7bcda21b18508.stex"
 [deps]
 
 source_file="res://scenes/holyruins/BGs/platform.png"
-source_md5="8c19f32bdbb30fd86293cda3c40855e7"
-
 dest_files=[ "res://.import/platform.png-148da0b15f07e61775f7bcda21b18508.stex" ]
-dest_md5="22b271296ac4193127e0e3e3480defcc"
 
 [params]
 

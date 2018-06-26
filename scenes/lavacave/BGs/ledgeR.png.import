@@ -7,10 +7,7 @@ path="res://.import/ledgeR.png-62ea0da3e2fc7125b9dc284ec507e967.stex"
 [deps]
 
 source_file="res://scenes/lavacave/BGs/ledgeR.png"
-source_md5="65ee945d66e1de0a37496e4e0ebe0c63"
-
 dest_files=[ "res://.import/ledgeR.png-62ea0da3e2fc7125b9dc284ec507e967.stex" ]
-dest_md5="5d129b5fcaf09b655753d39bfdcbad02"
 
 [params]
 

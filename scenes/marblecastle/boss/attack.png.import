@@ -7,10 +7,7 @@ path="res://.import/attack.png-a83cc1e1416d3ff4f46ef6063d668f9a.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/boss/attack.png"
-source_md5="d93b548c80ba9b54982b7eeacfe7b0ec"
-
 dest_files=[ "res://.import/attack.png-a83cc1e1416d3ff4f46ef6063d668f9a.stex" ]
-dest_md5="08c5f6b6aa6e362aaffe6b723499c83c"
 
 [params]
 

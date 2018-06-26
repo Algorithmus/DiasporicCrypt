@@ -7,10 +7,7 @@ path="res://.import/friederich.png-675e9d87c213999ae07e1479450eb6d6.stex"
 [deps]
 
 source_file="res://gui/save/bgs/friederich.png"
-source_md5="5d6789b57c6f0790bc6a4e4df2cb952a"
-
 dest_files=[ "res://.import/friederich.png-675e9d87c213999ae07e1479450eb6d6.stex" ]
-dest_md5="0c2e5b198f6a7c185f15cf2f39e9feca"
 
 [params]
 

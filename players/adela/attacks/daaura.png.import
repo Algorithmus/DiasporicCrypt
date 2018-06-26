@@ -7,10 +7,7 @@ path="res://.import/daaura.png-3e4b77f5931f7823ede6121b9009ff34.stex"
 [deps]
 
 source_file="res://players/adela/attacks/daaura.png"
-source_md5="d8d1994a488d7a9e0875cd4927498c6c"
-
 dest_files=[ "res://.import/daaura.png-3e4b77f5931f7823ede6121b9009ff34.stex" ]
-dest_md5="cade0ce9bd0c069fac3b3da6a7163617"
 
 [params]
 

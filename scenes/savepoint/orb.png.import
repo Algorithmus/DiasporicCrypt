@@ -7,10 +7,7 @@ path="res://.import/orb.png-f7a882b1e1a73846f52aaf148efb31f3.stex"
 [deps]
 
 source_file="res://scenes/savepoint/orb.png"
-source_md5="edf74e4dc84ce47a0e5757d7a246a5cd"
-
 dest_files=[ "res://.import/orb.png-f7a882b1e1a73846f52aaf148efb31f3.stex" ]
-dest_md5="d4fb6629fab511919cca6e3cfafe2ffe"
 
 [params]
 

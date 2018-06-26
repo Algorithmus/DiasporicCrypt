@@ -7,10 +7,7 @@ path="res://.import/palmtree-2.png-ba0293a242a6e2cffed45078bda4e1a1.stex"
 [deps]
 
 source_file="res://scenes/forest/BGs/palmtree-2.png"
-source_md5="5f41ebc77b09f28b4f20c87e839812ee"
-
 dest_files=[ "res://.import/palmtree-2.png-ba0293a242a6e2cffed45078bda4e1a1.stex" ]
-dest_md5="9eecfa45eeafbf822bb60b182c7644e3"
 
 [params]
 

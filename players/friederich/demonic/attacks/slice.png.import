@@ -7,10 +7,7 @@ path="res://.import/slice.png-bbc429fc2d9de209e7e8686a8be7a802.stex"
 [deps]
 
 source_file="res://players/friederich/demonic/attacks/slice.png"
-source_md5="f2f39a98bd91bb361cdb34f2cd6e350d"
-
 dest_files=[ "res://.import/slice.png-bbc429fc2d9de209e7e8686a8be7a802.stex" ]
-dest_md5="d3f6239989a2b024747cdd997a736e7a"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/uranus.png-c8e9a455c79ee622371402e34c20d339.stex"
 [deps]
 
 source_file="res://scenes/animations/magiccircle/orbs/uranus.png"
-source_md5="be11d6173b7976fb52b427aaabe7a932"
-
 dest_files=[ "res://.import/uranus.png-c8e9a455c79ee622371402e34c20d339.stex" ]
-dest_md5="9d16e254ad69289f9fa5b95f90cb20b5"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/crouch.png-2228094ece353f2a3bf34b7cba248441.stex"
 [deps]
 
 source_file="res://players/adela/crouch.png"
-source_md5="06d957dd90739787aff6edb20cd98ae2"
-
 dest_files=[ "res://.import/crouch.png-2228094ece353f2a3bf34b7cba248441.stex" ]
-dest_md5="18f551473a22d49b54fea34226268b8f"
 
 [params]
 

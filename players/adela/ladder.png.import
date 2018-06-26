@@ -7,10 +7,7 @@ path="res://.import/ladder.png-b177d2c232a863e33d085b44d924a3b3.stex"
 [deps]
 
 source_file="res://players/adela/ladder.png"
-source_md5="e47ffb26454dfd348970c2eff3b06771"
-
 dest_files=[ "res://.import/ladder.png-b177d2c232a863e33d085b44d924a3b3.stex" ]
-dest_md5="b1b653b6ad61b7e4b4c758ad29baa881"
 
 [params]
 

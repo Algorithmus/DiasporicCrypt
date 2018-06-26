@@ -7,10 +7,7 @@ path="res://.import/flyingskull.png-e7fc47c4991f4e3faa2371b66b4e7696.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/flyingskull/flyingskull.png"
-source_md5="444abf1252209614c7eea64d4e0987b2"
-
 dest_files=[ "res://.import/flyingskull.png-e7fc47c4991f4e3faa2371b66b4e7696.stex" ]
-dest_md5="06b3b17c1d3be00ed4f0b42d42e4e4ac"
 
 [params]
 

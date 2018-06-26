@@ -7,10 +7,7 @@ path="res://.import/npc.png-ded236fa068895d72dd85c66e97be7fc.stex"
 [deps]
 
 source_file="res://gui/dialogue/profiles/npc.png"
-source_md5="84acdc608085b0663ef8a8cdb7dd69b6"
-
 dest_files=[ "res://.import/npc.png-ded236fa068895d72dd85c66e97be7fc.stex" ]
-dest_md5="f3be236533a8c67559c746445d363370"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/rush.wav-2f1c1a6e4b3c614f47a0fbe01688bd2a.sample"
 [deps]
 
 source_file="res://players/friederich/attacks/rush/rush.wav"
-source_md5="f66a942e1d5081151b0af2ab7cb53777"
-
 dest_files=[ "res://.import/rush.wav-2f1c1a6e4b3c614f47a0fbe01688bd2a.sample" ]
-dest_md5="76b74d0d1ee9c1b2dc8fffc97cfd2b3f"
 
 [params]
 

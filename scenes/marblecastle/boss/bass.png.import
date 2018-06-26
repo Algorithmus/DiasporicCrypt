@@ -7,10 +7,7 @@ path="res://.import/bass.png-5905883574eb1b2483eeb547c7223a6c.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/boss/bass.png"
-source_md5="46dfb1b2a5b72d638169ccb80a75fa78"
-
 dest_files=[ "res://.import/bass.png-5905883574eb1b2483eeb547c7223a6c.stex" ]
-dest_md5="c11844e9a0a6fd0aac52604356c17cf6"
 
 [params]
 

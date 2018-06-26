@@ -7,10 +7,7 @@ path="res://.import/ledge.png-f8647d842b0cb3fa5eebb6bde7159f07.stex"
 [deps]
 
 source_file="res://scenes/fallislandcastle/BGs/ledge.png"
-source_md5="c4250a07e925d4d5ece85a477bfff404"
-
 dest_files=[ "res://.import/ledge.png-f8647d842b0cb3fa5eebb6bde7159f07.stex" ]
-dest_md5="9d686c3b0b102edf7b94aedb1cbe1ef8"
 
 [params]
 

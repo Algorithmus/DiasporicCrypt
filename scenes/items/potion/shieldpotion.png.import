@@ -7,10 +7,7 @@ path="res://.import/shieldpotion.png-3f88f8aec14829ffa2594df838816486.stex"
 [deps]
 
 source_file="res://scenes/items/potion/shieldpotion.png"
-source_md5="1b699d32fc7d9c385f2e4ed48bb2bb0d"
-
 dest_files=[ "res://.import/shieldpotion.png-3f88f8aec14829ffa2594df838816486.stex" ]
-dest_md5="2e463079ea55ae8880abfd42577fe2f0"
 
 [params]
 

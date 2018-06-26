@@ -7,10 +7,7 @@ path="res://.import/attack.png-2919a10a240253494a0ad388d387f50f.stex"
 [deps]
 
 source_file="res://players/adela/attack.png"
-source_md5="00b007232ed4f71fd9435bc950ba9d4f"
-
 dest_files=[ "res://.import/attack.png-2919a10a240253494a0ad388d387f50f.stex" ]
-dest_md5="7b90d12d12146b7cb66864d40e96465b"
 
 [params]
 

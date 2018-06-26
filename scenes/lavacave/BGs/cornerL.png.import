@@ -7,10 +7,7 @@ path="res://.import/cornerL.png-a2985effae03754743148e33cf5f4c84.stex"
 [deps]
 
 source_file="res://scenes/lavacave/BGs/cornerL.png"
-source_md5="9b05c23213c2c76c620fa966fbcf1c69"
-
 dest_files=[ "res://.import/cornerL.png-a2985effae03754743148e33cf5f4c84.stex" ]
-dest_md5="588d841dfeaa915fa751047a00247004"
 
 [params]
 

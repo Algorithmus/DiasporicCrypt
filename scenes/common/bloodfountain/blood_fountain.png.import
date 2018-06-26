@@ -7,10 +7,7 @@ path="res://.import/blood_fountain.png-061787e52a5edc3b8eb7d256efa0919f.stex"
 [deps]
 
 source_file="res://scenes/common/bloodfountain/blood_fountain.png"
-source_md5="887c8482b868892de7aae1f2a5aadbf8"
-
 dest_files=[ "res://.import/blood_fountain.png-061787e52a5edc3b8eb7d256efa0919f.stex" ]
-dest_md5="20d9c95d86e14f5ef481a7e5e0420f13"
 
 [params]
 

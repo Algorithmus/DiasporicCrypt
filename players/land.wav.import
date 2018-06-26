@@ -7,10 +7,7 @@ path="res://.import/land.wav-89d058ffae3fd6db6837fc9b6e7e8ef7.sample"
 [deps]
 
 source_file="res://players/land.wav"
-source_md5="84c14a9893b0050af53eec2d7a65c2a2"
-
 dest_files=[ "res://.import/land.wav-89d058ffae3fd6db6837fc9b6e7e8ef7.sample" ]
-dest_md5="bd75216e9f64634f1c1895aa34a09e29"
 
 [params]
 

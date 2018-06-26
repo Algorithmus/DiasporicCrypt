@@ -7,10 +7,7 @@ path="res://.import/bottom-small.png-a65beb03a5717d7c1f4aaabdc53e3ad7.stex"
 [deps]
 
 source_file="res://scenes/animations/magiccircle/triangles/bottom-small.png"
-source_md5="0f310b5ede19cbe3418550619fbb7a5b"
-
 dest_files=[ "res://.import/bottom-small.png-a65beb03a5717d7c1f4aaabdc53e3ad7.stex" ]
-dest_md5="00199b04b7c1c7d9a6fccbbea0cd22bd"
 
 [params]
 

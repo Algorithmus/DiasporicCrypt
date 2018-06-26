@@ -7,10 +7,7 @@ path="res://.import/floor1.png-f9baea98c47a1588b00e7953cb01b6f8.stex"
 [deps]
 
 source_file="res://scenes/catacombs/platforms/floor1.png"
-source_md5="8df9969a854a708001d86386231fa159"
-
 dest_files=[ "res://.import/floor1.png-f9baea98c47a1588b00e7953cb01b6f8.stex" ]
-dest_md5="981f78500dc8d0c96c3c8741d4d84d55"
 
 [params]
 

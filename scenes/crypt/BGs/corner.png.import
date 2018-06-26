@@ -7,10 +7,7 @@ path="res://.import/corner.png-f26574aab4899aae81123da307d3df9b.stex"
 [deps]
 
 source_file="res://scenes/crypt/BGs/corner.png"
-source_md5="ef1b7db10e0f912358f61fc9b96257db"
-
 dest_files=[ "res://.import/corner.png-f26574aab4899aae81123da307d3df9b.stex" ]
-dest_md5="8b01444ef07bd159c29fb1db67dc3a04"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/earth.wav-b4383b26ddca48dd1b21e0ba7222fd97.sample"
 [deps]
 
 source_file="res://players/magic/earth/earth.wav"
-source_md5="e6dc0cad421ce34a2fbb50fe9432ee6d"
-
 dest_files=[ "res://.import/earth.wav-b4383b26ddca48dd1b21e0ba7222fd97.sample" ]
-dest_md5="5b4da336e580e6cebf70940dfaa7b50c"
 
 [params]
 

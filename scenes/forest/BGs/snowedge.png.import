@@ -7,10 +7,7 @@ path="res://.import/snowedge.png-1c737a51a1a734455019721fbaef347c.stex"
 [deps]
 
 source_file="res://scenes/forest/BGs/snowedge.png"
-source_md5="155da8db98e314e2b953d15437bb9ec2"
-
 dest_files=[ "res://.import/snowedge.png-1c737a51a1a734455019721fbaef347c.stex" ]
-dest_md5="2d29f1cb58da8fdbba05a67bca3c38a9"
 
 [params]
 

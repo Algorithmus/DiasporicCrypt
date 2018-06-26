@@ -7,10 +7,7 @@ path="res://.import/swingboulder.png-05838c4552458ea9b933b4cfe3143ff9.stex"
 [deps]
 
 source_file="res://scenes/aquaduct/boss/swingboulder.png"
-source_md5="c378783916493d7040de029c5d06fbd9"
-
 dest_files=[ "res://.import/swingboulder.png-05838c4552458ea9b933b4cfe3143ff9.stex" ]
-dest_md5="de5b1808017726d6b4f1e1504a75a204"
 
 [params]
 

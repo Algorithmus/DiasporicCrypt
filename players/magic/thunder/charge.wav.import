@@ -7,10 +7,7 @@ path="res://.import/charge.wav-9d6b071e62776662d61f6df430002938.sample"
 [deps]
 
 source_file="res://players/magic/thunder/charge.wav"
-source_md5="dc09098133aabdeb253e9d46efba0cc3"
-
 dest_files=[ "res://.import/charge.wav-9d6b071e62776662d61f6df430002938.sample" ]
-dest_md5="611d11945a040e9926906faebcca02a0"
 
 [params]
 

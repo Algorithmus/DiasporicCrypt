@@ -7,10 +7,7 @@ path="res://.import/floorblock3.png-e3ebee022479db6a0599f91501e96f58.stex"
 [deps]
 
 source_file="res://scenes/dungeon/platforms/floorblock3.png"
-source_md5="f063ede6f8356ed05fb65c407004b1b0"
-
 dest_files=[ "res://.import/floorblock3.png-e3ebee022479db6a0599f91501e96f58.stex" ]
-dest_md5="33918ab25abe64ffb722b4ada86d70f2"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/hurt.png-eda5d9241a61cc715517db52c33777c9.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/werewolf/hurt.png"
-source_md5="afdf9c9011ebb9c5ac13973467d37384"
-
 dest_files=[ "res://.import/hurt.png-eda5d9241a61cc715517db52c33777c9.stex" ]
-dest_md5="5957f5f37c990bd5caf5c3715930bc0b"
 
 [params]
 

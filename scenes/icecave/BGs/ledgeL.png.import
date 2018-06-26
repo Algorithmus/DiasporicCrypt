@@ -7,10 +7,7 @@ path="res://.import/ledgeL.png-d3e9ead8d6b402e31b1bc1ec41a313d7.stex"
 [deps]
 
 source_file="res://scenes/icecave/BGs/ledgeL.png"
-source_md5="60a8cdd230a9dc835cd6e802ffe49c50"
-
 dest_files=[ "res://.import/ledgeL.png-d3e9ead8d6b402e31b1bc1ec41a313d7.stex" ]
-dest_md5="f460d785f05607d00687e3a40034f363"
 
 [params]
 

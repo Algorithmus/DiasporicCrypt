@@ -7,10 +7,7 @@ path="res://.import/segment.png-480caf58f0ef127fe2478a92a404fcbf.stex"
 [deps]
 
 source_file="res://scenes/lavacave/boss/segment.png"
-source_md5="34cc0a7a6979c5ba77298eec8608340c"
-
 dest_files=[ "res://.import/segment.png-480caf58f0ef127fe2478a92a404fcbf.stex" ]
-dest_md5="8404628df4a2345d9db1164c9b46ca1c"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/scroll.png-583bcb8eb0a75798909f9febd78dc9ab.stex"
 [deps]
 
 source_file="res://scenes/items/scroll/scroll.png"
-source_md5="bdb28e43c36023fd8374102343085eb5"
-
 dest_files=[ "res://.import/scroll.png-583bcb8eb0a75798909f9febd78dc9ab.stex" ]
-dest_md5="a1a1aa0411ee510d29719a5f3af1736d"
 
 [params]
 

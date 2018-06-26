@@ -7,10 +7,7 @@ path="res://.import/leaves-right-yellow.png-75e53ddfe72901abc7575c2e9eee897d.ste
 [deps]
 
 source_file="res://scenes/forest/BGs/leaves-right-yellow.png"
-source_md5="93f1ed76e1bf5d850d816c2bc1d78766"
-
 dest_files=[ "res://.import/leaves-right-yellow.png-75e53ddfe72901abc7575c2e9eee897d.stex" ]
-dest_md5="a62797c4249a8f6eaa202e01dfeb6ae6"
 
 [params]
 

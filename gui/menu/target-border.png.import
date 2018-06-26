@@ -7,10 +7,7 @@ path="res://.import/target-border.png-849ca44cdeb0f1315df4b76db42aed20.stex"
 [deps]
 
 source_file="res://gui/menu/target-border.png"
-source_md5="5e16679a271ab83766b2b94645056689"
-
 dest_files=[ "res://.import/target-border.png-849ca44cdeb0f1315df4b76db42aed20.stex" ]
-dest_md5="11593e8678200939a322888d0fbda266"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/dualspin.png-42af21be77d602eeab4b4b3fe6f59f96.stex"
 [deps]
 
 source_file="res://players/friederich/demonic/attacks/dualspin.png"
-source_md5="d696f6721c8abda80deba81a030784f4"
-
 dest_files=[ "res://.import/dualspin.png-42af21be77d602eeab4b4b3fe6f59f96.stex" ]
-dest_md5="68c487af59b87ca7bd2561245c8201ea"
 
 [params]
 

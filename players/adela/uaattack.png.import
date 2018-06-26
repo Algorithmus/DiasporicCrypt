@@ -7,10 +7,7 @@ path="res://.import/uaattack.png-7fd326e2751a69ee92013e8f1602eacd.stex"
 [deps]
 
 source_file="res://players/adela/uaattack.png"
-source_md5="82542a7505dc800c9bb014ae0527611c"
-
 dest_files=[ "res://.import/uaattack.png-7fd326e2751a69ee92013e8f1602eacd.stex" ]
-dest_md5="04a5f31f4abb621c2679a640e7d1d7fc"
 
 [params]
 

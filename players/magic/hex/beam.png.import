@@ -7,10 +7,7 @@ path="res://.import/beam.png-16aac0d4f92afa0e869c62fc4f16606d.stex"
 [deps]
 
 source_file="res://players/magic/hex/beam.png"
-source_md5="d9a009cf36afe8bbe0c6171bb7ff5cd0"
-
 dest_files=[ "res://.import/beam.png-16aac0d4f92afa0e869c62fc4f16606d.stex" ]
-dest_md5="a2fc00660c4b6b7d5fbe7a78b3273894"
 
 [params]
 

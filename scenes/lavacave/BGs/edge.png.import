@@ -7,10 +7,7 @@ path="res://.import/edge.png-7892ceb64ec6d87aef2e31daf0064297.stex"
 [deps]
 
 source_file="res://scenes/lavacave/BGs/edge.png"
-source_md5="c47c00a40826e5505658cbd0429cff54"
-
 dest_files=[ "res://.import/edge.png-7892ceb64ec6d87aef2e31daf0064297.stex" ]
-dest_md5="70c2fd2b69d1d683b094c6aca63ed364"
 
 [params]
 

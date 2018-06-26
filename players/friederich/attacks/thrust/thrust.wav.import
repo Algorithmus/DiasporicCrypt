@@ -7,10 +7,7 @@ path="res://.import/thrust.wav-1f66f468eead7878a9ba12ad3a4126be.sample"
 [deps]
 
 source_file="res://players/friederich/attacks/thrust/thrust.wav"
-source_md5="28d314bf282f40b2b265be9e77a4d7fe"
-
 dest_files=[ "res://.import/thrust.wav-1f66f468eead7878a9ba12ad3a4126be.sample" ]
-dest_md5="e743d98ad61d260ab8794ff94e12106a"
 
 [params]
 

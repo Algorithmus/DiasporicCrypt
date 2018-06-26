@@ -7,10 +7,7 @@ path="res://.import/fill.png-407ca5512ee1d740d1df3aef48a7ce1c.stex"
 [deps]
 
 source_file="res://players/magic/shield/fill.png"
-source_md5="aa5deb2753786057ce52ea1b880a60f6"
-
 dest_files=[ "res://.import/fill.png-407ca5512ee1d740d1df3aef48a7ce1c.stex" ]
-dest_md5="8233a80a51c1766a1a31a98496e3b90e"
 
 [params]
 

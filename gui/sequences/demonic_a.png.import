@@ -7,10 +7,7 @@ path="res://.import/demonic_a.png-3406e91139f1abc19cb0d14bc3a9d6d5.stex"
 [deps]
 
 source_file="res://gui/sequences/demonic_a.png"
-source_md5="2207bdccbc1ce2d8c1f6c07d80c7c1d7"
-
 dest_files=[ "res://.import/demonic_a.png-3406e91139f1abc19cb0d14bc3a9d6d5.stex" ]
-dest_md5="adbe81a3495bbca2dfa8f090d78ba10d"
 
 [params]
 

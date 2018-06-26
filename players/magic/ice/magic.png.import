@@ -7,10 +7,7 @@ path="res://.import/magic.png-3f73431025dd8efed432eec4f0a6b7b2.stex"
 [deps]
 
 source_file="res://players/magic/ice/magic.png"
-source_md5="121d09eb74ada745ebe590e0f5c22618"
-
 dest_files=[ "res://.import/magic.png-3f73431025dd8efed432eec4f0a6b7b2.stex" ]
-dest_md5="2d27361e78c45de1138f7f7cd7bd6f5b"
 
 [params]
 

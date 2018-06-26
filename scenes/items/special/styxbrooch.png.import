@@ -7,10 +7,7 @@ path="res://.import/styxbrooch.png-81b3f71270ac8a5cde058adecc61d845.stex"
 [deps]
 
 source_file="res://scenes/items/special/styxbrooch.png"
-source_md5="bea27e987664c3c47dda2c4869cd4386"
-
 dest_files=[ "res://.import/styxbrooch.png-81b3f71270ac8a5cde058adecc61d845.stex" ]
-dest_md5="1fde7a4fef3fca663a12ecab83a748d8"
 
 [params]
 

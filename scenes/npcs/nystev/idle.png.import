@@ -7,10 +7,7 @@ path="res://.import/idle.png-56a6016cbf2163857432609bc44d9378.stex"
 [deps]
 
 source_file="res://scenes/npcs/nystev/idle.png"
-source_md5="29e54f73b487b858212d4dd05530e6e7"
-
 dest_files=[ "res://.import/idle.png-56a6016cbf2163857432609bc44d9378.stex" ]
-dest_md5="436f84971957948a72b95475c7d0d37a"
 
 [params]
 

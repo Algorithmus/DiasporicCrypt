@@ -7,10 +7,7 @@ path="res://.import/edge.png-279d88b0c97dee650361b9c86be1c8b8.stex"
 [deps]
 
 source_file="res://scenes/springislandcastle/BGs/edge.png"
-source_md5="79ef3e1b26a79955d9b8d4387e53ead7"
-
 dest_files=[ "res://.import/edge.png-279d88b0c97dee650361b9c86be1c8b8.stex" ]
-dest_md5="0b5349fde43d1c6d0bf1a64d923888aa"
 
 [params]
 

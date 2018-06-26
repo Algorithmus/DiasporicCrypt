@@ -7,10 +7,7 @@ path="res://.import/rubykey.png-cad58d396a27d505f4f396167f3cfef0.stex"
 [deps]
 
 source_file="res://scenes/items/special/rubykey.png"
-source_md5="4fdcda4c9d31c23a10a183cfa4b28d2c"
-
 dest_files=[ "res://.import/rubykey.png-cad58d396a27d505f4f396167f3cfef0.stex" ]
-dest_md5="a95c3c4f60d48d186f682d8d87d946f2"
 
 [params]
 

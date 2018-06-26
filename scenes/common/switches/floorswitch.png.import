@@ -7,10 +7,7 @@ path="res://.import/floorswitch.png-ebf85f974bd0de0c4d9f3eb1e4e05b83.stex"
 [deps]
 
 source_file="res://scenes/common/switches/floorswitch.png"
-source_md5="53769564d9bac04f89b428e2aa7710d1"
-
 dest_files=[ "res://.import/floorswitch.png-ebf85f974bd0de0c4d9f3eb1e4e05b83.stex" ]
-dest_md5="3df2442041cb8c22a0a163f692505e8a"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/dirt.png-ca6968e39baf9e63320da302bd056f79.stex"
 [deps]
 
 source_file="res://scenes/catacombs/solids/dirt.png"
-source_md5="9713f6a79a9478507bb94bb21c54c2bc"
-
 dest_files=[ "res://.import/dirt.png-ca6968e39baf9e63320da302bd056f79.stex" ]
-dest_md5="63fe5d72bd2e32bee5a4178769fbfbf2"
 
 [params]
 

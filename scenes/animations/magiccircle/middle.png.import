@@ -7,10 +7,7 @@ path="res://.import/middle.png-0e920e4fdd4c3ad44ee391da9111d483.stex"
 [deps]
 
 source_file="res://scenes/animations/magiccircle/middle.png"
-source_md5="e609626ff07c43a383e56e3a6abef9a0"
-
 dest_files=[ "res://.import/middle.png-0e920e4fdd4c3ad44ee391da9111d483.stex" ]
-dest_md5="54870c9395b77e7f9b8fc37c421fffb3"
 
 [params]
 

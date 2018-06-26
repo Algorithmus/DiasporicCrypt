@@ -7,10 +7,7 @@ path="res://.import/cat.png-5d097eaf122adb4e0bfa78103a90ddc9.stex"
 [deps]
 
 source_file="res://gui/loading/cat.png"
-source_md5="04152bea61666485367be10ef9975325"
-
 dest_files=[ "res://.import/cat.png-5d097eaf122adb4e0bfa78103a90ddc9.stex" ]
-dest_md5="3c23a4241bcedd0c49e6b8455840abf7"
 
 [params]
 

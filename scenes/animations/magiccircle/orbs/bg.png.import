@@ -7,10 +7,7 @@ path="res://.import/bg.png-eeda9f57d70a7376304f4639be5bea09.stex"
 [deps]
 
 source_file="res://scenes/animations/magiccircle/orbs/bg.png"
-source_md5="e5c2967f1b109fcc6d9af090cc88049e"
-
 dest_files=[ "res://.import/bg.png-eeda9f57d70a7376304f4639be5bea09.stex" ]
-dest_md5="692c72aca3ab55fdb66acab1dda2dc38"
 
 [params]
 

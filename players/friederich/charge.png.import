@@ -7,10 +7,7 @@ path="res://.import/charge.png-b8313cb2537169660e626db1490161a6.stex"
 [deps]
 
 source_file="res://players/friederich/charge.png"
-source_md5="99648ecf618922d06e5daaa6dd23155b"
-
 dest_files=[ "res://.import/charge.png-b8313cb2537169660e626db1490161a6.stex" ]
-dest_md5="5975f4054690743de77f1a1279aa668b"
 
 [params]
 

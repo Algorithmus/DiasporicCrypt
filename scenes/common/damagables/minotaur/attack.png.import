@@ -7,10 +7,7 @@ path="res://.import/attack.png-350270f9475f5bf62c513e29e10c070f.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/minotaur/attack.png"
-source_md5="6576984a9bc63b97f4b4d4daa01edc1e"
-
 dest_files=[ "res://.import/attack.png-350270f9475f5bf62c513e29e10c070f.stex" ]
-dest_md5="66273fba658086c09cba955028a647a2"
 
 [params]
 

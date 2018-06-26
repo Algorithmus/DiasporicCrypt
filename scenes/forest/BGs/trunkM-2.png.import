@@ -7,10 +7,7 @@ path="res://.import/trunkM-2.png-e58c0771bd0f2a957ea37474f22354c2.stex"
 [deps]
 
 source_file="res://scenes/forest/BGs/trunkM-2.png"
-source_md5="d398f70227eaf7d5f14f6aa3bb292ae6"
-
 dest_files=[ "res://.import/trunkM-2.png-e58c0771bd0f2a957ea37474f22354c2.stex" ]
-dest_md5="798e9acbcbd9e19fc3411d439609ad09"
 
 [params]
 

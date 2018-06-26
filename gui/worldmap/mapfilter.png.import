@@ -7,10 +7,7 @@ path="res://.import/mapfilter.png-285062376f0f155d1f2c32586f09067d.stex"
 [deps]
 
 source_file="res://gui/worldmap/mapfilter.png"
-source_md5="b62268b4d367d36ffb26a747d05a2400"
-
 dest_files=[ "res://.import/mapfilter.png-285062376f0f155d1f2c32586f09067d.stex" ]
-dest_md5="b05a73352711b2460a1f06f6966b85a6"
 
 [params]
 

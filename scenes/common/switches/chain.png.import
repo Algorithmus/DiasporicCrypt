@@ -7,10 +7,7 @@ path="res://.import/chain.png-08fa92c850fddeec62973698061030ae.stex"
 [deps]
 
 source_file="res://scenes/common/switches/chain.png"
-source_md5="d3f6d1797416cc2d7bf9d4cf89d3ac2e"
-
 dest_files=[ "res://.import/chain.png-08fa92c850fddeec62973698061030ae.stex" ]
-dest_md5="529dd295ed8d66d1ee15e0e24d0186a2"
 
 [params]
 

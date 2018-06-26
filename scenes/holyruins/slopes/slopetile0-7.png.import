@@ -7,10 +7,7 @@ path="res://.import/slopetile0-7.png-314eb15de43685ec6f6949224999bcb9.stex"
 [deps]
 
 source_file="res://scenes/holyruins/slopes/slopetile0-7.png"
-source_md5="d51d7de95d0628d941b018726357dbed"
-
 dest_files=[ "res://.import/slopetile0-7.png-314eb15de43685ec6f6949224999bcb9.stex" ]
-dest_md5="a01f2fe6ada914c73b6cfd5f0c0c8cab"
 
 [params]
 

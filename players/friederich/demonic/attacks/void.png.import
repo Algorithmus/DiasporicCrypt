@@ -7,10 +7,7 @@ path="res://.import/void.png-18c9798d19538ef64e4baa817d0e48d3.stex"
 [deps]
 
 source_file="res://players/friederich/demonic/attacks/void.png"
-source_md5="cdba41501ab485fd016d8dd4c896438e"
-
 dest_files=[ "res://.import/void.png-18c9798d19538ef64e4baa817d0e48d3.stex" ]
-dest_md5="1ce54fd7aacedf6feb1886da871d5e6a"
 
 [params]
 

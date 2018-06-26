@@ -7,10 +7,7 @@ path="res://.import/ceiling.png-4cb4b9dd4cab0d4817a97e0520a62ec0.stex"
 [deps]
 
 source_file="res://scenes/summerislandcastle/BGs/ceiling.png"
-source_md5="b26e0ed064a2a7dfacdeb7a33956d405"
-
 dest_files=[ "res://.import/ceiling.png-4cb4b9dd4cab0d4817a97e0520a62ec0.stex" ]
-dest_md5="374b0840fec4e5deaa3e8145c9e48021"
 
 [params]
 

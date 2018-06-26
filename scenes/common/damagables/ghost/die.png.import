@@ -7,10 +7,7 @@ path="res://.import/die.png-bf396db0376ffd5df0b659c4618a3168.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/ghost/die.png"
-source_md5="4e71812c4b9a20b368d4cdf629453136"
-
 dest_files=[ "res://.import/die.png-bf396db0376ffd5df0b659c4618a3168.stex" ]
-dest_md5="6843381caffbbfdfe40bdb889b8f34c0"
 
 [params]
 

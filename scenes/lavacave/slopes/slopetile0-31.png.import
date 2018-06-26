@@ -7,10 +7,7 @@ path="res://.import/slopetile0-31.png-52db2ff69d84c611704e95075d743762.stex"
 [deps]
 
 source_file="res://scenes/lavacave/slopes/slopetile0-31.png"
-source_md5="6566203c36d2d39256c213eaed3efbde"
-
 dest_files=[ "res://.import/slopetile0-31.png-52db2ff69d84c611704e95075d743762.stex" ]
-dest_md5="05704bdbaad3be572d839512192bb1d4"
 
 [params]
 

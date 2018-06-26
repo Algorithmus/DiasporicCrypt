@@ -7,10 +7,7 @@ path="res://.import/select.png-4fdb43839e7769c10c1a7f5af17d25f0.stex"
 [deps]
 
 source_file="res://gui/worldmap/icons/select.png"
-source_md5="8c9e25350a3c3c5f4f7cb1c72d5684cf"
-
 dest_files=[ "res://.import/select.png-4fdb43839e7769c10c1a7f5af17d25f0.stex" ]
-dest_md5="1e7ce95143a7a7112ab08a2524fded84"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/dgaura.png-f0a649ed7b466afedfd6ab625e982e99.stex"
 [deps]
 
 source_file="res://players/adela/attacks/dgaura.png"
-source_md5="3c5722e984781740e20903c2a66f81a9"
-
 dest_files=[ "res://.import/dgaura.png-f0a649ed7b466afedfd6ab625e982e99.stex" ]
-dest_md5="9a15e559179b38fafc6422e37abc4039"
 
 [params]
 

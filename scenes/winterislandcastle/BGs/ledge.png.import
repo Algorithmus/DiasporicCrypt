@@ -7,10 +7,7 @@ path="res://.import/ledge.png-774d686234a2df9373f1fab74279c59e.stex"
 [deps]
 
 source_file="res://scenes/winterislandcastle/BGs/ledge.png"
-source_md5="7424c62253c199d992325b1241f6ce86"
-
 dest_files=[ "res://.import/ledge.png-774d686234a2df9373f1fab74279c59e.stex" ]
-dest_md5="d80f62971b367c1d6efb79e87a9e37a4"
 
 [params]
 

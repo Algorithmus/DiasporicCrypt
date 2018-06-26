@@ -7,10 +7,7 @@ path="res://.import/walk.png-5d80be1cccc43b9d3ecdd1b6d0065e60.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/enchantedarmor/walk.png"
-source_md5="4fc70a1b5a4fa17d4a4a4772b5cfc7a6"
-
 dest_files=[ "res://.import/walk.png-5d80be1cccc43b9d3ecdd1b6d0065e60.stex" ]
-dest_md5="cf06e4d953238b88fdf1cddfd7ebb7fd"
 
 [params]
 

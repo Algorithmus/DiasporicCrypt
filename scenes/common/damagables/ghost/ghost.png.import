@@ -7,10 +7,7 @@ path="res://.import/ghost.png-79f012b07b58e3e8ae0768baaa6ac850.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/ghost/ghost.png"
-source_md5="fe557d88bcc7fff164728a826f2048c6"
-
 dest_files=[ "res://.import/ghost.png-79f012b07b58e3e8ae0768baaa6ac850.stex" ]
-dest_md5="7a2eae7596f8961abceb6250a111fa63"
 
 [params]
 

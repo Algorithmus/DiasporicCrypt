@@ -7,10 +7,7 @@ path="res://.import/complete.png-9cdefb9ac062a0f2854026c369b38a21.stex"
 [deps]
 
 source_file="res://gui/worldmap/icons/complete.png"
-source_md5="62ba5e086e2f0023049fe4f40ef9c01e"
-
 dest_files=[ "res://.import/complete.png-9cdefb9ac062a0f2854026c369b38a21.stex" ]
-dest_md5="7a710a04656c3410c1eaebb687e11802"
 
 [params]
 

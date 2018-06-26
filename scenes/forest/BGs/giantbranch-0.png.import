@@ -7,10 +7,7 @@ path="res://.import/giantbranch-0.png-010b08d4483395323c92302c8e87b07d.stex"
 [deps]
 
 source_file="res://scenes/forest/BGs/giantbranch-0.png"
-source_md5="9824118ffe36f4c12f0c0786f3900fdb"
-
 dest_files=[ "res://.import/giantbranch-0.png-010b08d4483395323c92302c8e87b07d.stex" ]
-dest_md5="45679f9f48b3b2af34f19b158df6535a"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/skewer.png-f7286bdcc11aa59c0aa41804ef171ae2.stex"
 [deps]
 
 source_file="res://scenes/common/breakables/skewer.png"
-source_md5="585617c9026dd6827a0db16ff1dbc5aa"
-
 dest_files=[ "res://.import/skewer.png-f7286bdcc11aa59c0aa41804ef171ae2.stex" ]
-dest_md5="021802805ecf9a1c4c09d92f5566ce1b"
 
 [params]
 

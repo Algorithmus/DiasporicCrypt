@@ -7,10 +7,7 @@ path="res://.import/uattack.png-609975c04ebe9bacf26f238f468f458b.stex"
 [deps]
 
 source_file="res://players/adela/demonic/uattack.png"
-source_md5="c11ca1a4e425223bc05fdf518073578e"
-
 dest_files=[ "res://.import/uattack.png-609975c04ebe9bacf26f238f468f458b.stex" ]
-dest_md5="6b446ab28b7b9d0e1faa9665900aa19f"
 
 [params]
 

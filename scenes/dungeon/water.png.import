@@ -7,10 +7,7 @@ path="res://.import/water.png-bdb37a391fcf814b00af88830f797a94.stex"
 [deps]
 
 source_file="res://scenes/dungeon/water.png"
-source_md5="21efa69f00fbce86c0bf73b9dc62eb11"
-
 dest_files=[ "res://.import/water.png-bdb37a391fcf814b00af88830f797a94.stex" ]
-dest_md5="95f8000899141c19e9d6b3a2146d501b"
 
 [params]
 

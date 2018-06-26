@@ -7,10 +7,7 @@ path="res://.import/charge.png-154d9f68ba058e52bf5718bef58f260b.stex"
 [deps]
 
 source_file="res://players/magic/thunder/charge.png"
-source_md5="1fefb89d2a8a78d8df4866ecc5ad8056"
-
 dest_files=[ "res://.import/charge.png-154d9f68ba058e52bf5718bef58f260b.stex" ]
-dest_md5="e15b3080c3e32b7f6a9b59a74dd9c14e"
 
 [params]
 

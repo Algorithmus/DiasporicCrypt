@@ -7,10 +7,7 @@ path="res://.import/aura.png-2ff1e8fe5faf43897f67785be11cd6fa.stex"
 [deps]
 
 source_file="res://players/friederich/attacks/dualspin/aura.png"
-source_md5="be1711c8536912cde2ef909c0fa431b9"
-
 dest_files=[ "res://.import/aura.png-2ff1e8fe5faf43897f67785be11cd6fa.stex" ]
-dest_md5="cba7e55dba03d87e2db3f1988a22000c"
 
 [params]
 

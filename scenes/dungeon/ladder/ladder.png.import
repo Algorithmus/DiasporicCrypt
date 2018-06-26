@@ -7,10 +7,7 @@ path="res://.import/ladder.png-28a832ccaa2bd6ddd39c9559f87d3d0d.stex"
 [deps]
 
 source_file="res://scenes/dungeon/ladder/ladder.png"
-source_md5="bb5d167143791a7c9e592d8d2289ef1a"
-
 dest_files=[ "res://.import/ladder.png-28a832ccaa2bd6ddd39c9559f87d3d0d.stex" ]
-dest_md5="9e4baa4f2508595bbf18ed4fa9fa0c09"
 
 [params]
 

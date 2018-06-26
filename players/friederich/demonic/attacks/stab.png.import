@@ -7,10 +7,7 @@ path="res://.import/stab.png-0e11408f590d518b9a51026ed6ac696f.stex"
 [deps]
 
 source_file="res://players/friederich/demonic/attacks/stab.png"
-source_md5="b74f282638f3b0cca31275101003956c"
-
 dest_files=[ "res://.import/stab.png-0e11408f590d518b9a51026ed6ac696f.stex" ]
-dest_md5="1169eed42169413eaceae3a767e1dab6"
 
 [params]
 

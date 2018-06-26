@@ -7,10 +7,7 @@ path="res://.import/walledge-l.png-5386a78193f57b6ed1cadd28c290b9b3.stex"
 [deps]
 
 source_file="res://scenes/catacombs/solids/walledge-l.png"
-source_md5="882b705ac5eae7b2925ac6ea6d0bcb03"
-
 dest_files=[ "res://.import/walledge-l.png-5386a78193f57b6ed1cadd28c290b9b3.stex" ]
-dest_md5="bd21e3165e027c846c101936603a325e"
 
 [params]
 

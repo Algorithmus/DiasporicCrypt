@@ -7,10 +7,7 @@ path="res://.import/ladder.png-575e152f7d498265f1c81ae24e2308da.stex"
 [deps]
 
 source_file="res://players/friederich/ladder.png"
-source_md5="5959b3405c8de40b1284af49b573333d"
-
 dest_files=[ "res://.import/ladder.png-575e152f7d498265f1c81ae24e2308da.stex" ]
-dest_md5="08818dcaee7f78716e35d83b70aa149e"
 
 [params]
 

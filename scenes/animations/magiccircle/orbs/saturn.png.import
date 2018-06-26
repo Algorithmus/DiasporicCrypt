@@ -7,10 +7,7 @@ path="res://.import/saturn.png-731b4ca59c310b5659884ed08e51fabc.stex"
 [deps]
 
 source_file="res://scenes/animations/magiccircle/orbs/saturn.png"
-source_md5="f5e26d07c4a87feca460478a1ef267ba"
-
 dest_files=[ "res://.import/saturn.png-731b4ca59c310b5659884ed08e51fabc.stex" ]
-dest_md5="12a66ad64ce9b112396e395081792069"
 
 [params]
 

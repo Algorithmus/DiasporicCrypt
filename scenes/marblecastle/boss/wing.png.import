@@ -7,10 +7,7 @@ path="res://.import/wing.png-9f8850e5f7dd1f7924557c25b1d618e4.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/boss/wing.png"
-source_md5="01c3424b86cf4991fd7dccb8ca09f582"
-
 dest_files=[ "res://.import/wing.png-9f8850e5f7dd1f7924557c25b1d618e4.stex" ]
-dest_md5="6c27efc05a037c1b0b232a6e80cc1f90"
 
 [params]
 

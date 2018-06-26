@@ -7,10 +7,7 @@ path="res://.import/charmpotion.png-e734beb06f856849149d73c1c7f3752e.stex"
 [deps]
 
 source_file="res://scenes/items/potion/charmpotion.png"
-source_md5="e4914c1557aadf099b1f951e90551c29"
-
 dest_files=[ "res://.import/charmpotion.png-e734beb06f856849149d73c1c7f3752e.stex" ]
-dest_md5="be14b2982d945c983c1e459d41125fc7"
 
 [params]
 

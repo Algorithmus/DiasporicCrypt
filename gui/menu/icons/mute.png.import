@@ -7,10 +7,7 @@ path="res://.import/mute.png-8a53e091d54b8eb77095f885a57a6873.stex"
 [deps]
 
 source_file="res://gui/menu/icons/mute.png"
-source_md5="681b2a4a8e62b453da625166968bee89"
-
 dest_files=[ "res://.import/mute.png-8a53e091d54b8eb77095f885a57a6873.stex" ]
-dest_md5="8b046dc1b424025b05560e5fbd72ebeb"
 
 [params]
 

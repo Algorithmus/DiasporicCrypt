@@ -7,10 +7,7 @@ path="res://.import/giantlizard.png-e6d0bfb74b12a9dbc918561f50a31dd7.stex"
 [deps]
 
 source_file="res://scenes/bergfortress/boss/giantlizard.png"
-source_md5="c7b7ad5cc8acc15316211f41d3a470f7"
-
 dest_files=[ "res://.import/giantlizard.png-e6d0bfb74b12a9dbc918561f50a31dd7.stex" ]
-dest_md5="1f7ed2456ef365811f3d2621f2d0994e"
 
 [params]
 

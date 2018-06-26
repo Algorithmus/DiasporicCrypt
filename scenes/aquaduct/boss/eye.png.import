@@ -7,10 +7,7 @@ path="res://.import/eye.png-ae6c54e8cf952fa5232437740f76bb3b.stex"
 [deps]
 
 source_file="res://scenes/aquaduct/boss/eye.png"
-source_md5="f688fde0eb76bcccbb858604e31b0cf2"
-
 dest_files=[ "res://.import/eye.png-ae6c54e8cf952fa5232437740f76bb3b.stex" ]
-dest_md5="b2b9100872c964302c502531cd43bb12"
 
 [params]
 

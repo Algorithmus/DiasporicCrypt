@@ -7,10 +7,7 @@ path="res://.import/mirror.png-b69dccf4a90e31600a60c8a6623aa67b.stex"
 [deps]
 
 source_file="res://scenes/winterislandcastle/BGs/mirror.png"
-source_md5="8015974fbcc9d884a3daaf06b299a400"
-
 dest_files=[ "res://.import/mirror.png-b69dccf4a90e31600a60c8a6623aa67b.stex" ]
-dest_md5="308887aa609a6f93a22b64dcd6904f17"
 
 [params]
 

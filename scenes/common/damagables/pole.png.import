@@ -7,10 +7,7 @@ path="res://.import/pole.png-8313afcffdef595ee0c4c4f502c0b6bc.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/pole.png"
-source_md5="14b288c0070b3bd68956efe32e886a19"
-
 dest_files=[ "res://.import/pole.png-8313afcffdef595ee0c4c4f502c0b6bc.stex" ]
-dest_md5="975e85603495c77068f2a642eddec79e"
 
 [params]
 

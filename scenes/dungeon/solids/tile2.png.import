@@ -7,10 +7,7 @@ path="res://.import/tile2.png-fc89d4144e2ae1ee4a6fe07660b52115.stex"
 [deps]
 
 source_file="res://scenes/dungeon/solids/tile2.png"
-source_md5="4932e04ad78bbb7b00d76344e7c7c53f"
-
 dest_files=[ "res://.import/tile2.png-fc89d4144e2ae1ee4a6fe07660b52115.stex" ]
-dest_md5="bbf62e7dbc744b0ba7d8b372ee071044"
 
 [params]
 

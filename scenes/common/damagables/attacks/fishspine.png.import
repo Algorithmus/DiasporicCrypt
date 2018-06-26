@@ -7,10 +7,7 @@ path="res://.import/fishspine.png-255aca2761e73434446d2f62aaa983fe.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/attacks/fishspine.png"
-source_md5="2d84b53c3540cd04bc7a7caa5349a454"
-
 dest_files=[ "res://.import/fishspine.png-255aca2761e73434446d2f62aaa983fe.stex" ]
-dest_md5="3c4ee5d73c806ba05839186c89739b66"
 
 [params]
 

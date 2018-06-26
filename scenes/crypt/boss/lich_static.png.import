@@ -7,10 +7,7 @@ path="res://.import/lich_static.png-1660310e415c802005684b6a69b7ea5f.stex"
 [deps]
 
 source_file="res://scenes/crypt/boss/lich_static.png"
-source_md5="87372ad829896f0f45d26afadbb47bbc"
-
 dest_files=[ "res://.import/lich_static.png-1660310e415c802005684b6a69b7ea5f.stex" ]
-dest_md5="92db07074584863f4e81da7470501f4f"
 
 [params]
 

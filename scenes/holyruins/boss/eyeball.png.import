@@ -7,10 +7,7 @@ path="res://.import/eyeball.png-e75ae1ce9230bb789a807f393f3ae378.stex"
 [deps]
 
 source_file="res://scenes/holyruins/boss/eyeball.png"
-source_md5="f169e32479370cc1d57b40605023f15b"
-
 dest_files=[ "res://.import/eyeball.png-e75ae1ce9230bb789a807f393f3ae378.stex" ]
-dest_md5="f4655849878fa9b1b050f7dba34b2107"
 
 [params]
 

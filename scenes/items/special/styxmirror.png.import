@@ -7,10 +7,7 @@ path="res://.import/styxmirror.png-bbeb80a6ae2b07031c5c418d9f8a2995.stex"
 [deps]
 
 source_file="res://scenes/items/special/styxmirror.png"
-source_md5="394201ccb53904c8152c77f9bed9d9b7"
-
 dest_files=[ "res://.import/styxmirror.png-bbeb80a6ae2b07031c5c418d9f8a2995.stex" ]
-dest_md5="e2fe9e33f34df44fc1c30412583ee2ce"
 
 [params]
 

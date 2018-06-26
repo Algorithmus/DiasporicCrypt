@@ -7,10 +7,7 @@ path="res://.import/edge.png-eb47ff72d06107c14828229ac029b71e.stex"
 [deps]
 
 source_file="res://scenes/icecave/BGs/edge.png"
-source_md5="1592248a4517a5f52b8115333683f6b5"
-
 dest_files=[ "res://.import/edge.png-eb47ff72d06107c14828229ac029b71e.stex" ]
-dest_md5="debb5f67f5423f2b6cd4a8d442b825f3"
 
 [params]
 

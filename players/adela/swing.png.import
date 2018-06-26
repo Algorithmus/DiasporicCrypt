@@ -7,10 +7,7 @@ path="res://.import/swing.png-bcec0f8731b29a9864066abc7bf27615.stex"
 [deps]
 
 source_file="res://players/adela/swing.png"
-source_md5="e2f2dd7f380ae936f0d18b658a366e16"
-
 dest_files=[ "res://.import/swing.png-bcec0f8731b29a9864066abc7bf27615.stex" ]
-dest_md5="b066b44ca97e3c2d140a7efadabdb3ea"
 
 [params]
 

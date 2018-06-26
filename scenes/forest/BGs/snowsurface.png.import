@@ -7,10 +7,7 @@ path="res://.import/snowsurface.png-ee3e3696427703bb33a1ab7087b1551b.stex"
 [deps]
 
 source_file="res://scenes/forest/BGs/snowsurface.png"
-source_md5="286e5c580b78ace43dc513924a540562"
-
 dest_files=[ "res://.import/snowsurface.png-ee3e3696427703bb33a1ab7087b1551b.stex" ]
-dest_md5="5c8240a280eaa507db12b2458b930145"
 
 [params]
 

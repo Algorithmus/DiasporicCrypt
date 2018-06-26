@@ -7,10 +7,7 @@ path="res://.import/lucifer.png-390abf17603ee4b936be255666494dbe.stex"
 [deps]
 
 source_file="res://gui/dialogue/profiles/lucifer.png"
-source_md5="810f1c77d44780e0ce3dc72baf183793"
-
 dest_files=[ "res://.import/lucifer.png-390abf17603ee4b936be255666494dbe.stex" ]
-dest_md5="a98039491e767fc73c41749fdde350f2"
 
 [params]
 

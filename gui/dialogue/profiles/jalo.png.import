@@ -7,10 +7,7 @@ path="res://.import/jalo.png-e6249e3d8dbd068abb628eaac4e00034.stex"
 [deps]
 
 source_file="res://gui/dialogue/profiles/jalo.png"
-source_md5="97b28d84873bdd34d50d735f67e2a2d3"
-
 dest_files=[ "res://.import/jalo.png-e6249e3d8dbd068abb628eaac4e00034.stex" ]
-dest_md5="a5f512e4863396f8d2bb3bd2634cbd2f"
 
 [params]
 

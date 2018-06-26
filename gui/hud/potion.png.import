@@ -7,10 +7,7 @@ path="res://.import/potion.png-e945c13d3c9d80726089f8018dfa36c6.stex"
 [deps]
 
 source_file="res://gui/hud/potion.png"
-source_md5="e00b68bf10265bf2a2ceb79e4c1af718"
-
 dest_files=[ "res://.import/potion.png-e945c13d3c9d80726089f8018dfa36c6.stex" ]
-dest_md5="0cff9c3d81d6f6a22a5c230d108e05c3"
 
 [params]
 

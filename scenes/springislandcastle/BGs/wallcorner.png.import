@@ -7,10 +7,7 @@ path="res://.import/wallcorner.png-edd1ee13fb11da35557264780b9f8319.stex"
 [deps]
 
 source_file="res://scenes/springislandcastle/BGs/wallcorner.png"
-source_md5="9e7de9c295b6e4dd74dc12b6c25af853"
-
 dest_files=[ "res://.import/wallcorner.png-edd1ee13fb11da35557264780b9f8319.stex" ]
-dest_md5="c46c8b3964f734f21ceb8ed232ed0155"
 
 [params]
 

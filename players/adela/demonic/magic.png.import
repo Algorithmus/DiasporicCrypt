@@ -7,10 +7,7 @@ path="res://.import/magic.png-09cad63015a3843724a4899192d77df6.stex"
 [deps]
 
 source_file="res://players/adela/demonic/magic.png"
-source_md5="6dbd20c043426395aba61505f62375c9"
-
 dest_files=[ "res://.import/magic.png-09cad63015a3843724a4899192d77df6.stex" ]
-dest_md5="d4cd71afe18ed5938ed71d50850be7b7"
 
 [params]
 

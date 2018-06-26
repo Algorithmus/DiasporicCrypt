@@ -7,10 +7,7 @@ path="res://.import/bat.png-07aa5c8e2c65c0bfc5d7f09da8da2bd7.stex"
 [deps]
 
 source_file="res://gui/loading/bat.png"
-source_md5="d4abd1aa08b064d9a9e145d730440194"
-
 dest_files=[ "res://.import/bat.png-07aa5c8e2c65c0bfc5d7f09da8da2bd7.stex" ]
-dest_md5="942a35cf1363ce899e56da03e4c616ee"
 
 [params]
 

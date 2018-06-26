@@ -7,10 +7,7 @@ path="res://.import/altar.png-0e4c2c81d8acc15293f47af60d1b7419.stex"
 [deps]
 
 source_file="res://scenes/savepoint/altar.png"
-source_md5="5579febbc4423a9adbae1b109e54769e"
-
 dest_files=[ "res://.import/altar.png-0e4c2c81d8acc15293f47af60d1b7419.stex" ]
-dest_md5="91811503502f3fc63d5bf56cef1b446d"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/mirror.png-63d6dc8c87e5420d960f4ef55f103af3.stex"
 [deps]
 
 source_file="res://scenes/fallislandcastle/BGs/mirror.png"
-source_md5="9437360cc22171674a4a5713404a3d59"
-
 dest_files=[ "res://.import/mirror.png-63d6dc8c87e5420d960f4ef55f103af3.stex" ]
-dest_md5="6a3d8b030f9d22ff1af1ea986b4838d0"
 
 [params]
 

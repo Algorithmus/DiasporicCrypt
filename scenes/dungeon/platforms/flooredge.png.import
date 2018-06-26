@@ -7,10 +7,7 @@ path="res://.import/flooredge.png-76aa1f502b09cc451f7324125ff7e6ea.stex"
 [deps]
 
 source_file="res://scenes/dungeon/platforms/flooredge.png"
-source_md5="b0deb366fa95338e30bb4c23aaab3854"
-
 dest_files=[ "res://.import/flooredge.png-76aa1f502b09cc451f7324125ff7e6ea.stex" ]
-dest_md5="9b0905da34903f1b2300b4e90ce4ec10"
 
 [params]
 

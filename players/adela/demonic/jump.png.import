@@ -7,10 +7,7 @@ path="res://.import/jump.png-dfd4c8f4e2e3cffd99d144e05bd3cdcf.stex"
 [deps]
 
 source_file="res://players/adela/demonic/jump.png"
-source_md5="f69f3a84fcc1161e6127506ab1d406fa"
-
 dest_files=[ "res://.import/jump.png-dfd4c8f4e2e3cffd99d144e05bd3cdcf.stex" ]
-dest_md5="1d168c1700de8160423e2a91cafbaf3b"
 
 [params]
 

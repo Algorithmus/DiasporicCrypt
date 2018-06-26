@@ -7,10 +7,7 @@ path="res://.import/emeraldkey.png-16f514b8c2669e59e94beb0aa1bbbd1a.stex"
 [deps]
 
 source_file="res://scenes/items/special/emeraldkey.png"
-source_md5="3e0d17f357575e2b17c3ebbdd39a2669"
-
 dest_files=[ "res://.import/emeraldkey.png-16f514b8c2669e59e94beb0aa1bbbd1a.stex" ]
-dest_md5="3b632a60d65400722752beeb87fd3df0"
 
 [params]
 

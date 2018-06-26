@@ -7,10 +7,7 @@ path="res://.import/sopranoline.png-0131ada3e0703742601fe0322dcfc3a3.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/boss/sopranoline.png"
-source_md5="abf302a43208419a90946e24326a0686"
-
 dest_files=[ "res://.import/sopranoline.png-0131ada3e0703742601fe0322dcfc3a3.stex" ]
-dest_md5="b5d10e24008583cfd5502624c0b122ff"
 
 [params]
 

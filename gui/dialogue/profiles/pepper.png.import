@@ -7,10 +7,7 @@ path="res://.import/pepper.png-92c5de047bb64e0f7d855b90f0a46798.stex"
 [deps]
 
 source_file="res://gui/dialogue/profiles/pepper.png"
-source_md5="183f38ce4abe07021b06f8e41e71c570"
-
 dest_files=[ "res://.import/pepper.png-92c5de047bb64e0f7d855b90f0a46798.stex" ]
-dest_md5="abb3dbb88276d15acd6b5fa5e3c56982"
 
 [params]
 

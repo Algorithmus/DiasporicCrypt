@@ -7,10 +7,7 @@ path="res://.import/styxfigurine.png-25b039d86104af4d476abd3925a08202.stex"
 [deps]
 
 source_file="res://scenes/items/special/styxfigurine.png"
-source_md5="1870d777f17e0748e2abd80d3ecd669c"
-
 dest_files=[ "res://.import/styxfigurine.png-25b039d86104af4d476abd3925a08202.stex" ]
-dest_md5="c1345200bf2d2b68e3763af4066df581"
 
 [params]
 

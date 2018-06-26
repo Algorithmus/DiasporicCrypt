@@ -7,10 +7,7 @@ path="res://.import/bgtilegradient.png-17efd3e97fa91149980fce9278128903.stex"
 [deps]
 
 source_file="res://scenes/dungeon/BGs/bgtilegradient.png"
-source_md5="50ba4d32619959185bc31d6b204d83f3"
-
 dest_files=[ "res://.import/bgtilegradient.png-17efd3e97fa91149980fce9278128903.stex" ]
-dest_md5="e4c85040e50a370b1e112573314a85fd"
 
 [params]
 

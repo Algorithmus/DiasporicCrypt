@@ -7,10 +7,7 @@ path="res://.import/jaw.png-560ccf6dacdd64c3a652bf1cedc52fb2.stex"
 [deps]
 
 source_file="res://scenes/lavacave/boss/jaw.png"
-source_md5="d0baa1a4c496e19653160babd11cea2c"
-
 dest_files=[ "res://.import/jaw.png-560ccf6dacdd64c3a652bf1cedc52fb2.stex" ]
-dest_md5="889cf9abd2e50152c94945d4c5804dca"
 
 [params]
 

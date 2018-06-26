@@ -7,10 +7,7 @@ path="res://.import/cat.png-69de324789d0e71d7da1513ced2c62d6.stex"
 [deps]
 
 source_file="res://scenes/savepoint/cat.png"
-source_md5="c5111cc10278bb148f0b04c1dcdb811d"
-
 dest_files=[ "res://.import/cat.png-69de324789d0e71d7da1513ced2c62d6.stex" ]
-dest_md5="82c80f8be5c9f71452660b9f9dab5dcd"
 
 [params]
 

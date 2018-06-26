@@ -7,10 +7,7 @@ path="res://.import/nero.png-9f758994a706713cad9b63c4443d362f.stex"
 [deps]
 
 source_file="res://gui/dialogue/profiles/nero.png"
-source_md5="b5167e3741b830f1d96efd6ef1cdecc2"
-
 dest_files=[ "res://.import/nero.png-9f758994a706713cad9b63c4443d362f.stex" ]
-dest_md5="ae89abb305a65588e54a75e0235e49e8"
 
 [params]
 

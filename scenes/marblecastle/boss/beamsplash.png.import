@@ -7,10 +7,7 @@ path="res://.import/beamsplash.png-ed70465b459a86b95964fe1c188bc931.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/boss/beamsplash.png"
-source_md5="48271b68b5775e69c3522ec1e1b8ad52"
-
 dest_files=[ "res://.import/beamsplash.png-ed70465b459a86b95964fe1c188bc931.stex" ]
-dest_md5="9c20547c5f052feea63b8fbb3f3c7c5b"
 
 [params]
 

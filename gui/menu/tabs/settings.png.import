@@ -7,10 +7,7 @@ path="res://.import/settings.png-9c176e238a81d94af267fe26c92bdd4f.stex"
 [deps]
 
 source_file="res://gui/menu/tabs/settings.png"
-source_md5="2fb7daa7d3cfd3ae03d7d85495f4c707"
-
 dest_files=[ "res://.import/settings.png-9c176e238a81d94af267fe26c92bdd4f.stex" ]
-dest_md5="df4f817df77134250b73b6b08b81988c"
 
 [params]
 

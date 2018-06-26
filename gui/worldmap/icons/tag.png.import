@@ -7,10 +7,7 @@ path="res://.import/tag.png-ddba9c299f71f42b8bca8150d4d0480e.stex"
 [deps]
 
 source_file="res://gui/worldmap/icons/tag.png"
-source_md5="2cd983dcc12efef423049ab73492ff62"
-
 dest_files=[ "res://.import/tag.png-ddba9c299f71f42b8bca8150d4d0480e.stex" ]
-dest_md5="566cd15eb6efc681523ca3027c71a1cf"
 
 [params]
 

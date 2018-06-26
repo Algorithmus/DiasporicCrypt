@@ -7,10 +7,7 @@ path="res://.import/dgaattack.png-be32d9421921cb6cc1753f2888075107.stex"
 [deps]
 
 source_file="res://players/adela/demonic/dgaattack.png"
-source_md5="e2174c88c42abb4f483e13e1faffd871"
-
 dest_files=[ "res://.import/dgaattack.png-be32d9421921cb6cc1753f2888075107.stex" ]
-dest_md5="03ae4719ea6f1d6825720eae18376811"
 
 [params]
 

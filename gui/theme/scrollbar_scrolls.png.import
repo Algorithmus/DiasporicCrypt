@@ -7,10 +7,7 @@ path="res://.import/scrollbar_scrolls.png-ae3adfb5823b82bc7ddcb3d9ceca1531.stex"
 [deps]
 
 source_file="res://gui/theme/scrollbar_scrolls.png"
-source_md5="6c846cd77d0ecde20f6e8ea0565c8034"
-
 dest_files=[ "res://.import/scrollbar_scrolls.png-ae3adfb5823b82bc7ddcb3d9ceca1531.stex" ]
-dest_md5="8476086542e506128002c1cd04818e59"
 
 [params]
 

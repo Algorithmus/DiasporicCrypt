@@ -7,10 +7,7 @@ path="res://.import/scrollscroll.png-159e9dcce8fb89e136ffb6360f45729a.stex"
 [deps]
 
 source_file="res://gui/menu/scrollscroll.png"
-source_md5="44aa8231c0f6a0bb25aeafaaf419a4dd"
-
 dest_files=[ "res://.import/scrollscroll.png-159e9dcce8fb89e136ffb6360f45729a.stex" ]
-dest_md5="47b88fe0b23418ed56c8b189937157ab"
 
 [params]
 

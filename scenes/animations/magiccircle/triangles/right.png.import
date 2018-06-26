@@ -7,10 +7,7 @@ path="res://.import/right.png-9a08168ff128a383bf0807c167b0f02e.stex"
 [deps]
 
 source_file="res://scenes/animations/magiccircle/triangles/right.png"
-source_md5="c6edeb27d3e3bad6f3f999fe541e38d6"
-
 dest_files=[ "res://.import/right.png-9a08168ff128a383bf0807c167b0f02e.stex" ]
-dest_md5="cc4c4c2bd695ba864ee5fc3b590241bf"
 
 [params]
 

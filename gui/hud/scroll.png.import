@@ -7,10 +7,7 @@ path="res://.import/scroll.png-b2baa23f6fec9bb5ee1bac1db32dfd43.stex"
 [deps]
 
 source_file="res://gui/hud/scroll.png"
-source_md5="6ad82b5637ec582441006b3b9a8e710a"
-
 dest_files=[ "res://.import/scroll.png-b2baa23f6fec9bb5ee1bac1db32dfd43.stex" ]
-dest_md5="92df7777796babe29ff5f4b05c7107a2"
 
 [params]
 

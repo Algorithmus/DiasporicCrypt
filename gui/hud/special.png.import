@@ -7,10 +7,7 @@ path="res://.import/special.png-1aee8a6a464b0a76d8f707f68d7a80e8.stex"
 [deps]
 
 source_file="res://gui/hud/special.png"
-source_md5="3d02a61c17d65cf989c861d8001df870"
-
 dest_files=[ "res://.import/special.png-1aee8a6a464b0a76d8f707f68d7a80e8.stex" ]
-dest_md5="84e0e223a0cbccc6a6018a5e0e0e6fc7"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/wall.png-6f064c3ce662d75eee7fc36099e8efa6.stex"
 [deps]
 
 source_file="res://scenes/icecave/BGs/wall.png"
-source_md5="4c4bf6c17fdda1c1964bd1ac1ba8c981"
-
 dest_files=[ "res://.import/wall.png-6f064c3ce662d75eee7fc36099e8efa6.stex" ]
-dest_md5="56a05007ff95fbc8b8ea71edd30edfc9"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/charge.wav-d23de9bdf44a794c4dc4a2b572402587.sample"
 [deps]
 
 source_file="res://players/magic/hex/charge.wav"
-source_md5="deebe9f1028867d871b35d449bc48353"
-
 dest_files=[ "res://.import/charge.wav-d23de9bdf44a794c4dc4a2b572402587.sample" ]
-dest_md5="23618d22ba515a9f451f76f20f4a5e4a"
 
 [params]
 

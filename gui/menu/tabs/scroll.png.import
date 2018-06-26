@@ -7,10 +7,7 @@ path="res://.import/scroll.png-42266bc0fb3dc81838c4a3dfdf70070c.stex"
 [deps]
 
 source_file="res://gui/menu/tabs/scroll.png"
-source_md5="525e33cabe696198bb6bec1a9a8ff430"
-
 dest_files=[ "res://.import/scroll.png-42266bc0fb3dc81838c4a3dfdf70070c.stex" ]
-dest_md5="dd26463ffbc9742234a2ab303cce8ba5"
 
 [params]
 

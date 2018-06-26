@@ -7,10 +7,7 @@ path="res://.import/altohead.png-af0e241ee968724880864fdeede78ea0.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/boss/altohead.png"
-source_md5="8bed71c1fb54a24ce5614c203cdab760"
-
 dest_files=[ "res://.import/altohead.png-af0e241ee968724880864fdeede78ea0.stex" ]
-dest_md5="2fb7719181b81a374c0490a47eb4344b"
 
 [params]
 

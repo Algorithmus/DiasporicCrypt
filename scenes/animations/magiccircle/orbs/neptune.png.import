@@ -7,10 +7,7 @@ path="res://.import/neptune.png-2e0877e1d188a88b9a2c16f78b8eb8ef.stex"
 [deps]
 
 source_file="res://scenes/animations/magiccircle/orbs/neptune.png"
-source_md5="303ab00d8b010c0ee80bc8bdab05aec2"
-
 dest_files=[ "res://.import/neptune.png-2e0877e1d188a88b9a2c16f78b8eb8ef.stex" ]
-dest_md5="4e6ffdb5d39b832c2a770a8f100b904b"
 
 [params]
 

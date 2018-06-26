@@ -7,10 +7,7 @@ path="res://.import/whipswing.wav-ed3bf80652ec9205deee44e5c91514a5.sample"
 [deps]
 
 source_file="res://players/adela/actions/whipswing.wav"
-source_md5="1344a739296ceeaf5c972d08ac518609"
-
 dest_files=[ "res://.import/whipswing.wav-ed3bf80652ec9205deee44e5c91514a5.sample" ]
-dest_md5="8f9586f82309ac8c73a49ec5031baa2e"
 
 [params]
 

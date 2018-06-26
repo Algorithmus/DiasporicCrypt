@@ -7,10 +7,7 @@ path="res://.import/complete.png-d1591bfe16ccbb59c840aa98f201e4e4.stex"
 [deps]
 
 source_file="res://gui/menu/icons/complete.png"
-source_md5="93f3119c517bfb22736dede56ad3926f"
-
 dest_files=[ "res://.import/complete.png-d1591bfe16ccbb59c840aa98f201e4e4.stex" ]
-dest_md5="750edfcf4f68b6ece09795b8033d4059"
 
 [params]
 

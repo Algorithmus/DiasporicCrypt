@@ -7,10 +7,7 @@ path="res://.import/beam.png-4a16ef5176e129ac120e6c6aa9184673.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/boss/beam.png"
-source_md5="aed4aeb77a94b73a49104dbf54d5fe11"
-
 dest_files=[ "res://.import/beam.png-4a16ef5176e129ac120e6c6aa9184673.stex" ]
-dest_md5="7496e9579dcc8073b37002cce882d666"
 
 [params]
 

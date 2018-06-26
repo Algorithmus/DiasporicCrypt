@@ -7,10 +7,7 @@ path="res://.import/ledge2.png-0ffad4c6f1fbd0cf6dfe4bba3ebb127f.stex"
 [deps]
 
 source_file="res://scenes/springislandcastle/BGs/ledge2.png"
-source_md5="d61f564e05f0659fc1d5e82d7b8a910c"
-
 dest_files=[ "res://.import/ledge2.png-0ffad4c6f1fbd0cf6dfe4bba3ebb127f.stex" ]
-dest_md5="3e9be8560c181ab07229304c9546333b"
 
 [params]
 

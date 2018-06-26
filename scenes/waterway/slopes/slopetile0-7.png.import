@@ -7,10 +7,7 @@ path="res://.import/slopetile0-7.png-bb4c00078faab126d983bd9409e01614.stex"
 [deps]
 
 source_file="res://scenes/waterway/slopes/slopetile0-7.png"
-source_md5="0f9311468fd95f35fcee48c21f9ce42e"
-
 dest_files=[ "res://.import/slopetile0-7.png-bb4c00078faab126d983bd9409e01614.stex" ]
-dest_md5="4df7478804627f04c59906e6ea1d6898"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/stump.png-a9bf694b820aded1064bac2bb3cc32cf.stex"
 [deps]
 
 source_file="res://scenes/forest/BGs/stump.png"
-source_md5="b9c8941d1e1807ca0bbfd74b241ec9fb"
-
 dest_files=[ "res://.import/stump.png-a9bf694b820aded1064bac2bb3cc32cf.stex" ]
-dest_md5="3098271575fc51f60ba3794143658c7c"
 
 [params]
 

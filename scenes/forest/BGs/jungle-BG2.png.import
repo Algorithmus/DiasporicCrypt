@@ -7,10 +7,7 @@ path="res://.import/jungle-BG2.png-33a77d4b42c406c869f4f355cff15af8.stex"
 [deps]
 
 source_file="res://scenes/forest/BGs/jungle-BG2.png"
-source_md5="7b41e6060f903fba649e924dde725349"
-
 dest_files=[ "res://.import/jungle-BG2.png-33a77d4b42c406c869f4f355cff15af8.stex" ]
-dest_md5="769e03f6ac860c35153325c2dbe63e65"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/void.wav-08b98fffaac0a9b1a81a83e6c41eadce.sample"
 [deps]
 
 source_file="res://players/magic/void/void.wav"
-source_md5="745276f30fb2c2a9302ecbdc92c1789e"
-
 dest_files=[ "res://.import/void.wav-08b98fffaac0a9b1a81a83e6c41eadce.sample" ]
-dest_md5="c613bbad7464448346cff00b2e7758a9"
 
 [params]
 

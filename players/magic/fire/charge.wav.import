@@ -7,10 +7,7 @@ path="res://.import/charge.wav-85afa25992de85df1436b96b8940bc3e.sample"
 [deps]
 
 source_file="res://players/magic/fire/charge.wav"
-source_md5="b5a54b139628707ee50431fb299921ca"
-
 dest_files=[ "res://.import/charge.wav-85afa25992de85df1436b96b8940bc3e.sample" ]
-dest_md5="ba0d01c7ebd6ce045a7bfd74eaf29003"
 
 [params]
 

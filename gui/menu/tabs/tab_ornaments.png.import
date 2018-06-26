@@ -7,10 +7,7 @@ path="res://.import/tab_ornaments.png-44b5f49d4d009d0716a58a59117e7dea.stex"
 [deps]
 
 source_file="res://gui/menu/tabs/tab_ornaments.png"
-source_md5="aef0bfde93e8ee339a8ef14c50f42e48"
-
 dest_files=[ "res://.import/tab_ornaments.png-44b5f49d4d009d0716a58a59117e7dea.stex" ]
-dest_md5="a22e2c6d78568cd143dcc0b64a0eec05"
 
 [params]
 

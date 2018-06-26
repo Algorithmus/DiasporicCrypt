@@ -7,10 +7,7 @@ path="res://.import/itemscroll.png-3100e0a15cd44fab553e3d1c18963b5b.stex"
 [deps]
 
 source_file="res://gui/menu/itemscroll.png"
-source_md5="93ab71ff3ff3cd00b7a2b4157509861b"
-
 dest_files=[ "res://.import/itemscroll.png-3100e0a15cd44fab553e3d1c18963b5b.stex" ]
-dest_md5="8396c28eee232a2aa49ec8b532fb89ef"
 
 [params]
 

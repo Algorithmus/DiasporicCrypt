@@ -7,10 +7,7 @@ path="res://.import/HPGauge.png-c334943ba8e156a3206e4f64b75a3df5.stex"
 [deps]
 
 source_file="res://gui/hud/HPGauge.png"
-source_md5="c63079403bd10a173d6447842e4a3208"
-
 dest_files=[ "res://.import/HPGauge.png-c334943ba8e156a3206e4f64b75a3df5.stex" ]
-dest_md5="0444be87541406f64432c053ebb74f57"
 
 [params]
 

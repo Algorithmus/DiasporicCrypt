@@ -7,10 +7,7 @@ path="res://.import/dwhip.png-dd993c92433973554c98d299a54efb20.stex"
 [deps]
 
 source_file="res://players/adela/attacks/dwhip.png"
-source_md5="c0b414b991fb56a896a6f2065bb8cbaa"
-
 dest_files=[ "res://.import/dwhip.png-dd993c92433973554c98d299a54efb20.stex" ]
-dest_md5="59bb50be5a1b6064b2fa3d6d38741bf0"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/topazkey.png-61171621bdae5c3eaa175caedc5f2725.stex"
 [deps]
 
 source_file="res://scenes/items/special/topazkey.png"
-source_md5="19fcb20bdb662ecdd4eac99ef30df098"
-
 dest_files=[ "res://.import/topazkey.png-61171621bdae5c3eaa175caedc5f2725.stex" ]
-dest_md5="a6ca617dfa7d12b7e34dd63a1df1833a"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/daura.png-f81ce1d6dee4b7e1c4e1058052638b9d.stex"
 [deps]
 
 source_file="res://players/friederich/attacks/daura.png"
-source_md5="05be17a3af6793a99bc7af5f850be615"
-
 dest_files=[ "res://.import/daura.png-f81ce1d6dee4b7e1c4e1058052638b9d.stex" ]
-dest_md5="63c401b69fa83a0938b7e62e8b8055e3"
 
 [params]
 

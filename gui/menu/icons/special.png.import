@@ -7,10 +7,7 @@ path="res://.import/special.png-918517c505157d1528c6415e1b21613d.stex"
 [deps]
 
 source_file="res://gui/menu/icons/special.png"
-source_md5="f6f50794098fdaf26173ef6623664e7d"
-
 dest_files=[ "res://.import/special.png-918517c505157d1528c6415e1b21613d.stex" ]
-dest_md5="2e5330bd97a67ab8a8f2f33a0ca329b2"
 
 [params]
 

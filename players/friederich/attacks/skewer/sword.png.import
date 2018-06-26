@@ -7,10 +7,7 @@ path="res://.import/sword.png-cb56ec2891ef91baf5b3be773ee29610.stex"
 [deps]
 
 source_file="res://players/friederich/attacks/skewer/sword.png"
-source_md5="66486a406bbb1eb093538f1eafb70579"
-
 dest_files=[ "res://.import/sword.png-cb56ec2891ef91baf5b3be773ee29610.stex" ]
-dest_md5="441779af7c2bafedc7fb31c6c161a225"
 
 [params]
 

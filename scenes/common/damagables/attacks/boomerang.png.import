@@ -7,10 +7,7 @@ path="res://.import/boomerang.png-705ddbd25bd2eb5a3c7fa62061eaaf77.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/attacks/boomerang.png"
-source_md5="2e1c2526ae4e66a5e8ce011973d3ea2c"
-
 dest_files=[ "res://.import/boomerang.png-705ddbd25bd2eb5a3c7fa62061eaaf77.stex" ]
-dest_md5="8a333dfdbe4c47d85d4f358094bc8499"
 
 [params]
 

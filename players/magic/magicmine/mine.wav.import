@@ -7,10 +7,7 @@ path="res://.import/mine.wav-b3aa35e8c2063ea3013831e0913125b6.sample"
 [deps]
 
 source_file="res://players/magic/magicmine/mine.wav"
-source_md5="2440dc12065558a037d322ff86d81232"
-
 dest_files=[ "res://.import/mine.wav-b3aa35e8c2063ea3013831e0913125b6.sample" ]
-dest_md5="c0f89799835cc90aa8c23a068b0da306"
 
 [params]
 

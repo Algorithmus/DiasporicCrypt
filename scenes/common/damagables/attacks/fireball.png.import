@@ -7,10 +7,7 @@ path="res://.import/fireball.png-3b8a4efeb425d41e85e3271cac9a5873.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/attacks/fireball.png"
-source_md5="dc50508313d8323b841413267bb096c8"
-
 dest_files=[ "res://.import/fireball.png-3b8a4efeb425d41e85e3271cac9a5873.stex" ]
-dest_md5="b1d2e1e4ec7a66cdcaad6811652248b1"
 
 [params]
 

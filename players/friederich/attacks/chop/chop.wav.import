@@ -7,10 +7,7 @@ path="res://.import/chop.wav-6ef2187c173bf33c8de68ce917b5ae74.sample"
 [deps]
 
 source_file="res://players/friederich/attacks/chop/chop.wav"
-source_md5="2a5de13af62876e43d4952980ebc771f"
-
 dest_files=[ "res://.import/chop.wav-6ef2187c173bf33c8de68ce917b5ae74.sample" ]
-dest_md5="69bd583248e239b4a87ba29b41593988"
 
 [params]
 

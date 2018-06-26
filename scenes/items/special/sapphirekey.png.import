@@ -7,10 +7,7 @@ path="res://.import/sapphirekey.png-4dd69766c070fee7b0f4c3127b487c34.stex"
 [deps]
 
 source_file="res://scenes/items/special/sapphirekey.png"
-source_md5="d951dd674fe2dd9d568e587f048a18a0"
-
 dest_files=[ "res://.import/sapphirekey.png-4dd69766c070fee7b0f4c3127b487c34.stex" ]
-dest_md5="929e307ef0af9e7684824c41e9480711"
 
 [params]
 

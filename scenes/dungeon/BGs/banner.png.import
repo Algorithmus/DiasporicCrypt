@@ -7,10 +7,7 @@ path="res://.import/banner.png-d13457feeedeadb9fa74356748a49396.stex"
 [deps]
 
 source_file="res://scenes/dungeon/BGs/banner.png"
-source_md5="b0f18afef55d752e3991b7ece037d3ee"
-
 dest_files=[ "res://.import/banner.png-d13457feeedeadb9fa74356748a49396.stex" ]
-dest_md5="6a91ebe951c4fede827e064cfee1e702"
 
 [params]
 

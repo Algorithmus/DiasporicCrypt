@@ -7,10 +7,7 @@ path="res://.import/stone.png-8350d0875b981c345fc94d47ce290ff3.stex"
 [deps]
 
 source_file="res://players/magic/earth/stone.png"
-source_md5="4e7e890372bf5c43559c1873bfd1e4a8"
-
 dest_files=[ "res://.import/stone.png-8350d0875b981c345fc94d47ce290ff3.stex" ]
-dest_md5="69d9dbcc94d6e2e2b914fe094d1e02e9"
 
 [params]
 

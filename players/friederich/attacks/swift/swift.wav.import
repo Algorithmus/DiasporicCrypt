@@ -7,10 +7,7 @@ path="res://.import/swift.wav-5ce5ea760a0974ab55e0aeca5f33773c.sample"
 [deps]
 
 source_file="res://players/friederich/attacks/swift/swift.wav"
-source_md5="d5b7c421a34204d9cc41a7972641a150"
-
 dest_files=[ "res://.import/swift.wav-5ce5ea760a0974ab55e0aeca5f33773c.sample" ]
-dest_md5="ffe7ebafddc8fe50d7f99cef6c606622"
 
 [params]
 

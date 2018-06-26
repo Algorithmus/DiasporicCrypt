@@ -7,10 +7,7 @@ path="res://.import/swordBG.png-0014501dfdc077c5f9393a8b5b489c5b.stex"
 [deps]
 
 source_file="res://players/friederich/attacks/dualspin/swordBG.png"
-source_md5="4d0a2dc62b146c82de3f20886dfd8c94"
-
 dest_files=[ "res://.import/swordBG.png-0014501dfdc077c5f9393a8b5b489c5b.stex" ]
-dest_md5="69ed9cfaff7e10d02e9af75e2579aa43"
 
 [params]
 

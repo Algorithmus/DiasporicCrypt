@@ -7,10 +7,7 @@ path="res://.import/crackedflooredge.png-a097359fdd0f76a82996235b4febf2ab.stex"
 [deps]
 
 source_file="res://scenes/dungeon/platforms/crackedflooredge.png"
-source_md5="35506edbe0723f0c27a9cef2ad55edf2"
-
 dest_files=[ "res://.import/crackedflooredge.png-a097359fdd0f76a82996235b4febf2ab.stex" ]
-dest_md5="a773ed13034f9c8f919ac37214033097"
 
 [params]
 

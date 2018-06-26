@@ -7,10 +7,7 @@ path="res://.import/pullswitch.png-bac7bb6c828438bcc6ab1e11b3449e51.stex"
 [deps]
 
 source_file="res://scenes/common/switches/pullswitch.png"
-source_md5="c688d395e61dd93c22612468ae6e5f06"
-
 dest_files=[ "res://.import/pullswitch.png-bac7bb6c828438bcc6ab1e11b3449e51.stex" ]
-dest_md5="75bbb0f3ce9889dbe4285d48d79e1352"
 
 [params]
 

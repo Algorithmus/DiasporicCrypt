@@ -7,10 +7,7 @@ path="res://.import/gianteyeball.png-03be24416f9136ea873468227ca5d455.stex"
 [deps]
 
 source_file="res://scenes/holyruins/boss/gianteyeball.png"
-source_md5="ba4176051330d75a705ffae6242902c0"
-
 dest_files=[ "res://.import/gianteyeball.png-03be24416f9136ea873468227ca5d455.stex" ]
-dest_md5="1b4639a90be3a8d8144bbc5b9f98b0a1"
 
 [params]
 

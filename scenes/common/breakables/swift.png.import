@@ -7,10 +7,7 @@ path="res://.import/swift.png-54128d2cbd835cdd78aed9542ad9a6b0.stex"
 [deps]
 
 source_file="res://scenes/common/breakables/swift.png"
-source_md5="a25ba75b61a5ddc53f363b257b427539"
-
 dest_files=[ "res://.import/swift.png-54128d2cbd835cdd78aed9542ad9a6b0.stex" ]
-dest_md5="6bb766f1dd6c46e5b8b21dffcf3464b6"
 
 [params]
 

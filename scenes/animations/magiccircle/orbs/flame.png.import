@@ -7,10 +7,7 @@ path="res://.import/flame.png-2b313971d5bd908aa1464c18783f9623.stex"
 [deps]
 
 source_file="res://scenes/animations/magiccircle/orbs/flame.png"
-source_md5="8a26a0df7540b465262ad9c001baeb64"
-
 dest_files=[ "res://.import/flame.png-2b313971d5bd908aa1464c18783f9623.stex" ]
-dest_md5="85dbda93bbe18026bb38a2377281f846"
 
 [params]
 

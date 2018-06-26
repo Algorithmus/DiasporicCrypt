@@ -7,10 +7,7 @@ path="res://.import/dgattack.png-dca29263550c70c2674b65ddb6d4c26d.stex"
 [deps]
 
 source_file="res://players/adela/dgattack.png"
-source_md5="36a8c51ebd1bef4cdf14aa38d73256f1"
-
 dest_files=[ "res://.import/dgattack.png-dca29263550c70c2674b65ddb6d4c26d.stex" ]
-dest_md5="5a739e7f982e8a7f76bc7dfe946278d2"
 
 [params]
 

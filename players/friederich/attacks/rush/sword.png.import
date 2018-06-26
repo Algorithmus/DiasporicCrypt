@@ -7,10 +7,7 @@ path="res://.import/sword.png-5e60039a2892bca40adbd76910989e94.stex"
 [deps]
 
 source_file="res://players/friederich/attacks/rush/sword.png"
-source_md5="e8e4d91d919e17ddbd21dd43028a40ba"
-
 dest_files=[ "res://.import/sword.png-5e60039a2892bca40adbd76910989e94.stex" ]
-dest_md5="49e9a4dab4fb978946af8b2089fc8a28"
 
 [params]
 

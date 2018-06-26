@@ -7,10 +7,7 @@ path="res://.import/M-15-options.sv.png-589db240a125ebd9219301cb44753c2a.stex"
 [deps]
 
 source_file="res://gui/fonts/M-15-options.sv.png"
-source_md5="57e2c76360476f82a726040b835a7f23"
-
 dest_files=[ "res://.import/M-15-options.sv.png-589db240a125ebd9219301cb44753c2a.stex" ]
-dest_md5="47fd2ee379c7732140445b23aa8e4836"
 
 [params]
 

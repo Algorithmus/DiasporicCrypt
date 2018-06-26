@@ -7,10 +7,7 @@ path="res://.import/stardust.png-e8d1e93c1c4fa973485cac2170dc47b3.stex"
 [deps]
 
 source_file="res://scenes/animations/stardust.png"
-source_md5="76141fc09eaf8165c237326dc047837d"
-
 dest_files=[ "res://.import/stardust.png-e8d1e93c1c4fa973485cac2170dc47b3.stex" ]
-dest_md5="452001e75be19db49bf52a9a8cd9121f"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/wall.png-5c836776c8ed4761985824c05a33fd8d.stex"
 [deps]
 
 source_file="res://scenes/lavacave/BGs/wall.png"
-source_md5="28ce7cde2190c32ae50684debca17191"
-
 dest_files=[ "res://.import/wall.png-5c836776c8ed4761985824c05a33fd8d.stex" ]
-dest_md5="2d5d03ee43fc55d0999ae025ff643278"
 
 [params]
 

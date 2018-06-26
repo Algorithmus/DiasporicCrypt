@@ -7,10 +7,7 @@ path="res://.import/gemgate.png-564d2df28bf96a591db924e076acc82d.stex"
 [deps]
 
 source_file="res://scenes/common/gemgate.png"
-source_md5="aae6b188362c9e0c7eef8c796811a084"
-
 dest_files=[ "res://.import/gemgate.png-564d2df28bf96a591db924e076acc82d.stex" ]
-dest_md5="2765e741e6548fa5170fc9873be67d25"
 
 [params]
 

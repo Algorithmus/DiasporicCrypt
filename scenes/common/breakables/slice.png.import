@@ -7,10 +7,7 @@ path="res://.import/slice.png-5fbd1aecec4a9057807ab9fba84be840.stex"
 [deps]
 
 source_file="res://scenes/common/breakables/slice.png"
-source_md5="8182b13cd55f5fcf86c00c86e78492fb"
-
 dest_files=[ "res://.import/slice.png-5fbd1aecec4a9057807ab9fba84be840.stex" ]
-dest_md5="3c32585296bde1cbd17fda90631f85d9"
 
 [params]
 

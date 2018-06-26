@@ -7,10 +7,7 @@ path="res://.import/star.png-67de8083ee9c3fce839278772bad0856.stex"
 [deps]
 
 source_file="res://scenes/common/star.png"
-source_md5="bc2a0818e25599745df21b11138f8936"
-
 dest_files=[ "res://.import/star.png-67de8083ee9c3fce839278772bad0856.stex" ]
-dest_md5="ee0634e754fc3d3130a6fe711a5d9c95"
 
 [params]
 

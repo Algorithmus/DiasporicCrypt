@@ -7,10 +7,7 @@ path="res://.import/hangblock.png-e0e54883717af75ec872f4d90e4f539b.stex"
 [deps]
 
 source_file="res://scenes/common/hangblock.png"
-source_md5="b800d90efb976bfd9be111792243aab8"
-
 dest_files=[ "res://.import/hangblock.png-e0e54883717af75ec872f4d90e4f539b.stex" ]
-dest_md5="6caa49fbebb3dfc11ebf4bc9e19a1661"
 
 [params]
 

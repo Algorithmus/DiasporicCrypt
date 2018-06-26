@@ -7,10 +7,7 @@ path="res://.import/amulet.png-65a15de90469baaa64e1ca6a904bc26a.stex"
 [deps]
 
 source_file="res://scenes/items/special/amulet.png"
-source_md5="6fc8fa18ef9c629f112e705c6e8765d5"
-
 dest_files=[ "res://.import/amulet.png-65a15de90469baaa64e1ca6a904bc26a.stex" ]
-dest_md5="4647d35f1ba72957cee8a479fe69cf2e"
 
 [params]
 

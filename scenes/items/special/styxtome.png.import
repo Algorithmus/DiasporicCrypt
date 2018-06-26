@@ -7,10 +7,7 @@ path="res://.import/styxtome.png-ad898bfd020302465ba64f94a151ea70.stex"
 [deps]
 
 source_file="res://scenes/items/special/styxtome.png"
-source_md5="b8c08f3044f91275a9d425aaf1d9b2af"
-
 dest_files=[ "res://.import/styxtome.png-ad898bfd020302465ba64f94a151ea70.stex" ]
-dest_md5="4c8b9663fbe084736c8adec7bd28137e"
 
 [params]
 

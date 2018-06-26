@@ -7,10 +7,7 @@ path="res://.import/hammer.png-9e374b19556ddc45c85950b3c5d9c532.stex"
 [deps]
 
 source_file="res://scenes/bergfortress/boss/hammer.png"
-source_md5="6fc357409b2eb1e7852538325d53b6a3"
-
 dest_files=[ "res://.import/hammer.png-9e374b19556ddc45c85950b3c5d9c532.stex" ]
-dest_md5="5567f50ee06ca112ce17b848f3c9b119"
 
 [params]
 

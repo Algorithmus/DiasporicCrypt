@@ -7,10 +7,7 @@ path="res://.import/attack.png-bb308d02bc823d59c151cc03c6f13191.stex"
 [deps]
 
 source_file="res://players/friederich/attacks/void/attack.png"
-source_md5="72ea1a6d24f680c4e858ecb5da6475ec"
-
 dest_files=[ "res://.import/attack.png-bb308d02bc823d59c151cc03c6f13191.stex" ]
-dest_md5="8d3a14bccc1c435657a451f72c518dff"
 
 [params]
 

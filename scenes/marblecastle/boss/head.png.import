@@ -7,10 +7,7 @@ path="res://.import/head.png-ed32de14bfbefaeab08a7c12edec5ae8.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/boss/head.png"
-source_md5="373f735a51fbb8247cb3713f1b8dbd5d"
-
 dest_files=[ "res://.import/head.png-ed32de14bfbefaeab08a7c12edec5ae8.stex" ]
-dest_md5="e202d67e9199fb9f08178dcc6ba1b14e"
 
 [params]
 

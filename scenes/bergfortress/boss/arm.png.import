@@ -7,10 +7,7 @@ path="res://.import/arm.png-af25573e156aa409195004376c98d319.stex"
 [deps]
 
 source_file="res://scenes/bergfortress/boss/arm.png"
-source_md5="40e515d7855a2e8914a6cd6439322e4c"
-
 dest_files=[ "res://.import/arm.png-af25573e156aa409195004376c98d319.stex" ]
-dest_md5="da3abb3a3c55ddf5aa73265d280b3a49"
 
 [params]
 

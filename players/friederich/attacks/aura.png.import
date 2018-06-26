@@ -7,10 +7,7 @@ path="res://.import/aura.png-48600a6daadbf02454b153c076f5b7c2.stex"
 [deps]
 
 source_file="res://players/friederich/attacks/aura.png"
-source_md5="d9b0223cfe4840a5030f31a0d9585160"
-
 dest_files=[ "res://.import/aura.png-48600a6daadbf02454b153c076f5b7c2.stex" ]
-dest_md5="8280f35ef4d538bfd32407c0430c75cb"
 
 [params]
 

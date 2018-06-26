@@ -7,10 +7,7 @@ path="res://.import/friederich.png-31096e5e48cd7559ac0f61f1559dd86b.stex"
 [deps]
 
 source_file="res://gui/dialogue/profiles/friederich.png"
-source_md5="f719a59688c0beeefc6bc558fa739791"
-
 dest_files=[ "res://.import/friederich.png-31096e5e48cd7559ac0f61f1559dd86b.stex" ]
-dest_md5="eea7cec0d9250727af0b473611d23298"
 
 [params]
 

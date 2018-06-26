@@ -7,10 +7,7 @@ path="res://.import/tabBG.png-dee52873194bd13eb594f9c9528c52fc.stex"
 [deps]
 
 source_file="res://gui/menu/tabs/tabBG.png"
-source_md5="3032b22a91cf4fd87c0fb48ceb7d4eb2"
-
 dest_files=[ "res://.import/tabBG.png-dee52873194bd13eb594f9c9528c52fc.stex" ]
-dest_md5="042cce807fedf2d991e47a20ea878024"
 
 [params]
 

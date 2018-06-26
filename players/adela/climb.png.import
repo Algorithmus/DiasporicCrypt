@@ -7,10 +7,7 @@ path="res://.import/climb.png-d5115cfe05f0db01d5cf3c1b9dc39169.stex"
 [deps]
 
 source_file="res://players/adela/climb.png"
-source_md5="161be2021954b4eefc8d141ae5a87712"
-
 dest_files=[ "res://.import/climb.png-d5115cfe05f0db01d5cf3c1b9dc39169.stex" ]
-dest_md5="30158360d2715fca12a9f873d6acff32"
 
 [params]
 

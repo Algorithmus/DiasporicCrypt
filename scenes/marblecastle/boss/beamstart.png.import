@@ -7,10 +7,7 @@ path="res://.import/beamstart.png-b87b68af0deda1422cfbc57486dcdcb2.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/boss/beamstart.png"
-source_md5="ed07df8b63e236db6300454fbb3e5f5b"
-
 dest_files=[ "res://.import/beamstart.png-b87b68af0deda1422cfbc57486dcdcb2.stex" ]
-dest_md5="33eac7caf3ab8e8ad2235615aefa959b"
 
 [params]
 

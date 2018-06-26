@@ -7,10 +7,7 @@ path="res://.import/magic.png-c0097b3bb29edd79fe9c44cc935aa944.stex"
 [deps]
 
 source_file="res://players/friederich/magic.png"
-source_md5="29e5edd588eebb148175e287bb726446"
-
 dest_files=[ "res://.import/magic.png-c0097b3bb29edd79fe9c44cc935aa944.stex" ]
-dest_md5="3b188076b46a4fa5b5b38c827a6c3f96"
 
 [params]
 

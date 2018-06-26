@@ -7,10 +7,7 @@ path="res://.import/slopetile0-31.png-de3e69003ccc7a7ef6061ded68fe4a37.stex"
 [deps]
 
 source_file="res://scenes/dungeon/slopes/slopetile0-31.png"
-source_md5="596ee4ecc1a4845dbdd9d69d8188bd93"
-
 dest_files=[ "res://.import/slopetile0-31.png-de3e69003ccc7a7ef6061ded68fe4a37.stex" ]
-dest_md5="88c2986daafcfb7ed4435907fb003313"
 
 [params]
 

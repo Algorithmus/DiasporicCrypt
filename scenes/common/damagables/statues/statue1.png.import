@@ -7,10 +7,7 @@ path="res://.import/statue1.png-a8aa68dbfb9d099fe5e2d42ca1ca8fcd.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/statues/statue1.png"
-source_md5="143ef180ac4cb40f60584e63bf768b3c"
-
 dest_files=[ "res://.import/statue1.png-a8aa68dbfb9d099fe5e2d42ca1ca8fcd.stex" ]
-dest_md5="e29efe4048b848d00718aab55eb5edb2"
 
 [params]
 

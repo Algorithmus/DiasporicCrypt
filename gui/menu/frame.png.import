@@ -7,10 +7,7 @@ path="res://.import/frame.png-dd6be7d999199b51a0643e7a90c524bb.stex"
 [deps]
 
 source_file="res://gui/menu/frame.png"
-source_md5="a088f7d9a7c2f5a8eb47952d9e66aff6"
-
 dest_files=[ "res://.import/frame.png-dd6be7d999199b51a0643e7a90c524bb.stex" ]
-dest_md5="0a55c976f8752a3df1e62814103a1177"
 
 [params]
 

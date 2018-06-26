@@ -7,10 +7,7 @@ path="res://.import/fishhead.png-2c2a36e32dd188b4fd964b3f549ab0d9.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/attacks/fishhead.png"
-source_md5="e9131e899db0a20fe6adadad26f71de6"
-
 dest_files=[ "res://.import/fishhead.png-2c2a36e32dd188b4fd964b3f549ab0d9.stex" ]
-dest_md5="21fae4ed4be2fc8257e16bf41d236123"
 
 [params]
 

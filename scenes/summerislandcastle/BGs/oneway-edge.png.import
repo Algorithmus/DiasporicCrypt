@@ -7,10 +7,7 @@ path="res://.import/oneway-edge.png-87c699127312b74ffef5069afb083adb.stex"
 [deps]
 
 source_file="res://scenes/summerislandcastle/BGs/oneway-edge.png"
-source_md5="caca9a0096fbd66f73a027c0b1e3f3f5"
-
 dest_files=[ "res://.import/oneway-edge.png-87c699127312b74ffef5069afb083adb.stex" ]
-dest_md5="4bcf0ee8bf4c4e617e3948e6ea7fd0f7"
 
 [params]
 

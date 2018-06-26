@@ -7,10 +7,7 @@ path="res://.import/choice.png-4a472b16f9509420cc9a77baef4ec87e.stex"
 [deps]
 
 source_file="res://gui/dialogue/choice.png"
-source_md5="de359f19e05ad3bd324cf7f402f2dadf"
-
 dest_files=[ "res://.import/choice.png-4a472b16f9509420cc9a77baef4ec87e.stex" ]
-dest_md5="bdcff93055116c0a97da70241a389a0a"
 
 [params]
 

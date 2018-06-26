@@ -7,10 +7,7 @@ path="res://.import/wall.png-7a845f143fe83742e1916f86a6fdda9b.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/BGs/wall.png"
-source_md5="648dd4f14f729b595b537bd40c3755f4"
-
 dest_files=[ "res://.import/wall.png-7a845f143fe83742e1916f86a6fdda9b.stex" ]
-dest_md5="bbfa86c251fadedf911728a60a74b596"
 
 [params]
 

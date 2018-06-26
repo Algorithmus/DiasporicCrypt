@@ -7,10 +7,7 @@ path="res://.import/web3.png-13afdd98d1b5b2729adf4f3452f89a9b.stex"
 [deps]
 
 source_file="res://scenes/catacombs/solids/web3.png"
-source_md5="07b38c7dbdd185e43a7a34f88094dcae"
-
 dest_files=[ "res://.import/web3.png-13afdd98d1b5b2729adf4f3452f89a9b.stex" ]
-dest_md5="e224c5bd62dd1200ad16ff12f9e2f450"
 
 [params]
 

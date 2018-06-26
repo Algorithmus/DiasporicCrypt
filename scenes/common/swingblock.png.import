@@ -7,10 +7,7 @@ path="res://.import/swingblock.png-8755b7f109a74b02257abec5a1a3a091.stex"
 [deps]
 
 source_file="res://scenes/common/swingblock.png"
-source_md5="38587a2e58ef885c8120f822c359cb85"
-
 dest_files=[ "res://.import/swingblock.png-8755b7f109a74b02257abec5a1a3a091.stex" ]
-dest_md5="0ab80696304577132aedb6019b2fe4a5"
 
 [params]
 

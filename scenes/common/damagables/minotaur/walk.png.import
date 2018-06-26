@@ -7,10 +7,7 @@ path="res://.import/walk.png-4995d0abb641bb1fb4425e6c790bb7e8.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/minotaur/walk.png"
-source_md5="d1356e082566432c416d6a87993124a7"
-
 dest_files=[ "res://.import/walk.png-4995d0abb641bb1fb4425e6c790bb7e8.stex" ]
-dest_md5="28bba4d39f6e8b531527225a5f4c3d1f"
 
 [params]
 

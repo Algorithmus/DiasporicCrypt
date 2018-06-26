@@ -7,10 +7,7 @@ path="res://.import/bg.png-8e3098357a542ee4a5664d03d75dc80f.stex"
 [deps]
 
 source_file="res://gui/global/bg.png"
-source_md5="b19b8483561c99232c473f90222698b4"
-
 dest_files=[ "res://.import/bg.png-8e3098357a542ee4a5664d03d75dc80f.stex" ]
-dest_md5="3b836e9d414dcd6bd7ad51590b6a9d9a"
 
 [params]
 

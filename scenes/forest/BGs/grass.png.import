@@ -7,10 +7,7 @@ path="res://.import/grass.png-8538d552e5f3dfbae130a5395b99dd88.stex"
 [deps]
 
 source_file="res://scenes/forest/BGs/grass.png"
-source_md5="61557f4b97799084b112cd4eb69d68e6"
-
 dest_files=[ "res://.import/grass.png-8538d552e5f3dfbae130a5395b99dd88.stex" ]
-dest_md5="e7f1263b4f08dbd80c8b544ce02dba0b"
 
 [params]
 

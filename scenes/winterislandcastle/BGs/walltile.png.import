@@ -7,10 +7,7 @@ path="res://.import/walltile.png-3113b04d97eefa83a6388cc118f7ea9b.stex"
 [deps]
 
 source_file="res://scenes/winterislandcastle/BGs/walltile.png"
-source_md5="0d5dc5f83a59d2979464ce53ecf5b837"
-
 dest_files=[ "res://.import/walltile.png-3113b04d97eefa83a6388cc118f7ea9b.stex" ]
-dest_md5="6498769b8396c29a92c6c1ce5029925a"
 
 [params]
 

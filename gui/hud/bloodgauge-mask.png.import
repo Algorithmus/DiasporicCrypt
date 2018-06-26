@@ -7,10 +7,7 @@ path="res://.import/bloodgauge-mask.png-d272e83a91f20bf0e0b6cc3acfa6bd4d.stex"
 [deps]
 
 source_file="res://gui/hud/bloodgauge-mask.png"
-source_md5="ad784c76378fa5ec990a9711d6e47d97"
-
 dest_files=[ "res://.import/bloodgauge-mask.png-d272e83a91f20bf0e0b6cc3acfa6bd4d.stex" ]
-dest_md5="cc4285b762a925b4ab8bb23602756a56"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/head.png-e6a7a71d454685dd899ee0f7959bb01a.stex"
 [deps]
 
 source_file="res://scenes/lavacave/boss/head.png"
-source_md5="f39653532b669f38e3835f60d647c840"
-
 dest_files=[ "res://.import/head.png-e6a7a71d454685dd899ee0f7959bb01a.stex" ]
-dest_md5="1ef9e0525dc87e52a5bbc6e06e800d8b"
 
 [params]
 

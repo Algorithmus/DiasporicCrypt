@@ -7,10 +7,7 @@ path="res://.import/midfloorblock.png-54a96436f7577e20a2a72de1ba9f884e.stex"
 [deps]
 
 source_file="res://scenes/dungeon/platforms/midfloorblock.png"
-source_md5="80c268853794acb8de44265e889de9a0"
-
 dest_files=[ "res://.import/midfloorblock.png-54a96436f7577e20a2a72de1ba9f884e.stex" ]
-dest_md5="7c498bf9beebde7961dadea3db3ba310"
 
 [params]
 

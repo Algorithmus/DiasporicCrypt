@@ -7,10 +7,7 @@ path="res://.import/target.png-034638f6285f39cd5a4089e0de0406a4.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/target.png"
-source_md5="e76af4b7574bd673242345430bfc7a16"
-
 dest_files=[ "res://.import/target.png-034638f6285f39cd5a4089e0de0406a4.stex" ]
-dest_md5="72da0a345385aa1313099822f5b7c7dc"
 
 [params]
 

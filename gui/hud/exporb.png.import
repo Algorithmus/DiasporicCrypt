@@ -7,10 +7,7 @@ path="res://.import/exporb.png-00131bf81958d5012739609583fdc2f4.stex"
 [deps]
 
 source_file="res://gui/hud/exporb.png"
-source_md5="397ac3ac2c40ee6d2fcbddf2042ddaf6"
-
 dest_files=[ "res://.import/exporb.png-00131bf81958d5012739609583fdc2f4.stex" ]
-dest_md5="30b94d30f0e26a6e937ac82379c0f30f"
 
 [params]
 

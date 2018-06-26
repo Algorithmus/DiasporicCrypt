@@ -7,10 +7,7 @@ path="res://.import/bonus.png-981b70e1d2291b8cbae00309810b2bc5.stex"
 [deps]
 
 source_file="res://gui/worldmap/icons/bonus.png"
-source_md5="d0111f46130ac192d73b17f9a5ebd2f3"
-
 dest_files=[ "res://.import/bonus.png-981b70e1d2291b8cbae00309810b2bc5.stex" ]
-dest_md5="def1d81c80fdb72eeb08266c20b299fb"
 
 [params]
 

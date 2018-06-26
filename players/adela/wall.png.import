@@ -7,10 +7,7 @@ path="res://.import/wall.png-2bfbc834b413899ce56665c76ecc0928.stex"
 [deps]
 
 source_file="res://players/adela/wall.png"
-source_md5="fce4257c3180e0fa013de64cb168cda2"
-
 dest_files=[ "res://.import/wall.png-2bfbc834b413899ce56665c76ecc0928.stex" ]
-dest_md5="7dec3909a12cf91ed0e6cc836554ebf3"
 
 [params]
 

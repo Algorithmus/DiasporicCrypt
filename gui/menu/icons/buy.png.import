@@ -7,10 +7,7 @@ path="res://.import/buy.png-d3a1deb769ab1cb28a296af4768aa06f.stex"
 [deps]
 
 source_file="res://gui/menu/icons/buy.png"
-source_md5="e00659f948b440de7e07ab40acc8293d"
-
 dest_files=[ "res://.import/buy.png-d3a1deb769ab1cb28a296af4768aa06f.stex" ]
-dest_md5="51feefb89ef67ec750386bf6afb7f2c0"
 
 [params]
 

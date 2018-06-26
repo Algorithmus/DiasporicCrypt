@@ -7,10 +7,7 @@ path="res://.import/floor.png-18e28eeb950ad5ba2a0566ba9f106d83.stex"
 [deps]
 
 source_file="res://scenes/mausoleum/BGs/floor.png"
-source_md5="38cfdbb8fbd106f9abdd218bc4807544"
-
 dest_files=[ "res://.import/floor.png-18e28eeb950ad5ba2a0566ba9f106d83.stex" ]
-dest_md5="41a08751e587790184c67bb4a07907ff"
 
 [params]
 

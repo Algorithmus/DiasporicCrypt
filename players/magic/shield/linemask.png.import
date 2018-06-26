@@ -7,10 +7,7 @@ path="res://.import/linemask.png-fc0d5eed0628bbbcc66fb45ccf0dfd1d.stex"
 [deps]
 
 source_file="res://players/magic/shield/linemask.png"
-source_md5="c80654c8763d20b0ae2e0a3e8f759d7b"
-
 dest_files=[ "res://.import/linemask.png-fc0d5eed0628bbbcc66fb45ccf0dfd1d.stex" ]
-dest_md5="be1e8eaaa31dd043296c91931845fdaa"
 
 [params]
 

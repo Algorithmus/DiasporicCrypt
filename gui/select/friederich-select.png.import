@@ -7,10 +7,7 @@ path="res://.import/friederich-select.png-94b796ec9591e265e227b8b8dd53ea67.stex"
 [deps]
 
 source_file="res://gui/select/friederich-select.png"
-source_md5="88270ed55f7b9756c2fccec2ed2445cb"
-
 dest_files=[ "res://.import/friederich-select.png-94b796ec9591e265e227b8b8dd53ea67.stex" ]
-dest_md5="e4159729dde72e90fdb108dbc1f9f1ef"
 
 [params]
 

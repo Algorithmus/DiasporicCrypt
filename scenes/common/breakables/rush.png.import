@@ -7,10 +7,7 @@ path="res://.import/rush.png-85928c74c88f2206b5d9fa2c14d7234d.stex"
 [deps]
 
 source_file="res://scenes/common/breakables/rush.png"
-source_md5="2b75ec375d5e57c5bf79e2ac3fe7dba8"
-
 dest_files=[ "res://.import/rush.png-85928c74c88f2206b5d9fa2c14d7234d.stex" ]
-dest_md5="feff8ade0cccebce04e2ce0636a58d41"
 
 [params]
 

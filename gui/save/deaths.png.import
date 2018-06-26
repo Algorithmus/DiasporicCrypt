@@ -7,10 +7,7 @@ path="res://.import/deaths.png-9db49c034e10ee476b0cf76fd95dca41.stex"
 [deps]
 
 source_file="res://gui/save/deaths.png"
-source_md5="2ce2a82be135c4dadec07f1e3afc7330"
-
 dest_files=[ "res://.import/deaths.png-9db49c034e10ee476b0cf76fd95dca41.stex" ]
-dest_md5="95af0cbd208819f6476fe077d34c52ad"
 
 [params]
 

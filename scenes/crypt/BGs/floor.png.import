@@ -7,10 +7,7 @@ path="res://.import/floor.png-7804196694c2c4511339404599ee2af1.stex"
 [deps]
 
 source_file="res://scenes/crypt/BGs/floor.png"
-source_md5="441d926ecdd9d99c2aef547d3b2355bd"
-
 dest_files=[ "res://.import/floor.png-7804196694c2c4511339404599ee2af1.stex" ]
-dest_md5="3cbb5fc69a4d76b91c68b21a8757df6a"
 
 [params]
 

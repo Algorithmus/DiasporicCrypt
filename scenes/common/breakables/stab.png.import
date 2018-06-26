@@ -7,10 +7,7 @@ path="res://.import/stab.png-0a5dbf7d0867bd11e0080bd976106595.stex"
 [deps]
 
 source_file="res://scenes/common/breakables/stab.png"
-source_md5="ec3e528e1491e2744fa096f4bce67726"
-
 dest_files=[ "res://.import/stab.png-0a5dbf7d0867bd11e0080bd976106595.stex" ]
-dest_md5="e587763874d0a03f43e22598b162ae5a"
 
 [params]
 

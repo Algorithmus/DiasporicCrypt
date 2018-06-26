@@ -7,10 +7,7 @@ path="res://.import/tenorrubble.png-8e48d49f24b8fa01870d344b3d50d572.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/boss/tenorrubble.png"
-source_md5="e398a3ec72d74029bce723350c669a66"
-
 dest_files=[ "res://.import/tenorrubble.png-8e48d49f24b8fa01870d344b3d50d572.stex" ]
-dest_md5="a21c0bde54e132a25fd9bfc54c83622a"
 
 [params]
 

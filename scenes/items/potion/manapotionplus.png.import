@@ -7,10 +7,7 @@ path="res://.import/manapotionplus.png-6f346b54a5e1acd6005465b045af17d1.stex"
 [deps]
 
 source_file="res://scenes/items/potion/manapotionplus.png"
-source_md5="126b23337cfe63db4a201cdff94e8d44"
-
 dest_files=[ "res://.import/manapotionplus.png-6f346b54a5e1acd6005465b045af17d1.stex" ]
-dest_md5="7de7a1f41adf2005fe8506fc366fd537"
 
 [params]
 

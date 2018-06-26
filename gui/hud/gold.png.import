@@ -7,10 +7,7 @@ path="res://.import/gold.png-6998584c780e3abf979b9e65afce4a17.stex"
 [deps]
 
 source_file="res://gui/hud/gold.png"
-source_md5="6dca0089fc20e9315d9df58e29c61b11"
-
 dest_files=[ "res://.import/gold.png-6998584c780e3abf979b9e65afce4a17.stex" ]
-dest_md5="1f17d58ea598b2731b3c256fc0b86ce4"
 
 [params]
 

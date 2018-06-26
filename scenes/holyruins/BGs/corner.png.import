@@ -7,10 +7,7 @@ path="res://.import/corner.png-5a5bbc58949b17dc4e92e71a637abfff.stex"
 [deps]
 
 source_file="res://scenes/holyruins/BGs/corner.png"
-source_md5="ebee96b97585687800385cb5869bc455"
-
 dest_files=[ "res://.import/corner.png-5a5bbc58949b17dc4e92e71a637abfff.stex" ]
-dest_md5="6a77ea67576d8d4090ecef5206532814"
 
 [params]
 

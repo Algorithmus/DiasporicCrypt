@@ -7,10 +7,7 @@ path="res://.import/boss.png-ca39e69e0faf91a279cf9d0146360256.stex"
 [deps]
 
 source_file="res://gui/worldmap/icons/boss.png"
-source_md5="5434674d9aa9031cead144ecacefcc6b"
-
 dest_files=[ "res://.import/boss.png-ca39e69e0faf91a279cf9d0146360256.stex" ]
-dest_md5="13ce0fe65a0e52a380d74f69e8db0c0b"
 
 [params]
 

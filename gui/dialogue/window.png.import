@@ -7,10 +7,7 @@ path="res://.import/window.png-b0d2bf1231f0178603ad61439d46a25b.stex"
 [deps]
 
 source_file="res://gui/dialogue/window.png"
-source_md5="83e567bc116ab3e7ac79e569f67cc1e5"
-
 dest_files=[ "res://.import/window.png-b0d2bf1231f0178603ad61439d46a25b.stex" ]
-dest_md5="9d451e44535e3a8ecb66fb4153b695bd"
 
 [params]
 

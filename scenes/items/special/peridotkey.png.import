@@ -7,10 +7,7 @@ path="res://.import/peridotkey.png-075ccdbd5a66113388d858d6a78d30af.stex"
 [deps]
 
 source_file="res://scenes/items/special/peridotkey.png"
-source_md5="f8a90dd5eaafa17b498c948501ed3c28"
-
 dest_files=[ "res://.import/peridotkey.png-075ccdbd5a66113388d858d6a78d30af.stex" ]
-dest_md5="5dce9cb4ee696776ceb455aad9414fc0"
 
 [params]
 

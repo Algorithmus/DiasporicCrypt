@@ -7,10 +7,7 @@ path="res://.import/pillar-corner.png-2e5520e6fbb3662ceab1c0493e49ea9f.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/BGs/pillar-corner.png"
-source_md5="4da70dab36587358449adb2b44d8d4ef"
-
 dest_files=[ "res://.import/pillar-corner.png-2e5520e6fbb3662ceab1c0493e49ea9f.stex" ]
-dest_md5="27baa4b9158d67e65edf402cb7ccdbb8"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/hurt.png-3e83b2a83ebe737821c39389e2945200.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/minotaur/hurt.png"
-source_md5="4b74d25fdb145c719b636f99e46e80b1"
-
 dest_files=[ "res://.import/hurt.png-3e83b2a83ebe737821c39389e2945200.stex" ]
-dest_md5="983b3b7109a455cf87f65ac9cc02b6c4"
 
 [params]
 

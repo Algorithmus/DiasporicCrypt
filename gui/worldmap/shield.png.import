@@ -7,10 +7,7 @@ path="res://.import/shield.png-355bf4461f82742924b6a623b788aefe.stex"
 [deps]
 
 source_file="res://gui/worldmap/shield.png"
-source_md5="a6162f1821e5939b00653867fd257d9a"
-
 dest_files=[ "res://.import/shield.png-355bf4461f82742924b6a623b788aefe.stex" ]
-dest_md5="095a2b34cd762fa7925d37fcdb0b5687"
 
 [params]
 

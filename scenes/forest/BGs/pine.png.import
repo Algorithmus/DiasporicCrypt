@@ -7,10 +7,7 @@ path="res://.import/pine.png-de302c0aa4bee0b2b759f4b6825e38b0.stex"
 [deps]
 
 source_file="res://scenes/forest/BGs/pine.png"
-source_md5="514ac8ada4a808394f229c56e599b1a9"
-
 dest_files=[ "res://.import/pine.png-de302c0aa4bee0b2b759f4b6825e38b0.stex" ]
-dest_md5="60e399cf621afb7bd546023d5639953a"
 
 [params]
 

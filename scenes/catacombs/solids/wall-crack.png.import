@@ -7,10 +7,7 @@ path="res://.import/wall-crack.png-b96f61bcf2b24a13da32a563f87ca9c5.stex"
 [deps]
 
 source_file="res://scenes/catacombs/solids/wall-crack.png"
-source_md5="d79022f78d8a35d04f6412a86d0a6db3"
-
 dest_files=[ "res://.import/wall-crack.png-b96f61bcf2b24a13da32a563f87ca9c5.stex" ]
-dest_md5="e9c26f641a6b2a65804bb3c335d77bea"
 
 [params]
 

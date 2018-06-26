@@ -7,10 +7,7 @@ path="res://.import/coffin.png-256883dec22247fbfd0a3e8092c6f212.stex"
 [deps]
 
 source_file="res://scenes/catacombs/solids/coffin.png"
-source_md5="5108bbcdeadae717ea7f59653c3fe693"
-
 dest_files=[ "res://.import/coffin.png-256883dec22247fbfd0a3e8092c6f212.stex" ]
-dest_md5="db089c8ca87323073672ba8be69729b2"
 
 [params]
 

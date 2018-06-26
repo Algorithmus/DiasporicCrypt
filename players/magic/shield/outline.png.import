@@ -7,10 +7,7 @@ path="res://.import/outline.png-8039a8ca6086813a8ca93501a43c20c0.stex"
 [deps]
 
 source_file="res://players/magic/shield/outline.png"
-source_md5="2fbdc78a132cc47f7e37a96b7658773f"
-
 dest_files=[ "res://.import/outline.png-8039a8ca6086813a8ca93501a43c20c0.stex" ]
-dest_md5="e6dcb210c8612511326b72a987bb9176"
 
 [params]
 

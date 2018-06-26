@@ -7,10 +7,7 @@ path="res://.import/slopetile0-31.png-11ac444a59da32f904266df05d4c413b.stex"
 [deps]
 
 source_file="res://scenes/summerislandcastle/slopes/slopetile0-31.png"
-source_md5="1aa43d4c87360fa612994fa2240800dc"
-
 dest_files=[ "res://.import/slopetile0-31.png-11ac444a59da32f904266df05d4c413b.stex" ]
-dest_md5="b2f7584f7c618110828fcccc9f5fcb70"
 
 [params]
 

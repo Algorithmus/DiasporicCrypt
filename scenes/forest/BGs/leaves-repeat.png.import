@@ -7,10 +7,7 @@ path="res://.import/leaves-repeat.png-f34926825b1378b4acd26f5aedfbb264.stex"
 [deps]
 
 source_file="res://scenes/forest/BGs/leaves-repeat.png"
-source_md5="d00245ae93d3cd1ee11ba1c11c112470"
-
 dest_files=[ "res://.import/leaves-repeat.png-f34926825b1378b4acd26f5aedfbb264.stex" ]
-dest_md5="8ff2849af3a483f201fdd7a28c7b420f"
 
 [params]
 

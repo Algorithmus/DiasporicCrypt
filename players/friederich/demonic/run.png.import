@@ -7,10 +7,7 @@ path="res://.import/run.png-22fb52acc309fe7622b4cb2a7a48244f.stex"
 [deps]
 
 source_file="res://players/friederich/demonic/run.png"
-source_md5="3391b6be364873dd1806585a2fc1bc68"
-
 dest_files=[ "res://.import/run.png-22fb52acc309fe7622b4cb2a7a48244f.stex" ]
-dest_md5="0ead9b8a2da25936c2d699f2462c4ea2"
 
 [params]
 

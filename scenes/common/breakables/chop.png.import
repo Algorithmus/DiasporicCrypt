@@ -7,10 +7,7 @@ path="res://.import/chop.png-55e8675cc61106dcf4afaf82965d93ba.stex"
 [deps]
 
 source_file="res://scenes/common/breakables/chop.png"
-source_md5="102e5c52d7b862944d9b801d39811d2f"
-
 dest_files=[ "res://.import/chop.png-55e8675cc61106dcf4afaf82965d93ba.stex" ]
-dest_md5="65eac6edde215433e79eb970b8a5da56"
 
 [params]
 

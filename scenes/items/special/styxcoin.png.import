@@ -7,10 +7,7 @@ path="res://.import/styxcoin.png-ce6d24940c32b2e91ea307a548583d28.stex"
 [deps]
 
 source_file="res://scenes/items/special/styxcoin.png"
-source_md5="fa215ac971dc970722a08bdc095461cd"
-
 dest_files=[ "res://.import/styxcoin.png-ce6d24940c32b2e91ea307a548583d28.stex" ]
-dest_md5="9002cbdd0033d33ddd3280da8d32f78f"
 
 [params]
 

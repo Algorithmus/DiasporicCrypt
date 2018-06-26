@@ -7,10 +7,7 @@ path="res://.import/movingplatform.png-1a7ff04dea04f0adfd0df441d4a5c96c.stex"
 [deps]
 
 source_file="res://scenes/dungeon/movingplatform/movingplatform.png"
-source_md5="3491d079afb1aba276712b1442796180"
-
 dest_files=[ "res://.import/movingplatform.png-1a7ff04dea04f0adfd0df441d4a5c96c.stex" ]
-dest_md5="3007f750013a73d8a23e85af2322bc98"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/run.png-10318ea9d29da2bb6d3838d08e11f5de.stex"
 [deps]
 
 source_file="res://players/adela/demonic/run.png"
-source_md5="4ea8d55e3df54f4f239c7eeb7f8ad70b"
-
 dest_files=[ "res://.import/run.png-10318ea9d29da2bb6d3838d08e11f5de.stex" ]
-dest_md5="28bb07bc3f61daef60788561b9e8179f"
 
 [params]
 

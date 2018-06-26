@@ -7,10 +7,7 @@ path="res://.import/floor-crack.png-bb6bcf9c11955ad01120c18cb41510a1.stex"
 [deps]
 
 source_file="res://scenes/catacombs/platforms/floor-crack.png"
-source_md5="385bb0bfe87e3d1cd75962dd4ca1871d"
-
 dest_files=[ "res://.import/floor-crack.png-bb6bcf9c11955ad01120c18cb41510a1.stex" ]
-dest_md5="4176bac9f27a4e7c0c1e587089af15c3"
 
 [params]
 

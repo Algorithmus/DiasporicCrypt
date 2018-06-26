@@ -7,10 +7,7 @@ path="res://.import/aattack.png-89d0a4a3e3286d982788acc4cccbe27b.stex"
 [deps]
 
 source_file="res://players/adela/aattack.png"
-source_md5="65bd2a56702f3c8f5b3c0652a1563d36"
-
 dest_files=[ "res://.import/aattack.png-89d0a4a3e3286d982788acc4cccbe27b.stex" ]
-dest_md5="74768fcf4d75b7664f72d0bd064d48f3"
 
 [params]
 

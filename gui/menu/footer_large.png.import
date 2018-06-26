@@ -7,10 +7,7 @@ path="res://.import/footer_large.png-138725d9621ed22808bb44e7117471a1.stex"
 [deps]
 
 source_file="res://gui/menu/footer_large.png"
-source_md5="74269195aa6ebfd62f5b630f63176bf9"
-
 dest_files=[ "res://.import/footer_large.png-138725d9621ed22808bb44e7117471a1.stex" ]
-dest_md5="a3ddfa5fede77600a66eaad93a4cf965"
 
 [params]
 

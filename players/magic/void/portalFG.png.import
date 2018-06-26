@@ -7,10 +7,7 @@ path="res://.import/portalFG.png-a9893aaeff817d5440178654594d0146.stex"
 [deps]
 
 source_file="res://players/magic/void/portalFG.png"
-source_md5="e93d491c75ca77c40595abbe3d89d395"
-
 dest_files=[ "res://.import/portalFG.png-a9893aaeff817d5440178654594d0146.stex" ]
-dest_md5="17d1e6c117afdb51c8c4fe44454d0915"
 
 [params]
 

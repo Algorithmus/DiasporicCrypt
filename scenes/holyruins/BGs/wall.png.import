@@ -7,10 +7,7 @@ path="res://.import/wall.png-9a2b716bd779b51f624b438dbd40a698.stex"
 [deps]
 
 source_file="res://scenes/holyruins/BGs/wall.png"
-source_md5="a37e110b224d23d5b429bc8dd6205214"
-
 dest_files=[ "res://.import/wall.png-9a2b716bd779b51f624b438dbd40a698.stex" ]
-dest_md5="e17a73232d9ae3f3b1acfa2d583e51a5"
 
 [params]
 

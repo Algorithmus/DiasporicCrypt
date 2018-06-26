@@ -7,10 +7,7 @@ path="res://.import/icon.png-94078ca3a1663a8abb13c1c5c8aba143.stex"
 [deps]
 
 source_file="res://players/magic/fire/icon.png"
-source_md5="9e1b08189bdb1c251a24a71b1fd29651"
-
 dest_files=[ "res://.import/icon.png-94078ca3a1663a8abb13c1c5c8aba143.stex" ]
-dest_md5="9324e8e074505934bd94d41b4caf126f"
 
 [params]
 

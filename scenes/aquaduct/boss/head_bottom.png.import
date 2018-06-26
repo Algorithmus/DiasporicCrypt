@@ -7,10 +7,7 @@ path="res://.import/head_bottom.png-be7765b5873547427b0d5ecec38e09c7.stex"
 [deps]
 
 source_file="res://scenes/aquaduct/boss/head_bottom.png"
-source_md5="7a1ece14845349030f179d5d6dec9fbe"
-
 dest_files=[ "res://.import/head_bottom.png-be7765b5873547427b0d5ecec38e09c7.stex" ]
-dest_md5="4bda96c5801ce61fb4ea4d9987ada0f3"
 
 [params]
 

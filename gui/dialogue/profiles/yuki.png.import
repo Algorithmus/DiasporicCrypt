@@ -7,10 +7,7 @@ path="res://.import/yuki.png-f8b5127b0874a21b2053bb9a8ecc9144.stex"
 [deps]
 
 source_file="res://gui/dialogue/profiles/yuki.png"
-source_md5="fa65be0a3eebe86806bd93705b70cff2"
-
 dest_files=[ "res://.import/yuki.png-f8b5127b0874a21b2053bb9a8ecc9144.stex" ]
-dest_md5="edb35519b238f6b24a9b0d7d6946bac1"
 
 [params]
 

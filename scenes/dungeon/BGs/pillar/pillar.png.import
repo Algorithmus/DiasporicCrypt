@@ -7,10 +7,7 @@ path="res://.import/pillar.png-c025befb5e73dc3cbdb81bca15d7f9b8.stex"
 [deps]
 
 source_file="res://scenes/dungeon/BGs/pillar/pillar.png"
-source_md5="c02211708107a438b3149837cd1028ce"
-
 dest_files=[ "res://.import/pillar.png-c025befb5e73dc3cbdb81bca15d7f9b8.stex" ]
-dest_md5="3ea2fe4c8a9437081f069090d51dc4b4"
 
 [params]
 

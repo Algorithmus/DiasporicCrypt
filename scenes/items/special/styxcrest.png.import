@@ -7,10 +7,7 @@ path="res://.import/styxcrest.png-0d06c3ebd9c9e7ef18d13c50806d2c17.stex"
 [deps]
 
 source_file="res://scenes/items/special/styxcrest.png"
-source_md5="d8b541a06b34d784bbd434c0ca15a88f"
-
 dest_files=[ "res://.import/styxcrest.png-0d06c3ebd9c9e7ef18d13c50806d2c17.stex" ]
-dest_md5="db418cc4f7d1e1d8a5fba6c8937d5f9f"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/down.png-1e7d179598312bf495ca360aad82de68.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/boss/down.png"
-source_md5="08b1dec77cf88f727a6d6cfbbe83fc97"
-
 dest_files=[ "res://.import/down.png-1e7d179598312bf495ca360aad82de68.stex" ]
-dest_md5="650d9dfe59943d42d14319ad8f92b687"
 
 [params]
 

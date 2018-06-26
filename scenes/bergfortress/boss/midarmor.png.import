@@ -7,10 +7,7 @@ path="res://.import/midarmor.png-551a0485ce80562813ef172af7f40884.stex"
 [deps]
 
 source_file="res://scenes/bergfortress/boss/midarmor.png"
-source_md5="37a94df9db74cf0970916d4b77dbaa9b"
-
 dest_files=[ "res://.import/midarmor.png-551a0485ce80562813ef172af7f40884.stex" ]
-dest_md5="829224782613aac3ddd850bc0de7f150"
 
 [params]
 

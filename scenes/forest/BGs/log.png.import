@@ -7,10 +7,7 @@ path="res://.import/log.png-157cee9182077c4af40cbf11d5accf91.stex"
 [deps]
 
 source_file="res://scenes/forest/BGs/log.png"
-source_md5="3b45145a205e705519f5e48f4144a5ae"
-
 dest_files=[ "res://.import/log.png-157cee9182077c4af40cbf11d5accf91.stex" ]
-dest_md5="cccd617e7d9c6ceb1c8ca5b771a79b24"
 
 [params]
 

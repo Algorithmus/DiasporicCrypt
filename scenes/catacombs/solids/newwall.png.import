@@ -7,10 +7,7 @@ path="res://.import/newwall.png-14dd000d17c32c420b67344daa57a1bd.stex"
 [deps]
 
 source_file="res://scenes/catacombs/solids/newwall.png"
-source_md5="30aca90968910d04598cf4eb9bc41081"
-
 dest_files=[ "res://.import/newwall.png-14dd000d17c32c420b67344daa57a1bd.stex" ]
-dest_md5="7ebe53b8ba25ca4a9540596f5f47e799"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/jawR.png-9111a44c6f5ed7e1c11ac20c48748c0e.stex"
 [deps]
 
 source_file="res://scenes/aquaduct/boss/jawR.png"
-source_md5="edb2cac91813183780e7f22f5d08fbd4"
-
 dest_files=[ "res://.import/jawR.png-9111a44c6f5ed7e1c11ac20c48748c0e.stex" ]
-dest_md5="4c9cac5add3975ec62f044ca6996bf9d"
 
 [params]
 

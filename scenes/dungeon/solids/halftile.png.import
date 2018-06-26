@@ -7,10 +7,7 @@ path="res://.import/halftile.png-cfba8525a60cfe14f8a689d2324b58aa.stex"
 [deps]
 
 source_file="res://scenes/dungeon/solids/halftile.png"
-source_md5="7f052fa9504b972989d7a58db5809301"
-
 dest_files=[ "res://.import/halftile.png-cfba8525a60cfe14f8a689d2324b58aa.stex" ]
-dest_md5="07a669eb426366b30ba057743344e2c4"
 
 [params]
 

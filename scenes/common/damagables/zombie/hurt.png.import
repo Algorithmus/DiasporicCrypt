@@ -7,10 +7,7 @@ path="res://.import/hurt.png-4d7f1308bc6e9a58398ccea998761880.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/zombie/hurt.png"
-source_md5="9de7099f751ebd68cbb417c21c8c2c71"
-
 dest_files=[ "res://.import/hurt.png-4d7f1308bc6e9a58398ccea998761880.stex" ]
-dest_md5="4fd60e54362f315b8a2e457c1dac44ba"
 
 [params]
 

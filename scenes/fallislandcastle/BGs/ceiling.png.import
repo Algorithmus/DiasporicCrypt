@@ -7,10 +7,7 @@ path="res://.import/ceiling.png-e449b8b0bfbde03a566237ed6b5cd82c.stex"
 [deps]
 
 source_file="res://scenes/fallislandcastle/BGs/ceiling.png"
-source_md5="313a1d38c2189651da48b9621db8b5c0"
-
 dest_files=[ "res://.import/ceiling.png-e449b8b0bfbde03a566237ed6b5cd82c.stex" ]
-dest_md5="a19338e3d3cd7cb523bdd0fa4dae1ef2"
 
 [params]
 

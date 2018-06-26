@@ -7,10 +7,7 @@ path="res://.import/ring.png-82bde5a253d703e9af03e208c4412adc.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/boss/ring.png"
-source_md5="cd517bfe71b0ad1648f4ad3c64a7b003"
-
 dest_files=[ "res://.import/ring.png-82bde5a253d703e9af03e208c4412adc.stex" ]
-dest_md5="acde2cd319e151ee59ec0ddb480b34b3"
 
 [params]
 

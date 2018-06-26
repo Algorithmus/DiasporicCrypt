@@ -7,10 +7,7 @@ path="res://.import/basshead.png-b6baa5ee2a379a3cf3654eaf3eb676a2.stex"
 [deps]
 
 source_file="res://scenes/marblecastle/boss/basshead.png"
-source_md5="c65c6b9b74629047ede196e311308bb8"
-
 dest_files=[ "res://.import/basshead.png-b6baa5ee2a379a3cf3654eaf3eb676a2.stex" ]
-dest_md5="153912bbebbed2d701d27a97ad53b6b8"
 
 [params]
 

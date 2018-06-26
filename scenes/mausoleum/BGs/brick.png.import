@@ -7,10 +7,7 @@ path="res://.import/brick.png-d7baab5311f2246fdeab205cecfa84f1.stex"
 [deps]
 
 source_file="res://scenes/mausoleum/BGs/brick.png"
-source_md5="16b063401099d55e7df5635fb8603838"
-
 dest_files=[ "res://.import/brick.png-d7baab5311f2246fdeab205cecfa84f1.stex" ]
-dest_md5="8972d996e0108df6ac01d57a22b2bc8b"
 
 [params]
 

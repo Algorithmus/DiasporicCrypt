@@ -7,10 +7,7 @@ path="res://.import/slopetile0-7.png-765f3207b838045e1e66fbfa7b47886c.stex"
 [deps]
 
 source_file="res://scenes/icecave/slopes/slopetile0-7.png"
-source_md5="8c445b2414c2ab245f08350ae7b72862"
-
 dest_files=[ "res://.import/slopetile0-7.png-765f3207b838045e1e66fbfa7b47886c.stex" ]
-dest_md5="7821a89ccb1a060cfef2a5ab16316a9e"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/potionplus.png-fcc94fabd50e16368ea590a29bf53a3d.stex"
 [deps]
 
 source_file="res://scenes/items/potion/potionplus.png"
-source_md5="77d7938cb031d14b3bf8bdb4d95dec0e"
-
 dest_files=[ "res://.import/potionplus.png-fcc94fabd50e16368ea590a29bf53a3d.stex" ]
-dest_md5="3c93fb5cbec9bfdaec63ab1d4f629b64"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/taevica.png-a8a0d0db45a7bbce037e198d98a17f28.stex"
 [deps]
 
 source_file="res://gui/dialogue/profiles/taevica.png"
-source_md5="9797d1c882d321753ac7bbb557a3aced"
-
 dest_files=[ "res://.import/taevica.png-a8a0d0db45a7bbce037e198d98a17f28.stex" ]
-dest_md5="c761fd6cca1073569db296a6b5c6f600"
 
 [params]
 

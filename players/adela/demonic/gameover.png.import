@@ -7,10 +7,7 @@ path="res://.import/gameover.png-b8f9a0a65d3c557eda6b8f05c3e49d94.stex"
 [deps]
 
 source_file="res://players/adela/demonic/gameover.png"
-source_md5="54c8bd385c1053ef7043371974301f80"
-
 dest_files=[ "res://.import/gameover.png-b8f9a0a65d3c557eda6b8f05c3e49d94.stex" ]
-dest_md5="3457519450111de1a02f6e78a7876eb1"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/thunder.wav-ade921479d374e62845ad9624a062921.sample"
 [deps]
 
 source_file="res://players/magic/thunder/thunder.wav"
-source_md5="d8f4895163e837d91cdd459868211986"
-
 dest_files=[ "res://.import/thunder.wav-ade921479d374e62845ad9624a062921.sample" ]
-dest_md5="db0ae525d9c2c77f6892097607d08e6e"
 
 [params]
 

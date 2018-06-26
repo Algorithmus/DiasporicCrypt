@@ -7,10 +7,7 @@ path="res://.import/attack.png-2fdb9ec84ce73fe7be784980f954e4c1.stex"
 [deps]
 
 source_file="res://players/magic/thunder/attack.png"
-source_md5="2e52b2ba3f0f583a3a0ee4e3cc09a99f"
-
 dest_files=[ "res://.import/attack.png-2fdb9ec84ce73fe7be784980f954e4c1.stex" ]
-dest_md5="31e6df4921362c8a8441d5627389bbb4"
 
 [params]
 

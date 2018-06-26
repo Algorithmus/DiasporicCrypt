@@ -7,10 +7,7 @@ path="res://.import/diamondkey.png-8184493832bf30e7072958b853baa483.stex"
 [deps]
 
 source_file="res://scenes/items/special/diamondkey.png"
-source_md5="22a8df56ad93aa26f60fe6a5051125cd"
-
 dest_files=[ "res://.import/diamondkey.png-8184493832bf30e7072958b853baa483.stex" ]
-dest_md5="a061e02d17e2628b6efcd0dc819b91ec"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/action.png-2f1ed9f570fc5d1419a6e63a1871b7e9.stex"
 [deps]
 
 source_file="res://players/magic/wind/action.png"
-source_md5="ee59324b50adb27032c766e91f63663e"
-
 dest_files=[ "res://.import/action.png-2f1ed9f570fc5d1419a6e63a1871b7e9.stex" ]
-dest_md5="a8b20ff5308673fd48e3be28dc0ad468"
 
 [params]
 

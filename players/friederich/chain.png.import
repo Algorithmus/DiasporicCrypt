@@ -7,10 +7,7 @@ path="res://.import/chain.png-9fa93fe41c57d8721be459f57c61477f.stex"
 [deps]
 
 source_file="res://players/friederich/chain.png"
-source_md5="f355045b1d1a45962207442c83398da5"
-
 dest_files=[ "res://.import/chain.png-9fa93fe41c57d8721be459f57c61477f.stex" ]
-dest_md5="beb0b4904c751d6f7fcc077260d5f806"
 
 [params]
 

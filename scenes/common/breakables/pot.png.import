@@ -7,10 +7,7 @@ path="res://.import/pot.png-f9396e3a98e0ea8c79eb9feddae031a6.stex"
 [deps]
 
 source_file="res://scenes/common/breakables/pot.png"
-source_md5="1c01095b9fa3a33f63b46b10a3fc89ed"
-
 dest_files=[ "res://.import/pot.png-f9396e3a98e0ea8c79eb9feddae031a6.stex" ]
-dest_md5="9a6a60b7bd323e6793c64572557de380"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/walk.png-6d9c09bddbe9369c959adff14dc2f941.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/skeleton/walk.png"
-source_md5="1e8f97f20e85411296a83aa32d072650"
-
 dest_files=[ "res://.import/walk.png-6d9c09bddbe9369c959adff14dc2f941.stex" ]
-dest_md5="def727f9b95897d7d7885d3ef2dfcce2"
 
 [params]
 

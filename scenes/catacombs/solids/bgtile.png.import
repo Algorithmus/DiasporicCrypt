@@ -7,10 +7,7 @@ path="res://.import/bgtile.png-f68f483bb2b2b552b6f14c590aa6f011.stex"
 [deps]
 
 source_file="res://scenes/catacombs/solids/bgtile.png"
-source_md5="14a72020e23c34b3b6443e4b77d9b1b2"
-
 dest_files=[ "res://.import/bgtile.png-f68f483bb2b2b552b6f14c590aa6f011.stex" ]
-dest_md5="f737ccc0ccb02a10535cc3685b15a3fd"
 
 [params]
 

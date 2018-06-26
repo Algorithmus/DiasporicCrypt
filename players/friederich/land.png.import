@@ -7,10 +7,7 @@ path="res://.import/land.png-0bef4dee2a066794a10a54fc6378d19d.stex"
 [deps]
 
 source_file="res://players/friederich/land.png"
-source_md5="7735102bb4d3d32d5e1cc372324fb2b2"
-
 dest_files=[ "res://.import/land.png-0bef4dee2a066794a10a54fc6378d19d.stex" ]
-dest_md5="cab3f31a813a3419e34effad5c312057"
 
 [params]
 

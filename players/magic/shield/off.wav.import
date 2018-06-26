@@ -7,10 +7,7 @@ path="res://.import/off.wav-3307e6018ad4eea5d0581afa288ff8c6.sample"
 [deps]
 
 source_file="res://players/magic/shield/off.wav"
-source_md5="56a46e42087227c39e3b9df651e43c3d"
-
 dest_files=[ "res://.import/off.wav-3307e6018ad4eea5d0581afa288ff8c6.sample" ]
-dest_md5="feb8ce6d9195f9956b2544142fdc9f8f"
 
 [params]
 

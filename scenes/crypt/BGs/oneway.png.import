@@ -7,10 +7,7 @@ path="res://.import/oneway.png-31b05e11c0c35893290950d978a41ede.stex"
 [deps]
 
 source_file="res://scenes/crypt/BGs/oneway.png"
-source_md5="68faf62409161207f32afb043233a435"
-
 dest_files=[ "res://.import/oneway.png-31b05e11c0c35893290950d978a41ede.stex" ]
-dest_md5="e91612d37932699370c8ffaeda27100e"
 
 [params]
 

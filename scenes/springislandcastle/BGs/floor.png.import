@@ -7,10 +7,7 @@ path="res://.import/floor.png-a636ad8747a16d5d08fde9c63d5ccb50.stex"
 [deps]
 
 source_file="res://scenes/springislandcastle/BGs/floor.png"
-source_md5="3793a3e77164623cd70c95744d2eee0f"
-
 dest_files=[ "res://.import/floor.png-a636ad8747a16d5d08fde9c63d5ccb50.stex" ]
-dest_md5="153d78cdd5e2b6651c10e5dd7064cb21"
 
 [params]
 

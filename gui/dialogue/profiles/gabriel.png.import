@@ -7,10 +7,7 @@ path="res://.import/gabriel.png-43d4e04b151ac622f998af13cd14aeaf.stex"
 [deps]
 
 source_file="res://gui/dialogue/profiles/gabriel.png"
-source_md5="8d1b35128de336b33c889b8529a11e05"
-
 dest_files=[ "res://.import/gabriel.png-43d4e04b151ac622f998af13cd14aeaf.stex" ]
-dest_md5="3010016902039c4faa7e0c4e80b3bdf1"
 
 [params]
 

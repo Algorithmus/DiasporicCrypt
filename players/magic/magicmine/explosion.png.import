@@ -7,10 +7,7 @@ path="res://.import/explosion.png-c99a3d2a6d22b28501262d854b8a59fb.stex"
 [deps]
 
 source_file="res://players/magic/magicmine/explosion.png"
-source_md5="19730a17df7e997550cd711290d16d4f"
-
 dest_files=[ "res://.import/explosion.png-c99a3d2a6d22b28501262d854b8a59fb.stex" ]
-dest_md5="e078db69e6c563c657b4f4661f1ae6a9"
 
 [params]
 

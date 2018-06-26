@@ -7,10 +7,7 @@ path="res://.import/firecircle.png-e415775da1ae3d1dbeddd864bedc997b.stex"
 [deps]
 
 source_file="res://scenes/common/damagables/attacks/firecircle.png"
-source_md5="027d7c14f011925809c7febc0767282f"
-
 dest_files=[ "res://.import/firecircle.png-e415775da1ae3d1dbeddd864bedc997b.stex" ]
-dest_md5="94fae30abd0934c233b315ff0d36649c"
 
 [params]
 
