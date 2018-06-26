@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/winterislandcastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/winterislandcastle/climbableblock.tscn" type="PackedScene" id=2]
@@ -7,8 +7,9 @@
 [ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/common/damagables/skeleton/skeleton.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/common/damagables/skeleton/skeleton.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=10]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
 
@@ -138,6 +139,8 @@ position = Vector2( -112, 144 )
 
 [node name="PotGroup" type="Node2D" parent="tilemap" index="3"]
 
+editor/display_folded = true
+
 [node name="Pot" parent="tilemap/PotGroup" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( 16, -336 )
@@ -153,15 +156,32 @@ type = "ITEM"
 reward = "res://scenes/items/gold/gold.tscn"
 value = 50
 
-[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="4"]
+[node name="NPCGroup" type="Node2D" parent="tilemap" index="4"]
 
-[node name="Skeleton" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 8 )]
+[node name="NPC" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 8 )]
+
+position = Vector2( 96, -352 )
+_sections_unfolded = [ "Transform" ]
+dialogues = [ [ -1, "CHARACTER_POTIONSMASTER", "DIAG_WINTERISLANDCASTLE0", null, null ] ]
+
+[node name="Sprite" parent="tilemap/NPCGroup/NPC" index="1"]
+
+scale = Vector2( -1, 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="5"]
+
+editor/display_folded = true
+
+[node name="Skeleton" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 9 )]
 
 position = Vector2( -336, -144 )
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap" index="5"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="6"]
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 9 )]
+editor/display_folded = true
+
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( -112, 368 )
@@ -173,7 +193,7 @@ teleport_to = Vector2( 48, -1040 )
 
 scale = Vector2( 3, 1 )
 
-[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 9 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( -112, -848 )
@@ -185,7 +205,7 @@ teleport_to = Vector2( 112, 1536 )
 
 scale = Vector2( 3, 1 )
 
-[node name="boundaries" type="Node2D" parent="tilemap" index="6"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="7"]
 
 [node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
 
@@ -201,5 +221,6 @@ position = Vector2( 272, 368 )
 [editable path="tilemap/One-WayPlatformGroup/One-WayPlatform3"]
 [editable path="tilemap/One-WayPlatformGroup/One-WayPlatform4"]
 [editable path="tilemap/LadderGroup/TestLadder1"]
+[editable path="tilemap/NPCGroup/NPC"]
 [editable path="tilemap/TeleportGroup/Teleport"]
 [editable path="tilemap/TeleportGroup/Teleport1"]

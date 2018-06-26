@@ -48,7 +48,10 @@ func _ready():
 	var shop = preload("res://scenes/ShopFactory.gd").new()
 	sellrate = shop.shops[shopid].sellrate
 	inventory = shop.shops[shopid].inventory
-	get_node("title").set_text(shopid)
+	var title = shopid
+	if (shop.shops[shopid].display_title != null):
+		title = shop.shops[shopid].display_title
+	get_node("title").set_text(title)
 	get_node("gold").set_text(str(ProjectSettings.get("gold")) + "G")
 	get_node("back").set_key("ui_cancel")
 	get_node("back/input").set_text(tr("MAP_BACK"))

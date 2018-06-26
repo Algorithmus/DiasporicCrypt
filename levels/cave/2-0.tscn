@@ -291,8 +291,8 @@ position = Vector2( 2224, 48 )
 
 [node name="NPC" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 10 )]
 
-editor/display_folded = true
 position = Vector2( 2224, -864 )
+dialogues = [ [ -1, "CHARACTER_POTIONSMASTER", "DIAG_CAVE0", null, [ [ "KEY_YES", "shop", "SHOP_POTIONSMASTER0", true ], [ "KEY_NO", "end" ] ] ] ]
 
 [node name="Sprite" parent="tilemap/NPCGroup/NPC" index="1"]
 

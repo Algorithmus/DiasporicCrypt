@@ -91,11 +91,10 @@ position = Vector2( 112, -176 )
 
 [node name="NPCGroup" type="Node2D" parent="tilemap" index="2"]
 
-editor/display_folded = true
-
 [node name="NPC" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( 208, -192 )
+dialogues = [ [ -1, "CHARACTER_POTIONSMASTER", "DIAG_WATERWAY0", null, [ [ "KEY_YES", "shop", "SHOP_POTIONSMASTER1", true ], [ "KEY_NO", "end" ] ] ] ]
 
 [node name="Sprite" parent="tilemap/NPCGroup/NPC" index="1"]
 
@@ -287,8 +286,6 @@ scale = Vector2( 10, 16 )
 scale = Vector2( 10, 16 )
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="6"]
-
-editor/display_folded = true
 
 [node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 9 )]
 

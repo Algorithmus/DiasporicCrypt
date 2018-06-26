@@ -21,6 +21,32 @@ func _init():
 	kaleva.sellrate = 0.5
 	shops[kaleva.title] = kaleva
 
+	var potionsmaster0 = shopclass.new()
+	potionsmaster0.title = "SHOP_POTIONSMASTER0"
+	potionsmaster0.display_title = "SHOP_POTIONSMASTER"
+	potionsmaster0.inventory = [{"type": "item", "id": "ITEM_POTION", "quantity": -1},
+		{"type": "item", "id": "ITEM_POTION+", "quantity": -1}]
+	potionsmaster0.sellrate = 0.5
+	shops[potionsmaster0.title] = potionsmaster0
+
+	var potionsmaster1 = shopclass.new()
+	potionsmaster1.title = "SHOP_POTIONSMASTER1"
+	potionsmaster1.display_title = "SHOP_POTIONSMASTER"
+	potionsmaster1.inventory = [{"type": "item", "id": "ITEM_POTION+", "quantity": -1},
+		{"type": "item", "id": "ITEM_POTION++", "quantity": -1},
+		{"type": "item", "id": "ITEM_MANAPOTION", "quantity": -1}]
+	potionsmaster1.sellrate = 0.5
+	shops[potionsmaster1.title] = potionsmaster1
+
+	var potionsmaster2 = shopclass.new()
+	potionsmaster2.title = "SHOP_POTIONSMASTER2"
+	potionsmaster2.display_title = "SHOP_POTIONSMASTER"
+	potionsmaster2.inventory = [{"type": "item", "id": "ITEM_POTION", "quantity": -1},
+		{"type": "item", "id": "ITEM_POTION+", "quantity": -1},
+		{"type": "item", "id": "ITEM_MANAPOTION", "quantity": -1}]
+	potionsmaster2.sellrate = 0.5
+	shops[potionsmaster2.title] = potionsmaster2
+
 	var lucifer = shopclass.new()
 	lucifer.title = "SHOP_LUCIFER"
 	lucifer.inventory = [{"type": "magic", "id": "MAGIC_WIND", "quantity": 1},

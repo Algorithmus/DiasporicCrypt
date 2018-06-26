@@ -244,7 +244,14 @@ DIAG_KALEVA_TIP3,"[color=white]The victim impaled on this pole next to me is lon
 DIAG_KALEVA_TIP4,"[color=white]Be sure to watch your [color=red]HP[/color] carefully. If you run out of potions and are close to losing all your [color=red]HP[/color], try to make it back here as best you can. You can sleep in your coffin to restore health.[/color]","[color=white]Beachte auf dein [color=red]KP[/color]. Wenn du keine Getränke mehr hast, und dein [color=red]KP[/color] ist fast alle, komm so gut wie du nur kannst hierher zurück. Du darfst in deinem Sarg schlafen, um dich zu heilen.[/color]"
 DIAG_KALEVA_TIP5,"[color=white]Every vampire has a [color=red]familiar statue[/color] that only they can see. Nobody seems to know much about them, but they may show up in various places. If you find one, be sure to [color=red]save[/color] your game there.[/color]","[color=white]Jeder Vampir hat sein eigene [color=red]Vertrauten Statue[/color], die nur er oder sie sehen kann. Niemand scheint viel über sie zu kennen, aber sie dürfen in verschiedene Örter erscheinen. Falls du eine findest, sollst du da dein Spiel [color=red]speichern[/color].[/color]"
 DIAG_RESTORE,[center][color=white]Rest?[/color][/center],[center][color=white]Ausruhen?[/color][/center]
+DIAG_DUNGEON0,"[color=white]Are you looking for the Styx artifact? You've got a long way to go...It's on the other side of the dungeon, I'm afraid. But please don't be in a rush. Why don't you stay and play with the sunlights for awhile?[/color]","[color=white]Suchst du nach den Styxartefakt? Du hast noch ein langem Weg vor dir...Leider liegt es ganz auf die andere Seite des Verlies. Aber sei nicht so eilig. Warum nicht hier bleiben, und ein bisschen mit die Sonnenlichter rumspielen?[/color]"
 DIAG_BERGFORTRESS1,"[color=white]A single hit might not be enough to destroy some blocks. You may have to smash them repeatedly.[/color]","[color=white]Um manche Wände zu zerstören, reicht ein einziger Schlag nicht. Versuchen Sie solche Wände mehrmals nach einander zu schlagen.[/color]"
+DIAG_CAVE0,"[color=white]I have brought my potions with me. Get them while they're still freshly brewed. Are you buying?[/color]","[color=white]Ich habe meine Getränke mitgebracht. Sie sind nocht frisch gebraut. Kaufst du sie?[/color]"
+DIAG_MARBLECASTLE0,"[color=white]If a projectile is weak enough, you can usually block it with your weapons.[/color]","[color=white]Wenn ein Projektil schwach genug ist, kannst du mit deine Waffen dagegen abwehren.[/color]"
+DIAG_WATERWAY0,"[color=white]I'll bet you're exhausted by now. Need some refreshments?[/color]","[color=white]Ich schätze, du bist bis jetzt Müde. Brauchst du Auffrischung?[/color]"
+DIAG_WINTERISLANDCASTLE0,"[color=white]If you are looking for the Styx artifact, it's going to be a long road getting there, with lots of traps along the way. If you want it, you're going to need some patience. Waiting around isn't a bad idea.[/color]","[color=white]Wenn du nach den Styxartefakt suchst, ist es noch ein lange Weg da, mit viele Fälle auf den Weg. Willst du es haben, brauchst du etwas Geduld. Abwarten ist auch nicht ein schlechtes Idee.[/color]"
+DIAG_ICECAVE0,"[color=white]There's a gate up ahead that I can't open. I wonder what's behind it? It looks rather unusual. I don't think you can even destroy it. I wonder if the key for it even still exists.[/color]","[color=white]Da ist ein Tor da vorne, das ich nicht aufmachen kann. Ich frage mich, was dahinter liegt? Sieht ganz ungewöhnlich aus. Ich denke, es ist nicht zerstörbar. Ob der Schlüssel es immer noch gibt?[/color]"
+DIAG_MAUSOLEUM0,"[color=white]My extra potion stock should last awhile. Are you buying?[/color]","[color=white]Meine Lagerung von Ersatzgetränke soll einige Zeit lang durchhalten. Kaufst du was?[/color]"
 DIAG_LUCIFER0,"[color=white]Huh, how did you get in here? The wall collapsed, and I couldn't go back the way I came. This place is falling apart, and you could end up trapped if you're not careful.[/color]","[color=white]Huch, wie hast du hierher gekommen? Die Mauer ist abgestürzt, und ich kann nicht mehr zurück. Dieser Ort bricht langsam auseinander, und du kannst hier fest stecken, falls du nicht vorsichtig bist.[/color]"
 DIAG_LUCIFER1,"[color=white]But I guess since you're here, why not train with me?[/color]","[color=white]Aber da du hier bist, warum nicht mit mir ausbilden?[/color]"
 DIAG_GARETH0,"[color=white]There's a lot of traps here, so take your time.[/color]","[color=white]Hier liegt viele Falle, also gehen Sie langsamer.[/color]"
@@ -278,6 +285,7 @@ DIAG_YUKI0,"[color=white]What are you doing here? This is my corner of the cave.
 DIAG_YUKI1,"[color=white]Still here? You're lost, aren't you? Will you go away if I give this to you?[/color]","[color=white]Immer noch hier? Du verlaufst dich, oder? Willst du weg wenn ich das dir gibt?[/color]"
 DIAG_YUKI2,"[color=white]Great, now get lost.[/color]","[color=white]Gut, und jetzt verschwinde.[/color]"
 CHARACTER_NPC,NPC,NSC
+CHARACTER_POTIONSMASTER,Potions Master,Trankmeister
 CHOICE_SURE,Sure,Klar
 CHOICE_NAH,Nah,Nö
 CHOICE_MAP,See the map,Karte ansehen
@@ -315,6 +323,7 @@ STATS_LEVEL,Level,Stufe
 STATS_ALL,[hp] HP [hpbonus][break][mp] MP [mpbonus][break][break]Attack: [atk][break]Defense: [def][break]Magic: [mag][break]Luck: [luck][break][break]EXP: [exp][break]Required: [rexp][break][break][gold]G,[hp] KP [hpbonus][break][mp] MP [mpbonus][break][break]Angriff: [atk][break]Verteidigung: [def][break]Zauber: [mag][break]Glück: [luck][break][break]EP: [exp][break]Gebraucht: [rexp][break][break][gold]G
 SHOP_BUY,Buy,Kaufen
 SHOP_SELL,Sell,Verkaufen
+SHOP_POTIONSMASTER,Potions Master's Shop,Trankmeisters Laden
 SHOP_KALEVA,Kaleva's Shop,Kalevas Laden
 SHOP_LUCIFER,Lucifer's Shop,Lucifers Laden
 SHOP_GABRIEL,Gabriel's Shop,Gabriels Laden

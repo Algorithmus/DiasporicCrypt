@@ -68,6 +68,7 @@ position = Vector2( -144, -64 )
 [node name="NPC" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( -528, -64 )
+dialogues = [ [ -1, "CHARACTER_POTIONSMASTER", "DIAG_ICECAVE0", null, null ] ]
 
 [node name="Sprite" parent="tilemap/NPCGroup/NPC" index="1"]
 

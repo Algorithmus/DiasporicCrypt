@@ -56,14 +56,13 @@ flip_h = false
 [node name="NPC" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( 736, 192 )
+dialogues = [ [ -1, "CHARACTER_POTIONSMASTER", "DIAG_MAUSOLEUM0", null, [ [ "KEY_YES", "shop", "SHOP_POTIONSMASTER2", true ], [ "KEY_NO", "end" ] ] ] ]
 
 [node name="Sprite" parent="tilemap/NPCGroup/NPC" index="1"]
 
 scale = Vector2( -1, 1 )
 
 [node name="WaterGroup" type="Node2D" parent="tilemap" index="2"]
-
-editor/display_folded = true
 
 [node name="TestWaterSurface" parent="tilemap/WaterGroup" index="0" instance=ExtResource( 4 )]
 

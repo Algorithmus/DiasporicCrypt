@@ -2,6 +2,7 @@
 extends Node
 
 var title
+var display_title
 var inventory
 var sellrate
 

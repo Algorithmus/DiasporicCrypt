@@ -152,12 +152,11 @@ position = Vector2( -496, -1072 )
 
 [node name="NPCGroup" type="Node2D" parent="tilemap" index="5"]
 
-editor/display_folded = true
-
 [node name="NPC" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 8 )]
 
 editor/display_folded = true
 position = Vector2( -192, -864 )
+dialogues = [ [ -1, "CHARACTER_POTIONSMASTER", "DIAG_MARBLECASTLE0", null, null ] ]
 
 [node name="Sprite" parent="tilemap/NPCGroup/NPC" index="1"]
 
@@ -353,6 +352,10 @@ position = Vector2( 400, -464 )
 
 texture = ExtResource( 15 )
 
+[node name="crumble" parent="tilemap/BreakableGroup/TestBreakable/sound" index="0"]
+
+pitch_scale = 1.0
+
 [node name="TestBreakable1" parent="tilemap/BreakableGroup" index="1" instance=ExtResource( 14 )]
 
 editor/display_folded = true
@@ -362,6 +365,10 @@ position = Vector2( 432, -464 )
 
 texture = ExtResource( 15 )
 
+[node name="crumble" parent="tilemap/BreakableGroup/TestBreakable1/sound" index="0"]
+
+pitch_scale = 1.0
+
 [node name="TestBreakable2" parent="tilemap/BreakableGroup" index="2" instance=ExtResource( 14 )]
 
 editor/display_folded = true
@@ -370,6 +377,10 @@ position = Vector2( 464, -464 )
 [node name="Sprite" parent="tilemap/BreakableGroup/TestBreakable2/KinematicBody2D" index="1"]
 
 texture = ExtResource( 15 )
+
+[node name="crumble" parent="tilemap/BreakableGroup/TestBreakable2/sound" index="0"]
+
+pitch_scale = 1.0
 
 [node name="FakeGroup" type="Node2D" parent="tilemap" index="11"]
 
