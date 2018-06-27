@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=10 format=2]
+[gd_resource type="TileSet" load_steps=11 format=2]
 
 [ext_resource path="res://scenes/lavacave/BGs/floor.png" type="Texture" id=1]
 [ext_resource path="res://scenes/lavacave/BGs/cornerL.png" type="Texture" id=2]
@@ -13,6 +13,14 @@
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
+
+[sub_resource type="ImageTexture" id=2]
+
+flags = 6
+storage = 0
+lossy_quality = 0.7
+flags = 6
+size = Vector2( 32, 32 )
 
 [resource]
 
@@ -185,5 +193,19 @@ extents = Vector2( 16, 16 )
 "one_way": false,
 "shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 64, 32 )
+} ]
+15/name = "block"
+15/texture = SubResource( 2 )
+15/tex_offset = Vector2( 0, 0 )
+15/modulate = Color( 1, 1, 1, 1 )
+15/region = Rect2( 0, 0, 32, 32 )
+15/is_autotile = false
+15/occluder_offset = Vector2( 16, 16 )
+15/navigation_offset = Vector2( 16, 16 )
+15/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
 

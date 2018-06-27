@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/forest/BGs/grass.png" type="Texture" id=1]
 [ext_resource path="res://scenes/forest/BGs/grass-1.png" type="Texture" id=2]
@@ -22,7 +22,15 @@
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="ImageTexture" id=2]
+
+flags = 6
+storage = 0
+lossy_quality = 0.7
+flags = 6
+size = Vector2( 32, 32 )
+
+[node name="Node2D" type="Node2D" index="0"]
 
 [node name="grass" type="Sprite" parent="." index="0"]
 
@@ -206,6 +214,27 @@ friction = 1.0
 bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor/StaticBody2D" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="block" type="Sprite" parent="." index="16"]
+
+editor/display_folded = true
+position = Vector2( 160, 384 )
+texture = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="block" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="block/StaticBody2D" index="0"]
 
 shape = SubResource( 1 )
 

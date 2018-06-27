@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=18 format=2]
+[gd_resource type="TileSet" load_steps=19 format=2]
 
 [ext_resource path="res://scenes/forest/BGs/grass.png" type="Texture" id=1]
 [ext_resource path="res://scenes/forest/BGs/grass-1.png" type="Texture" id=2]
@@ -21,6 +21,14 @@
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
+
+[sub_resource type="ImageTexture" id=2]
+
+flags = 6
+storage = 0
+lossy_quality = 0.7
+flags = 6
+size = Vector2( 32, 32 )
 
 [resource]
 
@@ -207,4 +215,18 @@ extents = Vector2( 16, 16 )
 16/occluder_offset = Vector2( 320, 128 )
 16/navigation_offset = Vector2( 320, 128 )
 16/shapes = [  ]
+17/name = "block"
+17/texture = SubResource( 2 )
+17/tex_offset = Vector2( 0, 0 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 0, 0, 32, 32 )
+17/is_autotile = false
+17/occluder_offset = Vector2( 16, 16 )
+17/navigation_offset = Vector2( 16, 16 )
+17/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
+} ]
 
