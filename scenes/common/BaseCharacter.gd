@@ -147,7 +147,7 @@ func is_colliding():
 	return _collider != null && _collider.collider != null
 
 func getSlopes(space_state):
-	var relevantSlopeTile = space_state.intersect_ray(Vector2(get_global_position().x, get_global_position().y+sprite_offset.y), Vector2(get_global_position().x, get_global_position().y+sprite_offset.y+8), area2d_blacklist, 2147483647)
+	var relevantSlopeTile = space_state.intersect_ray(Vector2(get_global_position().x, get_global_position().y+sprite_offset.y), Vector2(get_global_position().x, get_global_position().y+sprite_offset.y+8), area2d_blacklist, 2)
 	if (relevantSlopeTile.has("collider")):
 		var collider = relevantSlopeTile["collider"]
 		if (isSlope(collider.get_name())):
