@@ -434,6 +434,7 @@ func hide_choice():
 	no.disconnect("pressed", self, "global_menu")
 
 func reset_level():
+	ProjectSettings.set("sun", false)
 	get_node("gui/sound/confirm").play()
 	AudioServer.set_bus_effect_enabled(AudioServer.get_bus_index("BGM"), 0, false)
 	hide_choice()
