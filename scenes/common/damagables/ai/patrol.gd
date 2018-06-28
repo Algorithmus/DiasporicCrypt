@@ -53,8 +53,10 @@ func step(space_state):
 				if (collider.get_name() == "player" && collider.get_global_position().y - collider["sprite_offset"].y > target.get_global_position().y + target.get("sprite_offset").y):
 					change_direction = true
 			# slope tiles and one way tiles don't count
-			var areaTile = space_state.intersect_ray(Vector2(frontX, target.get_global_position().y + target.get("sprite_offset").y - 32), Vector2(frontX, target.get_global_position().y + target.get("sprite_offset").y + 32), target.get("area2d_blacklist"), 2147483647)
+			var areaTile = space_state.intersect_ray(Vector2(frontX, target.get_global_position().y + target.get("sprite_offset").y - 32), Vector2(frontX, target.get_global_position().y + target.get("sprite_offset").y + 32), target.get("area2d_blacklist"), 1)
 			if (areaTile != null && areaTile.has("collider")):
+				if (areaTile["collider"].get_name() == "teleport"):
+					change_direction = true
 				if (target.isSlope(areaTile["collider"].get_name())):
 					change_direction = false
 				if (!is_wall && areaTile["collider"].get_name() == "oneway" && areaTile["collider"].get_global_position().y - 32 / 2 > target.get_global_position().y + target.get("sprite_offset").y - 1):
