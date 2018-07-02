@@ -20,10 +20,6 @@ func _ready():
 func findplayer():
 	var size = link_group.size()
 	for i in range(size):
-		print("findplayer")
-		print(self.name)
-		print(get_node(link_group[i]))
-		print(get_node(link_group[i]).playerfound)
 		var test = get_node(link_group[i])
 		if get_node(link_group[i]).playerfound:
 			return true
