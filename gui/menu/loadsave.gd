@@ -76,7 +76,7 @@ func load_menu():
 							if (loadonly):
 								save.connect("loadgame", self, "load_game")
 							save.displayGameData(game)
-							save.set("filename", filename)
+							save.set("save_filename", filename)
 					file.close()
 				filename = dir.get_next()
 			dir.list_dir_end()
@@ -101,7 +101,7 @@ func create_newsave():
 	newsave.set("savepos", savepos)
 	newsave.set("savelocation", savelocation)
 	newsave.set_id(str(itemcontainer.get_child_count()))
-	newsave.set("filename", "save" + str(itemcontainer.get_child_count()) + ".save")
+	newsave.set("save_filename", "save" + str(itemcontainer.get_child_count()) + ".save")
 	if (!loadonly):
 		newsave.connect("newsave", self, "check_newsave")
 	newsave.connect("focus_entered", self, "check_scroll")
@@ -146,7 +146,7 @@ func shift_files(index, filename):
 		var item = itemcontainer.get_child(i)
 		item.set_id(str(i+1))
 		var old_filename = item.get("filename")
-		item.set("filename", filename)
+		item.set("save_filename", filename)
 		if (item.get("state") == item.SAVE):
 			dir.rename(savedir + "/" + old_filename, savedir + "/" + filename)
 		elif (item.get("state") == item.NEW):
