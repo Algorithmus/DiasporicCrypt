@@ -81,7 +81,8 @@ func render_grid(grid):
 			var cell = row[x]
 			if (cell):
 				draw_grid(x, y)
-	grid_texture.set_data(image)
+	# Is this still needed? It gets called too many times...
+	#grid_texture.set_data(image)
 
 # Helper method to get affected regions
 # Position is given in grid indexes.
