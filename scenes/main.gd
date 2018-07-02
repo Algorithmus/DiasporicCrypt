@@ -402,6 +402,8 @@ func start(player):
 	ProjectSettings.set("scrolls", {})
 	ProjectSettings.set("gold", 0)
 	ProjectSettings.set("shops", {})
+	# Needed to make sure the correct map loads
+	ProjectSettings.set("mapid", "LVL_START")
 	display_level_title("LVL_CATACOMB")
 	var level = get_node("level/LVL_CATACOMB")
 	map.set("camera", player.get_node("Camera2D"))
