@@ -44,6 +44,7 @@ var consumable_offset
 var consumable_sprite_offset = Vector2()
 var consumable_size = Vector2(1, 1)
 var consume_factor = 1 # scale amount of blood consumed
+var die_animation_complete = false
 
 var is_attacking = false
 var attack_delay = 100
@@ -63,6 +64,9 @@ func get_player_direction():
 	if (get_global_position().x > player.get_node("player").get_global_position().x):
 		return -1
 	return 1
+
+func complete_die_animation():
+	die_animation_complete = true
 
 func can_attack():
 	return false
@@ -222,6 +226,8 @@ func do_animation_check(new_animation, animation_speed, horizontal_motion, ladde
 		new_animation = "hurt"
 	if (is_consumable && consumable):
 		new_animation = "die"
+		if (die_animation_complete):
+			new_animation = "consumable"
 	return new_animation
 
 func bleed():
