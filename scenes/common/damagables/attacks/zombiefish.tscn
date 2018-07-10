@@ -12,7 +12,7 @@ length = 0.4
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("jaw:rotation_deg")
+tracks/0/path = NodePath("jaw:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -21,7 +21,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ -12.6449, 14.5414, -12.6449 ]
+"values": [ -12.6, 14.5, -12.6 ]
 }
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -48,8 +48,10 @@ texture = ExtResource( 2 )
 [node name="jaw" type="Sprite" parent="sprite" index="1"]
 
 position = Vector2( -13, 2 )
+rotation = -0.219911
 texture = ExtResource( 3 )
 offset = Vector2( 13, -2 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="head" type="Sprite" parent="sprite" index="2"]
 
