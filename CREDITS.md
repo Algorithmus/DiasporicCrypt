@@ -5,7 +5,7 @@
 - Nystev - Carbonoid
 - Taevica - Carbonoid
 - [Neropheus](http://aishishii.tumblr.com/tagged/neropheus) - Aishishii
-- Yuki - Julie Thai
+- Yuki - MissHolic
 
 # Attributions
 
