@@ -268,51 +268,49 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="3"]
 
-editor/display_folded = true
-
 [node name="Priest" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 12 )]
 
-position = Vector2( 608, 48 )
+position = Vector2( 608, 32 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Priest2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 12 )]
 
-position = Vector2( 2768, 48 )
+position = Vector2( 2768, 32 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Priest3" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 12 )]
 
-position = Vector2( 1136, 48 )
+position = Vector2( 1136, 32 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Priest4" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 12 )]
 
-position = Vector2( 1280, 464 )
+position = Vector2( 1280, 448 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Priest5" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 12 )]
 
-position = Vector2( 1664, 48 )
+position = Vector2( 1664, 32 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Priest6" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 12 )]
 
-position = Vector2( 704, 464 )
+position = Vector2( 704, 448 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Priest7" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 12 )]
 
-position = Vector2( 960, 464 )
+position = Vector2( 960, 448 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Priest8" parent="tilemap/EnemiesGroup" index="7" instance=ExtResource( 12 )]
 
-position = Vector2( 2416, 464 )
+position = Vector2( 2416, 448 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Priest9" parent="tilemap/EnemiesGroup" index="8" instance=ExtResource( 12 )]
 
-position = Vector2( 2688, 464 )
+position = Vector2( 2688, 448 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="FakeGroup" type="Node2D" parent="tilemap" index="4"]

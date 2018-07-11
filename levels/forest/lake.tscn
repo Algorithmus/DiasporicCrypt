@@ -334,22 +334,22 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Priest" parent="tilemap/EnemiesGroup" index="8" instance=ExtResource( 11 )]
 
-position = Vector2( -2240, -720 )
+position = Vector2( -2240, -736 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Priest2" parent="tilemap/EnemiesGroup" index="9" instance=ExtResource( 11 )]
 
-position = Vector2( -2368, -1264 )
+position = Vector2( -2368, -1280 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Priest3" parent="tilemap/EnemiesGroup" index="10" instance=ExtResource( 11 )]
 
-position = Vector2( -2496, -2128 )
+position = Vector2( -2496, -2144 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Priest4" parent="tilemap/EnemiesGroup" index="11" instance=ExtResource( 11 )]
 
-position = Vector2( -2496, -3056 )
+position = Vector2( -2496, -3104 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="ItemGroup" type="Node2D" parent="tilemap" index="3"]
