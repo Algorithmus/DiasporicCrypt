@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://scenes/common/damagables/skeleton/Consumable.gd" type="Script" id=1]
-[ext_resource path="res://scenes/common/damagables/skeleton/walk.png" type="Texture" id=2]
-[ext_resource path="res://scenes/common/damagables/skeleton/die.png" type="Texture" id=3]
+[ext_resource path="res://scenes/common/damagables/human/shaman/shaman.gd" type="Script" id=1]
+[ext_resource path="res://scenes/common/damagables/human/shaman/walk.png" type="Texture" id=2]
+[ext_resource path="res://scenes/common/damagables/human/shaman/die.png" type="Texture" id=3]
 [ext_resource path="res://scenes/common/damagables/skeleton/die.wav" type="AudioStream" id=4]
 [ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=5]
 
@@ -137,7 +137,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 16, 0 ), Vector2( 21, 0 ), Vector2( 16, 0 ) ]
+"values": [ Vector2( -16, 0 ), Vector2( -21, 0 ), Vector2( -16, 0 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -198,9 +198,9 @@ tracks/3/keys = {
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16, 48 )
+extents = Vector2( 16, 64 )
 
-[node name="Shaman" type="KinematicBody2D"]
+[node name="Shaman" type="KinematicBody2D" index="0"]
 
 z_index = 1
 input_pickable = false
@@ -226,28 +226,30 @@ physics_process_parent = false
 
 [node name="walk" type="Sprite" parent="." index="1"]
 
-visible = false
-self_modulate = Color( 1, 1, 0.386552, 1 )
 texture = ExtResource( 2 )
-hframes = 8
-frame = 2
+flip_h = true
+vframes = 2
+hframes = 4
+_sections_unfolded = [ "Animation", "Offset", "Visibility" ]
 
 [node name="die" type="Sprite" parent="." index="2"]
 
 visible = false
-self_modulate = Color( 1, 1, 0.384314, 1 )
 texture = ExtResource( 3 )
-offset = Vector2( 16, 0 )
+offset = Vector2( -16, 0 )
+flip_h = true
 hframes = 6
 frame = 5
+_sections_unfolded = [ "Animation", "Offset", "Visibility" ]
 
 [node name="hurt" type="Sprite" parent="." index="3"]
 
-self_modulate = Color( 1, 1, 0.384314, 1 )
+visible = false
 texture = ExtResource( 3 )
-offset = Vector2( 16, 0 )
+offset = Vector2( -16, 0 )
+flip_h = true
 hframes = 6
-frame = 1
+_sections_unfolded = [ "Animation", "Offset", "Visibility" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 
@@ -282,6 +284,7 @@ shape = SubResource( 4 )
 
 stream = ExtResource( 4 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"

@@ -116,7 +116,7 @@ shader_param/replace = Color( 0.121338, 0.195919, 0.21875, 1 )
 shader_param/threshold = 0.6
 _sections_unfolded = [ "shader_param" ]
 
-[node name="LVL_JUNGLE" type="Node2D" index="0"]
+[node name="LVL_JUNGLE" type="Node2D"]
 
 script = ExtResource( 1 )
 __meta__ = {
@@ -1298,47 +1298,47 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Shaman" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 25 )]
 
-position = Vector2( 3152, 80 )
+position = Vector2( 3152, 64 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Shaman2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 25 )]
 
-position = Vector2( 7504, 80 )
+position = Vector2( 7504, 64 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Shaman3" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 25 )]
 
-position = Vector2( 7792, -512 )
+position = Vector2( 7792, -528 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Shaman4" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 25 )]
 
-position = Vector2( 6768, -480 )
+position = Vector2( 6768, -496 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Shaman5" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 25 )]
 
-position = Vector2( 5776, -528 )
+position = Vector2( 5776, -544 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Shaman6" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 25 )]
 
-position = Vector2( 4272, -528 )
+position = Vector2( 4272, -544 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Shaman7" parent="tilemap/EnemiesGroup" index="7" instance=ExtResource( 25 )]
 
-position = Vector2( 3296, -512 )
+position = Vector2( 3296, -528 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Shaman8" parent="tilemap/EnemiesGroup" index="8" instance=ExtResource( 25 )]
 
-position = Vector2( 1840, -416 )
+position = Vector2( 1840, -432 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Shaman9" parent="tilemap/EnemiesGroup" index="9" instance=ExtResource( 25 )]
 
-position = Vector2( 240, -400 )
+position = Vector2( 240, -416 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="5"]
