@@ -142,15 +142,18 @@ editor/display_folded = true
 
 [node name="Imp" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 5 )]
 
-position = Vector2( -112, 144 )
+position = Vector2( -112, 176 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Imp1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 5 )]
 
-position = Vector2( 368, 144 )
+position = Vector2( 368, 176 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Imp2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 5 )]
 
-position = Vector2( 848, 144 )
+position = Vector2( 848, 176 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Lizardman" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 6 )]
 

@@ -104,19 +104,23 @@ position = Vector2( -1008, 80 )
 
 [node name="Imp" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 8 )]
 
-position = Vector2( -512, 80 )
+position = Vector2( -512, 112 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Imp1" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 8 )]
 
-position = Vector2( -1520, 80 )
+position = Vector2( -1520, 112 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Imp2" parent="tilemap/EnemiesGroup" index="7" instance=ExtResource( 8 )]
 
-position = Vector2( -1152, 80 )
+position = Vector2( -1152, 112 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Imp3" parent="tilemap/EnemiesGroup" index="8" instance=ExtResource( 8 )]
 
-position = Vector2( -80, 80 )
+position = Vector2( -80, 112 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="3"]
 

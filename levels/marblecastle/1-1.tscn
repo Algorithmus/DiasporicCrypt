@@ -203,11 +203,13 @@ position = Vector2( -224, 384 )
 
 [node name="Imp" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 12 )]
 
-position = Vector2( 448, 432 )
+position = Vector2( 448, 464 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Imp1" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 12 )]
 
-position = Vector2( 752, 432 )
+position = Vector2( 752, 464 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="SpikeGroup" type="Node2D" parent="tilemap" index="9"]
 

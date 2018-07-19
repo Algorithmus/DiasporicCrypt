@@ -1,15 +1,15 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/common/damagables/imp/Imp.gd" type="Script" id=1]
-[ext_resource path="res://scenes/common/damagables/skeleton/walk.png" type="Texture" id=2]
-[ext_resource path="res://scenes/common/damagables/skeleton/die.png" type="Texture" id=3]
+[ext_resource path="res://scenes/common/damagables/imp/walk.png" type="Texture" id=2]
+[ext_resource path="res://scenes/common/damagables/imp/die.png" type="Texture" id=3]
 [ext_resource path="res://scenes/common/damagables/skeleton/die.wav" type="AudioStream" id=4]
 [ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 
 resource_name = "die"
-length = 0.6
+length = 0.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -43,10 +43,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5 ]
+"values": [ 0, 1, 2, 3, 4 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("hurt:visible")
@@ -67,10 +67,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -143,7 +143,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id=3]
 
 resource_name = "walk"
-length = 0.8
+length = 0.5
 loop = true
 step = 0.1
 tracks/0/type = "value"
@@ -177,10 +177,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+"values": [ 0, 1, 2, 3, 4 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("hurt:visible")
@@ -198,7 +198,7 @@ tracks/3/keys = {
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16, 48 )
+extents = Vector2( 16, 16 )
 
 [node name="Imp" type="KinematicBody2D" index="0"]
 
@@ -226,27 +226,29 @@ physics_process_parent = false
 
 [node name="walk" type="Sprite" parent="." index="1"]
 
-self_modulate = Color( 0.167969, 0.629486, 1, 1 )
 texture = ExtResource( 2 )
-hframes = 8
+flip_h = true
+hframes = 5
+_sections_unfolded = [ "Animation", "Offset", "Visibility" ]
 
 [node name="die" type="Sprite" parent="." index="2"]
 
 visible = false
-self_modulate = Color( 0.164706, 0.627451, 1, 1 )
 texture = ExtResource( 3 )
 offset = Vector2( -15, 0 )
-hframes = 6
-frame = 5
+flip_h = true
+hframes = 5
+_sections_unfolded = [ "Animation", "Offset", "Visibility" ]
 
 [node name="hurt" type="Sprite" parent="." index="3"]
 
 visible = false
-self_modulate = Color( 0.164706, 0.627451, 1, 1 )
 texture = ExtResource( 3 )
 offset = Vector2( -15, 0 )
-hframes = 6
+flip_h = true
+hframes = 5
 frame = 1
+_sections_unfolded = [ "Animation", "Offset", "Visibility" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 
@@ -280,6 +282,7 @@ shape = SubResource( 4 )
 
 stream = ExtResource( 4 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"

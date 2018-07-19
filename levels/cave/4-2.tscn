@@ -35,31 +35,38 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="Imp" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 2 )]
 
-position = Vector2( -288, -112 )
+position = Vector2( -288, -80 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Imp1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 2 )]
 
-position = Vector2( -80, -112 )
+position = Vector2( -80, -80 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Imp2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 2 )]
 
-position = Vector2( 112, -112 )
+position = Vector2( 112, -80 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Imp3" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 2 )]
 
-position = Vector2( 320, -112 )
+position = Vector2( 320, -80 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Imp4" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 2 )]
 
-position = Vector2( 736, -112 )
+position = Vector2( 736, -80 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Imp5" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 2 )]
 
-position = Vector2( 544, -112 )
+position = Vector2( 544, -80 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Imp6" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 2 )]
 
-position = Vector2( -400, -112 )
+position = Vector2( -400, -80 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="1"]
 

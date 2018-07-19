@@ -216,7 +216,7 @@ position = Vector2( -1600, -224 )
 
 [node name="Imp" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 12 )]
 
-position = Vector2( -384, -176 )
+position = Vector2( -384, -144 )
 
 [node name="MagicGroup" type="Node2D" parent="tilemap" index="6"]
 

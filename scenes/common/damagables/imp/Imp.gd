@@ -11,6 +11,7 @@ func _ready():
 	current_hp = hp
 	elemental_weaknesses.append("fire")
 	sunbeam_immunity = false
+	runspeed = 6
 	set_physics_process(true)
 
 # unfortunately needed to be active off screen for some puzzles...
