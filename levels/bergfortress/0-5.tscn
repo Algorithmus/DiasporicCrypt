@@ -110,11 +110,11 @@ position = Vector2( 272, -1040 )
 
 [node name="Lizardman" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 4 )]
 
-position = Vector2( -160, 848 )
+position = Vector2( -160, 832 )
 
 [node name="Lizardman1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 4 )]
 
-position = Vector2( 224, 848 )
+position = Vector2( 224, 832 )
 
 [node name="ItemGroup" type="Node2D" parent="tilemap" index="3"]
 

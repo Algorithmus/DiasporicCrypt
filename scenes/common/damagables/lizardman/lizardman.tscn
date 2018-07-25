@@ -1,15 +1,15 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/common/damagables/lizardman/Lizardman.gd" type="Script" id=1]
-[ext_resource path="res://scenes/common/damagables/skeleton/walk.png" type="Texture" id=2]
-[ext_resource path="res://scenes/common/damagables/skeleton/die.png" type="Texture" id=3]
+[ext_resource path="res://scenes/common/damagables/lizardman/walk.png" type="Texture" id=2]
+[ext_resource path="res://scenes/common/damagables/lizardman/die.png" type="Texture" id=3]
 [ext_resource path="res://scenes/common/damagables/skeleton/die.wav" type="AudioStream" id=4]
 [ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 
 resource_name = "die"
-length = 0.6
+length = 0.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -43,10 +43,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5 ]
+"values": [ 0, 1, 2, 3, 4 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("hurt:visible")
@@ -67,7 +67,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.6 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -137,7 +137,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -15, 0 ), Vector2( -20, 0 ), Vector2( -15, 0 ) ]
+"values": [ Vector2( -47, 0 ), Vector2( -52, 0 ), Vector2( -47, 0 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -198,7 +198,7 @@ tracks/3/keys = {
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16, 48 )
+extents = Vector2( 16, 64 )
 
 [node name="Lizardman" type="KinematicBody2D" index="0"]
 
@@ -226,27 +226,30 @@ physics_process_parent = false
 
 [node name="walk" type="Sprite" parent="." index="1"]
 
-visible = false
-self_modulate = Color( 0, 0.804688, 0.578369, 1 )
 texture = ExtResource( 2 )
-hframes = 8
-frame = 6
+offset = Vector2( -32, 0 )
+flip_h = true
+vframes = 2
+hframes = 4
+_sections_unfolded = [ "Animation", "Offset", "Visibility" ]
 
 [node name="die" type="Sprite" parent="." index="2"]
 
-self_modulate = Color( 0, 0.803922, 0.576471, 1 )
+visible = false
 texture = ExtResource( 3 )
-offset = Vector2( -15, 0 )
-hframes = 6
+offset = Vector2( -47, 0 )
+flip_h = true
+vframes = 5
+_sections_unfolded = [ "Animation", "Offset", "Visibility" ]
 
 [node name="hurt" type="Sprite" parent="." index="3"]
 
 visible = false
-self_modulate = Color( 0, 0.803922, 0.576471, 1 )
 texture = ExtResource( 3 )
-offset = Vector2( -15, 0 )
-hframes = 6
-frame = 1
+offset = Vector2( -47, 0 )
+flip_h = true
+vframes = 5
+_sections_unfolded = [ "Animation", "Offset", "Visibility" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 
@@ -280,6 +283,7 @@ shape = SubResource( 4 )
 
 stream = ExtResource( 4 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"

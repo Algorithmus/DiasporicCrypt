@@ -83,15 +83,15 @@ position = Vector2( -304, 16 )
 
 [node name="Lizardman" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 7 )]
 
-position = Vector2( -48, -16 )
+position = Vector2( -48, -32 )
 
 [node name="Lizardman1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 7 )]
 
-position = Vector2( 144, -16 )
+position = Vector2( 144, -32 )
 
 [node name="Lizardman2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 7 )]
 
-position = Vector2( 400, -16 )
+position = Vector2( 400, -32 )
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="3"]
 

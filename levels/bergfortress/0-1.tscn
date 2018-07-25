@@ -616,19 +616,17 @@ audio_bus_name = "Master"
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="6"]
 
-editor/display_folded = true
-
 [node name="Lizardman" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 16 )]
 
-position = Vector2( 528, -304 )
+position = Vector2( 528, -320 )
 
 [node name="Lizardman1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 16 )]
 
-position = Vector2( 176, -48 )
+position = Vector2( 176, -64 )
 
 [node name="Lizardman2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 16 )]
 
-position = Vector2( 528, 208 )
+position = Vector2( 528, 192 )
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="7"]
 

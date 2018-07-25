@@ -181,103 +181,103 @@ value = 100
 
 [node name="Lizardman9" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 8 )]
 
-position = Vector2( 1840, -176 )
+position = Vector2( 1840, -192 )
 
 [node name="Lizardman10" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 8 )]
 
-position = Vector2( 1440, -176 )
+position = Vector2( 1440, -192 )
 
 [node name="Lizardman11" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 8 )]
 
-position = Vector2( 976, -176 )
+position = Vector2( 976, -192 )
 
 [node name="Lizardman12" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 8 )]
 
-position = Vector2( 1728, -400 )
+position = Vector2( 1728, -416 )
 
 [node name="Lizardman13" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 8 )]
 
-position = Vector2( 1296, -400 )
+position = Vector2( 1296, -416 )
 
 [node name="Lizardman14" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 8 )]
 
-position = Vector2( 912, -400 )
+position = Vector2( 912, -416 )
 
 [node name="Lizardman15" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 8 )]
 
-position = Vector2( 528, -400 )
+position = Vector2( 528, -416 )
 
 [node name="Lizardman16" parent="tilemap/EnemiesGroup" index="7" instance=ExtResource( 8 )]
 
-position = Vector2( 688, -400 )
+position = Vector2( 688, -416 )
 
 [node name="Lizardman17" parent="tilemap/EnemiesGroup" index="8" instance=ExtResource( 8 )]
 
-position = Vector2( -80, -176 )
+position = Vector2( -80, -192 )
 
 [node name="Lizardman18" parent="tilemap/EnemiesGroup" index="9" instance=ExtResource( 8 )]
 
-position = Vector2( -544, -176 )
+position = Vector2( -544, -192 )
 
 [node name="Lizardman19" parent="tilemap/EnemiesGroup" index="10" instance=ExtResource( 8 )]
 
-position = Vector2( -1008, -176 )
+position = Vector2( -1008, -192 )
 
 [node name="Lizardman20" parent="tilemap/EnemiesGroup" index="11" instance=ExtResource( 8 )]
 
-position = Vector2( -1264, -176 )
+position = Vector2( -1264, -192 )
 
 [node name="Lizardman21" parent="tilemap/EnemiesGroup" index="12" instance=ExtResource( 8 )]
 
-position = Vector2( -1280, -400 )
+position = Vector2( -1280, -416 )
 
 [node name="Lizardman22" parent="tilemap/EnemiesGroup" index="13" instance=ExtResource( 8 )]
 
-position = Vector2( -736, -400 )
+position = Vector2( -736, -416 )
 
 [node name="Lizardman23" parent="tilemap/EnemiesGroup" index="14" instance=ExtResource( 8 )]
 
-position = Vector2( -512, -400 )
+position = Vector2( -512, -416 )
 
 [node name="Lizardman24" parent="tilemap/EnemiesGroup" index="15" instance=ExtResource( 8 )]
 
-position = Vector2( -1280, -624 )
+position = Vector2( -1280, -640 )
 
 [node name="Lizardman25" parent="tilemap/EnemiesGroup" index="16" instance=ExtResource( 8 )]
 
-position = Vector2( -976, -624 )
+position = Vector2( -976, -640 )
 
 [node name="Lizardman26" parent="tilemap/EnemiesGroup" index="17" instance=ExtResource( 8 )]
 
-position = Vector2( -608, -624 )
+position = Vector2( -608, -640 )
 
 [node name="Lizardman27" parent="tilemap/EnemiesGroup" index="18" instance=ExtResource( 8 )]
 
-position = Vector2( -352, -624 )
+position = Vector2( -352, -640 )
 
 [node name="Lizardman28" parent="tilemap/EnemiesGroup" index="19" instance=ExtResource( 8 )]
 
-position = Vector2( 64, -624 )
+position = Vector2( 64, -640 )
 
 [node name="Lizardman29" parent="tilemap/EnemiesGroup" index="20" instance=ExtResource( 8 )]
 
-position = Vector2( 320, -624 )
+position = Vector2( 320, -640 )
 
 [node name="Lizardman30" parent="tilemap/EnemiesGroup" index="21" instance=ExtResource( 8 )]
 
-position = Vector2( 656, -624 )
+position = Vector2( 656, -640 )
 
 [node name="Lizardman31" parent="tilemap/EnemiesGroup" index="22" instance=ExtResource( 8 )]
 
-position = Vector2( 992, -624 )
+position = Vector2( 992, -640 )
 
 [node name="Lizardman32" parent="tilemap/EnemiesGroup" index="23" instance=ExtResource( 8 )]
 
-position = Vector2( 1280, -624 )
+position = Vector2( 1280, -640 )
 
 [node name="Lizardman33" parent="tilemap/EnemiesGroup" index="24" instance=ExtResource( 8 )]
 
-position = Vector2( 1696, -624 )
+position = Vector2( 1696, -640 )
 
 [node name="MagicGroup" type="Node2D" parent="tilemap" index="5"]
 

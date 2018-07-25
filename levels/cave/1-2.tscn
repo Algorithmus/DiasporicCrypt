@@ -138,8 +138,6 @@ scale = Vector2( 1, 9 )
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="2"]
 
-editor/display_folded = true
-
 [node name="Imp" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( -112, 176 )
@@ -157,19 +155,19 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Lizardman" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 6 )]
 
-position = Vector2( 128, 144 )
+position = Vector2( 128, 128 )
 
 [node name="Lizardman1" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 6 )]
 
-position = Vector2( 640, 144 )
+position = Vector2( 640, 128 )
 
 [node name="Lizardman2" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 6 )]
 
-position = Vector2( 1232, 144 )
+position = Vector2( 1232, 128 )
 
 [node name="Lizardman3" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 6 )]
 
-position = Vector2( 1040, 144 )
+position = Vector2( 1040, 128 )
 
 [node name="Sorcerer" parent="tilemap/EnemiesGroup" index="7" instance=ExtResource( 7 )]
 

@@ -134,7 +134,7 @@ patrolrange = 20
 
 [node name="Lizardman" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 7 )]
 
-position = Vector2( 336, 272 )
+position = Vector2( 336, 256 )
 
 [node name="Lavaball" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 8 )]
 

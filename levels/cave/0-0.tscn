@@ -57,7 +57,7 @@ position = Vector2( 16, -144 )
 
 [node name="Lizardman" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 4 )]
 
-position = Vector2( 240, -177 )
+position = Vector2( 240, -192 )
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="2"]
 

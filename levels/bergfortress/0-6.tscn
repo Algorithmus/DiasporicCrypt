@@ -221,7 +221,7 @@ editor/display_folded = true
 
 [node name="Lizardman" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 8 )]
 
-position = Vector2( -464, 432 )
+position = Vector2( -464, 416 )
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="5"]
 

@@ -60,11 +60,11 @@ texture = ExtResource( 4 )
 
 [node name="Lizardman" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 5 )]
 
-position = Vector2( 240, 112 )
+position = Vector2( 240, 96 )
 
 [node name="Lizardman1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 5 )]
 
-position = Vector2( 496, 112 )
+position = Vector2( 496, 96 )
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="2"]
 

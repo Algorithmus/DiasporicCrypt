@@ -455,11 +455,11 @@ value = 50
 
 [node name="Lizardman" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 13 )]
 
-position = Vector2( 1632, -80 )
+position = Vector2( 1632, -96 )
 
 [node name="Lizardman1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 13 )]
 
-position = Vector2( 1856, -80 )
+position = Vector2( 1856, -96 )
 
 [node name="SimpleProjectile" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 14 )]
 
@@ -475,8 +475,6 @@ position = Vector2( 912, -848 )
 rateX = -1
 
 [node name="LavaGroup" type="Node2D" parent="tilemap" index="7"]
-
-editor/display_folded = true
 
 [node name="LavaSurface" parent="tilemap/LavaGroup" index="0" instance=ExtResource( 17 )]
 

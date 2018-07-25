@@ -84,23 +84,23 @@ position = Vector2( 176, 112 )
 
 [node name="Lizardman" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 7 )]
 
-position = Vector2( -224, 80 )
+position = Vector2( -224, 64 )
 
 [node name="Lizardman1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 7 )]
 
-position = Vector2( -784, 80 )
+position = Vector2( -784, 64 )
 
 [node name="Lizardman2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 7 )]
 
-position = Vector2( -1312, 80 )
+position = Vector2( -1312, 64 )
 
 [node name="Lizardman3" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 7 )]
 
-position = Vector2( -1728, 80 )
+position = Vector2( -1728, 64 )
 
 [node name="Lizardman4" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 7 )]
 
-position = Vector2( -1008, 80 )
+position = Vector2( -1008, 64 )
 
 [node name="Imp" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 8 )]
 
