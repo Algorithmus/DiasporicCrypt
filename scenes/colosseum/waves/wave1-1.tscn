@@ -6,26 +6,26 @@
 
 [node name="Lizardman" parent="." index="0" instance=ExtResource( 1 )]
 
-position = Vector2( -288, -16 )
+position = Vector2( -288, -32 )
 
 [node name="Lizardman2" parent="." index="1" instance=ExtResource( 1 )]
 
-position = Vector2( -144, -16 )
+position = Vector2( -144, -32 )
 
 [node name="Lizardman3" parent="." index="2" instance=ExtResource( 1 )]
 
-position = Vector2( 0, -16 )
+position = Vector2( 0, -32 )
 
 [node name="Lizardman4" parent="." index="3" instance=ExtResource( 1 )]
 
-position = Vector2( 144, -16 )
+position = Vector2( 144, -32 )
 
 [node name="Lizardman5" parent="." index="4" instance=ExtResource( 1 )]
 
-position = Vector2( 288, -16 )
+position = Vector2( 288, -32 )
 
 [node name="Lizardman6" parent="." index="5" instance=ExtResource( 1 )]
 
-position = Vector2( 432, -16 )
+position = Vector2( 432, -32 )
 
 
