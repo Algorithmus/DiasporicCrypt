@@ -427,8 +427,9 @@ func step_player(delta):
 			# do special attack specific actions
 			# unfortunately, some attacks require collision checks anyways especially on slopes, so we do them
 			if (current_chain_special["id"] == "thrust"):
-				if (target_exists && hit_enemy && is_valid_target):
-					target_enemy.get_ref().get_parent().set_global_position(Vector2(target_enemy.get_ref().get_global_position().x + direction * 5, target_enemy.get_ref().get_global_position().y))
+				if (target_exists && hit_enemy && is_valid_target && target_enemy.get_ref().get_parent().has_method("closestXTile")):
+					var desired_enemy_delta = target_enemy.get_ref().get_parent().closestXTile(direction, 5, space_state)
+					target_enemy.get_ref().get_parent().set_global_position(Vector2(target_enemy.get_ref().get_global_position().x + desired_enemy_delta, target_enemy.get_ref().get_global_position().y))
 				accel += falling_modifier(accel)
 				var vertical = step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, false, oneWayTile, null)
 				newpos = accel
