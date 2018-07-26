@@ -246,13 +246,24 @@ func check_gameover():
 		#set_pause_mode(2)
 		#get_tree().set_pause(true)
 
+func check_npc(areaTiles):
+	npc = null
+
+	if (!is_transforming):
+		for i in areaTiles:
+			if (i.get_name() == "npc"):
+				npc = i.get_parent()
+
+	if (npc != null && !ProjectSettings.get("eventmode")):
+		get_node("talk").show()
+	else:
+		get_node("talk").hide()
+
 func check_damage(damageTiles):
 	var is_hurt_check = false
 	
 	var dx = 0
 	var dy = 0
-
-	npc = null
 
 	if (!invulnerable && !is_transforming && shield == null):
 		for i in damageTiles:
@@ -293,8 +304,6 @@ func check_damage(damageTiles):
 					dx += get_global_position().x - i.get_global_position().x
 					dy += get_global_position().y - i.get_global_position().y
 				check_gameover()
-			if (i.get_name() == "npc"):
-				npc = i.get_parent()
 		if (ProjectSettings.get("sun") && !is_hurt_check && !is_demonic):
 			var current_level = ProjectSettings.get("levels")[ProjectSettings.get("current_level")]
 			if (current_level.get("sealevel") != null && current_level.sealevel > get_global_position().y + sprite_offset.y):
@@ -307,11 +316,6 @@ func check_damage(damageTiles):
 
 				is_hurt_check = true
 				check_gameover()
-		
-		if (npc != null && !ProjectSettings.get("eventmode")):
-			get_node("talk").show()
-		else:
-			get_node("talk").hide()
 		
 		# calculate throwback based on sum total positions of damagables
 		if (dx != 0):
@@ -846,6 +850,7 @@ func step_player(delta):
 	
 		# check taking damage
 		check_damage(areaTiles)
+		check_npc(areaTiles)
 		
 		# step horizontal motion first
 		var horizontal = step_horizontal(space_state)

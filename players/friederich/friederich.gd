@@ -210,6 +210,7 @@ func step_player(delta):
 	
 		# check taking damage
 		check_damage(areaTiles)
+		check_npc(areaTiles)
 		
 		var horizontal_motion = false
 		var ladderY = 0
