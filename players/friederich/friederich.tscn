@@ -10920,7 +10920,7 @@ _sections_unfolded = [ "shader_param" ]
 
 input_pickable = false
 collision_layer = 524288
-collision_mask = 524289
+collision_mask = 524293
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pickable", "collision" ]
@@ -11577,6 +11577,7 @@ shape = SubResource( 34 )
 
 stream = ExtResource( 50 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
@@ -11585,6 +11586,7 @@ bus = "SFX"
 
 stream = ExtResource( 51 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
@@ -11593,6 +11595,7 @@ bus = "SFX"
 
 stream = ExtResource( 52 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
@@ -11601,6 +11604,7 @@ bus = "SFX"
 
 stream = ExtResource( 53 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
@@ -11609,6 +11613,7 @@ bus = "SFX"
 
 stream = ExtResource( 54 )
 volume_db = -10.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
@@ -11617,6 +11622,7 @@ bus = "SFX"
 
 stream = ExtResource( 55 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
@@ -11625,6 +11631,7 @@ bus = "SFX"
 
 stream = ExtResource( 56 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
@@ -11633,6 +11640,7 @@ bus = "SFX"
 
 stream = ExtResource( 57 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
@@ -11641,6 +11649,7 @@ bus = "SFX"
 
 stream = ExtResource( 58 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
@@ -11649,6 +11658,7 @@ bus = "SFX"
 
 stream = ExtResource( 59 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
@@ -11657,6 +11667,7 @@ bus = "SFX"
 
 stream = ExtResource( 60 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
@@ -11665,6 +11676,7 @@ bus = "SFX"
 
 stream = ExtResource( 61 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
@@ -11673,6 +11685,7 @@ bus = "SFX"
 
 stream = ExtResource( 62 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
@@ -11681,6 +11694,7 @@ bus = "SFX"
 
 stream = ExtResource( 63 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
@@ -11689,6 +11703,7 @@ bus = "SFX"
 
 stream = ExtResource( 64 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
@@ -11697,6 +11712,7 @@ bus = "SFX"
 
 stream = ExtResource( 65 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"

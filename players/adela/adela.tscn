@@ -8631,11 +8631,11 @@ shader_param/aura_color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
 shader_param/opacity = 1.0
 _sections_unfolded = [ "shader_param" ]
 
-[node name="player" type="KinematicBody2D" index="0"]
+[node name="player" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 524288
-collision_mask = 524289
+collision_mask = 524293
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "collision" ]
@@ -9113,6 +9113,7 @@ shape = SubResource( 31 )
 
 stream = ExtResource( 38 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
@@ -9121,6 +9122,7 @@ bus = "SFX"
 
 stream = ExtResource( 39 )
 volume_db = -10.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
@@ -9129,6 +9131,7 @@ bus = "SFX"
 
 stream = ExtResource( 40 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
@@ -9137,6 +9140,7 @@ bus = "SFX"
 
 stream = ExtResource( 41 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
@@ -9145,6 +9149,7 @@ bus = "SFX"
 
 stream = ExtResource( 42 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
@@ -9153,6 +9158,7 @@ bus = "SFX"
 
 stream = ExtResource( 43 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"

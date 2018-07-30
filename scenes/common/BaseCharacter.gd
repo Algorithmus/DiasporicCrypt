@@ -15,6 +15,12 @@ const DEFAULT_FALL_HEIGHT = JUMP_SPEED * (JUMP_SPEED - 1)/2
 # restrict vertical speed to prevent skipping and other weirdness
 const SPEED_LIMIT = 30
 
+# Collision Layers
+# 0 - General Area2D
+# 1 - Slopes
+# 2 - Fakes
+# 19 - Solids
+
 var is_delay = false
 var hud
 var pos = Vector2()
