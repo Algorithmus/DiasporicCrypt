@@ -5,7 +5,7 @@
 [ext_resource path="res://players/magic/wind/gust.png" type="Texture" id=3]
 [ext_resource path="res://players/magic/wind/wind.wav" type="AudioStream" id=4]
 
-[sub_resource type="Shader" id=8]
+[sub_resource type="Shader" id=9]
 
 code = "shader_type canvas_item;
 render_mode blend_add;
@@ -19,15 +19,15 @@ COLOR = mix(start, stop, UV.x);
 COLOR.a = texture(TEXTURE,UV).a*COLOR.a;
 }"
 
-[sub_resource type="ShaderMaterial" id=1]
+[sub_resource type="ShaderMaterial" id=10]
 
 render_priority = 0
-shader = SubResource( 8 )
+shader = SubResource( 9 )
 shader_param/start = Color( 0.55, 1, 1, 0 )
 shader_param/stop = Color( 0.548769, 1, 1, 0.41 )
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="ImageTexture" id=2]
+[sub_resource type="ImageTexture" id=11]
 
 flags = 6
 storage = 0
@@ -35,18 +35,18 @@ lossy_quality = 0.7
 flags = 6
 size = Vector2( 32, 32 )
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=12]
 
 offsets = PoolRealArray( 0, 1 )
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=4]
+[sub_resource type="GradientTexture" id=13]
 
 flags = 4
-gradient = SubResource( 3 )
+gradient = SubResource( 12 )
 width = 2048
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=14]
 
 render_priority = 0
 trail_divisor = 1
@@ -76,7 +76,7 @@ angle = 0.0
 angle_random = 0.0
 scale = 1.0
 scale_random = 0.0
-color_ramp = SubResource( 4 )
+color_ramp = SubResource( 13 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 1.0
@@ -86,7 +86,7 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Animation", "Color", "Emission Shape", "Gravity", "Initial Velocity", "Scale", "Spread" ]
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticlesMaterial" id=15]
 
 render_priority = 0
 trail_divisor = 1
@@ -126,23 +126,25 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Color", "Emission Shape", "Gravity", "Initial Velocity", "Scale", "Spread" ]
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=8]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
 [node name="Wind" type="Node2D" index="0"]
 
+z_index = 2
 script = ExtResource( 1 )
+_sections_unfolded = [ "Z Index" ]
 __meta__ = {
 "__editor_plugin_screen__": "Script"
 }
 
 [node name="BG" type="Sprite" parent="." index="0"]
 
-material = SubResource( 1 )
-texture = SubResource( 2 )
-_sections_unfolded = [ "Material" ]
+material = SubResource( 10 )
+texture = SubResource( 11 )
+_sections_unfolded = [ "Material", "Z Index" ]
 
 [node name="actionlines" type="Particles2D" parent="." index="1"]
 
@@ -160,7 +162,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 5 )
+process_material = SubResource( 14 )
 texture = ExtResource( 2 )
 normal_map = null
 h_frames = 1
@@ -182,7 +184,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 6 )
+process_material = SubResource( 15 )
 texture = ExtResource( 3 )
 normal_map = null
 h_frames = 1
@@ -202,7 +204,7 @@ audio_bus_name = "Master"
 
 [node name="collision" type="CollisionShape2D" parent="screen" index="0"]
 
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="SamplePlayer" type="Node" parent="." index="4"]
 
@@ -210,6 +212,7 @@ shape = SubResource( 7 )
 
 stream = ExtResource( 4 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"

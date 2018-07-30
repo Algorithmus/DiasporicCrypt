@@ -23,8 +23,8 @@ func set_size(scale):
 
 func update_size():
 	if (camera != null):
-		var scaleX = -camera.get_offset().x
-		var scaleY = -camera.get_offset().y
+		var scaleX = -camera.get_offset().x * 2
+		var scaleY = -camera.get_offset().y * 2
 		screen.set_scale(Vector2((scaleX + 16)/32.0, (scaleY + 32)/16.0))
 		get_node("BG").set_scale(Vector2(direction * (scaleX + 16)/32.0, (scaleY + 32)/16.0))
 		var actionlines = get_node("actionlines")
