@@ -58,7 +58,8 @@ position = Vector2( -16, 208 )
 
 [node name="Orc" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 4 )]
 
-position = Vector2( 416, 144 )
+position = Vector2( 416, 160 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="2"]
 

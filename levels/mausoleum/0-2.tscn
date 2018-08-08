@@ -302,15 +302,18 @@ patrolrange = 30
 
 [node name="Orc" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 12 )]
 
-position = Vector2( 240, -272 )
+position = Vector2( 240, -256 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Orc1" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 12 )]
 
-position = Vector2( 1072, -272 )
+position = Vector2( 1072, -256 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Orc2" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 12 )]
 
-position = Vector2( 672, -592 )
+position = Vector2( 672, -576 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="WaterGroup" type="Node2D" parent="tilemap" index="10"]
 

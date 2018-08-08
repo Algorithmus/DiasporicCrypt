@@ -345,7 +345,8 @@ editor/display_folded = true
 
 [node name="Orc" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 8 )]
 
-position = Vector2( 832, -496 )
+position = Vector2( 832, -480 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="7"]
 

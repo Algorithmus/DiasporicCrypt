@@ -353,7 +353,8 @@ is_toggle = true
 
 [node name="Orc" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 9 )]
 
-position = Vector2( 288, 336 )
+position = Vector2( 288, 352 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="5"]
 

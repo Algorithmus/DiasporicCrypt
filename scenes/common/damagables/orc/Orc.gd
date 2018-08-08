@@ -11,8 +11,8 @@ func _ready():
 	current_hp = hp
 
 	is_consumable = true
-	consumable_size = Vector2(5, 2)
-	consumable_sprite_offset = Vector2(-32, -16)
+	consumable_size = Vector2(4, 1)
+	consumable_sprite_offset = Vector2(-48, 0)
 
 	elemental_weaknesses.append("ice")
 	sunbeam_immunity = true

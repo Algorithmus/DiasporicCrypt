@@ -6,18 +6,18 @@
 
 [node name="Orc" parent="." index="0" instance=ExtResource( 1 )]
 
-position = Vector2( 0, -48 )
+position = Vector2( 0, -32 )
 
 [node name="Orc2" parent="." index="1" instance=ExtResource( 1 )]
 
-position = Vector2( -208, -48 )
+position = Vector2( -208, -32 )
 
 [node name="Orc3" parent="." index="2" instance=ExtResource( 1 )]
 
-position = Vector2( 208, -48 )
+position = Vector2( 208, -32 )
 
 [node name="Orc4" parent="." index="3" instance=ExtResource( 1 )]
 
-position = Vector2( 416, -48 )
+position = Vector2( 416, -32 )
 
 

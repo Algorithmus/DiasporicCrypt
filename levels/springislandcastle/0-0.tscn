@@ -373,7 +373,8 @@ cycle = 4.0
 
 [node name="Orc" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 9 )]
 
-position = Vector2( 480, -48 )
+position = Vector2( 480, -32 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="SwitchGroup" type="Node2D" parent="tilemap" index="6"]
 

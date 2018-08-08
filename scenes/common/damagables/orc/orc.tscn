@@ -1,15 +1,15 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/common/damagables/orc/Orc.gd" type="Script" id=1]
-[ext_resource path="res://scenes/common/damagables/minotaur/walk.png" type="Texture" id=2]
-[ext_resource path="res://scenes/common/damagables/minotaur/hurt.png" type="Texture" id=3]
+[ext_resource path="res://scenes/common/damagables/orc/walk.png" type="Texture" id=2]
+[ext_resource path="res://scenes/common/damagables/orc/die.png" type="Texture" id=3]
 [ext_resource path="res://scenes/common/damagables/skeleton/die.wav" type="AudioStream" id=4]
 [ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 
 resource_name = "die"
-length = 0.5
+length = 0.4
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -43,10 +43,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4 ]
+"values": [ 0, 1, 2, 3 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("hurt:visible")
@@ -67,7 +67,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -122,10 +122,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0, 1 ]
+"values": [ 0 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("hurt:offset")
@@ -137,7 +137,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -16, 0 ), Vector2( -11, 0 ), Vector2( -16, 0 ) ]
+"values": [ Vector2( -64, 0 ), Vector2( -60, 0 ), Vector2( -64, 0 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -198,7 +198,7 @@ tracks/3/keys = {
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32, 80 )
+extents = Vector2( 16, 64 )
 
 [node name="Orc" type="KinematicBody2D" index="0"]
 
@@ -227,24 +227,28 @@ physics_process_parent = false
 [node name="walk" type="Sprite" parent="." index="1"]
 
 texture = ExtResource( 2 )
+flip_h = true
 vframes = 2
 hframes = 4
+_sections_unfolded = [ "Offset" ]
 
 [node name="die" type="Sprite" parent="." index="2"]
 
 visible = false
 texture = ExtResource( 3 )
-offset = Vector2( -16, 0 )
-hframes = 5
-frame = 4
+offset = Vector2( -64, 0 )
+flip_h = true
+hframes = 4
+_sections_unfolded = [ "Animation", "Offset" ]
 
 [node name="hurt" type="Sprite" parent="." index="3"]
 
 visible = false
 texture = ExtResource( 3 )
-offset = Vector2( -16, 0 )
-hframes = 5
-frame = 1
+offset = Vector2( -64, 0 )
+flip_h = true
+hframes = 4
+_sections_unfolded = [ "Animation", "Offset" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 
@@ -278,6 +282,7 @@ shape = SubResource( 4 )
 
 stream = ExtResource( 4 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"

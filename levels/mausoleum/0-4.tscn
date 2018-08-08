@@ -94,10 +94,6 @@ position = Vector2( -1232, -16 )
 texture = ExtResource( 5 )
 flip_v = true
 
-[node name="crumble" parent="tilemap/BreakableGroup/TestBreakable/sound" index="0"]
-
-pitch_scale = 1.0
-
 [node name="TestBreakable1" parent="tilemap/BreakableGroup" index="1" instance=ExtResource( 4 )]
 
 editor/display_folded = true
@@ -108,10 +104,6 @@ position = Vector2( -1200, -16 )
 texture = ExtResource( 5 )
 flip_v = true
 
-[node name="crumble" parent="tilemap/BreakableGroup/TestBreakable1/sound" index="0"]
-
-pitch_scale = 1.0
-
 [node name="TestBreakable2" parent="tilemap/BreakableGroup" index="2" instance=ExtResource( 4 )]
 
 editor/display_folded = true
@@ -121,10 +113,6 @@ position = Vector2( -1168, -16 )
 
 texture = ExtResource( 5 )
 flip_v = true
-
-[node name="crumble" parent="tilemap/BreakableGroup/TestBreakable2/sound" index="0"]
-
-pitch_scale = 1.0
 
 [node name="PotGroup" type="Node2D" parent="tilemap" index="2"]
 
@@ -146,11 +134,13 @@ editor/display_folded = true
 
 [node name="Orc" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 7 )]
 
-position = Vector2( -496, 272 )
+position = Vector2( -496, 288 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Orc1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 7 )]
 
-position = Vector2( -1200, 272 )
+position = Vector2( -1200, 288 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="FakeGroup" type="Node2D" parent="tilemap" index="4"]
 

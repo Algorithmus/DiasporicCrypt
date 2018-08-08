@@ -204,11 +204,13 @@ editor/display_folded = true
 
 [node name="Orc" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 10 )]
 
-position = Vector2( -1904, -208 )
+position = Vector2( -1904, -192 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Orc1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 10 )]
 
-position = Vector2( -1024, -208 )
+position = Vector2( -1024, -192 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Plant" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 11 )]
 

@@ -149,11 +149,10 @@ reward = "SwitchGroup/FloorSwitch"
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="6"]
 
-editor/display_folded = true
-
 [node name="Orc" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 9 )]
 
-position = Vector2( -224, 16 )
+position = Vector2( -224, 32 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="7"]
 
