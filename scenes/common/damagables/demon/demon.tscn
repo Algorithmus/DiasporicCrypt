@@ -853,7 +853,8 @@ bus = "SFX"
 
 [node name="Stun" parent="." index="10" instance=ExtResource( 8 )]
 
-position = Vector2( 0, -16 )
+position = Vector2( 0, -32 )
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="screen_entered" from="enabler" to="." method="enter_screen"]
 
