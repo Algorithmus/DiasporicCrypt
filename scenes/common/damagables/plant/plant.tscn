@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/common/damagables/plant/Plant.gd" type="Script" id=1]
-[ext_resource path="res://scenes/common/damagables/statues/statue1.png" type="Texture" id=2]
-[ext_resource path="res://scenes/common/damagables/skeleton/die.wav" type="AudioStream" id=3]
-[ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/damagables/plant/idle.png" type="Texture" id=2]
+[ext_resource path="res://scenes/common/damagables/plant/die.png" type="Texture" id=3]
+[ext_resource path="res://scenes/common/damagables/skeleton/die.wav" type="AudioStream" id=4]
+[ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 
@@ -42,10 +43,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 1, 5, 6, 7 ]
+"values": [ 0 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("hurt:visible")
@@ -83,35 +84,11 @@ tracks/5/keys = {
 "update": 1,
 "values": [ 0 ]
 }
-tracks/6/type = "value"
-tracks/6/path = NodePath("eye:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("explode:config/emitting")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
 
 [sub_resource type="Animation" id=2]
 
 resource_name = "die"
-length = 0.6
+length = 0.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -145,10 +122,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 2, 3, 4 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("hurt:visible")
@@ -175,58 +152,46 @@ tracks/4/keys = {
 "values": [ false ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("eye:visible")
+tracks/5/path = NodePath("die:visibility/opacity")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("explode:config/emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("die:visibility/opacity")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 1.0, 0.0 ]
 }
-tracks/8/type = "value"
-tracks/8/path = NodePath("SamplePlayer/die:playing")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0, 0.6 ),
+tracks/6/type = "value"
+tracks/6/path = NodePath("SamplePlayer/die:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("die:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=3]
 
 resource_name = "hurt"
-length = 0.1
+length = 0.2
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -272,10 +237,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 0, 1 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("attack:visible")
@@ -289,82 +254,10 @@ tracks/4/keys = {
 "update": 1,
 "values": [ false ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath("eye:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("dust/dust:config/emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("dust/dust1:config/emitting")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("dust/dust2:config/emitting")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("dust/dust3:config/emitting")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("dust/dust4:config/emitting")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
 
 [sub_resource type="Animation" id=4]
 
-length = 0.1
+length = 0.6
 loop = true
 step = 0.1
 tracks/0/type = "value"
@@ -398,10 +291,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 5, 6, 7 ]
+"values": [ 0, 1, 2, 3, 4, 5 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("hurt:visible")
@@ -427,35 +320,11 @@ tracks/4/keys = {
 "update": 1,
 "values": [ false ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath("eye:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("explode:config/emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0.0110613 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
 
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32, 96 )
+extents = Vector2( 80, 96 )
 
 [node name="Plant" type="KinematicBody2D" index="0"]
 
@@ -472,7 +341,8 @@ __meta__ = {
 
 [node name="enabler" type="VisibilityEnabler2D" parent="." index="0"]
 
-scale = Vector2( 5, 12 )
+position = Vector2( -1.90735e-06, 0 )
+scale = Vector2( 8, 12 )
 rect = Rect2( -10, -10, 20, 20 )
 pause_animations = true
 freeze_bodies = true
@@ -483,187 +353,39 @@ physics_process_parent = false
 
 [node name="walk" type="Sprite" parent="." index="1"]
 
-visible = false
-self_modulate = Color( 0.313726, 0.356863, 0.392157, 1 )
 texture = ExtResource( 2 )
-offset = Vector2( 0, 5 )
+offset = Vector2( -6, 0 )
+hframes = 6
+_sections_unfolded = [ "Animation", "Material", "Offset", "Visibility" ]
 
 [node name="die" type="Sprite" parent="." index="2"]
 
 visible = false
-self_modulate = Color( 0.313726, 0.360784, 0.392157, 1 )
-texture = ExtResource( 2 )
-offset = Vector2( 0, 5 )
+modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 3 )
+offset = Vector2( -6, 0 )
+hframes = 5
+frame = 4
+_sections_unfolded = [ "Animation", "Offset", "Visibility" ]
 
 [node name="hurt" type="Sprite" parent="." index="3"]
 
 visible = false
-self_modulate = Color( 0.313726, 0.360784, 0.392157, 1 )
-texture = ExtResource( 2 )
-offset = Vector2( 0, 5 )
+texture = ExtResource( 3 )
+offset = Vector2( -6, 0 )
+hframes = 5
+frame = 3
+_sections_unfolded = [ "Animation", "Offset", "Visibility" ]
 
 [node name="attack" type="Sprite" parent="." index="4"]
 
-self_modulate = Color( 0.313726, 0.360784, 0.392157, 1 )
+visible = false
 texture = ExtResource( 2 )
-offset = Vector2( 0, 5 )
+offset = Vector2( -6, 0 )
+hframes = 6
+_sections_unfolded = [ "Animation", "Offset", "Visibility" ]
 
-[node name="eye" type="Particles2D" parent="." index="5"]
-
-position = Vector2( -9, -71 )
-emitting = true
-amount = 8
-lifetime = 1.0
-one_shot = false
-preprocess = 0.0
-speed_scale = 1.0
-explosiveness = 0.0
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
-draw_order = 0
-process_material = null
-texture = null
-normal_map = null
-h_frames = 1
-v_frames = 1
-
-[node name="dust" type="Node2D" parent="." index="6"]
-
-[node name="dust" type="Particles2D" parent="dust" index="0"]
-
-position = Vector2( -8, -48 )
-emitting = true
-amount = 8
-lifetime = 1.0
-one_shot = false
-preprocess = 0.0
-speed_scale = 1.0
-explosiveness = 0.0
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
-draw_order = 0
-process_material = null
-texture = null
-normal_map = null
-h_frames = 1
-v_frames = 1
-
-[node name="dust1" type="Particles2D" parent="dust" index="1"]
-
-position = Vector2( 4, -32 )
-emitting = true
-amount = 8
-lifetime = 1.0
-one_shot = false
-preprocess = 0.0
-speed_scale = 1.0
-explosiveness = 0.0
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
-draw_order = 0
-process_material = null
-texture = null
-normal_map = null
-h_frames = 1
-v_frames = 1
-
-[node name="dust2" type="Particles2D" parent="dust" index="2"]
-
-position = Vector2( -24, -16 )
-emitting = true
-amount = 8
-lifetime = 1.0
-one_shot = false
-preprocess = 0.0
-speed_scale = 1.0
-explosiveness = 0.0
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
-draw_order = 0
-process_material = null
-texture = null
-normal_map = null
-h_frames = 1
-v_frames = 1
-
-[node name="dust3" type="Particles2D" parent="dust" index="3"]
-
-position = Vector2( 32, -68 )
-emitting = true
-amount = 8
-lifetime = 1.0
-one_shot = false
-preprocess = 0.0
-speed_scale = 1.0
-explosiveness = 0.0
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
-draw_order = 0
-process_material = null
-texture = null
-normal_map = null
-h_frames = 1
-v_frames = 1
-
-[node name="dust4" type="Particles2D" parent="dust" index="4"]
-
-position = Vector2( -10, 16 )
-emitting = true
-amount = 8
-lifetime = 1.0
-one_shot = false
-preprocess = 0.0
-speed_scale = 1.0
-explosiveness = 0.0
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
-draw_order = 0
-process_material = null
-texture = null
-normal_map = null
-h_frames = 1
-v_frames = 1
-
-[node name="explode" type="Particles2D" parent="." index="7"]
-
-emitting = true
-amount = 8
-lifetime = 1.0
-one_shot = false
-preprocess = 0.0
-speed_scale = 1.0
-explosiveness = 0.0
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
-draw_order = 0
-process_material = null
-texture = null
-normal_map = null
-h_frames = 1
-v_frames = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 
 root_node = NodePath("..")
 autoplay = "walk"
@@ -676,7 +398,7 @@ anims/hurt = SubResource( 3 )
 anims/walk = SubResource( 4 )
 blend_times = [  ]
 
-[node name="damagable" type="Area2D" parent="." index="9"]
+[node name="damagable" type="Area2D" parent="." index="6"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -690,17 +412,18 @@ audio_bus_name = "Master"
 
 shape = SubResource( 5 )
 
-[node name="SamplePlayer" type="Node" parent="." index="10"]
+[node name="SamplePlayer" type="Node" parent="." index="7"]
 
 [node name="die" type="AudioStreamPlayer" parent="SamplePlayer" index="0"]
 
-stream = ExtResource( 3 )
+stream = ExtResource( 4 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
 
-[node name="Stun" parent="." index="11" instance=ExtResource( 4 )]
+[node name="Stun" parent="." index="8" instance=ExtResource( 5 )]
 
 position = Vector2( 0, -96 )
 

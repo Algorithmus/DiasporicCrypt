@@ -215,6 +215,8 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 [node name="Plant" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 11 )]
 
 position = Vector2( -1600, -224 )
+scale = Vector2( -1, 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Imp" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 12 )]
 

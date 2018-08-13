@@ -9,7 +9,7 @@
 [ext_resource path="res://scenes/common/damagables/plant/plant.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=8]
 
-[node name="LVL_HOLYRUINS" type="Node2D" index="0"]
+[node name="LVL_HOLYRUINS" type="Node2D"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -96,6 +96,8 @@ cycle = 8.0
 [node name="Plant" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( -256, 0 )
+scale = Vector2( -1, 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Plant1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 7 )]
 
