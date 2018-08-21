@@ -7,6 +7,18 @@ func _ready():
 	is_consumable = true
 	ignore_collision = true
 	
+	projectile_offset.y = -48
+	projectile_offset.x = 16
+	consumable_size = Vector2(4, 1)
+
+func bleed():
+	.bleed()
+	if (consumable):
+		var color = get_node("die").get_modulate()
+		get_node("cloud").set_modulate(color)
+		if (current_consume_value <= 0):
+			get_node("cloud").hide()
+
 func step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, onSlope, oneWayTile, relevantSlopeTile):
 	accel = 0
 	var desiredY = 0
