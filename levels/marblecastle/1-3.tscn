@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/marblecastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/springislandcastle/climbableblock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/common/breakables/specialbreakable.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/common/damagables/statues/statue1.png" type="Texture" id=4]
-[ext_resource path="res://scenes/common/damagables/statues/statue1.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/damagables/statues/statue2.png" type="Texture" id=5]
+[ext_resource path="res://scenes/common/damagables/statues/statue1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/damagables/statues/statue3.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/common/damagables/statues/statue2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=9]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
 
@@ -169,8 +172,6 @@ special = "stab"
 
 [node name="DecoGroup" type="Node2D" parent="tilemap" index="2"]
 
-editor/display_folded = true
-
 [node name="Sprite" type="Sprite" parent="tilemap/DecoGroup" index="0"]
 
 position = Vector2( 432, 640 )
@@ -179,41 +180,44 @@ offset = Vector2( 0, 5 )
 
 [node name="Sprite1" type="Sprite" parent="tilemap/DecoGroup" index="1"]
 
-position = Vector2( 336, 1760 )
-texture = ExtResource( 4 )
+position = Vector2( 336, 1744 )
+texture = ExtResource( 5 )
 offset = Vector2( 0, 5 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Sprite2" type="Sprite" parent="tilemap/DecoGroup" index="2"]
 
-position = Vector2( -32, 1760 )
-texture = ExtResource( 4 )
+position = Vector2( -16, 1744 )
+texture = ExtResource( 5 )
 offset = Vector2( 0, 5 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="3"]
 
-editor/display_folded = true
-
-[node name="Statue1" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 5 )]
+[node name="Statue1" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 6 )]
 
 position = Vector2( 432, 64 )
 
-[node name="Statue2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 5 )]
+[node name="Statue2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 6 )]
 
 position = Vector2( 432, 1184 )
 
-[node name="Statue3" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 5 )]
+[node name="Statue3" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 7 )]
 
-position = Vector2( -224, 1760 )
+position = Vector2( -192, 1744 )
+scale = Vector2( -1, 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Statue4" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 5 )]
+[node name="Statue4" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 8 )]
 
-position = Vector2( 160, 1760 )
+position = Vector2( 160, 1744 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="4"]
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 6 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( -16, -208 )
@@ -225,7 +229,7 @@ teleport_to = Vector2( -16, 544 )
 
 scale = Vector2( 3, 1 )
 
-[node name="Teleport2" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 6 )]
+[node name="Teleport2" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( 560, 336 )
@@ -236,7 +240,7 @@ teleport_to = Vector2( -364, -208 )
 
 scale = Vector2( 1, 5 )
 
-[node name="Teleport3" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 6 )]
+[node name="Teleport3" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( -368, 80 )
@@ -247,7 +251,7 @@ teleport_to = Vector2( 460, 80 )
 
 scale = Vector2( 1, 5 )
 
-[node name="Teleport1" parent="tilemap/TeleportGroup" index="3" instance=ExtResource( 6 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="3" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( 560, 1776 )

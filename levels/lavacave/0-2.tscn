@@ -15,7 +15,7 @@
 [ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/common/damagables/skeleton/bloodskeleton.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/common/damagables/flyingskull/flyingskull.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/common/damagables/statues/bust.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/common/damagables/statues/bust_h.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/common/fluid/lava.tscn" type="PackedScene" id=17]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=18]
 
@@ -472,6 +472,7 @@ position = Vector2( 2560, -1024 )
 [node name="Bust" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 16 )]
 
 position = Vector2( 912, -848 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 rateX = -1
 
 [node name="LavaGroup" type="Node2D" parent="tilemap" index="7"]

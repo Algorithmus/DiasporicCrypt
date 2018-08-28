@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/lavacave/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/lavacave/climbableblock.tscn" type="PackedScene" id=2]
@@ -13,13 +13,14 @@
 [ext_resource path="res://scenes/common/damagables/flyingskull/flyingskull.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/common/damagables/skeleton/bloodskeleton.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/common/damagables/statues/bust.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/items/gold/gold.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=16]
-[ext_resource path="res://scenes/npcs/jalo/idle.png" type="Texture" id=17]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenes/common/damagables/statues/bust_h.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/common/damagables/statues/bust.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/items/gold/gold.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/npcs/jalo/idle.png" type="Texture" id=18]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=19]
 
-[node name="LVL_NOTITLE" type="Node2D" index="0"]
+[node name="LVL_NOTITLE" type="Node2D"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -262,122 +263,125 @@ position = Vector2( 3920, 128 )
 [node name="SimpleProjectile" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 13 )]
 
 position = Vector2( 3648, 144 )
+projectile_offset = Vector2( 0, 0 )
 
 [node name="Bust" parent="tilemap/EnemiesGroup" index="7" instance=ExtResource( 14 )]
 
 position = Vector2( 944, 80 )
 rateX = -1
 
-[node name="Bust1" parent="tilemap/EnemiesGroup" index="8" instance=ExtResource( 14 )]
+[node name="Bust1" parent="tilemap/EnemiesGroup" index="8" instance=ExtResource( 15 )]
 
 position = Vector2( 1808, -208 )
+projectile_offset = Vector2( 0, 0 )
 rateY = 1
 
-[node name="Bust2" parent="tilemap/EnemiesGroup" index="9" instance=ExtResource( 14 )]
+[node name="Bust2" parent="tilemap/EnemiesGroup" index="9" instance=ExtResource( 15 )]
 
 position = Vector2( 2960, -208 )
+projectile_offset = Vector2( 0, 0 )
 rateY = 1
 
 [node name="ItemGroup" type="Node2D" parent="tilemap" index="7"]
 
-[node name="Gold" parent="tilemap/ItemGroup" index="0" instance=ExtResource( 15 )]
+[node name="Gold" parent="tilemap/ItemGroup" index="0" instance=ExtResource( 16 )]
 
 position = Vector2( 320, 704 )
 value = 50
 
-[node name="Gold1" parent="tilemap/ItemGroup" index="1" instance=ExtResource( 15 )]
+[node name="Gold1" parent="tilemap/ItemGroup" index="1" instance=ExtResource( 16 )]
 
 position = Vector2( 320, 608 )
 value = 50
 
-[node name="Gold2" parent="tilemap/ItemGroup" index="2" instance=ExtResource( 15 )]
+[node name="Gold2" parent="tilemap/ItemGroup" index="2" instance=ExtResource( 16 )]
 
 position = Vector2( 320, 512 )
 value = 50
 
-[node name="Gold3" parent="tilemap/ItemGroup" index="3" instance=ExtResource( 15 )]
+[node name="Gold3" parent="tilemap/ItemGroup" index="3" instance=ExtResource( 16 )]
 
 position = Vector2( 640, 736 )
 value = 50
 
-[node name="Gold4" parent="tilemap/ItemGroup" index="4" instance=ExtResource( 15 )]
+[node name="Gold4" parent="tilemap/ItemGroup" index="4" instance=ExtResource( 16 )]
 
 position = Vector2( 640, 640 )
 value = 50
 
-[node name="Gold5" parent="tilemap/ItemGroup" index="5" instance=ExtResource( 15 )]
+[node name="Gold5" parent="tilemap/ItemGroup" index="5" instance=ExtResource( 16 )]
 
 position = Vector2( 896, 560 )
 value = 50
 
-[node name="Gold6" parent="tilemap/ItemGroup" index="6" instance=ExtResource( 15 )]
+[node name="Gold6" parent="tilemap/ItemGroup" index="6" instance=ExtResource( 16 )]
 
 position = Vector2( 896, 448 )
 value = 50
 
-[node name="Gold7" parent="tilemap/ItemGroup" index="7" instance=ExtResource( 15 )]
+[node name="Gold7" parent="tilemap/ItemGroup" index="7" instance=ExtResource( 16 )]
 
 position = Vector2( 1136, 736 )
 value = 50
 
-[node name="Gold8" parent="tilemap/ItemGroup" index="8" instance=ExtResource( 15 )]
+[node name="Gold8" parent="tilemap/ItemGroup" index="8" instance=ExtResource( 16 )]
 
 position = Vector2( 1136, 640 )
 value = 50
 
-[node name="Gold9" parent="tilemap/ItemGroup" index="9" instance=ExtResource( 15 )]
+[node name="Gold9" parent="tilemap/ItemGroup" index="9" instance=ExtResource( 16 )]
 
 position = Vector2( 1376, 544 )
 value = 50
 
-[node name="Gold10" parent="tilemap/ItemGroup" index="10" instance=ExtResource( 15 )]
+[node name="Gold10" parent="tilemap/ItemGroup" index="10" instance=ExtResource( 16 )]
 
 position = Vector2( 1728, 416 )
 value = 50
 
-[node name="Gold11" parent="tilemap/ItemGroup" index="11" instance=ExtResource( 15 )]
+[node name="Gold11" parent="tilemap/ItemGroup" index="11" instance=ExtResource( 16 )]
 
 position = Vector2( 2080, 416 )
 value = 50
 
-[node name="Gold12" parent="tilemap/ItemGroup" index="12" instance=ExtResource( 15 )]
+[node name="Gold12" parent="tilemap/ItemGroup" index="12" instance=ExtResource( 16 )]
 
 position = Vector2( 2672, 528 )
 value = 50
 
-[node name="Gold13" parent="tilemap/ItemGroup" index="13" instance=ExtResource( 15 )]
+[node name="Gold13" parent="tilemap/ItemGroup" index="13" instance=ExtResource( 16 )]
 
 position = Vector2( 2672, 432 )
 value = 50
 
-[node name="Gold14" parent="tilemap/ItemGroup" index="14" instance=ExtResource( 15 )]
+[node name="Gold14" parent="tilemap/ItemGroup" index="14" instance=ExtResource( 16 )]
 
 position = Vector2( 2512, 656 )
 value = 50
 
-[node name="Gold16" parent="tilemap/ItemGroup" index="15" instance=ExtResource( 15 )]
+[node name="Gold16" parent="tilemap/ItemGroup" index="15" instance=ExtResource( 16 )]
 
 position = Vector2( 2480, 800 )
 value = 50
 
-[node name="Gold18" parent="tilemap/ItemGroup" index="16" instance=ExtResource( 15 )]
+[node name="Gold18" parent="tilemap/ItemGroup" index="16" instance=ExtResource( 16 )]
 
 position = Vector2( 2352, 1104 )
 value = 50
 
-[node name="Gold17" parent="tilemap/ItemGroup" index="17" instance=ExtResource( 15 )]
+[node name="Gold17" parent="tilemap/ItemGroup" index="17" instance=ExtResource( 16 )]
 
 position = Vector2( 2864, 800 )
 value = 50
 
-[node name="Gold15" parent="tilemap/ItemGroup" index="18" instance=ExtResource( 15 )]
+[node name="Gold15" parent="tilemap/ItemGroup" index="18" instance=ExtResource( 16 )]
 
 position = Vector2( 2832, 656 )
 value = 50
 
 [node name="NPCGroup" type="Node2D" parent="tilemap" index="8"]
 
-[node name="Jalo" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 16 )]
+[node name="Jalo" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 17 )]
 
 editor/display_folded = true
 position = Vector2( 3984, 656 )
@@ -386,11 +390,11 @@ dialogues = [ [ -1, "Jalo", "DIAG_JALO0", null, null ], [ 1, "Friederich", "DIAG
 [node name="Sprite" parent="tilemap/NPCGroup/Jalo" index="1"]
 
 scale = Vector2( -1, 1 )
-texture = ExtResource( 17 )
+texture = ExtResource( 18 )
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="9"]
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 18 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 19 )]
 
 editor/display_folded = true
 position = Vector2( -240, 0 )
@@ -401,7 +405,7 @@ teleport_to = Vector2( 4076, 0 )
 
 scale = Vector2( 1, 12 )
 
-[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 18 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 19 )]
 
 editor/display_folded = true
 position = Vector2( -240, 720 )
@@ -412,7 +416,7 @@ teleport_to = Vector2( 4076, 720 )
 
 scale = Vector2( 1, 31 )
 
-[node name="Teleport2" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 18 )]
+[node name="Teleport2" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 19 )]
 
 editor/display_folded = true
 position = Vector2( 1520, 1232 )
@@ -424,7 +428,7 @@ teleport_to = Vector2( -16, -16 )
 
 scale = Vector2( 109, 1 )
 
-[node name="Teleport3" parent="tilemap/TeleportGroup" index="3" instance=ExtResource( 18 )]
+[node name="Teleport3" parent="tilemap/TeleportGroup" index="3" instance=ExtResource( 19 )]
 
 editor/display_folded = true
 position = Vector2( 3792, 1232 )
@@ -436,7 +440,7 @@ teleport_to = Vector2( 2256, -16 )
 
 scale = Vector2( 5, 1 )
 
-[node name="Teleport4" parent="tilemap/TeleportGroup" index="4" instance=ExtResource( 18 )]
+[node name="Teleport4" parent="tilemap/TeleportGroup" index="4" instance=ExtResource( 19 )]
 
 editor/display_folded = true
 position = Vector2( 4272, 112 )

@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/summerislandcastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/common/damagables/statues/statue1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/damagables/statues/statue3.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/items/potion/potionplus.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/items/special/styxbrooch.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=7]
@@ -54,15 +54,15 @@ scale = Vector2( 1, 8 )
 
 [node name="PotGroup" type="Node2D" parent="tilemap" index="1"]
 
-editor/display_folded = true
-
 [node name="Pot" parent="tilemap/PotGroup" index="0" instance=ExtResource( 3 )]
 
-position = Vector2( 224, 112 )
+position = Vector2( 240, 112 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Pot1" parent="tilemap/PotGroup" index="1" instance=ExtResource( 3 )]
 
-position = Vector2( -32, 112 )
+position = Vector2( -48, 112 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Pot2" parent="tilemap/PotGroup" index="2" instance=ExtResource( 3 )]
 
@@ -70,9 +70,10 @@ position = Vector2( -16, -560 )
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="2"]
 
-[node name="Statue1" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 4 )]
+[node name="Statue3" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 4 )]
 
-position = Vector2( -224, 64 )
+position = Vector2( 96, 48 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="SpecialItemGroup" type="Node2D" parent="tilemap" index="3"]
 

@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/marblecastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/springislandcastle/climbableblock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/common/target.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/common/damagables/statues/statue1.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/common/breakables/specialbreakable.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/common/damagables/statues/statue2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/breakables/specialbreakable.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=8]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
 
@@ -588,66 +589,65 @@ position = Vector2( -1072, 64 )
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="3"]
 
-editor/display_folded = true
-
 [node name="Statue1" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( 112, 32 )
 
-[node name="Statue2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 5 )]
+[node name="Statue2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 6 )]
 
-position = Vector2( -592, 32 )
+position = Vector2( -592, 16 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="BreakableGroup" type="Node2D" parent="tilemap" index="4"]
 
 editor/display_folded = true
 
-[node name="SpecialBreakable" parent="tilemap/BreakableGroup" index="0" instance=ExtResource( 6 )]
+[node name="SpecialBreakable" parent="tilemap/BreakableGroup" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( -1200, 112 )
 special = "swift"
 
-[node name="SpecialBreakable1" parent="tilemap/BreakableGroup" index="1" instance=ExtResource( 6 )]
+[node name="SpecialBreakable1" parent="tilemap/BreakableGroup" index="1" instance=ExtResource( 7 )]
 
 position = Vector2( -1200, 80 )
 special = "swift"
 
-[node name="SpecialBreakable2" parent="tilemap/BreakableGroup" index="2" instance=ExtResource( 6 )]
+[node name="SpecialBreakable2" parent="tilemap/BreakableGroup" index="2" instance=ExtResource( 7 )]
 
 position = Vector2( -1200, 48 )
 special = "swift"
 
-[node name="SpecialBreakable3" parent="tilemap/BreakableGroup" index="3" instance=ExtResource( 6 )]
+[node name="SpecialBreakable3" parent="tilemap/BreakableGroup" index="3" instance=ExtResource( 7 )]
 
 position = Vector2( -1200, 16 )
 special = "swift"
 
-[node name="SpecialBreakable4" parent="tilemap/BreakableGroup" index="4" instance=ExtResource( 6 )]
+[node name="SpecialBreakable4" parent="tilemap/BreakableGroup" index="4" instance=ExtResource( 7 )]
 
 position = Vector2( -1200, -16 )
 special = "swift"
 
-[node name="SpecialBreakable5" parent="tilemap/BreakableGroup" index="5" instance=ExtResource( 6 )]
+[node name="SpecialBreakable5" parent="tilemap/BreakableGroup" index="5" instance=ExtResource( 7 )]
 
 position = Vector2( -1200, -48 )
 special = "swift"
 
-[node name="SpecialBreakable6" parent="tilemap/BreakableGroup" index="6" instance=ExtResource( 6 )]
+[node name="SpecialBreakable6" parent="tilemap/BreakableGroup" index="6" instance=ExtResource( 7 )]
 
 position = Vector2( -1200, -80 )
 special = "swift"
 
-[node name="SpecialBreakable7" parent="tilemap/BreakableGroup" index="7" instance=ExtResource( 6 )]
+[node name="SpecialBreakable7" parent="tilemap/BreakableGroup" index="7" instance=ExtResource( 7 )]
 
 position = Vector2( -1200, -112 )
 special = "swift"
 
-[node name="SpecialBreakable8" parent="tilemap/BreakableGroup" index="8" instance=ExtResource( 6 )]
+[node name="SpecialBreakable8" parent="tilemap/BreakableGroup" index="8" instance=ExtResource( 7 )]
 
 position = Vector2( -1200, -144 )
 special = "swift"
 
-[node name="SpecialBreakable9" parent="tilemap/BreakableGroup" index="9" instance=ExtResource( 6 )]
+[node name="SpecialBreakable9" parent="tilemap/BreakableGroup" index="9" instance=ExtResource( 7 )]
 
 position = Vector2( -1200, -176 )
 special = "swift"
@@ -656,7 +656,7 @@ special = "swift"
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 7 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 8 )]
 
 editor/display_folded = true
 position = Vector2( 848, 48 )
@@ -667,7 +667,7 @@ teleport_to = Vector2( -364, 240 )
 
 scale = Vector2( 1, 5 )
 
-[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 7 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 8 )]
 
 editor/display_folded = true
 position = Vector2( -1328, 48 )

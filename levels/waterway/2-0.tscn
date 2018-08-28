@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/waterway/climbableblock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/common/damagables/fish/fish.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/common/damagables/statues/bust.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/common/damagables/statues/bust_h.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/common/damagables/mine.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/items/gold/gold.tscn" type="PackedScene" id=8]
@@ -13,7 +13,7 @@
 [ext_resource path="res://scenes/common/fluid/water.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=12]
 
-[node name="LVL_NOTITLE" type="Node2D" index="0"]
+[node name="LVL_NOTITLE" type="Node2D"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -77,8 +77,6 @@ scale = Vector2( 1, 6 )
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="2"]
 
-editor/display_folded = true
-
 [node name="Fish" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( -80, 416 )
@@ -98,11 +96,16 @@ position = Vector2( -80, 1520 )
 [node name="Bust" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 5 )]
 
 position = Vector2( -176, 368 )
+scale = Vector2( -1, 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+projectile_offset = Vector2( 0, 0 )
 rateX = 1
 
 [node name="Bust1" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 5 )]
 
 position = Vector2( 272, 1392 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+projectile_offset = Vector2( 0, 0 )
 rateX = -1
 
 [node name="SpikeGroup" type="Node2D" parent="tilemap" index="3"]
@@ -1253,6 +1256,8 @@ position = Vector2( -48, 1376 )
 value = 100
 
 [node name="NPCGroup" type="Node2D" parent="tilemap" index="6"]
+
+editor/display_folded = true
 
 [node name="Vladimir" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 9 )]
 

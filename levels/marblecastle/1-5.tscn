@@ -6,8 +6,8 @@
 [ext_resource path="res://scenes/springislandcastle/slopes/slope16-31.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/springislandcastle/slopes/slope0-15.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/dungeon/slopes/slopea-b.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/common/damagables/statues/statue1.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/common/damagables/statues/statue1.png" type="Texture" id=8]
+[ext_resource path="res://scenes/common/damagables/statues/statue2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/common/damagables/statues/statue2.png" type="Texture" id=8]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=9]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
@@ -133,32 +133,36 @@ position = Vector2( -624, 272 )
 
 [node name="Statue1" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 7 )]
 
-editor/display_folded = true
-position = Vector2( 224, 256 )
+position = Vector2( 224, 240 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Statue2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 7 )]
 
-position = Vector2( -128, 256 )
+position = Vector2( -128, 240 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="DecoGroup" type="Node2D" parent="tilemap" index="2"]
 
 [node name="Sprite" type="Sprite" parent="tilemap/DecoGroup" index="0"]
 
-position = Vector2( 400, 256 )
+position = Vector2( 400, 240 )
 texture = ExtResource( 8 )
 offset = Vector2( 0, 5 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Sprite1" type="Sprite" parent="tilemap/DecoGroup" index="1"]
 
-position = Vector2( 48, 256 )
+position = Vector2( 48, 240 )
 texture = ExtResource( 8 )
 offset = Vector2( 0, 5 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Sprite2" type="Sprite" parent="tilemap/DecoGroup" index="2"]
 
-position = Vector2( -304, 256 )
+position = Vector2( -304, 240 )
 texture = ExtResource( 8 )
 offset = Vector2( 0, 5 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="3"]
 

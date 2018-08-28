@@ -6,13 +6,13 @@
 [ext_resource path="res://scenes/dungeon/platforms/flooredge2.png" type="Texture" id=4]
 [ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/common/damagables/statues/bust.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/common/damagables/statues/bust_h.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/items/potion/manapotionplus.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/items/special/styxcoin.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/common/sunbeam.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=11]
 
-[node name="LVL_NOTITLE" type="Node2D" index="0"]
+[node name="LVL_NOTITLE" type="Node2D"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -746,40 +746,60 @@ position = Vector2( -176, -16 )
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="4"]
 
+_sections_unfolded = [ "Transform" ]
+
 [node name="Bust" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 7 )]
 
-position = Vector2( -272, -2352 )
-rateX = 1
+position = Vector2( 176, -528 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+projectile_offset = Vector2( 0, 0 )
+rateX = -2
 
-[node name="Bust1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 7 )]
-
-position = Vector2( 176, -2160 )
-rateX = -1
-
-[node name="Bust2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 7 )]
-
-position = Vector2( -272, -1808 )
-rateX = 1
-
-[node name="Bust3" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 7 )]
+[node name="Bust2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 7 )]
 
 position = Vector2( 176, -1360 )
-rateX = -1
+_sections_unfolded = [ "Transform", "Z Index" ]
+projectile_offset = Vector2( 0, 0 )
+rateX = -2
 
-[node name="Bust4" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 7 )]
+[node name="Bust3" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 7 )]
 
-position = Vector2( -272, -1040 )
-rateX = 1
+position = Vector2( 176, -2160 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+projectile_offset = Vector2( 0, 0 )
+rateX = -2
 
-[node name="Bust5" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 7 )]
+[node name="Bust4" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 7 )]
 
-position = Vector2( 176, -528 )
-rateX = -1
+position = Vector2( -272, -2352 )
+scale = Vector2( -1, 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+projectile_offset = Vector2( 0, 0 )
+rateX = 2
 
-[node name="Bust6" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 7 )]
+[node name="Bust5" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 7 )]
+
+position = Vector2( -272.001, -1808 )
+scale = Vector2( -1, 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+projectile_offset = Vector2( 0, 0 )
+rateX = 2
+
+[node name="Bust6" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 7 )]
+
+position = Vector2( -272.001, -1040 )
+scale = Vector2( -1, 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+projectile_offset = Vector2( 0, 0 )
+rateX = 2
+
+[node name="Bust7" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 7 )]
 
 position = Vector2( -272, -240 )
-rateX = 1
+scale = Vector2( -1, 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+projectile_offset = Vector2( 0, 0 )
+rateX = 2
 
 [node name="SpecialItemGroup" type="Node2D" parent="tilemap" index="5"]
 

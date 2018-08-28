@@ -10,14 +10,15 @@
 [ext_resource path="res://scenes/common/hangable.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/common/hangblockend.png" type="Texture" id=9]
 [ext_resource path="res://scenes/common/spawnpoint.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/common/damagables/statues/bust.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/common/damagables/statues/bust_h.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=13]
 
-[node name="LVL_NOTITLE" type="Node2D" index="0"]
+[node name="LVL_NOTITLE" type="Node2D"]
 
 __meta__ = {
-"__editor_plugin_screen__": "2D"
+"__editor_plugin_screen__": "2D",
+"_edit_horizontal_guides_": [ -624.0 ]
 }
 
 [node name="tilemap" type="TileMap" parent="." index="0"]
@@ -186,32 +187,56 @@ spawn_container = "SpawnContainer"
 
 [node name="Bust" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 11 )]
 
+editor/display_folded = true
 position = Vector2( 304, 48 )
+scale = Vector2( -1, 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+projectile_offset = Vector2( 0, 0 )
 rateX = 2
 
 [node name="Bust1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 11 )]
 
+editor/display_folded = true
 position = Vector2( 304, -176 )
+scale = Vector2( -1, 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+projectile_offset = Vector2( 0, 0 )
 rateX = 2
 
 [node name="Bust2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 11 )]
 
+editor/display_folded = true
 position = Vector2( 304, -400 )
+scale = Vector2( -1, 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+projectile_offset = Vector2( 0, 0 )
 rateX = 2
 
 [node name="Bust3" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 11 )]
 
+editor/display_folded = true
 position = Vector2( 304, -624 )
+scale = Vector2( -1, 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+projectile_offset = Vector2( 0, 0 )
 rateX = 2
 
 [node name="Bust4" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 11 )]
 
+editor/display_folded = true
 position = Vector2( 304, -848 )
+scale = Vector2( -1, 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+projectile_offset = Vector2( 0, 0 )
 rateX = 2
 
 [node name="Bust5" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 11 )]
 
+editor/display_folded = true
 position = Vector2( 304, -1072 )
+scale = Vector2( -1, 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+projectile_offset = Vector2( 0, 0 )
 rateX = 2
 
 [node name="SpikeGroup" type="Node2D" parent="tilemap" index="8"]

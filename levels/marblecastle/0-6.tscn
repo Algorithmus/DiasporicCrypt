@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/marblecastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/springislandcastle/slopes/slope31-16.tscn" type="PackedScene" id=2]
@@ -6,10 +6,11 @@
 [ext_resource path="res://scenes/dungeon/slopes/slopea-b.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/springislandcastle/climbableblock.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/common/damagables/statues/statue1.png" type="Texture" id=6]
-[ext_resource path="res://scenes/common/damagables/statues/statue1.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/common/breakables/specialbreakable.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/common/damagables/statues/statue2.png" type="Texture" id=7]
+[ext_resource path="res://scenes/common/damagables/statues/statue1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/common/breakables/specialbreakable.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=11]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
 
@@ -118,8 +119,6 @@ flip_h = false
 
 [node name="DecoGroup" type="Node2D" parent="tilemap" index="2"]
 
-editor/display_folded = true
-
 [node name="Sprite" type="Sprite" parent="tilemap/DecoGroup" index="0"]
 
 self_modulate = Color( 0.93866, 0.882812, 1, 1 )
@@ -134,49 +133,65 @@ position = Vector2( -80, 288 )
 texture = ExtResource( 6 )
 offset = Vector2( 0, 5 )
 
+[node name="Sprite2" type="Sprite" parent="tilemap/DecoGroup" index="2"]
+
+self_modulate = Color( 0.93866, 0.882812, 1, 1 )
+position = Vector2( 207, -16 )
+texture = ExtResource( 7 )
+offset = Vector2( 0, 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite3" type="Sprite" parent="tilemap/DecoGroup" index="3"]
+
+self_modulate = Color( 0.93866, 0.882812, 1, 1 )
+position = Vector2( -367, -16 )
+texture = ExtResource( 7 )
+offset = Vector2( 0, 5 )
+_sections_unfolded = [ "Transform" ]
+
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="3"]
 
 editor/display_folded = true
 
-[node name="Statue1" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 7 )]
+[node name="Statue1" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 8 )]
 
 position = Vector2( 256, 288 )
 
-[node name="Statue2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 7 )]
+[node name="Statue2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 8 )]
 
 position = Vector2( 80, 288 )
 
-[node name="Statue3" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 7 )]
+[node name="Statue3" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 8 )]
 
 position = Vector2( -256, 288 )
 
-[node name="Statue4" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 7 )]
+[node name="Statue4" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 8 )]
 
 position = Vector2( -448, 288 )
 
 [node name="BreakableGroup" type="Node2D" parent="tilemap" index="4"]
 
-[node name="SpecialBreakable" parent="tilemap/BreakableGroup" index="0" instance=ExtResource( 8 )]
+[node name="SpecialBreakable" parent="tilemap/BreakableGroup" index="0" instance=ExtResource( 9 )]
 
 position = Vector2( -656, 240 )
 special = "rush"
 
-[node name="SpecialBreakable1" parent="tilemap/BreakableGroup" index="1" instance=ExtResource( 8 )]
+[node name="SpecialBreakable1" parent="tilemap/BreakableGroup" index="1" instance=ExtResource( 9 )]
 
 position = Vector2( -656, 272 )
 special = "rush"
 
-[node name="SpecialBreakable2" parent="tilemap/BreakableGroup" index="2" instance=ExtResource( 8 )]
+[node name="SpecialBreakable2" parent="tilemap/BreakableGroup" index="2" instance=ExtResource( 9 )]
 
 position = Vector2( -656, 304 )
 special = "rush"
 
-[node name="SpecialBreakable3" parent="tilemap/BreakableGroup" index="3" instance=ExtResource( 8 )]
+[node name="SpecialBreakable3" parent="tilemap/BreakableGroup" index="3" instance=ExtResource( 9 )]
 
 position = Vector2( -656, 336 )
 special = "rush"
 
-[node name="SpecialBreakable4" parent="tilemap/BreakableGroup" index="4" instance=ExtResource( 8 )]
+[node name="SpecialBreakable4" parent="tilemap/BreakableGroup" index="4" instance=ExtResource( 9 )]
 
 position = Vector2( -656, 368 )
 special = "rush"
@@ -185,7 +200,7 @@ special = "rush"
 
 editor/display_folded = true
 
-[node name="SpikeTile" parent="tilemap/SpikeGroup" index="0" instance=ExtResource( 9 )]
+[node name="SpikeTile" parent="tilemap/SpikeGroup" index="0" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 336, 144 )
@@ -199,7 +214,7 @@ flip_v = true
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="SpikeTile1" parent="tilemap/SpikeGroup" index="1" instance=ExtResource( 9 )]
+[node name="SpikeTile1" parent="tilemap/SpikeGroup" index="1" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 304, 144 )
@@ -213,7 +228,7 @@ flip_v = true
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="SpikeTile2" parent="tilemap/SpikeGroup" index="2" instance=ExtResource( 9 )]
+[node name="SpikeTile2" parent="tilemap/SpikeGroup" index="2" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 272, 144 )
@@ -227,7 +242,7 @@ flip_v = true
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="SpikeTile3" parent="tilemap/SpikeGroup" index="3" instance=ExtResource( 9 )]
+[node name="SpikeTile3" parent="tilemap/SpikeGroup" index="3" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 240, 144 )
@@ -241,7 +256,7 @@ flip_v = true
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="SpikeTile4" parent="tilemap/SpikeGroup" index="4" instance=ExtResource( 9 )]
+[node name="SpikeTile4" parent="tilemap/SpikeGroup" index="4" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 208, 144 )
@@ -255,7 +270,7 @@ flip_v = true
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="SpikeTile5" parent="tilemap/SpikeGroup" index="5" instance=ExtResource( 9 )]
+[node name="SpikeTile5" parent="tilemap/SpikeGroup" index="5" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 176, 144 )
@@ -269,7 +284,7 @@ flip_v = true
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="SpikeTile6" parent="tilemap/SpikeGroup" index="6" instance=ExtResource( 9 )]
+[node name="SpikeTile6" parent="tilemap/SpikeGroup" index="6" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 144, 144 )
@@ -283,7 +298,7 @@ flip_v = true
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="SpikeTile7" parent="tilemap/SpikeGroup" index="7" instance=ExtResource( 9 )]
+[node name="SpikeTile7" parent="tilemap/SpikeGroup" index="7" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 112, 144 )
@@ -297,7 +312,7 @@ flip_v = true
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="SpikeTile8" parent="tilemap/SpikeGroup" index="8" instance=ExtResource( 9 )]
+[node name="SpikeTile8" parent="tilemap/SpikeGroup" index="8" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 80, 144 )
@@ -311,7 +326,7 @@ flip_v = true
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="SpikeTile9" parent="tilemap/SpikeGroup" index="9" instance=ExtResource( 9 )]
+[node name="SpikeTile9" parent="tilemap/SpikeGroup" index="9" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( -240, 144 )
@@ -325,7 +340,7 @@ flip_v = true
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="SpikeTile10" parent="tilemap/SpikeGroup" index="10" instance=ExtResource( 9 )]
+[node name="SpikeTile10" parent="tilemap/SpikeGroup" index="10" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( -272, 144 )
@@ -339,7 +354,7 @@ flip_v = true
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="SpikeTile11" parent="tilemap/SpikeGroup" index="11" instance=ExtResource( 9 )]
+[node name="SpikeTile11" parent="tilemap/SpikeGroup" index="11" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( -304, 144 )
@@ -353,7 +368,7 @@ flip_v = true
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="SpikeTile12" parent="tilemap/SpikeGroup" index="12" instance=ExtResource( 9 )]
+[node name="SpikeTile12" parent="tilemap/SpikeGroup" index="12" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( -336, 144 )
@@ -367,7 +382,7 @@ flip_v = true
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="SpikeTile13" parent="tilemap/SpikeGroup" index="13" instance=ExtResource( 9 )]
+[node name="SpikeTile13" parent="tilemap/SpikeGroup" index="13" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( -368, 144 )
@@ -381,7 +396,7 @@ flip_v = true
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="SpikeTile14" parent="tilemap/SpikeGroup" index="14" instance=ExtResource( 9 )]
+[node name="SpikeTile14" parent="tilemap/SpikeGroup" index="14" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( -400, 144 )
@@ -395,7 +410,7 @@ flip_v = true
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="SpikeTile15" parent="tilemap/SpikeGroup" index="15" instance=ExtResource( 9 )]
+[node name="SpikeTile15" parent="tilemap/SpikeGroup" index="15" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( -432, 144 )
@@ -409,7 +424,7 @@ flip_v = true
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="SpikeTile16" parent="tilemap/SpikeGroup" index="16" instance=ExtResource( 9 )]
+[node name="SpikeTile16" parent="tilemap/SpikeGroup" index="16" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( -464, 144 )
@@ -427,7 +442,7 @@ audio_bus_name = "Master"
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 10 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 position = Vector2( 816, 208 )
@@ -439,7 +454,7 @@ teleport_to = Vector2( -1292, 48 )
 editor/display_folded = true
 scale = Vector2( 1, 5 )
 
-[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 10 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 position = Vector2( -752, 304 )

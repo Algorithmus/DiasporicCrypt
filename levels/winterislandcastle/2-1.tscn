@@ -11,10 +11,10 @@
 [ext_resource path="res://scenes/summerislandcastle/BGs/oneway-edge.png" type="Texture" id=9]
 [ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/common/damagables/skeleton/bloodskeleton.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/common/damagables/statues/bust.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/common/damagables/statues/bust_h.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=13]
 
-[node name="LVL_NOTITLE" type="Node2D" index="0"]
+[node name="LVL_NOTITLE" type="Node2D"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -183,10 +183,14 @@ position = Vector2( -144, -272 )
 [node name="SimpleProjectile" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 11 )]
 
 position = Vector2( -160, 176 )
+projectile_offset = Vector2( 0, 0 )
 
 [node name="Bust" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 12 )]
 
 position = Vector2( -400, -304 )
+scale = Vector2( -1, 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+projectile_offset = Vector2( 0, 0 )
 rateX = 1
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="5"]

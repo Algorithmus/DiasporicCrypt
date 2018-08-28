@@ -5,10 +5,10 @@
 [ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/common/damagables/statues/bust.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/damagables/statues/bust_h.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=7]
 
-[node name="LVL_NOTITLE" type="Node2D" index="0"]
+[node name="LVL_NOTITLE" type="Node2D"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -70,6 +70,8 @@ scale = Vector2( 1, 5 )
 position = Vector2( 16, 80 )
 
 [node name="SpikeGroup" type="Node2D" parent="tilemap" index="2"]
+
+editor/display_folded = true
 
 [node name="SpikeTile" parent="tilemap/SpikeGroup" index="0" instance=ExtResource( 5 )]
 
@@ -300,16 +302,23 @@ audio_bus_name = "Master"
 [node name="Bust" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 6 )]
 
 position = Vector2( -272, -208 )
+scale = Vector2( -1, 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+projectile_offset = Vector2( 0, 0 )
 rateX = 1
 
-[node name="Bust2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 6 )]
-
-position = Vector2( 272, -624 )
-rateX = -1
-
-[node name="Bust1" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 6 )]
+[node name="Bust1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 6 )]
 
 position = Vector2( 272, -48 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+projectile_offset = Vector2( 0, 0 )
+rateX = -1
+
+[node name="Bust2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 6 )]
+
+position = Vector2( 272, -624 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+projectile_offset = Vector2( 0, 0 )
 rateX = -1
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="4"]

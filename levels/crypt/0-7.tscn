@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/common/damagables/skeleton/blackskeleton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/common/damagables/statues/statue1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/damagables/statues/statue2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=7]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
@@ -193,9 +193,10 @@ position = Vector2( 1088, 16 )
 
 position = Vector2( 1392, 16 )
 
-[node name="Statue1" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 6 )]
+[node name="Statue2" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 6 )]
 
-position = Vector2( -16, -64 )
+position = Vector2( -16, -80 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="3"]
 

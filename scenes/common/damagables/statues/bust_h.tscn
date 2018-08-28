@@ -1,50 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://scenes/common/damagables/statues/Statue.gd" type="Script" id=1]
-[ext_resource path="res://scenes/common/damagables/statues/golem.png" type="Texture" id=2]
-[ext_resource path="res://scenes/common/damagables/skeleton/die.wav" type="AudioStream" id=3]
-[ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/damagables/statues/Bust.gd" type="Script" id=1]
+[ext_resource path="res://scenes/common/damagables/statues/bust_h.png" type="Texture" id=2]
+[ext_resource path="res://scenes/common/damagables/statues/bust_hstatic.png" type="Texture" id=3]
 
-[sub_resource type="ParticlesMaterial" id=1]
-
-render_priority = 0
-trail_divisor = 1
-emission_shape = 0
-flag_align_y = false
-flag_rotate_y = false
-flag_disable_z = true
-spread = 0.0
-flatness = 0.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 0.0
-initial_velocity_random = 0.0
-angular_velocity = 0.0
-angular_velocity_random = 0.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-linear_accel = 0.0
-linear_accel_random = 0.0
-radial_accel = 0.0
-radial_accel_random = 0.0
-tangential_accel = 0.0
-tangential_accel_random = 0.0
-damping = 0.0
-damping_random = 0.0
-angle = 0.0
-angle_random = 0.0
-scale = 1.0
-scale_random = 0.0
-color = Color( 1, 0, 0, 1 )
-hue_variation = 0.0
-hue_variation_random = 0.0
-anim_speed = 1.0
-anim_speed_random = 0.0
-anim_offset = 0.0
-anim_offset_random = 0.0
-anim_loop = false
-_sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Damping", "Flags", "Gravity", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Radial Accel", "Scale", "Spread", "Tangential Accel" ]
-
-[sub_resource type="ParticlesMaterial" id=2]
+[sub_resource type="ParticlesMaterial" id=5]
 
 render_priority = 0
 trail_divisor = 1
@@ -54,7 +14,7 @@ flag_rotate_y = false
 flag_disable_z = true
 spread = 0.0
 flatness = 0.0
-gravity = Vector3( 0, 128, 0 )
+gravity = Vector3( 0, 32, 0 )
 initial_velocity = 0.0
 initial_velocity_random = 1.0
 angular_velocity = 64.0
@@ -73,7 +33,7 @@ angle = 0.0
 angle_random = 1.0
 scale = 1.5
 scale_random = 1.0
-color = Color( 0.254902, 0.298039, 0.301961, 1 )
+color = Color( 0.501961, 0.466667, 0.517647, 1 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 1.0
@@ -81,7 +41,7 @@ anim_speed_random = 0.0
 anim_offset = 0.0
 anim_offset_random = 0.0
 anim_loop = false
-_sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Damping", "Emission Shape", "Gravity", "Initial Velocity", "Linear Accel", "Scale", "Spread", "Tangential Accel" ]
+_sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Damping", "Gravity", "Initial Velocity", "Linear Accel", "Scale", "Spread", "Tangential Accel", "Trail" ]
 
 [sub_resource type="Curve" id=3]
 
@@ -96,7 +56,7 @@ flags = 4
 width = 2048
 curve = SubResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=6]
 
 render_priority = 0
 trail_divisor = 1
@@ -127,7 +87,7 @@ angle_random = 1.0
 scale = 2.0
 scale_random = 0.0
 scale_curve = SubResource( 4 )
-color = Color( 0.254902, 0.298039, 0.301961, 1 )
+color = Color( 0.501961, 0.466667, 0.517647, 1 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 1.0
@@ -137,8 +97,9 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Damping", "Emission Shape", "Flags", "Gravity", "Initial Velocity", "Linear Accel", "Radial Accel", "Scale", "Spread", "Tangential Accel", "Trail" ]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 
+resource_name = "attack"
 length = 0.1
 loop = false
 step = 0.1
@@ -215,7 +176,7 @@ tracks/5/keys = {
 "values": [ 0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("eye:visible")
+tracks/6/path = NodePath("explode:emitting")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -224,23 +185,12 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("explode:emitting")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 
+resource_name = "die"
 length = 0.6
 loop = false
 step = 0.1
@@ -281,7 +231,7 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("hurt:visible")
+tracks/3/path = NodePath("SamplePlayer:play/play")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -290,10 +240,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ "s_die" ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("attack:visible")
+tracks/4/path = NodePath("hurt:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -305,7 +255,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("eye:visible")
+tracks/5/path = NodePath("attack:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -317,7 +267,7 @@ tracks/5/keys = {
 "values": [ false ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("SamplePlayer/die:playing")
+tracks/6/path = NodePath("explode:config/emitting")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -329,7 +279,7 @@ tracks/6/keys = {
 "values": [ true, false ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("die:modulate")
+tracks/7/path = NodePath("die:visibility/opacity")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -338,22 +288,10 @@ tracks/7/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("explode:emitting")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 
 length = 0.1
 loop = false
@@ -419,7 +357,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("eye:visible")
+tracks/5/path = NodePath("dust/dust:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -431,7 +369,7 @@ tracks/5/keys = {
 "values": [ true ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("dust/dust:emitting")
+tracks/6/path = NodePath("dust/dust1:emitting")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -443,7 +381,7 @@ tracks/6/keys = {
 "values": [ true ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("dust/dust1:emitting")
+tracks/7/path = NodePath("dust/dust2:emitting")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -455,7 +393,7 @@ tracks/7/keys = {
 "values": [ true ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("dust/dust2:emitting")
+tracks/8/path = NodePath("dust/dust3:emitting")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -467,7 +405,7 @@ tracks/8/keys = {
 "values": [ true ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("dust/dust3:emitting")
+tracks/9/path = NodePath("dust/dust4:emitting")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -478,20 +416,8 @@ tracks/9/keys = {
 "update": 1,
 "values": [ true ]
 }
-tracks/10/type = "value"
-tracks/10/path = NodePath("dust/dust4:emitting")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 
 length = 0.1
 loop = true
@@ -557,7 +483,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("eye:visible")
+tracks/5/path = NodePath("explode:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -566,27 +492,15 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("explode:emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
 "values": [ false ]
 }
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=11]
 
 custom_solver_bias = 0.0
-extents = Vector2( 64, 96 )
+extents = Vector2( 16, 16 )
 
-[node name="Golem" type="KinematicBody2D"]
+[node name="Bust" type="KinematicBody2D"]
 
 z_index = 1
 input_pickable = false
@@ -599,10 +513,12 @@ __meta__ = {
 "__editor_plugin_screen__": "Script"
 }
 projectile_offset = Vector2( 0, 0 )
+rateX = 0
+rateY = 0
 
 [node name="enabler" type="VisibilityEnabler2D" parent="." index="0"]
 
-scale = Vector2( 5, 12 )
+scale = Vector2( 5, 5 )
 rect = Rect2( -10, -10, 20, 20 )
 pause_animations = true
 freeze_bodies = true
@@ -613,64 +529,56 @@ physics_process_parent = false
 
 [node name="walk" type="Sprite" parent="." index="1"]
 
-self_modulate = Color( 0.25589, 0.300113, 0.304688, 1 )
+visible = false
+self_modulate = Color( 0.503676, 0.468796, 0.519531, 1 )
 texture = ExtResource( 2 )
-offset = Vector2( 0, -16 )
+region_rect = Rect2( 0, 0, 96, 64 )
 _sections_unfolded = [ "Offset", "Visibility" ]
+
+[node name="Sprite" type="Sprite" parent="walk" index="0"]
+
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Visibility" ]
 
 [node name="die" type="Sprite" parent="." index="2"]
 
 visible = false
-modulate = Color( 1, 1, 1, 0 )
-self_modulate = Color( 0.254902, 0.298039, 0.301961, 1 )
+self_modulate = Color( 0.501961, 0.466667, 0.517647, 1 )
 texture = ExtResource( 2 )
-offset = Vector2( 0, -16 )
 _sections_unfolded = [ "Offset", "Visibility" ]
+
+[node name="Sprite" type="Sprite" parent="die" index="0"]
+
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Visibility" ]
 
 [node name="hurt" type="Sprite" parent="." index="3"]
 
-visible = false
-self_modulate = Color( 0.254902, 0.298039, 0.301961, 1 )
+self_modulate = Color( 0.501961, 0.466667, 0.517647, 1 )
 texture = ExtResource( 2 )
-offset = Vector2( 0, -16 )
 _sections_unfolded = [ "Offset", "Visibility" ]
+
+[node name="Sprite" type="Sprite" parent="hurt" index="0"]
+
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Visibility" ]
 
 [node name="attack" type="Sprite" parent="." index="4"]
 
 visible = false
-self_modulate = Color( 0.254902, 0.298039, 0.301961, 1 )
+self_modulate = Color( 0.501961, 0.466667, 0.517647, 1 )
 texture = ExtResource( 2 )
-offset = Vector2( 0, -16 )
 _sections_unfolded = [ "Offset", "Visibility" ]
 
-[node name="eye" type="Particles2D" parent="." index="5"]
+[node name="Sprite" type="Sprite" parent="attack" index="0"]
 
-position = Vector2( -1, -53 )
-emitting = true
-amount = 8
-lifetime = 1.0
-one_shot = false
-preprocess = 0.0
-speed_scale = 1.0
-explosiveness = 0.0
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
-draw_order = 0
-process_material = SubResource( 1 )
-texture = null
-normal_map = null
-h_frames = 1
-v_frames = 1
-_sections_unfolded = [ "Process Material", "Transform", "Visibility" ]
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Visibility" ]
 
-[node name="dust" type="Node2D" parent="." index="6"]
+[node name="dust" type="Node2D" parent="." index="5"]
 
 [node name="dust" type="Particles2D" parent="dust" index="0"]
 
-position = Vector2( -8, -64 )
 emitting = false
 amount = 96
 lifetime = 1.0
@@ -684,7 +592,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 2 )
+process_material = SubResource( 5 )
 texture = null
 normal_map = null
 h_frames = 1
@@ -693,7 +601,7 @@ _sections_unfolded = [ "Process Material", "Transform" ]
 
 [node name="dust1" type="Particles2D" parent="dust" index="1"]
 
-position = Vector2( 4, -16 )
+position = Vector2( 4, -8 )
 emitting = false
 amount = 96
 lifetime = 1.0
@@ -707,7 +615,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 2 )
+process_material = SubResource( 5 )
 texture = null
 normal_map = null
 h_frames = 1
@@ -716,7 +624,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="dust2" type="Particles2D" parent="dust" index="2"]
 
-position = Vector2( -40, -24 )
+position = Vector2( -8, -6 )
 emitting = false
 amount = 96
 lifetime = 1.0
@@ -730,7 +638,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 2 )
+process_material = SubResource( 5 )
 texture = null
 normal_map = null
 h_frames = 1
@@ -739,7 +647,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="dust3" type="Particles2D" parent="dust" index="3"]
 
-position = Vector2( 56, -60 )
+position = Vector2( 16, -14 )
 emitting = false
 amount = 96
 lifetime = 1.0
@@ -753,7 +661,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 2 )
+process_material = SubResource( 5 )
 texture = null
 normal_map = null
 h_frames = 1
@@ -762,7 +670,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="dust4" type="Particles2D" parent="dust" index="4"]
 
-position = Vector2( -50, 8 )
+position = Vector2( -16, 4 )
 emitting = false
 amount = 96
 lifetime = 1.0
@@ -776,14 +684,14 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 2 )
+process_material = SubResource( 5 )
 texture = null
 normal_map = null
 h_frames = 1
 v_frames = 1
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Process Material", "Transform" ]
 
-[node name="explode" type="Particles2D" parent="." index="7"]
+[node name="explode" type="Particles2D" parent="." index="6"]
 
 emitting = false
 amount = 512
@@ -798,27 +706,27 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = false
 draw_order = 0
-process_material = SubResource( 5 )
+process_material = SubResource( 6 )
 texture = null
 normal_map = null
 h_frames = 1
 v_frames = 1
 _sections_unfolded = [ "Process Material" ]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
 
 root_node = NodePath("..")
 autoplay = "walk"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/attack = SubResource( 6 )
-anims/die = SubResource( 7 )
-anims/hurt = SubResource( 8 )
-anims/walk = SubResource( 9 )
+anims/attack = SubResource( 7 )
+anims/die = SubResource( 8 )
+anims/hurt = SubResource( 9 )
+anims/walk = SubResource( 10 )
 blend_times = [  ]
 
-[node name="damagable" type="Area2D" parent="." index="9"]
+[node name="damagable" type="Area2D" parent="." index="8"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -830,23 +738,9 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damagable" index="0"]
 
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
-[node name="SamplePlayer" type="Node" parent="." index="10"]
-
-[node name="die" type="AudioStreamPlayer" parent="SamplePlayer" index="0"]
-
-stream = ExtResource( 3 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "SFX"
-
-[node name="Stun" parent="." index="11" instance=ExtResource( 4 )]
-
-position = Vector2( 0, -112 )
-_sections_unfolded = [ "Transform" ]
+[node name="SamplePlayer" type="Node" parent="." index="9"]
 
 [connection signal="screen_entered" from="enabler" to="." method="enter_screen"]
 

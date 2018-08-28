@@ -4,7 +4,7 @@ extends "res://scenes/common/damagables/BaseEnemy.gd"
 # Base class for patrol enemy that fires simple projectiles.
 
 var projectile = preload("res://scenes/common/damagables/attacks/fireball.tscn")
-var projectile_offset = Vector2()
+export var projectile_offset = Vector2()
 
 func _ready():
 	attack_delay = 100

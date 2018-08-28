@@ -3,10 +3,10 @@
 [ext_resource path="res://scenes/winterislandcastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/common/damagables/skeleton/skeleton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/common/damagables/statues/bust.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/damagables/statues/bust_h.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=5]
 
-[node name="LVL_NOTITLE" type="Node2D" index="0"]
+[node name="LVL_NOTITLE" type="Node2D"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -274,6 +274,8 @@ position = Vector2( 112, 112 )
 [node name="Bust" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 304, 48 )
+_sections_unfolded = [ "Pickable", "Transform", "Z Index" ]
+projectile_offset = Vector2( 0, 0 )
 rateX = -1
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="2"]

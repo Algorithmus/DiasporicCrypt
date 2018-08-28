@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/crypt/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/crypt/climbableblock.tscn" type="PackedScene" id=2]
@@ -8,10 +8,11 @@
 [ext_resource path="res://scenes/common/switches/pullswitch.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/common/damagables/skeleton/blackskeleton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/common/damagables/statues/statue1.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/common/sunbeam.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/common/BaseWatcher.gd" type="Script" id=11]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/common/damagables/statues/statue2.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/common/sunbeam.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/common/BaseWatcher.gd" type="Script" id=12]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -165,8 +166,6 @@ target_nodes = [ "SunbeamGroup/Sunbeam1" ]
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="4"]
 
-editor/display_folded = true
-
 [node name="BlackSkeleton" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( -2720, 272 )
@@ -191,243 +190,244 @@ position = Vector2( -272, 192 )
 
 position = Vector2( -656, 192 )
 
-[node name="Statue3" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 8 )]
+[node name="Statue3" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 9 )]
 
-position = Vector2( -1040, 192 )
+position = Vector2( -1040, 176 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="SpikeGroup" type="Node2D" parent="tilemap" index="5"]
 
 editor/display_folded = true
 
-[node name="SpikeTile" parent="tilemap/SpikeGroup" index="0" instance=ExtResource( 9 )]
+[node name="SpikeTile" parent="tilemap/SpikeGroup" index="0" instance=ExtResource( 10 )]
 
 position = Vector2( -1456, 304 )
 
-[node name="SpikeTile1" parent="tilemap/SpikeGroup" index="1" instance=ExtResource( 9 )]
+[node name="SpikeTile1" parent="tilemap/SpikeGroup" index="1" instance=ExtResource( 10 )]
 
 position = Vector2( -1488, 304 )
 
-[node name="SpikeTile2" parent="tilemap/SpikeGroup" index="2" instance=ExtResource( 9 )]
+[node name="SpikeTile2" parent="tilemap/SpikeGroup" index="2" instance=ExtResource( 10 )]
 
 position = Vector2( -1520, 304 )
 
-[node name="SpikeTile3" parent="tilemap/SpikeGroup" index="3" instance=ExtResource( 9 )]
+[node name="SpikeTile3" parent="tilemap/SpikeGroup" index="3" instance=ExtResource( 10 )]
 
 position = Vector2( -1552, 304 )
 
-[node name="SpikeTile4" parent="tilemap/SpikeGroup" index="4" instance=ExtResource( 9 )]
+[node name="SpikeTile4" parent="tilemap/SpikeGroup" index="4" instance=ExtResource( 10 )]
 
 position = Vector2( -1584, 304 )
 
-[node name="SpikeTile5" parent="tilemap/SpikeGroup" index="5" instance=ExtResource( 9 )]
+[node name="SpikeTile5" parent="tilemap/SpikeGroup" index="5" instance=ExtResource( 10 )]
 
 position = Vector2( -1616, 304 )
 
-[node name="SpikeTile6" parent="tilemap/SpikeGroup" index="6" instance=ExtResource( 9 )]
+[node name="SpikeTile6" parent="tilemap/SpikeGroup" index="6" instance=ExtResource( 10 )]
 
 position = Vector2( -1648, 304 )
 
-[node name="SpikeTile7" parent="tilemap/SpikeGroup" index="7" instance=ExtResource( 9 )]
+[node name="SpikeTile7" parent="tilemap/SpikeGroup" index="7" instance=ExtResource( 10 )]
 
 position = Vector2( -1680, 304 )
 
-[node name="SpikeTile8" parent="tilemap/SpikeGroup" index="8" instance=ExtResource( 9 )]
+[node name="SpikeTile8" parent="tilemap/SpikeGroup" index="8" instance=ExtResource( 10 )]
 
 position = Vector2( -1712, 304 )
 
-[node name="SpikeTile9" parent="tilemap/SpikeGroup" index="9" instance=ExtResource( 9 )]
+[node name="SpikeTile9" parent="tilemap/SpikeGroup" index="9" instance=ExtResource( 10 )]
 
 position = Vector2( -1744, 304 )
 
-[node name="SpikeTile10" parent="tilemap/SpikeGroup" index="10" instance=ExtResource( 9 )]
+[node name="SpikeTile10" parent="tilemap/SpikeGroup" index="10" instance=ExtResource( 10 )]
 
 position = Vector2( -1776, 304 )
 
-[node name="SpikeTile11" parent="tilemap/SpikeGroup" index="11" instance=ExtResource( 9 )]
+[node name="SpikeTile11" parent="tilemap/SpikeGroup" index="11" instance=ExtResource( 10 )]
 
 position = Vector2( -1808, 304 )
 
-[node name="SpikeTile12" parent="tilemap/SpikeGroup" index="12" instance=ExtResource( 9 )]
+[node name="SpikeTile12" parent="tilemap/SpikeGroup" index="12" instance=ExtResource( 10 )]
 
 position = Vector2( -1840, 304 )
 
-[node name="SpikeTile13" parent="tilemap/SpikeGroup" index="13" instance=ExtResource( 9 )]
+[node name="SpikeTile13" parent="tilemap/SpikeGroup" index="13" instance=ExtResource( 10 )]
 
 position = Vector2( -1872, 304 )
 
-[node name="SpikeTile14" parent="tilemap/SpikeGroup" index="14" instance=ExtResource( 9 )]
+[node name="SpikeTile14" parent="tilemap/SpikeGroup" index="14" instance=ExtResource( 10 )]
 
 position = Vector2( -1904, 304 )
 
-[node name="SpikeTile15" parent="tilemap/SpikeGroup" index="15" instance=ExtResource( 9 )]
+[node name="SpikeTile15" parent="tilemap/SpikeGroup" index="15" instance=ExtResource( 10 )]
 
 position = Vector2( -1936, 304 )
 
-[node name="SpikeTile16" parent="tilemap/SpikeGroup" index="16" instance=ExtResource( 9 )]
+[node name="SpikeTile16" parent="tilemap/SpikeGroup" index="16" instance=ExtResource( 10 )]
 
 position = Vector2( -1968, 304 )
 
-[node name="SpikeTile17" parent="tilemap/SpikeGroup" index="17" instance=ExtResource( 9 )]
+[node name="SpikeTile17" parent="tilemap/SpikeGroup" index="17" instance=ExtResource( 10 )]
 
 position = Vector2( -2000, 304 )
 
-[node name="SpikeTile18" parent="tilemap/SpikeGroup" index="18" instance=ExtResource( 9 )]
+[node name="SpikeTile18" parent="tilemap/SpikeGroup" index="18" instance=ExtResource( 10 )]
 
 position = Vector2( -2032, 304 )
 
-[node name="SpikeTile19" parent="tilemap/SpikeGroup" index="19" instance=ExtResource( 9 )]
+[node name="SpikeTile19" parent="tilemap/SpikeGroup" index="19" instance=ExtResource( 10 )]
 
 position = Vector2( -2064, 304 )
 
-[node name="SpikeTile20" parent="tilemap/SpikeGroup" index="20" instance=ExtResource( 9 )]
+[node name="SpikeTile20" parent="tilemap/SpikeGroup" index="20" instance=ExtResource( 10 )]
 
 position = Vector2( -2096, 304 )
 
-[node name="SpikeTile21" parent="tilemap/SpikeGroup" index="21" instance=ExtResource( 9 )]
+[node name="SpikeTile21" parent="tilemap/SpikeGroup" index="21" instance=ExtResource( 10 )]
 
 position = Vector2( -2128, 304 )
 
-[node name="SpikeTile22" parent="tilemap/SpikeGroup" index="22" instance=ExtResource( 9 )]
+[node name="SpikeTile22" parent="tilemap/SpikeGroup" index="22" instance=ExtResource( 10 )]
 
 position = Vector2( -2160, 304 )
 
-[node name="SpikeTile23" parent="tilemap/SpikeGroup" index="23" instance=ExtResource( 9 )]
+[node name="SpikeTile23" parent="tilemap/SpikeGroup" index="23" instance=ExtResource( 10 )]
 
 position = Vector2( -2192, 304 )
 
-[node name="SpikeTile24" parent="tilemap/SpikeGroup" index="24" instance=ExtResource( 9 )]
+[node name="SpikeTile24" parent="tilemap/SpikeGroup" index="24" instance=ExtResource( 10 )]
 
 position = Vector2( -2224, 304 )
 
-[node name="SpikeTile25" parent="tilemap/SpikeGroup" index="25" instance=ExtResource( 9 )]
+[node name="SpikeTile25" parent="tilemap/SpikeGroup" index="25" instance=ExtResource( 10 )]
 
 position = Vector2( -2256, 304 )
 
-[node name="SpikeTile26" parent="tilemap/SpikeGroup" index="26" instance=ExtResource( 9 )]
+[node name="SpikeTile26" parent="tilemap/SpikeGroup" index="26" instance=ExtResource( 10 )]
 
 position = Vector2( -2288, 304 )
 
-[node name="SpikeTile27" parent="tilemap/SpikeGroup" index="27" instance=ExtResource( 9 )]
+[node name="SpikeTile27" parent="tilemap/SpikeGroup" index="27" instance=ExtResource( 10 )]
 
 position = Vector2( -2320, 304 )
 
-[node name="SpikeTile28" parent="tilemap/SpikeGroup" index="28" instance=ExtResource( 9 )]
+[node name="SpikeTile28" parent="tilemap/SpikeGroup" index="28" instance=ExtResource( 10 )]
 
 position = Vector2( -2352, 304 )
 
-[node name="SpikeTile29" parent="tilemap/SpikeGroup" index="29" instance=ExtResource( 9 )]
+[node name="SpikeTile29" parent="tilemap/SpikeGroup" index="29" instance=ExtResource( 10 )]
 
 position = Vector2( -2384, 304 )
 
-[node name="SpikeTile30" parent="tilemap/SpikeGroup" index="30" instance=ExtResource( 9 )]
+[node name="SpikeTile30" parent="tilemap/SpikeGroup" index="30" instance=ExtResource( 10 )]
 
 position = Vector2( -2416, 304 )
 
-[node name="SpikeTile31" parent="tilemap/SpikeGroup" index="31" instance=ExtResource( 9 )]
+[node name="SpikeTile31" parent="tilemap/SpikeGroup" index="31" instance=ExtResource( 10 )]
 
 position = Vector2( -2448, 304 )
 
-[node name="SpikeTile32" parent="tilemap/SpikeGroup" index="32" instance=ExtResource( 9 )]
+[node name="SpikeTile32" parent="tilemap/SpikeGroup" index="32" instance=ExtResource( 10 )]
 
 position = Vector2( -2480, 304 )
 
-[node name="SpikeTile33" parent="tilemap/SpikeGroup" index="33" instance=ExtResource( 9 )]
+[node name="SpikeTile33" parent="tilemap/SpikeGroup" index="33" instance=ExtResource( 10 )]
 
 position = Vector2( -2512, 304 )
 
-[node name="SpikeTile34" parent="tilemap/SpikeGroup" index="34" instance=ExtResource( 9 )]
+[node name="SpikeTile34" parent="tilemap/SpikeGroup" index="34" instance=ExtResource( 10 )]
 
 position = Vector2( -2544, 304 )
 
-[node name="SpikeTile35" parent="tilemap/SpikeGroup" index="35" instance=ExtResource( 9 )]
+[node name="SpikeTile35" parent="tilemap/SpikeGroup" index="35" instance=ExtResource( 10 )]
 
 position = Vector2( -2576, 304 )
 
-[node name="SpikeTile36" parent="tilemap/SpikeGroup" index="36" instance=ExtResource( 9 )]
+[node name="SpikeTile36" parent="tilemap/SpikeGroup" index="36" instance=ExtResource( 10 )]
 
 position = Vector2( -2608, 304 )
 
-[node name="SpikeTile37" parent="tilemap/SpikeGroup" index="37" instance=ExtResource( 9 )]
+[node name="SpikeTile37" parent="tilemap/SpikeGroup" index="37" instance=ExtResource( 10 )]
 
 position = Vector2( -2640, 304 )
 
-[node name="SpikeTile38" parent="tilemap/SpikeGroup" index="38" instance=ExtResource( 9 )]
+[node name="SpikeTile38" parent="tilemap/SpikeGroup" index="38" instance=ExtResource( 10 )]
 
 position = Vector2( -2672, 304 )
 
-[node name="SpikeTile39" parent="tilemap/SpikeGroup" index="39" instance=ExtResource( 9 )]
+[node name="SpikeTile39" parent="tilemap/SpikeGroup" index="39" instance=ExtResource( 10 )]
 
 position = Vector2( -2704, 304 )
 
-[node name="SpikeTile40" parent="tilemap/SpikeGroup" index="40" instance=ExtResource( 9 )]
+[node name="SpikeTile40" parent="tilemap/SpikeGroup" index="40" instance=ExtResource( 10 )]
 
 position = Vector2( -2736, 304 )
 
-[node name="SpikeTile41" parent="tilemap/SpikeGroup" index="41" instance=ExtResource( 9 )]
+[node name="SpikeTile41" parent="tilemap/SpikeGroup" index="41" instance=ExtResource( 10 )]
 
 position = Vector2( -2768, 304 )
 
-[node name="SpikeTile42" parent="tilemap/SpikeGroup" index="42" instance=ExtResource( 9 )]
+[node name="SpikeTile42" parent="tilemap/SpikeGroup" index="42" instance=ExtResource( 10 )]
 
 position = Vector2( -2800, 304 )
 
-[node name="SpikeTile43" parent="tilemap/SpikeGroup" index="43" instance=ExtResource( 9 )]
+[node name="SpikeTile43" parent="tilemap/SpikeGroup" index="43" instance=ExtResource( 10 )]
 
 position = Vector2( -2832, 304 )
 
-[node name="SpikeTile44" parent="tilemap/SpikeGroup" index="44" instance=ExtResource( 9 )]
+[node name="SpikeTile44" parent="tilemap/SpikeGroup" index="44" instance=ExtResource( 10 )]
 
 position = Vector2( -2864, 304 )
 
-[node name="SpikeTile45" parent="tilemap/SpikeGroup" index="45" instance=ExtResource( 9 )]
+[node name="SpikeTile45" parent="tilemap/SpikeGroup" index="45" instance=ExtResource( 10 )]
 
 position = Vector2( -2896, 304 )
 
-[node name="SpikeTile46" parent="tilemap/SpikeGroup" index="46" instance=ExtResource( 9 )]
+[node name="SpikeTile46" parent="tilemap/SpikeGroup" index="46" instance=ExtResource( 10 )]
 
 position = Vector2( -2928, 304 )
 
-[node name="SpikeTile47" parent="tilemap/SpikeGroup" index="47" instance=ExtResource( 9 )]
+[node name="SpikeTile47" parent="tilemap/SpikeGroup" index="47" instance=ExtResource( 10 )]
 
 position = Vector2( -2960, 304 )
 
-[node name="SpikeTile48" parent="tilemap/SpikeGroup" index="48" instance=ExtResource( 9 )]
+[node name="SpikeTile48" parent="tilemap/SpikeGroup" index="48" instance=ExtResource( 10 )]
 
 position = Vector2( -2992, 304 )
 
-[node name="SpikeTile49" parent="tilemap/SpikeGroup" index="49" instance=ExtResource( 9 )]
+[node name="SpikeTile49" parent="tilemap/SpikeGroup" index="49" instance=ExtResource( 10 )]
 
 position = Vector2( -3024, 304 )
 
-[node name="SpikeTile50" parent="tilemap/SpikeGroup" index="50" instance=ExtResource( 9 )]
+[node name="SpikeTile50" parent="tilemap/SpikeGroup" index="50" instance=ExtResource( 10 )]
 
 position = Vector2( -3056, 304 )
 
-[node name="SpikeTile51" parent="tilemap/SpikeGroup" index="51" instance=ExtResource( 9 )]
+[node name="SpikeTile51" parent="tilemap/SpikeGroup" index="51" instance=ExtResource( 10 )]
 
 position = Vector2( -3088, 304 )
 
-[node name="SpikeTile52" parent="tilemap/SpikeGroup" index="52" instance=ExtResource( 9 )]
+[node name="SpikeTile52" parent="tilemap/SpikeGroup" index="52" instance=ExtResource( 10 )]
 
 position = Vector2( -3120, 304 )
 
-[node name="SpikeTile53" parent="tilemap/SpikeGroup" index="53" instance=ExtResource( 9 )]
+[node name="SpikeTile53" parent="tilemap/SpikeGroup" index="53" instance=ExtResource( 10 )]
 
 position = Vector2( -3152, 304 )
 
-[node name="SpikeTile54" parent="tilemap/SpikeGroup" index="54" instance=ExtResource( 9 )]
+[node name="SpikeTile54" parent="tilemap/SpikeGroup" index="54" instance=ExtResource( 10 )]
 
 position = Vector2( -3184, 304 )
 
-[node name="SpikeTile55" parent="tilemap/SpikeGroup" index="55" instance=ExtResource( 9 )]
+[node name="SpikeTile55" parent="tilemap/SpikeGroup" index="55" instance=ExtResource( 10 )]
 
 position = Vector2( -3216, 304 )
 
-[node name="SpikeTile56" parent="tilemap/SpikeGroup" index="56" instance=ExtResource( 9 )]
+[node name="SpikeTile56" parent="tilemap/SpikeGroup" index="56" instance=ExtResource( 10 )]
 
 position = Vector2( -3248, 304 )
 
-[node name="SpikeTile57" parent="tilemap/SpikeGroup" index="57" instance=ExtResource( 9 )]
+[node name="SpikeTile57" parent="tilemap/SpikeGroup" index="57" instance=ExtResource( 10 )]
 
 position = Vector2( -3280, 304 )
 
@@ -435,7 +435,7 @@ position = Vector2( -3280, 304 )
 
 editor/display_folded = true
 
-[node name="Sunbeam" parent="tilemap/SunbeamGroup" index="0" instance=ExtResource( 10 )]
+[node name="Sunbeam" parent="tilemap/SunbeamGroup" index="0" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 position = Vector2( -2864, -160 )
@@ -448,7 +448,7 @@ scale = Vector2( 6, 30 )
 
 scale = Vector2( 6, 30 )
 
-[node name="Sunbeam1" parent="tilemap/SunbeamGroup" index="1" instance=ExtResource( 10 )]
+[node name="Sunbeam1" parent="tilemap/SunbeamGroup" index="1" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 position = Vector2( -2544, -160 )
@@ -461,7 +461,7 @@ scale = Vector2( 6, 30 )
 
 scale = Vector2( 6, 30 )
 
-[node name="Sunbeam2" parent="tilemap/SunbeamGroup" index="2" instance=ExtResource( 10 )]
+[node name="Sunbeam2" parent="tilemap/SunbeamGroup" index="2" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 position = Vector2( -2224, -160 )
@@ -474,7 +474,7 @@ scale = Vector2( 6, 30 )
 
 scale = Vector2( 6, 30 )
 
-[node name="Sunbeam3" parent="tilemap/SunbeamGroup" index="3" instance=ExtResource( 10 )]
+[node name="Sunbeam3" parent="tilemap/SunbeamGroup" index="3" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 position = Vector2( -1904, -160 )
@@ -487,7 +487,7 @@ scale = Vector2( 6, 30 )
 
 scale = Vector2( 6, 30 )
 
-[node name="Sunbeam4" parent="tilemap/SunbeamGroup" index="4" instance=ExtResource( 10 )]
+[node name="Sunbeam4" parent="tilemap/SunbeamGroup" index="4" instance=ExtResource( 11 )]
 
 position = Vector2( -1584, -160 )
 
@@ -501,7 +501,7 @@ scale = Vector2( 6, 30 )
 
 [node name="Watcher" type="Node2D" parent="tilemap" index="7"]
 
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 reward = "PlatformGroup/platform"
 target_container = "EnemiesGroup"
 watch_class = "res://scenes/common/damagables/BaseEnemy.gd"
@@ -511,7 +511,7 @@ target_pos = Vector2( -3152, -464 )
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="8"]
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 12 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 13 )]
 
 editor/display_folded = true
 position = Vector2( -3344, -400 )
@@ -522,7 +522,7 @@ teleport_to = Vector2( 588, 176 )
 
 scale = Vector2( 1, 5 )
 
-[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 12 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 13 )]
 
 editor/display_folded = true
 position = Vector2( 144, 464 )

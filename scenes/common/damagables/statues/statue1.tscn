@@ -550,7 +550,7 @@ tracks/6/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 32, 96 )
 
-[node name="Statue1" type="KinematicBody2D" index="0"]
+[node name="Statue1" type="KinematicBody2D"]
 
 z_index = 1
 input_pickable = false
@@ -562,6 +562,7 @@ _sections_unfolded = [ "Z Index" ]
 __meta__ = {
 "__editor_plugin_screen__": "Script"
 }
+projectile_offset = Vector2( 0, -72 )
 
 [node name="enabler" type="VisibilityEnabler2D" parent="." index="0"]
 
@@ -625,7 +626,7 @@ texture = null
 normal_map = null
 h_frames = 1
 v_frames = 1
-_sections_unfolded = [ "Drawing", "Process Material", "Time", "Visibility" ]
+_sections_unfolded = [ "Drawing", "Process Material", "Time", "Transform", "Visibility" ]
 
 [node name="dust" type="Node2D" parent="." index="6"]
 
@@ -801,6 +802,7 @@ _sections_unfolded = [ "Pause" ]
 
 stream = ExtResource( 3 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"
