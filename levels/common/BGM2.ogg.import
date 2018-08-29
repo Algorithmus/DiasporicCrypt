@@ -7,10 +7,7 @@ path="res://.import/BGM2.ogg-5f75224d71bdaff7392cd8b5dba27be7.oggstr"
 [deps]
 
 source_file="res://levels/common/BGM2.ogg"
-source_md5="50aebde11a6c1a698c4ad73d84d1fc83"
-
 dest_files=[ "res://.import/BGM2.ogg-5f75224d71bdaff7392cd8b5dba27be7.oggstr" ]
-dest_md5="42e8c19f98094d7583d14d6d127e9afa"
 
 [params]
 
