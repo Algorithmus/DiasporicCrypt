@@ -25,6 +25,7 @@ var chain_specials = [
 	]
 var demonic_void = preload("res://scenes/weapons/demonic.tscn")
 var target_enemy
+var static_target = false
 var is_chain_special = false
 var current_chain_special
 var special_collider
@@ -427,7 +428,7 @@ func step_player(delta):
 			# do special attack specific actions
 			# unfortunately, some attacks require collision checks anyways especially on slopes, so we do them
 			if (current_chain_special["id"] == "thrust"):
-				if (target_exists && hit_enemy && is_valid_target && target_enemy.get_ref().get_parent().has_method("closestXTile")):
+				if (!static_target && target_exists && hit_enemy && is_valid_target && target_enemy.get_ref().get_parent().has_method("closestXTile")):
 					var desired_enemy_delta = target_enemy.get_ref().get_parent().closestXTile(direction, 5, space_state)
 					target_enemy.get_ref().get_parent().set_global_position(Vector2(target_enemy.get_ref().get_global_position().x + desired_enemy_delta, target_enemy.get_ref().get_global_position().y))
 				accel += falling_modifier(accel)
@@ -435,16 +436,16 @@ func step_player(delta):
 				newpos = accel
 			elif (current_chain_special["id"] == "slice"):
 				newpos = min(newpos + 1, 0)
-				if (target_exists && hit_enemy && is_valid_target):
+				if (!static_target && target_exists && hit_enemy && is_valid_target):
 					target_enemy.get_ref().get_parent().set("floortile_check_requested", false)
 					target_enemy.get_ref().get_parent().set_global_position(Vector2(target_enemy.get_ref().get_global_position().x, target_enemy.get_ref().get_global_position().y + target_enemy_offset.y))
 			elif (current_chain_special["id"] == "skewer"):
 				newpos = min(pos.y + 1, 0)
-				if (target_exists && hit_enemy && is_valid_target):
+				if (!static_target && target_exists && hit_enemy && is_valid_target):
 					target_enemy.get_ref().get_parent().set("floortile_check_requested", false)
 					target_enemy.get_ref().get_parent().set_global_position(Vector2(target_enemy.get_ref().get_global_position().x, get_global_position().y - TILE_SIZE))
 			elif (current_chain_special["id"] == "stab" || current_chain_special["id"] == "chop"):
-				if (target_exists && hit_enemy && is_valid_target):
+				if (!static_target && target_exists && hit_enemy && is_valid_target):
 					target_enemy.get_ref().get_parent().set("floortile_check_requested", true)
 				var horizontal = step_horizontal(space_state)
 				onSlope = horizontal["slope"]
@@ -454,13 +455,13 @@ func step_player(delta):
 				newpos = accel
 			# prevent enemy dropping through the floor on certain attacks
 			elif (current_chain_special["id"] == "dualspin"):
-				if (target_exists && hit_enemy && is_valid_target):
+				if (!static_target && target_exists && hit_enemy && is_valid_target):
 					target_enemy.get_ref().get_parent().set("floortile_check_requested", true)
 				accel += falling_modifier(accel)
 				var vertical = step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, false, oneWayTile, null)
 				newpos = accel
 			elif (current_chain_special["id"] == "swift"):
-				if (target_exists && hit_enemy && is_valid_target):
+				if (!static_target && target_exists && hit_enemy && is_valid_target):
 					target_enemy.get_ref().get_parent().set("floortile_check_requested", true)
 				accel += falling_modifier(accel)
 				var vertical = step_vertical(space_state, relevantTileA, relevantTileB, normalTileCheck, onOneWayTile, animation_speed, false, oneWayTile, null)
@@ -572,6 +573,7 @@ func _on_chain_collision(area):
 
 func _on_special_collision(area):
 	reset_target_delay()
+	static_target = false
 	var collisions = []
 	if (current_chain_special["id"] == "dualspin"):
 		pass
@@ -580,12 +582,18 @@ func _on_special_collision(area):
 	for i in collisions:
 		if (i.get_name() != "damage" && i != special_collider && i.get_name() != "oneway" && !i.get_name().match("slope*") && i.get_name() != "ladder"):
 			target_enemy = weakref(i)
-			if (i.get_parent() != null && (i.get_parent() is static_enemy || i.get_parent() is nontarget)):
-				target_enemy = null
+			if (i.get_parent() != null):
+				if (i.get_parent() is static_enemy):
+					static_target = true
+				if (i.get_parent() is nontarget):
+					target_enemy = null
 	if(area.get_name() != "damage" && area != special_collider && area.get_name() != "oneway" && !area.get_name().match("slope*") && area.get_name() != "ladder"):
 		target_enemy = weakref(area)
-		if (area.get_parent() != null && (area.get_parent() is static_enemy || area.get_parent() is nontarget)):
-			target_enemy = null
+		if (area.get_parent() != null):
+			if (area.get_parent() is static_enemy):
+				static_target = true
+			if (area.get_parent() is nontarget):
+				target_enemy = null
 	if (target_enemy != null && target_enemy.get_ref() && target_enemy.get_ref().get_parent() != null):
 		target_enemy_offset = Vector2(get_global_position().x - target_enemy.get_ref().get_global_position().x, get_global_position().y - target_enemy.get_ref().get_global_position().y)
 		target_enemy.get_ref().get_parent().set("hurt_delay", current_chain_special["hurt_delay"])
