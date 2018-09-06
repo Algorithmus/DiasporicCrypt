@@ -463,6 +463,7 @@ func reset_level():
 	player.set("base_def", old_player.get("base_def"))
 	player.set("base_mag", old_player.get("base_mag"))
 	player.set("base_luck", old_player.get("base_luck"))
+	player.set_stats()
 	old_player.queue_free()
 	ProjectSettings.get("inventory").set("player", player)
 	map.set("camera", player.get_node("Camera2D"))
@@ -475,7 +476,7 @@ func reset_level():
 	is_paused = false
 	pause.hide()
 	gameover = false
-	ProjectSettings.set("gold", ProjectSettings.get("gold") * 0.5)
+	ProjectSettings.set("gold", int(ProjectSettings.get("gold") * 0.5))
 	ProjectSettings.set("current_quest_complete", false)
 	ProjectSettings.set("reward_taken", false)
 	get_tree().set_pause(false)
