@@ -114,6 +114,8 @@ var gameover = false
 var npc
 var dialog
 
+var spikeclass = preload("res://scenes/common/damagables/spiketile.tscn")
+
 func get_critical_bonus(damage):
 	var chance = randf()
 	if (chance <= luck / 100.0):
@@ -273,7 +275,7 @@ func check_damage(damageTiles):
 				var rate = 1
 				var g = 0
 				if (i.get_name() == "damagable"):
-					if (bonus.spike):
+					if (bonus.spike && i.get_parent() != null && i.get_parent().get_filename() == spikeclass.get_path()):
 						rate = 0.5
 						g = 1
 					damage = max(get_def_adjusted_damage(hp * 0.075 * rate), 0)
