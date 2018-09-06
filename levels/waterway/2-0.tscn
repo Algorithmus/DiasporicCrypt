@@ -80,32 +80,34 @@ scale = Vector2( 1, 6 )
 [node name="Fish" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( -80, 416 )
+level = 2
 
 [node name="Fish1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 4 )]
 
 position = Vector2( -80, 576 )
+level = 2
 
 [node name="Fish2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( -80, 1232 )
+level = 2
 
 [node name="Fish3" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 4 )]
 
 position = Vector2( -80, 1520 )
+level = 2
 
 [node name="Bust" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 5 )]
 
 position = Vector2( -176, 368 )
 scale = Vector2( -1, 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
-projectile_offset = Vector2( 0, 0 )
 rateX = 1
 
 [node name="Bust1" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 5 )]
 
 position = Vector2( 272, 1392 )
 _sections_unfolded = [ "Transform", "Z Index" ]
-projectile_offset = Vector2( 0, 0 )
 rateX = -1
 
 [node name="SpikeGroup" type="Node2D" parent="tilemap" index="3"]
@@ -1227,8 +1229,6 @@ editor/display_folded = true
 position = Vector2( 240, 1808 )
 
 [node name="MineGroup" type="Node2D" parent="tilemap" index="4"]
-
-editor/display_folded = true
 
 [node name="MagicMine" parent="tilemap/MineGroup" index="0" instance=ExtResource( 7 )]
 

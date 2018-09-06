@@ -50,8 +50,6 @@ region_rect = Rect2( 0, 0, 192, 32 )
 [node name="damagable" parent="tilemap/DamageGroup/SpikeTile" index="1"]
 
 scale = Vector2( 6, 1 )
-audio_bus_override = false
-audio_bus_name = "Master"
 
 [node name="LadderGroup" type="Node2D" parent="tilemap" index="1"]
 
@@ -72,11 +70,10 @@ scale = Vector2( 1, 10 )
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="2"]
 
-editor/display_folded = true
-
 [node name="Skeleton" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( -208, 48 )
+level = 2
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="3"]
 

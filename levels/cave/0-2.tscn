@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/cave/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/cave/climbableblock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/common/bloodfountain/bloodfountain.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/damagables/orc/orc.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/common/damagables/flyingskull/flyingskull.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=6]
 
@@ -58,7 +58,7 @@ position = Vector2( 512, 32 )
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="2"]
 
-[node name="Lizardman" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 4 )]
+[node name="Orc" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( 112, 32 )
 

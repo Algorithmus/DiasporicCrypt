@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/summerislandcastle/climbableblock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/common/damagables/flyingskull/flyingskull.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/common/damagables/demon/demon.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=6]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
@@ -113,7 +113,7 @@ position = Vector2( 368, 144 )
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="2"]
 
-[node name="FlyingSkull" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 5 )]
+[node name="Demon" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( -128, -1792 )
 

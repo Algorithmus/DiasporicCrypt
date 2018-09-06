@@ -14,7 +14,7 @@
 [ext_resource path="res://scenes/common/fluid/water.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=13]
 
-[node name="LVL_NOTITLE" type="Node2D" index="0"]
+[node name="LVL_NOTITLE" type="Node2D"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -189,30 +189,37 @@ scale = Vector2( 1, 6 )
 [node name="Fish" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 6 )]
 
 position = Vector2( -96, 928 )
+level = 2
 
 [node name="Fish1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 6 )]
 
 position = Vector2( -96, 1040 )
+level = 2
 
 [node name="Fish2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 6 )]
 
 position = Vector2( -96, 1152 )
+level = 2
 
 [node name="Fish3" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 6 )]
 
 position = Vector2( -96, 1424 )
+level = 2
 
 [node name="Fish4" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 6 )]
 
 position = Vector2( -96, 1536 )
+level = 2
 
 [node name="Skeleton" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 7 )]
 
 position = Vector2( -80, 144 )
+level = 2
 
 [node name="Skeleton1" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 7 )]
 
 position = Vector2( -112, 688 )
+level = 2
 
 [node name="PotGroup" type="Node2D" parent="tilemap" index="4"]
 

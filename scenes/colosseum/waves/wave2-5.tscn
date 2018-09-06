@@ -2,17 +2,19 @@
 
 [ext_resource path="res://scenes/common/damagables/demon/demon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/common/damagables/werewolf/werewolf.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/common/damagables/statues/statue1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/common/damagables/statues/statue3.tscn" type="PackedScene" id=3]
 
 [node name="EnemiesGroup" type="Node2D" index="0"]
 
 [node name="Demon" parent="." index="0" instance=ExtResource( 1 )]
 
 position = Vector2( -224, -192 )
+projectile_offset = Vector2( 0, 0 )
 
 [node name="Demon2" parent="." index="1" instance=ExtResource( 1 )]
 
 position = Vector2( 208, -192 )
+projectile_offset = Vector2( 0, 0 )
 
 [node name="Werewolf" parent="." index="2" instance=ExtResource( 2 )]
 
@@ -22,8 +24,9 @@ position = Vector2( -304, -32 )
 
 position = Vector2( 544, -32 )
 
-[node name="Statue1" parent="." index="4" instance=ExtResource( 3 )]
+[node name="Statue3" parent="." index="4" instance=ExtResource( 3 )]
 
-position = Vector2( 96, -64 )
+position = Vector2( 96, -80 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 

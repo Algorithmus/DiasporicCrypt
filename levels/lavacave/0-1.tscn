@@ -8,7 +8,7 @@
 [ext_resource path="res://scenes/lavacave/BGs/ledgeR.png" type="Texture" id=6]
 [ext_resource path="res://scenes/lavacave/fallingplatform/fallingplatform.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/common/fluid/lava.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/common/damagables/flyingskull/flyingskull.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/damagables/demon/demon.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=10]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
@@ -157,13 +157,14 @@ scale = Vector2( 86, 8 )
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="4"]
 
-[node name="FlyingSkull" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 9 )]
+[node name="Demon" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 9 )]
 
 position = Vector2( 1472, -80 )
 
-[node name="FlyingSkull1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 9 )]
+[node name="Demon2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 9 )]
 
-position = Vector2( 2352, -16 )
+position = Vector2( 2352, -48 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="5"]
 

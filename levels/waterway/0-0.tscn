@@ -92,38 +92,47 @@ position = Vector2( -160, 48 )
 [node name="Skeleton" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 6 )]
 
 position = Vector2( 272, 48 )
+level = 2
 
 [node name="Skeleton1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 6 )]
 
 position = Vector2( 368, 48 )
+level = 2
 
 [node name="Skeleton2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 6 )]
 
 position = Vector2( 592, 48 )
+level = 2
 
 [node name="Skeleton3" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 6 )]
 
 position = Vector2( 672, 48 )
+level = 2
 
 [node name="Skeleton4" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 6 )]
 
 position = Vector2( 512, 48 )
+level = 2
 
 [node name="Skeleton5" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 6 )]
 
 position = Vector2( 128, 48 )
+level = 2
 
 [node name="SimpleProjectile" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 7 )]
 
 position = Vector2( 224, 48 )
+projectile_offset = Vector2( 0, 0 )
 
 [node name="SimpleProjectile1" parent="tilemap/EnemiesGroup" index="7" instance=ExtResource( 7 )]
 
 position = Vector2( 624, 48 )
+projectile_offset = Vector2( 0, 0 )
 
 [node name="SimpleProjectile2" parent="tilemap/EnemiesGroup" index="8" instance=ExtResource( 7 )]
 
 position = Vector2( 320, 48 )
+projectile_offset = Vector2( 0, 0 )
 
 [node name="SwitchGroup" type="Node2D" parent="tilemap" index="4"]
 

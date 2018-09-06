@@ -6,7 +6,7 @@
 [ext_resource path="res://scenes/cave/BGs/cornerL.png" type="Texture" id=4]
 [ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/common/damagables/orc/orc.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/common/damagables/imp/imp.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=9]
 
@@ -82,23 +82,23 @@ position = Vector2( 176, 112 )
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="2"]
 
-[node name="Lizardman" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 7 )]
+[node name="Orc2" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( -224, 64 )
 
-[node name="Lizardman1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 7 )]
+[node name="Orc" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 7 )]
 
 position = Vector2( -784, 64 )
 
-[node name="Lizardman2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 7 )]
+[node name="Orc3" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 7 )]
 
 position = Vector2( -1312, 64 )
 
-[node name="Lizardman3" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 7 )]
+[node name="Orc4" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 7 )]
 
 position = Vector2( -1728, 64 )
 
-[node name="Lizardman4" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 7 )]
+[node name="Orc5" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 7 )]
 
 position = Vector2( -1008, 64 )
 

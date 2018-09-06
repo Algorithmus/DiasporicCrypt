@@ -22,6 +22,7 @@ func check_attack():
 			projectile_obj.set("direction", get_player_direction())
 		else:
 			projectile_obj.set("direction", direction)
+		projectile_obj.set("atk", atk)
 		projectile_obj.set_global_position(Vector2(get_global_position().x + projectile_offset.x + (sprite_offset.x + TILE_SIZE) * direction, get_global_position().y + projectile_offset.y))
 		get_parent().add_child(projectile_obj)
 	if (is_attacking && animation_player.get_current_animation_length() == animation_player.get_current_animation_position()):

@@ -718,6 +718,7 @@ _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="Path2D" type="Path2D" parent="neck" index="0"]
 
+self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 curve = SubResource( 4 )
 script = ExtResource( 2 )
 
@@ -795,7 +796,7 @@ percent = 1.0
 [node name="head" type="KinematicBody2D" parent="." index="3"]
 
 use_parent_material = true
-position = Vector2( -32, 32 )
+position = Vector2( -32, 16 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -855,6 +856,7 @@ blend_times = [  ]
 
 stream = ExtResource( 7 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"

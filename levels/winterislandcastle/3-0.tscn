@@ -171,11 +171,10 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="5"]
 
-editor/display_folded = true
-
 [node name="Skeleton" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 9 )]
 
 position = Vector2( -336, -144 )
+level = 2
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="6"]
 

@@ -1,27 +1,26 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scenes/common/damagables/sorcerer/sorcerer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/common/damagables/statues/statue1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/common/damagables/statues/statue2.tscn" type="PackedScene" id=2]
 
 [node name="EnemiesGroup" type="Node2D" index="0"]
 
-[node name="Sorcerer" parent="." index="0" instance=ExtResource( 1 )]
+[node name="Statue1" parent="." index="0" instance=ExtResource( 1 )]
 
-position = Vector2( -304, -48 )
+position = Vector2( -16, -64 )
 
-[node name="Sorcerer2" parent="." index="1" instance=ExtResource( 1 )]
+[node name="Statue2" parent="." index="1" instance=ExtResource( 2 )]
 
-position = Vector2( -96, -48 )
+position = Vector2( -224, -80 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Sorcerer3" parent="." index="2" instance=ExtResource( 1 )]
+[node name="Statue3" parent="." index="2" instance=ExtResource( 2 )]
 
-position = Vector2( 112, -48 )
+position = Vector2( 192, -80 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Sorcerer4" parent="." index="3" instance=ExtResource( 1 )]
+[node name="Statue4" parent="." index="3" instance=ExtResource( 1 )]
 
-position = Vector2( 320, -48 )
-
-[node name="Sorcerer5" parent="." index="4" instance=ExtResource( 1 )]
-
-position = Vector2( 528, -48 )
+position = Vector2( 400, -64 )
 
 

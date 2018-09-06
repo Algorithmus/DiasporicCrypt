@@ -6,7 +6,7 @@
 [ext_resource path="res://scenes/common/damagables/demon/demon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/common/damagables/flyingskull/flyingskull.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/items/potion/manapotion.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/items/special/styxchalice.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/items/special/styxcoin.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=8]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
@@ -80,17 +80,14 @@ position = Vector2( -384, -1072 )
 
 [node name="SpecialItemGroup" type="Node2D" parent="tilemap" index="3"]
 
-editor/display_folded = true
-
 [node name="ITEM_MANAPOTION" parent="tilemap/SpecialItemGroup" index="0" instance=ExtResource( 6 )]
 
 position = Vector2( 208, -1856 )
 isgoal = true
 
-[node name="ITEM_STYXCHALICE" parent="tilemap/SpecialItemGroup" index="1" instance=ExtResource( 7 )]
+[node name="ITEM_STYXCOIN" parent="tilemap/SpecialItemGroup" index="1" instance=ExtResource( 7 )]
 
 position = Vector2( 208, -1856 )
-isgoal = true
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="4"]
 

@@ -6,7 +6,7 @@
 [ext_resource path="res://scenes/common/damagables/statues/bust_h.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=5]
 
-[node name="LVL_NOTITLE" type="Node2D"]
+[node name="LVL_NOTITLE" type="Node2D" index="0"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -266,16 +266,17 @@ audio_bus_name = "Master"
 [node name="Skeleton" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( -64, 112 )
+level = 2
 
 [node name="Skeleton1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 112, 112 )
+level = 2
 
 [node name="Bust" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 304, 48 )
 _sections_unfolded = [ "Pickable", "Transform", "Z Index" ]
-projectile_offset = Vector2( 0, 0 )
 rateX = -1
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="2"]

@@ -10,7 +10,7 @@
 [ext_resource path="res://scenes/lavacave/fallingplatform/fallingplatform.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/lavacave/movingplatform/movingplatform.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/common/damagables/flyingskull/flyingskull.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/common/damagables/demon/demon.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/common/damagables/skeleton/bloodskeleton.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/common/damagables/statues/bust.tscn" type="PackedScene" id=14]
@@ -18,7 +18,7 @@
 [ext_resource path="res://scenes/common/fluid/lava.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=17]
 
-[node name="LVL_NOTITLE" type="Node2D" index="0"]
+[node name="LVL_NOTITLE" type="Node2D"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -479,43 +479,51 @@ position = Vector2( 2864, 112 )
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="5"]
 
-[node name="FlyingSkull" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 11 )]
+[node name="Demon" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 11 )]
 
-position = Vector2( 2176, 48 )
+position = Vector2( 2176, 16 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="FlyingSkull2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 11 )]
+[node name="Demon2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 11 )]
 
 position = Vector2( 64, 672 )
 
-[node name="FlyingSkull1" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 11 )]
+[node name="Demon3" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 11 )]
 
-position = Vector2( 2832, 48 )
+position = Vector2( 2832, 16 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="SimpleProjectile" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 12 )]
 
 position = Vector2( 1632, 80 )
+projectile_offset = Vector2( 0, 0 )
 
 [node name="Lizardman" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 13 )]
 
 position = Vector2( 1488, 64 )
+level = 2
 
 [node name="Lizardman1" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 13 )]
 
 position = Vector2( 1776, 64 )
+level = 2
 
 [node name="Bust" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 14 )]
 
 position = Vector2( 528, -208 )
+projectile_offset = Vector2( 0, 0 )
 rateY = 1
 
 [node name="Bust1" parent="tilemap/EnemiesGroup" index="7" instance=ExtResource( 14 )]
 
 position = Vector2( 688, -208 )
+projectile_offset = Vector2( 0, 0 )
 rateY = 1
 
 [node name="Bust2" parent="tilemap/EnemiesGroup" index="8" instance=ExtResource( 14 )]
 
 position = Vector2( 848, -208 )
+projectile_offset = Vector2( 0, 0 )
 rateY = 1
 
 [node name="ItemGroup" type="Node2D" parent="tilemap" index="6"]

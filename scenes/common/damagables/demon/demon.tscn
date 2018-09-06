@@ -730,6 +730,7 @@ _sections_unfolded = [ "Z Index" ]
 __meta__ = {
 "__editor_plugin_screen__": "Script"
 }
+projectile_offset = Vector2( 0, 0 )
 patrolrange = 10
 
 [node name="enabler" type="VisibilityEnabler2D" parent="." index="0"]

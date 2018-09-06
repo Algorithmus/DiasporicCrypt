@@ -8,7 +8,7 @@
 [ext_resource path="res://scenes/common/sunbeam.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=7]
 
-[node name="LVL_NOTITLE" type="Node2D" index="0"]
+[node name="LVL_NOTITLE" type="Node2D"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -48,10 +48,12 @@ position = Vector2( 96, -16 )
 [node name="Skeleton" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( -304, -16 )
+level = 2
 
 [node name="Skeleton1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( -400, -16 )
+level = 2
 
 [node name="Sorcerer" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 4 )]
 

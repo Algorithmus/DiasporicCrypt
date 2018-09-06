@@ -13,7 +13,7 @@ var top
 var origin
 var cycle = "attack"
 var player
-const GULP_COOLDOWN = 100
+const GULP_COOLDOWN = 3000
 var gulp_delay = 0
 const CLAMP_DELAY = 100
 var clamp_current_delay = 0
@@ -25,8 +25,8 @@ const ATTACK_COOLDOWN = 200
 var current_attack_delay = 0
 var boulderhp = 3
 var current_boulderhp = 3
-var hp = 200
-var current_hp = 200
+var hp = 2000
+var current_hp = 2000
 var ep = 1000
 var targetclass = preload("res://scenes/aquaduct/boss/target.tscn")
 var target
@@ -136,7 +136,7 @@ func _physics_process(delta):
 		if (target_player.get_current_animation_position() == target_player.get_current_animation_length()):
 			# save current hp based on damage taken on target
 			cycle = "attack"
-			current_hp = target.get_node("target").hp
+			current_hp = target.get_node("target").current_hp
 			target.queue_free()
 			target = null
 	elif (cycle == "dying"):

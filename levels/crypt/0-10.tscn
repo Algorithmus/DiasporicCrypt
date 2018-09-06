@@ -69,6 +69,7 @@ enabled = false
 [node name="PullSwitch" parent="tilemap/SwitchGroup" index="1" instance=ExtResource( 5 )]
 
 position = Vector2( 592, -240 )
+once = true
 target_nodes = [ "EnemiesGroup/BlackSkeleton1", "EnemiesGroup/BlackSkeleton2", "EnemiesGroup/BlackSkeleton3" ]
 
 [node name="PotGroup" type="Node2D" parent="tilemap" index="2"]
@@ -92,18 +93,22 @@ position = Vector2( -256, 48 )
 [node name="BlackSkeleton" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( -64, 48 )
+level = 1
 
 [node name="BlackSkeleton1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 7 )]
 
 position = Vector2( -256, 48 )
+level = 1
 
 [node name="BlackSkeleton2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 7 )]
 
 position = Vector2( 128, 48 )
+level = 1
 
 [node name="BlackSkeleton3" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 7 )]
 
 position = Vector2( 256, 48 )
+level = 1
 
 [node name="SunbeamGroup" type="Node2D" parent="tilemap" index="4"]
 

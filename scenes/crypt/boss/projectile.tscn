@@ -65,13 +65,13 @@ _sections_unfolded = [ "Animation", "Color", "Emission Shape", "Gravity", "Initi
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[node name="Ball" type="Node2D" index="0"]
+[node name="Ball" type="Node2D"]
 
 script = ExtResource( 1 )
 __meta__ = {
 "__editor_plugin_screen__": "Script"
 }
-atk = 1
+atk = 40
 
 [node name="Sprite" type="Particles2D" parent="." index="0"]
 

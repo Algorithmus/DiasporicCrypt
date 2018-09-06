@@ -40,14 +40,17 @@ editor/display_folded = true
 [node name="Minotaur" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 2 )]
 
 position = Vector2( -48, -48 )
+projectile_offset = Vector2( 0, 0 )
 
 [node name="Minotaur1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 752, -48 )
+projectile_offset = Vector2( 0, 0 )
 
 [node name="Minotaur2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 1552, -48 )
+projectile_offset = Vector2( 0, 0 )
 
 [node name="ItemGroup" type="Node2D" parent="tilemap" index="1"]
 

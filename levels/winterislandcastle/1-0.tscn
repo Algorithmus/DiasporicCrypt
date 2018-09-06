@@ -56,10 +56,12 @@ position = Vector2( 192, 80 )
 [node name="Skeleton" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( -16, 80 )
+level = 2
 
 [node name="Skeleton1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 4 )]
 
 position = Vector2( -256, 80 )
+level = 2
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="3"]
 

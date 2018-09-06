@@ -9,7 +9,7 @@ var walkspeed = 3
 var armor
 const ATTACK_COOLDOWN = 300
 var current_attack_delay = 0
-const HAMMER_DELAY = 400
+const HAMMER_DELAY = 300
 var current_hammer_delay = 0
 var hammer
 var hammer_collision
@@ -30,6 +30,8 @@ func _ready():
 	hammer_oneway = hammer.get_node("oneway")
 	animation_player = get_node("AnimationPlayer")
 	set_physics_process(false)
+	get_node("sprite").set_modulate(Color(1, 1, 1))
+	get_node("arm").set_modulate(Color(1, 1, 1))
 
 func activate():
 	set_physics_process(true)
@@ -115,7 +117,7 @@ func update_animation(new_animation):
 
 func check_hp(damage):
 	.check_hp(damage)
-	var color = Color(1, 1, 1).linear_interpolate(RED, float(current_hp/hp))
+	var color = RED.linear_interpolate(Color(1, 1, 1), float(current_hp)/hp)
 	get_node("sprite").set_modulate(color)
 	get_node("arm").set_modulate(color)
 	if (current_hp <= 0):

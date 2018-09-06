@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/savepoint/savepoint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=4]
 
-[node name="LVL_NOTITLE" type="Node2D" index="0"]
+[node name="LVL_NOTITLE" type="Node2D"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -52,7 +52,7 @@ scale = Vector2( 1, 10 )
 [node name="savepoint" parent="tilemap/SaveGroup" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( 80, 384 )
-savelocation = "LVL_AQUADUCT"
+savelocation = "LVL_HOLYRUINS"
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="2"]
 

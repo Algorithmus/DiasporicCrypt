@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/common/breakables/breakable.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/cave/movingplatform/movingplatform.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/cave/BGs/edge.png" type="Texture" id=7]
-[ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/common/damagables/orc/orc.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/common/switches/floorswitch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=10]
 
@@ -173,9 +173,7 @@ region_rect = Rect2( 0, 0, 32, 192 )
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="4"]
 
-editor/display_folded = true
-
-[node name="Lizardman" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 8 )]
+[node name="Orc" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 8 )]
 
 position = Vector2( -80, 256 )
 

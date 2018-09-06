@@ -452,35 +452,40 @@ audio_bus_name = "Master"
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="6"]
 
-editor/display_folded = true
-
 [node name="Skeleton" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 11 )]
 
 position = Vector2( -592, 304 )
+level = 2
 
 [node name="Skeleton1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 11 )]
 
 position = Vector2( 448, 304 )
+level = 2
 
 [node name="Skeleton2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 11 )]
 
 position = Vector2( 768, 304 )
+level = 2
 
 [node name="Skeleton3" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 11 )]
 
 position = Vector2( 304, -176 )
+level = 2
 
 [node name="Skeleton4" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 11 )]
 
 position = Vector2( 640, -176 )
+level = 2
 
 [node name="Skeleton5" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 11 )]
 
 position = Vector2( -144, -880 )
+level = 2
 
 [node name="SimpleProjectile" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 12 )]
 
 position = Vector2( -224, -176 )
+projectile_offset = Vector2( 0, 0 )
 
 [node name="Werewolf" parent="tilemap/EnemiesGroup" index="7" instance=ExtResource( 13 )]
 

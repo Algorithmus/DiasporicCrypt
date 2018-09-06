@@ -14,7 +14,7 @@ extents = Vector2( 16, 16 )
 custom_solver_bias = 0.0
 extents = Vector2( 18, 18 )
 
-[node name="TestBreakable" type="Node2D" index="0"]
+[node name="TestBreakable" type="Node2D"]
 
 script = ExtResource( 1 )
 __meta__ = {
@@ -68,6 +68,7 @@ shape = SubResource( 2 )
 
 stream = ExtResource( 3 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"

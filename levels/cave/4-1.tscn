@@ -4,10 +4,10 @@
 [ext_resource path="res://scenes/cave/climbableblock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/cave/BGs/cornerL.png" type="Texture" id=3]
 [ext_resource path="res://scenes/cave/BGs/cornerR.png" type="Texture" id=4]
-[ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/common/damagables/orc/orc.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=6]
 
-[node name="LVL_NOTITLE" type="Node2D" index="0"]
+[node name="LVL_NOTITLE" type="Node2D"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -58,11 +58,11 @@ texture = ExtResource( 4 )
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="1"]
 
-[node name="Lizardman" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 5 )]
+[node name="Orc" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( 240, 96 )
 
-[node name="Lizardman1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 5 )]
+[node name="Orc2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 5 )]
 
 position = Vector2( 496, 96 )
 

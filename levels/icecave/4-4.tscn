@@ -13,7 +13,7 @@
 [ext_resource path="res://scenes/items/magic/hex.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=12]
 
-[node name="LVL_NOTITLE" type="Node2D" index="0"]
+[node name="LVL_NOTITLE" type="Node2D"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"

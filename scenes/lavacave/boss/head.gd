@@ -22,8 +22,8 @@ var ROUND = 5 # number of fireballs to throw during each fire cycle
 var fireround = 0
 var FIRE_COOLDOWN = 60 # delay between fireballs
 var fire_delay = 0
-var maxhp = 100 #10000
-var hp = 100
+var maxhp = 5000 #10000
+var hp = 5000
 var ep = 100000
 var HURT_COLOR = Color(1, 98/255.0, 98/255.0, 1)
 var DEFAULT_COLOR = Color(1, 1, 1, 1)
@@ -63,7 +63,7 @@ func _physics_process(delta):
 		var player_obj = player.get_node("player")
 		# check that player is in sight and after delay before attacking
 		if (delay == 0 && (cycle != "open" && cycle != "fire" && cycle != "close")):
-			if (player_obj.get_global_position().y > get_global_position().y - 48 && player_obj.get_global_position().y < get_global_position().y + 48):
+			if (player_obj.get_global_position().y > get_global_position().y - 80 && player_obj.get_global_position().y < get_global_position().y + 80):
 				cycle = "open"
 				animation_player.play("open")
 				fire_delay = 0
@@ -86,7 +86,7 @@ func _physics_process(delta):
 				fire.change_direction(-1)
 				fire.set("camera", player_obj.get_node("Camera2D"))
 				fire.set("speed", 5)
-				#fire.set("atk", 10)
+				fire.set("atk", 100)
 				fire.get_node("Area2D").set_name("damagable")
 				fire.release()
 				fireround += 1

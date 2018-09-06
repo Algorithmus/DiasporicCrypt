@@ -6,6 +6,8 @@ export var rateX = 1
 export var rateY = 0
 
 func _ready():
+	atk = 10
+
 	ignore_collision = true
 	follow_player = false
 

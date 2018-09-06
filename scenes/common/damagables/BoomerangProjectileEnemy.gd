@@ -24,6 +24,7 @@ func check_attack():
 			projectile_obj.queue_free()
 		projectile_obj = projectile.instance()
 		projectile_obj.set("origin", weakref(self))
+		projectile_obj.set("atk", atk)
 		if (follow_player):
 			projectile_obj.set("direction", get_player_direction())
 		else:

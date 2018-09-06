@@ -9,11 +9,11 @@
 [ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/common/damagables/skeleton/skeleton.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/common/damagables/flyingskull/flyingskull.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/common/damagables/demon/demon.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/common/sunbeam.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=12]
 
-[node name="LVL_NOTITLE" type="Node2D" index="0"]
+[node name="LVL_NOTITLE" type="Node2D"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -251,36 +251,43 @@ position = Vector2( 832, -624 )
 [node name="Skeleton" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 9 )]
 
 position = Vector2( 112, 144 )
+level = 2
 
 [node name="Skeleton1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 9 )]
 
 position = Vector2( 240, 144 )
+level = 2
 
 [node name="Skeleton2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 9 )]
 
 position = Vector2( 336, 144 )
+level = 2
 
 [node name="Skeleton3" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 9 )]
 
 position = Vector2( 400, 144 )
+level = 2
 
 [node name="Skeleton4" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 9 )]
 
 position = Vector2( 528, 144 )
+level = 2
 
 [node name="Skeleton5" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 9 )]
 
 position = Vector2( 48, 144 )
+level = 2
 
-[node name="FlyingSkull" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 10 )]
+[node name="Demon" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 10 )]
 
-position = Vector2( 544, -128 )
+position = Vector2( 544, -112 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="FlyingSkull1" parent="tilemap/EnemiesGroup" index="7" instance=ExtResource( 10 )]
+[node name="Demon2" parent="tilemap/EnemiesGroup" index="7" instance=ExtResource( 10 )]
 
 position = Vector2( -304, -304 )
 
-[node name="FlyingSkull2" parent="tilemap/EnemiesGroup" index="8" instance=ExtResource( 10 )]
+[node name="Demon3" parent="tilemap/EnemiesGroup" index="8" instance=ExtResource( 10 )]
 
 position = Vector2( 464, -720 )
 

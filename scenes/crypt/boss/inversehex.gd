@@ -10,6 +10,7 @@ var soundid
 var length
 
 func _ready():
+	atk = 120
 	collision = get_node("beam")
 	collision_blacklist = collision.get_node("collision")
 	collision_blacklist.set_name("damagable")

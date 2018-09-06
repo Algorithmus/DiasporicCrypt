@@ -19,8 +19,8 @@ var current_animation = "idle"
 var combo = ""
 var elemental_weaknesses = []
 var elemental_protection = []
-var hp = 100
-var current_hp = 100
+var hp = 2500
+var current_hp = 2500
 const RED = Color(1, 72 / 255.0, 72 / 255.0, 1)
 
 func _ready():

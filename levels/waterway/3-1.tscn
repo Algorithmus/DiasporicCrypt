@@ -17,7 +17,7 @@
 [ext_resource path="res://scenes/common/fluid/water.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=16]
 
-[node name="LVL_NOTITLE" type="Node2D"]
+[node name="LVL_NOTITLE" type="Node2D" index="0"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -282,28 +282,29 @@ position = Vector2( 688, 208 )
 [node name="Fish" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( -32, -176 )
+level = 2
 
 [node name="Fish1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 7 )]
 
 position = Vector2( 80, -112 )
+level = 2
 
 [node name="Fish2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 7 )]
 
 position = Vector2( 128, -416 )
+level = 2
 
 [node name="Bust" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 8 )]
 
 position = Vector2( -80, -368 )
 scale = Vector2( -1, 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
-projectile_offset = Vector2( 0, 0 )
 rateX = 1
 
 [node name="Bust5" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 8 )]
 
 position = Vector2( 624, -432 )
 _sections_unfolded = [ "Transform", "Z Index" ]
-projectile_offset = Vector2( 0, 0 )
 rateX = -1
 
 [node name="Bust2" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 9 )]
@@ -327,42 +328,52 @@ rateY = 1
 [node name="Skeleton" parent="tilemap/EnemiesGroup" index="8" instance=ExtResource( 10 )]
 
 position = Vector2( 112, -624 )
+level = 2
 
 [node name="Skeleton1" parent="tilemap/EnemiesGroup" index="9" instance=ExtResource( 10 )]
 
 position = Vector2( 208, -624 )
+level = 2
 
 [node name="Skeleton2" parent="tilemap/EnemiesGroup" index="10" instance=ExtResource( 10 )]
 
 position = Vector2( 304, -624 )
+level = 2
 
 [node name="Skeleton3" parent="tilemap/EnemiesGroup" index="11" instance=ExtResource( 10 )]
 
 position = Vector2( 400, -624 )
+level = 2
 
 [node name="Skeleton4" parent="tilemap/EnemiesGroup" index="12" instance=ExtResource( 10 )]
 
 position = Vector2( 832, -80 )
+level = 2
 
 [node name="Skeleton5" parent="tilemap/EnemiesGroup" index="13" instance=ExtResource( 10 )]
 
 position = Vector2( 48, 144 )
+level = 2
 
 [node name="Skeleton6" parent="tilemap/EnemiesGroup" index="14" instance=ExtResource( 10 )]
 
 position = Vector2( 240, 144 )
+level = 2
 
 [node name="Skeleton7" parent="tilemap/EnemiesGroup" index="15" instance=ExtResource( 10 )]
 
 position = Vector2( 432, 144 )
+level = 2
 
 [node name="Skeleton8" parent="tilemap/EnemiesGroup" index="16" instance=ExtResource( 10 )]
 
 position = Vector2( 560, 144 )
+level = 2
 
 [node name="Skeleton9" parent="tilemap/EnemiesGroup" index="17" instance=ExtResource( 10 )]
 
 position = Vector2( 144, 144 )
+level = 2
 
 [node name="SimpleProjectile" parent="tilemap/EnemiesGroup" index="18" instance=ExtResource( 11 )]
 

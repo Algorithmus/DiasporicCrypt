@@ -17,9 +17,9 @@ var topazkeyclass = preload("res://scenes/items/special/topazkey.tscn")
 var manapotionplusclass = preload("res://scenes/items/potion/manapotionplus.tscn")
 var expclass = preload("res://scenes/items/exporb/exporb.tscn")
 var cycle = "active"
-var hp = 100
-var current_hp = 100
-var ep = 5000
+var hp = 5000
+var current_hp = 5000
+var ep = 8000
 var currentx = 0
 var sunbeam
 const RED = Color(1, 56/255.0, 56/255.0)
@@ -95,8 +95,8 @@ func _physics_process(delta):
 	
 func check_hp(damage):
 	current_hp -= damage
-	var damage_color = Color(1, 1, 1).linear_interpolate(RED, current_hp / hp)
-	get_node("sprite").set_modulate(damage_color)
+	var damage_color = RED.linear_interpolate(Color(1, 1, 1), float(current_hp) / hp)
+	set_modulate(damage_color)
 	if (current_hp <= 0):
 		cycle = "dying"
 		dying = true

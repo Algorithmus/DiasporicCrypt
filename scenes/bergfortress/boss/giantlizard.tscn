@@ -97,7 +97,7 @@ _sections_unfolded = [ "Angle", "Animation", "Color", "Damping", "Emission Shape
 
 [sub_resource type="Animation" id=10]
 
-length = 0.6
+length = 0.8
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -257,7 +257,7 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("arm:modulate")
+tracks/3/path = NodePath("hammer:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -269,36 +269,12 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("hammer:modulate")
+tracks/4/path = NodePath("hammer:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("sprite:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("hammer:rotation_degrees")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -347,13 +323,14 @@ tracks/2/keys = {
 "values": [ 90.0, 31.9, -26.1, -84.2 ]
 }
 
-[node name="GiantLizard" type="Node2D" index="0"]
+[node name="GiantLizard" type="Node2D"]
 
 script = ExtResource( 1 )
-hp = 100
+hp = 5000
 
 [node name="sprite" type="Sprite" parent="." index="0"]
 
+modulate = Color( 1, 1, 1, 0.5 )
 position = Vector2( 32, -80 )
 texture = ExtResource( 2 )
 vframes = 3
@@ -369,6 +346,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damagable" index="0"]
 
@@ -377,11 +355,10 @@ shape = SubResource( 1 )
 
 [node name="ArmorGroup" type="Node2D" parent="." index="2"]
 
-editor/display_folded = true
-
 [node name="armor2" parent="ArmorGroup" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( -97, -35 )
+hp = 2500
 
 [node name="sprite" parent="ArmorGroup/armor2" index="0"]
 
@@ -392,12 +369,11 @@ texture = ExtResource( 4 )
 
 position = Vector2( 96, 32 )
 scale = Vector2( 6, 2 )
-audio_bus_override = false
-audio_bus_name = "Master"
 
 [node name="armor1" parent="ArmorGroup" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( -98, -176 )
+hp = 2500
 
 [node name="sprite" parent="ArmorGroup/armor1" index="0"]
 
@@ -408,12 +384,11 @@ texture = ExtResource( 5 )
 
 position = Vector2( 96, 96 )
 scale = Vector2( 6, 5 )
-audio_bus_override = false
-audio_bus_name = "Master"
 
 [node name="armor" parent="ArmorGroup" index="2" instance=ExtResource( 3 )]
 
 position = Vector2( -106, -272 )
+hp = 2000
 
 [node name="sprite" parent="ArmorGroup/armor" index="0"]
 
@@ -423,12 +398,9 @@ position = Vector2( -48, -48 )
 
 position = Vector2( 96, 48 )
 scale = Vector2( 8, 5 )
-audio_bus_override = false
-audio_bus_name = "Master"
 
 [node name="hammer" type="Node2D" parent="." index="3"]
 
-editor/display_folded = true
 position = Vector2( 85.6913, -122.309 )
 rotation = -1.46957
 _sections_unfolded = [ "Transform", "Visibility" ]
@@ -448,6 +420,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hammer/collision" index="0"]
 
@@ -470,6 +443,7 @@ shape = SubResource( 3 )
 
 [node name="arm" type="Sprite" parent="." index="4"]
 
+modulate = Color( 1, 1, 1, 0.5 )
 position = Vector2( 32, -80 )
 texture = ExtResource( 7 )
 vframes = 3
@@ -479,7 +453,6 @@ _sections_unfolded = [ "Visibility" ]
 [node name="explode" type="Particles2D" parent="." index="5"]
 
 material = SubResource( 4 )
-position = Vector2( 64, -48 )
 z_index = 3
 emitting = false
 amount = 32

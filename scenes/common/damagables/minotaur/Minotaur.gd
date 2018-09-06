@@ -2,11 +2,11 @@
 extends "res://scenes/common/damagables/BoomerangProjectileEnemy.gd"
 
 func _ready():
-	atk = 60
+	atk = 80
 	def = 10
-	hp = 500
-	gold = 2000
-	ep = 500
+	hp = 5000
+	gold = 200
+	ep = 5000
 
 	current_hp = hp
 

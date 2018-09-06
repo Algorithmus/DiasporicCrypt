@@ -9,9 +9,11 @@ func _ready():
 	atk = 80
 	def = 20
 	hp = 700
-	gold = 1000
+	gold = 100
 	ep = 1500
-	
+
+	current_hp = hp
+
 	is_consumable = true
 	sunbeam_immunity = false
 	ignore_collision = true

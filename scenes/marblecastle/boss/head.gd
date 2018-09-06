@@ -42,8 +42,8 @@ var sapphirekeyclass = preload("res://scenes/items/special/sapphirekey.tscn")
 var potionplusclass = preload("res://scenes/items/potion/potionplus.tscn")
 var expclass = preload("res://scenes/items/exporb/exporb.tscn")
 var fireballclass = preload("res://scenes/common/damagables/attacks/fireball.tscn")
-var ep = 5000
-var atk = 10
+var ep = 10000
+var atk = 80
 var beam
 var heads
 var animation_player
@@ -131,6 +131,7 @@ func _physics_process(delta):
 					fire.pivot = fire.get_global_position()
 					fire.initangle = i * PI/3
 					fire.currentx = fire.initangle
+					fire.set("atk", 40)
 					get_parent().add_child(fire)
 				attack_current_cooldown = 0
 		elif (beam_current_delay > 0 && beam_current_delay < BEAM_DELAY):

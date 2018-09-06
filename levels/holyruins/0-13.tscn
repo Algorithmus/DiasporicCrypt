@@ -78,14 +78,17 @@ editor/display_folded = true
 [node name="BlackSkeleton" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( 0, 176 )
+level = 1
 
 [node name="BlackSkeleton1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( -592, 48 )
+level = 1
 
 [node name="BlackSkeleton2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 624, 48 )
+level = 1
 
 [node name="SwitchGroup" type="Node2D" parent="tilemap" index="2"]
 

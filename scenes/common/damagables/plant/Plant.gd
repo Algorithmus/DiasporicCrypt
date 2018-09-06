@@ -2,7 +2,6 @@
 extends "res://scenes/common/damagables/statues/Statue.gd"
 
 func _ready():
-	ep = 100
 	follow_player = false
 
 func check_attack():

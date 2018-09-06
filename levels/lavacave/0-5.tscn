@@ -10,7 +10,7 @@
 [ext_resource path="res://scenes/lavacave/movingplatform/movingplatform.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/common/damagables/flyingskull/flyingskull.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/common/damagables/demon/demon.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/common/damagables/skeleton/bloodskeleton.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/common/damagables/statues/bust_h.tscn" type="PackedScene" id=14]
@@ -236,29 +236,33 @@ value = 100
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="6"]
 
-[node name="FlyingSkull" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 11 )]
+[node name="Demon" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 11 )]
 
 position = Vector2( 1680, 96 )
 
-[node name="FlyingSkull1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 11 )]
+[node name="Demon2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 11 )]
 
 position = Vector2( 2416, 96 )
 
-[node name="FlyingSkull2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 11 )]
+[node name="Demon3" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 11 )]
 
-position = Vector2( 3792, 0 )
+position = Vector2( 3792, -16 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Lizardman" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 12 )]
 
 position = Vector2( 3536, 128 )
+level = 2
 
 [node name="Lizardman1" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 12 )]
 
 position = Vector2( 3760, 128 )
+level = 2
 
 [node name="Lizardman2" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 12 )]
 
 position = Vector2( 3920, 128 )
+level = 2
 
 [node name="SimpleProjectile" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 13 )]
 

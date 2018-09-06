@@ -7,10 +7,10 @@
 [ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/common/hangable.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/common/hangblockend.png" type="Texture" id=7]
-[ext_resource path="res://scenes/common/damagables/flyingskull/flyingskull.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/common/damagables/demon/demon.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=9]
 
-[node name="LVL_NOTITLE" type="Node2D" index="0"]
+[node name="LVL_NOTITLE" type="Node2D"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -178,13 +178,12 @@ audio_bus_name = "Master"
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="4"]
 
-editor/display_folded = true
-
-[node name="FlyingSkull" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 8 )]
+[node name="Demon" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 8 )]
 
 position = Vector2( -208, 176 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="FlyingSkull1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 8 )]
+[node name="Demon2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 8 )]
 
 position = Vector2( -176, -48 )
 

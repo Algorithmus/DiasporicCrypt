@@ -200,7 +200,7 @@ tracks/3/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 16, 64 )
 
-[node name="Lizardman" type="KinematicBody2D" index="0"]
+[node name="Lizardman" type="KinematicBody2D"]
 
 z_index = 1
 input_pickable = false
@@ -212,6 +212,7 @@ _sections_unfolded = [ "Z Index" ]
 __meta__ = {
 "__editor_plugin_screen__": "Script"
 }
+level = 1
 
 [node name="enabler" type="VisibilityEnabler2D" parent="." index="0"]
 

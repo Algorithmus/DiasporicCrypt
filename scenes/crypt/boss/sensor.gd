@@ -6,6 +6,7 @@ extends "res://scenes/common/Sensor.gd"
 var amethystkeyclass = preload("res://scenes/items/special/amethystkey.tscn")
 
 func _ready():
+	gateclass = preload("res://scenes/crypt/gate.tscn")
 	gatepos = Vector2(-208, -400)
 	if (ProjectSettings.get("current_quest_complete")):
 		tilemap.get_node("BossGroup/Lich").queue_free()

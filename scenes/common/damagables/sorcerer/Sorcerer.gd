@@ -3,10 +3,16 @@ extends "res://scenes/common/damagables/statues/Statue.gd"
 
 func _ready():
 	ep = 250
+	hp = 100
+	atk = 10
+	def = 0
+	gold = 5
 	consume_factor = 25
 	is_consumable = true
 	ignore_collision = true
-	
+
+	current_hp = hp
+
 	projectile_offset.y = -48
 	projectile_offset.x = 16
 	consumable_size = Vector2(4, 1)

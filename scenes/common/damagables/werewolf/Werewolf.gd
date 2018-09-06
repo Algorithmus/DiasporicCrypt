@@ -3,11 +3,11 @@ extends "res://scenes/common/damagables/RushEnemy.gd"
 
 func _ready():
 	follow_player = true
-	atk = 50
+	atk = 120
 	def = 10
-	hp = 450
-	gold = 1500
-	ep = 400
+	hp = 800
+	gold = 200
+	ep = 5000
 
 	current_hp = hp
 

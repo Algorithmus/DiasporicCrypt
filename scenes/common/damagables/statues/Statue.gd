@@ -2,11 +2,11 @@
 extends "res://scenes/common/damagables/Static.gd"
 
 func _ready():
-	atk = 10
+	atk = 40
 	def = 128
-	hp = 50
-	gold = 200
-	ep = 500
+	hp = 300
+	gold = 100
+	ep = 3000
 
 	current_hp = hp
 
@@ -34,6 +34,7 @@ func check_attack():
 		projectile_obj.set("rateY", offsetY * factor)
 		projectile_obj.set("camera", player.get_node("player/Camera2D"))
 		projectile_obj.set("direction", direction)
+		projectile_obj.set("atk", atk)
 		projectile_obj.set_global_position(Vector2(get_global_position().x + projectile_offset.x * scale.y, get_global_position().y + projectile_offset.y))
 		get_parent().add_child(projectile_obj)
 	if (is_attacking && animation_player.get_current_animation_length() == animation_player.get_current_animation_position()):

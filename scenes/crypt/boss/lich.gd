@@ -133,14 +133,17 @@ func create_projectile(ratex, ratey, angle, direction):
 
 func check_damage():
 	var tiles = collision_rect.get_overlapping_areas()
+	var ishurt = false
 	for tile in tiles:
 		if (tile.get_name() == "sunbeam"):
 			var hp_obj = hpclass.instance()
 			hud.add_child(hp_obj)
 			var damage = 0.05 * hp
 			current_hp -= damage
-			var color = RED.linear_interpolate(Color(1, 1, 1), current_hp / hp)
-			get_node("sprite").set_modulate(color)
+			var color = RED.linear_interpolate(Color(1, 1, 1), float(current_hp) / hp)
+			update_animation("hurt")
+			ishurt = true
+			get_node("sprite").set_self_modulate(color)
 			if (current_hp <= 0):
 				cycle = "dying"
 				update_animation("die")
@@ -156,3 +159,5 @@ func check_damage():
 			var hitpos = hp_obj.calculate_hitpos(tile.get_global_position(), tile.get_child(0).get_shape().get_extents(), get_global_position(), collision_rect.get_child(0).get_shape().get_extents())
 			hp_obj.display_damage(hitpos, damage)
 			current_hurt_delay += 1
+	if (!ishurt):
+		update_animation("idle")

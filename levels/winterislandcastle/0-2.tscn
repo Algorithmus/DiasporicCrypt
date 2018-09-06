@@ -53,30 +53,37 @@ scale = Vector2( 1, 15 )
 [node name="Skeleton" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( -16, 304 )
+level = 2
 
 [node name="Skeleton1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( -320, 304 )
+level = 2
 
 [node name="Skeleton2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 3 )]
 
 position = Vector2( -480, 304 )
+level = 2
 
 [node name="Skeleton3" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 3 )]
 
 position = Vector2( -656, 304 )
+level = 2
 
 [node name="Skeleton4" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 3 )]
 
 position = Vector2( -912, 304 )
+level = 2
 
 [node name="Skeleton5" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 3 )]
 
 position = Vector2( -1088, 304 )
+level = 2
 
 [node name="Skeleton6" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 3 )]
 
 position = Vector2( -1312, 304 )
+level = 2
 
 [node name="Sorcerer" parent="tilemap/EnemiesGroup" index="7" instance=ExtResource( 4 )]
 

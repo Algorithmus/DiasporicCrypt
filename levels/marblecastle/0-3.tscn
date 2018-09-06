@@ -4,10 +4,10 @@
 [ext_resource path="res://scenes/springislandcastle/climbableblock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/common/breakables/specialbreakable.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/dungeon/movingplatform/movingspikeplatform.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/common/damagables/orc/orc.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=6]
 
-[node name="LVL_NOTITLE" type="Node2D" index="0"]
+[node name="LVL_NOTITLE" type="Node2D"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -149,17 +149,15 @@ offset = -224.0
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="3"]
 
-editor/display_folded = true
-
-[node name="Lizardman" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 5 )]
+[node name="Orc" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( 288, 192 )
 
-[node name="Lizardman1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 5 )]
+[node name="Orc2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 5 )]
 
 position = Vector2( 448, 192 )
 
-[node name="Lizardman2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 5 )]
+[node name="Orc3" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 5 )]
 
 position = Vector2( 608, 192 )
 

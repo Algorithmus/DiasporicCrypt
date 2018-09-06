@@ -5,14 +5,14 @@
 [ext_resource path="res://scenes/lavacave/climbableblock.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/lavacave/BGs/cornerR.png" type="Texture" id=4]
 [ext_resource path="res://scenes/lavacave/fallingplatform/fallingplatform.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/common/damagables/flyingskull/flyingskull.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/damagables/demon/demon.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/lavacave/lavaball.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/items/gold/gold.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/common/fluid/lava.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=11]
 
-[node name="LVL_NOTITLE" type="Node2D" index="0"]
+[node name="LVL_NOTITLE" type="Node2D"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -122,12 +122,12 @@ position = Vector2( 1968, 368 )
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="3"]
 
-[node name="FlyingSkull" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 6 )]
+[node name="Demon" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 6 )]
 
 position = Vector2( -1488, 208 )
 patrolrange = 20
 
-[node name="FlyingSkull1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 6 )]
+[node name="Demon2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 6 )]
 
 position = Vector2( 736, 224 )
 patrolrange = 20
@@ -135,6 +135,7 @@ patrolrange = 20
 [node name="Lizardman" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 7 )]
 
 position = Vector2( 336, 256 )
+level = 2
 
 [node name="Lavaball" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 8 )]
 

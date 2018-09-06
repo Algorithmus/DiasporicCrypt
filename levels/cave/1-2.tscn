@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/cave/BGs/edge.png" type="Texture" id=3]
 [ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/common/damagables/imp/imp.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/damagables/orc/orc.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/common/damagables/sorcerer/sorcerer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/common/fake.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=9]
@@ -59,10 +59,6 @@ position = Vector2( 1680, 48 )
 texture = ExtResource( 3 )
 flip_h = true
 
-[node name="crumble" parent="tilemap/BreakableGroup/TestBreakable/sound" index="0"]
-
-pitch_scale = 1.0
-
 [node name="TestBreakable1" parent="tilemap/BreakableGroup" index="1" instance=ExtResource( 2 )]
 
 editor/display_folded = true
@@ -72,10 +68,6 @@ position = Vector2( 1680, 80 )
 
 texture = ExtResource( 3 )
 flip_h = true
-
-[node name="crumble" parent="tilemap/BreakableGroup/TestBreakable1/sound" index="0"]
-
-pitch_scale = 1.0
 
 [node name="TestBreakable2" parent="tilemap/BreakableGroup" index="2" instance=ExtResource( 2 )]
 
@@ -87,10 +79,6 @@ position = Vector2( 1680, 112 )
 texture = ExtResource( 3 )
 flip_h = true
 
-[node name="crumble" parent="tilemap/BreakableGroup/TestBreakable2/sound" index="0"]
-
-pitch_scale = 1.0
-
 [node name="TestBreakable3" parent="tilemap/BreakableGroup" index="3" instance=ExtResource( 2 )]
 
 editor/display_folded = true
@@ -101,10 +89,6 @@ position = Vector2( 1680, 144 )
 texture = ExtResource( 3 )
 flip_h = true
 
-[node name="crumble" parent="tilemap/BreakableGroup/TestBreakable3/sound" index="0"]
-
-pitch_scale = 1.0
-
 [node name="TestBreakable4" parent="tilemap/BreakableGroup" index="4" instance=ExtResource( 2 )]
 
 editor/display_folded = true
@@ -114,10 +98,6 @@ position = Vector2( 1680, 176 )
 
 texture = ExtResource( 3 )
 flip_h = true
-
-[node name="crumble" parent="tilemap/BreakableGroup/TestBreakable4/sound" index="0"]
-
-pitch_scale = 1.0
 
 [node name="LadderGroup" type="Node2D" parent="tilemap" index="1"]
 
@@ -153,19 +133,19 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 position = Vector2( 848, 176 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Lizardman" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 6 )]
+[node name="Orc" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 6 )]
 
 position = Vector2( 128, 128 )
 
-[node name="Lizardman1" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 6 )]
+[node name="Orc2" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 6 )]
 
 position = Vector2( 640, 128 )
 
-[node name="Lizardman2" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 6 )]
+[node name="Orc3" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 6 )]
 
 position = Vector2( 1232, 128 )
 
-[node name="Lizardman3" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 6 )]
+[node name="Orc4" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 6 )]
 
 position = Vector2( 1040, 128 )
 

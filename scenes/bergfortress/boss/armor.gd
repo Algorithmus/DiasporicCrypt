@@ -7,7 +7,7 @@ func _ready():
 
 func check_hp(damage):
 	.check_hp(damage)
-	var color = Color(1, 1, 1).linear_interpolate(RED, float(current_hp/hp))
+	var color = RED.linear_interpolate(Color(1, 1, 1), float(current_hp)/hp)
 	get_node("sprite").set_modulate(color)
 	if (current_hp <= 0):
 		queue_free()

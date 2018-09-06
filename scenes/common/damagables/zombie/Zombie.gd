@@ -5,7 +5,7 @@ func _ready():
 	atk = 1
 	def = 0
 	hp = 50
-	gold = 50
+	gold = 10
 	ep = 50
 
 	current_hp = hp

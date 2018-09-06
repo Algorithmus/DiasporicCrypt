@@ -7,7 +7,7 @@ var is_exploding = false
 var explosion
 var sensor
 var sound
-var atk = 40
+var atk = 80
 
 # This object has two collision shapes: one for detecting enemies
 # and the other for damage collision. Damage collision (the explosion)

@@ -63,15 +63,15 @@ position = Vector2( -464, -16 )
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="2"]
 
-editor/display_folded = true
-
 [node name="Fish" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( -464, -176 )
+level = 2
 
 [node name="Fish1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 4 )]
 
 position = Vector2( -464, -96 )
+level = 2
 
 [node name="SpikeGroup" type="Node2D" parent="tilemap" index="3"]
 

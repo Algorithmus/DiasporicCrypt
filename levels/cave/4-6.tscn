@@ -11,8 +11,9 @@
 [ext_resource path="res://scenes/items/magic/earth.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=10]
 
-[node name="LVL_NOTITLE" type="Node2D" index="0"]
+[node name="LVL_NOTITLE" type="Node2D"]
 
+position = Vector2( -1, 0 )
 __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
@@ -122,8 +123,6 @@ position = Vector2( -384, -240 )
 position = Vector2( 160, -240 )
 
 [node name="MagicGroup" type="Node2D" parent="tilemap" index="4"]
-
-editor/display_folded = true
 
 [node name="ITEM_EARTH" parent="tilemap/MagicGroup" index="0" instance=ExtResource( 9 )]
 
