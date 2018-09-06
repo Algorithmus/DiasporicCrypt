@@ -19,6 +19,7 @@ const SPEED_LIMIT = 30
 # 0 - General Area2D
 # 1 - Slopes
 # 2 - Fakes
+# 3 - Sunbeams
 # 19 - Solids
 
 var is_delay = false
