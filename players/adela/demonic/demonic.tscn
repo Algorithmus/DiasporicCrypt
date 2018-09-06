@@ -224,9 +224,10 @@ shader_param/aura_color = Color( 0, 0.74902, 0.360784, 1 )
 shader_param/modulate = Color( 0.733333, 1, 0.901961, 1 )
 _sections_unfolded = [ "shader_param" ]
 
-[node name="NormalSpriteGroup" type="Node2D" index="0"]
+[node name="NormalSpriteGroup" type="Node2D"]
 
-_sections_unfolded = [ "Material" ]
+z_index = 1
+_sections_unfolded = [ "Material", "Z Index" ]
 __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
