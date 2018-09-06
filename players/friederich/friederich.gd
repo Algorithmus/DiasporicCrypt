@@ -437,8 +437,11 @@ func step_player(delta):
 			elif (current_chain_special["id"] == "slice"):
 				newpos = min(newpos + 1, 0)
 				if (!static_target && target_exists && hit_enemy && is_valid_target):
-					target_enemy.get_ref().get_parent().set("floortile_check_requested", false)
-					target_enemy.get_ref().get_parent().set_global_position(Vector2(target_enemy.get_ref().get_global_position().x, target_enemy.get_ref().get_global_position().y + target_enemy_offset.y))
+					target_enemy.get_ref().get_parent().set("floortile_check_requested", true)
+					var target_sprite_offset = 0
+					if (target_enemy.get_ref().get_parent().get("sprite_offset") != null):
+						target_sprite_offset = target_enemy.get_ref().get_parent().get("sprite_offset").y - sprite_offset.y
+					target_enemy.get_ref().get_parent().set_global_position(Vector2(target_enemy.get_ref().get_global_position().x, target_enemy.get_ref().get_global_position().y - target_sprite_offset + target_enemy_offset.y))
 			elif (current_chain_special["id"] == "skewer"):
 				newpos = min(pos.y + 1, 0)
 				if (!static_target && target_exists && hit_enemy && is_valid_target):
