@@ -149,18 +149,19 @@ func check_damage():
 					var magic_hp = i.get_parent().get("hp")
 					if (magic_hp != null):
 						i.get_parent().set("hp", magic_hp - 1)
-				if (collider != null && damage > 0):
+				if (collider != null):
 					var hp_obj = hpclass.instance()
 					hud.add_child(hp_obj)
 					var collider_offset = collider.get_shape().get_extents()
 					var hitpos = hp_obj.calculate_hitpos(i.get_global_position(), Vector2(collider_offset.x * i.get_scale().x, collider_offset.y * i.get_scale().y), get_position(), sprite_offset)
-					current_hp -= damage
-					is_hurt = true
-					check_dying()
+					if (damage > 0):
+						current_hp -= damage
+						is_hurt = true
+						check_dying()
+						current_delay += 1
+						current_walk_delay += 1
 					# TODO - calculate damage helper method
 					hp_obj.display_damage(hitpos, damage)
-					current_delay += 1
-					current_walk_delay += 1
 
 func calculate_atk_value(obj):
 	if (obj.get_parent().get("atk") != null):
