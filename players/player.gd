@@ -708,6 +708,8 @@ func update_fusion():
 	var weaponcolor2 = current_spell["weaponcolor2"]
 	if (current_spell.has("type")):
 		weapon_collider.set("type", current_spell["type"])
+	else:
+		weapon_collider.set("type", null)
 	
 	update_attack_color("attack", auracolor, weaponcolor1, weaponcolor2)
 	update_attack_color("aattack", auracolor, weaponcolor1, weaponcolor2)

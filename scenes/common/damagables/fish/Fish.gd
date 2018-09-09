@@ -18,6 +18,9 @@ func _ready():
 		gold = 100
 		ep = 3500
 
+		elemental_protection = ["ice"]
+		elemental_weaknesses.append("thunder")
+
 		get_node("walk").set_modulate(LEVEL2_COLOR)
 		get_node("die").set_modulate(LEVEL2_COLOR)
 		get_node("hurt").set_modulate(LEVEL2_COLOR)

@@ -77,6 +77,8 @@ func get_atk_adjusted_damage(damage, type):
 		elemental_constant = 1.5
 	if (elemental_protection.find(type) >= 0):
 		elemental_constant = 0
+	if (elemental_protection.find("all") >= 0):
+		elemental_constant = 0
 	
 	return round(elemental_constant * (damage * 2 + randf()*0.1*damage))
 

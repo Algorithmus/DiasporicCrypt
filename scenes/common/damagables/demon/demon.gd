@@ -14,6 +14,7 @@ func _ready():
 
 	current_hp = hp
 
+	elemental_protection = ["dark"]
 	is_consumable = true
 	sunbeam_immunity = false
 	ignore_collision = true

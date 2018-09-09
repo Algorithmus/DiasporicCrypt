@@ -10,6 +10,9 @@ func _ready():
 
 	current_hp = hp
 
+	elemental_weaknesses.append("earth")
+	elemental_protection = ["thunder"]
+
 	ai_obj.set("player_distance", 0)
 
 func set_animation_direction(new_animation):

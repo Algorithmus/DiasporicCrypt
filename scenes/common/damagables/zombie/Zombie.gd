@@ -10,7 +10,9 @@ func _ready():
 
 	current_hp = hp
 	sunbeam_immunity = false
-	
+
+	elemental_weaknesses.append("fire")
+	elemental_protection = ["dark"]
 
 	var follow_ai = preload("res://scenes/common/damagables/ai/follow.gd")
 	ai_obj = follow_ai.new()
