@@ -13,6 +13,7 @@ func _ready():
 	follow_player = true
 
 	is_consumable = true
+	consume_factor = 20
 	consumable_size = Vector2(5, 2)
 	consumable_sprite_offset = Vector2(-32, -16)
 

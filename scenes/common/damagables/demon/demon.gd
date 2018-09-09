@@ -16,6 +16,7 @@ func _ready():
 
 	elemental_protection = ["dark"]
 	is_consumable = true
+	consume_factor = 10
 	sunbeam_immunity = false
 	ignore_collision = true
 	ai_obj.set("originalX", get_global_position().x)
