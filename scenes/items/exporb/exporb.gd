@@ -15,7 +15,7 @@ func _ready():
 
 func set_value(amount):
 	value = amount
-	var scale = float(max(min(amount, 2000), 50) - 50) / 1950
+	var scale = float(max(min(amount, 10000), 50) - 50) / 9950
 	var size = 0.75 * scale + 0.25
 	var color = default_color.linear_interpolate(full_color, scale)
 	set_scale(Vector2(size, size))
