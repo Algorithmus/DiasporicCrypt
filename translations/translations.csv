@@ -27,8 +27,8 @@ KEY_UP,Up,Oben
 KEY_DOWN,Down,Unten
 KEY_LEFT,Left,Links
 KEY_RIGHT,Right,Rechts
-KEY_ATTACK,Attack,Angriff
-KEY_JUMP,Jump,Springen
+KEY_ATTACK,Attack/Accept,Angriff/Akzeptieren
+KEY_JUMP,Jump/Cancel,Springen/Ablehnen
 KEY_MAGIC,Magic,Zauber
 KEY_BLOOD,Drink Blood/Talk,Blut saugen/Sprechen
 KEY_PREVMAGIC,Previous Spell,Vorheriger Zauberspruch
