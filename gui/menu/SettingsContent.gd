@@ -56,9 +56,11 @@ func detect_gamepad():
 		ProjectSettings.set("current_input", "keyboard")
 		set_layout_index(ProjectSettings.get("current_input"))
 		get_node("layout").set_disabled(true)
+		get_node("layout").set_focus_mode(FOCUS_NONE)
 		emit_signal("nogamepad")
 	else:
 		get_node("layout").set_disabled(false)
+		get_node("layout").set_focus_mode(FOCUS_ALL)
 
 func update_container():
 	detect_gamepad()

@@ -212,7 +212,7 @@ func _ready():
 					if (!joystick_supported):
 						controls[actionid] = event.scancode
 					keyboard[actionid] = event.scancode
-	ProjectSettings.set("debugmode", true)
+	ProjectSettings.set("debugmode", false)
 	ProjectSettings.set("demomode", false)
 	ProjectSettings.set("controls", controls)
 	ProjectSettings.set("keyboard_controls", keyboard)
@@ -345,6 +345,7 @@ func load_empty():
 	options.get_node("loadgame/icon").hide()
 
 func disable_loadmenu():
+	options.get_node("loadgame").set_focus_mode(Control.FOCUS_NONE)
 	options.get_node("loadgame").set_disabled(true)
 
 func hide_loadmenu():
