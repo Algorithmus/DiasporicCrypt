@@ -24,16 +24,16 @@
 [ext_resource path="res://gui/fonts/L-24-Keyboard-outline.font" type="BitmapFont" id=22]
 [ext_resource path="res://gui/fonts/M-15-options.font" type="BitmapFont" id=23]
 [ext_resource path="res://gui/hud/ItemDisplay.gd" type="Script" id=24]
-[ext_resource path="res://gui/maps/HudMap.gd" type="Script" id=25]
-[ext_resource path="res://gui/fonts/XL-72.font" type="BitmapFont" id=26]
-[ext_resource path="res://gui/menu/tabs/map.png" type="Texture" id=27]
-[ext_resource path="res://gui/dialogue/dialogue.tscn" type="PackedScene" id=28]
-[ext_resource path="res://gui/menu/menu.tscn" type="PackedScene" id=29]
-[ext_resource path="res://gui/TextButton.tscn" type="PackedScene" id=30]
-[ext_resource path="res://players/magic/wind/action.png" type="Texture" id=31]
-[ext_resource path="res://gui/sequences/demonic_f.png" type="Texture" id=32]
-[ext_resource path="res://gui/sequences/demonic_a.png" type="Texture" id=33]
-[ext_resource path="res://gui/fonts/S-13-dialog.font" type="BitmapFont" id=34]
+[ext_resource path="res://gui/fonts/S-13-dialog.font" type="BitmapFont" id=25]
+[ext_resource path="res://gui/maps/HudMap.gd" type="Script" id=26]
+[ext_resource path="res://gui/fonts/XL-72.font" type="BitmapFont" id=27]
+[ext_resource path="res://gui/menu/tabs/map.png" type="Texture" id=28]
+[ext_resource path="res://gui/dialogue/dialogue.tscn" type="PackedScene" id=29]
+[ext_resource path="res://gui/menu/menu.tscn" type="PackedScene" id=30]
+[ext_resource path="res://gui/TextButton.tscn" type="PackedScene" id=31]
+[ext_resource path="res://players/magic/wind/action.png" type="Texture" id=32]
+[ext_resource path="res://gui/sequences/demonic_f.png" type="Texture" id=33]
+[ext_resource path="res://gui/sequences/demonic_a.png" type="Texture" id=34]
 [ext_resource path="res://gui/loading/loading.tscn" type="PackedScene" id=35]
 [ext_resource path="res://gui/loading/logo.png" type="Texture" id=36]
 [ext_resource path="res://gui/confirm.wav" type="AudioStream" id=37]
@@ -1025,7 +1025,37 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="map" type="Control" parent="gui/CanvasLayer" index="3"]
+[node name="talk" type="RichTextLabel" parent="gui/CanvasLayer" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 552.0
+margin_right = 800.0
+margin_bottom = 584.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_fonts/mono_font = ExtResource( 22 )
+custom_fonts/normal_font = ExtResource( 25 )
+bbcode_enabled = true
+bbcode_text = "[center]KEY_TALK:  [code]Z[/code][/center]"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "KEY_TALK:  Z"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode", "Rect", "custom_constants", "custom_fonts", "custom_styles" ]
+
+[node name="map" type="Control" parent="gui/CanvasLayer" index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1055,14 +1085,14 @@ texture_scale = Vector2( 1, 1 )
 texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
-script = ExtResource( 25 )
+script = ExtResource( 26 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="objects" type="Node2D" parent="gui/CanvasLayer/map/container" index="0"]
 
 show_behind_parent = true
 
-[node name="chain" type="Control" parent="gui/CanvasLayer" index="4"]
+[node name="chain" type="Control" parent="gui/CanvasLayer" index="5"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1169,7 +1199,7 @@ anims/counter = SubResource( 12 )
 anims/newattack = SubResource( 13 )
 blend_times = [  ]
 
-[node name="level" type="Control" parent="gui/CanvasLayer" index="5"]
+[node name="level" type="Control" parent="gui/CanvasLayer" index="6"]
 
 pause_mode = 1
 anchor_left = 0.0
@@ -1201,7 +1231,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 26 )
+custom_fonts/font = ExtResource( 27 )
 text = "COMPLETE"
 align = 1
 valign = 1
@@ -1238,7 +1268,7 @@ _sections_unfolded = [ "Rect" ]
 [node name="icon" type="Sprite" parent="gui/CanvasLayer/level/title/newlevel" index="0"]
 
 position = Vector2( 400, 32 )
-texture = ExtResource( 27 )
+texture = ExtResource( 28 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="gui/CanvasLayer/level" index="1"]
 
@@ -1251,11 +1281,9 @@ anims/quest = SubResource( 14 )
 anims/show = SubResource( 15 )
 blend_times = [  ]
 
-[node name="dialogue" parent="gui/CanvasLayer" index="6" instance=ExtResource( 28 )]
+[node name="dialogue" parent="gui/CanvasLayer" index="7" instance=ExtResource( 29 )]
 
-rect_clip_content = false
-
-[node name="pause" type="Control" parent="gui/CanvasLayer" index="7"]
+[node name="pause" type="Control" parent="gui/CanvasLayer" index="8"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1279,7 +1307,7 @@ self_modulate = Color( 1, 1, 1, 0.590791 )
 texture = SubResource( 16 )
 centered = false
 
-[node name="menu" parent="gui/CanvasLayer/pause" index="1" instance=ExtResource( 29 )]
+[node name="menu" parent="gui/CanvasLayer/pause" index="1" instance=ExtResource( 30 )]
 
 visible = false
 margin_left = 32.0
@@ -1287,7 +1315,7 @@ margin_top = 32.0
 margin_right = 768.0
 margin_bottom = 560.0
 
-[node name="choice" type="Control" parent="gui/CanvasLayer" index="8"]
+[node name="choice" type="Control" parent="gui/CanvasLayer" index="9"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1319,7 +1347,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 26 )
+custom_fonts/font = ExtResource( 27 )
 text = "KEY_GAMEOVER"
 align = 1
 valign = 1
@@ -1355,7 +1383,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect" ]
 
-[node name="yes" parent="gui/CanvasLayer/choice" index="2" instance=ExtResource( 30 )]
+[node name="yes" parent="gui/CanvasLayer/choice" index="2" instance=ExtResource( 31 )]
 
 position = Vector2( 256, 404 )
 default_focus = true
@@ -1367,7 +1395,7 @@ rect_clip_content = false
 focus_neighbour_right = NodePath("../../no/button")
 text = "KEY_YES"
 
-[node name="no" parent="gui/CanvasLayer/choice" index="3" instance=ExtResource( 30 )]
+[node name="no" parent="gui/CanvasLayer/choice" index="3" instance=ExtResource( 31 )]
 
 position = Vector2( 544, 404 )
 
@@ -1378,7 +1406,7 @@ rect_clip_content = false
 focus_neighbour_left = NodePath("../../yes/button")
 text = "KEY_NO"
 
-[node name="sequences" type="Control" parent="gui/CanvasLayer" index="9"]
+[node name="sequences" type="Control" parent="gui/CanvasLayer" index="10"]
 
 visible = false
 anchor_left = 0.0
@@ -1434,7 +1462,7 @@ visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
 process_material = SubResource( 20 )
-texture = ExtResource( 31 )
+texture = ExtResource( 32 )
 normal_map = null
 h_frames = 1
 v_frames = 1
@@ -1447,7 +1475,7 @@ position = Vector2( 800, 0 )
 [node name="friederich" type="Sprite" parent="gui/CanvasLayer/sequences/demonic/sprite" index="0"]
 
 scale = Vector2( 0.45, 0.45 )
-texture = ExtResource( 32 )
+texture = ExtResource( 33 )
 centered = false
 offset = Vector2( 0, 74 )
 
@@ -1455,7 +1483,7 @@ offset = Vector2( 0, 74 )
 
 visible = false
 scale = Vector2( 0.55, 0.55 )
-texture = ExtResource( 33 )
+texture = ExtResource( 34 )
 centered = false
 offset = Vector2( 0, 74 )
 
@@ -1476,7 +1504,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 custom_fonts/mono_font = ExtResource( 22 )
-custom_fonts/normal_font = ExtResource( 34 )
+custom_fonts/normal_font = ExtResource( 25 )
 bbcode_enabled = true
 bbcode_text = "[right]KEY_SKIP:  [code]Z[/code][/right]"
 visible_characters = -1
@@ -1500,7 +1528,7 @@ playback_speed = 1.0
 anims/demonic = SubResource( 21 )
 blend_times = [  ]
 
-[node name="loading" parent="gui/CanvasLayer" index="10" instance=ExtResource( 35 )]
+[node name="loading" parent="gui/CanvasLayer" index="11" instance=ExtResource( 35 )]
 
 visible = false
 anchor_left = 0.0
@@ -1512,7 +1540,7 @@ rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 
-[node name="nofocus" type="Control" parent="gui/CanvasLayer" index="11"]
+[node name="nofocus" type="Control" parent="gui/CanvasLayer" index="12"]
 
 editor/display_folded = true
 visible = false
@@ -1561,7 +1589,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 26 )
+custom_fonts/font = ExtResource( 27 )
 text = "- PAUSED -"
 align = 1
 valign = 1

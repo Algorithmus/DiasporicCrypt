@@ -16,6 +16,9 @@ var shopclass = preload("res://gui/menu/shopping.tscn")
 var mapclass = preload("res://gui/worldmap/map.tscn")
 var sfxclass = preload("res://gui/menu/sfx.tscn")
 var sfx
+var inputs = ["ui_up", "ui_down", "ui_left", "ui_right", "ui_jump", "ui_attack", "ui_magic", "ui_blood", "ui_spell_prev", "ui_spell_next", "ui_pause", "ui_select"]
+var keymapclass = preload("res://gui/InputCharacters.gd")
+var keymap
 
 const DIAG_DIRECTION = 0
 const DIAG_TITLE = 1
@@ -54,6 +57,9 @@ var avatars = {"Friederich": {"img": preload("res://gui/dialogue/profiles/friede
 				"CHARACTER_POTIONSMASTER": {"img": preload("res://gui/dialogue/profiles/npc.png"), "offset": Vector2()},
 				"CHARACTER_NPC": {"img": preload("res://gui/dialogue/profiles/npc.png"), "offset": Vector2()}}
 
+func _init():
+	keymap = keymapclass.new()
+
 func _ready():
 	get_node("frame").hide()
 	textarea = get_node("frame/textarea")
@@ -67,6 +73,7 @@ func _ready():
 	sfx = sfxclass.instance()
 	add_child(sfx)
 	set_physics_process(true)
+	keymap.update_keys()
 
 func has_choice():
 	var dialog = dialogs[current_dialog]
@@ -219,6 +226,8 @@ func show_dialog():
 				hchoice.set_position(Vector2(-60, hchoice.get_position().y))
 				vchoice.set_position(Vector2(-60, vchoice.get_position().y))
 			var basetext = tr(dialog[DIAG_TEXT])
+			for i in inputs:
+				basetext = basetext.replace("[" + i + "]", keymap.map_action(i))
 			if (dialog.size() > DIAG_ITEM && dialog[DIAG_ITEM] != null):
 				basetext = tr("ITEM_RECEIVED")
 				var item = dialog[DIAG_ITEM]

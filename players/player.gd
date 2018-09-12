@@ -256,10 +256,13 @@ func check_npc(areaTiles):
 			if (i.get_name() == "npc"):
 				npc = i.get_parent()
 
+	var hint = get_tree().get_root().get_node("world/gui/CanvasLayer/talk")
 	if (npc != null && !ProjectSettings.get("eventmode")):
 		get_node("talk").show()
+		hint.show()
 	else:
 		get_node("talk").hide()
+		hint.hide()
 
 func check_damage(damageTiles):
 	var is_hurt_check = false
@@ -573,6 +576,7 @@ func check_blood(areaTiles):
 
 	if (npc != null && blood_requested && !is_transforming):
 		npc.start(get_global_position())
+		get_tree().get_root().get_node("world/gui/CanvasLayer/talk").hide()
 		#dialog.start(npc.get("dialogues"))
 		npc = null
 		blood_requested = false
