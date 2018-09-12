@@ -7,7 +7,7 @@ var chargeclass = preload("res://scenes/animations/magiccircle/charge.tscn")
 var charge
 
 func _ready():
-	dialogues = [[-1, "Kaleva", "DIAG_KALEVA0", null, [["CHOICE_MAP", "map", null, false], ["CHOICE_SHOP", "shop", "SHOP_KALEVA"], ["CHOICE_TIP", "random", [[[-1, "Kaleva", "DIAG_KALEVA_TIP1"]], [[-1, "Kaleva", "DIAG_KALEVA_TIP2"]], [[-1, "Kaleva", "DIAG_KALEVA_TIP3"]], [[-1, "Kaleva", "DIAG_KALEVA_TIP4"]], [[-1, "Kaleva", "DIAG_KALEVA_TIP5"]]], false], ["CHOICE_NOTHING", "end"]]]]
+	dialogues = [[-1, "Kaleva", "DIAG_KALEVA0", null, [["CHOICE_MAP", "map", null, false], ["CHOICE_SHOP", "shop", "SHOP_KALEVA"], ["CHOICE_TIP", "random", [[[-1, "Kaleva", "DIAG_KALEVA_TIP1"]], [[-1, "Kaleva", "DIAG_KALEVA_TIP2"]], [[-1, "Kaleva", "DIAG_KALEVA_TIP3"]], [[-1, "Kaleva", "DIAG_KALEVA_TIP4"]], [[-1, "Kaleva", "DIAG_KALEVA_TIP5"]], [[-1, "Kaleva", "DIAG_KALEVA_TIP6"]], [[-1, "Kaleva", "DIAG_KALEVA_TIP7"]]], false], ["CHOICE_NOTHING", "end"]]]]
 
 func warp_animation():
 	charge = chargeclass.instance()
