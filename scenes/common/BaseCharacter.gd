@@ -70,17 +70,17 @@ var elemental_protection = []
 func get_def_adjusted_damage(damage):
 	return round(damage * (1 - def / 512.0))
 
+func get_elemental_constant(type):
+	if (elemental_weaknesses.find(type) >= 0):
+		return 1.5
+	if (elemental_protection.find(type) >= 0 || elemental_protection.find("all") >= 0):
+		return 0
+	return 1
+
 func get_atk_adjusted_damage(damage, type):
 	# calculate effects of elemental weaknesses/immunity
-	var elemental_constant = 1
-	if (elemental_weaknesses.find(type) >= 0):
-		elemental_constant = 1.5
-	if (elemental_protection.find(type) >= 0):
-		elemental_constant = 0
-	if (elemental_protection.find("all") >= 0):
-		elemental_constant = 0
 	
-	return round(elemental_constant * (damage * 2 + randf()*0.1*damage))
+	return round(get_elemental_constant(type) * (damage * 2 + randf()*0.1*damage))
 
 func merge(a, b):
 	var c = []

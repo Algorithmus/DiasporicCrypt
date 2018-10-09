@@ -9,6 +9,9 @@ func display_damage(point, damage):
 	set_global_position(point)
 	get_node("AnimationPlayer").play("appear")
 
+func play_effect(effect):
+	get_node("effects").play(effect)
+
 func calculate_hitpos(colliderpos, collidersize, targetpos, targetsize):
 	return Vector2(get_hitpos_coord(colliderpos.x, collidersize.x, targetpos.x, targetsize.x), get_hitpos_coord(colliderpos.y, collidersize.y, targetpos.y, targetsize.y))
 

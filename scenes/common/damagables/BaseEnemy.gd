@@ -96,6 +96,7 @@ func check_damage():
 			for i in damageTiles:
 				var collider
 				var damage = 0
+				var effects
 				if (i.has_node("weapon") && !magic_only):
 					var type = i.get("type")
 					collider = i.get_node("weapon")
@@ -104,7 +105,11 @@ func check_damage():
 					if (i.get("atk")):
 						special_factor = i.get("atk")
 					var atk_adjusted = get_atk_adjusted_damage(player.get_node("player").get("atk")*special_factor, type)
+					if (get_elemental_constant(type) > 1):
+						effects = "blink"
 					var critical = player.get_node("player").get_critical_bonus(atk_adjusted)
+					if (critical > 0):
+						effects = "flash"
 					damage = max(get_def_adjusted_damage(atk_adjusted + critical), 0)
 				if (i.has_node("magic") || (!sunbeam_immunity && i.get_name() == "sunbeam")):
 					var type = i.get_parent().get("type")
@@ -141,6 +146,8 @@ func check_damage():
 						if (has_node(damage_rect.get_name())):
 							remove_child(damage_rect)
 					collider = i.get_node("magic")
+					if (get_elemental_constant(type) > 1):
+						effects = "blink"
 					damage = max(get_def_adjusted_damage(get_atk_adjusted_damage(calculate_atk_value(i), type)), 0)
 					if (collider == null):
 						collider = i.get_node("CollisionShape2D")
@@ -154,6 +161,8 @@ func check_damage():
 					hud.add_child(hp_obj)
 					var collider_offset = collider.get_shape().get_extents()
 					var hitpos = hp_obj.calculate_hitpos(i.get_global_position(), Vector2(collider_offset.x * i.get_scale().x, collider_offset.y * i.get_scale().y), get_position(), sprite_offset)
+					if (effects != null):
+						hp_obj.play_effect(effects)
 					if (damage > 0):
 						current_hp -= damage
 						is_hurt = true
