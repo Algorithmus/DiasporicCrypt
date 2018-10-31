@@ -6,6 +6,7 @@
 - Taevica - Carbonoid
 - [Neropheus](http://aishishii.tumblr.com/tagged/neropheus) - Aishishii
 - Yuki - MissHolic
+- Leopold - Slayernice
 
 # Attributions
 
