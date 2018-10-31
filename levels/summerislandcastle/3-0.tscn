@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/summerislandcastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/summerislandcastle/onewayplatform.tscn" type="PackedScene" id=2]
@@ -7,8 +7,14 @@
 [ext_resource path="res://scenes/common/hangblockend.png" type="Texture" id=5]
 [ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/npcs/leopold/idle.png" type="Texture" id=8]
+[ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 80 )
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
 
@@ -189,20 +195,27 @@ position = Vector2( 640, -368 )
 
 [node name="NPCGroup" type="Node2D" parent="tilemap" index="3"]
 
-[node name="NPC" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 7 )]
+[node name="Leopold" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 7 )]
 
 editor/display_folded = true
-position = Vector2( 768, 128 )
+position = Vector2( 768, 112 )
+_sections_unfolded = [ "Transform" ]
+dialogues = [ [ -1, "Leopold", "DIAG_LEOPOLD0", null, null ], [ -1, "Leopold", "DIAG_LEOPOLD1", null, null, [ "scroll", "SCROLL_STAR3" ] ], [ -1, "Leopold", "DIAG_LEOPOLD1", [ "SCROLL_STAR3", null, true ], null ] ]
 
-[node name="Sprite" parent="tilemap/NPCGroup/NPC" index="1"]
+[node name="Sprite" parent="tilemap/NPCGroup/Leopold" index="1"]
 
 scale = Vector2( -1, 1 )
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" parent="tilemap/NPCGroup/Leopold/npc" index="0"]
+
+shape = SubResource( 1 )
 
 [node name="SpikeGroup" type="Node2D" parent="tilemap" index="4"]
 
 editor/display_folded = true
 
-[node name="SpikeTile" parent="tilemap/SpikeGroup" index="0" instance=ExtResource( 8 )]
+[node name="SpikeTile" parent="tilemap/SpikeGroup" index="0" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( -80, -336 )
@@ -211,12 +224,7 @@ position = Vector2( -80, -336 )
 
 rotation = 1.5708
 
-[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile" index="1"]
-
-audio_bus_override = false
-audio_bus_name = "Master"
-
-[node name="SpikeTile1" parent="tilemap/SpikeGroup" index="1" instance=ExtResource( 8 )]
+[node name="SpikeTile1" parent="tilemap/SpikeGroup" index="1" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( -80, 208 )
@@ -225,12 +233,7 @@ position = Vector2( -80, 208 )
 
 rotation = 1.5708
 
-[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile1" index="1"]
-
-audio_bus_override = false
-audio_bus_name = "Master"
-
-[node name="SpikeTile2" parent="tilemap/SpikeGroup" index="2" instance=ExtResource( 8 )]
+[node name="SpikeTile2" parent="tilemap/SpikeGroup" index="2" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( 80, 208 )
@@ -239,12 +242,7 @@ position = Vector2( 80, 208 )
 
 rotation = -1.5708
 
-[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile2" index="1"]
-
-audio_bus_override = false
-audio_bus_name = "Master"
-
-[node name="SpikeTile3" parent="tilemap/SpikeGroup" index="3" instance=ExtResource( 8 )]
+[node name="SpikeTile3" parent="tilemap/SpikeGroup" index="3" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 position = Vector2( 80, -336 )
@@ -253,16 +251,11 @@ position = Vector2( 80, -336 )
 
 rotation = -1.5708
 
-[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile3" index="1"]
-
-audio_bus_override = false
-audio_bus_name = "Master"
-
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="5"]
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 9 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 0, 560 )
@@ -274,7 +267,7 @@ teleport_to = Vector2( -128, -400 )
 
 scale = Vector2( 12, 1 )
 
-[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 9 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 0, -752 )
@@ -286,7 +279,7 @@ teleport_to = Vector2( -672, 96 )
 
 scale = Vector2( 12, 1 )
 
-[node name="Teleport2" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 9 )]
+[node name="Teleport2" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 1008, -400 )
@@ -316,7 +309,7 @@ position = Vector2( 1008, 560 )
 [editable path="tilemap/HangableGroup/HangBlock2 2"]
 [editable path="tilemap/HangableGroup/HangBlock1"]
 [editable path="tilemap/HangableGroup/HangBlock2"]
-[editable path="tilemap/NPCGroup/NPC"]
+[editable path="tilemap/NPCGroup/Leopold"]
 [editable path="tilemap/SpikeGroup/SpikeTile"]
 [editable path="tilemap/SpikeGroup/SpikeTile1"]
 [editable path="tilemap/SpikeGroup/SpikeTile2"]
