@@ -7,6 +7,7 @@
 - [Neropheus](http://aishishii.tumblr.com/tagged/neropheus) - Aishishii
 - Yuki - MissHolic
 - Leopold - Slayernice
+- [Hatherton](https://n-jay81.tumblr.com/tagged/hatherton) - N-Jay
 
 # Attributions
 

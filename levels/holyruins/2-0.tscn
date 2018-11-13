@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/holyruins/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/npcs/hatherton/idle.png" type="Texture" id=4]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 80 )
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
 
@@ -52,20 +58,26 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="NPCGroup" type="Node2D" parent="tilemap" index="1"]
 
-editor/display_folded = true
+[node name="Hatherton" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 3 )]
 
-[node name="NPC" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 3 )]
+position = Vector2( 32, 432 )
+_sections_unfolded = [ "Transform" ]
+dialogues = [ [ -1, "Hatherton", "DIAG_HATHERTON0", null, null ], [ 1, "Adela", "DIAG_HATHERTON1", null, null, [ "scroll", "SCROLL_STAR2" ] ], [ -1, "Hatherton", "DIAG_HATHERTON2", null, null, [ "scroll", "SCROLL_STAR2" ] ], [ -1, "Hatherton", "DIAG_HATHERTON2", [ "SCROLL_STAR2", null, true ], null ] ]
 
-editor/display_folded = true
-position = Vector2( 32, 448 )
-
-[node name="Sprite" parent="tilemap/NPCGroup/NPC" index="1"]
+[node name="Sprite" parent="tilemap/NPCGroup/Hatherton" index="1"]
 
 scale = Vector2( -1, 1 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" parent="tilemap/NPCGroup/Hatherton/npc" index="0"]
+
+scale = Vector2( 1, 0.977612 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="2"]
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 4 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 position = Vector2( -80, -144 )
@@ -89,5 +101,5 @@ position = Vector2( 400, 656 )
 
 
 [editable path="tilemap/LadderGroup/TestLadder"]
-[editable path="tilemap/NPCGroup/NPC"]
+[editable path="tilemap/NPCGroup/Hatherton"]
 [editable path="tilemap/TeleportGroup/Teleport"]
