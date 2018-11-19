@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/winterislandcastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/gemgate.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/common/damagables/spiketile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/npcs/aethea/idle.png" type="Texture" id=6]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=7]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
 
@@ -54,11 +55,6 @@ position = Vector2( -176, -304 )
 
 flip_v = true
 
-[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile1" index="1"]
-
-audio_bus_override = false
-audio_bus_name = "Master"
-
 [node name="SpikeTile2" parent="tilemap/SpikeGroup" index="1" instance=ExtResource( 3 )]
 
 editor/display_folded = true
@@ -67,11 +63,6 @@ position = Vector2( -144, -304 )
 [node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile2" index="0"]
 
 flip_v = true
-
-[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile2" index="1"]
-
-audio_bus_override = false
-audio_bus_name = "Master"
 
 [node name="SpikeTile3" parent="tilemap/SpikeGroup" index="2" instance=ExtResource( 3 )]
 
@@ -82,11 +73,6 @@ position = Vector2( -112, -304 )
 
 flip_v = true
 
-[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile3" index="1"]
-
-audio_bus_override = false
-audio_bus_name = "Master"
-
 [node name="SpikeTile4" parent="tilemap/SpikeGroup" index="3" instance=ExtResource( 3 )]
 
 editor/display_folded = true
@@ -95,11 +81,6 @@ position = Vector2( -80, -304 )
 [node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile4" index="0"]
 
 flip_v = true
-
-[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile4" index="1"]
-
-audio_bus_override = false
-audio_bus_name = "Master"
 
 [node name="SpikeTile5" parent="tilemap/SpikeGroup" index="4" instance=ExtResource( 3 )]
 
@@ -110,11 +91,6 @@ position = Vector2( -48, -304 )
 
 flip_v = true
 
-[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile5" index="1"]
-
-audio_bus_override = false
-audio_bus_name = "Master"
-
 [node name="SpikeTile6" parent="tilemap/SpikeGroup" index="5" instance=ExtResource( 3 )]
 
 editor/display_folded = true
@@ -123,11 +99,6 @@ position = Vector2( -16, -304 )
 [node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile6" index="0"]
 
 flip_v = true
-
-[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile6" index="1"]
-
-audio_bus_override = false
-audio_bus_name = "Master"
 
 [node name="SpikeTile7" parent="tilemap/SpikeGroup" index="6" instance=ExtResource( 3 )]
 
@@ -138,11 +109,6 @@ position = Vector2( 16, -304 )
 
 flip_v = true
 
-[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile7" index="1"]
-
-audio_bus_override = false
-audio_bus_name = "Master"
-
 [node name="SpikeTile8" parent="tilemap/SpikeGroup" index="7" instance=ExtResource( 3 )]
 
 editor/display_folded = true
@@ -151,11 +117,6 @@ position = Vector2( 48, -304 )
 [node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile8" index="0"]
 
 flip_v = true
-
-[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile8" index="1"]
-
-audio_bus_override = false
-audio_bus_name = "Master"
 
 [node name="SpikeTile9" parent="tilemap/SpikeGroup" index="8" instance=ExtResource( 3 )]
 
@@ -166,11 +127,6 @@ position = Vector2( 80, -304 )
 
 flip_v = true
 
-[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile9" index="1"]
-
-audio_bus_override = false
-audio_bus_name = "Master"
-
 [node name="SpikeTile10" parent="tilemap/SpikeGroup" index="9" instance=ExtResource( 3 )]
 
 editor/display_folded = true
@@ -179,11 +135,6 @@ position = Vector2( 112, -304 )
 [node name="Sprite" parent="tilemap/SpikeGroup/SpikeTile10" index="0"]
 
 flip_v = true
-
-[node name="damagable" parent="tilemap/SpikeGroup/SpikeTile10" index="1"]
-
-audio_bus_override = false
-audio_bus_name = "Master"
 
 [node name="PotGroup" type="Node2D" parent="tilemap" index="2"]
 
@@ -195,15 +146,21 @@ position = Vector2( 48, 112 )
 
 [node name="NPCGroup" type="Node2D" parent="tilemap" index="3"]
 
-[node name="NPC" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 5 )]
+[node name="Aethea" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( -128, 96 )
+_sections_unfolded = [ "Transform" ]
+dialogues = [ [ -1, "Aethea", "DIAG_AETHEA0", null, null ], [ -1, "Aethea", "DIAG_AETHEA1", null, [ [ "KEY_YES", "shop", "SHOP_AETHEA", true ], [ "KEY_NO", "end" ] ] ] ]
+
+[node name="Sprite" parent="tilemap/NPCGroup/Aethea" index="1"]
+
+texture = ExtResource( 6 )
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="4"]
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 6 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 7 )]
 
 editor/display_folded = true
 position = Vector2( 336, 80 )
@@ -235,4 +192,5 @@ position = Vector2( 330, 330 )
 [editable path="tilemap/SpikeGroup/SpikeTile8"]
 [editable path="tilemap/SpikeGroup/SpikeTile9"]
 [editable path="tilemap/SpikeGroup/SpikeTile10"]
+[editable path="tilemap/NPCGroup/Aethea"]
 [editable path="tilemap/TeleportGroup/Teleport"]

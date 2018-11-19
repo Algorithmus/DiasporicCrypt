@@ -56,6 +56,7 @@ var avatars = {"Friederich": {"img": preload("res://gui/dialogue/profiles/friede
 				"Yuki": {"img": preload("res://gui/dialogue/profiles/yuki.png"), "offset": Vector2()},
 				"Leopold": {"img": preload("res://gui/dialogue/profiles/leopold.png"), "offset": Vector2(0, -32)},
 				"Hatherton": {"img": preload("res://gui/dialogue/profiles/hatherton.png"), "offset": Vector2(0, -160)},
+				"Aethea": {"img": preload("res://gui/dialogue/profiles/aethea.png"), "offset": Vector2(0, -64)},
 				"CHARACTER_POTIONSMASTER": {"img": preload("res://gui/dialogue/profiles/npc.png"), "offset": Vector2()},
 				"CHARACTER_NPC": {"img": preload("res://gui/dialogue/profiles/npc.png"), "offset": Vector2()}}
 

@@ -8,6 +8,7 @@
 - Yuki - MissHolic
 - Leopold - Slayernice
 - [Hatherton](https://n-jay81.tumblr.com/tagged/hatherton) - N-Jay
+- Aethea - kirakiraprince
 
 # Attributions
 

@@ -112,3 +112,19 @@ func _init():
 
 	nero.sellrate = 0.25
 	shops[nero.title] = nero
+
+	var aethea = shopclass.new()
+	aethea.title = "SHOP_AETHEA"
+	aethea.inventory = [{"type": "magic", "id": "MAGIC_MAGICMINE", "quantity": 1},
+						{"type": "item", "id": "ITEM_STRENGTHPOTION", "quantity": 3},
+						{"type": "item", "id": "ITEM_SHIELDPOTION", "quantity": 3},
+						{"type": "item", "id": "ITEM_MYSTICPOTION", "quantity": 3},
+						{"type": "item", "id": "ITEM_CHARMPOTION", "quantity": 3},
+						{"type": "item", "id": "ITEM_MANAPOTION", "quantity": 3},
+						{"type": "item", "id": "ITEM_POTION++", "quantity": -1},
+						{"type": "item", "id": "ITEM_POTION+", "quantity": -1},
+						{"type": "item", "id": "ITEM_MANAPOTION++", "quantity": -1},
+						{"type": "item", "id": "ITEM_MANAPOTION+", "quantity": -1}]
+
+	aethea.sellrate = 0.5
+	shops[aethea.title] = aethea
