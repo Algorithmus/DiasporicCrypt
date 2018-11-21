@@ -91,9 +91,7 @@ func _ready():
 	sequences.get_node("demonic").hide()
 	sequences.get_node("skip").hide()
 	sequences.hide()
-	var talk = get_node("gui/CanvasLayer/talk")
-	talk.hide()
-	talk.set_bbcode("[center]" + tr("KEY_TALK") + ":  [code]" + keymap.map_action("ui_blood") + "[/code][/center]")
+	update_talk()
 	music = get_node("music")
 	pausemenu.hide()
 	pause.hide()
@@ -161,6 +159,11 @@ func _ready():
 		load_game(ProjectSettings.get("gamedata"))
 		ProjectSettings.set("gamedata", null)
 
+func update_talk():
+	var talk = get_node("gui/CanvasLayer/talk")
+	talk.hide()
+	talk.set_bbcode("[center]" + tr("KEY_TALK") + ":  [code]" + keymap.map_action("ui_blood") + "[/code][/center]")
+
 func _on_resolution_changed():
 	var new_size = root.get_visible_rect().size
 	var scaleX = new_size.x/original_size.x
@@ -175,6 +178,8 @@ func _input(event):
 			var bgm_index = AudioServer.get_bus_index("BGM")
 			if (is_paused && pausemenu.can_unpause() && !helpPressed):
 				# return back to focused tabs properly for when menu gets opened again
+				keymap.update_keys()
+				update_talk()
 				pausemenu.focus_tab()
 				pausemenu.reset()
 				pausemenu.hide()
@@ -600,6 +605,8 @@ func load_game(data):
 		var loadsave = pause.get_node("save")
 		pause.remove_child(loadsave)
 		loadsave.queue_free()
+	keymap.update_keys()
+	update_talk()
 	pause.hide()
 	get_tree().set_pause(false)
 

@@ -93,6 +93,7 @@ func _physics_process(delta):
 			add_choices()
 	
 func start(data):
+	keymap.update_keys()
 	get_node("frame").show()
 	dialogs = data
 	current_dialog = -1
