@@ -117,7 +117,7 @@ func _ready():
 	update_fusion()
 
 func jumping_allowed():
-	return .jumping_allowed() || (is_demonic && !is_attacking && jump_requested)
+	return (.jumping_allowed() && !is_chain_special) || (is_demonic && !is_attacking && !is_chain_special && jump_requested)
 
 func check_jump():
 	.check_jump()
