@@ -101,6 +101,13 @@ var styx_hp = 0
 var styx_mp = 0
 var styx_luck = 0
 
+var magic_effects_atk = 0
+var magic_effects_def = 0
+var magic_effects_mag = 0
+var magic_effects_hp = 0
+var magic_effects_mp = 0
+var magic_effects_luck = 0
+
 var bonus_mprate = 0
 var bonus_blood = 0
 
@@ -149,23 +156,23 @@ func set_stats():
 	else:
 		styx_mp = 0
 	if (is_demonic):
-		atk = base_atk + demonic_atk * base_atk + styx_atk
-		def = base_def + demonic_def * base_def + styx_def
-		current_hp = round(round(base_hp + demonic_hp * base_hp + styx_hp) * float(current_hp) / hp)
-		current_mp = round(round(base_mp + demonic_mp * base_mp + styx_mp) * float(current_mp) / mp)
-		hp = round(base_hp + demonic_hp * base_hp + styx_hp)
-		mp = round(base_mp + demonic_mp * base_mp + styx_mp)
-		luck = base_luck + demonic_luck * base_luck + styx_luck
-		mag = base_mag + demonic_mag * base_mag + styx_mag
+		atk = base_atk + demonic_atk * base_atk + styx_atk + magic_effects_atk
+		def = base_def + demonic_def * base_def + styx_def + magic_effects_def
+		current_hp = round(round(base_hp + demonic_hp * base_hp + styx_hp + magic_effects_hp) * float(current_hp) / hp)
+		current_mp = round(round(base_mp + demonic_mp * base_mp + styx_mp + magic_effects_mp) * float(current_mp) / mp)
+		hp = round(base_hp + demonic_hp * base_hp + styx_hp + magic_effects_hp)
+		mp = round(base_mp + demonic_mp * base_mp + styx_mp + magic_effects_mp)
+		luck = base_luck + demonic_luck * base_luck + styx_luck + magic_effects_luck
+		mag = base_mag + demonic_mag * base_mag + styx_mag + magic_effects_mag
 	else:
-		atk = base_atk + styx_atk
-		def = base_def + styx_def
-		current_hp = round(round(base_hp + styx_hp) * float(current_hp) / hp)
-		current_mp = round(round(base_mp + styx_mp) * float(current_mp) / mp)
-		hp = round(base_hp + styx_hp)
-		mp = round(base_mp + styx_mp)
-		luck = base_luck + styx_luck
-		mag = base_mag + styx_mag
+		atk = base_atk + styx_atk + magic_effects_atk
+		def = base_def + styx_def + magic_effects_def
+		current_hp = round(round(base_hp + styx_hp + magic_effects_hp) * float(current_hp) / hp)
+		current_mp = round(round(base_mp + styx_mp + magic_effects_mp) * float(current_mp) / mp)
+		hp = round(base_hp + styx_hp + magic_effects_hp)
+		mp = round(base_mp + styx_mp + magic_effects_mp)
+		luck = base_luck + styx_luck + magic_effects_luck
+		mag = base_mag + styx_mag + magic_effects_mag
 
 func get_exp_orb(value):
 	var level_up = exp_growth_obj.check_exp(level, value)
@@ -982,7 +989,29 @@ func check_magic():
 			request_spell_change = 0
 			spell_icons.get_node(magic_spells[prev_spell]["id"]).hide()
 			spell_icons.get_node(magic_spells[selected_spell]["id"]).show()
-			
+
+			var effects = magic_spells[selected_spell]["effects"]
+
+			magic_effects_atk = 0
+			if (effects.has("atk")):
+				magic_effects_atk = effects.atk * base_atk
+			magic_effects_def = 0
+			if (effects.has("def")):
+				magic_effects_def = effects.def * base_def
+			magic_effects_mag = 0
+			if (effects.has("mag")):
+				magic_effects_mag = effects.mag * base_mag
+			magic_effects_luck = 0
+			if (effects.has("luck")):
+				magic_effects_luck = effects.luck * base_luck
+			magic_effects_hp = 0
+			if (effects.has("hp")):
+				magic_effects_hp = effects.hp * base_hp
+			magic_effects_mp = 0
+			if (effects.has("mp")):
+				magic_effects_mp = effects.mp * base_mp
+			set_stats()
+
 			update_fusion()
 	# detect magic requested
 	var magic_allowed = !ProjectSettings.get("eventmode") && !is_hurt && !is_attacking && !is_crouching && !hanging && !is_charging && !is_magic && !magic_delay && !is_transforming && current_mp > 0
