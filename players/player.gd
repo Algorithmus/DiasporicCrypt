@@ -650,16 +650,21 @@ func check_crouch(space_state, normalTileCheck, abSlope, onSlope, onOneWayTile):
 	# keep player crouched if they are blocked from returning to normal state
 	var ceiling = space_state.intersect_ray(Vector2(get_global_position().x, get_global_position().y), Vector2(get_global_position().x, get_global_position().y-64), [self], 524288)
 
+	var occluder = get_node("occluder")
 	if ((!ceiling.empty() && is_crouching) || (crouch_requested && !is_attacking && (!falling || onMovingPlatform) && (normalTileCheck || onSlope || abSlope != null || onOneWayTile))):
 		is_crouching = true
 		get_node("CollisionShape2D").set_scale(Vector2(1, 0.5))
 		get_node("CollisionShape2D").set_position(Vector2(0, sprite_offset.y/2.0))
+		occluder.set_scale(Vector2(1, 0.5))
+		occluder.set_position(Vector2(0, sprite_offset.y/2.0))
 		damage_rect.set_scale(Vector2(1, 0.5))
 		damage_rect.set_position(Vector2(0, sprite_offset.y/2.0))
 	elif (!crouch_requested && !is_attacking):
 		is_crouching = false
 		get_node("CollisionShape2D").set_scale(Vector2(1, 1))
 		get_node("CollisionShape2D").set_position(Vector2(0, 0))
+		occluder.set_scale(Vector2(1, 1))
+		occluder.set_position(Vector2(0, 0))
 		damage_rect.set_scale(Vector2(1, 1))
 		damage_rect.set_position(Vector2(0, 0))
 
@@ -819,6 +824,7 @@ func check_animations(new_animation, animation_speed, horizontal_motion, ladderY
 	if (gameover):
 		get_node("NormalSpriteGroup/hurt").set_scale(Vector2(direction, 1))
 	get_node("NormalSpriteGroup/"+new_animation).set_scale(Vector2(direction, 1))
+	get_node("occluder").set_scale(Vector2(direction, 1))
 	return {"animationSpeed": animation_speed, "animation": new_animation}
 
 func set_sprite_opacity(value):

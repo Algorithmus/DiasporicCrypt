@@ -13,7 +13,11 @@ __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
 
-[node name="tilemap" type="TileMap" parent="." index="0"]
+[node name="CanvasModulate" type="CanvasModulate" parent="." index="0"]
+
+color = Color( 0.491821, 0.575234, 0.796875, 1 )
+
+[node name="tilemap" type="TileMap" parent="." index="1"]
 
 mode = 0
 tile_set = ExtResource( 1 )

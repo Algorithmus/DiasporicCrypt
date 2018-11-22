@@ -14,7 +14,11 @@ __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
 
-[node name="tilemap" type="TileMap" parent="." index="0"]
+[node name="CanvasModulate" type="CanvasModulate" parent="." index="0"]
+
+color = Color( 0.491821, 0.575234, 0.796875, 1 )
+
+[node name="tilemap" type="TileMap" parent="." index="1"]
 
 mode = 0
 tile_set = ExtResource( 1 )
@@ -102,14 +106,17 @@ position = Vector2( -224, -16 )
 [node name="SimpleProjectile" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 5 )]
 
 position = Vector2( -272, -272 )
+projectile_offset = Vector2( 0, 0 )
 
 [node name="SimpleProjectile1" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 5 )]
 
 position = Vector2( 16, -464 )
+projectile_offset = Vector2( 0, 0 )
 
 [node name="SimpleProjectile2" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 5 )]
 
 position = Vector2( -272, -656 )
+projectile_offset = Vector2( 0, 0 )
 
 [node name="ScrollGroup" type="Node2D" parent="tilemap" index="3"]
 

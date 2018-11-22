@@ -1,16 +1,21 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/npcs/BaseNPC.gd" type="Script" id=1]
 [ext_resource path="res://scenes/npcs/generic/idle.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="OccluderPolygon2D" id=1]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( 0, -64, 16, -64, 16, 64, 0, 64 )
+
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 64 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 
-resource_name = "idle"
 length = 0.8
 loop = true
 step = 0.1
@@ -33,7 +38,12 @@ script = ExtResource( 1 )
 dialogues = [ [ -1, "CHARACTER_NPC", "DIAG_DEFAULT", null, null ] ]
 static_direction = false
 
-[node name="enabler" type="VisibilityEnabler2D" parent="." index="0"]
+[node name="occluder" type="LightOccluder2D" parent="." index="0"]
+
+occluder = SubResource( 1 )
+light_mask = 1
+
+[node name="enabler" type="VisibilityEnabler2D" parent="." index="1"]
 
 position = Vector2( 0, 2.86102e-06 )
 scale = Vector2( 8, 14.4 )
@@ -45,13 +55,13 @@ pause_animated_sprites = true
 process_parent = false
 physics_process_parent = false
 
-[node name="Sprite" type="Sprite" parent="." index="1"]
+[node name="Sprite" type="Sprite" parent="." index="2"]
 
 texture = ExtResource( 2 )
 offset = Vector2( 4, 0 )
 hframes = 3
 
-[node name="npc" type="Area2D" parent="." index="2"]
+[node name="npc" type="Area2D" parent="." index="3"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -64,16 +74,16 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npc" index="0"]
 
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 
 root_node = NodePath("..")
 autoplay = "idle"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/idle = SubResource( 2 )
+anims/idle = SubResource( 3 )
 blend_times = [  ]
 
 [connection signal="screen_entered" from="enabler" to="." method="enter_screen"]

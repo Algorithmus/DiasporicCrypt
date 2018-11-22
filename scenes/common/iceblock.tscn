@@ -3,7 +3,7 @@
 [sub_resource type="Shader" id=1]
 
 code = "shader_type canvas_item;
-render_mode blend_premul_alpha;
+render_mode blend_add;
 
 uniform vec4 modulate:hint_color;
 
@@ -15,7 +15,7 @@ COLOR = modulate;
 
 render_priority = 0
 shader = SubResource( 1 )
-shader_param/modulate = Color( 0, 0.54, 0.71, 0 )
+shader_param/modulate = Color( 0, 0.54, 0.71, 0.281765 )
 _sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="ImageTexture" id=3]
@@ -70,7 +70,7 @@ scale_random = 1.0
 color_ramp = SubResource( 5 )
 hue_variation = 1.0
 hue_variation_random = 1.0
-anim_speed = 0.0
+anim_speed = 1.0
 anim_speed_random = 1.0
 anim_offset = 0.0
 anim_offset_random = 0.0
@@ -96,7 +96,7 @@ __meta__ = {
 
 material = SubResource( 2 )
 texture = SubResource( 3 )
-_sections_unfolded = [ "Material" ]
+_sections_unfolded = [ "Material", "Transform" ]
 
 [node name="shiny" type="Particles2D" parent="." index="1"]
 
@@ -118,7 +118,7 @@ texture = null
 normal_map = null
 h_frames = 1
 v_frames = 1
-_sections_unfolded = [ "Drawing", "Process Material", "Time", "Transform" ]
+_sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Transform" ]
 
 [node name="oneway" type="Area2D" parent="." index="2"]
 

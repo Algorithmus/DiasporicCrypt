@@ -15,14 +15,19 @@
 [ext_resource path="res://scenes/items/scroll/scroll.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=14]
 
-[node name="LVL_NOTITLE" type="Node2D"]
+[node name="LVL_NOTITLE" type="Node2D" index="0"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
 
-[node name="tilemap" type="TileMap" parent="." index="0"]
+[node name="CanvasModulate" type="CanvasModulate" parent="." index="0"]
 
+color = Color( 0.491821, 0.575234, 0.796875, 1 )
+
+[node name="tilemap" type="TileMap" parent="." index="1"]
+
+editor/display_folded = true
 mode = 0
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
@@ -186,12 +191,10 @@ cycle = 3.0
 [node name="Skeleton" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 12 )]
 
 position = Vector2( -272, 240 )
-collision/safe_margin = 0.08
 
 [node name="Skeleton1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 12 )]
 
 position = Vector2( -656, 240 )
-collision/safe_margin = 0.08
 
 [node name="ScrollGroup" type="Node2D" parent="tilemap" index="6"]
 
@@ -201,13 +204,11 @@ editor/display_folded = true
 
 position = Vector2( -912, -176 )
 title = "SCROLL_START"
-isgoal = false
 
 [node name="Scroll1" parent="tilemap/ScrollGroup" index="1" instance=ExtResource( 13 )]
 
 position = Vector2( -912, 304 )
 title = "SCROLL_FIGHT"
-isgoal = false
 
 [node name="TeleportGroup" type="Node2D" parent="tilemap" index="7"]
 
