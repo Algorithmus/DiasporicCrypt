@@ -1,12 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/common/breakables/BaseBreakable.gd" type="Script" id=1]
 [ext_resource path="res://scenes/forest/BGs/leaves-base-yellow.png" type="Texture" id=2]
-[ext_resource path="res://scenes/forest/colorshift.gd" type="Script" id=3]
-[ext_resource path="res://scenes/forest/BGs/leaves-left-yellow.png" type="Texture" id=4]
-[ext_resource path="res://scenes/forest/BGs/leaves-right-yellow.png" type="Texture" id=5]
-[ext_resource path="res://scenes/cave/BGs/floor.png" type="Texture" id=6]
-[ext_resource path="res://scenes/common/breakables/crumble.wav" type="AudioStream" id=7]
+[ext_resource path="res://scenes/forest/BGs/leaves-left-yellow.png" type="Texture" id=3]
+[ext_resource path="res://scenes/forest/BGs/leaves-right-yellow.png" type="Texture" id=4]
+[ext_resource path="res://scenes/cave/BGs/floor.png" type="Texture" id=5]
+[ext_resource path="res://scenes/common/breakables/crumble.wav" type="AudioStream" id=6]
 
 [sub_resource type="Shader" id=1]
 
@@ -46,7 +45,7 @@ extents = Vector2( 96, 16 )
 custom_solver_bias = 0.0
 extents = Vector2( 98, 18 )
 
-[node name="TestBreakable" type="Node2D"]
+[node name="TestBreakable" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 __meta__ = {
@@ -78,39 +77,30 @@ physics_process_parent = false
 [node name="Sprite" type="Sprite" parent="KinematicBody2D/Sprite" index="0"]
 
 material = SubResource( 2 )
+use_parent_material = true
 texture = ExtResource( 2 )
 offset = Vector2( 0, -32 )
-script = ExtResource( 3 )
 _sections_unfolded = [ "Material", "Offset" ]
-start_color = Color( 1, 0.589817, 0.113281, 1 )
-end_color = Color( 1, 0.831373, 0.647059, 1 )
-curve = 1.0
 
 [node name="Sprite2" type="Sprite" parent="KinematicBody2D/Sprite" index="1"]
 
 material = SubResource( 2 )
-texture = ExtResource( 4 )
+use_parent_material = true
+texture = ExtResource( 3 )
 offset = Vector2( -128, -32 )
-script = ExtResource( 3 )
 _sections_unfolded = [ "Material", "Offset" ]
-start_color = Color( 1, 0.588235, 0.109804, 1 )
-end_color = Color( 1, 0.831373, 0.647059, 1 )
-curve = 1.0
 
 [node name="Sprite3" type="Sprite" parent="KinematicBody2D/Sprite" index="2"]
 
 material = SubResource( 2 )
-texture = ExtResource( 5 )
+use_parent_material = true
+texture = ExtResource( 4 )
 offset = Vector2( 128, -32 )
-script = ExtResource( 3 )
 _sections_unfolded = [ "Material", "Offset" ]
-start_color = Color( 1, 0.588235, 0.109804, 1 )
-end_color = Color( 1, 0.831373, 0.647059, 1 )
-curve = 1.0
 
 [node name="Sprite4" type="Sprite" parent="KinematicBody2D/Sprite" index="3"]
 
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 192, 32 )
 _sections_unfolded = [ "Offset", "Region" ]
@@ -138,8 +128,9 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="crumble" type="AudioStreamPlayer" parent="sound" index="0"]
 
-stream = ExtResource( 7 )
+stream = ExtResource( 6 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "SFX"

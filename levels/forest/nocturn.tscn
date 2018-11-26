@@ -1,47 +1,18 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://levels/forest/bonus.gd" type="Script" id=1]
 [ext_resource path="res://scenes/forest/tileset.tres" type="TileSet" id=2]
-[ext_resource path="res://scenes/forest/colorshift.gd" type="Script" id=3]
-[ext_resource path="res://scenes/cave/tileset.tres" type="TileSet" id=4]
-[ext_resource path="res://scenes/cave/climbableblock.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/cave/BGs/floor.png" type="Texture" id=6]
-[ext_resource path="res://scenes/cave/BGs/cornerL.png" type="Texture" id=7]
-[ext_resource path="res://scenes/cave/BGs/cornerR.png" type="Texture" id=8]
-[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/common/breakables/leaves.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/common/damagables/human/priest.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/common/fake.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=14]
-
-[sub_resource type="Shader" id=1]
-
-code = "shader_type canvas_item;
-
-uniform vec4 mask:hint_color; // The color that should be replaced
-uniform vec4 replace:hint_color; // The new color to that replaces the old one
-uniform float threshold; // Usually a value between 0 to 1. Indicates how sensitively the colors should be replaced.
-
-void fragment() {
-	vec4 out_col = texture(TEXTURE, UV);
-	vec3 diff = out_col.rgb - mask.rgb;
-	
-	if(abs(length(diff)) < threshold) {
-		out_col.rgb = replace.rgb * (vec3(1.0, 1.0, 1.0) - diff);
-	}
-	
-	COLOR=out_col;
-}"
-
-[sub_resource type="ShaderMaterial" id=2]
-
-render_priority = 0
-shader = SubResource( 1 )
-shader_param/mask = Color( 1, 0, 0, 1 )
-shader_param/replace = Color( 0.294118, 0.192157, 0.0509804, 1 )
-shader_param/threshold = 0.6
-_sections_unfolded = [ "shader_param" ]
+[ext_resource path="res://scenes/cave/tileset.tres" type="TileSet" id=3]
+[ext_resource path="res://scenes/cave/climbableblock.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/cave/BGs/floor.png" type="Texture" id=5]
+[ext_resource path="res://scenes/cave/BGs/cornerL.png" type="Texture" id=6]
+[ext_resource path="res://scenes/cave/BGs/cornerR.png" type="Texture" id=7]
+[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/breakables/leaves.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/common/damagables/human/priest.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/common/fake.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ImageTexture" id=3]
 
@@ -68,8 +39,8 @@ COLOR.a = texture(TEXTURE,UV).a*COLOR.a;
 
 render_priority = 0
 shader = SubResource( 4 )
-shader_param/start = Color( 0.19, 0.27, 0.45, 1 )
-shader_param/stop = Color( 1, 0.63, 0.27, 1 )
+shader_param/start = Color( 1, 0.575195, 0.320312, 1 )
+shader_param/stop = Color( 0.4375, 0.234131, 0.286562, 1 )
 _sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="ImageTexture" id=6]
@@ -80,16 +51,22 @@ lossy_quality = 0.7
 flags = 2
 size = Vector2( 32, 32 )
 
-[node name="LVL_NOCTURNFOREST" type="Node2D" index="0"]
+[node name="LVL_NOCTURNFOREST" type="Node2D"]
 
 script = ExtResource( 1 )
 __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
+night = Color( 0.187451, 0.312588, 0.578118, 1 )
+sunrise = Color( 1, 1, 1, 1 )
 
-[node name="trees" type="TileMap" parent="." index="0"]
+[node name="CanvasModulate" type="CanvasModulate" parent="." index="0"]
 
-material = SubResource( 2 )
+color = Color( 0.187439, 0.312581, 0.578125, 1 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+
+[node name="trees" type="TileMap" parent="." index="1"]
+
 mode = 0
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
@@ -107,16 +84,12 @@ collision_mask = 1
 occluder_light_mask = 1
 format = 1
 tile_data = PoolIntArray( -1245162, 1, 0, -1245132, 0, 0, -1179630, 7, 0, -1179598, 7, 0, -1114083, 8, 0, -1114048, 8, 0, -1114027, 8, 0, -1048545, 6, 0, -1048521, 2, 0, -1048500, 2, 0, -1048498, 4, 0, -983029, 1, 0, -983019, 0, 0, -982988, 3, 0, -982983, 4, 0, -982973, 0, 0, -917472, 0, 0, -851945, 5, 0, -851927, 2, 0, -851880, 0, 0, -720854, 1, 0, -655341, 3, 0, -655293, 6, 0, 131061, 13, 0, 131063, 11, 0, 131069, 14, 0, 65540, 13, 0, 65542, 11, 0, 65548, 14, 0, 65557, 13, 0, 65559, 11, 0, 65565, 12, 0, 65567, 11, 0, 65573, 14, 0, 65580, 13, 0, 65582, 11, 0, 65588, 14, 0, 65595, 13, 0, 65597, 11, 0, 65603, 12, 0, 65605, 11, 0, 65611, 14, 0, 65619, 13, 0, 65621, 11, 0, 65627, 14, 0 )
-script = ExtResource( 3 )
 _sections_unfolded = [ "Cell", "Material" ]
-start_color = Color( 1, 0, 0, 1 )
-end_color = Color( 1, 0, 0.627451, 1 )
-curve = 1.0
 
-[node name="tilemap" type="TileMap" parent="." index="1"]
+[node name="tilemap" type="TileMap" parent="." index="2"]
 
 mode = 0
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -138,7 +111,7 @@ _sections_unfolded = [ "Collision" ]
 
 editor/display_folded = true
 
-[node name="ClimbableBlock" parent="tilemap/ClimbableGroup" index="0" instance=ExtResource( 5 )]
+[node name="ClimbableBlock" parent="tilemap/ClimbableGroup" index="0" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 1200, 112 )
@@ -146,9 +119,9 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock" index="0"]
 
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 
-[node name="ClimbableBlock2" parent="tilemap/ClimbableGroup" index="1" instance=ExtResource( 5 )]
+[node name="ClimbableBlock2" parent="tilemap/ClimbableGroup" index="1" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 1424, 112 )
@@ -156,9 +129,9 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock2" index="0"]
 
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 
-[node name="ClimbableBlock5" parent="tilemap/ClimbableGroup" index="2" instance=ExtResource( 5 )]
+[node name="ClimbableBlock5" parent="tilemap/ClimbableGroup" index="2" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 1360, 304 )
@@ -166,9 +139,9 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock5" index="0"]
 
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 
-[node name="ClimbableBlock6" parent="tilemap/ClimbableGroup" index="3" instance=ExtResource( 5 )]
+[node name="ClimbableBlock6" parent="tilemap/ClimbableGroup" index="3" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 2512, 304 )
@@ -176,15 +149,15 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock6" index="0"]
 
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
-[node name="ClimbableBlock7" parent="tilemap/ClimbableGroup" index="4" instance=ExtResource( 5 )]
+[node name="ClimbableBlock7" parent="tilemap/ClimbableGroup" index="4" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 2608, 304 )
 _sections_unfolded = [ "Collision", "Transform" ]
 
-[node name="ClimbableBlock8" parent="tilemap/ClimbableGroup" index="5" instance=ExtResource( 5 )]
+[node name="ClimbableBlock8" parent="tilemap/ClimbableGroup" index="5" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 2672, 112 )
@@ -192,18 +165,18 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock8" index="0"]
 
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 
-[node name="ClimbableBlock9" parent="tilemap/ClimbableGroup" index="6" instance=ExtResource( 5 )]
+[node name="ClimbableBlock9" parent="tilemap/ClimbableGroup" index="6" instance=ExtResource( 4 )]
 
 position = Vector2( 2448, 112 )
 _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock9" index="0"]
 
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 
-[node name="ClimbableBlock3" parent="tilemap/ClimbableGroup" index="7" instance=ExtResource( 5 )]
+[node name="ClimbableBlock3" parent="tilemap/ClimbableGroup" index="7" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( -48, 112 )
@@ -211,9 +184,9 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock3" index="0"]
 
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
-[node name="ClimbableBlock4" parent="tilemap/ClimbableGroup" index="8" instance=ExtResource( 5 )]
+[node name="ClimbableBlock4" parent="tilemap/ClimbableGroup" index="8" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 80, 112 )
@@ -221,13 +194,13 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Sprite" parent="tilemap/ClimbableGroup/ClimbableBlock4" index="0"]
 
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 
 [node name="LadderGroup" type="Node2D" parent="tilemap" index="1"]
 
 editor/display_folded = true
 
-[node name="TestLadder" parent="tilemap/LadderGroup" index="0" instance=ExtResource( 9 )]
+[node name="TestLadder" parent="tilemap/LadderGroup" index="0" instance=ExtResource( 8 )]
 
 position = Vector2( 16, 368 )
 _sections_unfolded = [ "Transform" ]
@@ -242,25 +215,19 @@ _sections_unfolded = [ "Region" ]
 scale = Vector2( 1, 17 )
 _sections_unfolded = [ "Collision", "Transform" ]
 
-[node name="TestLadder 2" parent="tilemap/LadderGroup" index="1" instance=ExtResource( 10 )]
+[node name="TestLadder 2" parent="tilemap/LadderGroup" index="1" instance=ExtResource( 9 )]
 
 position = Vector2( 16, 80 )
 
 [node name="BreakableGroup" type="Node2D" parent="tilemap" index="2"]
 
-editor/display_folded = true
-
-[node name="TestBreakable" parent="tilemap/BreakableGroup" index="0" instance=ExtResource( 11 )]
+[node name="TestBreakable" parent="tilemap/BreakableGroup" index="0" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 1312, 112 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="crumble" parent="tilemap/BreakableGroup/TestBreakable/sound" index="0"]
-
-pitch_scale = 1.0
-
-[node name="TestBreakable2" parent="tilemap/BreakableGroup" index="1" instance=ExtResource( 11 )]
+[node name="TestBreakable2" parent="tilemap/BreakableGroup" index="1" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 2560, 112 )
@@ -268,54 +235,54 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="EnemiesGroup" type="Node2D" parent="tilemap" index="3"]
 
-[node name="Priest" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 12 )]
+[node name="Priest" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 11 )]
 
 position = Vector2( 608, 32 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Priest2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 12 )]
+[node name="Priest2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 11 )]
 
 position = Vector2( 2768, 32 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Priest3" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 12 )]
+[node name="Priest3" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 11 )]
 
 position = Vector2( 1136, 32 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Priest4" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 12 )]
+[node name="Priest4" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 11 )]
 
 position = Vector2( 1280, 448 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Priest5" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 12 )]
+[node name="Priest5" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 11 )]
 
 position = Vector2( 1664, 32 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Priest6" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 12 )]
+[node name="Priest6" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 11 )]
 
 position = Vector2( 704, 448 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Priest7" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 12 )]
+[node name="Priest7" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 11 )]
 
 position = Vector2( 960, 448 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Priest8" parent="tilemap/EnemiesGroup" index="7" instance=ExtResource( 12 )]
+[node name="Priest8" parent="tilemap/EnemiesGroup" index="7" instance=ExtResource( 11 )]
 
 position = Vector2( 2416, 448 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Priest9" parent="tilemap/EnemiesGroup" index="8" instance=ExtResource( 12 )]
+[node name="Priest9" parent="tilemap/EnemiesGroup" index="8" instance=ExtResource( 11 )]
 
 position = Vector2( 2688, 448 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="FakeGroup" type="Node2D" parent="tilemap" index="4"]
 
-[node name="Fake" parent="tilemap/FakeGroup" index="0" instance=ExtResource( 13 )]
+[node name="Fake" parent="tilemap/FakeGroup" index="0" instance=ExtResource( 12 )]
 
 editor/display_folded = true
 position = Vector2( 992, 336 )
@@ -325,9 +292,9 @@ overlay = "../overlay"
 [node name="fake" parent="tilemap/FakeGroup/Fake" index="0"]
 
 scale = Vector2( 28, 13 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 
-[node name="Fake2" parent="tilemap/FakeGroup" index="1" instance=ExtResource( 13 )]
+[node name="Fake2" parent="tilemap/FakeGroup" index="1" instance=ExtResource( 12 )]
 
 editor/display_folded = true
 position = Vector2( 2528, 336 )
@@ -337,7 +304,7 @@ overlay = "../overlay2"
 [node name="fake" parent="tilemap/FakeGroup/Fake2" index="0"]
 
 scale = Vector2( 26, 13 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="overlay" type="Node2D" parent="tilemap/FakeGroup" index="2"]
 
@@ -368,7 +335,7 @@ texture = SubResource( 3 )
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 14 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 13 )]
 
 position = Vector2( 16, 656 )
 _sections_unfolded = [ "Transform" ]
@@ -393,9 +360,8 @@ _sections_unfolded = [ "Transform" ]
 
 position = Vector2( 3088, 640 )
 
-[node name="bushes" type="TileMap" parent="." index="2"]
+[node name="bushes" type="TileMap" parent="." index="3"]
 
-material = SubResource( 2 )
 mode = 0
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
@@ -413,16 +379,12 @@ collision_mask = 1
 occluder_light_mask = 1
 format = 1
 tile_data = PoolIntArray( -1376242, 22, 0, -1376227, 23, 0, -1376210, 22, 0, -1376192, 23, 0, -1376171, 23, 0, -1245162, 16, 0, -1245132, 15, 0, -1048545, 21, 0, -1048521, 17, 0, -1048500, 17, 0, -1048498, 19, 0, -983029, 16, 0, -983019, 15, 0, -982983, 19, 0, -982973, 15, 0, -917472, 15, 0, -917452, 18, 0, -851945, 20, 0, -851927, 17, 0, -851880, 15, 0, -720854, 16, 0, -655341, 18, 0, -655293, 21, 0 )
-script = ExtResource( 3 )
 _sections_unfolded = [ "Cell", "Material" ]
 __meta__ = {
 "_edit_lock_": true
 }
-start_color = Color( 1, 0, 0, 1 )
-end_color = Color( 1, 0, 0.627451, 1 )
-curve = 1.0
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="3"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="4"]
 
 layer = -1
 offset = Vector2( 0, 0 )
@@ -437,7 +399,12 @@ scroll_limit_end = Vector2( 0, 0 )
 scroll_ignore_camera_zoom = true
 _sections_unfolded = [ "Scroll" ]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground" index="0"]
+
+color = Color( 0.187439, 0.312581, 0.578125, 1 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
 
 motion_scale = Vector2( 1, 1 )
 motion_offset = Vector2( 0, 0 )
@@ -454,7 +421,7 @@ centered = false
 region_rect = Rect2( 0, 0, 1200, 1744 )
 _sections_unfolded = [ "Material", "Offset", "Region", "Transform" ]
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="2"]
 
 motion_scale = Vector2( 0.6, 1 )
 motion_offset = Vector2( 0, 0 )
@@ -489,7 +456,6 @@ __meta__ = {
 [node name="bushBG" type="TileMap" parent="ParallaxBackground/ParallaxLayer2" index="1"]
 
 modulate = Color( 1, 1, 1, 0.596078 )
-material = SubResource( 2 )
 mode = 0
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
@@ -507,14 +473,10 @@ collision_mask = 1
 occluder_light_mask = 1
 format = 1
 tile_data = PoolIntArray( -2162683, 24, 0, -1966093, 25, 0, -2031596, 25, 0, -1638406, 15, 0, -1703928, 18, 0, -1703919, 16, 0, -1507330, 16, 0, -1376273, 16, 0, -1376247, 15, 0, -1310694, 15, 0, -1179656, 18, 0, -1245170, 17, 0, -1048577, 16, 0, -851988, 17, 0, -917494, 15, 0, -786439, 15, 0, -786419, 17, 0, -786407, 18, 0, -458755, 17, 0, -524279, 21, 0 )
-script = ExtResource( 3 )
 _sections_unfolded = [ "Cell", "Material", "Visibility" ]
 __meta__ = {
 "_edit_lock_": true
 }
-start_color = Color( 1, 0, 0, 1 )
-end_color = Color( 1, 0, 0.627451, 1 )
-curve = 1.0
 
 
 [editable path="tilemap/ClimbableGroup/ClimbableBlock"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scenes/catacombs/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/torch.tscn" type="PackedScene" id=2]
@@ -9,21 +9,59 @@
 [ext_resource path="res://scenes/catacombs/solids/web2.png" type="Texture" id=7]
 [ext_resource path="res://scenes/catacombs/solids/web3.png" type="Texture" id=8]
 [ext_resource path="res://scenes/catacombs/solids/table.png" type="Texture" id=9]
-[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/common/target.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/npcs/kaleva/Kaleva.gd" type="Script" id=13]
-[ext_resource path="res://scenes/npcs/kaleva/idle.png" type="Texture" id=14]
-[ext_resource path="res://scenes/catacombs/solids/coffin.png" type="Texture" id=15]
-[ext_resource path="res://scenes/savepoint/savepoint.tscn" type="PackedScene" id=16]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/catacombs/solids/candle-glow.png" type="Texture" id=10]
+[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/common/target.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/npcs/kaleva/Kaleva.gd" type="Script" id=14]
+[ext_resource path="res://scenes/npcs/kaleva/idle.png" type="Texture" id=15]
+[ext_resource path="res://scenes/catacombs/solids/coffin.png" type="Texture" id=16]
+[ext_resource path="res://scenes/savepoint/savepoint.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=18]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="Animation" id=10]
+
+resource_name = "idle"
+length = 2.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Light2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1.0, 0.8, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Light2D:texture_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.9, 1.0, 0.9, 1.0 ]
+}
+
+[sub_resource type="OccluderPolygon2D" id=1]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( 0, -80, 16, -80, 16, 80, 0, 80 )
+
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 80 )
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=3]
 
 code = "shader_type canvas_item;
 
@@ -34,15 +72,15 @@ void fragment() {
 COLOR = mix(start, stop, UV.x);
 }"
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=4]
 
 render_priority = 0
-shader = SubResource( 2 )
+shader = SubResource( 3 )
 shader_param/start = Color( 0, 0, 0, 0 )
 shader_param/stop = null
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="ImageTexture" id=4]
+[sub_resource type="ImageTexture" id=5]
 
 flags = 2
 storage = 0
@@ -50,23 +88,23 @@ lossy_quality = 0.7
 flags = 2
 size = Vector2( 32, 32 )
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=6]
 
 render_priority = 0
-shader = SubResource( 2 )
+shader = SubResource( 3 )
 shader_param/start = Color( 0, 0, 0, 0 )
 shader_param/stop = null
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=7]
 
 render_priority = 0
-shader = SubResource( 2 )
+shader = SubResource( 3 )
 shader_param/start = null
 shader_param/stop = Color( 0, 0, 0, 0 )
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="Shader" id=7]
+[sub_resource type="Shader" id=8]
 
 code = "shader_type canvas_item;
 
@@ -77,10 +115,10 @@ void fragment() {
 COLOR = mix(start, stop, UV.y);
 }"
 
-[sub_resource type="ShaderMaterial" id=8]
+[sub_resource type="ShaderMaterial" id=9]
 
 render_priority = 0
-shader = SubResource( 7 )
+shader = SubResource( 8 )
 shader_param/start = null
 shader_param/stop = Color( 0, 0, 0, 0 )
 _sections_unfolded = [ "shader_param" ]
@@ -91,7 +129,12 @@ __meta__ = {
 "__editor_plugin_screen__": "Script"
 }
 
-[node name="tilemap" type="TileMap" parent="." index="0"]
+[node name="CanvasModulate" type="CanvasModulate" parent="." index="0"]
+
+color = Color( 0.589229, 0.519821, 0.636719, 1 )
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
+
+[node name="tilemap" type="TileMap" parent="." index="1"]
 
 mode = 0
 tile_set = ExtResource( 1 )
@@ -114,8 +157,6 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="TorchGroup" type="Node2D" parent="tilemap" index="0"]
 
-editor/display_folded = true
-
 [node name="torch" parent="tilemap/TorchGroup" index="0" instance=ExtResource( 2 )]
 
 position = Vector2( 288, 192 )
@@ -125,8 +166,6 @@ position = Vector2( 288, 192 )
 position = Vector2( -288, 192 )
 
 [node name="DecoGroup" type="Node2D" parent="tilemap" index="1"]
-
-editor/display_folded = true
 
 [node name="Sprite1" type="Sprite" parent="tilemap/DecoGroup" index="0"]
 
@@ -168,6 +207,7 @@ texture = ExtResource( 4 )
 self_modulate = Color( 0.603922, 0.537255, 0.658824, 1 )
 position = Vector2( -304, 368 )
 texture = ExtResource( 4 )
+_sections_unfolded = [ "Z Index" ]
 
 [node name="Sprite7" type="Sprite" parent="tilemap/DecoGroup" index="7"]
 
@@ -188,6 +228,7 @@ self_modulate = Color( 0.603922, 0.537255, 0.658824, 1 )
 position = Vector2( 272, 368 )
 texture = ExtResource( 4 )
 flip_h = true
+_sections_unfolded = [ "Z Index" ]
 
 [node name="Sprite10" type="Sprite" parent="tilemap/DecoGroup" index="10"]
 
@@ -261,11 +302,47 @@ texture = ExtResource( 8 )
 position = Vector2( 112, 344 )
 texture = ExtResource( 9 )
 
+[node name="Light2D" type="Light2D" parent="tilemap/DecoGroup/Sprite" index="0"]
+
+position = Vector2( -10, -36 )
+enabled = true
+editor_only = false
+texture = ExtResource( 10 )
+offset = Vector2( 0, 0 )
+texture_scale = 0.932625
+color = Color( 1, 0.673462, 0.164062, 1 )
+energy = 1.0
+mode = 0
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 1024
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 4.0
+shadow_filter = 2
+shadow_filter_smooth = 11.0
+shadow_item_cull_mask = 1
+_sections_unfolded = [ "Shadow", "Transform", "Visibility" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="tilemap/DecoGroup/Sprite" index="1"]
+
+root_node = NodePath("..")
+autoplay = "idle"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/idle = SubResource( 10 )
+blend_times = [  ]
+
 [node name="LadderGroup" type="Node2D" parent="tilemap" index="2"]
 
 editor/display_folded = true
 
-[node name="TestLadder" parent="tilemap/LadderGroup" index="0" instance=ExtResource( 10 )]
+[node name="TestLadder" parent="tilemap/LadderGroup" index="0" instance=ExtResource( 11 )]
 
 position = Vector2( -16, -32 )
 
@@ -281,55 +358,59 @@ scale = Vector2( 1, 20 )
 
 editor/display_folded = true
 
-[node name="target" parent="tilemap/TargetGroup" index="0" instance=ExtResource( 11 )]
+[node name="target" parent="tilemap/TargetGroup" index="0" instance=ExtResource( 12 )]
 
 position = Vector2( 368, 320 )
 
 [node name="NPCGroup" type="Node2D" parent="tilemap" index="4"]
 
-[node name="Kaleva" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 12 )]
+[node name="Kaleva" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 13 )]
 
 position = Vector2( 176, 304 )
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="enabler" parent="tilemap/NPCGroup/Kaleva" index="0"]
+[node name="occluder" parent="tilemap/NPCGroup/Kaleva" index="0"]
+
+occluder = SubResource( 1 )
+
+[node name="enabler" parent="tilemap/NPCGroup/Kaleva" index="1"]
 
 position = Vector2( 0, -9.53674e-06 )
 scale = Vector2( 8, 16 )
 
-[node name="Sprite" parent="tilemap/NPCGroup/Kaleva" index="1"]
+[node name="Sprite" parent="tilemap/NPCGroup/Kaleva" index="2"]
 
 scale = Vector2( -1, 1 )
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" parent="tilemap/NPCGroup/Kaleva/npc" index="0"]
 
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
-[node name="Coffin" parent="tilemap/NPCGroup" index="1" instance=ExtResource( 12 )]
+[node name="Coffin" parent="tilemap/NPCGroup" index="1" instance=ExtResource( 13 )]
 
 position = Vector2( -416, 304 )
 dialogues = [ [ 0, null, "DIAG_RESTORE", null, [ [ "KEY_YES", "restore", null, true ], [ "KEY_NO", "end" ] ] ] ]
 static_direction = true
 
-[node name="Sprite" parent="tilemap/NPCGroup/Coffin" index="1"]
+[node name="Sprite" parent="tilemap/NPCGroup/Coffin" index="2"]
 
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 offset = Vector2( 0, 0 )
 hframes = 1
 
-[node name="npc" parent="tilemap/NPCGroup/Coffin" index="2"]
+[node name="npc" parent="tilemap/NPCGroup/Coffin" index="3"]
 
 visible = false
 
-[node name="AnimationPlayer" parent="tilemap/NPCGroup/Coffin" index="3"]
+[node name="AnimationPlayer" parent="tilemap/NPCGroup/Coffin" index="4"]
 
 autoplay = ""
 
 [node name="SaveGroup" type="Node2D" parent="tilemap" index="5"]
 
-[node name="savepoint" parent="tilemap/SaveGroup" index="0" instance=ExtResource( 16 )]
+[node name="savepoint" parent="tilemap/SaveGroup" index="0" instance=ExtResource( 17 )]
 
 position = Vector2( -192, 352 )
 savelocation = "LVL_CATACOMB"
@@ -338,7 +419,7 @@ savelocation = "LVL_CATACOMB"
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 17 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 18 )]
 
 position = Vector2( -16, -368 )
 is_horizontal = false
@@ -359,41 +440,41 @@ position = Vector2( -614, -358 )
 
 position = Vector2( 586, 554 )
 
-[node name="fg_deco" type="Node2D" parent="." index="1"]
+[node name="fg_deco" type="Node2D" parent="." index="2"]
 
 [node name="Sprite2" type="Sprite" parent="fg_deco" index="0"]
 
-material = SubResource( 3 )
+material = SubResource( 4 )
 position = Vector2( 544, -32 )
 scale = Vector2( 4, 13 )
-texture = SubResource( 4 )
+texture = SubResource( 5 )
 centered = false
 _sections_unfolded = [ "Material" ]
 
 [node name="Sprite3" type="Sprite" parent="fg_deco" index="1"]
 
-material = SubResource( 5 )
+material = SubResource( 6 )
 position = Vector2( 576, 480 )
 scale = Vector2( 4, 2 )
-texture = SubResource( 4 )
+texture = SubResource( 5 )
 centered = false
 _sections_unfolded = [ "Material" ]
 
 [node name="Sprite5" type="Sprite" parent="fg_deco" index="2"]
 
-material = SubResource( 6 )
+material = SubResource( 7 )
 position = Vector2( -640, 480 )
 scale = Vector2( 2, 2 )
-texture = SubResource( 4 )
+texture = SubResource( 5 )
 centered = false
 _sections_unfolded = [ "Material" ]
 
 [node name="Sprite6" type="Sprite" parent="fg_deco" index="3"]
 
-material = SubResource( 8 )
+material = SubResource( 9 )
 position = Vector2( -672, -352 )
 scale = Vector2( 43, 2 )
-texture = SubResource( 4 )
+texture = SubResource( 5 )
 centered = false
 _sections_unfolded = [ "Material" ]
 
