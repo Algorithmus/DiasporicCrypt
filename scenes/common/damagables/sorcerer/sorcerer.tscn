@@ -1,11 +1,12 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/common/damagables/sorcerer/Sorcerer.gd" type="Script" id=1]
 [ext_resource path="res://scenes/common/damagables/sorcerer/cloud.png" type="Texture" id=2]
 [ext_resource path="res://players/magic/fire/magic.png" type="Texture" id=3]
 [ext_resource path="res://scenes/common/damagables/sorcerer/idle.png" type="Texture" id=4]
 [ext_resource path="res://scenes/common/damagables/sorcerer/die.png" type="Texture" id=5]
-[ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/damagables/human/lamp-glow.png" type="Texture" id=6]
+[ext_resource path="res://scenes/common/stun.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -155,6 +156,42 @@ tracks/5/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Light2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -26, -44 ), Vector2( -26, -20 ), Vector2( -20, -6 ), Vector2( -17, 18 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Light2D:energy")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.01 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Light2D:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=8]
 
@@ -245,6 +282,42 @@ tracks/6/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("Light2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -26, -44 ), Vector2( -26, -44 ), Vector2( -31, -44 ), Vector2( -21, -44 ), Vector2( -26, -44 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Light2D:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Light2D:energy")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
 
 [sub_resource type="Animation" id=9]
 
@@ -306,6 +379,42 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Light2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 17, -39 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Light2D:energy")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Light2D:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -383,7 +492,7 @@ tracks/4/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 64, 32 )
 
-[node name="Sorcerer" type="KinematicBody2D"]
+[node name="Sorcerer" type="KinematicBody2D" index="0"]
 
 z_index = 1
 input_pickable = false
@@ -462,7 +571,33 @@ texture = ExtResource( 5 )
 hframes = 4
 _sections_unfolded = [ "Animation", "Offset", "Transform" ]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+[node name="Light2D" type="Light2D" parent="." index="5"]
+
+position = Vector2( 17, -39 )
+enabled = true
+editor_only = false
+texture = ExtResource( 6 )
+offset = Vector2( 0, 0 )
+texture_scale = 1.0
+color = Color( 1, 0.65625, 0, 1 )
+energy = 1.0
+mode = 0
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 1024
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 
 root_node = NodePath("..")
 autoplay = "walk"
@@ -474,7 +609,7 @@ anims/hurt = SubResource( 8 )
 anims/walk = SubResource( 9 )
 blend_times = [  ]
 
-[node name="cloud_animation" type="AnimationPlayer" parent="." index="6"]
+[node name="cloud_animation" type="AnimationPlayer" parent="." index="7"]
 
 root_node = NodePath("..")
 autoplay = "idle"
@@ -484,7 +619,7 @@ playback_speed = 1.0
 anims/idle = SubResource( 10 )
 blend_times = [  ]
 
-[node name="damagable" type="Area2D" parent="." index="7"]
+[node name="damagable" type="Area2D" parent="." index="8"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -498,9 +633,9 @@ audio_bus_name = "Master"
 
 shape = SubResource( 11 )
 
-[node name="SamplePlayer" type="Node" parent="." index="8"]
+[node name="SamplePlayer" type="Node" parent="." index="9"]
 
-[node name="Stun" parent="." index="9" instance=ExtResource( 6 )]
+[node name="Stun" parent="." index="10" instance=ExtResource( 7 )]
 
 position = Vector2( 0, -48 )
 _sections_unfolded = [ "Transform" ]
