@@ -1,5 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://scenes/common/sunbeam-glow.png" type="Texture" id=1]
+
 [sub_resource type="Shader" id=1]
 
 code = "shader_type canvas_item;
@@ -18,20 +20,12 @@ shader = SubResource( 1 )
 shader_param/modulate = Color( 0.59, 0.59, 0.59, 0 )
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="ImageTexture" id=3]
-
-flags = 7
-storage = 0
-lossy_quality = 0.7
-flags = 7
-size = Vector2( 32, 32 )
-
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[node name="Sunbeam" type="KinematicBody2D" index="0"]
+[node name="Sunbeam" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 4
@@ -42,12 +36,32 @@ __meta__ = {
 "__editor_plugin_screen__": "Script"
 }
 
-[node name="block" type="Sprite" parent="." index="0"]
+[node name="block" type="Light2D" parent="." index="0"]
 
 material = SubResource( 2 )
 z_index = 1
-texture = SubResource( 3 )
-_sections_unfolded = [ "Material", "Z Index" ]
+enabled = true
+editor_only = false
+texture = ExtResource( 1 )
+offset = Vector2( 0, 0 )
+texture_scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 2.0
+mode = 0
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 1024
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
+_sections_unfolded = [ "Material", "Transform", "Z Index" ]
 
 [node name="sunbeam" type="Area2D" parent="." index="1"]
 
@@ -61,6 +75,6 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sunbeam" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 
