@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/dungeon/debugtiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/dungeon/climbableblock.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/items/potion/potion.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/items/special/styxcrest.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/common/damagables/skeleton/skeleton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/torch.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/items/potion/potion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/items/special/styxcrest.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/common/damagables/skeleton/skeleton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=7]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
 
@@ -51,29 +52,46 @@ position = Vector2( 240, 624 )
 offset = Vector2( 3, 0 )
 flip_h = false
 
-[node name="SpecialItemGroup" type="Node2D" parent="tilemap" index="1"]
+[node name="TorchGroup" type="Node2D" parent="tilemap" index="1"]
 
-[node name="ITEM_POTION" parent="tilemap/SpecialItemGroup" index="0" instance=ExtResource( 3 )]
+[node name="torch" parent="tilemap/TorchGroup" index="0" instance=ExtResource( 3 )]
+
+position = Vector2( 16, 480 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch2" parent="tilemap/TorchGroup" index="1" instance=ExtResource( 3 )]
+
+position = Vector2( -176, 1184 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch3" parent="tilemap/TorchGroup" index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 224, 1280 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="SpecialItemGroup" type="Node2D" parent="tilemap" index="2"]
+
+[node name="ITEM_POTION" parent="tilemap/SpecialItemGroup" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( -176, 1296 )
 isgoal = true
 
-[node name="ITEM_STYXCREST" parent="tilemap/SpecialItemGroup" index="1" instance=ExtResource( 4 )]
+[node name="ITEM_STYXCREST" parent="tilemap/SpecialItemGroup" index="1" instance=ExtResource( 5 )]
 
 position = Vector2( -176, 1296 )
 isgoal = true
 
-[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="2"]
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="3"]
 
-[node name="Skeleton" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 5 )]
+[node name="Skeleton" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 6 )]
 
 position = Vector2( 16, 560 )
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap" index="3"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="4"]
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 6 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( 16, -208 )
 is_horizontal = false
@@ -84,7 +102,7 @@ teleport_to = Vector2( -1616, -64 )
 
 scale = Vector2( 5, 1 )
 
-[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 6 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 7 )]
 
 position = Vector2( 400, 1392 )
 target_level = "res://levels/dungeon/2-0.tscn"
@@ -94,7 +112,7 @@ teleport_to = Vector2( -940, -80 )
 
 scale = Vector2( 1, 5 )
 
-[node name="Teleport2" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 6 )]
+[node name="Teleport2" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 7 )]
 
 position = Vector2( -176, 1520 )
 is_horizontal = false
@@ -105,7 +123,7 @@ teleport_to = Vector2( -1360, -240 )
 
 scale = Vector2( 5, 1 )
 
-[node name="boundaries" type="Node2D" parent="tilemap" index="4"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="5"]
 
 [node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
 

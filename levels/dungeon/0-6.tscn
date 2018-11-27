@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/dungeon/debugtiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/breakables/sunbeambreakable.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/common/switches/floorswitch.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/common/damagables/zombie/zombie.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/common/sunbeam.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/dungeon/slopes/slope31-0.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/dungeon/slopes/slopea-b.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/torch.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/common/switches/floorswitch.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/common/damagables/zombie/zombie.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/sunbeam.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/dungeon/slopes/slope31-0.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/dungeon/slopes/slopea-b.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=10]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
 
@@ -61,67 +62,79 @@ position = Vector2( -1648, 16 )
 
 position = Vector2( -1680, 16 )
 
-[node name="SwitchGroup" type="Node2D" parent="tilemap" index="1"]
+[node name="TorchGroup" type="Node2D" parent="tilemap" index="1"]
 
-[node name="FloorSwitch" parent="tilemap/SwitchGroup" index="0" instance=ExtResource( 3 )]
+[node name="torch" parent="tilemap/TorchGroup" index="0" instance=ExtResource( 3 )]
+
+position = Vector2( -64, -256 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch2" parent="tilemap/TorchGroup" index="1" instance=ExtResource( 3 )]
+
+position = Vector2( -832, -256 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="SwitchGroup" type="Node2D" parent="tilemap" index="2"]
+
+[node name="FloorSwitch" parent="tilemap/SwitchGroup" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( -1328, 0 )
 target_nodes = [ "SunbeamGroup/Sunbeam" ]
 enabled = false
 
-[node name="PotGroup" type="Node2D" parent="tilemap" index="2"]
+[node name="PotGroup" type="Node2D" parent="tilemap" index="3"]
 
-[node name="Pot" parent="tilemap/PotGroup" index="0" instance=ExtResource( 4 )]
+[node name="Pot" parent="tilemap/PotGroup" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( -304, -48 )
 
-[node name="Pot1" parent="tilemap/PotGroup" index="1" instance=ExtResource( 4 )]
+[node name="Pot1" parent="tilemap/PotGroup" index="1" instance=ExtResource( 5 )]
 
 position = Vector2( -560, -48 )
 
-[node name="Pot2" parent="tilemap/PotGroup" index="2" instance=ExtResource( 4 )]
+[node name="Pot2" parent="tilemap/PotGroup" index="2" instance=ExtResource( 5 )]
 
 position = Vector2( -816, -48 )
 
-[node name="Pot3" parent="tilemap/PotGroup" index="3" instance=ExtResource( 4 )]
+[node name="Pot3" parent="tilemap/PotGroup" index="3" instance=ExtResource( 5 )]
 
 position = Vector2( -1072, -48 )
 
-[node name="Pot4" parent="tilemap/PotGroup" index="4" instance=ExtResource( 4 )]
+[node name="Pot4" parent="tilemap/PotGroup" index="4" instance=ExtResource( 5 )]
 
 position = Vector2( -1328, -48 )
 type = "SWITCH"
 reward = "SwitchGroup/FloorSwitch"
 
-[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="3"]
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="4"]
 
 editor/display_folded = true
 
-[node name="Zombie" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 5 )]
+[node name="Zombie" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 6 )]
 
 position = Vector2( -1888, -64 )
 
-[node name="Zombie1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 5 )]
+[node name="Zombie1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 6 )]
 
 position = Vector2( -1824, -64 )
 
-[node name="Zombie2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 5 )]
+[node name="Zombie2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 6 )]
 
 position = Vector2( -1760, -64 )
 
-[node name="Zombie3" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 5 )]
+[node name="Zombie3" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 6 )]
 
 position = Vector2( -1200, -64 )
 
-[node name="Zombie4" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 5 )]
+[node name="Zombie4" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 6 )]
 
 position = Vector2( -688, -64 )
 
-[node name="SunbeamGroup" type="Node2D" parent="tilemap" index="4"]
+[node name="SunbeamGroup" type="Node2D" parent="tilemap" index="5"]
 
 editor/display_folded = true
 
-[node name="Sunbeam" parent="tilemap/SunbeamGroup" index="0" instance=ExtResource( 6 )]
+[node name="Sunbeam" parent="tilemap/SunbeamGroup" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( -1616, -240 )
 
@@ -133,79 +146,79 @@ scale = Vector2( 5, 17 )
 
 scale = Vector2( 5, 17 )
 
-[node name="SlopeGroup" type="Node2D" parent="tilemap" index="5"]
+[node name="SlopeGroup" type="Node2D" parent="tilemap" index="6"]
 
 editor/display_folded = true
 
-[node name="TestSlope31-0" parent="tilemap/SlopeGroup" index="0" instance=ExtResource( 7 )]
+[node name="TestSlope31-0" parent="tilemap/SlopeGroup" index="0" instance=ExtResource( 8 )]
 
 position = Vector2( 176, -208 )
 
-[node name="TestSlope31-1" parent="tilemap/SlopeGroup" index="1" instance=ExtResource( 7 )]
+[node name="TestSlope31-1" parent="tilemap/SlopeGroup" index="1" instance=ExtResource( 8 )]
 
 position = Vector2( 144, -176 )
 
-[node name="TestSlope31-2" parent="tilemap/SlopeGroup" index="2" instance=ExtResource( 7 )]
+[node name="TestSlope31-2" parent="tilemap/SlopeGroup" index="2" instance=ExtResource( 8 )]
 
 position = Vector2( 112, -144 )
 
-[node name="TestSlope31-3" parent="tilemap/SlopeGroup" index="3" instance=ExtResource( 7 )]
+[node name="TestSlope31-3" parent="tilemap/SlopeGroup" index="3" instance=ExtResource( 8 )]
 
 position = Vector2( 80, -112 )
 
-[node name="TestSlope31-4" parent="tilemap/SlopeGroup" index="4" instance=ExtResource( 7 )]
+[node name="TestSlope31-4" parent="tilemap/SlopeGroup" index="4" instance=ExtResource( 8 )]
 
 position = Vector2( 48, -80 )
 
-[node name="TestSlope31-5" parent="tilemap/SlopeGroup" index="5" instance=ExtResource( 7 )]
+[node name="TestSlope31-5" parent="tilemap/SlopeGroup" index="5" instance=ExtResource( 8 )]
 
 position = Vector2( 16, -48 )
 
-[node name="TestSlope31-6" parent="tilemap/SlopeGroup" index="6" instance=ExtResource( 7 )]
+[node name="TestSlope31-6" parent="tilemap/SlopeGroup" index="6" instance=ExtResource( 8 )]
 
 position = Vector2( -16, -16 )
 
-[node name="TestSlopea-b" parent="tilemap/SlopeGroup" index="7" instance=ExtResource( 8 )]
+[node name="TestSlopea-b" parent="tilemap/SlopeGroup" index="7" instance=ExtResource( 9 )]
 
 position = Vector2( 208, -208 )
 
-[node name="TestSlopea-b1" parent="tilemap/SlopeGroup" index="8" instance=ExtResource( 8 )]
+[node name="TestSlopea-b1" parent="tilemap/SlopeGroup" index="8" instance=ExtResource( 9 )]
 
 position = Vector2( 176, -176 )
 
-[node name="TestSlopea-b2" parent="tilemap/SlopeGroup" index="9" instance=ExtResource( 8 )]
+[node name="TestSlopea-b2" parent="tilemap/SlopeGroup" index="9" instance=ExtResource( 9 )]
 
 position = Vector2( 144, -144 )
 
-[node name="TestSlopea-b3" parent="tilemap/SlopeGroup" index="10" instance=ExtResource( 8 )]
+[node name="TestSlopea-b3" parent="tilemap/SlopeGroup" index="10" instance=ExtResource( 9 )]
 
 position = Vector2( 112, -112 )
 
-[node name="TestSlopea-b4" parent="tilemap/SlopeGroup" index="11" instance=ExtResource( 8 )]
+[node name="TestSlopea-b4" parent="tilemap/SlopeGroup" index="11" instance=ExtResource( 9 )]
 
 position = Vector2( 80, -80 )
 
-[node name="TestSlopea-b5" parent="tilemap/SlopeGroup" index="12" instance=ExtResource( 8 )]
+[node name="TestSlopea-b5" parent="tilemap/SlopeGroup" index="12" instance=ExtResource( 9 )]
 
 position = Vector2( 48, -48 )
 
-[node name="TestSlopea-b6" parent="tilemap/SlopeGroup" index="13" instance=ExtResource( 8 )]
+[node name="TestSlopea-b6" parent="tilemap/SlopeGroup" index="13" instance=ExtResource( 9 )]
 
 position = Vector2( 16, -16 )
 
-[node name="TestSlopea-b7" parent="tilemap/SlopeGroup" index="14" instance=ExtResource( 8 )]
+[node name="TestSlopea-b7" parent="tilemap/SlopeGroup" index="14" instance=ExtResource( 9 )]
 
 position = Vector2( -16, 16 )
 
-[node name="TestSlopea-b8" parent="tilemap/SlopeGroup" index="15" instance=ExtResource( 8 )]
+[node name="TestSlopea-b8" parent="tilemap/SlopeGroup" index="15" instance=ExtResource( 9 )]
 
 position = Vector2( -48, 16 )
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap" index="6"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="7"]
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 9 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 10 )]
 
 position = Vector2( 304, -304 )
 target_level = "res://levels/dungeon/0-5.tscn"
@@ -215,7 +228,7 @@ teleport_to = Vector2( -268, -1232 )
 
 scale = Vector2( 1, 5 )
 
-[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 9 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 10 )]
 
 position = Vector2( -1616, 48 )
 is_horizontal = false
@@ -226,7 +239,7 @@ teleport_to = Vector2( 16, -112 )
 
 scale = Vector2( 5, 1 )
 
-[node name="boundaries" type="Node2D" parent="tilemap" index="7"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="8"]
 
 [node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
 

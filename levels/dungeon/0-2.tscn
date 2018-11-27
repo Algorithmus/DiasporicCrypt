@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/dungeon/debugtiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/dungeon/climbableblock.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/dungeon/movingplatform/movingplatform.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/common/damagables/zombie/zombie.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/common/damagables/skeleton/skeleton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/common/damagables/skeleton/bloodskeleton.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/common/torch.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/dungeon/movingplatform/movingplatform.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/damagables/zombie/zombie.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/common/damagables/skeleton/skeleton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/damagables/skeleton/bloodskeleton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=8]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
 
@@ -65,41 +66,59 @@ flip_h = false
 
 position = Vector2( 304, -944 )
 
-[node name="MovingPlatformGroup" type="Node2D" parent="tilemap" index="1"]
+[node name="TorchGroup" type="Node2D" parent="tilemap" index="1"]
 
-[node name="MovingPlatform" parent="tilemap/MovingPlatformGroup" index="0" instance=ExtResource( 3 )]
+[node name="torch" parent="tilemap/TorchGroup" index="0" instance=ExtResource( 3 )]
+
+position = Vector2( 32, -192 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch2" parent="tilemap/TorchGroup" index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 32, -704 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch3" parent="tilemap/TorchGroup" index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 32, -1088 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="MovingPlatformGroup" type="Node2D" parent="tilemap" index="2"]
+
+[node name="MovingPlatform" parent="tilemap/MovingPlatformGroup" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( 32, -400 )
 motion = Vector2( 0, 150 )
 cycle = 6.0
 
-[node name="MovingPlatform1" parent="tilemap/MovingPlatformGroup" index="1" instance=ExtResource( 3 )]
+[node name="MovingPlatform1" parent="tilemap/MovingPlatformGroup" index="1" instance=ExtResource( 4 )]
 
 position = Vector2( 32, -960 )
 motion = Vector2( 0, -150 )
 cycle = 6.0
 
-[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="2"]
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="3"]
 
-[node name="Zombie" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 4 )]
+[node name="Zombie" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( 112, -64 )
 
-[node name="Zombie1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 4 )]
+[node name="Zombie1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 5 )]
 
 position = Vector2( -64, -64 )
 
-[node name="Skeleton" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 5 )]
+[node name="Skeleton" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 6 )]
 
 position = Vector2( 320, -432 )
 
-[node name="SimpleProjectile" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 6 )]
+[node name="SimpleProjectile" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 7 )]
 
 position = Vector2( -256, -688 )
+projectile_offset = Vector2( 0, 0 )
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap" index="3"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="4"]
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 7 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 8 )]
 
 position = Vector2( -368, -80 )
 target_level = "res://levels/dungeon/0-1.tscn"
@@ -109,7 +128,7 @@ teleport_to = Vector2( 812, -80 )
 
 scale = Vector2( 1, 5 )
 
-[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 7 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 8 )]
 
 position = Vector2( 432, -80 )
 target_level = "res://levels/dungeon/1-0.tscn"
@@ -119,7 +138,7 @@ teleport_to = Vector2( -300, 112 )
 
 scale = Vector2( 1, 5 )
 
-[node name="Teleport2" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 7 )]
+[node name="Teleport2" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 8 )]
 
 position = Vector2( 432, -1040 )
 target_level = "res://levels/dungeon/1-1.tscn"
@@ -129,7 +148,7 @@ teleport_to = Vector2( -172, -272 )
 
 scale = Vector2( 1, 5 )
 
-[node name="Teleport3" parent="tilemap/TeleportGroup" index="3" instance=ExtResource( 7 )]
+[node name="Teleport3" parent="tilemap/TeleportGroup" index="3" instance=ExtResource( 8 )]
 
 position = Vector2( -368, -1072 )
 target_level = "res://levels/dungeon/0-3.tscn"
@@ -139,7 +158,7 @@ teleport_to = Vector2( 396, 16 )
 
 scale = Vector2( 1, 5 )
 
-[node name="boundaries" type="Node2D" parent="tilemap" index="4"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="5"]
 
 [node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
 
