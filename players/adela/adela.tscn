@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://players/adela/adela.gd" type="Script" id=1]
 [ext_resource path="res://players/adela/idle.png" type="Texture" id=2]
@@ -44,12 +44,6 @@
 [ext_resource path="res://scenes/common/fluid/splash_down.wav" type="AudioStream" id=42]
 [ext_resource path="res://scenes/common/fluid/splash_up.wav" type="AudioStream" id=43]
 [ext_resource path="res://gui/dialogue/talk.png" type="Texture" id=44]
-
-[sub_resource type="OccluderPolygon2D" id=34]
-
-closed = true
-cull_mode = 0
-polygon = PoolVector2Array( 0, -64, 16, -64, 16, 64, 0, 64 )
 
 [sub_resource type="Shader" id=1]
 
@@ -8638,7 +8632,7 @@ shader_param/aura_color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
 shader_param/opacity = 1.0
 _sections_unfolded = [ "shader_param" ]
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 524288
@@ -8650,12 +8644,7 @@ __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
 
-[node name="occluder" type="LightOccluder2D" parent="." index="0"]
-
-occluder = SubResource( 34 )
-light_mask = 1
-
-[node name="NormalSpriteGroup" type="Node2D" parent="." index="1"]
+[node name="NormalSpriteGroup" type="Node2D" parent="." index="0"]
 
 [node name="idle" type="Sprite" parent="NormalSpriteGroup" index="0"]
 
@@ -9040,7 +9029,7 @@ offset = Vector2( 48, 16 )
 hframes = 5
 frame = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 
 root_node = NodePath("..")
 autoplay = "idle"
@@ -9074,11 +9063,11 @@ anims/uattack = SubResource( 28 )
 anims/wall = SubResource( 29 )
 blend_times = [  ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
 shape = SubResource( 30 )
 
-[node name="Camera2D" type="Camera2D" parent="." index="4"]
+[node name="Camera2D" type="Camera2D" parent="." index="3"]
 
 offset = Vector2( -400, -296 )
 anchor_mode = 0
@@ -9104,7 +9093,7 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 
-[node name="damage" type="Area2D" parent="." index="5"]
+[node name="damage" type="Area2D" parent="." index="4"]
 
 editor/display_folded = true
 input_pickable = true
@@ -9120,7 +9109,7 @@ _sections_unfolded = [ "Collision" ]
 
 shape = SubResource( 31 )
 
-[node name="sound" type="Node" parent="." index="6"]
+[node name="sound" type="Node" parent="." index="5"]
 
 [node name="attack" type="AudioStreamPlayer" parent="sound" index="0"]
 
@@ -9176,7 +9165,7 @@ autoplay = false
 mix_target = 0
 bus = "SFX"
 
-[node name="talk" type="Sprite" parent="." index="7"]
+[node name="talk" type="Sprite" parent="." index="6"]
 
 light_mask = 2
 material = SubResource( 33 )

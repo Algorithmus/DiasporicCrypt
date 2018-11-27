@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=2]
+[gd_scene load_steps=103 format=2]
 
 [ext_resource path="res://players/friederich/friederich.gd" type="Script" id=1]
 [ext_resource path="res://players/friederich/idle.png" type="Texture" id=2]
@@ -66,12 +66,6 @@
 [ext_resource path="res://players/friederich/attacks/thrust/thrust.wav" type="AudioStream" id=64]
 [ext_resource path="res://players/magic/void/void.wav" type="AudioStream" id=65]
 [ext_resource path="res://gui/dialogue/talk.png" type="Texture" id=66]
-
-[sub_resource type="OccluderPolygon2D" id=38]
-
-closed = true
-cull_mode = 0
-polygon = PoolVector2Array( 0, -64, 16, -64, 16, 64, 0, 64 )
 
 [sub_resource type="Shader" id=1]
 
@@ -10875,12 +10869,12 @@ tracks/30/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 14, 62 )
 
-[sub_resource type="RectangleShape2D" id=39]
+[sub_resource type="RectangleShape2D" id=34]
 
 custom_solver_bias = 0.0
 extents = Vector2( 14, 62 )
 
-[sub_resource type="Shader" id=36]
+[sub_resource type="Shader" id=35]
 
 code = "shader_type canvas_item;
 render_mode unshaded;
@@ -10914,10 +10908,10 @@ float auraa=(maxa-mina);
 COLOR.rgb+=aura_color.rgb*(maxa-mina);
 }"
 
-[sub_resource type="ShaderMaterial" id=37]
+[sub_resource type="ShaderMaterial" id=36]
 
 render_priority = 0
-shader = SubResource( 36 )
+shader = SubResource( 35 )
 shader_param/aura_width = 1.0
 shader_param/aura_color = Color( 0.137255, 0.0705882, 0.0705882, 1 )
 shader_param/opacity = 1.0
@@ -10935,13 +10929,7 @@ __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
 
-[node name="occluder" type="LightOccluder2D" parent="." index="0"]
-
-occluder = SubResource( 38 )
-light_mask = 1
-_sections_unfolded = [ "Material", "Transform", "Visibility" ]
-
-[node name="NormalSpriteGroup" type="Node2D" parent="." index="1"]
+[node name="NormalSpriteGroup" type="Node2D" parent="." index="0"]
 
 z_index = 1
 _sections_unfolded = [ "Z Index" ]
@@ -11500,7 +11488,7 @@ visible = false
 texture = ExtResource( 11 )
 hframes = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 
 root_node = NodePath("..")
 autoplay = "idle"
@@ -11537,13 +11525,13 @@ anims/transform = SubResource( 31 )
 anims/void = SubResource( 32 )
 blend_times = [  ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
 z_index = 1
 shape = SubResource( 33 )
 _sections_unfolded = [ "Z Index" ]
 
-[node name="Camera2D" type="Camera2D" parent="." index="4"]
+[node name="Camera2D" type="Camera2D" parent="." index="3"]
 
 offset = Vector2( -400, -296 )
 anchor_mode = 0
@@ -11569,7 +11557,7 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 
-[node name="damage" type="Area2D" parent="." index="5"]
+[node name="damage" type="Area2D" parent="." index="4"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -11583,9 +11571,9 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage" index="0"]
 
-shape = SubResource( 39 )
+shape = SubResource( 34 )
 
-[node name="sound" type="Node" parent="." index="6"]
+[node name="sound" type="Node" parent="." index="5"]
 
 [node name="attack" type="AudioStreamPlayer" parent="sound" index="0"]
 
@@ -11731,10 +11719,10 @@ autoplay = false
 mix_target = 0
 bus = "SFX"
 
-[node name="talk" type="Sprite" parent="." index="7"]
+[node name="talk" type="Sprite" parent="." index="6"]
 
 light_mask = 2
-material = SubResource( 37 )
+material = SubResource( 36 )
 z_index = 2
 texture = ExtResource( 66 )
 offset = Vector2( 4, -80 )

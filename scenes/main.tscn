@@ -614,7 +614,11 @@ __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
 
-[node name="level" type="Node2D" parent="." index="0"]
+[node name="CanvasModulate" type="CanvasModulate" parent="." index="0"]
+
+color = Color( 0.588235, 0.517647, 0.635294, 1 )
+
+[node name="level" type="Node2D" parent="." index="1"]
 
 pause_mode = 1
 _sections_unfolded = [ "Pause", "Visibility" ]
@@ -627,7 +631,7 @@ __meta__ = {
 editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
-[node name="playercontainer" type="Node2D" parent="." index="1"]
+[node name="playercontainer" type="Node2D" parent="." index="2"]
 
 pause_mode = 1
 _sections_unfolded = [ "Pause", "Visibility", "Z Index" ]
@@ -635,7 +639,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="gui" type="Node2D" parent="." index="2"]
+[node name="gui" type="Node2D" parent="." index="3"]
 
 pause_mode = 2
 _sections_unfolded = [ "Pause" ]
@@ -1632,7 +1636,7 @@ autoplay = false
 mix_target = 0
 bus = "SFX"
 
-[node name="music" type="AudioStreamPlayer" parent="." index="3"]
+[node name="music" type="AudioStreamPlayer" parent="." index="4"]
 
 stream = ExtResource( 40 )
 volume_db = 0.0
@@ -1641,7 +1645,7 @@ autoplay = true
 mix_target = 0
 bus = "BGM"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 
 root_node = NodePath("..")
 autoplay = ""
@@ -1652,7 +1656,7 @@ anims/hide = SubResource( 22 )
 anims/show = SubResource( 23 )
 blend_times = [  ]
 
-[node name="gameclock" type="Node2D" parent="." index="5"]
+[node name="gameclock" type="Node2D" parent="." index="6"]
 
 script = ExtResource( 41 )
 

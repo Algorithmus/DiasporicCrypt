@@ -15,6 +15,7 @@ var AudioFunctions = preload("res://gui/AudioFunctions.gd")
 var choice
 var gameover = false
 var dialog
+var canvasmodulate
 
 var hide_altmenu = false
 
@@ -85,6 +86,7 @@ func _ready():
 	root.connect("size_changed", self, "_on_resolution_changed")
 	pause = get_node("gui/CanvasLayer/pause")
 	pausemenu = pause.get_node("menu")
+	canvasmodulate = get_node("CanvasModulate")
 	sequences = get_node("gui/CanvasLayer/sequences")
 	sequences.get_node("demonic/sprite/friederich").hide()
 	sequences.get_node("demonic/sprite/adela").hide()
@@ -715,10 +717,15 @@ func do_teleport(resource, new_level, pos, teleport):
 		display_level_title(level_title_string)
 	var currentlevel = ProjectSettings.get("levels")[ProjectSettings.get("current_level")]
 	var currentbgm = currentlevel.location.bgm
+	if (currentlevel.get("tint") != null):
+		canvasmodulate.set_color(currentlevel.tint)
+	else:
+		canvasmodulate.set_color(Color(1, 1, 1))
 	# make sure catacombs level connects to the correct level
 	if (new_level == "res://levels/common/catacombs.tscn"):
 		connect_catacombs(new_level_obj)
 		currentbgm = preload("res://levels/common/catacombs.ogg")
+		canvasmodulate.set_color(Color(150.0/255, 132.0/255, 162.0/255))
 		if (ProjectSettings.get("current_quest_complete") && !ProjectSettings.get("reward_taken") && currentlevel.reward > 0):
 			var gold = goldclass.instance()
 			gold.isreward = true

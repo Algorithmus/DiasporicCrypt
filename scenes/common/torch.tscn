@@ -153,14 +153,14 @@ range_z_max = 1024
 range_layer_min = 0
 range_layer_max = 0
 range_item_cull_mask = 1
-shadow_enabled = true
+shadow_enabled = false
 shadow_color = Color( 0, 0, 0, 0 )
 shadow_buffer_size = 2048
 shadow_gradient_length = 4.0
 shadow_filter = 3
 shadow_filter_smooth = 11.0
 shadow_item_cull_mask = 1
-_sections_unfolded = [ "Material", "Shadow", "Visibility" ]
+_sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 

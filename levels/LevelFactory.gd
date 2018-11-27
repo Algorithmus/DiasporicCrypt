@@ -171,6 +171,7 @@ func _init():
 	dungeon.location = locationfactory.locations["LVL_DUNGEON"]
 	dungeon.require = ["LVL_START"]
 	dungeon.character = "friederich"
+	dungeon.tint = Color(187.0/255, 160.0/255, 242.0/255)
 	levels[dungeon.title] = dungeon
 	
 	var icecave = levelclass.new()
@@ -223,6 +224,7 @@ func _init():
 	start.reward = 100
 	start.item = "ITEM_AMULET"
 	start.location = locationfactory.locations["LVL_START"]
+	start.tint = Color(125.0/255, 147.0/255, 203.0/255)
 	levels[start.title] = start
 	
 	var colosseum1 = levelclass.new()

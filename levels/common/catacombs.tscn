@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scenes/catacombs/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/torch.tscn" type="PackedScene" id=2]
@@ -19,7 +19,7 @@
 [ext_resource path="res://scenes/savepoint/savepoint.tscn" type="PackedScene" id=17]
 [ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=18]
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=1]
 
 resource_name = "idle"
 length = 2.0
@@ -49,12 +49,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 1.0, 0.9, 1.0, 0.9, 1.0 ]
 }
-
-[sub_resource type="OccluderPolygon2D" id=1]
-
-closed = true
-cull_mode = 0
-polygon = PoolVector2Array( 0, -80, 16, -80, 16, 80, 0, 80 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -129,12 +123,7 @@ __meta__ = {
 "__editor_plugin_screen__": "Script"
 }
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." index="0"]
-
-color = Color( 0.589229, 0.519821, 0.636719, 1 )
-_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
-
-[node name="tilemap" type="TileMap" parent="." index="1"]
+[node name="tilemap" type="TileMap" parent="." index="0"]
 
 mode = 0
 tile_set = ExtResource( 1 )
@@ -201,13 +190,14 @@ texture = ExtResource( 3 )
 
 position = Vector2( -480, 368 )
 texture = ExtResource( 4 )
+_sections_unfolded = [ "Visibility" ]
 
 [node name="Sprite6" type="Sprite" parent="tilemap/DecoGroup" index="6"]
 
 self_modulate = Color( 0.603922, 0.537255, 0.658824, 1 )
 position = Vector2( -304, 368 )
 texture = ExtResource( 4 )
-_sections_unfolded = [ "Z Index" ]
+_sections_unfolded = [ "Visibility", "Z Index" ]
 
 [node name="Sprite7" type="Sprite" parent="tilemap/DecoGroup" index="7"]
 
@@ -215,6 +205,7 @@ self_modulate = Color( 0.603922, 0.537255, 0.658824, 1 )
 position = Vector2( -128, 368 )
 texture = ExtResource( 4 )
 flip_h = true
+_sections_unfolded = [ "Visibility" ]
 
 [node name="Sprite8" type="Sprite" parent="tilemap/DecoGroup" index="8"]
 
@@ -228,7 +219,7 @@ self_modulate = Color( 0.603922, 0.537255, 0.658824, 1 )
 position = Vector2( 272, 368 )
 texture = ExtResource( 4 )
 flip_h = true
-_sections_unfolded = [ "Z Index" ]
+_sections_unfolded = [ "Region", "Visibility", "Z Index" ]
 
 [node name="Sprite10" type="Sprite" parent="tilemap/DecoGroup" index="10"]
 
@@ -319,14 +310,14 @@ range_z_max = 1024
 range_layer_min = 0
 range_layer_max = 0
 range_item_cull_mask = 1
-shadow_enabled = true
+shadow_enabled = false
 shadow_color = Color( 0, 0, 0, 0 )
 shadow_buffer_size = 2048
 shadow_gradient_length = 4.0
-shadow_filter = 2
+shadow_filter = 3
 shadow_filter_smooth = 11.0
 shadow_item_cull_mask = 1
-_sections_unfolded = [ "Shadow", "Transform", "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="tilemap/DecoGroup/Sprite" index="1"]
 
@@ -335,7 +326,7 @@ autoplay = "idle"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/idle = SubResource( 10 )
+anims/idle = SubResource( 1 )
 blend_times = [  ]
 
 [node name="LadderGroup" type="Node2D" parent="tilemap" index="2"]
@@ -370,16 +361,12 @@ position = Vector2( 176, 304 )
 script = ExtResource( 14 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="occluder" parent="tilemap/NPCGroup/Kaleva" index="0"]
-
-occluder = SubResource( 1 )
-
-[node name="enabler" parent="tilemap/NPCGroup/Kaleva" index="1"]
+[node name="enabler" parent="tilemap/NPCGroup/Kaleva" index="0"]
 
 position = Vector2( 0, -9.53674e-06 )
 scale = Vector2( 8, 16 )
 
-[node name="Sprite" parent="tilemap/NPCGroup/Kaleva" index="2"]
+[node name="Sprite" parent="tilemap/NPCGroup/Kaleva" index="1"]
 
 scale = Vector2( -1, 1 )
 texture = ExtResource( 15 )
@@ -394,17 +381,17 @@ position = Vector2( -416, 304 )
 dialogues = [ [ 0, null, "DIAG_RESTORE", null, [ [ "KEY_YES", "restore", null, true ], [ "KEY_NO", "end" ] ] ] ]
 static_direction = true
 
-[node name="Sprite" parent="tilemap/NPCGroup/Coffin" index="2"]
+[node name="Sprite" parent="tilemap/NPCGroup/Coffin" index="1"]
 
 texture = ExtResource( 16 )
 offset = Vector2( 0, 0 )
 hframes = 1
 
-[node name="npc" parent="tilemap/NPCGroup/Coffin" index="3"]
+[node name="npc" parent="tilemap/NPCGroup/Coffin" index="2"]
 
 visible = false
 
-[node name="AnimationPlayer" parent="tilemap/NPCGroup/Coffin" index="4"]
+[node name="AnimationPlayer" parent="tilemap/NPCGroup/Coffin" index="3"]
 
 autoplay = ""
 
@@ -440,7 +427,7 @@ position = Vector2( -614, -358 )
 
 position = Vector2( 586, 554 )
 
-[node name="fg_deco" type="Node2D" parent="." index="2"]
+[node name="fg_deco" type="Node2D" parent="." index="1"]
 
 [node name="Sprite2" type="Sprite" parent="fg_deco" index="0"]
 
