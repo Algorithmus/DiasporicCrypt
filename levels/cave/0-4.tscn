@@ -1,15 +1,16 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/cave/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/cave/climbableblock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/cave/BGs/cornerR.png" type="Texture" id=3]
 [ext_resource path="res://scenes/cave/BGs/cornerL.png" type="Texture" id=4]
-[ext_resource path="res://scenes/common/breakables/breakable.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/cave/movingplatform/movingplatform.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/cave/BGs/edge.png" type="Texture" id=7]
-[ext_resource path="res://scenes/common/damagables/orc/orc.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/common/switches/floorswitch.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/common/torch.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/common/breakables/breakable.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/cave/movingplatform/movingplatform.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/cave/BGs/edge.png" type="Texture" id=8]
+[ext_resource path="res://scenes/common/damagables/orc/orc.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/switches/floorswitch.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -101,35 +102,72 @@ position = Vector2( 592, -1360 )
 
 texture = ExtResource( 3 )
 
-[node name="BreakableGroup" type="Node2D" parent="tilemap" index="1"]
+[node name="TorchGroup" type="Node2D" parent="tilemap" index="1"]
+
+[node name="torch" parent="tilemap/TorchGroup" index="0" instance=ExtResource( 5 )]
+
+position = Vector2( 336, 160 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch2" parent="tilemap/TorchGroup" index="1" instance=ExtResource( 5 )]
+
+position = Vector2( 784, 160 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch3" parent="tilemap/TorchGroup" index="2" instance=ExtResource( 5 )]
+
+position = Vector2( 784, -352 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch4" parent="tilemap/TorchGroup" index="3" instance=ExtResource( 5 )]
+
+position = Vector2( 784, -864 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch5" parent="tilemap/TorchGroup" index="4" instance=ExtResource( 5 )]
+
+position = Vector2( 784, -1376 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch6" parent="tilemap/TorchGroup" index="5" instance=ExtResource( 5 )]
+
+position = Vector2( -400, -1280 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch7" parent="tilemap/TorchGroup" index="6" instance=ExtResource( 5 )]
+
+position = Vector2( -400, 160 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="BreakableGroup" type="Node2D" parent="tilemap" index="2"]
 
 editor/display_folded = true
 
-[node name="TestBreakable" parent="tilemap/BreakableGroup" index="0" instance=ExtResource( 5 )]
+[node name="TestBreakable" parent="tilemap/BreakableGroup" index="0" instance=ExtResource( 6 )]
 
 position = Vector2( 592, -48 )
 
-[node name="TestBreakable1" parent="tilemap/BreakableGroup" index="1" instance=ExtResource( 5 )]
+[node name="TestBreakable1" parent="tilemap/BreakableGroup" index="1" instance=ExtResource( 6 )]
 
 position = Vector2( 592, -80 )
 
-[node name="TestBreakable2" parent="tilemap/BreakableGroup" index="2" instance=ExtResource( 5 )]
+[node name="TestBreakable2" parent="tilemap/BreakableGroup" index="2" instance=ExtResource( 6 )]
 
 position = Vector2( 592, -112 )
 
-[node name="TestBreakable3" parent="tilemap/BreakableGroup" index="3" instance=ExtResource( 5 )]
+[node name="TestBreakable3" parent="tilemap/BreakableGroup" index="3" instance=ExtResource( 6 )]
 
 position = Vector2( 592, -144 )
 
-[node name="TestBreakable4" parent="tilemap/BreakableGroup" index="4" instance=ExtResource( 5 )]
+[node name="TestBreakable4" parent="tilemap/BreakableGroup" index="4" instance=ExtResource( 6 )]
 
 position = Vector2( 592, -176 )
 
-[node name="MovingPlatformGroup" type="Node2D" parent="tilemap" index="2"]
+[node name="MovingPlatformGroup" type="Node2D" parent="tilemap" index="3"]
 
 editor/display_folded = true
 
-[node name="MovingPlatform" parent="tilemap/MovingPlatformGroup" index="0" instance=ExtResource( 6 )]
+[node name="MovingPlatform" parent="tilemap/MovingPlatformGroup" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( 784, -656 )
 motion = Vector2( 0, 704 )
@@ -137,7 +175,7 @@ cycle = 16.0
 linear = false
 start_direction = 1
 
-[node name="PlatformGroup" type="Node2D" parent="tilemap" index="3"]
+[node name="PlatformGroup" type="Node2D" parent="tilemap" index="4"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="tilemap/PlatformGroup" index="0"]
 
@@ -158,39 +196,39 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="tilemap/PlatformGroup/StaticBody2D" index="1"]
 
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( 16, 0 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 192 )
 
 [node name="Sprite1" type="Sprite" parent="tilemap/PlatformGroup/StaticBody2D" index="2"]
 
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( -16, 0 )
 flip_h = true
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 192 )
 
-[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="4"]
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="5"]
 
-[node name="Orc" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 8 )]
+[node name="Orc" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 9 )]
 
 position = Vector2( -80, 256 )
 
-[node name="SwitchGroup" type="Node2D" parent="tilemap" index="5"]
+[node name="SwitchGroup" type="Node2D" parent="tilemap" index="6"]
 
-[node name="FloorSwitch" parent="tilemap/SwitchGroup" index="0" instance=ExtResource( 9 )]
+[node name="FloorSwitch" parent="tilemap/SwitchGroup" index="0" instance=ExtResource( 10 )]
 
 position = Vector2( 336, 320 )
 once = true
 is_on = true
 target_nodes = [ "PlatformGroup/StaticBody2D" ]
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap" index="6"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="7"]
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 10 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 position = Vector2( 1008, 240 )
@@ -201,7 +239,7 @@ teleport_to = Vector2( -1996, 48 )
 
 scale = Vector2( 1, 5 )
 
-[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 10 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 position = Vector2( -624, 240 )
@@ -212,7 +250,7 @@ teleport_to = Vector2( 876, -48 )
 
 scale = Vector2( 1, 5 )
 
-[node name="Teleport2" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 10 )]
+[node name="Teleport2" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 position = Vector2( -624, -1200 )
@@ -223,7 +261,7 @@ teleport_to = Vector2( 748, -16 )
 
 scale = Vector2( 1, 5 )
 
-[node name="boundaries" type="Node2D" parent="tilemap" index="7"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="8"]
 
 [node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
 

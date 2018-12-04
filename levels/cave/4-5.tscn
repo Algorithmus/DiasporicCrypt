@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/cave/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/cave/climbableblock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/cave/BGs/cornerL.png" type="Texture" id=3]
 [ext_resource path="res://scenes/cave/BGs/cornerR.png" type="Texture" id=4]
 [ext_resource path="res://scenes/cave/BGs/ledgeR.png" type="Texture" id=5]
-[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/common/damagables/statues/statue1.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/torch.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/dungeon/ladder/laddertop.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/common/damagables/statues/statue1.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=10]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
 
@@ -85,11 +86,43 @@ position = Vector2( -144, -624 )
 
 texture = ExtResource( 5 )
 
-[node name="LadderGroup" type="Node2D" parent="tilemap" index="1"]
+[node name="TorchGroup" type="Node2D" parent="tilemap" index="1"]
+
+[node name="torch" parent="tilemap/TorchGroup" index="0" instance=ExtResource( 6 )]
+
+position = Vector2( 64, 32 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch2" parent="tilemap/TorchGroup" index="1" instance=ExtResource( 6 )]
+
+position = Vector2( -160, 32 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch3" parent="tilemap/TorchGroup" index="2" instance=ExtResource( 6 )]
+
+position = Vector2( -272, -384 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch4" parent="tilemap/TorchGroup" index="3" instance=ExtResource( 6 )]
+
+position = Vector2( 176, -640 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch5" parent="tilemap/TorchGroup" index="4" instance=ExtResource( 6 )]
+
+position = Vector2( -272, -896 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch6" parent="tilemap/TorchGroup" index="5" instance=ExtResource( 6 )]
+
+position = Vector2( 176, -1152 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="LadderGroup" type="Node2D" parent="tilemap" index="2"]
 
 editor/display_folded = true
 
-[node name="TestLadder" parent="tilemap/LadderGroup" index="0" instance=ExtResource( 6 )]
+[node name="TestLadder" parent="tilemap/LadderGroup" index="0" instance=ExtResource( 7 )]
 
 editor/display_folded = true
 position = Vector2( -48, 240 )
@@ -102,7 +135,7 @@ region_rect = Rect2( 0, 0, 32, 224 )
 
 scale = Vector2( 1, 7 )
 
-[node name="TestLadder1" parent="tilemap/LadderGroup" index="1" instance=ExtResource( 6 )]
+[node name="TestLadder1" parent="tilemap/LadderGroup" index="1" instance=ExtResource( 7 )]
 
 editor/display_folded = true
 position = Vector2( -48, -1232 )
@@ -115,31 +148,32 @@ region_rect = Rect2( 0, 0, 32, 288 )
 
 scale = Vector2( 1, 9 )
 
-[node name="TestLadder 2" parent="tilemap/LadderGroup" index="2" instance=ExtResource( 7 )]
+[node name="TestLadder 2" parent="tilemap/LadderGroup" index="2" instance=ExtResource( 8 )]
 
 position = Vector2( -48, 112 )
 
-[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="2"]
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="3"]
 
-[node name="Statue1" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 8 )]
+[node name="Statue1" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 9 )]
 
-position = Vector2( -256, -224 )
+position = Vector2( -272, -224 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Statue2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 8 )]
+[node name="Statue2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 9 )]
 
 position = Vector2( 176, -480 )
 
-[node name="Statue3" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 8 )]
+[node name="Statue3" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 9 )]
 
 position = Vector2( -272, -736 )
 
-[node name="Statue4" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 8 )]
+[node name="Statue4" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 9 )]
 
 position = Vector2( 176, -992 )
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap" index="3"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="4"]
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 9 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( -48, 368 )
@@ -151,7 +185,7 @@ teleport_to = Vector2( -1392, -336 )
 
 scale = Vector2( 3, 1 )
 
-[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 9 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( -48, -1392 )
@@ -163,7 +197,7 @@ teleport_to = Vector2( 80, 32 )
 
 scale = Vector2( 3, 1 )
 
-[node name="boundaries" type="Node2D" parent="tilemap" index="4"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="5"]
 
 [node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
 

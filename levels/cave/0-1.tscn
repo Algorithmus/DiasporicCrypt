@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/cave/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/cave/slopes/slope31-24.tscn" type="PackedScene" id=2]
@@ -16,8 +16,9 @@
 [ext_resource path="res://scenes/cave/slopes/slope16-23.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/cave/slopes/slope24-31.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/dungeon/slopes/slopea-b.tscn" type="PackedScene" id=16]
-[ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=17]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenes/common/torch.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=19]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
 
@@ -47,6 +48,8 @@ tile_data = PoolIntArray( -917519, 536870915, 0, -917518, 12, 0, -917517, 12, 0,
 _sections_unfolded = [ "Collision" ]
 
 [node name="SlopeGroup" type="Node2D" parent="tilemap" index="0"]
+
+editor/display_folded = true
 
 [node name="Slope31-24" parent="tilemap/SlopeGroup" index="0" instance=ExtResource( 2 )]
 
@@ -336,31 +339,43 @@ position = Vector2( -176, 176 )
 
 position = Vector2( 1072, 176 )
 
-[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="1"]
+[node name="TorchGroup" type="Node2D" parent="tilemap" index="1"]
 
-[node name="Lizardman" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 17 )]
+[node name="torch" parent="tilemap/TorchGroup" index="0" instance=ExtResource( 17 )]
+
+position = Vector2( 128, -128 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch2" parent="tilemap/TorchGroup" index="1" instance=ExtResource( 17 )]
+
+position = Vector2( 1376, -128 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="2"]
+
+[node name="Lizardman" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 18 )]
 
 position = Vector2( 128, -64 )
 
-[node name="Lizardman1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 17 )]
+[node name="Lizardman1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 18 )]
 
 position = Vector2( 1376, -64 )
 
-[node name="Lizardman2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 17 )]
+[node name="Lizardman2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 18 )]
 
 position = Vector2( 656, 128 )
 
-[node name="Lizardman3" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 17 )]
+[node name="Lizardman3" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 18 )]
 
 position = Vector2( 848, 128 )
 
-[node name="Lizardman4" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 17 )]
+[node name="Lizardman4" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 18 )]
 
 position = Vector2( 752, 128 )
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap" index="2"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="3"]
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 18 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 19 )]
 
 editor/display_folded = true
 position = Vector2( -496, 112 )
@@ -371,7 +386,7 @@ teleport_to = Vector2( 428, -208 )
 
 scale = Vector2( 1, 5 )
 
-[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 18 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 19 )]
 
 editor/display_folded = true
 position = Vector2( 2000, 112 )
@@ -382,7 +397,7 @@ teleport_to = Vector2( -300, 16 )
 
 scale = Vector2( 1, 5 )
 
-[node name="boundaries" type="Node2D" parent="tilemap" index="3"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="4"]
 
 [node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
 

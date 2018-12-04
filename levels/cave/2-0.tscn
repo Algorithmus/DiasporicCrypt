@@ -1,24 +1,25 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/cave/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/cave/climbableblock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/cave/BGs/cornerL.png" type="Texture" id=3]
 [ext_resource path="res://scenes/cave/BGs/cornerR.png" type="Texture" id=4]
-[ext_resource path="res://scenes/cave/BGs/edge.png" type="Texture" id=5]
-[ext_resource path="res://scenes/common/switches/floorswitch.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/common/damagables/orc/orc.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/items/magic/thunder.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/common/torch.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/cave/BGs/edge.png" type="Texture" id=6]
+[ext_resource path="res://scenes/common/switches/floorswitch.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/common/damagables/orc/orc.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/items/magic/thunder.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/npcs/npc.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 80 )
 
-[node name="LVL_NOTITLE" type="Node2D"]
+[node name="LVL_NOTITLE" type="Node2D" index="0"]
 
 __meta__ = {
 "__editor_plugin_screen__": "2D"
@@ -121,7 +122,119 @@ position = Vector2( -1552, -784 )
 
 texture = ExtResource( 3 )
 
-[node name="PlatformGroup" type="Node2D" parent="tilemap" index="1"]
+[node name="TorchGroup" type="Node2D" parent="tilemap" index="1"]
+
+[node name="torch" parent="tilemap/TorchGroup" index="0" instance=ExtResource( 5 )]
+
+position = Vector2( -1984, -32 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch2" parent="tilemap/TorchGroup" index="1" instance=ExtResource( 5 )]
+
+position = Vector2( -1344, 16 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch3" parent="tilemap/TorchGroup" index="2" instance=ExtResource( 5 )]
+
+position = Vector2( -576, 16 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch4" parent="tilemap/TorchGroup" index="3" instance=ExtResource( 5 )]
+
+position = Vector2( 192, 16 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch5" parent="tilemap/TorchGroup" index="4" instance=ExtResource( 5 )]
+
+position = Vector2( 960, 16 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch6" parent="tilemap/TorchGroup" index="5" instance=ExtResource( 5 )]
+
+position = Vector2( 1728, 16 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch7" parent="tilemap/TorchGroup" index="6" instance=ExtResource( 5 )]
+
+position = Vector2( 2224, -192 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch8" parent="tilemap/TorchGroup" index="7" instance=ExtResource( 5 )]
+
+position = Vector2( 1360, -208 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch9" parent="tilemap/TorchGroup" index="8" instance=ExtResource( 5 )]
+
+position = Vector2( 592, -208 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch10" parent="tilemap/TorchGroup" index="9" instance=ExtResource( 5 )]
+
+position = Vector2( 16, -336 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch11" parent="tilemap/TorchGroup" index="10" instance=ExtResource( 5 )]
+
+position = Vector2( -960, -208 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch12" parent="tilemap/TorchGroup" index="11" instance=ExtResource( 5 )]
+
+position = Vector2( -1344, -432 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch13" parent="tilemap/TorchGroup" index="12" instance=ExtResource( 5 )]
+
+position = Vector2( 1840, -432 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch14" parent="tilemap/TorchGroup" index="13" instance=ExtResource( 5 )]
+
+position = Vector2( 2224, -592 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch15" parent="tilemap/TorchGroup" index="14" instance=ExtResource( 5 )]
+
+position = Vector2( 1200, -656 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch16" parent="tilemap/TorchGroup" index="15" instance=ExtResource( 5 )]
+
+position = Vector2( 432, -656 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch17" parent="tilemap/TorchGroup" index="16" instance=ExtResource( 5 )]
+
+position = Vector2( -480, -656 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch18" parent="tilemap/TorchGroup" index="17" instance=ExtResource( 5 )]
+
+position = Vector2( -1120, -656 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch19" parent="tilemap/TorchGroup" index="18" instance=ExtResource( 5 )]
+
+position = Vector2( -1344, -880 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch20" parent="tilemap/TorchGroup" index="19" instance=ExtResource( 5 )]
+
+position = Vector2( -144, -880 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch21" parent="tilemap/TorchGroup" index="20" instance=ExtResource( 5 )]
+
+position = Vector2( 816, -880 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch22" parent="tilemap/TorchGroup" index="21" instance=ExtResource( 5 )]
+
+position = Vector2( 2032, -880 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="PlatformGroup" type="Node2D" parent="tilemap" index="2"]
 
 editor/display_folded = true
 
@@ -143,154 +256,158 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="tilemap/PlatformGroup/StaticBody2D" index="1"]
 
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 offset = Vector2( 16, 0 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 160 )
 
 [node name="Sprite1" type="Sprite" parent="tilemap/PlatformGroup/StaticBody2D" index="2"]
 
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 offset = Vector2( -16, 0 )
 flip_h = true
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 160 )
 
-[node name="SwitchGroup" type="Node2D" parent="tilemap" index="2"]
+[node name="SwitchGroup" type="Node2D" parent="tilemap" index="3"]
 
 editor/display_folded = true
 
-[node name="FloorSwitch" parent="tilemap/SwitchGroup" index="0" instance=ExtResource( 6 )]
+[node name="FloorSwitch" parent="tilemap/SwitchGroup" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( 2224, 96 )
 once = true
 is_on = true
 target_nodes = [ "PlatformGroup/StaticBody2D" ]
 
-[node name="PotGroup" type="Node2D" parent="tilemap" index="3"]
+[node name="PotGroup" type="Node2D" parent="tilemap" index="4"]
 
 editor/display_folded = true
 
-[node name="Pot" parent="tilemap/PotGroup" index="0" instance=ExtResource( 7 )]
+[node name="Pot" parent="tilemap/PotGroup" index="0" instance=ExtResource( 8 )]
 
 position = Vector2( 1968, -400 )
 type = "ITEM"
 reward = "res://scenes/items/gold/gold.tscn"
 value = 100
 
-[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="4"]
-
-[node name="Orc" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 8 )]
-
-position = Vector2( 1840, -192 )
-
-[node name="Orc2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 8 )]
-
-position = Vector2( 1440, -192 )
-
-[node name="Orc3" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 8 )]
-
-position = Vector2( 976, -192 )
-
-[node name="Orc4" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 8 )]
-
-position = Vector2( 1728, -416 )
-
-[node name="Orc5" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 8 )]
-
-position = Vector2( 1296, -416 )
-
-[node name="Orc6" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 8 )]
-
-position = Vector2( 912, -416 )
-
-[node name="Orc7" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 8 )]
-
-position = Vector2( 528, -416 )
-
-[node name="Orc8" parent="tilemap/EnemiesGroup" index="7" instance=ExtResource( 8 )]
-
-position = Vector2( 688, -416 )
-
-[node name="Orc9" parent="tilemap/EnemiesGroup" index="8" instance=ExtResource( 8 )]
-
-position = Vector2( -80, -192 )
-
-[node name="Orc10" parent="tilemap/EnemiesGroup" index="9" instance=ExtResource( 8 )]
-
-position = Vector2( -544, -192 )
-
-[node name="Orc11" parent="tilemap/EnemiesGroup" index="10" instance=ExtResource( 8 )]
-
-position = Vector2( -1008, -192 )
-
-[node name="Orc12" parent="tilemap/EnemiesGroup" index="11" instance=ExtResource( 8 )]
-
-position = Vector2( -1264, -192 )
-
-[node name="Orc13" parent="tilemap/EnemiesGroup" index="12" instance=ExtResource( 8 )]
-
-position = Vector2( -1280, -416 )
-
-[node name="Orc14" parent="tilemap/EnemiesGroup" index="13" instance=ExtResource( 8 )]
-
-position = Vector2( -736, -416 )
-
-[node name="Orc15" parent="tilemap/EnemiesGroup" index="14" instance=ExtResource( 8 )]
-
-position = Vector2( -512, -416 )
-
-[node name="Lizardman24" parent="tilemap/EnemiesGroup" index="15" instance=ExtResource( 9 )]
-
-position = Vector2( -1280, -640 )
-
-[node name="Lizardman25" parent="tilemap/EnemiesGroup" index="16" instance=ExtResource( 9 )]
-
-position = Vector2( -976, -640 )
-
-[node name="Lizardman26" parent="tilemap/EnemiesGroup" index="17" instance=ExtResource( 9 )]
-
-position = Vector2( -608, -640 )
-
-[node name="Lizardman27" parent="tilemap/EnemiesGroup" index="18" instance=ExtResource( 9 )]
-
-position = Vector2( -352, -640 )
-
-[node name="Lizardman28" parent="tilemap/EnemiesGroup" index="19" instance=ExtResource( 9 )]
-
-position = Vector2( 64, -640 )
-
-[node name="Lizardman29" parent="tilemap/EnemiesGroup" index="20" instance=ExtResource( 9 )]
-
-position = Vector2( 320, -640 )
-
-[node name="Lizardman30" parent="tilemap/EnemiesGroup" index="21" instance=ExtResource( 9 )]
-
-position = Vector2( 656, -640 )
-
-[node name="Lizardman31" parent="tilemap/EnemiesGroup" index="22" instance=ExtResource( 9 )]
-
-position = Vector2( 992, -640 )
-
-[node name="Lizardman32" parent="tilemap/EnemiesGroup" index="23" instance=ExtResource( 9 )]
-
-position = Vector2( 1280, -640 )
-
-[node name="Lizardman33" parent="tilemap/EnemiesGroup" index="24" instance=ExtResource( 9 )]
-
-position = Vector2( 1696, -640 )
-
-[node name="MagicGroup" type="Node2D" parent="tilemap" index="5"]
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="5"]
 
 editor/display_folded = true
 
-[node name="ITEM_THUNDER" parent="tilemap/MagicGroup" index="0" instance=ExtResource( 10 )]
+[node name="Orc" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 9 )]
+
+position = Vector2( 1840, -192 )
+
+[node name="Orc2" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 9 )]
+
+position = Vector2( 1440, -192 )
+
+[node name="Orc3" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 9 )]
+
+position = Vector2( 976, -192 )
+
+[node name="Orc4" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 9 )]
+
+position = Vector2( 1728, -416 )
+
+[node name="Orc5" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 9 )]
+
+position = Vector2( 1296, -416 )
+
+[node name="Orc6" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 9 )]
+
+position = Vector2( 912, -416 )
+
+[node name="Orc7" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 9 )]
+
+position = Vector2( 528, -416 )
+
+[node name="Orc8" parent="tilemap/EnemiesGroup" index="7" instance=ExtResource( 9 )]
+
+position = Vector2( 688, -416 )
+
+[node name="Orc9" parent="tilemap/EnemiesGroup" index="8" instance=ExtResource( 9 )]
+
+position = Vector2( -80, -192 )
+
+[node name="Orc10" parent="tilemap/EnemiesGroup" index="9" instance=ExtResource( 9 )]
+
+position = Vector2( -544, -192 )
+
+[node name="Orc11" parent="tilemap/EnemiesGroup" index="10" instance=ExtResource( 9 )]
+
+position = Vector2( -1008, -192 )
+
+[node name="Orc12" parent="tilemap/EnemiesGroup" index="11" instance=ExtResource( 9 )]
+
+position = Vector2( -1264, -192 )
+
+[node name="Orc13" parent="tilemap/EnemiesGroup" index="12" instance=ExtResource( 9 )]
+
+position = Vector2( -1280, -416 )
+
+[node name="Orc14" parent="tilemap/EnemiesGroup" index="13" instance=ExtResource( 9 )]
+
+position = Vector2( -736, -416 )
+
+[node name="Orc15" parent="tilemap/EnemiesGroup" index="14" instance=ExtResource( 9 )]
+
+position = Vector2( -512, -416 )
+
+[node name="Lizardman24" parent="tilemap/EnemiesGroup" index="15" instance=ExtResource( 10 )]
+
+position = Vector2( -1280, -640 )
+
+[node name="Lizardman25" parent="tilemap/EnemiesGroup" index="16" instance=ExtResource( 10 )]
+
+position = Vector2( -976, -640 )
+
+[node name="Lizardman26" parent="tilemap/EnemiesGroup" index="17" instance=ExtResource( 10 )]
+
+position = Vector2( -608, -640 )
+
+[node name="Lizardman27" parent="tilemap/EnemiesGroup" index="18" instance=ExtResource( 10 )]
+
+position = Vector2( -352, -640 )
+
+[node name="Lizardman28" parent="tilemap/EnemiesGroup" index="19" instance=ExtResource( 10 )]
+
+position = Vector2( 64, -640 )
+
+[node name="Lizardman29" parent="tilemap/EnemiesGroup" index="20" instance=ExtResource( 10 )]
+
+position = Vector2( 320, -640 )
+
+[node name="Lizardman30" parent="tilemap/EnemiesGroup" index="21" instance=ExtResource( 10 )]
+
+position = Vector2( 656, -640 )
+
+[node name="Lizardman31" parent="tilemap/EnemiesGroup" index="22" instance=ExtResource( 10 )]
+
+position = Vector2( 992, -640 )
+
+[node name="Lizardman32" parent="tilemap/EnemiesGroup" index="23" instance=ExtResource( 10 )]
+
+position = Vector2( 1280, -640 )
+
+[node name="Lizardman33" parent="tilemap/EnemiesGroup" index="24" instance=ExtResource( 10 )]
+
+position = Vector2( 1696, -640 )
+
+[node name="MagicGroup" type="Node2D" parent="tilemap" index="6"]
+
+editor/display_folded = true
+
+[node name="ITEM_THUNDER" parent="tilemap/MagicGroup" index="0" instance=ExtResource( 11 )]
 
 position = Vector2( 2224, 48 )
 
-[node name="NPCGroup" type="Node2D" parent="tilemap" index="6"]
+[node name="NPCGroup" type="Node2D" parent="tilemap" index="7"]
 
-[node name="NPC" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 11 )]
+editor/display_folded = true
+
+[node name="NPC" parent="tilemap/NPCGroup" index="0" instance=ExtResource( 12 )]
 
 position = Vector2( 2224, -864 )
 dialogues = [ [ -1, "CHARACTER_POTIONSMASTER", "DIAG_CAVE0", null, [ [ "KEY_YES", "shop", "SHOP_POTIONSMASTER0", true ], [ "KEY_NO", "end" ] ] ] ]
@@ -299,9 +416,9 @@ dialogues = [ [ -1, "CHARACTER_POTIONSMASTER", "DIAG_CAVE0", null, [ [ "KEY_YES"
 
 scale = Vector2( -1, 1 )
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap" index="7"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="8"]
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 12 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 13 )]
 
 editor/display_folded = true
 position = Vector2( -2160, 16 )
@@ -312,7 +429,7 @@ teleport_to = Vector2( 684, -2288 )
 
 scale = Vector2( 1, 5 )
 
-[node name="boundaries" type="Node2D" parent="tilemap" index="8"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="9"]
 
 [node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
 

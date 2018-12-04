@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/cave/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/cave/climbableblock.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/common/bloodfountain/bloodfountain.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/common/damagables/orc/orc.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/common/damagables/flyingskull/flyingskull.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/torch.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/common/bloodfountain/bloodfountain.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/damagables/orc/orc.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/common/damagables/flyingskull/flyingskull.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=7]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
 
@@ -50,53 +51,80 @@ flip_h = true
 editor/display_folded = true
 position = Vector2( 336, -2192 )
 
-[node name="BloodFountainGroup" type="Node2D" parent="tilemap" index="1"]
+[node name="TorchGroup" type="Node2D" parent="tilemap" index="1"]
 
-[node name="BloodFountain" parent="tilemap/BloodFountainGroup" index="0" instance=ExtResource( 3 )]
+[node name="torch" parent="tilemap/TorchGroup" index="0" instance=ExtResource( 3 )]
+
+position = Vector2( -128, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch2" parent="tilemap/TorchGroup" index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 416, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch3" parent="tilemap/TorchGroup" index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 608, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch4" parent="tilemap/TorchGroup" index="3" instance=ExtResource( 3 )]
+
+position = Vector2( 512, -2304 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch5" parent="tilemap/TorchGroup" index="4" instance=ExtResource( 3 )]
+
+position = Vector2( -112, -2304 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="BloodFountainGroup" type="Node2D" parent="tilemap" index="2"]
+
+[node name="BloodFountain" parent="tilemap/BloodFountainGroup" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( 512, 32 )
 
-[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="2"]
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="3"]
 
-[node name="Orc" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 4 )]
+[node name="Orc" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( 112, 32 )
 
-[node name="FlyingSkull" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 5 )]
+[node name="FlyingSkull" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 6 )]
 
 position = Vector2( -96, -272 )
 
-[node name="FlyingSkull1" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 5 )]
+[node name="FlyingSkull1" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 6 )]
 
 position = Vector2( 160, -480 )
 
-[node name="FlyingSkull2" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 5 )]
+[node name="FlyingSkull2" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 6 )]
 
 position = Vector2( -96, -720 )
 
-[node name="FlyingSkull3" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 5 )]
+[node name="FlyingSkull3" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 6 )]
 
 position = Vector2( 160, -960 )
 
-[node name="FlyingSkull4" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 5 )]
+[node name="FlyingSkull4" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 6 )]
 
 position = Vector2( -96, -1232 )
 
-[node name="FlyingSkull5" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 5 )]
+[node name="FlyingSkull5" parent="tilemap/EnemiesGroup" index="6" instance=ExtResource( 6 )]
 
 position = Vector2( 160, -1536 )
 
-[node name="FlyingSkull6" parent="tilemap/EnemiesGroup" index="7" instance=ExtResource( 5 )]
+[node name="FlyingSkull6" parent="tilemap/EnemiesGroup" index="7" instance=ExtResource( 6 )]
 
 position = Vector2( -96, -1856 )
 
-[node name="FlyingSkull7" parent="tilemap/EnemiesGroup" index="8" instance=ExtResource( 5 )]
+[node name="FlyingSkull7" parent="tilemap/EnemiesGroup" index="8" instance=ExtResource( 6 )]
 
 position = Vector2( -96, -2368 )
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap" index="3"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="4"]
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 6 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 7 )]
 
 editor/display_folded = true
 position = Vector2( -336, 16 )
@@ -107,7 +135,7 @@ teleport_to = Vector2( 1964, 112 )
 
 scale = Vector2( 1, 5 )
 
-[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 6 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 7 )]
 
 editor/display_folded = true
 position = Vector2( -336, -2288 )
@@ -118,7 +146,7 @@ teleport_to = Vector2( 524, 48 )
 
 scale = Vector2( 1, 5 )
 
-[node name="Teleport2" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 6 )]
+[node name="Teleport2" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 7 )]
 
 editor/display_folded = true
 position = Vector2( 720, -2288 )
@@ -129,7 +157,7 @@ teleport_to = Vector2( -2124, 16 )
 
 scale = Vector2( 1, 5 )
 
-[node name="boundaries" type="Node2D" parent="tilemap" index="4"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="5"]
 
 [node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
 

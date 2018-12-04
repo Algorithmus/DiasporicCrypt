@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/fallislandcastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/fallislandcastle/climbableblock.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/common/damagables/flyingskull/flyingskull.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/lamp.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/common/damagables/flyingskull/flyingskull.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=5]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
 
@@ -62,17 +63,34 @@ position = Vector2( -208, 624 )
 
 flip_h = false
 
-[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="1"]
+[node name="LampGroup" type="Node2D" parent="tilemap" index="1"]
 
-[node name="FlyingSkull" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 3 )]
+[node name="lamp" parent="tilemap/LampGroup" index="0" instance=ExtResource( 3 )]
+
+position = Vector2( 512, -272 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="lamp2" parent="tilemap/LampGroup" index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 0, -112 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="lamp3" parent="tilemap/LampGroup" index="2" instance=ExtResource( 3 )]
+
+position = Vector2( -128, 400 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="2"]
+
+[node name="FlyingSkull" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( -256, 432 )
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap" index="2"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="3"]
 
 editor/display_folded = true
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 4 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 position = Vector2( 752, -144 )
@@ -83,7 +101,7 @@ teleport_to = Vector2( -1740, 368 )
 
 scale = Vector2( 1, 5 )
 
-[node name="Teleport3" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 4 )]
+[node name="Teleport3" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 position = Vector2( -368, 528 )
@@ -94,7 +112,7 @@ teleport_to = Vector2( 460, 336 )
 
 scale = Vector2( 1, 5 )
 
-[node name="Teleport1" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 4 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 position = Vector2( -192, 816 )
@@ -106,7 +124,7 @@ teleport_to = Vector2( -352, -1328 )
 
 scale = Vector2( 8, 1 )
 
-[node name="Teleport2" parent="tilemap/TeleportGroup" index="3" instance=ExtResource( 4 )]
+[node name="Teleport2" parent="tilemap/TeleportGroup" index="3" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 position = Vector2( 384, 816 )
@@ -118,7 +136,7 @@ teleport_to = Vector2( 224, -1328 )
 
 scale = Vector2( 20, 1 )
 
-[node name="boundaries" type="Node2D" parent="tilemap" index="3"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="4"]
 
 editor/display_folded = true
 

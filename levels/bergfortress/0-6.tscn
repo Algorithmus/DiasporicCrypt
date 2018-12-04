@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/fallislandcastle/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/fallislandcastle/slopes/slope15-0.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/fallislandcastle/slopes/slope31-16.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/dungeon/slopes/slopea-b.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/fallislandcastle/climbableblock.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/common/breakables/chainbreakable.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/lamp.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/breakables/chainbreakable.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/common/breakables/pot.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=10]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
 
@@ -158,74 +159,81 @@ position = Vector2( -752, 176 )
 
 flip_h = false
 
-[node name="BreakableGroup" type="Node2D" parent="tilemap" index="2"]
+[node name="LampGroup" type="Node2D" parent="tilemap" index="2"]
+
+[node name="lamp" parent="tilemap/LampGroup" index="0" instance=ExtResource( 6 )]
+
+position = Vector2( 96, 80 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="BreakableGroup" type="Node2D" parent="tilemap" index="3"]
 
 editor/display_folded = true
 
-[node name="ChainBreakable1" parent="tilemap/BreakableGroup" index="0" instance=ExtResource( 6 )]
+[node name="ChainBreakable1" parent="tilemap/BreakableGroup" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( -800, 208 )
 hp = 10
 
-[node name="ChainBreakable2" parent="tilemap/BreakableGroup" index="1" instance=ExtResource( 6 )]
+[node name="ChainBreakable2" parent="tilemap/BreakableGroup" index="1" instance=ExtResource( 7 )]
 
 position = Vector2( -800, 240 )
 hp = 10
 
-[node name="ChainBreakable3" parent="tilemap/BreakableGroup" index="2" instance=ExtResource( 6 )]
+[node name="ChainBreakable3" parent="tilemap/BreakableGroup" index="2" instance=ExtResource( 7 )]
 
 position = Vector2( -800, 272 )
 hp = 10
 
-[node name="ChainBreakable4" parent="tilemap/BreakableGroup" index="3" instance=ExtResource( 6 )]
+[node name="ChainBreakable4" parent="tilemap/BreakableGroup" index="3" instance=ExtResource( 7 )]
 
 position = Vector2( -800, 304 )
 hp = 10
 
-[node name="ChainBreakable5" parent="tilemap/BreakableGroup" index="4" instance=ExtResource( 6 )]
+[node name="ChainBreakable5" parent="tilemap/BreakableGroup" index="4" instance=ExtResource( 7 )]
 
 position = Vector2( -800, 336 )
 hp = 10
 
-[node name="ChainBreakable6" parent="tilemap/BreakableGroup" index="5" instance=ExtResource( 6 )]
+[node name="ChainBreakable6" parent="tilemap/BreakableGroup" index="5" instance=ExtResource( 7 )]
 
 position = Vector2( -800, 368 )
 hp = 10
 
-[node name="ChainBreakable7" parent="tilemap/BreakableGroup" index="6" instance=ExtResource( 6 )]
+[node name="ChainBreakable7" parent="tilemap/BreakableGroup" index="6" instance=ExtResource( 7 )]
 
 position = Vector2( -800, 400 )
 hp = 10
 
-[node name="ChainBreakable8" parent="tilemap/BreakableGroup" index="7" instance=ExtResource( 6 )]
+[node name="ChainBreakable8" parent="tilemap/BreakableGroup" index="7" instance=ExtResource( 7 )]
 
 position = Vector2( -800, 432 )
 hp = 10
 
-[node name="ChainBreakable9" parent="tilemap/BreakableGroup" index="8" instance=ExtResource( 6 )]
+[node name="ChainBreakable9" parent="tilemap/BreakableGroup" index="8" instance=ExtResource( 7 )]
 
 position = Vector2( -800, 464 )
 hp = 10
 
-[node name="PotGroup" type="Node2D" parent="tilemap" index="3"]
+[node name="PotGroup" type="Node2D" parent="tilemap" index="4"]
 
 editor/display_folded = true
 
-[node name="Pot" parent="tilemap/PotGroup" index="0" instance=ExtResource( 7 )]
+[node name="Pot" parent="tilemap/PotGroup" index="0" instance=ExtResource( 8 )]
 
 position = Vector2( -624, 432 )
 
-[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="4"]
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="5"]
 
 editor/display_folded = true
 
-[node name="Lizardman" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 8 )]
+[node name="Lizardman" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 9 )]
 
 position = Vector2( -464, 416 )
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap" index="5"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="6"]
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 9 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 464, 144 )
@@ -236,7 +244,7 @@ teleport_to = Vector2( -684, 48 )
 
 scale = Vector2( 1, 5 )
 
-[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 9 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( -912, 80 )
@@ -247,7 +255,7 @@ teleport_to = Vector2( 556, 816 )
 
 scale = Vector2( 1, 5 )
 
-[node name="Teleport2" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 9 )]
+[node name="Teleport2" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( -912, 400 )
@@ -258,7 +266,7 @@ teleport_to = Vector2( 556, -16 )
 
 scale = Vector2( 1, 5 )
 
-[node name="boundaries" type="Node2D" parent="tilemap" index="6"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="7"]
 
 editor/display_folded = true
 

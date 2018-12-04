@@ -1,14 +1,15 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/cave/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/cave/climbableblock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/cave/BGs/cornerL.png" type="Texture" id=3]
 [ext_resource path="res://scenes/cave/BGs/cornerR.png" type="Texture" id=4]
-[ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/common/damagables/skeleton/skeleton.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/cave/BGs/floor.png" type="Texture" id=7]
-[ext_resource path="res://scenes/common/BaseWatcher.gd" type="Script" id=8]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/torch.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/common/damagables/lizardman/lizardman.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/damagables/skeleton/skeleton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/cave/BGs/floor.png" type="Texture" id=8]
+[ext_resource path="res://scenes/common/BaseWatcher.gd" type="Script" id=9]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -82,25 +83,51 @@ position = Vector2( -80, -240 )
 
 texture = ExtResource( 4 )
 
-[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="1"]
+[node name="TorchGroup" type="Node2D" parent="tilemap" index="1"]
 
-[node name="Lizardman" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 5 )]
+[node name="torch" parent="tilemap/TorchGroup" index="0" instance=ExtResource( 5 )]
+
+position = Vector2( 560, -64 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch2" parent="tilemap/TorchGroup" index="1" instance=ExtResource( 5 )]
+
+position = Vector2( 32, -64 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch3" parent="tilemap/TorchGroup" index="2" instance=ExtResource( 5 )]
+
+position = Vector2( -400, -416 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch4" parent="tilemap/TorchGroup" index="3" instance=ExtResource( 5 )]
+
+position = Vector2( 320, -416 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="2"]
+
+editor/display_folded = true
+
+[node name="Lizardman" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 6 )]
 
 position = Vector2( -192, -320 )
 
-[node name="Lizardman1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 5 )]
+[node name="Lizardman1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 6 )]
 
 position = Vector2( 368, -320 )
 
-[node name="Lizardman2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 5 )]
+[node name="Lizardman2" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 6 )]
 
 position = Vector2( 96, -320 )
 
-[node name="Skeleton" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 6 )]
+[node name="Skeleton" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 7 )]
 
 position = Vector2( -32, -304 )
 
-[node name="PlatformGroup" type="Node2D" parent="tilemap" index="2"]
+[node name="PlatformGroup" type="Node2D" parent="tilemap" index="3"]
+
+editor/display_folded = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="tilemap/PlatformGroup" index="0"]
 
@@ -120,22 +147,22 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="tilemap/PlatformGroup/StaticBody2D" index="1"]
 
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( 0, -16 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 224, 32 )
 
 [node name="Sprite1" type="Sprite" parent="tilemap/PlatformGroup/StaticBody2D" index="2"]
 
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( 0, 16 )
 flip_v = true
 region_enabled = true
 region_rect = Rect2( 0, 0, 224, 32 )
 
-[node name="Watcher" type="Node2D" parent="tilemap" index="3"]
+[node name="Watcher" type="Node2D" parent="tilemap" index="4"]
 
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 reward = "PlatformGroup/StaticBody2D"
 target_container = "EnemiesGroup"
 watch_class = "res://scenes/common/damagables/BaseEnemy.gd"
@@ -143,9 +170,9 @@ invert = true
 show_target = false
 target_pos = Vector2( 0, 0 )
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap" index="4"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="5"]
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 9 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 32, 336 )
@@ -157,7 +184,7 @@ teleport_to = Vector2( 160, -1040 )
 
 scale = Vector2( 6, 1 )
 
-[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 9 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( 784, -16 )
@@ -168,7 +195,7 @@ teleport_to = Vector2( -588, -1200 )
 
 scale = Vector2( 1, 5 )
 
-[node name="Teleport2" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 9 )]
+[node name="Teleport2" parent="tilemap/TeleportGroup" index="2" instance=ExtResource( 10 )]
 
 editor/display_folded = true
 position = Vector2( -624, -336 )
@@ -179,7 +206,7 @@ teleport_to = Vector2( 940, -368 )
 
 scale = Vector2( 1, 5 )
 
-[node name="boundaries" type="Node2D" parent="tilemap" index="5"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="6"]
 
 [node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
 

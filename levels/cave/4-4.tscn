@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/cave/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/dungeon/ladder/ladder.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/common/damagables/minotaur/minotaur.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/common/damagables/sorcerer/sorcerer.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/common/damagables/enchantedarmor/enchantedarmor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/torch.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/common/damagables/minotaur/minotaur.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/common/damagables/sorcerer/sorcerer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/common/damagables/enchantedarmor/enchantedarmor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/common/teleport.tscn" type="PackedScene" id=7]
 
 [node name="LVL_NOTITLE" type="Node2D" index="0"]
 
@@ -51,37 +52,61 @@ region_rect = Rect2( 0, 0, 32, 320 )
 
 scale = Vector2( 1, 10 )
 
-[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="1"]
+[node name="TorchGroup" type="Node2D" parent="tilemap" index="1"]
+
+[node name="torch" parent="tilemap/TorchGroup" index="0" instance=ExtResource( 3 )]
+
+position = Vector2( 704, 32 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch2" parent="tilemap/TorchGroup" index="1" instance=ExtResource( 3 )]
+
+position = Vector2( -96, 32 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch3" parent="tilemap/TorchGroup" index="2" instance=ExtResource( 3 )]
+
+position = Vector2( -608, 32 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="torch4" parent="tilemap/TorchGroup" index="3" instance=ExtResource( 3 )]
+
+position = Vector2( -1392, 32 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="EnemiesGroup" type="Node2D" parent="tilemap" index="2"]
 
 editor/display_folded = true
 
-[node name="Minotaur" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 3 )]
+[node name="Minotaur" parent="tilemap/EnemiesGroup" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( -1040, 48 )
+projectile_offset = Vector2( 0, 0 )
 
-[node name="Minotaur1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 3 )]
+[node name="Minotaur1" parent="tilemap/EnemiesGroup" index="1" instance=ExtResource( 4 )]
 
 position = Vector2( -32, 48 )
+projectile_offset = Vector2( 0, 0 )
 
-[node name="Sorcerer" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 4 )]
+[node name="Sorcerer" parent="tilemap/EnemiesGroup" index="2" instance=ExtResource( 5 )]
 
 position = Vector2( 240, 64 )
 
-[node name="Sorcerer1" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 4 )]
+[node name="Sorcerer1" parent="tilemap/EnemiesGroup" index="3" instance=ExtResource( 5 )]
 
 position = Vector2( -448, 64 )
 
-[node name="Sorcerer2" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 4 )]
+[node name="Sorcerer2" parent="tilemap/EnemiesGroup" index="4" instance=ExtResource( 5 )]
 
 position = Vector2( -752, 64 )
 
-[node name="EnchantedArmor" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 5 )]
+[node name="EnchantedArmor" parent="tilemap/EnemiesGroup" index="5" instance=ExtResource( 6 )]
 
 position = Vector2( -240, 64 )
 
-[node name="TeleportGroup" type="Node2D" parent="tilemap" index="2"]
+[node name="TeleportGroup" type="Node2D" parent="tilemap" index="3"]
 
-[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 6 )]
+[node name="Teleport" parent="tilemap/TeleportGroup" index="0" instance=ExtResource( 7 )]
 
 editor/display_folded = true
 position = Vector2( 880, 48 )
@@ -92,7 +117,7 @@ teleport_to = Vector2( -332, 336 )
 
 scale = Vector2( 1, 5 )
 
-[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 6 )]
+[node name="Teleport1" parent="tilemap/TeleportGroup" index="1" instance=ExtResource( 7 )]
 
 editor/display_folded = true
 position = Vector2( -1392, -432 )
@@ -104,7 +129,7 @@ teleport_to = Vector2( -48, 256 )
 
 scale = Vector2( 3, 1 )
 
-[node name="boundaries" type="Node2D" parent="tilemap" index="3"]
+[node name="boundaries" type="Node2D" parent="tilemap" index="4"]
 
 [node name="NW" type="Position2D" parent="tilemap/boundaries" index="0"]
 
