@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/springislandcastle/BGs/floor.png" type="Texture" id=1]
 [ext_resource path="res://scenes/springislandcastle/BGs/corner.png" type="Texture" id=2]
@@ -14,56 +14,49 @@
 [ext_resource path="res://scenes/fallislandcastle/BGs/walltile.png" type="Texture" id=12]
 [ext_resource path="res://scenes/fallislandcastle/BGs/mirror.png" type="Texture" id=13]
 [ext_resource path="res://scenes/fallislandcastle/BGs/window.png" type="Texture" id=14]
-[ext_resource path="res://scenes/springislandcastle/slopes/slopetile0-31.png" type="Texture" id=15]
-[ext_resource path="res://scenes/springislandcastle/slopes/slopetile0-15.png" type="Texture" id=16]
-[ext_resource path="res://scenes/springislandcastle/slopes/slopetile0-7.png" type="Texture" id=17]
+[ext_resource path="res://scenes/common/sunbeam-glow.png" type="Texture" id=15]
+[ext_resource path="res://scenes/springislandcastle/slopes/slopetile0-31.png" type="Texture" id=16]
+[ext_resource path="res://scenes/springislandcastle/slopes/slopetile0-15.png" type="Texture" id=17]
+[ext_resource path="res://scenes/springislandcastle/slopes/slopetile0-7.png" type="Texture" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
+[node name="floor" type="Sprite" parent="." index="0"]
 
-[node name="floor" type="Sprite" parent="."]
-
-editor/display_folded = true
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 texture = ExtResource( 1 )
-self_modulate = Color( 1, 0.792157, 0.54902, 1 )
+_sections_unfolded = [ "Visibility" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="floor"]
+[node name="StaticBody2D" type="StaticBody2D" parent="floor" index="0"]
 
 input_pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
 collision_layer = 1
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+_sections_unfolded = [ "Visibility" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="floor/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor/StaticBody2D" index="0"]
 
 shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
 
-[node name="floor_corner" type="Sprite" parent="."]
+[node name="floor_corner" type="Sprite" parent="." index="1"]
 
-editor/display_folded = true
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 position = Vector2( 32, 0 )
 texture = ExtResource( 2 )
-self_modulate = Color( 1, 0.792157, 0.54902, 1 )
+_sections_unfolded = [ "Visibility" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="floor_corner"]
+[node name="StaticBody2D" type="StaticBody2D" parent="floor_corner" index="0"]
 
 input_pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
 collision_layer = 1
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
@@ -71,24 +64,20 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="floor_corner/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor_corner/StaticBody2D" index="0"]
 
 shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
 
-[node name="wall_edge" type="Sprite" parent="."]
+[node name="wall_edge" type="Sprite" parent="." index="2"]
 
+modulate = Color( 0.572549, 0.490196, 0.627451, 1 )
 position = Vector2( 64, 0 )
 texture = ExtResource( 3 )
-self_modulate = Color( 0.574015, 0.49379, 0.628906, 1 )
+_sections_unfolded = [ "Visibility" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="wall_edge"]
+[node name="StaticBody2D" type="StaticBody2D" parent="wall_edge" index="0"]
 
 input_pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
 collision_layer = 1
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
@@ -96,25 +85,21 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_edge/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_edge/StaticBody2D" index="0"]
 
 shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
 
-[node name="wall_corner" type="Sprite" parent="."]
+[node name="wall_corner" type="Sprite" parent="." index="3"]
 
 editor/display_folded = true
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 position = Vector2( 96, 0 )
 texture = ExtResource( 4 )
-self_modulate = Color( 1, 0.792157, 0.54902, 1 )
+_sections_unfolded = [ "Visibility" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="wall_corner"]
+[node name="StaticBody2D" type="StaticBody2D" parent="wall_corner" index="0"]
 
 input_pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
 collision_layer = 1
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
@@ -122,25 +107,20 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_corner/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_corner/StaticBody2D" index="0"]
 
 shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
 
-[node name="wall_line" type="Sprite" parent="."]
+[node name="wall_line" type="Sprite" parent="." index="4"]
 
-editor/display_folded = true
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 position = Vector2( 128, 0 )
 texture = ExtResource( 5 )
-self_modulate = Color( 1, 0.792157, 0.54902, 1 )
+_sections_unfolded = [ "Visibility" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="wall_line"]
+[node name="StaticBody2D" type="StaticBody2D" parent="wall_line" index="0"]
 
 input_pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
 collision_layer = 1
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
@@ -148,25 +128,21 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_line/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_line/StaticBody2D" index="0"]
 
 shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
 
-[node name="wall" type="Sprite" parent="."]
+[node name="wall" type="Sprite" parent="." index="5"]
 
 editor/display_folded = true
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 position = Vector2( 160, 0 )
 texture = ExtResource( 6 )
-self_modulate = Color( 1, 0.792157, 0.54902, 1 )
+_sections_unfolded = [ "Visibility" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="wall"]
+[node name="StaticBody2D" type="StaticBody2D" parent="wall" index="0"]
 
 input_pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
 collision_layer = 1
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
@@ -174,111 +150,146 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/StaticBody2D" index="0"]
 
 shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
 
-[node name="mural" type="Sprite" parent="."]
+[node name="mural" type="Sprite" parent="." index="6"]
 
 position = Vector2( 48, 144 )
 texture = ExtResource( 7 )
 
-[node name="wallpaper" type="Sprite" parent="."]
+[node name="wallpaper" type="Sprite" parent="." index="7"]
 
 position = Vector2( 128, 32 )
 texture = ExtResource( 8 )
 
-[node name="ledge" type="Sprite" parent="."]
+[node name="ledge" type="Sprite" parent="." index="8"]
 
 position = Vector2( 160, 32 )
 texture = ExtResource( 9 )
 
-[node name="ledge1" type="Sprite" parent="."]
+[node name="ledge1" type="Sprite" parent="." index="9"]
 
 position = Vector2( 192, 32 )
 texture = ExtResource( 10 )
 
-[node name="ceiling" type="Sprite" parent="."]
+[node name="ceiling" type="Sprite" parent="." index="10"]
 
 position = Vector2( 240, 48 )
 texture = ExtResource( 11 )
 
-[node name="ceiling1" type="Sprite" parent="."]
+[node name="ceiling1" type="Sprite" parent="." index="11"]
 
 position = Vector2( 368, 64 )
 texture = ExtResource( 12 )
 
-[node name="mirror" type="Sprite" parent="."]
+[node name="mirror" type="Sprite" parent="." index="12"]
 
 position = Vector2( 496, 144 )
 texture = ExtResource( 13 )
 
-[node name="window" type="Sprite" parent="."]
+[node name="window" type="Sprite" parent="." index="13"]
 
 position = Vector2( 624, 144 )
 texture = ExtResource( 14 )
 
-[node name="slope0-31" type="Sprite" parent="."]
+[node name="Light2D" type="Light2D" parent="window" index="0"]
 
-position = Vector2( 192, 0 )
+position = Vector2( 0, -17 )
+scale = Vector2( 4, 5.5 )
+enabled = true
+editor_only = false
 texture = ExtResource( 15 )
-self_modulate = Color( 1, 0.792157, 0.54902, 1 )
+offset = Vector2( 0, 0 )
+texture_scale = 1.0
+color = Color( 1, 0.820312, 0.28125, 1 )
+energy = 1.0
+mode = 0
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 1024
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="slope0-31" type="Sprite" parent="." index="14"]
+
+modulate = Color( 1, 0.792157, 0.54902, 1 )
+position = Vector2( 192, 0 )
+texture = ExtResource( 16 )
 region_enabled = true
 region_rect = Rect2( 0, 32, 32, 32 )
+_sections_unfolded = [ "Visibility" ]
 
-[node name="slope0-15" type="Sprite" parent="."]
+[node name="slope0-15" type="Sprite" parent="." index="15"]
 
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 position = Vector2( 224, 0 )
-texture = ExtResource( 16 )
-self_modulate = Color( 1, 0.792938, 0.550781, 1 )
+texture = ExtResource( 17 )
 region_enabled = true
 region_rect = Rect2( 0, 32, 32, 32 )
+_sections_unfolded = [ "Visibility" ]
 
-[node name="slope16-31" type="Sprite" parent="."]
+[node name="slope16-31" type="Sprite" parent="." index="16"]
 
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 position = Vector2( 256, 0 )
-texture = ExtResource( 16 )
-self_modulate = Color( 1, 0.792157, 0.54902, 1 )
+texture = ExtResource( 17 )
 region_enabled = true
 region_rect = Rect2( 32, 32, 32, 32 )
+_sections_unfolded = [ "Visibility" ]
 
-[node name="slope0-7" type="Sprite" parent="."]
+[node name="slope0-7" type="Sprite" parent="." index="17"]
 
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 position = Vector2( 288, 0 )
-texture = ExtResource( 17 )
-self_modulate = Color( 1, 0.792157, 0.54902, 1 )
+texture = ExtResource( 18 )
 region_enabled = true
 region_rect = Rect2( 0, 32, 32, 32 )
+_sections_unfolded = [ "Visibility" ]
 
-[node name="slope8-15" type="Sprite" parent="."]
+[node name="slope8-15" type="Sprite" parent="." index="18"]
 
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 position = Vector2( 320, 0 )
-texture = ExtResource( 17 )
-self_modulate = Color( 1, 0.792157, 0.54902, 1 )
+texture = ExtResource( 18 )
 region_enabled = true
 region_rect = Rect2( 32, 32, 32, 32 )
+_sections_unfolded = [ "Visibility" ]
 
-[node name="slope16-23" type="Sprite" parent="."]
+[node name="slope16-23" type="Sprite" parent="." index="19"]
 
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 position = Vector2( 352, 0 )
-texture = ExtResource( 17 )
-self_modulate = Color( 1, 0.792157, 0.54902, 1 )
+texture = ExtResource( 18 )
 region_enabled = true
 region_rect = Rect2( 64, 32, 32, 32 )
+_sections_unfolded = [ "Visibility" ]
 
-[node name="slope24-31" type="Sprite" parent="."]
+[node name="slope24-31" type="Sprite" parent="." index="20"]
 
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 position = Vector2( 384, 0 )
-texture = ExtResource( 17 )
-self_modulate = Color( 1, 0.792157, 0.54902, 1 )
+texture = ExtResource( 18 )
 region_enabled = true
 region_rect = Rect2( 96, 32, 32, 32 )
+_sections_unfolded = [ "Visibility" ]
 
-[node name="slopea-b" type="Sprite" parent="."]
+[node name="slopea-b" type="Sprite" parent="." index="21"]
 
+modulate = Color( 1, 0.792157, 0.54902, 1 )
 position = Vector2( 416, 0 )
 texture = ExtResource( 1 )
-self_modulate = Color( 1, 0.792157, 0.54902, 1 )
 region_rect = Rect2( 96, 32, 32, 32 )
+_sections_unfolded = [ "Visibility" ]
+
+

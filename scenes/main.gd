@@ -37,6 +37,8 @@ var levelfactory = preload("res://levels/LevelFactory.gd")
 
 var goldclass = preload("res://scenes/items/gold/gold.tscn")
 
+var windowlightclass = preload("res://scenes/common/windowlight.tscn")
+
 var magiccircleclass = preload("res://scenes/animations/magiccircle/magiccircle.tscn")
 var magicorbsclass = preload("res://scenes/animations/magiccircle/orbs.tscn")
 var stardustclass = preload("res://scenes/animations/stardust.tscn")
@@ -684,6 +686,18 @@ func load_complete(resource):
 	loading.hide()
 	do_teleport(resource, teleport_params[0], teleport_params[1], teleport_params[2])
 
+func process_tiles(tilemap, currentlevel):
+	var tiles = tilemap.get_used_cells()
+	for tile in tiles:
+		var tile_id = tilemap.get_cellv(tile)
+		var tile_name = tilemap.get_tileset().tile_get_name(tile_id)
+		if (tile_name == "window"):
+			var light = windowlightclass.instance()
+			if (currentlevel.windowcolor):
+				light.get_node("Light2D").set_color(currentlevel.windowcolor)
+			light.set_position(tilemap.map_to_world(tile))
+			tilemap.add_child(light)
+
 # handle loaded level
 func do_teleport(resource, new_level, pos, teleport):
 	var new_level_obj = resource.instance()
@@ -735,6 +749,8 @@ func do_teleport(resource, new_level, pos, teleport):
 	if (currentbgm != music.get_stream()):
 		music.set_stream(currentbgm)
 		music.play()
+	# process tiles
+	process_tiles(new_level_obj.get_node("tilemap"), currentlevel)
 	# apply switch effects after all switches have loaded targets
 	if (new_level_obj.has_node("tilemap/SwitchGroup")):
 		for i in new_level_obj.get_node("tilemap/SwitchGroup").get_children():

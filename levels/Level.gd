@@ -21,6 +21,7 @@ var require # levels required to be completed before this level becomes availabl
 var character # character the level is for
 var sealevel # level underwhich sunbeams have no effect
 var tint # tint value to provide the entire level
+var windowcolor # color of light from windows (where applicable)
 
 func _ready():
 	# Called every time the node is added to the scene.

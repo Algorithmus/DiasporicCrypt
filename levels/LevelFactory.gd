@@ -68,6 +68,7 @@ func _init():
 	cave.item = "ITEM_STYXCOIN"
 	cave.require = ["LVL_DUNGEON", "LVL_BERGFORTRESS"]
 	cave.location = locationfactory.locations["LVL_CAVE"]
+	cave.tint = Color(144.0/255, 182.0/255, 203.0/255)
 	levels[cave.title] = cave
 	
 	var forest1 = levelclass.new()
@@ -137,6 +138,8 @@ func _init():
 	bergfortress.require = ["LVL_START"]
 	bergfortress.character = "friederich"
 	bergfortress.location = locationfactory.locations["LVL_BERGFORTRESS"]
+	bergfortress.windowcolor = Color(1, 209.0/255, 72.0/255)
+	bergfortress.tint = Color(1, 219.0/255, 192.0/255)
 	levels[bergfortress.title] = bergfortress
 	
 	var aquaduct = levelclass.new()
@@ -194,6 +197,7 @@ func _init():
 	manor.location = locationfactory.locations["LVL_MARBLECASTLE"]
 	manor.reward = 20000
 	manor.require = ["LVL_DUNGEON", "LVL_BERGFORTRESS"]
+	manor.tint = Color(213.0/255, 217.0/255, 1)
 	levels[manor.title] = manor
 	
 	var holyruins = levelclass.new()
